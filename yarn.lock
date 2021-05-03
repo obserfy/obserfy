@@ -6539,7 +6539,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/estree@npm:*, @types/estree@npm:^0.0.46":
+"@types/estree@npm:*":
   version: 0.0.46
   resolution: "@types/estree@npm:0.0.46"
   checksum: 620f7549c8cf99fe1c91a943a42ae2684c18f6007dc1bd6a439a2bf3204022ab746ffb3be5244c70d43a822beeb3c948216be1a69cb25e79005daeca4ebe5722
@@ -13660,16 +13660,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^5.7.0":
-  version: 5.7.0
-  resolution: "enhanced-resolve@npm:5.7.0"
-  dependencies:
-    graceful-fs: ^4.2.4
-    tapable: ^2.2.0
-  checksum: 91916405697c04512e4f29cf0f0dcf10b03751f7b6f51fda72661ddc5c79779d404335f933caa202f5e81f00944fe3a1cf180cc6b53fdaff2c9ce9d0f310f704
-  languageName: node
-  linkType: hard
-
 "enhanced-resolve@npm:^5.8.0":
   version: 5.8.0
   resolution: "enhanced-resolve@npm:5.8.0"
@@ -13816,13 +13806,6 @@ __metadata:
     is-string: ^1.0.5
     isarray: ^2.0.5
   checksum: f75e66acb6a45686fa08b3ade9c9421a70d36a0c43ed4363e67f4d7aab2226cb73dd977cb48abbaf75721b946d3cd810682fcf310c7ad0867802fbf929b17dcf
-  languageName: node
-  linkType: hard
-
-"es-module-lexer@npm:^0.3.26":
-  version: 0.3.26
-  resolution: "es-module-lexer@npm:0.3.26"
-  checksum: 06d7abe4df61935bbfcf710bb20487ffa44fd6c3d67bb493310acc90825f0ac62a483918d46c13bf45441f3c84bd47681c8e942ba9b0a675debb9238ca63fe5c
   languageName: node
   linkType: hard
 
@@ -33292,7 +33275,7 @@ typescript@4.2.4:
     url-loader: 4.1.1
     use-immer: 0.5.1
     wait-on: 5.3.0
-    webpack: 5.19.0
+    webpack: 5.36.2
   languageName: unknown
   linkType: soft
 
@@ -33690,44 +33673,7 @@ typescript@4.2.4:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.19.0":
-  version: 5.19.0
-  resolution: "webpack@npm:5.19.0"
-  dependencies:
-    "@types/eslint-scope": ^3.7.0
-    "@types/estree": ^0.0.46
-    "@webassemblyjs/ast": 1.11.0
-    "@webassemblyjs/wasm-edit": 1.11.0
-    "@webassemblyjs/wasm-parser": 1.11.0
-    acorn: ^8.0.4
-    browserslist: ^4.14.5
-    chrome-trace-event: ^1.0.2
-    enhanced-resolve: ^5.7.0
-    es-module-lexer: ^0.3.26
-    eslint-scope: ^5.1.1
-    events: ^3.2.0
-    glob-to-regexp: ^0.4.1
-    graceful-fs: ^4.2.4
-    json-parse-better-errors: ^1.0.2
-    loader-runner: ^4.2.0
-    mime-types: ^2.1.27
-    neo-async: ^2.6.2
-    pkg-dir: ^5.0.0
-    schema-utils: ^3.0.0
-    tapable: ^2.1.1
-    terser-webpack-plugin: ^5.1.1
-    watchpack: ^2.0.0
-    webpack-sources: ^2.1.1
-  peerDependenciesMeta:
-    webpack-cli:
-      optional: true
-  bin:
-    webpack: bin/webpack.js
-  checksum: fffc970f0f1b3d654c260e350489055ea3a162f2564fa41e48bfa976d7080697d24a4461b95965c76978311c4269acd50a5e5b33095086013bb2b41b67e63036
-  languageName: node
-  linkType: hard
-
-"webpack@npm:^5.35.0":
+"webpack@npm:5.36.2, webpack@npm:^5.35.0":
   version: 5.36.2
   resolution: "webpack@npm:5.36.2"
   dependencies:
