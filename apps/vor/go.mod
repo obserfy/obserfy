@@ -23,6 +23,6 @@ require (
 	github.com/tkrajina/go-reflector v0.5.4 // indirect
 	github.com/tkrajina/typescriptify-golang-structs v0.1.5
 	go.uber.org/zap v1.16.0
-	golang.org/x/crypto v0.0.0-20210421170649-83a5a9bb288b
+	golang.org/x/crypto e9a32991a82e
 	golang.org/x/tools v0.0.0-20210115202250-e0d201561e39 // indirect
 )
