@@ -6510,12 +6510,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/dompurify@npm:2.2.1":
-  version: 2.2.1
-  resolution: "@types/dompurify@npm:2.2.1"
+"@types/dompurify@npm:2.2.2":
+  version: 2.2.2
+  resolution: "@types/dompurify@npm:2.2.2"
   dependencies:
     "@types/trusted-types": "*"
-  checksum: 9917667e103dc7fbae55c1c97d81f41424fc38a2ef589b318598cb5d76318e9aeb0cef836fb549b785a5086d5fdc35b8897c92e7b5cd4c9e0fb940cd4c1956be
+  checksum: c3bc1fdc59f8ba566adaca2451ddcded40628bf110cc2d6376c94b5719c1b06222708d3444112d79e29c4f532e16381e4b2712d0a0e2804b96af1b3b6cd68f77
   languageName: node
   linkType: hard
 
@@ -13242,10 +13242,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:2.2.7":
-  version: 2.2.7
-  resolution: "dompurify@npm:2.2.7"
-  checksum: 0d82585d095f2d435c901f54eb59c87a2a594b647b2d99dc01a5cd764048236e9aee61bd483a3a5b65f538d7bfb52d30d0bae0da9a66a26f6c5686bb768e4afb
+"dompurify@npm:2.2.8":
+  version: 2.2.8
+  resolution: "dompurify@npm:2.2.8"
+  checksum: ddd770b35aec6804591b1ee978ce5034ecb64e3610bef9592744db454aed20aa315ec6c0ca7d29ac550bfbc1fb32b83c532ff1846ce8922a5e36acce73057c5b
   languageName: node
   linkType: hard
 
@@ -15990,7 +15990,7 @@ fsevents@^1.2.7:
     "@svgr/webpack": 5.5.0
     "@tailwindcss/typography": 0.4.0
     "@types/body-scroll-lock": 2.6.1
-    "@types/dompurify": 2.2.1
+    "@types/dompurify": 2.2.2
     "@types/formidable": 1.0.31
     "@types/hls.js": 0.13.3
     "@types/jest": 26.0.23
@@ -16008,7 +16008,7 @@ fsevents@^1.2.7:
     autoprefixer: 10.2.5
     body-scroll-lock: 3.1.5
     dayjs: 1.10.4
-    dompurify: 2.2.7
+    dompurify: 2.2.8
     dotenv: 8.2.0
     eslint: 7.25.0
     eslint-config-airbnb-typescript: 12.3.1
@@ -33191,7 +33191,7 @@ typescript@4.2.4:
     "@theme-ui/match-media": 0.7.5
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
-    "@types/dompurify": 2.2.1
+    "@types/dompurify": 2.2.2
     "@types/faker": 5.5.3
     "@types/hls.js": 0.13.3
     "@types/jest": 26.0.23
@@ -33220,7 +33220,7 @@ typescript@4.2.4:
     cross-env: 7.0.3
     cypress: 7.2.0
     dayjs: 1.10.4
-    dompurify: 2.2.7
+    dompurify: 2.2.8
     dotenv: 8.2.0
     esbuild: 0.11.16
     eslint: 7.25.0
