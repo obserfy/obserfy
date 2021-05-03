@@ -59,7 +59,7 @@
     "postcss": "8.2.13",
     "preact": "10.5.13",
     "preact-render-to-string": "5.1.19",
-    "query-string": "6.14.1",
+    "query-string": "7.0.0",
     "react": "17.0.2",
     "react-adaptive-hooks": "0.0.8",
     "react-dom": "17.0.2",

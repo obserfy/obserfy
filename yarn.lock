@@ -27047,7 +27047,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"query-string@npm:*, query-string@npm:6.14.1, query-string@npm:^6.13.1, query-string@npm:^6.13.3, query-string@npm:^6.13.8":
+"query-string@npm:*, query-string@npm:^6.13.1, query-string@npm:^6.13.3, query-string@npm:^6.13.8":
   version: 6.14.1
   resolution: "query-string@npm:6.14.1"
   dependencies:
@@ -27056,6 +27056,18 @@ fsevents@^1.2.7:
     split-on-first: ^1.0.0
     strict-uri-encode: ^2.0.0
   checksum: f2c7347578fa0f3fd4eaace506470cb4e9dc52d409a7ddbd613f614b9a594d750877e193b5d5e843c7477b3b295b857ec328903c943957adc41a3efb6c929449
+  languageName: node
+  linkType: hard
+
+"query-string@npm:7.0.0":
+  version: 7.0.0
+  resolution: "query-string@npm:7.0.0"
+  dependencies:
+    decode-uri-component: ^0.2.0
+    filter-obj: ^1.1.0
+    split-on-first: ^1.0.0
+    strict-uri-encode: ^2.0.0
+  checksum: 6e3c4376ff01f49bf2300b36e37291e2d3be8df4fe1839d048dd89d4166b92ecd67525c88ca66b61cbc5612ca29fa4e40002d25a74f59b99f7022045b9e7abd2
   languageName: node
   linkType: hard
 
@@ -33256,7 +33268,7 @@ typescript@4.2.4:
     preact: 10.5.13
     preact-render-to-string: 5.1.19
     prettier: 2.2.1
-    query-string: 6.14.1
+    query-string: 7.0.0
     react: 17.0.2
     react-adaptive-hooks: 0.0.8
     react-docgen-typescript-loader: 3.7.2
