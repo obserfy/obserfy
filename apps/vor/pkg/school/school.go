@@ -71,6 +71,7 @@ func NewRouter(
 		r.Method("POST", "/progress-reports", postNewProgressReport(server, store))
 		r.Method("GET", "/progress-reports", getProgressReports(server, store))
 	})
+
 	return r
 }
 
@@ -182,6 +183,7 @@ func getClasses(server rest.Server, store Store) http.Handler {
 		return nil
 	})
 }
+
 func getClassAttendance(server rest.Server, store Store) http.Handler {
 	type attendanceData struct {
 		StudentId string `json:"studentId"`
@@ -569,7 +571,6 @@ func refreshInviteCode(s rest.Server, store Store) http.Handler {
 		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed getting school info", err}
 		}
-
 		if err := rest.WriteJson(w, school); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
