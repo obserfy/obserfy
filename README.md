@@ -39,7 +39,6 @@ apps/
 |--freyr          # Our landing page powered by gatsby
 |--gaia           # Contains all api and frontend for our parent dashboard, powered by nextjs
 |--vor            # Contains all code for parents dashboard, powered by gatsby and go
-|--e2e            # Our e2e tests
 ```
 
 See each folder's README.md files for more info about them.
