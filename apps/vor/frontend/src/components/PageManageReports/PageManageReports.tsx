@@ -1,8 +1,11 @@
 import { t } from "@lingui/macro"
 import React, { FC } from "react"
-import { borderBottom } from "../../border"
+import { Box } from "theme-ui"
+import { borderBottom, borderRight } from "../../border"
 import useGetReport from "../../hooks/api/reports/useGetProgressReport"
-import { ALL_REPORT_URL } from "../../routes"
+import { useGetAllStudents } from "../../hooks/api/students/useGetAllStudents"
+import { ALL_REPORT_URL, MANAGE_REPORT_URL } from "../../routes"
+import { Link } from "../Link/Link"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 
@@ -12,6 +15,7 @@ export interface PageManageReportsProps {
 
 const PageManageReports: FC<PageManageReportsProps> = ({ reportId }) => {
   const report = useGetReport(reportId)
+  const students = useGetAllStudents()
 
   return (
     <div>
@@ -23,6 +27,16 @@ const PageManageReports: FC<PageManageReportsProps> = ({ reportId }) => {
           ]}
         />
       </TranslucentBar>
+
+      <Box py={2} sx={{ maxWidth: [undefined, 340], ...borderRight }}>
+        {students.data?.map(({ id, name }) => (
+          <Link to={MANAGE_REPORT_URL(reportId)}>
+            <Box key={id} m={3} className="truncate">
+              {name}
+            </Box>
+          </Link>
+        ))}
+      </Box>
     </div>
   )
 }
