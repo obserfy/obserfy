@@ -30,6 +30,7 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
             key={report.id}
             sx={{
               p: 3,
+              py: [2, 3],
               display: "block",
               width: ["100%", "50%", "25%", "20%"],
             }}
@@ -47,8 +48,9 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
               <Typography.H2 mb={1} sx={{ fontSize: 2 }}>
                 {report.title}
               </Typography.H2>
-              <Typography.Body>
-                {dayjs(report.periodStart).format("MMMM YYYY")}
+              <Typography.Body color="textMediumEmphasis">
+                {dayjs(report.periodStart).format("MMMM YYYY")} -{" "}
+                {dayjs(report.periodEnd).format("MMMM YYYY")}
               </Typography.Body>
             </Card>
           </Link>

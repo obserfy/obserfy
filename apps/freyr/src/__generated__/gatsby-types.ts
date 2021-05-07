@@ -3508,9 +3508,11 @@ declare namespace GatsbyTypes {
     readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>
   }
 
-  type Unnamed_1_QueryVariables = Exact<{ [key: string]: never }>
+  type homechrisintSrcobserfyappsfreyrsrccomponentsseoTsx63159454QueryVariables = Exact<{
+    [key: string]: never
+  }>
 
-  type Unnamed_1_Query = {
+  type homechrisintSrcobserfyappsfreyrsrccomponentsseoTsx63159454Query = {
     readonly site: Maybe<{
       readonly siteMetadata: Maybe<
         Pick<SiteSiteMetadata, "title" | "description" | "author">

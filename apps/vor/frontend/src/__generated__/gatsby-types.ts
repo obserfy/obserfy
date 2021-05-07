@@ -3236,9 +3236,11 @@ declare namespace GatsbyTypes {
     readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>
   }
 
-  type Unnamed_1_QueryVariables = Exact<{ [key: string]: never }>
+  type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454QueryVariables = Exact<{
+    [key: string]: never
+  }>
 
-  type Unnamed_1_Query = {
+  type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454Query = {
     readonly site: Maybe<{
       readonly siteMetadata: Maybe<
         Pick<SiteSiteMetadata, "title" | "description" | "author">
@@ -3246,9 +3248,11 @@ declare namespace GatsbyTypes {
     }>
   }
 
-  type Unnamed_2_QueryVariables = Exact<{ [key: string]: never }>
+  type homechrisintSrcobserfynodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544QueryVariables = Exact<{
+    [key: string]: never
+  }>
 
-  type Unnamed_2_Query = {
+  type homechrisintSrcobserfynodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544Query = {
     readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, "preset" | "prismPreset">>
   }
 
