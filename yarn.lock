@@ -6886,10 +6886,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:15.0.1":
-  version: 15.0.1
-  resolution: "@types/node@npm:15.0.1"
-  checksum: af8c8ba83e9e56a1aa9db7106b2d05c07fa67fd6bf67490317530e05e9d85e1326e95f702aaf207379b3aaa10be7c68c76dc1ed114932bebdf46fe9c58aa0261
+"@types/node@npm:15.0.2":
+  version: 15.0.2
+  resolution: "@types/node@npm:15.0.2"
+  checksum: 273565e1da341b248e08bec105667f0ab8ef89e347a47bbd6e18e35c0946788a53d581e0e3d8b8e3b3b5809db3237fcbf1bbb2251cf1506e5f81622739cb9ff1
   languageName: node
   linkType: hard
 
@@ -33299,7 +33299,7 @@ typescript@4.2.4:
     "@types/faker": 5.5.3
     "@types/hls.js": 0.13.3
     "@types/jest": 26.0.23
-    "@types/node": 15.0.1
+    "@types/node": 15.0.2
     "@types/query-string": 6.3.0
     "@types/reach__router": 1.3.7
     "@types/react": 17.0.5
