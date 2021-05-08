@@ -15760,7 +15760,7 @@ __metadata:
     gatsby-transformer-remark: 4.1.0
     gatsby-transformer-sharp: 3.4.0
     make-plural: 6.2.2
-    postcss: 8.2.13
+    postcss: 8.2.14
     postcss-preset-env: 6.7.0
     preact: 10.5.13
     prettier: 2.2.1
@@ -16083,7 +16083,7 @@ fsevents@^1.2.7:
     pg: 8.6.0
     pino: 6.11.3
     pino-pretty: 4.7.1
-    postcss: 8.2.13
+    postcss: 8.2.14
     preact: 10.5.13
     preact-render-to-string: 5.1.19
     prettier: 2.2.1
@@ -26556,6 +26556,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"postcss@npm:8.2.14":
+  version: 8.2.14
+  resolution: "postcss@npm:8.2.14"
+  dependencies:
+    colorette: ^1.2.2
+    nanoid: ^3.1.22
+    source-map: ^0.6.1
+  checksum: 201bf1b7d5b3b7f2ca1c648801bff31416a9ee6e086fcaab0654f93e25d93a9ccc0dce579957461bda1f7b44116a3fc9c7cc2fb91b4e6544251e72827e231bae
+  languageName: node
+  linkType: hard
+
 "postcss@npm:8.2.6":
   version: 8.2.6
   resolution: "postcss@npm:8.2.6"
@@ -33391,7 +33402,7 @@ typescript@4.2.4:
     mux-embed: 4.0.1
     nanoid: 3.1.22
     npm-run-all: 4.1.5
-    postcss: 8.2.13
+    postcss: 8.2.14
     preact: 10.5.13
     preact-render-to-string: 5.1.19
     prettier: 2.2.1
