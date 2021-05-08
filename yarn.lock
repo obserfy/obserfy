@@ -13372,10 +13372,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:8.6.0":
-  version: 8.6.0
-  resolution: "dotenv@npm:8.6.0"
-  checksum: 38e902c80b0666ab59e9310a3d24ed237029a7ce34d976796349765ac96b8d769f6df19090f1f471b77a25ca391971efde8a1ea63bb83111bd8bec8e5cc9b2cd
+"dotenv@npm:9.0.0":
+  version: 9.0.0
+  resolution: "dotenv@npm:9.0.0"
+  checksum: e7fd61a6393c2abd47d97a767556d949f78fd50a2811fb6f63c0427695f135881e3603956c0abe6330c1a1a6996ea4c992a5a86dd95d4edd70189c792e331c9f
   languageName: node
   linkType: hard
 
@@ -16053,7 +16053,7 @@ fsevents@^1.2.7:
     body-scroll-lock: 3.1.5
     dayjs: 1.10.4
     dompurify: 2.2.8
-    dotenv: 8.6.0
+    dotenv: 9.0.0
     eslint: 7.25.0
     eslint-config-airbnb-typescript: 12.3.1
     eslint-config-prettier: 7.2.0
@@ -33354,7 +33354,7 @@ typescript@4.2.4:
     cypress: 7.2.0
     dayjs: 1.10.4
     dompurify: 2.2.8
-    dotenv: 8.6.0
+    dotenv: 9.0.0
     esbuild: 0.11.18
     eslint: 7.25.0
     eslint-config-airbnb-typescript: 12.3.1
