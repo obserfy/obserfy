@@ -39,7 +39,7 @@
     "gatsby-transformer-remark": "4.1.0",
     "gatsby-transformer-sharp": "3.4.0",
     "make-plural": "6.2.2",
-    "postcss": "8.2.13",
+    "postcss": "8.2.14",
     "postcss-preset-env": "6.7.0",
     "preact": "10.5.13",
     "prism-themes": "1.7.0",
