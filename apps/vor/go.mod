@@ -8,7 +8,7 @@ require (
 	github.com/getsentry/sentry-go v0.10.0
 	github.com/go-chi/chi v1.5.4
 	github.com/go-pg/pg/v10 v10.9.1
-	github.com/go-playground/validator/v10 v10.5.0
+	github.com/go-playground/validator/v10 v10.6.0
 	github.com/gocarina/gocsv v0.0.0-20210408192840-02d7211d929d
 	github.com/google/uuid v1.2.0
 	github.com/joho/godotenv v1.3.0
@@ -21,7 +21,7 @@ require (
 	github.com/stretchr/testify v1.7.0
 	github.com/tkrajina/typescriptify-golang-structs v0.1.5
 	go.uber.org/zap v1.16.0
-	golang.org/x/crypto 38f3c27a63bf
+	golang.org/x/crypto v0.0.0-20210506145944-38f3c27a63bf
 	golang.org/x/tools v0.0.0-20210115202250-e0d201561e39 // indirect
 	gopkg.in/go-playground/validator.v8 v8.18.2
 	gopkg.in/ini.v1 v1.57.0 // indirect
