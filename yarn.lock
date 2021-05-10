@@ -11255,6 +11255,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"commander@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "commander@npm:7.2.0"
+  checksum: 53501cbeee61d5157546c0bef0fedb6cdfc763a882136284bed9a07225f09a14b82d2a84e7637edfd1a679fb35ed9502fd58ef1d091e6287f60d790147f68ddc
+  languageName: node
+  linkType: hard
+
 "common-tags@npm:1.8.0, common-tags@npm:^1.8.0":
   version: 1.8.0
   resolution: "common-tags@npm:1.8.0"
@@ -12489,7 +12496,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:4.3.2, debug@npm:^4.0.0, debug@npm:^4.0.1, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.2.0, debug@npm:^4.3.1, debug@npm:~4.3.1":
+"debug@npm:4, debug@npm:4.3.2, debug@npm:^4.0.0, debug@npm:^4.0.1, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:~4.3.1":
   version: 4.3.2
   resolution: "debug@npm:4.3.2"
   dependencies:
@@ -14593,7 +14600,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:4.1.0, execa@npm:^4.0.0, execa@npm:^4.0.2, execa@npm:^4.0.3, execa@npm:^4.1.0":
+"execa@npm:4.1.0, execa@npm:^4.0.0, execa@npm:^4.0.2, execa@npm:^4.0.3":
   version: 4.1.0
   resolution: "execa@npm:4.1.0"
   dependencies:
@@ -21217,28 +21224,28 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:10.5.4":
-  version: 10.5.4
-  resolution: "lint-staged@npm:10.5.4"
+"lint-staged@npm:11.0.0":
+  version: 11.0.0
+  resolution: "lint-staged@npm:11.0.0"
   dependencies:
-    chalk: ^4.1.0
+    chalk: ^4.1.1
     cli-truncate: ^2.1.0
-    commander: ^6.2.0
+    commander: ^7.2.0
     cosmiconfig: ^7.0.0
-    debug: ^4.2.0
+    debug: ^4.3.1
     dedent: ^0.7.0
     enquirer: ^2.3.6
-    execa: ^4.1.0
-    listr2: ^3.2.2
-    log-symbols: ^4.0.0
-    micromatch: ^4.0.2
+    execa: ^5.0.0
+    listr2: ^3.8.2
+    log-symbols: ^4.1.0
+    micromatch: ^4.0.4
     normalize-path: ^3.0.0
     please-upgrade-node: ^3.2.0
     string-argv: 0.3.1
     stringify-object: ^3.3.0
   bin:
     lint-staged: bin/lint-staged.js
-  checksum: 4cc65f6c0a22dc091d0bbdfa6c15cd6e9b7d0d1e7603f5441bf9ac62f3a760fa36b0bda2db4c31b4084f28ba47cd4d0a176c3c3b314a97de8326e050d20b1635
+  checksum: 3be24b4a88799264bbb9baeedfc5be278d25aa85dc766c5328da23d5d92300c0a163563b455d530ca2a74510a161f17623e846e1aca81e44f389108274ad2acd
   languageName: node
   linkType: hard
 
@@ -21279,11 +21286,11 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"listr2@npm:^3.2.2":
-  version: 3.8.0
-  resolution: "listr2@npm:3.8.0"
+"listr2@npm:^3.8.2":
+  version: 3.8.2
+  resolution: "listr2@npm:3.8.2"
   dependencies:
-    chalk: ^4.1.0
+    chalk: ^4.1.1
     cli-truncate: ^2.1.0
     figures: ^3.2.0
     indent-string: ^4.0.0
@@ -21294,7 +21301,7 @@ fsevents@^1.2.7:
     wrap-ansi: ^7.0.0
   peerDependencies:
     enquirer: ">= 2.3.0 < 3"
-  checksum: 9f3b91dbd470b6640945d3c5789c91233dcd47488055819f523e82173db2bb899b6a5650bfbe2369f956fbeeb662c5ce2abdd26500ca9317089ba7d4a808cebb
+  checksum: f0930780daf525015fb6e0568c69b36e23a1b5c74c00b802ed911e2d9b2eacc6fb9f498e90669b1a0f51c987fab5dfe7d95f5bbddddf5f3d9d42d99d373ea700
   languageName: node
   linkType: hard
 
@@ -29092,7 +29099,7 @@ resolve@^2.0.0-next.3:
   dependencies:
     eslint: 7.25.0
     husky: 6.0.0
-    lint-staged: 10.5.4
+    lint-staged: 11.0.0
     prettier: 2.2.1
   languageName: unknown
   linkType: soft
