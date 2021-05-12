@@ -50,7 +50,7 @@
     "gatsby-theme-i18n": "2.0.0",
     "gatsby-theme-i18n-lingui": "2.0.0",
     "gatsby-transformer-sharp": "3.4.0",
-    "hls.js": "1.0.2",
+    "hls.js": "1.0.3",
     "idb-keyval": "5.0.5",
     "immer": "9.0.2",
     "make-plural": "6.2.2",
