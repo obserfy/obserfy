@@ -46,7 +46,7 @@
     "minio": "7.0.18",
     "monocle-ts": "2.3.10",
     "mux-embed": "4.0.1",
-    "nanoid": "3.1.22",
+    "nanoid": "3.1.23",
     "newtype-ts": "0.3.4",
     "next": "10.2.0",
     "next-compose-plugins": "2.2.1",
