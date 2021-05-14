@@ -12338,9 +12338,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:7.2.0":
-  version: 7.2.0
-  resolution: "cypress@npm:7.2.0"
+"cypress@npm:7.3.0":
+  version: 7.3.0
+  resolution: "cypress@npm:7.3.0"
   dependencies:
     "@cypress/listr-verbose-renderer": ^0.4.1
     "@cypress/request": ^2.88.5
@@ -12383,7 +12383,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: f2b66f1368893e9c6761fddd5823ea85a8e3110744282e41171a616a262a2f689e113978ce41b2166a7dca503f3aec53f33151e78e300d30c38050a3514756f3
+  checksum: a89e37da0247f321cdb830317967792d27a093ceff05b81eaef982a0f6c5263f392e8d79fdb66923de9fd74467d7f21fcfe019cbfd07a1c25b821096994127de
   languageName: node
   linkType: hard
 
@@ -33375,7 +33375,7 @@ typescript@4.2.4:
     chromatic: 5.8.0
     core-js: 3.12.1
     cross-env: 7.0.3
-    cypress: 7.2.0
+    cypress: 7.3.0
     dayjs: 1.10.4
     dompurify: 2.2.8
     dotenv: 9.0.2
