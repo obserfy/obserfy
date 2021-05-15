@@ -6928,10 +6928,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.14.44, @types/node@npm:^14.14.41":
-  version: 14.14.44
-  resolution: "@types/node@npm:14.14.44"
-  checksum: a6e9d60b5a9069bdf6f43dcad92b635b02572daeb69d4649871c59a34b5267dcc6612f01f20934365efd8d86ebd1639f8ca9e0a3fb34ce1850ca7f3325d6ecec
+"@types/node@npm:14.14.45":
+  version: 14.14.45
+  resolution: "@types/node@npm:14.14.45"
+  checksum: 3870a0128011b01c6fb6655e0f682b1b660e141f84d76c70fe503f5c7cf38bd06fc7b9a7d3c760601bce0598421f552695de40f095863ede29a6e22a13213b3e
   languageName: node
   linkType: hard
 
@@ -6953,6 +6953,13 @@ __metadata:
   version: 14.14.43
   resolution: "@types/node@npm:14.14.43"
   checksum: a7c80f91fb8a21dd590327561dd51042275f3190fbb167a9d4fad7b5f4f95ab5abbcc034e6791564c26081e4ad0568549355c4748bda68080b446cf274935dfd
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^14.14.41":
+  version: 14.14.44
+  resolution: "@types/node@npm:14.14.44"
+  checksum: a6e9d60b5a9069bdf6f43dcad92b635b02572daeb69d4649871c59a34b5267dcc6612f01f20934365efd8d86ebd1639f8ca9e0a3fb34ce1850ca7f3325d6ecec
   languageName: node
   linkType: hard
 
@@ -16118,7 +16125,7 @@ fsevents@^1.2.7:
     "@types/minio": 7.0.7
     "@types/mixpanel-browser": 2.35.6
     "@types/nanoid": 2.1.0
-    "@types/node": 14.14.44
+    "@types/node": 14.14.45
     "@types/pg": 7.14.11
     "@types/pino": 6.3.8
     "@types/react": 17.0.5
