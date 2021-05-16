@@ -7106,12 +7106,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:17.0.3":
-  version: 17.0.3
-  resolution: "@types/react-dom@npm:17.0.3"
+"@types/react-dom@npm:17.0.5":
+  version: 17.0.5
+  resolution: "@types/react-dom@npm:17.0.5"
   dependencies:
     "@types/react": "*"
-  checksum: 102a3ee9ecf96fdd82d37d90860d0b80e160a368117e4e84512c801f8c7f381d7a2b9305f155670f42eab4784d036375cbf16c9905839dd0857e7031ff966803
+  checksum: ff301198c621864e1ee6c566285dc5cdc9eb5d881ca7fe7fcb8ebf29afe0357ffb7f77e401ab81ff444c64ff1375f653eeb28f04cd088a361915dee31cb3f4a8
   languageName: node
   linkType: hard
 
@@ -33461,7 +33461,7 @@ typescript@4.2.4:
     "@types/reach__router": 1.3.7
     "@types/react": 17.0.5
     "@types/react-adaptive-hooks": 0.0.0
-    "@types/react-dom": 17.0.3
+    "@types/react-dom": 17.0.5
     "@types/react-helmet": 6.1.1
     "@types/segment-analytics": 0.0.33
     "@typescript-eslint/eslint-plugin": 4.22.0
