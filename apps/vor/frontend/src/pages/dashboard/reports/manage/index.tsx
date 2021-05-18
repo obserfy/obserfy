@@ -11,6 +11,7 @@ import { ALL_REPORT_URL } from "../../../../routes"
 
 const ManageReports = () => {
   const reportId = useQueryString("reportId")
+  const studentId = useQueryString("studentId")
   const report = useGetReport(reportId)
 
   return (
@@ -26,7 +27,7 @@ const ManageReports = () => {
         />
       </TranslucentBar>
 
-      <PageManageReports reportId={reportId} />
+      <PageManageReports reportId={reportId} studentId={studentId} />
     </>
   )
 }

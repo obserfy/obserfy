@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Trans } from "@lingui/macro"
 import { FC } from "react"
-import { jsx, Box, ThemeUIStyleObject } from "theme-ui"
+import { jsx, Image, Box, ThemeUIStyleObject } from "theme-ui"
 import { borderRight } from "../../border"
 import { useGetAllStudents } from "../../hooks/api/students/useGetAllStudents"
 import { STUDENT_REPORT_URL } from "../../routes"
@@ -11,11 +11,13 @@ import { Typography } from "../Typography/Typography"
 
 export interface PageManageReportsProps {
   reportId: string
+  studentId: string
   containerSx?: ThemeUIStyleObject
 }
 
 const PageManageReports: FC<PageManageReportsProps> = ({
   reportId,
+  studentId,
   containerSx,
 }) => {
   const students = useGetAllStudents()
@@ -36,10 +38,28 @@ const PageManageReports: FC<PageManageReportsProps> = ({
       </TranslucentBar>
 
       {students.data?.map(({ id, name }) => (
-        <Link key={id} to={STUDENT_REPORT_URL(reportId, id)}>
+        <Link
+          key={id}
+          to={STUDENT_REPORT_URL(reportId, id)}
+          sx={{
+            backgroundColor: studentId === id ? "primaryLightest" : "",
+            display: "flex",
+            "&:hover": {
+              backgroundColor: "primaryLightest",
+            },
+          }}
+        >
           <Box p={3} className="truncate">
             {name}
           </Box>
+
+          <Image
+            src="/icons/chevron-right-white.svg"
+            alt=""
+            ml="auto"
+            mr={3}
+            sx={{ opacity: 0.4 }}
+          />
         </Link>
       ))}
     </Box>

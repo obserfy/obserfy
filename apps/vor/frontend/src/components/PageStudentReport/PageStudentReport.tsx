@@ -1,4 +1,5 @@
 import React, { FC } from "react"
+import { Box } from "theme-ui"
 import { useGetStudent } from "../../hooks/api/useGetStudent"
 
 export interface PageStudentReportProps {
@@ -7,7 +8,7 @@ export interface PageStudentReportProps {
 const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
   const student = useGetStudent(studentId)
 
-  return <div>{student.data?.name}</div>
+  return <Box p={3}>{student.data?.name}</Box>
 }
 
 export default PageStudentReport

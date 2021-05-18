@@ -68,7 +68,7 @@ interface Window {
 // TODO: stub gatsby-theme-i18n until proper typing is released.
 declare module "gatsby-theme-i18n" {
   import { navigate, Link } from "gatsby"
-  type LocalizedLink<T> = Link<T>
+  class LocalizedLink<T> extends Link<T> {}
 
   const LocalizedLink
   const useLocalization: () => { locale: string }

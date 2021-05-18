@@ -39,6 +39,7 @@ const ManageReports = () => {
           containerSx={{
             display: ["none", "block"],
           }}
+          studentId={studentId}
         />
         <PageStudentReport studentId={studentId} />
       </Flex>
