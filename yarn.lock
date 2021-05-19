@@ -4115,6 +4115,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/bundle-analyzer@npm:^10.2.0":
+  version: 10.2.0
+  resolution: "@next/bundle-analyzer@npm:10.2.0"
+  dependencies:
+    webpack-bundle-analyzer: 4.3.0
+  checksum: 1b49315cddbd3c3487046f00c68cca4b0d96dda363e6be8b9c3aa0b30e30d6c7290a96bddc1102378988bbc019720280b242507325e940936a73e9ddc542bce4
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:10.2.0":
   version: 10.2.0
   resolution: "@next/env@npm:10.2.0"
@@ -16078,6 +16087,7 @@ fsevents@^1.2.7:
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
     "@auth0/nextjs-auth0": ^1.3.1
+    "@next/bundle-analyzer": ^10.2.0
     "@segment/snippet": 4.13.2
     "@sentry/browser": 6.3.6
     "@sentry/integrations": 6.3.6
@@ -33700,6 +33710,25 @@ typescript@4.2.4:
   peerDependencies:
     webpack: ^5.2.0
   checksum: cf8d71527cc45d6c252a5a576f956a8d385fed24fcbfe800c68bed77d69f4359c2fbf85f2fa9e3ca6070d895cc8d66d46eeab2cdebd48a0e9ca8024d3289f9d0
+  languageName: node
+  linkType: hard
+
+"webpack-bundle-analyzer@npm:4.3.0":
+  version: 4.3.0
+  resolution: "webpack-bundle-analyzer@npm:4.3.0"
+  dependencies:
+    acorn: ^8.0.4
+    acorn-walk: ^8.0.0
+    chalk: ^4.1.0
+    commander: ^6.2.0
+    gzip-size: ^6.0.0
+    lodash: ^4.17.20
+    opener: ^1.5.2
+    sirv: ^1.0.7
+    ws: ^7.3.1
+  bin:
+    webpack-bundle-analyzer: lib/bin/analyzer.js
+  checksum: 00b7bf4ac9fca17062b66b6897145b94e87153d3ec8815f0e0c05a3b8a1ca75320262db01a5fa634f604ee3d41aecde1ee59838d05b6d03cd5be62eb1addbcf8
   languageName: node
   linkType: hard
 
