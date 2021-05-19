@@ -1,10 +1,10 @@
 import React from "react"
 import { render } from "../../test-utils"
-import PageManageReports from "./PageManageReports"
+import StudentsInReport from "./StudentsInReport"
 
 describe("PageManageReports", () => {
   it("should render correctly", () => {
-    const { container } = render(<PageManageReports reportId="" />)
+    const { container } = render(<StudentsInReport reportId="" studentId="" />)
     expect(container).toMatchSnapshot()
   })
 })

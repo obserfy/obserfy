@@ -1,7 +1,7 @@
 import { t } from "@lingui/macro"
 import React from "react"
 import { borderBottom } from "../../../../border"
-import PageManageReports from "../../../../components/PageManageReports/PageManageReports"
+import StudentsInReport from "../../../../components/StudentsInReport/StudentsInReport"
 import SEO from "../../../../components/seo"
 import TopBar, { breadCrumb } from "../../../../components/TopBar/TopBar"
 import TranslucentBar from "../../../../components/TranslucentBar/TranslucentBar"
@@ -27,7 +27,7 @@ const ManageReports = () => {
         />
       </TranslucentBar>
 
-      <PageManageReports reportId={reportId} studentId={studentId} />
+      <StudentsInReport reportId={reportId} studentId={studentId} />
     </>
   )
 }

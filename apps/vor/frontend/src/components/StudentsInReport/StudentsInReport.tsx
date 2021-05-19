@@ -15,12 +15,12 @@ export interface PageManageReportsProps {
   containerSx?: ThemeUIStyleObject
 }
 
-const PageManageReports: FC<PageManageReportsProps> = ({
+const StudentsInReport: FC<PageManageReportsProps> = ({
   reportId,
   studentId,
   containerSx,
 }) => {
-  const students = useGetAllStudents()
+  const students = useGetAllStudents("")
 
   return (
     <Box
@@ -29,6 +29,11 @@ const PageManageReports: FC<PageManageReportsProps> = ({
         ...borderRight,
         width: "100%",
         maxWidth: [undefined, 340],
+        maxHeight: "100vh",
+        position: "sticky",
+        top: 0,
+        overflowY: "auto",
+        pb: 48,
       }}
     >
       <TranslucentBar boxSx={{ p: 3, pt: 4 }}>
@@ -66,4 +71,4 @@ const PageManageReports: FC<PageManageReportsProps> = ({
   )
 }
 
-export default PageManageReports
+export default StudentsInReport

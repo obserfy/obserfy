@@ -1,17 +1,17 @@
 import React from "react"
 import { Meta, Story } from "@storybook/react"
-import PageManageReports, { PageManageReportsProps } from "./PageManageReports"
+import StudentsInReport, { PageManageReportsProps } from "./StudentsInReport"
 
 export default {
   title: "Core/PageManageReports",
-  component: PageManageReports,
+  component: StudentsInReport,
   parameters: {
     componentSubtitle: "Just a simple PageManageReports",
   },
 } as Meta
 
 const Template: Story<PageManageReportsProps> = (args) => (
-  <PageManageReports {...args} />
+  <StudentsInReport {...args} />
 )
 
 export const Default = Template.bind({})

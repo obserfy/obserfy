@@ -2,7 +2,7 @@ import { t } from "@lingui/macro"
 import React from "react"
 import { Flex } from "theme-ui"
 import { borderBottom } from "../../../../../border"
-import PageManageReports from "../../../../../components/PageManageReports/PageManageReports"
+import StudentsInReport from "../../../../../components/StudentsInReport/StudentsInReport"
 import PageStudentReport from "../../../../../components/PageStudentReport/PageStudentReport"
 import SEO from "../../../../../components/seo"
 import TopBar, { breadCrumb } from "../../../../../components/TopBar/TopBar"
@@ -34,7 +34,7 @@ const ManageReports = () => {
       </TranslucentBar>
 
       <Flex>
-        <PageManageReports
+        <StudentsInReport
           reportId={reportId}
           containerSx={{
             display: ["none", "block"],

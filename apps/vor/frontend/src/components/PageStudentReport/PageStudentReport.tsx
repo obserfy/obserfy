@@ -1,13 +1,13 @@
-import { t, Trans } from "@lingui/macro"
+import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Card } from "theme-ui"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import { useGetStudent } from "../../hooks/api/useGetStudent"
 import { useGetStudentMaterialProgress } from "../../hooks/api/useGetStudentMaterialProgress"
 import { useGetStudentObservations } from "../../hooks/api/useGetStudentObservations"
+import MarkdownEditor from "../MarkdownEditor/MarkdownEditor"
 import ObservationListItem from "../ObservationListItem/ObservationListItem"
 import Tab from "../Tab/Tab"
-import TextArea from "../TextArea/TextArea"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
 
@@ -29,18 +29,22 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
           onTabClick={() => {}}
         />
       </TranslucentBar>
+
       <Box p={3} sx={{ display: ["block", "flex"], width: "100%" }}>
-        <Box sx={{ width: "100%" }} pr={[0, 3]} pb={3} pt={3}>
-          <Typography.Body sx={{ fontWeight: "bold" }} mb={2}>
-            {student.data?.name}
-          </Typography.Body>
-          <TextArea label={t`Assessments`} />
+        <Box sx={{ width: "100%" }} pr={[0, 3]} pb={3}>
+          <Card>
+            <Typography.H6 sx={{ fontWeight: "bold" }} p={3} pb={2}>
+              <Trans>Evaluation</Trans>
+            </Typography.H6>
+
+            <MarkdownEditor onChange={() => {}} value="" />
+          </Card>
         </Box>
 
         <Box sx={{ maxWidth: 400 }} pt={3}>
-          <Typography.Body sx={{ fontWeight: "bold" }} mb={2}>
+          <Typography.H6 sx={{ fontWeight: "bold" }} mb={2}>
             <Trans>Observations</Trans>
-          </Typography.Body>
+          </Typography.H6>
           {observations.data?.map((observation) => (
             <Card key={observation.id} mb={3}>
               <ObservationListItem
