@@ -191,7 +191,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
               <Typography.Body sx={{ fontSize: 1, lineHeight: 1.4 }} ml={2}>
                 <Trans>Are you a parent or guardian?</Trans>{" "}
                 <a
-                  href="https://parent.obserfy.com/api/login"
+                  href="https://parent.obserfy.com/api/auth/login"
                   sx={{ color: "textPrimary" }}
                 >
                   <Trans>Go to parent dashboard</Trans>

@@ -42,7 +42,7 @@ const Header: FC = () => {
           </nav>
 
           <div className="hidden md:flex items-center ml-auto">
-            <a href="https://parent.obserfy.com/api/login">
+            <a href="https://parent.obserfy.com/api/auth/login">
               <Button secondary className="px-3 py-2 text-xs border">
                 <Trans>Sign In for Parents</Trans>
               </Button>

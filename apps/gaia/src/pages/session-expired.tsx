@@ -13,7 +13,7 @@ const SessionExpired = () => (
         Looks like your session has expired. Please log back in to continue.
       </h1>
 
-      <a href="/api/login" className="block mt-6 w-full px-3">
+      <a href="/api/auth/login" className="block mt-6 w-full px-3">
         <Button type="button" className="w-full">
           Login
         </Button>

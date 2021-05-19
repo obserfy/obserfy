@@ -1,5 +1,5 @@
+import { getSession } from "@auth0/nextjs-auth0"
 import { findChildrenByGuardianEmail } from "../../../db/queries"
-import auth0 from "../../../utils/auth0"
 import { protectedApiRoute } from "../../../utils/rest"
 
 export interface GetChildrenResponse {
@@ -7,7 +7,7 @@ export interface GetChildrenResponse {
   name: string
 }
 const childrenHandler = protectedApiRoute(async (req, res) => {
-  const session = await auth0.getSession(req)
+  const session = await getSession(req, res)
   if (!session) {
     res.status(401).end("unauthorized")
     return

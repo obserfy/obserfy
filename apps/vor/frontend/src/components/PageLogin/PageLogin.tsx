@@ -103,7 +103,7 @@ export const PageLogin: FC = () => {
           <Typography.Body sx={{ fontSize: 1, lineHeight: 1.4 }} ml={2}>
             Are you a parent?{" "}
             <a
-              href="https://parent.obserfy.com/api/login"
+              href="https://parent.obserfy.com/api/auth/login"
               sx={{ color: "textPrimary" }}
             >
               Go to parent dashboard

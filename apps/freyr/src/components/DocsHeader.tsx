@@ -22,7 +22,10 @@ const DocsHeader: FC = () => {
       >
         <div className="flex flex-row items-center ">
           <div className="hidden md:flex items-center ml-auto">
-            <a href="https://parent.obserfy.com/api/login" className="ml-2">
+            <a
+              href="https://parent.obserfy.com/api/auth/login"
+              className="ml-2"
+            >
               <Button secondary className="px-3 py-2 text-xs border">
                 <Trans>Sign In for Parents</Trans>
               </Button>
