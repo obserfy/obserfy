@@ -2,8 +2,6 @@ import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Card } from "theme-ui"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
-import { useGetStudent } from "../../hooks/api/useGetStudent"
-import { useGetStudentMaterialProgress } from "../../hooks/api/useGetStudentMaterialProgress"
 import { useGetStudentObservations } from "../../hooks/api/useGetStudentObservations"
 import MarkdownEditor from "../MarkdownEditor/MarkdownEditor"
 import ObservationListItem from "../ObservationListItem/ObservationListItem"
@@ -15,10 +13,8 @@ export interface PageStudentReportProps {
   studentId: string
 }
 const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
-  const student = useGetStudent(studentId)
   const observations = useGetStudentObservations(studentId)
   const areas = useGetCurriculumAreas()
-  const progress = useGetStudentMaterialProgress(studentId)
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -30,8 +26,14 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
         />
       </TranslucentBar>
 
-      <Box p={3} sx={{ display: ["block", "flex"], width: "100%" }}>
-        <Box sx={{ width: "100%" }} pr={[0, 3]} pb={3}>
+      <Box
+        p={3}
+        sx={{
+          display: ["block", "block", "block", "block", "flex"],
+          width: "100%",
+        }}
+      >
+        <Box sx={{ width: "100%" }} pr={[0, 0, 0, 0, 3]} pb={3}>
           <Card>
             <Typography.H6 sx={{ fontWeight: "bold" }} p={3} pb={2}>
               <Trans>Evaluation</Trans>
@@ -41,7 +43,7 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
           </Card>
         </Box>
 
-        <Box sx={{ maxWidth: 400 }} pt={3}>
+        <Box sx={{ width: ["auto", "auto", "auto", "auto", 600] }} pt={3}>
           <Typography.H6 sx={{ fontWeight: "bold" }} mb={2}>
             <Trans>Observations</Trans>
           </Typography.H6>
