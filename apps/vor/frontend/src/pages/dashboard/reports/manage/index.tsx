@@ -23,7 +23,7 @@ const ManageReports = () => {
         <TopBar
           containerSx={{ ...borderBottom }}
           breadcrumbs={[
-            breadCrumb(t`All Reports`, ALL_REPORT_URL),
+            breadCrumb(t`Progress Reports`, ALL_REPORT_URL),
             breadCrumb(report.data?.title),
           ]}
         />

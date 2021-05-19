@@ -25,7 +25,7 @@ const StudentsInReport: FC<PageManageReportsProps> = ({
         ...containerSx,
         ...borderRight,
         width: "100%",
-        maxWidth: [undefined, 340],
+        maxWidth: [undefined, undefined, undefined, undefined, 340],
         height: "100vh",
         position: "sticky",
         top: 0,
