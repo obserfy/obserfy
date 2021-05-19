@@ -9,8 +9,8 @@ import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import {
   Assessment,
   MaterialProgress,
-  useGetStudentMaterialProgress,
-} from "../../hooks/api/useGetStudentMaterialProgress"
+  useGetStudentAssessments,
+} from "../../hooks/api/useGetStudentAssessments"
 import { ADMIN_CURRICULUM_URL, STUDENT_PROGRESS_URL } from "../../routes"
 import InformationalCard from "../InformationalCard/InformationalCard"
 import { Link } from "../Link/Link"
@@ -30,7 +30,7 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [selected, setSelected] = useState<MaterialProgress>()
   const areas = useGetCurriculumAreas()
-  const progress = useGetStudentMaterialProgress(studentId)
+  const progress = useGetStudentAssessments(studentId)
   const isLoading = areas.isLoading || progress.isLoading
   // const exportDialog = useVisibilityState()
 
@@ -63,7 +63,7 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
       <Card variant="responsive" sx={{ overflow: "inherit" }} mt={3}>
         <Flex sx={{ alignItems: "center" }} p={3} pb={2}>
           <Typography.H6>
-            <Trans>Curriculum Progress</Trans>
+            <Trans>Assessments</Trans>
           </Typography.H6>
 
           <Button variant="secondary" ml="auto" onClick={handleExport}>

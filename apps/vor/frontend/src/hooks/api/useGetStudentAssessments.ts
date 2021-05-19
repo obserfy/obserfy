@@ -32,7 +32,7 @@ const fetchMaterialProgress = (studentId: string) => async (): Promise<
   return result.json()
 }
 
-export function useGetStudentMaterialProgress(studentId: string) {
+export function useGetStudentAssessments(studentId: string) {
   return useQuery(KEY(studentId), fetchMaterialProgress(studentId))
 }
 

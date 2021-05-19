@@ -19,7 +19,7 @@ const ManageReports = () => {
     <>
       <SEO title="Progress Reports" />
 
-      <TranslucentBar boxSx={{ ...borderBottom }}>
+      <TranslucentBar boxSx={{ ...borderBottom, minHeight: 146 }}>
         <TopBar
           containerSx={{ ...borderBottom }}
           breadcrumbs={[
