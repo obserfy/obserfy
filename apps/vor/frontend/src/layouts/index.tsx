@@ -40,7 +40,7 @@ const GlobalStyle: FC = () => {
           // scrollbarColor: isDarkMode ? "dark" : "light",
 
           "::-webkit-scrollbar": isDarkMode
-            ? { width: 8, backgroundColor: "#1c1c1c" }
+            ? { width: 8, height: 8, backgroundColor: "#1c1c1c" }
             : "inherit",
 
           "::-webkit-scrollbar-thumb": isDarkMode
