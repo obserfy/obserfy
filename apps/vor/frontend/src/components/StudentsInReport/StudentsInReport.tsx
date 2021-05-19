@@ -17,7 +17,7 @@ const StudentsInReport: FC<PageManageReportsProps> = ({
   studentId,
   containerSx,
 }) => {
-  const students = useGetAllStudents("")
+  const students = useGetAllStudents("", true)
 
   return (
     <Box
@@ -26,7 +26,7 @@ const StudentsInReport: FC<PageManageReportsProps> = ({
         ...borderRight,
         width: "100%",
         maxWidth: [undefined, 340],
-        maxHeight: "100vh",
+        height: "100vh",
         position: "sticky",
         top: 0,
         overflowY: "auto",
