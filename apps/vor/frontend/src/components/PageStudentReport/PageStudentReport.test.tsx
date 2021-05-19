@@ -4,7 +4,7 @@ import PageStudentReport from "./PageStudentReport"
 
 describe("PageStudentReport", () => {
   it("should render correctly", () => {
-    const { container } = render(<PageStudentReport />)
+    const { container } = render(<PageStudentReport studentId="" />)
     expect(container).toMatchSnapshot()
   })
 })

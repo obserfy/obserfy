@@ -28,13 +28,36 @@ exports[`PageStudentReport should render correctly 1`] = `
   min-width: 0;
   background-color: var(--theme-ui-colors-surfaceBlurNonTransparent);
   z-index: 100;
+  min-height: 48px;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text);
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  padding: 16px;
+  padding-bottom: 8px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent);
+  z-index: 100;
   -webkit-position: sticky;
   position: sticky;
   top: 0;
   height: 44px;
 }
 
-.emotion-3 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -42,7 +65,7 @@ exports[`PageStudentReport should render correctly 1`] = `
   overflow-x: auto;
 }
 
-.emotion-4 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -63,7 +86,7 @@ exports[`PageStudentReport should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -74,7 +97,7 @@ exports[`PageStudentReport should render correctly 1`] = `
   bottom: 0;
 }
 
-.emotion-6 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -88,19 +111,19 @@ exports[`PageStudentReport should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-6 {
+  .emotion-8 {
     display: block;
   }
 }
 
 @media screen and (min-width: 52em) {
-  .emotion-6 {
+  .emotion-8 {
     display: block;
   }
 }
 
 @media screen and (min-width: 64em) {
-  .emotion-6 {
+  .emotion-8 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -108,38 +131,24 @@ exports[`PageStudentReport should render correctly 1`] = `
   }
 }
 
-.emotion-7 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 16px;
   width: 100%;
-  top: 0;
+  top: 60px;
   z-index: 10;
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-7 {
+  .emotion-9 {
     -webkit-position: sticky;
     position: sticky;
   }
 }
 
-.emotion-8 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: bold;
-  line-height: heading;
-  color: var(--theme-ui-colors-text);
-  text-rendering: optimizeLegibility;
-  font-size: 20px;
-  padding: 16px;
-  font-weight: bold;
-}
-
-.emotion-9 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -148,23 +157,40 @@ exports[`PageStudentReport should render correctly 1`] = `
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin-left: 0;
   margin-right: 0;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-9 {
+  .emotion-10 {
     border-radius: 6px;
     margin-left: 16px;
     margin-right: 16px;
   }
 }
 
-.emotion-10 {
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text);
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  padding: 16px;
+  color: texMediumEmphasis;
+  font-weight: bold;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border);
+}
+
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
 }
 
-.emotion-11 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -178,62 +204,194 @@ exports[`PageStudentReport should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border);
-}
-
-.emotion-12 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text);
-  font-size: 14px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-bottom-width: 3px;
-  border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border);
-  border-color: var(--theme-ui-colors-textPrimary);
-  border-style: solid;
-  color: var(--theme-ui-colors-textPrimary);
-  outline: none;
-}
-
-.emotion-12:hover {
-  background-color: var(--theme-ui-colors-primaryLightest);
-}
-
-.emotion-13 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text);
-  font-size: 14px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-bottom-width: 3px;
-  border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border);
-  border-color: var(--theme-ui-colors-textPrimary);
-  border-style: none;
-  color: var(--theme-ui-colors-textMediumEmphasis);
-  outline: none;
-}
-
-.emotion-13:hover {
-  background-color: var(--theme-ui-colors-primaryLightest);
+  background-color: var(--theme-ui-colors-darkSurface);
 }
 
 .emotion-14 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textPrimary);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border);
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  border: none;
+  margin-top: 16px;
+  margin-left: 8px;
+  margin-right: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--theme-ui-colors-primary);
+  font-weight: bold;
+  background-color: var(--theme-ui-colors-primaryLightest);
+  color: var(--theme-ui-colors-textPrimary);
+}
+
+.emotion-14:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-14:hover,
+.emotion-14:focus {
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
+  outline: none;
+}
+
+.emotion-15 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textPrimary);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border);
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  border: none;
+  margin-top: 16px;
+  margin-left: 8px;
+  margin-right: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--theme-ui-colors-border);
+  font-weight: bold;
+  color: var(--theme-ui-colors-textMediumEmphasis);
+}
+
+.emotion-15:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-15:hover,
+.emotion-15:focus {
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
+  outline: none;
+}
+
+.emotion-15:hover,
+.emotion-15:focus {
+  background-color: var(--theme-ui-colors-tintWarning);
+  color: var(--theme-ui-colors-warning);
+  border-color: var(--theme-ui-colors-warning);
+}
+
+.emotion-16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -247,13 +405,15 @@ exports[`PageStudentReport should render correctly 1`] = `
   transition: color ease-in 0.1s;
   color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
+  margin-top: 16px;
+  margin-right: 16px;
 }
 
-.emotion-14:hover {
+.emotion-16:hover {
   color: var(--theme-ui-colors-textPrimary);
 }
 
-.emotion-15 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -271,7 +431,7 @@ exports[`PageStudentReport should render correctly 1`] = `
   color: inherit;
 }
 
-.emotion-16 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -289,18 +449,18 @@ exports[`PageStudentReport should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-16 {
+  .emotion-18 {
     display: none;
   }
 }
 
 @media screen and (min-width: 52em) {
-  .emotion-16 {
+  .emotion-18 {
     display: block;
   }
 }
 
-.emotion-17 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -311,7 +471,7 @@ exports[`PageStudentReport should render correctly 1`] = `
   border-bottom-right-radius: 6px;
 }
 
-.emotion-18 {
+.emotion-20 {
   line-height: 1.7142857;
   outline: none;
   width: 100%;
@@ -324,40 +484,41 @@ exports[`PageStudentReport should render correctly 1`] = `
   min-height: 400px;
 }
 
-.emotion-19 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding: 16px;
   padding-left: 16px;
+  padding-top: 0;
   width: auto;
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-19 {
+  .emotion-21 {
     padding-left: 0;
   }
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-19 {
+  .emotion-21 {
     width: auto;
   }
 }
 
 @media screen and (min-width: 52em) {
-  .emotion-19 {
+  .emotion-21 {
     width: auto;
   }
 }
 
 @media screen and (min-width: 64em) {
-  .emotion-19 {
-    width: 600px;
+  .emotion-21 {
+    width: 640px;
   }
 }
 
-.emotion-20 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -371,6 +532,21 @@ exports[`PageStudentReport should render correctly 1`] = `
   font-weight: bold;
 }
 
+.emotion-23 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: bold;
+  line-height: heading;
+  color: var(--theme-ui-colors-text);
+  text-rendering: optimizeLegibility;
+  font-size: 20px;
+  margin-bottom: 16px;
+  margin-top: 32px;
+  font-weight: bold;
+}
+
 <div>
   <div
     class="emotion-0"
@@ -381,68 +557,75 @@ exports[`PageStudentReport should render correctly 1`] = `
       <div
         class="emotion-2"
       >
-        <div
+        <p
           class="emotion-3"
+        />
+      </div>
+      <div
+        class="emotion-4"
+      >
+        <div
+          class="emotion-5"
         >
           <div
-            class="emotion-4"
+            class="emotion-6"
           />
           <div
-            class="emotion-5"
+            class="emotion-7"
           />
         </div>
       </div>
       <div
-        class="emotion-6"
+        class="emotion-8"
       >
         <div
-          class="emotion-7"
+          class="emotion-9"
         >
-          <h6
-            class="emotion-8"
-          >
-            Evaluation
-          </h6>
           <div
-            class="emotion-9"
+            class="emotion-10"
           >
+            <p
+              class="emotion-11"
+            >
+              Evaluation
+            </p>
             <div
-              class="emotion-10"
+              class="emotion-12"
             >
               <div
-                class="emotion-11"
+                class="emotion-13"
               >
                 <button
-                  class="emotion-12"
+                  class="emotion-14"
                 >
                   Write
                 </button>
                 <button
-                  class="emotion-13"
+                  class="emotion-15"
                 >
                   Preview
                 </button>
                 <a
-                  class="emotion-14"
+                  class="emotion-16"
                   href="https://obserfy.com/docs/markdown-support"
                   rel="noreferrer"
                   target="_blank"
                 >
                   <div
-                    class="emotion-15"
+                    class="emotion-17"
                   />
                   <p
-                    class="emotion-16"
+                    class="emotion-18"
                   >
                     Markdown Supported
                   </p>
                 </a>
               </div>
               <div
-                class="emotion-17"
+                class="emotion-19"
               >
                 <textarea
-                  class="emotion-18"
+                  class="emotion-20"
                   data-cy="markdown-editor"
                   placeholder="Write something"
                 />
@@ -451,10 +634,15 @@ exports[`PageStudentReport should render correctly 1`] = `
           </div>
         </div>
         <div
-          class="emotion-19"
+          class="emotion-21"
         >
           <h6
-            class="emotion-20"
+            class="emotion-22"
+          >
+            Assessments
+          </h6>
+          <h6
+            class="emotion-23"
           >
             Observations
           </h6>
