@@ -1,13 +1,18 @@
 import { useQuery } from "react-query"
+import dayjs from "../../../dayjs"
 import { ProgressReport } from "../../../__generated__/models"
 import { getApi } from "../fetchApi"
 
-const useGetProgressReport = (reportId: string) => {
-  const getProgressReport = getApi<ProgressReport>(
-    `/progress-reports/${reportId}`
-  )
+const getProgressReport = (reportId: string) => async () => {
+  const result = await getApi<ProgressReport>(`/progress-reports/${reportId}`)()
+  const periodStart = dayjs(result.periodStart)
+  const periodEnd = dayjs(result.periodEnd)
 
-  return useQuery(["report", reportId], getProgressReport)
+  return { ...result, periodStart, periodEnd }
+}
+
+const useGetProgressReport = (reportId: string) => {
+  return useQuery(["report", reportId], getProgressReport(reportId))
 }
 
 export default useGetProgressReport

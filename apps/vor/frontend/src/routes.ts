@@ -127,3 +127,6 @@ export const NEW_REPORT_URL = `/dashboard/reports/new`
 
 export const MANAGE_REPORT_URL = (reportId: string) =>
   `/dashboard/reports/manage?reportId=${reportId}`
+
+export const STUDENT_REPORT_URL = (reportId: string, studentId: string) =>
+  `/dashboard/reports/manage/student?reportId=${reportId}&studentId=${studentId}`

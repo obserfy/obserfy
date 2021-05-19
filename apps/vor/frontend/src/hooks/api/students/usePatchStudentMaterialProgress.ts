@@ -1,7 +1,7 @@
 import { useMutation } from "react-query"
 import { track } from "../../../analytics"
 import { patchApi } from "../fetchApi"
-import { useGetStudentMaterialProgressCache } from "../useGetStudentMaterialProgress"
+import { useGetStudentMaterialProgressCache } from "../useGetStudentAssessments"
 
 interface RequestBody {
   stage: number

@@ -295,7 +295,6 @@ declare namespace GatsbyTypes {
     readonly context: Maybe<SitePageContext>
     readonly pluginCreator: Maybe<SitePlugin>
     readonly pluginCreatorId: Maybe<Scalars["String"]>
-    readonly componentPath: Maybe<Scalars["String"]>
   }
 
   type SitePageContext = {
@@ -895,7 +894,6 @@ declare namespace GatsbyTypes {
     context: Maybe<SitePageContextFilterInput>
     pluginCreator: Maybe<SitePluginFilterInput>
     pluginCreatorId: Maybe<StringQueryOperatorInput>
-    componentPath: Maybe<StringQueryOperatorInput>
   }
 
   type Query_allSitePageArgs = {
@@ -2603,7 +2601,6 @@ declare namespace GatsbyTypes {
     | "pluginCreator.packageJson.peerDependencies.version"
     | "pluginCreator.packageJson.keywords"
     | "pluginCreatorId"
-    | "componentPath"
 
   type SitePageGroupConnection = {
     readonly totalCount: Scalars["Int"]
@@ -2628,7 +2625,6 @@ declare namespace GatsbyTypes {
     readonly context: Maybe<SitePageContextFilterInput>
     readonly pluginCreator: Maybe<SitePluginFilterInput>
     readonly pluginCreatorId: Maybe<StringQueryOperatorInput>
-    readonly componentPath: Maybe<StringQueryOperatorInput>
   }
 
   type SitePageSortInput = {
@@ -3518,6 +3514,21 @@ declare namespace GatsbyTypes {
     }>
   }
 
+  type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176QueryVariables = Exact<{
+    locale: Scalars["String"]
+    slug: Scalars["String"]
+  }>
+
+  type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176Query = {
+    readonly mdx: Maybe<
+      Pick<Mdx, "body"> & {
+        readonly frontmatter: Maybe<
+          Pick<MdxFrontmatter, "slug" | "title" | "description">
+        >
+      }
+    >
+  }
+
   type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
 
   type LocalizationSEOQueryQuery = {
@@ -3632,21 +3643,6 @@ declare namespace GatsbyTypes {
     ImageSharpFluid,
     "aspectRatio" | "src" | "srcSet" | "srcWebp" | "srcSetWebp" | "sizes"
   >
-
-  type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176QueryVariables = Exact<{
-    locale: Scalars["String"]
-    slug: Scalars["String"]
-  }>
-
-  type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176Query = {
-    readonly mdx: Maybe<
-      Pick<Mdx, "body"> & {
-        readonly frontmatter: Maybe<
-          Pick<MdxFrontmatter, "slug" | "title" | "description">
-        >
-      }
-    >
-  }
 
   type PagesQueryQueryVariables = Exact<{ [key: string]: never }>
 

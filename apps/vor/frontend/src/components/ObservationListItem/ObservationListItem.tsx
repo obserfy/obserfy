@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Box, Flex } from "theme-ui"
+import { Box, Flex, ThemeUIStyleObject } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { borderBottom } from "../../border"
 import { Observation } from "../../hooks/api/useGetStudentObservations"
@@ -14,11 +14,13 @@ export interface ObservationListItemProps {
   observation: Observation
   detailsUrl: string
   studentId: string
+  containerSx?: ThemeUIStyleObject
 }
 const ObservationListItem: FC<ObservationListItemProps> = ({
   studentId,
   observation,
   detailsUrl,
+  containerSx,
 }) => {
   return (
     <Link to={detailsUrl}>
@@ -26,6 +28,7 @@ const ObservationListItem: FC<ObservationListItemProps> = ({
         pt={3}
         sx={{
           ...borderBottom,
+          ...containerSx,
           "&:hover": { backgroundColor: "primaryLighter" },
         }}
       >

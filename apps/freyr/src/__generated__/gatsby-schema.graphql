@@ -385,7 +385,6 @@ type SitePage implements Node {
   context: SitePageContext
   pluginCreator: SitePlugin
   pluginCreatorId: String
-  componentPath: String
 }
 
 type SitePageContext {
@@ -860,7 +859,7 @@ type Query {
   allSite(filter: SiteFilterInput, sort: SiteSortInput, skip: Int, limit: Int): SiteConnection!
   siteFunction(apiRoute: StringQueryOperatorInput, originalFilePath: StringQueryOperatorInput, relativeCompiledFilePath: StringQueryOperatorInput, absoluteCompiledFilePath: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): SiteFunction
   allSiteFunction(filter: SiteFunctionFilterInput, sort: SiteFunctionSortInput, skip: Int, limit: Int): SiteFunctionConnection!
-  sitePage(path: StringQueryOperatorInput, component: StringQueryOperatorInput, internalComponentName: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, context: SitePageContextFilterInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput, componentPath: StringQueryOperatorInput): SitePage
+  sitePage(path: StringQueryOperatorInput, component: StringQueryOperatorInput, internalComponentName: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, context: SitePageContextFilterInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput): SitePage
   allSitePage(filter: SitePageFilterInput, sort: SitePageSortInput, skip: Int, limit: Int): SitePageConnection!
   themeI18N(defaultLang: StringQueryOperatorInput, prefixDefault: BooleanQueryOperatorInput, configPath: StringQueryOperatorInput, config: LocaleFilterListInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ThemeI18n
   allThemeI18N(filter: ThemeI18nFilterInput, sort: ThemeI18nSortInput, skip: Int, limit: Int): ThemeI18nConnection!
@@ -2367,7 +2366,6 @@ enum SitePageFieldsEnum {
   pluginCreator___packageJson___peerDependencies___version
   pluginCreator___packageJson___keywords
   pluginCreatorId
-  componentPath
 }
 
 type SitePageGroupConnection {
@@ -2393,7 +2391,6 @@ input SitePageFilterInput {
   context: SitePageContextFilterInput
   pluginCreator: SitePluginFilterInput
   pluginCreatorId: StringQueryOperatorInput
-  componentPath: StringQueryOperatorInput
 }
 
 input SitePageSortInput {

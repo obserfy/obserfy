@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import { Box } from "theme-ui"
-import { Assessment } from "../../hooks/api/useGetStudentMaterialProgress"
+import { Assessment } from "../../hooks/api/useGetStudentAssessments"
 import dayjs from "../../dayjs"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"

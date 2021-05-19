@@ -292,7 +292,6 @@ declare namespace GatsbyTypes {
     readonly context: Maybe<SitePageContext>
     readonly pluginCreator: Maybe<SitePlugin>
     readonly pluginCreatorId: Maybe<Scalars["String"]>
-    readonly componentPath: Maybe<Scalars["String"]>
   }
 
   type SitePageContext = {
@@ -836,7 +835,6 @@ declare namespace GatsbyTypes {
     context: Maybe<SitePageContextFilterInput>
     pluginCreator: Maybe<SitePluginFilterInput>
     pluginCreatorId: Maybe<StringQueryOperatorInput>
-    componentPath: Maybe<StringQueryOperatorInput>
   }
 
   type Query_allSitePageArgs = {
@@ -2350,7 +2348,6 @@ declare namespace GatsbyTypes {
     | "pluginCreator.packageJson.peerDependencies.version"
     | "pluginCreator.packageJson.keywords"
     | "pluginCreatorId"
-    | "componentPath"
 
   type SitePageGroupConnection = {
     readonly totalCount: Scalars["Int"]
@@ -2375,7 +2372,6 @@ declare namespace GatsbyTypes {
     readonly context: Maybe<SitePageContextFilterInput>
     readonly pluginCreator: Maybe<SitePluginFilterInput>
     readonly pluginCreatorId: Maybe<StringQueryOperatorInput>
-    readonly componentPath: Maybe<StringQueryOperatorInput>
   }
 
   type SitePageSortInput = {
@@ -3239,17 +3235,17 @@ declare namespace GatsbyTypes {
   type Unnamed_1_QueryVariables = Exact<{ [key: string]: never }>
 
   type Unnamed_1_Query = {
-    readonly site: Maybe<{
-      readonly siteMetadata: Maybe<
-        Pick<SiteSiteMetadata, "title" | "description" | "author">
-      >
-    }>
+    readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, "preset" | "prismPreset">>
   }
 
   type Unnamed_2_QueryVariables = Exact<{ [key: string]: never }>
 
   type Unnamed_2_Query = {
-    readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, "preset" | "prismPreset">>
+    readonly site: Maybe<{
+      readonly siteMetadata: Maybe<
+        Pick<SiteSiteMetadata, "title" | "description" | "author">
+      >
+    }>
   }
 
   type GatsbyImageSharpFixedFragment = Pick<

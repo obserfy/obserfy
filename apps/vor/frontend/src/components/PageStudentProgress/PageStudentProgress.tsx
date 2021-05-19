@@ -15,8 +15,8 @@ import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import {
   MaterialProgress,
   materialStageToString,
-  useGetStudentMaterialProgress,
-} from "../../hooks/api/useGetStudentMaterialProgress"
+  useGetStudentAssessments,
+} from "../../hooks/api/useGetStudentAssessments"
 import Pill from "../Pill/Pill"
 import StudentMaterialProgressDialog from "../StudentMaterialProgressDialog/StudentMaterialProgressDialog"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -35,7 +35,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
   const subjects = useGetAreaSubjects(areaId)
   const [isEditing, setIsEditing] = useState(false)
   const [selectedMaterial, setSelectedMaterial] = useState<Material>()
-  const progress = useGetStudentMaterialProgress(studentId)
+  const progress = useGetStudentAssessments(studentId)
   const loading =
     student.status === "loading" ||
     area.status === "loading" ||
