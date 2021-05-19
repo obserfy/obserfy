@@ -1,5 +1,5 @@
-import dayjs from "dayjs"
 import { useQuery } from "react-query"
+import dayjs from "../../../dayjs"
 import { ProgressReport } from "../../../__generated__/models"
 import { getApi } from "../fetchApi"
 
