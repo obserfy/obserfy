@@ -13,7 +13,7 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
   return (
     <Box>
       <TranslucentBar boxSx={{ ...borderBottom }}>
-        <Flex px={[3, 4]} pb={3} pt={5} sx={{ alignItems: "center" }}>
+        <Flex px={[3, 4]} pb={3} pt={4} sx={{ alignItems: "center" }}>
           <Typography.H2 sx={{ fontSize: [4, 5] }}>
             Progress Reports
           </Typography.H2>

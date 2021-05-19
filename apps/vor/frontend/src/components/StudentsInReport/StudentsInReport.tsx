@@ -38,7 +38,7 @@ const StudentsInReport: FC<PageManageReportsProps> = ({
           key={id}
           to={STUDENT_REPORT_URL(reportId, id)}
           sx={{
-            backgroundColor: studentId === id ? "primaryLightest" : "",
+            backgroundColor: studentId === id ? "primaryLighter" : "",
             display: "flex",
             "&:hover": {
               backgroundColor: "primaryLightest",

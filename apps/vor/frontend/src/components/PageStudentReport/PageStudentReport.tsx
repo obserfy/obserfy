@@ -13,12 +13,10 @@ import {
   useGetStudentObservations,
 } from "../../hooks/api/useGetStudentObservations"
 import { ReactComponent as EyeIcon } from "../../icons/eye.svg"
-import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import Icon from "../Icon/Icon"
 import ImagePreview from "../ImagePreview/ImagePreview"
 import Markdown from "../Markdown/Markdown"
 import MarkdownEditor from "../MarkdownEditor/MarkdownEditor"
-import MaterialProgressItem from "../PageStudentOverview/MaterialProgressItem"
 import Pill from "../Pill/Pill"
 import Tab from "../Tab/Tab"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
@@ -44,6 +42,11 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
 
   return (
     <Box sx={{ position: "relative", width: "100%" }}>
+      <TranslucentBar boxSx={{ minHeight: 48 }}>
+        <Typography.Body p={3} pb={2} sx={{ fontWeight: "bold", fontSize: 2 }}>
+          {student.data?.name}
+        </Typography.Body>
+      </TranslucentBar>
       <TranslucentBar boxSx={{ position: "sticky", top: 0, height: 44 }}>
         <Tab
           items={areas.data?.map((area) => area.name) ?? []}
@@ -70,7 +73,11 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
           pb={3}
         >
           <Card variant="responsive" sx={{ overflow: "hidden" }}>
-            <Typography.Body sx={{ fontWeight: "bold", ...borderBottom }} p={3}>
+            <Typography.Body
+              sx={{ fontWeight: "bold", ...borderBottom }}
+              p={3}
+              color="texMediumEmphasis"
+            >
               <Trans>Evaluation</Trans>
             </Typography.Body>
 
@@ -87,13 +94,16 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
           <Typography.H6 sx={{ fontWeight: "bold" }} mb={3}>
             <Trans>Assessments</Trans>
           </Typography.H6>
-          {filteredAssessments?.length === 0 && observations.isSuccess ? (
+
+          {filteredAssessments?.length === 0 && observations.isSuccess && (
             <Card mb={3} sx={{ overflow: "hidden" }} p={3}>
               <Typography.Body>
                 <Trans>No assessments has been made yet.</Trans>
               </Typography.Body>
             </Card>
-          ) : (
+          )}
+
+          {filteredAssessments?.length !== 0 && observations.isSuccess && (
             <Card mb={3} sx={{ overflow: "hidden" }} py={2}>
               {filteredAssessments?.map(({ materialName, stage }) => {
                 const stageName = materialStageToString(stage)
