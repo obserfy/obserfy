@@ -27,12 +27,12 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
       </TranslucentBar>
 
       <Box
-        p={3}
         sx={{
           display: ["block", "block", "block", "flex"],
           width: "100%",
           alignItems: "flex-start",
         }}
+        pt={3}
       >
         <Box
           sx={{
@@ -41,18 +41,17 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
             top: 0,
             zIndex: 10,
           }}
-          pr={[0, 0, 0, 3]}
           pb={3}
         >
-          <Typography.H6 sx={{ fontWeight: "bold" }} py={3} pb={3}>
+          <Typography.H6 sx={{ fontWeight: "bold" }} p={3}>
             <Trans>Evaluation</Trans>
           </Typography.H6>
-          <Card>
+          <Card variant="responsive">
             <MarkdownEditor onChange={() => {}} value="" />
           </Card>
         </Box>
 
-        <Box sx={{ width: ["auto", "auto", "auto", 600] }} pt={3}>
+        <Box sx={{ width: ["auto", "auto", "auto", 600] }} p={3} pl={[3, 0]}>
           <Typography.H6 sx={{ fontWeight: "bold" }} mb={3}>
             <Trans>Observations</Trans>
           </Typography.H6>

@@ -26,11 +26,10 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
           onClick={() => setShowPreview(false)}
           sx={{
             ...borderBottom,
-            borderColor: "primary",
-            borderBottomWidth: 2,
+            borderColor: "textPrimary",
+            borderBottomWidth: 3,
             borderStyle: !showPreview ? "solid" : "none",
             color: !showPreview ? "textPrimary" : "textMediumEmphasis",
-            fontWeight: "bold",
             outline: "none",
             "&:hover": { backgroundColor: "primaryLightest" },
           }}
@@ -44,8 +43,8 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
           pb={2}
           sx={{
             ...borderBottom,
-            borderColor: "primary",
-            borderBottomWidth: 2,
+            borderColor: "textPrimary",
+            borderBottomWidth: 3,
             borderStyle: showPreview ? "solid" : "none",
             color: showPreview ? "textPrimary" : "textMediumEmphasis",
             outline: "none",

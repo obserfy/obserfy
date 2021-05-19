@@ -33,10 +33,10 @@ const ManageReports = () => {
             breadCrumb(getFirstName(student.data)),
           ]}
         />
-        <Typography.H6 p={3} pb={0}>
+        <Typography.H5 p={3} pb={0}>
           {report.data?.title}
-        </Typography.H6>
-        <Typography.Body p={3} pt={1} color="textMediumEmphasis">
+        </Typography.H5>
+        <Typography.Body p={3} pt={2} color="textMediumEmphasis">
           {report.data?.periodStart.format("DD MMMM YYYY")} -{" "}
           {report.data?.periodStart.format("DD MMMM YYYY")}
         </Typography.Body>
