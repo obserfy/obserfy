@@ -1,0 +1,466 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageStudentReport should render correctly 1`] = `
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-0 {
+    font-size: 20px;
+  }
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  position: relative;
+  width: 100%;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent);
+  z-index: 100;
+  -webkit-position: sticky;
+  position: sticky;
+  top: 0;
+  height: 44px;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  position: relative;
+  overflow-x: auto;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 0;
+  min-width: 100%;
+  width: 100%;
+  -webkit-box-pack: space-around;
+  -ms-flex-pack: space-around;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  height: 1px;
+  width: 100%;
+  background-color: var(--theme-ui-colors-border);
+  position: absolute;
+  bottom: 0;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-top: 16px;
+  display: block;
+  width: 100%;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-6 {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 52em) {
+  .emotion-6 {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 64em) {
+  .emotion-6 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-bottom: 16px;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-7 {
+    -webkit-position: sticky;
+    position: sticky;
+  }
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: bold;
+  line-height: heading;
+  color: var(--theme-ui-colors-text);
+  text-rendering: optimizeLegibility;
+  font-size: 20px;
+  padding: 16px;
+  font-weight: bold;
+}
+
+.emotion-9 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  background-color: var(--theme-ui-colors-surface);
+  border-radius: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-9 {
+    border-radius: 6px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+.emotion-10 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+}
+
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border);
+}
+
+.emotion-12 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text);
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border);
+  border-color: var(--theme-ui-colors-textPrimary);
+  border-style: solid;
+  color: var(--theme-ui-colors-textPrimary);
+  outline: none;
+}
+
+.emotion-12:hover {
+  background-color: var(--theme-ui-colors-primaryLightest);
+}
+
+.emotion-13 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text);
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border);
+  border-color: var(--theme-ui-colors-textPrimary);
+  border-style: none;
+  color: var(--theme-ui-colors-textMediumEmphasis);
+  outline: none;
+}
+
+.emotion-13:hover {
+  background-color: var(--theme-ui-colors-primaryLightest);
+}
+
+.emotion-14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: auto;
+  -webkit-transition: color ease-in 0.1s;
+  transition: color ease-in 0.1s;
+  color: var(--theme-ui-colors-textMediumEmphasis);
+  white-space: nowrap;
+}
+
+.emotion-14:hover {
+  color: var(--theme-ui-colors-textPrimary);
+}
+
+.emotion-15 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin-right: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  fill: var(--theme-ui-colors-icon);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: inherit;
+}
+
+.emotion-16 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text);
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  padding-right: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: inherit;
+  line-height: 1;
+  display: none;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-16 {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 52em) {
+  .emotion-16 {
+    display: block;
+  }
+}
+
+.emotion-17 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: var(--theme-ui-colors-darkSurface);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.emotion-18 {
+  line-height: 1.7142857;
+  outline: none;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border: none;
+  background-color: var(--theme-ui-colors-darkSurface);
+  min-height: 400px;
+}
+
+.emotion-19 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding: 16px;
+  padding-left: 16px;
+  width: auto;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-19 {
+    padding-left: 0;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-19 {
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 52em) {
+  .emotion-19 {
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 64em) {
+  .emotion-19 {
+    width: 600px;
+  }
+}
+
+.emotion-20 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: bold;
+  line-height: heading;
+  color: var(--theme-ui-colors-text);
+  text-rendering: optimizeLegibility;
+  font-size: 20px;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+<div>
+  <div
+    class="emotion-0"
+  >
+    <div
+      class="emotion-1"
+    >
+      <div
+        class="emotion-2"
+      >
+        <div
+          class="emotion-3"
+        >
+          <div
+            class="emotion-4"
+          />
+          <div
+            class="emotion-5"
+          />
+        </div>
+      </div>
+      <div
+        class="emotion-6"
+      >
+        <div
+          class="emotion-7"
+        >
+          <h6
+            class="emotion-8"
+          >
+            Evaluation
+          </h6>
+          <div
+            class="emotion-9"
+          >
+            <div
+              class="emotion-10"
+            >
+              <div
+                class="emotion-11"
+              >
+                <button
+                  class="emotion-12"
+                >
+                  Write
+                </button>
+                <button
+                  class="emotion-13"
+                >
+                  Preview
+                </button>
+                <a
+                  class="emotion-14"
+                  href="https://obserfy.com/docs/markdown-support"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <div
+                    class="emotion-15"
+                  />
+                  <p
+                    class="emotion-16"
+                  >
+                    Markdown Supported
+                  </p>
+                </a>
+              </div>
+              <div
+                class="emotion-17"
+              >
+                <textarea
+                  class="emotion-18"
+                  data-cy="markdown-editor"
+                  placeholder="Write something"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="emotion-19"
+        >
+          <h6
+            class="emotion-20"
+          >
+            Observations
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

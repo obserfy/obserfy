@@ -28,14 +28,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-bottom-style: solid;
 }
 
-@supports (backdrop-filter: blur(20px)) {
-  .emotion-1 {
-    background-color: var(--theme-ui-colors-surfaceBlurTransparent);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-  }
-}
-
 .emotion-2 {
   box-sizing: border-box;
   margin: 0;
@@ -648,13 +640,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-right: 16px;
   padding-top: 8px;
   padding-bottom: 8px;
-  border-bottom-width: 2px;
+  border-bottom-width: 3px;
   border-bottom-style: solid;
   border-bottom-color: var(--theme-ui-colors-border);
-  border-color: var(--theme-ui-colors-primary);
+  border-color: var(--theme-ui-colors-textPrimary);
   border-style: solid;
   color: var(--theme-ui-colors-textPrimary);
-  font-weight: bold;
   outline: none;
 }
 
@@ -674,10 +665,10 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-right: 16px;
   padding-top: 8px;
   padding-bottom: 8px;
-  border-bottom-width: 2px;
+  border-bottom-width: 3px;
   border-bottom-style: solid;
   border-bottom-color: var(--theme-ui-colors-border);
-  border-color: var(--theme-ui-colors-primary);
+  border-color: var(--theme-ui-colors-textPrimary);
   border-style: none;
   color: var(--theme-ui-colors-textMediumEmphasis);
   outline: none;
@@ -739,6 +730,19 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   font-size: 12px;
   color: inherit;
   line-height: 1;
+  display: none;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-39 {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 52em) {
+  .emotion-39 {
+    display: block;
+  }
 }
 
 .emotion-40 {
