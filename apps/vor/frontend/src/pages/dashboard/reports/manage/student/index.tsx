@@ -37,7 +37,7 @@ const ManageReports = () => {
         <StudentsInReport
           reportId={reportId}
           containerSx={{
-            display: ["none", "block"],
+            display: ["none", "none", "none", "none", "block"],
           }}
           studentId={studentId}
         />

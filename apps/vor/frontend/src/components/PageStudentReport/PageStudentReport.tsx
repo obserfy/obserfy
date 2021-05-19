@@ -2,6 +2,8 @@ import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Card } from "theme-ui"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
+import { useGetStudent } from "../../hooks/api/useGetStudent"
+import { useGetStudentMaterialProgress } from "../../hooks/api/useGetStudentMaterialProgress"
 import { useGetStudentObservations } from "../../hooks/api/useGetStudentObservations"
 import MarkdownEditor from "../MarkdownEditor/MarkdownEditor"
 import ObservationListItem from "../ObservationListItem/ObservationListItem"
@@ -17,8 +19,8 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
   const areas = useGetCurriculumAreas()
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <TranslucentBar boxSx={{ position: "sticky", top: 0 }}>
+    <Box sx={{ position: "relative", width: "100%" }}>
+      <TranslucentBar boxSx={{ position: "sticky", top: 0, height: 44 }}>
         <Tab
           items={areas.data?.map((area) => area.name) ?? []}
           selectedItemIdx={0}
@@ -29,21 +31,29 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
       <Box
         p={3}
         sx={{
-          display: ["block", "block", "block", "block", "flex"],
+          display: ["block", "block", "block", "flex"],
           width: "100%",
         }}
       >
-        <Box sx={{ width: "100%" }} pr={[0, 0, 0, 0, 3]} pb={3}>
+        <Box
+          sx={{
+            width: "100%",
+            position: [undefined, "sticky"],
+            top: 5,
+            zIndex: 10,
+          }}
+          pr={[0, 0, 0, 3]}
+          pb={3}
+        >
+          <Typography.H6 sx={{ fontWeight: "bold" }} py={3} pb={2}>
+            <Trans>Evaluation</Trans>
+          </Typography.H6>
           <Card>
-            <Typography.H6 sx={{ fontWeight: "bold" }} p={3} pb={2}>
-              <Trans>Evaluation</Trans>
-            </Typography.H6>
-
             <MarkdownEditor onChange={() => {}} value="" />
           </Card>
         </Box>
 
-        <Box sx={{ width: ["auto", "auto", "auto", "auto", 600] }} pt={3}>
+        <Box sx={{ width: ["auto", "auto", "auto", 600] }} pt={3}>
           <Typography.H6 sx={{ fontWeight: "bold" }} mb={2}>
             <Trans>Observations</Trans>
           </Typography.H6>
@@ -53,6 +63,7 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
                 observation={observation}
                 detailsUrl=""
                 studentId={studentId}
+                containerSx={{ borderBottom: "none" }}
               />
             </Card>
           ))}
