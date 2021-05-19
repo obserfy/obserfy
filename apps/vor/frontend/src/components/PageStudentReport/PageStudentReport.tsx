@@ -2,8 +2,6 @@ import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Card } from "theme-ui"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
-import { useGetStudent } from "../../hooks/api/useGetStudent"
-import { useGetStudentMaterialProgress } from "../../hooks/api/useGetStudentMaterialProgress"
 import { useGetStudentObservations } from "../../hooks/api/useGetStudentObservations"
 import MarkdownEditor from "../MarkdownEditor/MarkdownEditor"
 import ObservationListItem from "../ObservationListItem/ObservationListItem"
@@ -33,19 +31,20 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
         sx={{
           display: ["block", "block", "block", "flex"],
           width: "100%",
+          alignItems: "flex-start",
         }}
       >
         <Box
           sx={{
             width: "100%",
             position: [undefined, "sticky"],
-            top: 5,
+            top: 0,
             zIndex: 10,
           }}
           pr={[0, 0, 0, 3]}
           pb={3}
         >
-          <Typography.H6 sx={{ fontWeight: "bold" }} py={3} pb={2}>
+          <Typography.H6 sx={{ fontWeight: "bold" }} py={3} pb={3}>
             <Trans>Evaluation</Trans>
           </Typography.H6>
           <Card>
@@ -54,7 +53,7 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
         </Box>
 
         <Box sx={{ width: ["auto", "auto", "auto", 600] }} pt={3}>
-          <Typography.H6 sx={{ fontWeight: "bold" }} mb={2}>
+          <Typography.H6 sx={{ fontWeight: "bold" }} mb={3}>
             <Trans>Observations</Trans>
           </Typography.H6>
           {observations.data?.map((observation) => (

@@ -84,7 +84,12 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
             pr={2}
             mt={2}
             mb={2}
-            sx={{ fontSize: 0, color: "inherit", lineHeight: 1 }}
+            sx={{
+              fontSize: 0,
+              color: "inherit",
+              lineHeight: 1,
+              display: ["none", "none", "block"],
+            }}
           >
             <Trans>Markdown Supported</Trans>
           </Typography.Body>
