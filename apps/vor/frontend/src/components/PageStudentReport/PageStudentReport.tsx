@@ -1,6 +1,7 @@
 import { Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Box, Card, Flex } from "theme-ui"
+import { borderBottom } from "../../border"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import {
   Observation,
@@ -49,15 +50,16 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
           sx={{
             width: "100%",
             position: [undefined, "sticky"],
-            top: 0,
+            top: 60,
             zIndex: 10,
           }}
           pb={3}
         >
-          <Typography.H6 sx={{ fontWeight: "bold" }} p={3}>
-            <Trans>Evaluation</Trans>
-          </Typography.H6>
-          <Card variant="responsive">
+          <Card variant="responsive" sx={{ overflow: "hidden" }}>
+            <Typography.Body sx={{ fontWeight: "bold", ...borderBottom }} p={3}>
+              <Trans>Evaluation</Trans>
+            </Typography.Body>
+
             <MarkdownEditor onChange={() => {}} value="" />
           </Card>
         </Box>

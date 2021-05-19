@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { Trans } from "@lingui/macro"
 import { FC, useState } from "react"
-import { jsx, Box, Flex } from "theme-ui"
-import { borderBottom } from "../../border"
+import { jsx, Box, Flex, Button } from "theme-ui"
+import { borderFull } from "../../border"
 import { ReactComponent as MarkdownIcon } from "../../icons/markdown.svg"
 import Icon from "../Icon/Icon"
 import Markdown from "../Markdown/Markdown"
@@ -17,43 +17,52 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
 
   return (
     <Box>
-      <Flex px={2} sx={{ alignItems: "center", ...borderBottom }}>
-        <Typography.Body
+      <Flex
+        px={2}
+        sx={{ alignItems: "center", backgroundColor: "darkSurface" }}
+      >
+        <Button
+          variant="secondary"
           as="button"
+          mt={3}
+          ml={2}
+          mr={0}
           px={3}
-          pt={2}
-          pb={2}
+          py={12}
           onClick={() => setShowPreview(false)}
           sx={{
-            ...borderBottom,
-            borderColor: "textPrimary",
-            borderBottomWidth: 3,
-            borderStyle: !showPreview ? "solid" : "none",
+            ...borderFull,
+            fontWeight: "bold",
+            backgroundColor: !showPreview ? "primaryLightest" : "none",
             color: !showPreview ? "textPrimary" : "textMediumEmphasis",
-            outline: "none",
-            "&:hover": { backgroundColor: "primaryLightest" },
+            borderColor: !showPreview ? "primary" : "border",
           }}
         >
           <Trans>Write</Trans>
-        </Typography.Body>
-        <Typography.Body
+        </Button>
+        <Button
+          variant="secondary"
           as="button"
+          mt={3}
+          ml={2}
+          mr={0}
           px={3}
-          pt={2}
-          pb={2}
-          sx={{
-            ...borderBottom,
-            borderColor: "textPrimary",
-            borderBottomWidth: 3,
-            borderStyle: showPreview ? "solid" : "none",
-            color: showPreview ? "textPrimary" : "textMediumEmphasis",
-            outline: "none",
-            "&:hover": { backgroundColor: "primaryLightest" },
-          }}
+          py={12}
           onClick={() => setShowPreview(true)}
+          sx={{
+            ...borderFull,
+            fontWeight: "bold",
+            color: showPreview ? "warning" : "textMediumEmphasis",
+            borderColor: showPreview ? "warning" : "border",
+            "&:hover, &:focus": {
+              backgroundColor: "tintWarning",
+              color: "warning",
+              borderColor: "warning",
+            },
+          }}
         >
           <Trans>Preview</Trans>
-        </Typography.Body>
+        </Button>
 
         <a
           href="https://obserfy.com/docs/markdown-support"
@@ -66,6 +75,8 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
             transition: "color ease-in 0.1s",
             color: "textMediumEmphasis",
             whiteSpace: "nowrap",
+            mt: 3,
+            mr: 3,
             "&:hover": {
               color: "textPrimary",
             },
