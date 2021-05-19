@@ -12,6 +12,7 @@ import useGetReport from "../../../../../hooks/api/reports/useGetProgressReport"
 import { useGetStudent } from "../../../../../hooks/api/useGetStudent"
 import { useQueryString } from "../../../../../hooks/useQueryString"
 import { ALL_REPORT_URL, MANAGE_REPORT_URL } from "../../../../../routes"
+import Typography from "../../../../../components/Typography/Typography"
 
 const ManageReports = () => {
   const reportId = useQueryString("reportId")
@@ -25,12 +26,20 @@ const ManageReports = () => {
 
       <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
+          containerSx={{ ...borderBottom }}
           breadcrumbs={[
             breadCrumb(t`All Reports`, ALL_REPORT_URL),
             breadCrumb(report.data?.title, MANAGE_REPORT_URL(reportId)),
             breadCrumb(getFirstName(student.data)),
           ]}
         />
+        <Typography.H6 p={3} pb={0}>
+          {report.data?.title}
+        </Typography.H6>
+        <Typography.Body p={3} pt={1} color="textMediumEmphasis">
+          {report.data?.periodStart.format("DD MMMM YYYY")} -{" "}
+          {report.data?.periodStart.format("DD MMMM YYYY")}
+        </Typography.Body>
       </TranslucentBar>
 
       <Flex>
