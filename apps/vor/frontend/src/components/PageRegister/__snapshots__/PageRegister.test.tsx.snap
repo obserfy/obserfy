@@ -548,7 +548,7 @@ exports[`PageRegister should render correctly 1`] = `
              
             <a
               class="emotion-24"
-              href="https://parent.obserfy.com/api/login"
+              href="https://parent.obserfy.com/api/auth/login"
             >
               Go to parent dashboard
             </a>

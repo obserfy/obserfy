@@ -1,3 +1,4 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import React, { useEffect } from "react"
 import Head from "next/head"
 import { useQueryString } from "../hooks/useQueryString"
@@ -77,4 +78,4 @@ const SupportPage = () => {
   )
 }
 
-export default SupportPage
+export default withPageAuthRequired(SupportPage)

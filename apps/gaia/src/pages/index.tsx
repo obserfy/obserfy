@@ -1,3 +1,4 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import React, { FC, useState } from "react"
 import Head from "next/head"
 import Image from "next/image"
@@ -117,4 +118,4 @@ const EmptyTimelinePlaceholder: FC<{ loading: boolean }> = ({ loading }) => (
   </div>
 )
 
-export default IndexPage
+export default withPageAuthRequired(IndexPage)

@@ -1,3 +1,4 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Head from "next/head"
 import React, { useState } from "react"
 import AllLessonPlans from "../../components/AllLessonPlans/AllLessonPlans"
@@ -52,4 +53,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default withPageAuthRequired(IndexPage)

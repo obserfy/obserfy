@@ -1,3 +1,4 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Head from "next/head"
 import Link from "next/link"
 import React, { FC } from "react"
@@ -60,4 +61,4 @@ const Details: FC = () => {
   )
 }
 
-export default Details
+export default withPageAuthRequired(Details)

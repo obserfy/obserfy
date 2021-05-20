@@ -1,3 +1,4 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Head from "next/head"
 import Link from "next/link"
 import React from "react"
@@ -64,4 +65,4 @@ const LessonPlanDetails = () => {
   )
 }
 
-export default LessonPlanDetails
+export default withPageAuthRequired(LessonPlanDetails)
