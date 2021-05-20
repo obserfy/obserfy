@@ -1,0 +1,14 @@
+{
+  "name": "obserfy-db",
+  "scripts": {
+    "generate": "prisma generate",
+    "studio": "prisma studio",
+    "migrate": "prisma migrate"
+  },
+  "devDependencies": {
+    "prisma": "^2.23.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^2.23.0"
+  }
+}
