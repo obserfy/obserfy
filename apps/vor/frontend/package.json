@@ -69,7 +69,7 @@
     "snarkdown": "2.0.0",
     "tailwindcss": "2.1.2",
     "theme-ui": "0.8.4",
-    "use-immer": "0.5.1"
+    "use-immer": "0.5.2"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.13.0",
