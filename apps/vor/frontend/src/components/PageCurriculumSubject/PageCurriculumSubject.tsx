@@ -170,9 +170,8 @@ const MaterialList: FC<{
   currMaterialId: string
 }> = ({ materials, subjectId, areaId, currMaterialId }) => {
   const [isLoading, setIsLoading] = useState(false)
-  const [cachedMaterials, moveItem, setMaterials] = useMoveDraggableItem(
-    materials
-  )
+  const [cachedMaterials, moveItem, setMaterials] =
+    useMoveDraggableItem(materials)
 
   const debouncedIsLoading = useDebounce(isLoading)
 
