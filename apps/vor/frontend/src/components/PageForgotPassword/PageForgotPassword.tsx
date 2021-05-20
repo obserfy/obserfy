@@ -15,12 +15,8 @@ import usePostResetPasswordEmail from "../../hooks/api/usePostResetPasswordEmail
 
 export const PageForgotPassword: FC = () => {
   const [email, setEmail] = useState("")
-  const {
-    mutateAsync,
-    error,
-    isLoading,
-    isSuccess,
-  } = usePostResetPasswordEmail()
+  const { mutateAsync, error, isLoading, isSuccess } =
+    usePostResetPasswordEmail()
 
   return (
     <Box>

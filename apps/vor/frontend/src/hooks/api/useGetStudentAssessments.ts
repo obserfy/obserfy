@@ -18,19 +18,18 @@ export interface MaterialProgress {
 
 const KEY = (studentId: string) => ["studentCurriculumProgress", studentId]
 
-const fetchMaterialProgress = (studentId: string) => async (): Promise<
-  MaterialProgress[]
-> => {
-  const result = await fetch(
-    `${BASE_URL}/students/${studentId}/materialsProgress`,
-    { credentials: "same-origin" }
-  )
-  if (result.status === 401) {
-    navigate("/login")
-    return []
+const fetchMaterialProgress =
+  (studentId: string) => async (): Promise<MaterialProgress[]> => {
+    const result = await fetch(
+      `${BASE_URL}/students/${studentId}/materialsProgress`,
+      { credentials: "same-origin" }
+    )
+    if (result.status === 401) {
+      navigate("/login")
+      return []
+    }
+    return result.json()
   }
-  return result.json()
-}
 
 export function useGetStudentAssessments(studentId: string) {
   return useQuery(KEY(studentId), fetchMaterialProgress(studentId))
