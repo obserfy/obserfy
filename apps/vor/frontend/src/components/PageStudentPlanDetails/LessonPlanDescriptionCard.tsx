@@ -58,8 +58,8 @@ const DescriptionEditor: FC<{
   }
 
   return (
-    <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
-      <Flex pt={3} pb={2}>
+    <Card mb={3} sx={{ borderRadius: [0, "default"], overflow: "hidden" }}>
+      <Flex py={3} sx={{ alignItems: "center" }}>
         <Typography.Body px={3} sx={{ fontWeight: "bold" }}>
           <Trans>Description</Trans>
         </Typography.Body>

@@ -518,6 +518,7 @@ input:focus~.emotion-24 {
   border-width: 1px;
   border-style: solid;
   border-color: var(--theme-ui-colors-border);
+  overflow: hidden;
 }
 
 .emotion-26 {
@@ -530,6 +531,9 @@ input:focus~.emotion-24 {
   line-height: 1.5;
   padding: 16px;
   font-weight: bold;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border);
 }
 
 .emotion-27 {
@@ -544,6 +548,31 @@ input:focus~.emotion-24 {
   min-width: 0;
   padding-left: 8px;
   padding-right: 8px;
+  background-color: var(--theme-ui-colors-darkSurface);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.emotion-29 {
+  line-height: 1.7142857;
+  outline: none;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border: none;
+  background-color: var(--theme-ui-colors-darkSurface);
+  min-height: 400px;
+}
+
+.emotion-30 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -555,7 +584,7 @@ input:focus~.emotion-24 {
   background-color: var(--theme-ui-colors-darkSurface);
 }
 
-.emotion-29 {
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -630,21 +659,22 @@ input:focus~.emotion-24 {
   font-weight: bold;
   background-color: var(--theme-ui-colors-primaryLightest);
   color: var(--theme-ui-colors-textPrimary);
+  font-size: 12px;
 }
 
-.emotion-29:disabled {
+.emotion-31:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-29:hover,
-.emotion-29:focus {
+.emotion-31:hover,
+.emotion-31:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
-.emotion-30 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -718,28 +748,29 @@ input:focus~.emotion-24 {
   border-color: var(--theme-ui-colors-border);
   font-weight: bold;
   color: var(--theme-ui-colors-textMediumEmphasis);
+  font-size: 12px;
 }
 
-.emotion-30:disabled {
+.emotion-32:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-30:hover,
-.emotion-30:focus {
+.emotion-32:hover,
+.emotion-32:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
-.emotion-30:hover,
-.emotion-30:focus {
+.emotion-32:hover,
+.emotion-32:focus {
   background-color: var(--theme-ui-colors-tintWarning);
   color: var(--theme-ui-colors-warning);
   border-color: var(--theme-ui-colors-warning);
 }
 
-.emotion-31 {
+.emotion-33 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -757,11 +788,11 @@ input:focus~.emotion-24 {
   margin-right: 16px;
 }
 
-.emotion-31:hover {
+.emotion-33:hover {
   color: var(--theme-ui-colors-textPrimary);
 }
 
-.emotion-32 {
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -779,7 +810,7 @@ input:focus~.emotion-24 {
   color: inherit;
 }
 
-.emotion-33 {
+.emotion-35 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -797,39 +828,15 @@ input:focus~.emotion-24 {
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-33 {
+  .emotion-35 {
     display: none;
   }
 }
 
 @media screen and (min-width: 52em) {
-  .emotion-33 {
+  .emotion-35 {
     display: block;
   }
-}
-
-.emotion-34 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-left: 8px;
-  padding-right: 8px;
-  background-color: var(--theme-ui-colors-darkSurface);
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-}
-
-.emotion-35 {
-  line-height: 1.7142857;
-  outline: none;
-  width: 100%;
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  border: none;
-  background-color: var(--theme-ui-colors-darkSurface);
-  min-height: 400px;
 }
 
 .emotion-36 {
@@ -1285,40 +1292,40 @@ input:focus~.emotion-24 {
           <div
             class="emotion-28"
           >
-            <button
+            <textarea
               class="emotion-29"
+              data-cy="markdown-editor"
+              placeholder="Write something"
+            />
+          </div>
+          <div
+            class="emotion-30"
+          >
+            <button
+              class="emotion-31"
             >
               Write
             </button>
             <button
-              class="emotion-30"
+              class="emotion-32"
             >
               Preview
             </button>
             <a
-              class="emotion-31"
+              class="emotion-33"
               href="https://obserfy.com/docs/markdown-support"
               rel="noreferrer"
               target="_blank"
             >
               <div
-                class="emotion-32"
+                class="emotion-34"
               />
               <p
-                class="emotion-33"
+                class="emotion-35"
               >
                 Markdown Supported
               </p>
             </a>
-          </div>
-          <div
-            class="emotion-34"
-          >
-            <textarea
-              class="emotion-35"
-              data-cy="markdown-editor"
-              placeholder="Write something"
-            />
           </div>
         </div>
       </div>

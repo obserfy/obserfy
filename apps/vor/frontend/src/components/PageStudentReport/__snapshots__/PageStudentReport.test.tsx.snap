@@ -196,6 +196,31 @@ exports[`PageStudentReport should render correctly 1`] = `
   min-width: 0;
   padding-left: 8px;
   padding-right: 8px;
+  background-color: var(--theme-ui-colors-darkSurface);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.emotion-14 {
+  line-height: 1.7142857;
+  outline: none;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border: none;
+  background-color: var(--theme-ui-colors-darkSurface);
+  min-height: 400px;
+}
+
+.emotion-15 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -207,7 +232,7 @@ exports[`PageStudentReport should render correctly 1`] = `
   background-color: var(--theme-ui-colors-darkSurface);
 }
 
-.emotion-14 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -282,21 +307,22 @@ exports[`PageStudentReport should render correctly 1`] = `
   font-weight: bold;
   background-color: var(--theme-ui-colors-primaryLightest);
   color: var(--theme-ui-colors-textPrimary);
+  font-size: 12px;
 }
 
-.emotion-14:disabled {
+.emotion-16:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-14:hover,
-.emotion-14:focus {
+.emotion-16:hover,
+.emotion-16:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
-.emotion-15 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -370,28 +396,29 @@ exports[`PageStudentReport should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border);
   font-weight: bold;
   color: var(--theme-ui-colors-textMediumEmphasis);
+  font-size: 12px;
 }
 
-.emotion-15:disabled {
+.emotion-17:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-15:hover,
-.emotion-15:focus {
+.emotion-17:hover,
+.emotion-17:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
-.emotion-15:hover,
-.emotion-15:focus {
+.emotion-17:hover,
+.emotion-17:focus {
   background-color: var(--theme-ui-colors-tintWarning);
   color: var(--theme-ui-colors-warning);
   border-color: var(--theme-ui-colors-warning);
 }
 
-.emotion-16 {
+.emotion-18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -409,11 +436,11 @@ exports[`PageStudentReport should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-16:hover {
+.emotion-18:hover {
   color: var(--theme-ui-colors-textPrimary);
 }
 
-.emotion-17 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -431,7 +458,7 @@ exports[`PageStudentReport should render correctly 1`] = `
   color: inherit;
 }
 
-.emotion-18 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -449,39 +476,15 @@ exports[`PageStudentReport should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-18 {
+  .emotion-20 {
     display: none;
   }
 }
 
 @media screen and (min-width: 52em) {
-  .emotion-18 {
+  .emotion-20 {
     display: block;
   }
-}
-
-.emotion-19 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-left: 8px;
-  padding-right: 8px;
-  background-color: var(--theme-ui-colors-darkSurface);
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-}
-
-.emotion-20 {
-  line-height: 1.7142857;
-  outline: none;
-  width: 100%;
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  border: none;
-  background-color: var(--theme-ui-colors-darkSurface);
-  min-height: 400px;
 }
 
 .emotion-21 {
@@ -595,40 +598,40 @@ exports[`PageStudentReport should render correctly 1`] = `
               <div
                 class="emotion-13"
               >
-                <button
+                <textarea
                   class="emotion-14"
+                  data-cy="markdown-editor"
+                  placeholder="Write something"
+                />
+              </div>
+              <div
+                class="emotion-15"
+              >
+                <button
+                  class="emotion-16"
                 >
                   Write
                 </button>
                 <button
-                  class="emotion-15"
+                  class="emotion-17"
                 >
                   Preview
                 </button>
                 <a
-                  class="emotion-16"
+                  class="emotion-18"
                   href="https://obserfy.com/docs/markdown-support"
                   rel="noreferrer"
                   target="_blank"
                 >
                   <div
-                    class="emotion-17"
+                    class="emotion-19"
                   />
                   <p
-                    class="emotion-18"
+                    class="emotion-20"
                   >
                     Markdown Supported
                   </p>
                 </a>
-              </div>
-              <div
-                class="emotion-19"
-              >
-                <textarea
-                  class="emotion-20"
-                  data-cy="markdown-editor"
-                  placeholder="Write something"
-                />
               </div>
             </div>
           </div>
