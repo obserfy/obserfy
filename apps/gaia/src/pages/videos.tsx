@@ -1,3 +1,4 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Image from "next/image"
 import React, { FC, Suspense, useState } from "react"
 import Head from "next/head"
@@ -142,4 +143,4 @@ const EmptyState: FC<{ loading: boolean }> = ({ loading }) => (
   </div>
 )
 
-export default VideosPage
+export default withPageAuthRequired(VideosPage)

@@ -1,3 +1,4 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
@@ -139,4 +140,4 @@ const LoadingState: FC = () => (
   </div>
 )
 
-export default ProgressPage
+export default withPageAuthRequired(ProgressPage)

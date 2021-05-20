@@ -1,3 +1,4 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import React, { ChangeEventHandler, FC, useState } from "react"
 import Head from "next/head"
 import { v4 as uuidv4 } from "uuid"
@@ -172,4 +173,4 @@ const EmptyGalleryIllustration: FC<{ loading: boolean }> = ({ loading }) => (
   </div>
 )
 
-export default GalleryPage
+export default withPageAuthRequired(GalleryPage)
