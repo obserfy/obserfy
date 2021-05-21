@@ -15871,7 +15871,7 @@ __metadata:
     react: 17.0.2
     react-dom: 17.0.2
     react-helmet: 6.1.0
-    socket.io-client: 4.1.1
+    socket.io-client: 4.1.2
     stylelint: 13.13.1
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 22.0.0
@@ -30125,9 +30125,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"socket.io-client@npm:4.1.1":
-  version: 4.1.1
-  resolution: "socket.io-client@npm:4.1.1"
+"socket.io-client@npm:4.1.2":
+  version: 4.1.2
+  resolution: "socket.io-client@npm:4.1.2"
   dependencies:
     "@types/component-emitter": ^1.2.10
     backo2: ~1.0.2
@@ -30136,7 +30136,7 @@ resolve@^2.0.0-next.3:
     engine.io-client: ~5.1.1
     parseuri: 0.0.6
     socket.io-parser: ~4.0.4
-  checksum: b2bee5b96cdbd92d63835e26e083570280d52ce6cde0aac08e181e7c51f86ca6e58dd90491a11fcd4bdfe3284bab35501917e0b989bdbbd260a2086d51b42060
+  checksum: c9815738c1cb8c05b9921f7ebf89bd1231f8c84ce664a90e45581550360c392f7f1893959c5e05ff89f9cf786eda8bbd79992967873818cf65d6091c66e30a51
   languageName: node
   linkType: hard
 
