@@ -16176,7 +16176,7 @@ fsevents@^1.2.7:
     eslint-plugin-react-hooks: 4.2.0
     formidable-serverless: 1.1.1
     fp-ts: 2.10.5
-    hls.js: 1.0.3
+    hls.js: 1.0.4
     io-ts: 2.2.16
     io-ts-types: 0.5.16
     jest: 26.6.3
@@ -18289,10 +18289,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"hls.js@npm:1.0.3":
-  version: 1.0.3
-  resolution: "hls.js@npm:1.0.3"
-  checksum: 42d85812b8d923052d98269143c1a0c3ce628a67b353504e0b4ac8a9d0917abfab749d21cbf96b89e2afe0e787105522056391bbce65c697212d826287f15c5e
+"hls.js@npm:1.0.4":
+  version: 1.0.4
+  resolution: "hls.js@npm:1.0.4"
+  checksum: 91325c999879eebff16fb78ed0814c313c4c35c2134c04e11844f5de074eda4f224bdf49aca86095dbe4ae993a661229e0f213bc69477945dcf411bb2a51c7bc
   languageName: node
   linkType: hard
 
@@ -33602,7 +33602,7 @@ typescript@4.2.4:
     gatsby-theme-i18n: 2.0.0
     gatsby-theme-i18n-lingui: 2.0.0
     gatsby-transformer-sharp: 3.5.0
-    hls.js: 1.0.3
+    hls.js: 1.0.4
     http-proxy-middleware: 2.0.0
     hygen: 6.1.0
     idb-keyval: 5.0.5
