@@ -17,7 +17,7 @@ require (
 	github.com/minio/minio-go/v6 v6.0.57
 	github.com/muxinc/mux-go v0.13.0
 	github.com/pkg/errors v0.9.1
-	github.com/signintech/gopdf v0.9.16
+	github.com/signintech/gopdf v0.9.17
 	github.com/stretchr/testify v1.7.0
 	github.com/tkrajina/typescriptify-golang-structs v0.1.5
 	go.uber.org/zap v1.16.0
