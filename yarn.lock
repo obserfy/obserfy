@@ -14073,12 +14073,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:0.11.20":
-  version: 0.11.20
-  resolution: "esbuild@npm:0.11.20"
+"esbuild@npm:0.12.1":
+  version: 0.12.1
+  resolution: "esbuild@npm:0.12.1"
   bin:
     esbuild: bin/esbuild
-  checksum: 46939f425f6378b2a487ec497cd0656e0b05169dc52a24485dd7ad769a806a162c8efd048547727c9d6d21c4d7df95f4b128d2fae37fb322ead02913dc9a9e1c
+  checksum: 4dbc16cf617487654dfc38493ac23b5d0476d7a99a5ed2d64c4cd57bb2eb106b142134b32bc761158d14cad1b409d26338e74e09e371ac58482084a4b3d0725a
   languageName: node
   linkType: hard
 
@@ -33560,7 +33560,7 @@ typescript@4.2.4:
     dayjs: 1.10.4
     dompurify: 2.2.8
     dotenv: 9.0.2
-    esbuild: 0.11.20
+    esbuild: 0.12.1
     eslint: 7.25.0
     eslint-config-airbnb-typescript: 12.3.1
     eslint-config-prettier: 7.2.0
