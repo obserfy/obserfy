@@ -4445,7 +4445,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/next@npm:^1.4.0":
+"@prefresh/next@npm:^1.4.6":
   version: 1.4.6
   resolution: "@prefresh/next@npm:1.4.6"
   dependencies:
@@ -4493,6 +4493,20 @@ __metadata:
     preact: ^10.4.0
     webpack: ^4.0.0 || ^5.0.0
   checksum: ac07d432082e6a14a3b62e99707139ce7b9083586b143ff352c7ee2f4afb2b225c9c35ac7991424f4af8866e87c91713a1b517e329577f15f1a199af5919061e
+  languageName: node
+  linkType: hard
+
+"@prefresh/webpack@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "@prefresh/webpack@npm:3.3.0"
+  dependencies:
+    "@prefresh/core": ^1.3.1
+    "@prefresh/utils": ^1.1.0
+  peerDependencies:
+    "@prefresh/babel-plugin": ^0.4.0
+    preact: ^10.4.0
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: e08d672a5a19c77cf85a5016de660771fdf0bb7a1af8e9085f6d1971d415092a0aae1b2cba87051d5a466bdf6161b32202ad4267cd23cf40230f3b6d10fc30db
   languageName: node
   linkType: hard
 
@@ -16223,7 +16237,7 @@ fsevents@^1.2.7:
     newtype-ts: 0.3.4
     next: 10.2.2
     next-compose-plugins: 2.2.1
-    next-plugin-preact: 3.0.4
+    next-plugin-preact: 3.0.6
     next-pwa: 5.2.21
     node-mocks-http: 1.10.1
     pg: 8.6.0
@@ -23541,17 +23555,18 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"next-plugin-preact@npm:3.0.4":
-  version: 3.0.4
-  resolution: "next-plugin-preact@npm:3.0.4"
+"next-plugin-preact@npm:3.0.6":
+  version: 3.0.6
+  resolution: "next-plugin-preact@npm:3.0.6"
   dependencies:
-    "@prefresh/next": ^1.4.0
+    "@prefresh/next": ^1.4.6
+    "@prefresh/webpack": ^3.3.0
     module-alias: ^2.0.0
   peerDependencies:
     preact: ">=10"
     preact-render-to-string: ">=5"
     preact-ssr-prepass: ">=1"
-  checksum: 5b95e287cf26417cb40b8b3fe730febef02393f89587232a2f1e4971f4b82a05cd8fe510c7ac16d6035e8cab062a35123235caf6551669b9c1bcd3e072c74f04
+  checksum: d0cfceccd6d746ddd5765702ff1f078651dcbcefc00c20edea50f0e7f5ac7d599c2b7d525a2830864ab96a3ee1ea73dd718dc3b51a5296a33b714ebfd5e0b3db
   languageName: node
   linkType: hard
 

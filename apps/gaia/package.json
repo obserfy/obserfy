@@ -51,7 +51,7 @@
     "newtype-ts": "0.3.4",
     "next": "10.2.2",
     "next-compose-plugins": "2.2.1",
-    "next-plugin-preact": "3.0.4",
+    "next-plugin-preact": "3.0.6",
     "next-pwa": "5.2.21",
     "pg": "8.6.0",
     "pino": "6.11.3",
