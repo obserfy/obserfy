@@ -10834,9 +10834,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:5.8.0":
-  version: 5.8.0
-  resolution: "chromatic@npm:5.8.0"
+"chromatic@npm:5.8.3":
+  version: 5.8.3
+  resolution: "chromatic@npm:5.8.3"
   dependencies:
     "@actions/core": ^1.2.4
     "@actions/github": ^4.0.0
@@ -10878,7 +10878,7 @@ __metadata:
     chroma: bin/register.js
     chromatic: bin/register.js
     chromatic-cli: bin/register.js
-  checksum: e95fdd48cfe41cda48105d4c0e8cab7603b25f60a92d5cf44fd7ee70c6a6ba36824fb1be8f0ea6a62641c35f4ae8387297ec2a4b7f3415eed490a473dd9ca85b
+  checksum: de8ac4f753cbb991efc03effd7912016cf5b4147b5651ca327a2f2f2631abf5185b4014aa205edaeb9ddc25adf58be7e5aba35ad8400abef63656596b80f326b
   languageName: node
   linkType: hard
 
@@ -33607,7 +33607,7 @@ typescript@4.2.4:
     babel-preset-gatsby: 1.5.0
     body-scroll-lock: 3.1.5
     browser-lang: 0.1.0
-    chromatic: 5.8.0
+    chromatic: 5.8.3
     core-js: 3.12.1
     cross-env: 7.0.3
     cypress: 7.3.0
