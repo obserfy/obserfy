@@ -15913,7 +15913,7 @@ __metadata:
     gatsby-transformer-remark: 4.2.0
     gatsby-transformer-sharp: 3.5.0
     make-plural: 6.2.2
-    postcss: 8.2.15
+    postcss: 8.3.0
     postcss-preset-env: 6.7.0
     preact: 10.5.13
     prettier: 2.3.0
@@ -16244,7 +16244,7 @@ fsevents@^1.2.7:
     pg: 8.6.0
     pino: 6.11.3
     pino-pretty: 4.8.0
-    postcss: 8.2.15
+    postcss: 8.3.0
     preact: 10.5.13
     preact-render-to-string: 5.1.19
     prettier: 2.3.0
@@ -26735,17 +26735,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.2.15, postcss@npm:^8.2.9":
-  version: 8.2.15
-  resolution: "postcss@npm:8.2.15"
-  dependencies:
-    colorette: ^1.2.2
-    nanoid: ^3.1.23
-    source-map: ^0.6.1
-  checksum: 07c309e5318843cdbb240b19101c8c679e19cb88544811de921dd9125118d6c0603afe925da7f2ac928dd7d4c0c6380ccdedf032400af5013210a3f145baca5d
-  languageName: node
-  linkType: hard
-
 "postcss@npm:8.2.6":
   version: 8.2.6
   resolution: "postcss@npm:8.2.6"
@@ -26754,6 +26743,17 @@ fsevents@^1.2.7:
     nanoid: ^3.1.20
     source-map: ^0.6.1
   checksum: a26fcdcfd4ab918d6ef66e936d4bf4602132feb37f5e50277ad269a0a9ad1cc5028e7ca0f5e46edb122ec2593c49a0cfd606652f97a22bf7174aafcefd12234f
+  languageName: node
+  linkType: hard
+
+"postcss@npm:8.3.0":
+  version: 8.3.0
+  resolution: "postcss@npm:8.3.0"
+  dependencies:
+    colorette: ^1.2.2
+    nanoid: ^3.1.23
+    source-map-js: ^0.6.2
+  checksum: 7786df62a605e6fc9380c1ee1e5ed177fbcdb3f3427ac6096ee0dbd9d80bdb8627d2e528d38d6f0fe850bb5668d4d46923eaf65dfd146e9b51fe770bf140d0ef
   languageName: node
   linkType: hard
 
@@ -26787,6 +26787,17 @@ fsevents@^1.2.7:
     nanoid: ^3.1.20
     source-map: ^0.6.1
   checksum: 9d2d8ec20dd39b7d08b0b2a639565fd551879b578e39a20985065ba3c68032c6dc78d147615373dbcab31f1d0f09ca0d4d9430cf9c109a1a4ecdc69b84a19bab
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.2.9":
+  version: 8.2.15
+  resolution: "postcss@npm:8.2.15"
+  dependencies:
+    colorette: ^1.2.2
+    nanoid: ^3.1.23
+    source-map: ^0.6.1
+  checksum: 07c309e5318843cdbb240b19101c8c679e19cb88544811de921dd9125118d6c0603afe925da7f2ac928dd7d4c0c6380ccdedf032400af5013210a3f145baca5d
   languageName: node
   linkType: hard
 
@@ -30288,6 +30299,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"source-map-js@npm:^0.6.2":
+  version: 0.6.2
+  resolution: "source-map-js@npm:0.6.2"
+  checksum: 9c8151a29e00fd8d3ba87709fdf9a9ce48313d653f4a29a39b4ae53d346ac79e005de624796ff42eff55cbaf26d2e87f4466001ca87831d400d818c5cf146a0e
+  languageName: node
+  linkType: hard
+
 "source-map-resolve@npm:^0.5.0, source-map-resolve@npm:^0.5.2":
   version: 0.5.3
   resolution: "source-map-resolve@npm:0.5.3"
@@ -33658,7 +33676,7 @@ typescript@4.2.4:
     mux-embed: 4.0.1
     nanoid: 3.1.23
     npm-run-all: 4.1.5
-    postcss: 8.2.15
+    postcss: 8.3.0
     preact: 10.5.13
     preact-render-to-string: 5.1.19
     prettier: 2.3.0
