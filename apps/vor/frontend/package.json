@@ -17,7 +17,7 @@
     "@sentry/gatsby": "6.4.1",
     "@sentry/tracing": "6.4.1",
     "@svgr/webpack": "5.5.0",
-    "@tailwindcss/typography": "0.4.0",
+    "@tailwindcss/typography": "0.4.1",
     "@theme-ui/match-media": "0.8.4",
     "@types/dompurify": "2.2.2",
     "@types/hls.js": "0.13.3",
