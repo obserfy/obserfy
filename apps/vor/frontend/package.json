@@ -104,7 +104,7 @@
     "chromatic": "5.8.3",
     "core-js": "3.12.1",
     "cross-env": "7.0.3",
-    "cypress": "7.3.0",
+    "cypress": "7.4.0",
     "esbuild": "0.12.1",
     "eslint": "7.25.0",
     "eslint-config-airbnb-typescript": "12.3.1",
