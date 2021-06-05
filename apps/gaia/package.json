@@ -49,7 +49,7 @@
     "mux-embed": "4.0.1",
     "nanoid": "3.1.23",
     "newtype-ts": "0.3.4",
-    "next": "10.2.2",
+    "next": "10.2.3",
     "next-compose-plugins": "2.2.1",
     "next-plugin-preact": "3.0.6",
     "next-pwa": "5.2.21",
@@ -70,7 +70,7 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "10.2.2",
+    "@next/bundle-analyzer": "10.2.3",
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
     "eslint": "7.25.0",
