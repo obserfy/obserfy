@@ -15903,7 +15903,7 @@ __metadata:
     preact: 10.5.13
     prettier: 2.3.0
     prism-themes: 1.7.0
-    prismjs: 1.23.0
+    prismjs: 1.24.0
     react: 17.0.2
     react-dom: 17.0.2
     react-helmet: 6.1.0
@@ -26997,7 +26997,14 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prismjs@npm:1.23.0, prismjs@npm:^1.21.0, prismjs@npm:^1.8.4, prismjs@npm:~1.23.0":
+"prismjs@npm:1.24.0":
+  version: 1.24.0
+  resolution: "prismjs@npm:1.24.0"
+  checksum: 8456d08274c78bb4ce48ab9b3cbc5a82837fd683afe2bda7554526d9234f8ac48c9922c92a39bd3230e0bc8b0bf2cce18c9b563678b1c08f88f5f2a78a5fd174
+  languageName: node
+  linkType: hard
+
+"prismjs@npm:^1.21.0, prismjs@npm:^1.8.4, prismjs@npm:~1.23.0":
   version: 1.23.0
   resolution: "prismjs@npm:1.23.0"
   dependencies:
