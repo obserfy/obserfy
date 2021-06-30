@@ -7124,7 +7124,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/reach__router@npm:1.3.7, @types/reach__router@npm:^1.3.7":
+"@types/reach__router@npm:1.3.8":
+  version: 1.3.8
+  resolution: "@types/reach__router@npm:1.3.8"
+  dependencies:
+    "@types/react": "*"
+  checksum: 5244b72e7fff11ef7d0dbd1fdd3401e97e3e6cd65cb395eea0ee8e3560afdd98c79f9ff5599ce7962f212a346ced58ff378c7a04d4aae0c2cc766c72ca87c18a
+  languageName: node
+  linkType: hard
+
+"@types/reach__router@npm:^1.3.7":
   version: 1.3.7
   resolution: "@types/reach__router@npm:1.3.7"
   dependencies:
@@ -33597,7 +33606,7 @@ typescript@4.2.4:
     "@types/jest": 26.0.23
     "@types/node": 15.0.2
     "@types/query-string": 6.3.0
-    "@types/reach__router": 1.3.7
+    "@types/reach__router": 1.3.8
     "@types/react": 17.0.6
     "@types/react-adaptive-hooks": 0.0.0
     "@types/react-dom": 17.0.5
