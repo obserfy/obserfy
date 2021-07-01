@@ -9039,7 +9039,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:10.2.5, autoprefixer@npm:^10.2.4":
+"autoprefixer@npm:10.2.6":
+  version: 10.2.6
+  resolution: "autoprefixer@npm:10.2.6"
+  dependencies:
+    browserslist: ^4.16.6
+    caniuse-lite: ^1.0.30001230
+    colorette: ^1.2.2
+    fraction.js: ^4.1.1
+    normalize-range: ^0.1.2
+    postcss-value-parser: ^4.1.0
+  peerDependencies:
+    postcss: ^8.1.0
+  bin:
+    autoprefixer: bin/autoprefixer
+  checksum: dedcc56739b3e5beda3927c13cd4dbb8e1eeb568418b28fb6b4a52697e951ec72ae3aca89e5d871c310e520a8bbbe24267b7401d21f96c07bf0ea6527977f9e8
+  languageName: node
+  linkType: hard
+
+"autoprefixer@npm:^10.2.4":
   version: 10.2.5
   resolution: "autoprefixer@npm:10.2.5"
   dependencies:
@@ -10647,6 +10665,13 @@ __metadata:
   version: 1.0.30001228
   resolution: "caniuse-lite@npm:1.0.30001228"
   checksum: d7ea2234d3ad1841dab6cd0b6ee16e89958f5893ef2e024a7447d6f889f496e40b6dafe000f391b8d4f0c0ef08671dbb5969fd66e6f74d402994865ce5705a53
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001230":
+  version: 1.0.30001241
+  resolution: "caniuse-lite@npm:1.0.30001241"
+  checksum: 3478d31e0f12ddd577d7de436eb6f008803f15202368998b92c3bdb1cf023ce0cfcaaac94d2bba804227751b63a2b9afb9746fd67abab134f7b7e2d95e1e93a0
   languageName: node
   linkType: hard
 
@@ -15974,6 +15999,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fraction.js@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "fraction.js@npm:4.1.1"
+  checksum: e5a1f81d73e32aabf4fbd6581a7b3dfabd9a449ceb97c7e71ed2931dd0607095622341100d7819741eb9b435eb4e0d4a040a69e411dc943fa9b3a3872f3a2e0f
+  languageName: node
+  linkType: hard
+
 "fragment-cache@npm:^0.2.1":
   version: 0.2.1
   resolution: "fragment-cache@npm:0.2.1"
@@ -16006,7 +16038,7 @@ __metadata:
     "@types/react-helmet": 6.1.1
     "@typescript-eslint/eslint-plugin": 4.22.0
     "@typescript-eslint/parser": 4.22.0
-    autoprefixer: 10.2.5
+    autoprefixer: 10.2.6
     babel-core: 7.0.0-bridge.0
     babel-plugin-macros: 3.1.0
     babel-preset-gatsby: 1.5.0
@@ -16342,7 +16374,7 @@ fsevents@^1.2.7:
     "@types/uuid": 8.3.0
     "@typescript-eslint/eslint-plugin": 4.22.0
     "@typescript-eslint/parser": 4.22.0
-    autoprefixer: 10.2.5
+    autoprefixer: 10.2.6
     body-scroll-lock: 3.1.5
     dayjs: 1.10.4
     dompurify: 2.2.8
@@ -33752,7 +33784,7 @@ typescript@4.2.4:
     "@types/segment-analytics": 0.0.33
     "@typescript-eslint/eslint-plugin": 4.22.0
     "@typescript-eslint/parser": 4.22.0
-    autoprefixer: 10.2.5
+    autoprefixer: 10.2.6
     babel-jest: 26.6.3
     babel-loader: 8.2.2
     babel-plugin-istanbul: 6.0.0
