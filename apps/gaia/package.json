@@ -37,7 +37,7 @@
     "autoprefixer": "10.2.6",
     "body-scroll-lock": "3.1.5",
     "dayjs": "1.10.5",
-    "dompurify": "2.2.8",
+    "dompurify": "2.2.9",
     "dotenv": "10.0.0",
     "formidable-serverless": "1.1.1",
     "fp-ts": "2.10.5",
