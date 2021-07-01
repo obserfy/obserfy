@@ -18966,10 +18966,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"idb-keyval@npm:5.0.5":
-  version: 5.0.5
-  resolution: "idb-keyval@npm:5.0.5"
-  checksum: 7dd8e8f66f1e46cfe7b70840cb737940ff9011564f9080807874b7195d8e22308564f42c62c1429e6a859a0e111b15d7707e32cbcf49729683a3154d2821961c
+"idb-keyval@npm:5.0.6":
+  version: 5.0.6
+  resolution: "idb-keyval@npm:5.0.6"
+  checksum: 9307309989e823b63943588487131a3b5c18bcb1cde6c3464bc878ff6e9d0724610d9d4941dad853ccf1553d6e84203f1b42be9851cda4fbe310b6e4676e663e
   languageName: node
   linkType: hard
 
@@ -33846,7 +33846,7 @@ typescript@4.2.4:
     hls.js: 1.0.7
     http-proxy-middleware: 2.0.0
     hygen: 6.1.0
-    idb-keyval: 5.0.5
+    idb-keyval: 5.0.6
     immer: 9.0.2
     jest: 26.6.3
     jest-date-mock: 1.0.8
