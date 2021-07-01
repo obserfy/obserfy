@@ -45,7 +45,7 @@
     "gatsby-plugin-svgr": "v3.0.0-beta.0",
     "gatsby-plugin-theme-ui": "0.8.4",
     "gatsby-plugin-typegen": "2.2.4",
-    "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.22",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.24",
     "gatsby-source-filesystem": "3.5.0",
     "gatsby-theme-i18n": "2.0.0",
     "gatsby-theme-i18n-lingui": "2.0.0",
