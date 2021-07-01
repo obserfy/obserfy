@@ -41,7 +41,7 @@
     "dotenv": "10.0.0",
     "formidable-serverless": "1.1.1",
     "fp-ts": "2.10.5",
-    "hls.js": "1.0.4",
+    "hls.js": "1.0.7",
     "io-ts": "2.2.16",
     "io-ts-types": "0.5.16",
     "minio": "7.0.18",
