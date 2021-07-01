@@ -30,7 +30,7 @@
     "gatsby-plugin-sharp": "3.5.0",
     "gatsby-plugin-sitemap": "4.1.0",
     "gatsby-plugin-typegen": "2.2.4",
-    "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.22",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.24",
     "gatsby-remark-images": "5.2.1",
     "gatsby-remark-prismjs": "5.2.1",
     "gatsby-source-filesystem": "3.5.0",

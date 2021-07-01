@@ -2216,7 +2216,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:7.14.6":
+"@babel/runtime@npm:7.14.6, @babel/runtime@npm:^7.14.6":
   version: 7.14.6
   resolution: "@babel/runtime@npm:7.14.6"
   dependencies:
@@ -16075,7 +16075,7 @@ __metadata:
     gatsby-plugin-sharp: 3.5.0
     gatsby-plugin-sitemap: 4.1.0
     gatsby-plugin-typegen: 2.2.4
-    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.22
+    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.24
     gatsby-remark-images: 5.2.1
     gatsby-remark-prismjs: 5.2.1
     gatsby-source-filesystem: 3.5.0
@@ -16943,15 +16943,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.22":
-  version: 1.1.22
-  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.22"
+"gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.24":
+  version: 1.1.24
+  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.24"
   dependencies:
-    "@babel/runtime": ^7.13.10
-    webpack-bundle-analyzer: ^4.4.1
+    "@babel/runtime": ^7.14.6
+    webpack-bundle-analyzer: ^4.4.2
   peerDependencies:
     gatsby: ^2.0.0 || ^3.0.0
-  checksum: 08795395490118c5973381b6c9a882dc70aa8b174ce103ab48b5a126febd9d1d0dc033092cfa0543d7a4bb595aab505d0d30796590e2f2e33104e63bb56ccef2
+  checksum: 1c1a16071b080ea7ef7f30155028cc5cd228639aabe43cc9e2c73438765f31a08eba967d963fd9c544cf8f488fa7b700351b9139854b0d8dd2f2e239676429d0
   languageName: node
   linkType: hard
 
@@ -33838,7 +33838,7 @@ typescript@4.2.4:
     gatsby-plugin-svgr: v3.0.0-beta.0
     gatsby-plugin-theme-ui: 0.8.4
     gatsby-plugin-typegen: 2.2.4
-    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.22
+    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.24
     gatsby-source-filesystem: 3.5.0
     gatsby-theme-i18n: 2.0.0
     gatsby-theme-i18n-lingui: 2.0.0
@@ -34051,9 +34051,9 @@ typescript@4.2.4:
   languageName: node
   linkType: hard
 
-"webpack-bundle-analyzer@npm:^4.4.1":
-  version: 4.4.1
-  resolution: "webpack-bundle-analyzer@npm:4.4.1"
+"webpack-bundle-analyzer@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "webpack-bundle-analyzer@npm:4.4.2"
   dependencies:
     acorn: ^8.0.4
     acorn-walk: ^8.0.0
@@ -34066,7 +34066,7 @@ typescript@4.2.4:
     ws: ^7.3.1
   bin:
     webpack-bundle-analyzer: lib/bin/analyzer.js
-  checksum: 6803a706ebcc2fadc85f490046b875ca1fe99d2dfd7dbf072920f47ac7549216900ab70d13156c6ca846b245fd9e484e5fbcdf85a015753099f3f687fb1fc27e
+  checksum: 6d7957a87ee16f6b87e65f85e8b9a40998aefcddf3e15215fd4bc1ddf8c332ab4706f2f4deb0b3a0483eb27d0dae381db1b82b2ec34136e2ad0e651714b260fb
   languageName: node
   linkType: hard
 
