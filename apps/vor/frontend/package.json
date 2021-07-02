@@ -7,7 +7,7 @@
   "dependencies": {
     "@babel/runtime": "7.14.6",
     "@emotion/jest": "11.3.0",
-    "@emotion/react": "11.1.5",
+    "@emotion/react": "11.4.0",
     "@lingui/cli": "3.9.0",
     "@lingui/core": "3.9.0",
     "@lingui/macro": "3.9.0",
