@@ -7302,13 +7302,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-query@npm:1.1.2":
-  version: 1.1.2
-  resolution: "@types/react-query@npm:1.1.2"
+"@types/react-query@npm:1.2.8":
+  version: 1.2.8
+  resolution: "@types/react-query@npm:1.2.8"
   dependencies:
-    "@types/react": "*"
-    ts-toolbelt: "*"
-  checksum: f2201b7dff27e07a949c5e993097a0a3ed369161342ecfd6d2364193835b04d116b29f1a6f619168be33cb1ba90338630bc4a0aa3f22a7d0b91f45dd047f9148
+    react-query: "*"
+  checksum: ecf75c551dc073bda703fc164558b7d39cb1256aa5b2880b0ad560b28829d8ac593ac5a13406ae0a516491e1896f875c477f9d97b148be4317cca67a0b1a1513
   languageName: node
   linkType: hard
 
@@ -16352,7 +16351,7 @@ fsevents@^1.2.7:
     "@types/pg": 8.6.0
     "@types/pino": 6.3.8
     "@types/react": 17.0.11
-    "@types/react-query": 1.1.2
+    "@types/react-query": 1.2.8
     "@types/uuid": 8.3.0
     "@typescript-eslint/eslint-plugin": 4.22.0
     "@typescript-eslint/parser": 4.22.0
@@ -28148,6 +28147,24 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-query@npm:*":
+  version: 3.18.1
+  resolution: "react-query@npm:3.18.1"
+  dependencies:
+    "@babel/runtime": ^7.5.5
+    broadcast-channel: ^3.4.1
+    match-sorter: ^6.0.2
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 189f36b465a623c913075da5e2cc10118e1a449669cb438736da5512d1c5894bf59f9e6abe097dc69f724b00ef7ed360a04ddc8f905eb44fae98c1cf64cca81f
+  languageName: node
+  linkType: hard
+
 "react-query@npm:3.16.0":
   version: 3.16.0
   resolution: "react-query@npm:3.16.0"
@@ -32489,13 +32506,6 @@ resolve@^2.0.0-next.3:
     typescript:
       optional: true
   checksum: c2a698b85d521298fe6f2435fbf2d3dc5834b423ea25abd321805ead3f399dbeedce7ca09492d7eb005b9d2c009c6b9587055bc3ab273dc6b9e40eefd7edb5b2
-  languageName: node
-  linkType: hard
-
-"ts-toolbelt@npm:*":
-  version: 9.5.10
-  resolution: "ts-toolbelt@npm:9.5.10"
-  checksum: cbf787c3bded402b9d91a7c0c9a277d096a1835d5dd78514585c565a9e3587dc98ab0983366156d2acce76a9729bf2447e9621ba9cd109a3afef1b33efd18fea
   languageName: node
   linkType: hard
 
