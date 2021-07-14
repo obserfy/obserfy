@@ -9,8 +9,6 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:import/typescript",
     "plugin:prettier/recommended",
-    "prettier/@typescript-eslint",
-    "prettier/react",
     "plugin:jest/recommended",
   ],
   plugins: ["jest"],

@@ -13,7 +13,6 @@ const plugins = [
   `gatsby-plugin-image`,
   `gatsby-transformer-sharp`,
   `gatsby-plugin-sharp`,
-  `gatsby-plugin-remove-trailing-slashes`,
   {
     resolve: `gatsby-plugin-manifest`,
     options: {
@@ -72,13 +71,14 @@ const plugins = [
       localeDir: `./i18n/lingui`,
     },
   },
+  `gatsby-plugin-remove-trailing-slashes`,
   // DEVTOOLS ================================================================
-  {
-    resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-    options: {
-      analyzerPort: 3300,
-    },
-  },
+  // {
+  //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+  //   options: {
+  //     analyzerPort: 3300,
+  //   },
+  // },
   {
     resolve: `gatsby-plugin-typegen`,
     options: {
@@ -126,11 +126,6 @@ const developMiddleware = (app) => {
 }
 
 module.exports = {
-  flags: {
-    PRESERVE_WEBPACK_CACHE: true,
-    DEV_SSR: true,
-    FAST_DEV: true,
-  },
   siteMetadata: {
     title: `Obserfy for Teachers`,
     description: `Record keeping tool for montessori schools.`,

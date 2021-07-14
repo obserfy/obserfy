@@ -235,9 +235,6 @@ declare namespace GatsbyTypes {
   type Site = Node & {
     readonly buildTime: Maybe<Scalars["Date"]>
     readonly siteMetadata: Maybe<SiteSiteMetadata>
-    readonly port: Maybe<Scalars["Int"]>
-    readonly host: Maybe<Scalars["String"]>
-    readonly flags: Maybe<SiteFlags>
     readonly polyfill: Maybe<Scalars["Boolean"]>
     readonly pathPrefix: Maybe<Scalars["String"]>
     readonly id: Scalars["ID"]
@@ -253,12 +250,6 @@ declare namespace GatsbyTypes {
     locale: Maybe<Scalars["String"]>
   }
 
-  type SiteFlags = {
-    readonly PRESERVE_WEBPACK_CACHE: Maybe<Scalars["Boolean"]>
-    readonly DEV_SSR: Maybe<Scalars["Boolean"]>
-    readonly FAST_DEV: Maybe<Scalars["Boolean"]>
-  }
-
   type SiteSiteMetadata = {
     readonly title: Maybe<Scalars["String"]>
     readonly description: Maybe<Scalars["String"]>
@@ -267,8 +258,10 @@ declare namespace GatsbyTypes {
   }
 
   type SiteFunction = Node & {
-    readonly apiRoute: Scalars["String"]
-    readonly originalFilePath: Scalars["String"]
+    readonly functionRoute: Scalars["String"]
+    readonly pluginName: Scalars["String"]
+    readonly originalAbsoluteFilePath: Scalars["String"]
+    readonly originalRelativeFilePath: Scalars["String"]
     readonly relativeCompiledFilePath: Scalars["String"]
     readonly absoluteCompiledFilePath: Scalars["String"]
     readonly matchPath: Maybe<Scalars["String"]>
@@ -547,21 +540,6 @@ declare namespace GatsbyTypes {
     readonly name: Maybe<Scalars["String"]>
   }
 
-  type SiteBuildMetadata = Node & {
-    readonly id: Scalars["ID"]
-    readonly parent: Maybe<Node>
-    readonly children: ReadonlyArray<Node>
-    readonly internal: Internal
-    readonly buildTime: Maybe<Scalars["Date"]>
-  }
-
-  type SiteBuildMetadata_buildTimeArgs = {
-    formatString: Maybe<Scalars["String"]>
-    fromNow: Maybe<Scalars["Boolean"]>
-    difference: Maybe<Scalars["String"]>
-    locale: Maybe<Scalars["String"]>
-  }
-
   type SitePlugin = Node & {
     readonly id: Scalars["ID"]
     readonly parent: Maybe<Node>
@@ -607,8 +585,10 @@ declare namespace GatsbyTypes {
     readonly defaultLang: Maybe<Scalars["String"]>
     readonly configPath: Maybe<Scalars["String"]>
     readonly localeDir: Maybe<Scalars["String"]>
-    readonly analyzerPort: Maybe<Scalars["Int"]>
     readonly emitSchema: Maybe<SitePluginPluginOptionsEmitSchema>
+    readonly dsn: Maybe<Scalars["String"]>
+    readonly release: Maybe<Scalars["String"]>
+    readonly tracesSampleRate: Maybe<Scalars["Float"]>
     readonly pathCheck: Maybe<Scalars["Boolean"]>
     readonly allExtensions: Maybe<Scalars["Boolean"]>
     readonly isTSX: Maybe<Scalars["Boolean"]>
@@ -661,6 +641,21 @@ declare namespace GatsbyTypes {
     readonly version: Maybe<Scalars["String"]>
   }
 
+  type SiteBuildMetadata = Node & {
+    readonly id: Scalars["ID"]
+    readonly parent: Maybe<Node>
+    readonly children: ReadonlyArray<Node>
+    readonly internal: Internal
+    readonly buildTime: Maybe<Scalars["Date"]>
+  }
+
+  type SiteBuildMetadata_buildTimeArgs = {
+    formatString: Maybe<Scalars["String"]>
+    fromNow: Maybe<Scalars["Boolean"]>
+    difference: Maybe<Scalars["String"]>
+    locale: Maybe<Scalars["String"]>
+  }
+
   type Query = {
     readonly file: Maybe<File>
     readonly allFile: FileConnection
@@ -678,10 +673,10 @@ declare namespace GatsbyTypes {
     readonly allImageSharp: ImageSharpConnection
     readonly themeI18N: Maybe<ThemeI18n>
     readonly allThemeI18N: ThemeI18nConnection
-    readonly siteBuildMetadata: Maybe<SiteBuildMetadata>
-    readonly allSiteBuildMetadata: SiteBuildMetadataConnection
     readonly sitePlugin: Maybe<SitePlugin>
     readonly allSitePlugin: SitePluginConnection
+    readonly siteBuildMetadata: Maybe<SiteBuildMetadata>
+    readonly allSiteBuildMetadata: SiteBuildMetadataConnection
   }
 
   type Query_fileArgs = {
@@ -784,9 +779,6 @@ declare namespace GatsbyTypes {
   type Query_siteArgs = {
     buildTime: Maybe<DateQueryOperatorInput>
     siteMetadata: Maybe<SiteSiteMetadataFilterInput>
-    port: Maybe<IntQueryOperatorInput>
-    host: Maybe<StringQueryOperatorInput>
-    flags: Maybe<SiteFlagsFilterInput>
     polyfill: Maybe<BooleanQueryOperatorInput>
     pathPrefix: Maybe<StringQueryOperatorInput>
     id: Maybe<StringQueryOperatorInput>
@@ -803,8 +795,10 @@ declare namespace GatsbyTypes {
   }
 
   type Query_siteFunctionArgs = {
-    apiRoute: Maybe<StringQueryOperatorInput>
-    originalFilePath: Maybe<StringQueryOperatorInput>
+    functionRoute: Maybe<StringQueryOperatorInput>
+    pluginName: Maybe<StringQueryOperatorInput>
+    originalAbsoluteFilePath: Maybe<StringQueryOperatorInput>
+    originalRelativeFilePath: Maybe<StringQueryOperatorInput>
     relativeCompiledFilePath: Maybe<StringQueryOperatorInput>
     absoluteCompiledFilePath: Maybe<StringQueryOperatorInput>
     matchPath: Maybe<StringQueryOperatorInput>
@@ -897,21 +891,6 @@ declare namespace GatsbyTypes {
     limit: Maybe<Scalars["Int"]>
   }
 
-  type Query_siteBuildMetadataArgs = {
-    id: Maybe<StringQueryOperatorInput>
-    parent: Maybe<NodeFilterInput>
-    children: Maybe<NodeFilterListInput>
-    internal: Maybe<InternalFilterInput>
-    buildTime: Maybe<DateQueryOperatorInput>
-  }
-
-  type Query_allSiteBuildMetadataArgs = {
-    filter: Maybe<SiteBuildMetadataFilterInput>
-    sort: Maybe<SiteBuildMetadataSortInput>
-    skip: Maybe<Scalars["Int"]>
-    limit: Maybe<Scalars["Int"]>
-  }
-
   type Query_sitePluginArgs = {
     id: Maybe<StringQueryOperatorInput>
     parent: Maybe<NodeFilterInput>
@@ -931,6 +910,21 @@ declare namespace GatsbyTypes {
   type Query_allSitePluginArgs = {
     filter: Maybe<SitePluginFilterInput>
     sort: Maybe<SitePluginSortInput>
+    skip: Maybe<Scalars["Int"]>
+    limit: Maybe<Scalars["Int"]>
+  }
+
+  type Query_siteBuildMetadataArgs = {
+    id: Maybe<StringQueryOperatorInput>
+    parent: Maybe<NodeFilterInput>
+    children: Maybe<NodeFilterListInput>
+    internal: Maybe<InternalFilterInput>
+    buildTime: Maybe<DateQueryOperatorInput>
+  }
+
+  type Query_allSiteBuildMetadataArgs = {
+    filter: Maybe<SiteBuildMetadataFilterInput>
+    sort: Maybe<SiteBuildMetadataSortInput>
     skip: Maybe<Scalars["Int"]>
     limit: Maybe<Scalars["Int"]>
   }
@@ -1668,12 +1662,6 @@ declare namespace GatsbyTypes {
     readonly siteUrl: Maybe<StringQueryOperatorInput>
   }
 
-  type SiteFlagsFilterInput = {
-    readonly PRESERVE_WEBPACK_CACHE: Maybe<BooleanQueryOperatorInput>
-    readonly DEV_SSR: Maybe<BooleanQueryOperatorInput>
-    readonly FAST_DEV: Maybe<BooleanQueryOperatorInput>
-  }
-
   type SiteConnection = {
     readonly totalCount: Scalars["Int"]
     readonly edges: ReadonlyArray<SiteEdge>
@@ -1720,11 +1708,6 @@ declare namespace GatsbyTypes {
     | "siteMetadata.description"
     | "siteMetadata.author"
     | "siteMetadata.siteUrl"
-    | "port"
-    | "host"
-    | "flags.PRESERVE_WEBPACK_CACHE"
-    | "flags.DEV_SSR"
-    | "flags.FAST_DEV"
     | "polyfill"
     | "pathPrefix"
     | "id"
@@ -1826,9 +1809,6 @@ declare namespace GatsbyTypes {
   type SiteFilterInput = {
     readonly buildTime: Maybe<DateQueryOperatorInput>
     readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>
-    readonly port: Maybe<IntQueryOperatorInput>
-    readonly host: Maybe<StringQueryOperatorInput>
-    readonly flags: Maybe<SiteFlagsFilterInput>
     readonly polyfill: Maybe<BooleanQueryOperatorInput>
     readonly pathPrefix: Maybe<StringQueryOperatorInput>
     readonly id: Maybe<StringQueryOperatorInput>
@@ -1883,8 +1863,10 @@ declare namespace GatsbyTypes {
   }
 
   type SiteFunctionFieldsEnum =
-    | "apiRoute"
-    | "originalFilePath"
+    | "functionRoute"
+    | "pluginName"
+    | "originalAbsoluteFilePath"
+    | "originalRelativeFilePath"
     | "relativeCompiledFilePath"
     | "absoluteCompiledFilePath"
     | "matchPath"
@@ -1985,8 +1967,10 @@ declare namespace GatsbyTypes {
   }
 
   type SiteFunctionFilterInput = {
-    readonly apiRoute: Maybe<StringQueryOperatorInput>
-    readonly originalFilePath: Maybe<StringQueryOperatorInput>
+    readonly functionRoute: Maybe<StringQueryOperatorInput>
+    readonly pluginName: Maybe<StringQueryOperatorInput>
+    readonly originalAbsoluteFilePath: Maybe<StringQueryOperatorInput>
+    readonly originalRelativeFilePath: Maybe<StringQueryOperatorInput>
     readonly relativeCompiledFilePath: Maybe<StringQueryOperatorInput>
     readonly absoluteCompiledFilePath: Maybe<StringQueryOperatorInput>
     readonly matchPath: Maybe<StringQueryOperatorInput>
@@ -2054,8 +2038,10 @@ declare namespace GatsbyTypes {
     readonly defaultLang: Maybe<StringQueryOperatorInput>
     readonly configPath: Maybe<StringQueryOperatorInput>
     readonly localeDir: Maybe<StringQueryOperatorInput>
-    readonly analyzerPort: Maybe<IntQueryOperatorInput>
     readonly emitSchema: Maybe<SitePluginPluginOptionsEmitSchemaFilterInput>
+    readonly dsn: Maybe<StringQueryOperatorInput>
+    readonly release: Maybe<StringQueryOperatorInput>
+    readonly tracesSampleRate: Maybe<FloatQueryOperatorInput>
     readonly pathCheck: Maybe<BooleanQueryOperatorInput>
     readonly allExtensions: Maybe<BooleanQueryOperatorInput>
     readonly isTSX: Maybe<BooleanQueryOperatorInput>
@@ -2322,8 +2308,10 @@ declare namespace GatsbyTypes {
     | "pluginCreator.pluginOptions.defaultLang"
     | "pluginCreator.pluginOptions.configPath"
     | "pluginCreator.pluginOptions.localeDir"
-    | "pluginCreator.pluginOptions.analyzerPort"
     | "pluginCreator.pluginOptions.emitSchema.src___generated___gatsby_schema_graphql"
+    | "pluginCreator.pluginOptions.dsn"
+    | "pluginCreator.pluginOptions.release"
+    | "pluginCreator.pluginOptions.tracesSampleRate"
     | "pluginCreator.pluginOptions.pathCheck"
     | "pluginCreator.pluginOptions.allExtensions"
     | "pluginCreator.pluginOptions.isTSX"
@@ -2882,157 +2870,6 @@ declare namespace GatsbyTypes {
     readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>
   }
 
-  type SiteBuildMetadataConnection = {
-    readonly totalCount: Scalars["Int"]
-    readonly edges: ReadonlyArray<SiteBuildMetadataEdge>
-    readonly nodes: ReadonlyArray<SiteBuildMetadata>
-    readonly pageInfo: PageInfo
-    readonly distinct: ReadonlyArray<Scalars["String"]>
-    readonly max: Maybe<Scalars["Float"]>
-    readonly min: Maybe<Scalars["Float"]>
-    readonly sum: Maybe<Scalars["Float"]>
-    readonly group: ReadonlyArray<SiteBuildMetadataGroupConnection>
-  }
-
-  type SiteBuildMetadataConnection_distinctArgs = {
-    field: SiteBuildMetadataFieldsEnum
-  }
-
-  type SiteBuildMetadataConnection_maxArgs = {
-    field: SiteBuildMetadataFieldsEnum
-  }
-
-  type SiteBuildMetadataConnection_minArgs = {
-    field: SiteBuildMetadataFieldsEnum
-  }
-
-  type SiteBuildMetadataConnection_sumArgs = {
-    field: SiteBuildMetadataFieldsEnum
-  }
-
-  type SiteBuildMetadataConnection_groupArgs = {
-    skip: Maybe<Scalars["Int"]>
-    limit: Maybe<Scalars["Int"]>
-    field: SiteBuildMetadataFieldsEnum
-  }
-
-  type SiteBuildMetadataEdge = {
-    readonly next: Maybe<SiteBuildMetadata>
-    readonly node: SiteBuildMetadata
-    readonly previous: Maybe<SiteBuildMetadata>
-  }
-
-  type SiteBuildMetadataFieldsEnum =
-    | "id"
-    | "parent.id"
-    | "parent.parent.id"
-    | "parent.parent.parent.id"
-    | "parent.parent.parent.children"
-    | "parent.parent.children"
-    | "parent.parent.children.id"
-    | "parent.parent.children.children"
-    | "parent.parent.internal.content"
-    | "parent.parent.internal.contentDigest"
-    | "parent.parent.internal.description"
-    | "parent.parent.internal.fieldOwners"
-    | "parent.parent.internal.ignoreType"
-    | "parent.parent.internal.mediaType"
-    | "parent.parent.internal.owner"
-    | "parent.parent.internal.type"
-    | "parent.children"
-    | "parent.children.id"
-    | "parent.children.parent.id"
-    | "parent.children.parent.children"
-    | "parent.children.children"
-    | "parent.children.children.id"
-    | "parent.children.children.children"
-    | "parent.children.internal.content"
-    | "parent.children.internal.contentDigest"
-    | "parent.children.internal.description"
-    | "parent.children.internal.fieldOwners"
-    | "parent.children.internal.ignoreType"
-    | "parent.children.internal.mediaType"
-    | "parent.children.internal.owner"
-    | "parent.children.internal.type"
-    | "parent.internal.content"
-    | "parent.internal.contentDigest"
-    | "parent.internal.description"
-    | "parent.internal.fieldOwners"
-    | "parent.internal.ignoreType"
-    | "parent.internal.mediaType"
-    | "parent.internal.owner"
-    | "parent.internal.type"
-    | "children"
-    | "children.id"
-    | "children.parent.id"
-    | "children.parent.parent.id"
-    | "children.parent.parent.children"
-    | "children.parent.children"
-    | "children.parent.children.id"
-    | "children.parent.children.children"
-    | "children.parent.internal.content"
-    | "children.parent.internal.contentDigest"
-    | "children.parent.internal.description"
-    | "children.parent.internal.fieldOwners"
-    | "children.parent.internal.ignoreType"
-    | "children.parent.internal.mediaType"
-    | "children.parent.internal.owner"
-    | "children.parent.internal.type"
-    | "children.children"
-    | "children.children.id"
-    | "children.children.parent.id"
-    | "children.children.parent.children"
-    | "children.children.children"
-    | "children.children.children.id"
-    | "children.children.children.children"
-    | "children.children.internal.content"
-    | "children.children.internal.contentDigest"
-    | "children.children.internal.description"
-    | "children.children.internal.fieldOwners"
-    | "children.children.internal.ignoreType"
-    | "children.children.internal.mediaType"
-    | "children.children.internal.owner"
-    | "children.children.internal.type"
-    | "children.internal.content"
-    | "children.internal.contentDigest"
-    | "children.internal.description"
-    | "children.internal.fieldOwners"
-    | "children.internal.ignoreType"
-    | "children.internal.mediaType"
-    | "children.internal.owner"
-    | "children.internal.type"
-    | "internal.content"
-    | "internal.contentDigest"
-    | "internal.description"
-    | "internal.fieldOwners"
-    | "internal.ignoreType"
-    | "internal.mediaType"
-    | "internal.owner"
-    | "internal.type"
-    | "buildTime"
-
-  type SiteBuildMetadataGroupConnection = {
-    readonly totalCount: Scalars["Int"]
-    readonly edges: ReadonlyArray<SiteBuildMetadataEdge>
-    readonly nodes: ReadonlyArray<SiteBuildMetadata>
-    readonly pageInfo: PageInfo
-    readonly field: Scalars["String"]
-    readonly fieldValue: Maybe<Scalars["String"]>
-  }
-
-  type SiteBuildMetadataFilterInput = {
-    readonly id: Maybe<StringQueryOperatorInput>
-    readonly parent: Maybe<NodeFilterInput>
-    readonly children: Maybe<NodeFilterListInput>
-    readonly internal: Maybe<InternalFilterInput>
-    readonly buildTime: Maybe<DateQueryOperatorInput>
-  }
-
-  type SiteBuildMetadataSortInput = {
-    readonly fields: Maybe<ReadonlyArray<Maybe<SiteBuildMetadataFieldsEnum>>>
-    readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>
-  }
-
   type SitePluginConnection = {
     readonly totalCount: Scalars["Int"]
     readonly edges: ReadonlyArray<SitePluginEdge>
@@ -3192,8 +3029,10 @@ declare namespace GatsbyTypes {
     | "pluginOptions.defaultLang"
     | "pluginOptions.configPath"
     | "pluginOptions.localeDir"
-    | "pluginOptions.analyzerPort"
     | "pluginOptions.emitSchema.src___generated___gatsby_schema_graphql"
+    | "pluginOptions.dsn"
+    | "pluginOptions.release"
+    | "pluginOptions.tracesSampleRate"
     | "pluginOptions.pathCheck"
     | "pluginOptions.allExtensions"
     | "pluginOptions.isTSX"
@@ -3232,10 +3071,160 @@ declare namespace GatsbyTypes {
     readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>
   }
 
-  type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454QueryVariables =
-    Exact<{ [key: string]: never }>
+  type SiteBuildMetadataConnection = {
+    readonly totalCount: Scalars["Int"]
+    readonly edges: ReadonlyArray<SiteBuildMetadataEdge>
+    readonly nodes: ReadonlyArray<SiteBuildMetadata>
+    readonly pageInfo: PageInfo
+    readonly distinct: ReadonlyArray<Scalars["String"]>
+    readonly max: Maybe<Scalars["Float"]>
+    readonly min: Maybe<Scalars["Float"]>
+    readonly sum: Maybe<Scalars["Float"]>
+    readonly group: ReadonlyArray<SiteBuildMetadataGroupConnection>
+  }
 
-  type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454Query = {
+  type SiteBuildMetadataConnection_distinctArgs = {
+    field: SiteBuildMetadataFieldsEnum
+  }
+
+  type SiteBuildMetadataConnection_maxArgs = {
+    field: SiteBuildMetadataFieldsEnum
+  }
+
+  type SiteBuildMetadataConnection_minArgs = {
+    field: SiteBuildMetadataFieldsEnum
+  }
+
+  type SiteBuildMetadataConnection_sumArgs = {
+    field: SiteBuildMetadataFieldsEnum
+  }
+
+  type SiteBuildMetadataConnection_groupArgs = {
+    skip: Maybe<Scalars["Int"]>
+    limit: Maybe<Scalars["Int"]>
+    field: SiteBuildMetadataFieldsEnum
+  }
+
+  type SiteBuildMetadataEdge = {
+    readonly next: Maybe<SiteBuildMetadata>
+    readonly node: SiteBuildMetadata
+    readonly previous: Maybe<SiteBuildMetadata>
+  }
+
+  type SiteBuildMetadataFieldsEnum =
+    | "id"
+    | "parent.id"
+    | "parent.parent.id"
+    | "parent.parent.parent.id"
+    | "parent.parent.parent.children"
+    | "parent.parent.children"
+    | "parent.parent.children.id"
+    | "parent.parent.children.children"
+    | "parent.parent.internal.content"
+    | "parent.parent.internal.contentDigest"
+    | "parent.parent.internal.description"
+    | "parent.parent.internal.fieldOwners"
+    | "parent.parent.internal.ignoreType"
+    | "parent.parent.internal.mediaType"
+    | "parent.parent.internal.owner"
+    | "parent.parent.internal.type"
+    | "parent.children"
+    | "parent.children.id"
+    | "parent.children.parent.id"
+    | "parent.children.parent.children"
+    | "parent.children.children"
+    | "parent.children.children.id"
+    | "parent.children.children.children"
+    | "parent.children.internal.content"
+    | "parent.children.internal.contentDigest"
+    | "parent.children.internal.description"
+    | "parent.children.internal.fieldOwners"
+    | "parent.children.internal.ignoreType"
+    | "parent.children.internal.mediaType"
+    | "parent.children.internal.owner"
+    | "parent.children.internal.type"
+    | "parent.internal.content"
+    | "parent.internal.contentDigest"
+    | "parent.internal.description"
+    | "parent.internal.fieldOwners"
+    | "parent.internal.ignoreType"
+    | "parent.internal.mediaType"
+    | "parent.internal.owner"
+    | "parent.internal.type"
+    | "children"
+    | "children.id"
+    | "children.parent.id"
+    | "children.parent.parent.id"
+    | "children.parent.parent.children"
+    | "children.parent.children"
+    | "children.parent.children.id"
+    | "children.parent.children.children"
+    | "children.parent.internal.content"
+    | "children.parent.internal.contentDigest"
+    | "children.parent.internal.description"
+    | "children.parent.internal.fieldOwners"
+    | "children.parent.internal.ignoreType"
+    | "children.parent.internal.mediaType"
+    | "children.parent.internal.owner"
+    | "children.parent.internal.type"
+    | "children.children"
+    | "children.children.id"
+    | "children.children.parent.id"
+    | "children.children.parent.children"
+    | "children.children.children"
+    | "children.children.children.id"
+    | "children.children.children.children"
+    | "children.children.internal.content"
+    | "children.children.internal.contentDigest"
+    | "children.children.internal.description"
+    | "children.children.internal.fieldOwners"
+    | "children.children.internal.ignoreType"
+    | "children.children.internal.mediaType"
+    | "children.children.internal.owner"
+    | "children.children.internal.type"
+    | "children.internal.content"
+    | "children.internal.contentDigest"
+    | "children.internal.description"
+    | "children.internal.fieldOwners"
+    | "children.internal.ignoreType"
+    | "children.internal.mediaType"
+    | "children.internal.owner"
+    | "children.internal.type"
+    | "internal.content"
+    | "internal.contentDigest"
+    | "internal.description"
+    | "internal.fieldOwners"
+    | "internal.ignoreType"
+    | "internal.mediaType"
+    | "internal.owner"
+    | "internal.type"
+    | "buildTime"
+
+  type SiteBuildMetadataGroupConnection = {
+    readonly totalCount: Scalars["Int"]
+    readonly edges: ReadonlyArray<SiteBuildMetadataEdge>
+    readonly nodes: ReadonlyArray<SiteBuildMetadata>
+    readonly pageInfo: PageInfo
+    readonly field: Scalars["String"]
+    readonly fieldValue: Maybe<Scalars["String"]>
+  }
+
+  type SiteBuildMetadataFilterInput = {
+    readonly id: Maybe<StringQueryOperatorInput>
+    readonly parent: Maybe<NodeFilterInput>
+    readonly children: Maybe<NodeFilterListInput>
+    readonly internal: Maybe<InternalFilterInput>
+    readonly buildTime: Maybe<DateQueryOperatorInput>
+  }
+
+  type SiteBuildMetadataSortInput = {
+    readonly fields: Maybe<ReadonlyArray<Maybe<SiteBuildMetadataFieldsEnum>>>
+    readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>
+  }
+
+  type Unnamed_1_QueryVariables = Exact<{ [key: string]: never }>
+
+  type Unnamed_1_Query = {
     readonly site: Maybe<{
       readonly siteMetadata: Maybe<
         Pick<SiteSiteMetadata, "title" | "description" | "author">
@@ -3243,15 +3232,19 @@ declare namespace GatsbyTypes {
     }>
   }
 
-  type homechrisintSrcobserfynodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544QueryVariables =
-    Exact<{ [key: string]: never }>
+  type Unnamed_2_QueryVariables = Exact<{ [key: string]: never }>
 
-  type homechrisintSrcobserfynodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544Query =
-    {
-      readonly themeUiConfig: Maybe<
-        Pick<ThemeUiConfig, "preset" | "prismPreset">
-      >
-    }
+  type Unnamed_2_Query = {
+    readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, "preset" | "prismPreset">>
+  }
+
+  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
+
+  type LocalizationSEOQueryQuery = {
+    readonly site: Maybe<{
+      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
+    }>
+  }
 
   type GatsbyImageSharpFixedFragment = Pick<
     ImageSharpFixed,
@@ -3336,14 +3329,6 @@ declare namespace GatsbyTypes {
     "aspectRatio" | "src" | "srcSet" | "srcWebp" | "srcSetWebp" | "sizes"
   >
 
-  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
-
-  type LocalizationSEOQueryQuery = {
-    readonly site: Maybe<{
-      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
-    }>
-  }
-
   type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never }>
 
   type LocalizationConfigQueryQuery = {
@@ -3366,16 +3351,5 @@ declare namespace GatsbyTypes {
         >
       }
     >
-  }
-
-  type PagesQueryQueryVariables = Exact<{ [key: string]: never }>
-
-  type PagesQueryQuery = {
-    readonly allSiteFunction: {
-      readonly nodes: ReadonlyArray<Pick<SiteFunction, "apiRoute">>
-    }
-    readonly allSitePage: {
-      readonly nodes: ReadonlyArray<Pick<SitePage, "path">>
-    }
   }
 }
