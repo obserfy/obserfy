@@ -13,6 +13,7 @@ const plugins = [
   `gatsby-plugin-image`,
   `gatsby-transformer-sharp`,
   `gatsby-plugin-sharp`,
+  `gatsby-plugin-remove-trailing-slashes`,
   {
     resolve: `gatsby-plugin-manifest`,
     options: {
@@ -71,7 +72,6 @@ const plugins = [
       localeDir: `./i18n/lingui`,
     },
   },
-  `gatsby-plugin-remove-trailing-slashes`,
   // DEVTOOLS ================================================================
   // {
   //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
