@@ -24,4 +24,5 @@ module.exports = {
     "fake-indexeddb/auto",
   ],
   snapshotSerializers: ["@emotion/jest/serializer"],
+  testEnvironment: "jsdom",
 }
