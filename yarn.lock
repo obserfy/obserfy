@@ -8044,7 +8044,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.2.4, autoprefixer@npm:^10.3.1":
+"autoprefixer@npm:10.3.1, autoprefixer@npm:^10.2.4":
   version: 10.3.1
   resolution: "autoprefixer@npm:10.3.1"
   dependencies:
@@ -14806,7 +14806,7 @@ fsevents@^1.2.7:
     "@types/uuid": 8.3.1
     "@typescript-eslint/eslint-plugin": 4.28.3
     "@typescript-eslint/parser": 4.28.3
-    autoprefixer: ^10.3.1
+    autoprefixer: 10.3.1
     body-scroll-lock: 3.1.5
     dayjs: 1.10.6
     dompurify: 2.3.0
@@ -14853,9 +14853,9 @@ fsevents@^1.2.7:
     stylelint: 13.13.1
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 22.0.0
-    tailwindcss: ^2.2.4
+    tailwindcss: 2.2.4
     ts-is-present: 1.2.1
-    typescript: ^4.3.5
+    typescript: 4.3.5
     uuid: 8.3.2
   languageName: unknown
   linkType: soft
@@ -28916,7 +28916,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^2.2.4":
+"tailwindcss@npm:2.2.4":
   version: 2.2.4
   resolution: "tailwindcss@npm:2.2.4"
   dependencies:
@@ -29889,7 +29889,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"typescript@4.3.5, typescript@^4.3.5":
+typescript@4.3.5:
   version: 4.3.5
   resolution: "typescript@npm:4.3.5"
   bin:
@@ -29899,7 +29899,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.3.5#~builtin<compat/typescript>, typescript@patch:typescript@^4.3.5#~builtin<compat/typescript>":
+"typescript@patch:typescript@4.3.5#~builtin<compat/typescript>":
   version: 4.3.5
   resolution: "typescript@patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"
   bin:
@@ -30807,7 +30807,7 @@ resolve@^2.0.0-next.3:
     "@types/react-helmet": 6.1.2
     "@typescript-eslint/eslint-plugin": 4.28.3
     "@typescript-eslint/parser": 4.28.3
-    autoprefixer: ^10.3.1
+    autoprefixer: 10.3.1
     babel-jest: 27.0.6
     babel-loader: 8.2.2
     babel-plugin-istanbul: 6.0.0
@@ -30888,7 +30888,7 @@ resolve@^2.0.0-next.3:
     snarkdown: 2.0.0
     storybook-addon-deps: 2.2.0
     storybook-addon-i18n: 5.1.13
-    tailwindcss: ^2.2.4
+    tailwindcss: 2.2.4
     theme-ui: 0.10.0
     typescript: 4.3.5
     url-loader: 4.1.1
