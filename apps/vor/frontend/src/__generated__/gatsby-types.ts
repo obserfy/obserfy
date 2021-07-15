@@ -3232,20 +3232,6 @@ declare namespace GatsbyTypes {
     }>
   }
 
-  type Unnamed_2_QueryVariables = Exact<{ [key: string]: never }>
-
-  type Unnamed_2_Query = {
-    readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, "preset" | "prismPreset">>
-  }
-
-  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
-
-  type LocalizationSEOQueryQuery = {
-    readonly site: Maybe<{
-      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
-    }>
-  }
-
   type GatsbyImageSharpFixedFragment = Pick<
     ImageSharpFixed,
     "base64" | "width" | "height" | "src" | "srcSet"
@@ -3329,6 +3315,12 @@ declare namespace GatsbyTypes {
     "aspectRatio" | "src" | "srcSet" | "srcWebp" | "srcSetWebp" | "sizes"
   >
 
+  type Unnamed_2_QueryVariables = Exact<{ [key: string]: never }>
+
+  type Unnamed_2_Query = {
+    readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, "preset" | "prismPreset">>
+  }
+
   type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never }>
 
   type LocalizationConfigQueryQuery = {
@@ -3351,5 +3343,13 @@ declare namespace GatsbyTypes {
         >
       }
     >
+  }
+
+  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
+
+  type LocalizationSEOQueryQuery = {
+    readonly site: Maybe<{
+      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
+    }>
   }
 }

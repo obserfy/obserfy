@@ -23,7 +23,7 @@ exports[`PageManageReports should render correctly 1`] = `
   border-right-color: var(--theme-ui-colors-border);
   width: 100%;
   height: 100vh;
-  -webkit-position: sticky;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   overflow-y: auto;

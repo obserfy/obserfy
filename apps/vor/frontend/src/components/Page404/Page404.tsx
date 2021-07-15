@@ -9,7 +9,7 @@ import Typography from "../Typography/Typography"
 
 export const Page404: FC = () => {
   useEffect(() => {
-    if (window.analytics) track("404 visited")
+    if (window.mixpanel) track("404 visited")
   }, [])
 
   return (
