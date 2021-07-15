@@ -386,8 +386,35 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text);
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   opacity: 1!important;
   width: 100%;
+}
+
+.emotion-24:autofill,
+.emotion-24:autofill:hover,
+.emotion-24:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-24:autofill:first-line,
+.emotion-24:autofill:hover:first-line,
+.emotion-24:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-24:-webkit-autofill,
+.emotion-24:-webkit-autofill:hover,
+.emotion-24:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-24:-webkit-autofill:first-line,
+.emotion-24:-webkit-autofill:hover:first-line,
+.emotion-24:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-24:hover,
@@ -544,8 +571,35 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
   width: 100%;
+}
+
+.emotion-30:autofill,
+.emotion-30:autofill:hover,
+.emotion-30:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-30:autofill:first-line,
+.emotion-30:autofill:hover:first-line,
+.emotion-30:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-30:-webkit-autofill,
+.emotion-30:-webkit-autofill:hover,
+.emotion-30:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-30:-webkit-autofill:first-line,
+.emotion-30:-webkit-autofill:hover:first-line,
+.emotion-30:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-30:hover,
@@ -962,8 +1016,35 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text);
   padding: 8px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
   padding: 8px;
+}
+
+.emotion-47:autofill,
+.emotion-47:autofill:hover,
+.emotion-47:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-47:autofill:first-line,
+.emotion-47:autofill:hover:first-line,
+.emotion-47:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-47:-webkit-autofill,
+.emotion-47:-webkit-autofill:hover,
+.emotion-47:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-47:-webkit-autofill:first-line,
+.emotion-47:-webkit-autofill:hover:first-line,
+.emotion-47:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-47:hover,

@@ -370,7 +370,34 @@ exports[`PageNewObservation should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text);
   margin-bottom: 8px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+}
+
+.emotion-19:autofill,
+.emotion-19:autofill:hover,
+.emotion-19:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-19:autofill:first-line,
+.emotion-19:autofill:hover:first-line,
+.emotion-19:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-19:-webkit-autofill,
+.emotion-19:-webkit-autofill:hover,
+.emotion-19:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-19:-webkit-autofill:first-line,
+.emotion-19:-webkit-autofill:hover:first-line,
+.emotion-19:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-19:hover,
@@ -902,8 +929,35 @@ input:focus~.emotion-24 {
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text);
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   opacity: 1!important;
   width: 100%;
+}
+
+.emotion-42:autofill,
+.emotion-42:autofill:hover,
+.emotion-42:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-42:autofill:first-line,
+.emotion-42:autofill:hover:first-line,
+.emotion-42:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-42:-webkit-autofill,
+.emotion-42:-webkit-autofill:hover,
+.emotion-42:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-42:-webkit-autofill:first-line,
+.emotion-42:-webkit-autofill:hover:first-line,
+.emotion-42:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-42:hover,
@@ -1113,8 +1167,35 @@ input:focus~.emotion-24 {
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text);
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   display: none;
   width: 100%;
+}
+
+.emotion-51:autofill,
+.emotion-51:autofill:hover,
+.emotion-51:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-51:autofill:first-line,
+.emotion-51:autofill:hover:first-line,
+.emotion-51:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-51:-webkit-autofill,
+.emotion-51:-webkit-autofill:hover,
+.emotion-51:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-51:-webkit-autofill:first-line,
+.emotion-51:-webkit-autofill:hover:first-line,
+.emotion-51:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-51:hover,

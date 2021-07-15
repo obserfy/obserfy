@@ -65,7 +65,7 @@ exports[`Select should render correctly 1`] = `
   border: 1px solid;
   border-radius: 4px;
   color: inherit;
-  background-color: transparent;
+  background-color: var(--theme-ui-colors-background);
   border-radius: 6px;
   color: var(--theme-ui-colors-text);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;

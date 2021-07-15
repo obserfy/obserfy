@@ -168,8 +168,35 @@ exports[`PageRegister should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text);
   margin-bottom: 8px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
   width: 100%;
+}
+
+.emotion-12:autofill,
+.emotion-12:autofill:hover,
+.emotion-12:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-12:autofill:first-line,
+.emotion-12:autofill:hover:first-line,
+.emotion-12:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-12:-webkit-autofill,
+.emotion-12:-webkit-autofill:hover,
+.emotion-12:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-12:-webkit-autofill:first-line,
+.emotion-12:-webkit-autofill:hover:first-line,
+.emotion-12:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-12:hover,
@@ -226,8 +253,35 @@ exports[`PageRegister should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
   width: 100%;
+}
+
+.emotion-20:autofill,
+.emotion-20:autofill:hover,
+.emotion-20:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-20:autofill:first-line,
+.emotion-20:autofill:hover:first-line,
+.emotion-20:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-20:-webkit-autofill,
+.emotion-20:-webkit-autofill:hover,
+.emotion-20:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-20:-webkit-autofill:first-line,
+.emotion-20:-webkit-autofill:hover:first-line,
+.emotion-20:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-20:hover,

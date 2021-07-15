@@ -158,7 +158,34 @@ exports[`PageNewClass should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+}
+
+.emotion-10:autofill,
+.emotion-10:autofill:hover,
+.emotion-10:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-10:autofill:first-line,
+.emotion-10:autofill:hover:first-line,
+.emotion-10:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-10:-webkit-autofill,
+.emotion-10:-webkit-autofill:hover,
+.emotion-10:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-10:-webkit-autofill:first-line,
+.emotion-10:-webkit-autofill:hover:first-line,
+.emotion-10:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-10:hover,
@@ -226,7 +253,34 @@ exports[`PageNewClass should render correctly 1`] = `
   color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
   margin-right: 16px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+}
+
+.emotion-15:autofill,
+.emotion-15:autofill:hover,
+.emotion-15:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-15:autofill:first-line,
+.emotion-15:autofill:hover:first-line,
+.emotion-15:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-15:-webkit-autofill,
+.emotion-15:-webkit-autofill:hover,
+.emotion-15:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-15:-webkit-autofill:first-line,
+.emotion-15:-webkit-autofill:hover:first-line,
+.emotion-15:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-15:hover,
