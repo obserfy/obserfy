@@ -5,6 +5,7 @@
     "i18n",
     "graphql-types.ts",
     "loadershim.ts",
-    "tailwind.config.js"
+    "tailwind.config.js",
+    "scripts/**/*.ts"
   ]
 }
