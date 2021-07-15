@@ -128,7 +128,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           />
 
           <Card sx={{ ...borderFull }} mb={3}>
-            <Typography.Body pl={3} pt={3} pb={2} sx={{ fontWeight: "bold" }}>
+            <Typography.Body p={3} sx={{ fontWeight: "bold" }}>
               <Trans>Description</Trans>
             </Typography.Body>
             <MarkdownEditor onChange={setDescription} value={description} />

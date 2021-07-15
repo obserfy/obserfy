@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import Hls from "hls.js/dist/hls.light"
+import Hls from "hls.js"
 import React, { FC, useEffect, useRef } from "react"
 // @ts-ignore
 import mux from "mux-embed"

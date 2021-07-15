@@ -18,5 +18,10 @@ const createBundler = require("@bahmutov/cypress-esbuild-preprocessor")
  * @type {Cypress.PluginConfig}
  */
 module.exports = (on, config) => {
-  on("file:preprocessor", createBundler())
+  on(
+    "file:preprocessor",
+    createBundler({
+      target: "chrome89",
+    })
+  )
 }

@@ -1,6 +1,7 @@
 import { t, Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Button, Card, Flex } from "theme-ui"
+import { borderBottom } from "../../border"
 import usePatchObservation from "../../hooks/api/observations/usePatchObservation"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
@@ -68,8 +69,8 @@ const DetailEditor: FC<{
   }
 
   return (
-    <Card variant="responsive" mb={3}>
-      <Flex pt={3} pb={2}>
+    <Card variant="responsive" mb={3} sx={{ overflow: "hidden" }}>
+      <Flex pt={3} pb={3} sx={{ ...borderBottom, alignItems: "center" }}>
         <Typography.Body px={3} sx={{ fontWeight: "bold" }}>
           <Trans>Details</Trans>
         </Typography.Body>

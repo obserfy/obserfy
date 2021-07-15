@@ -12,6 +12,7 @@ import { I18nProvider } from "@lingui/react"
 import { i18n } from "@lingui/core"
 import { en } from "make-plural/plurals"
 import theme from "./gatsby-plugin-theme-ui"
+// @ts-ignore
 import enCatalog from "../i18n/lingui/en/messages.js"
 
 // any used here because the catalogs are generated b lingui

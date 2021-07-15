@@ -24,11 +24,5 @@
       "@components/*": ["components/*"]
     }
   },
-  "include": [
-    "src",
-    "i18n",
-    "graphql-types.ts",
-    "loadershim.ts",
-    "tailwind.config.js"
-  ]
+  "include": [ "src" ]
 }

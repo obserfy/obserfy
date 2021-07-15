@@ -34,7 +34,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   min-width: 0;
   background-color: var(--theme-ui-colors-surfaceBlurNonTransparent);
   z-index: 100;
-  -webkit-position: sticky;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   border-bottom-width: 1px;
@@ -457,7 +457,34 @@ exports[`PageNewStudent should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text);
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   display: none;
+}
+
+.emotion-25:autofill,
+.emotion-25:autofill:hover,
+.emotion-25:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-25:autofill:first-line,
+.emotion-25:autofill:hover:first-line,
+.emotion-25:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-25:-webkit-autofill,
+.emotion-25:-webkit-autofill:hover,
+.emotion-25:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-25:-webkit-autofill:first-line,
+.emotion-25:-webkit-autofill:hover:first-line,
+.emotion-25:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-25:hover,
@@ -561,7 +588,34 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+}
+
+.emotion-29:autofill,
+.emotion-29:autofill:hover,
+.emotion-29:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-29:autofill:first-line,
+.emotion-29:autofill:hover:first-line,
+.emotion-29:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-29:-webkit-autofill,
+.emotion-29:-webkit-autofill:hover,
+.emotion-29:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-29:-webkit-autofill:first-line,
+.emotion-29:-webkit-autofill:hover:first-line,
+.emotion-29:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-29:hover,
@@ -628,8 +682,35 @@ exports[`PageNewStudent should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text);
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   opacity: 1!important;
   width: 100%;
+}
+
+.emotion-34:autofill,
+.emotion-34:autofill:hover,
+.emotion-34:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-34:autofill:first-line,
+.emotion-34:autofill:hover:first-line,
+.emotion-34:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-34:-webkit-autofill,
+.emotion-34:-webkit-autofill:hover,
+.emotion-34:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-34:-webkit-autofill:first-line,
+.emotion-34:-webkit-autofill:hover:first-line,
+.emotion-34:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-34:hover,
@@ -801,7 +882,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   border: 1px solid;
   border-radius: 4px;
   color: inherit;
-  background-color: transparent;
+  background-color: var(--theme-ui-colors-background);
   border-radius: 6px;
   color: var(--theme-ui-colors-text);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;

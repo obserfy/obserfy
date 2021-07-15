@@ -229,7 +229,7 @@ jobs:
           parallel: true
           group: 'E2E'
           wait-on: 'https://localhost:8000/login'
-          wait-on-timeout: 120
+          wait-on-timeout: 240
           install: false
           working-directory: ./apps/vor/frontend
         env:
@@ -303,7 +303,7 @@ jobs:
           parallel: true
           group: 'E2E'
           wait-on: 'https://localhost:8000/login'
-          wait-on-timeout: 120
+          wait-on-timeout: 240
           install: false
           working-directory: ./apps/vor/frontend
         env:

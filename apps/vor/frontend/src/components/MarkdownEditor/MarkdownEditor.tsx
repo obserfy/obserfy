@@ -17,8 +17,49 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
 
   return (
     <Box>
+      {showPreview ? (
+        <Box
+          p={3}
+          sx={{
+            backgroundColor: "darkSurface",
+            borderBottomLeftRadius: "default",
+            borderBottomRightRadius: "default",
+            minHeight: 408,
+          }}
+        >
+          <Markdown markdown={value} />
+        </Box>
+      ) : (
+        <Box
+          px={2}
+          sx={{
+            backgroundColor: "darkSurface",
+            borderBottomLeftRadius: "default",
+            borderBottomRightRadius: "default",
+          }}
+        >
+          <textarea
+            data-cy="markdown-editor"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder="Write something"
+            sx={{
+              lineHeight: "1.7142857",
+              outline: "none",
+              width: "100%",
+              px: 2,
+              py: 3,
+              border: "none",
+              backgroundColor: "darkSurface",
+              minHeight: 400,
+            }}
+          />
+        </Box>
+      )}
+
       <Flex
         px={2}
+        pb={3}
         sx={{ alignItems: "center", backgroundColor: "darkSurface" }}
       >
         <Button
@@ -36,6 +77,7 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
             backgroundColor: !showPreview ? "primaryLightest" : "none",
             color: !showPreview ? "textPrimary" : "textMediumEmphasis",
             borderColor: !showPreview ? "primary" : "border",
+            fontSize: 0,
           }}
         >
           <Trans>Write</Trans>
@@ -54,6 +96,7 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
             fontWeight: "bold",
             color: showPreview ? "warning" : "textMediumEmphasis",
             borderColor: showPreview ? "warning" : "border",
+            fontSize: 0,
             "&:hover, &:focus": {
               backgroundColor: "tintWarning",
               color: "warning",
@@ -105,46 +148,6 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
           </Typography.Body>
         </a>
       </Flex>
-
-      {showPreview ? (
-        <Box
-          p={3}
-          sx={{
-            backgroundColor: "darkSurface",
-            borderBottomLeftRadius: "default",
-            borderBottomRightRadius: "default",
-            minHeight: 408,
-          }}
-        >
-          <Markdown markdown={value} />
-        </Box>
-      ) : (
-        <Box
-          px={2}
-          sx={{
-            backgroundColor: "darkSurface",
-            borderBottomLeftRadius: "default",
-            borderBottomRightRadius: "default",
-          }}
-        >
-          <textarea
-            data-cy="markdown-editor"
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            placeholder="Write something"
-            sx={{
-              lineHeight: "1.7142857",
-              outline: "none",
-              width: "100%",
-              px: 2,
-              py: 3,
-              border: "none",
-              backgroundColor: "darkSurface",
-              minHeight: 400,
-            }}
-          />
-        </Box>
-      )}
     </Box>
   )
 }

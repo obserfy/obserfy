@@ -20,7 +20,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   min-width: 0;
   background-color: var(--theme-ui-colors-surfaceBlurNonTransparent);
   z-index: 100;
-  -webkit-position: sticky;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   border-bottom-width: 1px;
@@ -386,8 +386,35 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text);
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   opacity: 1!important;
   width: 100%;
+}
+
+.emotion-24:autofill,
+.emotion-24:autofill:hover,
+.emotion-24:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-24:autofill:first-line,
+.emotion-24:autofill:hover:first-line,
+.emotion-24:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-24:-webkit-autofill,
+.emotion-24:-webkit-autofill:hover,
+.emotion-24:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-24:-webkit-autofill:first-line,
+.emotion-24:-webkit-autofill:hover:first-line,
+.emotion-24:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-24:hover,
@@ -544,8 +571,35 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
   width: 100%;
+}
+
+.emotion-30:autofill,
+.emotion-30:autofill:hover,
+.emotion-30:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-30:autofill:first-line,
+.emotion-30:autofill:hover:first-line,
+.emotion-30:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-30:-webkit-autofill,
+.emotion-30:-webkit-autofill:hover,
+.emotion-30:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-30:-webkit-autofill:first-line,
+.emotion-30:-webkit-autofill:hover:first-line,
+.emotion-30:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-30:hover,
@@ -597,9 +651,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  padding-left: 16px;
-  padding-top: 16px;
-  padding-bottom: 8px;
+  padding: 16px;
   font-weight: bold;
 }
 
@@ -615,6 +667,31 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   min-width: 0;
   padding-left: 8px;
   padding-right: 8px;
+  background-color: var(--theme-ui-colors-darkSurface);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.emotion-35 {
+  line-height: 1.7142857;
+  outline: none;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border: none;
+  background-color: var(--theme-ui-colors-darkSurface);
+  min-height: 400px;
+}
+
+.emotion-36 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -626,7 +703,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   background-color: var(--theme-ui-colors-darkSurface);
 }
 
-.emotion-35 {
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -701,21 +778,22 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   font-weight: bold;
   background-color: var(--theme-ui-colors-primaryLightest);
   color: var(--theme-ui-colors-textPrimary);
+  font-size: 12px;
 }
 
-.emotion-35:disabled {
+.emotion-37:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-35:hover,
-.emotion-35:focus {
+.emotion-37:hover,
+.emotion-37:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
-.emotion-36 {
+.emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -789,28 +867,29 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border);
   font-weight: bold;
   color: var(--theme-ui-colors-textMediumEmphasis);
+  font-size: 12px;
 }
 
-.emotion-36:disabled {
+.emotion-38:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-36:hover,
-.emotion-36:focus {
+.emotion-38:hover,
+.emotion-38:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
-.emotion-36:hover,
-.emotion-36:focus {
+.emotion-38:hover,
+.emotion-38:focus {
   background-color: var(--theme-ui-colors-tintWarning);
   color: var(--theme-ui-colors-warning);
   border-color: var(--theme-ui-colors-warning);
 }
 
-.emotion-37 {
+.emotion-39 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -828,11 +907,11 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-37:hover {
+.emotion-39:hover {
   color: var(--theme-ui-colors-textPrimary);
 }
 
-.emotion-38 {
+.emotion-40 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -850,7 +929,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   color: inherit;
 }
 
-.emotion-39 {
+.emotion-41 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -868,39 +947,15 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-39 {
+  .emotion-41 {
     display: none;
   }
 }
 
 @media screen and (min-width: 52em) {
-  .emotion-39 {
+  .emotion-41 {
     display: block;
   }
-}
-
-.emotion-40 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-left: 8px;
-  padding-right: 8px;
-  background-color: var(--theme-ui-colors-darkSurface);
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-}
-
-.emotion-41 {
-  line-height: 1.7142857;
-  outline: none;
-  width: 100%;
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  border: none;
-  background-color: var(--theme-ui-colors-darkSurface);
-  min-height: 400px;
 }
 
 .emotion-42 {
@@ -961,8 +1016,35 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text);
   padding: 8px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
   padding: 8px;
+}
+
+.emotion-47:autofill,
+.emotion-47:autofill:hover,
+.emotion-47:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-47:autofill:first-line,
+.emotion-47:autofill:hover:first-line,
+.emotion-47:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-47:-webkit-autofill,
+.emotion-47:-webkit-autofill:hover,
+.emotion-47:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-47:-webkit-autofill:first-line,
+.emotion-47:-webkit-autofill:hover:first-line,
+.emotion-47:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-47:hover,
@@ -1449,40 +1531,40 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
             <div
               class="emotion-34"
             >
-              <button
+              <textarea
                 class="emotion-35"
+                data-cy="markdown-editor"
+                placeholder="Write something"
+              />
+            </div>
+            <div
+              class="emotion-36"
+            >
+              <button
+                class="emotion-37"
               >
                 Write
               </button>
               <button
-                class="emotion-36"
+                class="emotion-38"
               >
                 Preview
               </button>
               <a
-                class="emotion-37"
+                class="emotion-39"
                 href="https://obserfy.com/docs/markdown-support"
                 rel="noreferrer"
                 target="_blank"
               >
                 <div
-                  class="emotion-38"
+                  class="emotion-40"
                 />
                 <p
-                  class="emotion-39"
+                  class="emotion-41"
                 >
                   Markdown Supported
                 </p>
               </a>
-            </div>
-            <div
-              class="emotion-40"
-            >
-              <textarea
-                class="emotion-41"
-                data-cy="markdown-editor"
-                placeholder="Write something"
-              />
             </div>
           </div>
         </div>

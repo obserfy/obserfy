@@ -168,10 +168,37 @@ exports[`SimpleGuardiansSelector should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   background-color: var(--theme-ui-colors-surface);
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   background-color: var(--theme-ui-colors-background);
   width: 100%;
   padding-left: 34px;
   font-size: 14px;
+}
+
+.emotion-7:autofill,
+.emotion-7:autofill:hover,
+.emotion-7:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-7:autofill:first-line,
+.emotion-7:autofill:hover:first-line,
+.emotion-7:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-7:-webkit-autofill,
+.emotion-7:-webkit-autofill:hover,
+.emotion-7:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-7:-webkit-autofill:first-line,
+.emotion-7:-webkit-autofill:hover:first-line,
+.emotion-7:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-7:hover,

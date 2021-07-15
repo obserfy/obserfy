@@ -135,7 +135,34 @@ exports[`ProfilePicker should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text);
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   display: none;
+}
+
+.emotion-8:autofill,
+.emotion-8:autofill:hover,
+.emotion-8:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-8:autofill:first-line,
+.emotion-8:autofill:hover:first-line,
+.emotion-8:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-8:-webkit-autofill,
+.emotion-8:-webkit-autofill:hover,
+.emotion-8:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-8:-webkit-autofill:first-line,
+.emotion-8:-webkit-autofill:hover:first-line,
+.emotion-8:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-8:hover,

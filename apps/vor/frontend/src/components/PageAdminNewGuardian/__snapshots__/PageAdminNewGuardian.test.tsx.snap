@@ -161,7 +161,34 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text);
   margin-bottom: 8px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+}
+
+.emotion-10:autofill,
+.emotion-10:autofill:hover,
+.emotion-10:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-10:autofill:first-line,
+.emotion-10:autofill:hover:first-line,
+.emotion-10:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-10:-webkit-autofill,
+.emotion-10:-webkit-autofill:hover,
+.emotion-10:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-10:-webkit-autofill:first-line,
+.emotion-10:-webkit-autofill:hover:first-line,
+.emotion-10:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-10:hover,
@@ -218,7 +245,34 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+}
+
+.emotion-18:autofill,
+.emotion-18:autofill:hover,
+.emotion-18:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-18:autofill:first-line,
+.emotion-18:autofill:hover:first-line,
+.emotion-18:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-18:-webkit-autofill,
+.emotion-18:-webkit-autofill:hover,
+.emotion-18:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-18:-webkit-autofill:first-line,
+.emotion-18:-webkit-autofill:hover:first-line,
+.emotion-18:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-18:hover,

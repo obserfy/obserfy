@@ -114,8 +114,8 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           onChange={setVisibleToGuardians}
         />
 
-        <Card sx={{ ...borderFull }} mb={3}>
-          <Typography.Body p={3} sx={{ fontWeight: "bold" }}>
+        <Card sx={{ ...borderFull, overflow: "hidden" }} mb={3}>
+          <Typography.Body p={3} sx={{ fontWeight: "bold", ...borderBottom }}>
             <Trans>Observation Details</Trans>
           </Typography.Body>
           <MarkdownEditor onChange={setLongDesc} value={longDesc} />

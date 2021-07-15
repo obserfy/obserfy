@@ -33,7 +33,7 @@ exports[`PageNewReport should render correctly 1`] = `
   min-width: 0;
   background-color: var(--theme-ui-colors-surfaceBlurNonTransparent);
   z-index: 100;
-  -webkit-position: sticky;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   border-bottom-width: 1px;
@@ -411,7 +411,34 @@ exports[`PageNewReport should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text);
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+}
+
+.emotion-20:autofill,
+.emotion-20:autofill:hover,
+.emotion-20:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-20:autofill:first-line,
+.emotion-20:autofill:hover:first-line,
+.emotion-20:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-20:-webkit-autofill,
+.emotion-20:-webkit-autofill:hover,
+.emotion-20:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-20:-webkit-autofill:first-line,
+.emotion-20:-webkit-autofill:hover:first-line,
+.emotion-20:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-20:hover,
@@ -536,8 +563,35 @@ exports[`PageNewReport should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text);
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   opacity: 1!important;
   width: 100%;
+}
+
+.emotion-26:autofill,
+.emotion-26:autofill:hover,
+.emotion-26:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-26:autofill:first-line,
+.emotion-26:autofill:hover:first-line,
+.emotion-26:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-26:-webkit-autofill,
+.emotion-26:-webkit-autofill:hover,
+.emotion-26:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-26:-webkit-autofill:first-line,
+.emotion-26:-webkit-autofill:hover:first-line,
+.emotion-26:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-26:hover,
