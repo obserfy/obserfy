@@ -1,4 +1,3 @@
-import React from "react"
 import { render } from "../../test-utils"
 import { All } from "./Typography.styles.stories"
 

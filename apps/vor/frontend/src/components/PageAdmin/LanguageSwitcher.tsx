@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/macro"
 import { useLocalization } from "gatsby-theme-i18n"
-import React from "react"
+
 import { Box, Flex } from "theme-ui"
 import { ReactComponent as GlobeIcon } from "../../icons/globe.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"

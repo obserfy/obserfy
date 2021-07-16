@@ -28,14 +28,14 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-left: -8px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-3 {
@@ -52,6 +52,7 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   flex-shrink: 0;
   width: 24px;
   height: 24px;
+  fill: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 .emotion-4 {
@@ -125,14 +126,14 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-10 {
@@ -162,6 +163,7 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   color: var(--theme-ui-colors-text);
   margin-bottom: 8px;
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
+  width: 100%;
   width: 100%;
 }
 
@@ -194,7 +196,6 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
 .emotion-10:hover,
 .emotion-10:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-10::-webkit-input-placeholder {
@@ -247,6 +248,7 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   margin-bottom: 16px;
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+  width: 100%;
 }
 
 .emotion-18:autofill,
@@ -278,7 +280,6 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
 .emotion-18:hover,
 .emotion-18:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-18::-webkit-input-placeholder {
@@ -360,7 +361,6 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
 .emotion-21:hover,
 .emotion-21:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-21::-webkit-input-placeholder {
@@ -455,7 +455,6 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
 .emotion-22:hover,
 .emotion-22:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-22:hover:disabled,

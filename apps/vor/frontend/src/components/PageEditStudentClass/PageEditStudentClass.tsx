@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Button, Box, Card, Flex } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { BackNavigation } from "../BackNavigation/BackNavigation"

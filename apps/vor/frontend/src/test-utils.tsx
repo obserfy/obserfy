@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { FC, ReactElement } from "react"
+import { FC, ReactElement } from "react"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ThemeProvider, Box, Theme } from "theme-ui"
 import { render, RenderOptions, RenderResult } from "@testing-library/react"

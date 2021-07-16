@@ -1,5 +1,5 @@
 import { advanceTo } from "jest-date-mock"
-import React from "react"
+
 import { render } from "../../test-utils"
 import PageNewReport from "./PageNewReport"
 

@@ -1,5 +1,5 @@
 import { t, Trans } from "@lingui/macro"
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box, Flex, useColorMode } from "theme-ui"
 import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
 import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"

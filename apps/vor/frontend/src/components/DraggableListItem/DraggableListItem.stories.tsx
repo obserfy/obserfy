@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from "react"
+import { FC, Fragment } from "react"
 import { borderBottom, borderRight } from "../../border"
 import { useMoveDraggableItem } from "../../hooks/useMoveDraggableItem"
 import DraggableListItem from "./DraggableListItem"

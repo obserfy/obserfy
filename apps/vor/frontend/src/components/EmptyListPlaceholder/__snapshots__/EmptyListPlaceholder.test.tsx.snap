@@ -30,6 +30,10 @@ exports[`EmptyListPlaceholder should render correctly 1`] = `
   margin: 16px;
   padding-left: 32px;
   padding-right: 32px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -42,10 +46,6 @@ exports[`EmptyListPlaceholder should render correctly 1`] = `
   -webkit-justify-content: center;
   justify-content: center;
   height: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {
@@ -133,7 +133,6 @@ exports[`EmptyListPlaceholder should render correctly 1`] = `
 .emotion-4:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-4:hover:disabled,

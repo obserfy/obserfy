@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro"
-import React from "react"
+
 import { borderBottom } from "../../../../border"
 import SEO from "../../../../components/seo"
 import StudentsInReport from "../../../../components/StudentsInReport/StudentsInReport"

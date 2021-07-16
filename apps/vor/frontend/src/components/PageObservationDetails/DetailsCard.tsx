@@ -1,5 +1,5 @@
 import { t, Trans } from "@lingui/macro"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Button, Card, Flex } from "theme-ui"
 import { borderBottom } from "../../border"
 import usePatchObservation from "../../hooks/api/observations/usePatchObservation"

@@ -95,7 +95,6 @@ exports[`BackButton should render correctly 1`] = `
 .emotion-2:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-3 {

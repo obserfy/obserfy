@@ -1,5 +1,5 @@
 import { keyframes } from "@emotion/react"
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box, BoxProps } from "theme-ui"
 
 const fading = keyframes`

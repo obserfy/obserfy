@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/macro"
-import React, { FC, Suspense, useState } from "react"
+import { FC, Suspense, useState } from "react"
 import { Box, Button, Flex } from "theme-ui"
 import dayjs from "../../dayjs"
 import { useGetStudent } from "../../hooks/api/useGetStudent"

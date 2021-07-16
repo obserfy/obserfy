@@ -1,6 +1,6 @@
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
 import { borderTop } from "../../border"
 import useGetSchoolClasses from "../../hooks/api/classes/useGetSchoolClasses"

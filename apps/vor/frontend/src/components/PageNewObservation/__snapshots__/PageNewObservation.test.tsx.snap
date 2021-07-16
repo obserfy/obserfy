@@ -33,15 +33,15 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   max-width: 640px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {
@@ -125,7 +125,6 @@ exports[`PageNewObservation should render correctly 1`] = `
 .emotion-4:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-5 {
@@ -147,15 +146,15 @@ exports[`PageNewObservation should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   overflow-x: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-7 {
@@ -277,7 +276,6 @@ exports[`PageNewObservation should render correctly 1`] = `
 .emotion-14:hover,
 .emotion-14:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-14:hover:disabled,
@@ -334,14 +332,14 @@ exports[`PageNewObservation should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-19 {
@@ -371,6 +369,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   color: var(--theme-ui-colors-text);
   margin-bottom: 8px;
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
+  width: 100%;
   width: 100%;
 }
 
@@ -403,7 +402,6 @@ exports[`PageNewObservation should render correctly 1`] = `
 .emotion-19:hover,
 .emotion-19:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-19::-webkit-input-placeholder {
@@ -698,7 +696,6 @@ input:focus~.emotion-24 {
 .emotion-31:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-32 {
@@ -787,7 +784,6 @@ input:focus~.emotion-24 {
 .emotion-32:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-32:hover,
@@ -883,14 +879,14 @@ input:focus~.emotion-24 {
   margin: 0;
   min-width: 0;
   margin-bottom: 8px;
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .emotion-38 {
@@ -930,6 +926,7 @@ input:focus~.emotion-24 {
   padding: 12px;
   color: var(--theme-ui-colors-text);
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
+  width: 100%;
   opacity: 1!important;
   width: 100%;
 }
@@ -963,7 +960,6 @@ input:focus~.emotion-24 {
 .emotion-42:hover,
 .emotion-42:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-42::-webkit-input-placeholder {
@@ -1065,7 +1061,6 @@ input:focus~.emotion-24 {
 .emotion-43:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-43:hover:disabled,
@@ -1092,6 +1087,10 @@ input:focus~.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1100,10 +1099,6 @@ input:focus~.emotion-24 {
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-47 {
@@ -1168,8 +1163,8 @@ input:focus~.emotion-24 {
   padding: 12px;
   color: var(--theme-ui-colors-text);
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
-  display: none;
   width: 100%;
+  display: none;
 }
 
 .emotion-51:autofill,
@@ -1201,7 +1196,6 @@ input:focus~.emotion-24 {
 .emotion-51:hover,
 .emotion-51:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-51::-webkit-input-placeholder {

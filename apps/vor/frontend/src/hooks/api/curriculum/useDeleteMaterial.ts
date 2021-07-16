@@ -8,12 +8,10 @@ const useDeleteMaterial = (materialId: string, subjectId: string) => {
   return useMutation(deleteMaterial, {
     onSuccess: async () => {
       const data = cache.getData()
-      console.log(data)
       if (data) {
         const materialIdx = data.findIndex((m) => m.id === materialId)
         const newData = [...data]
         newData.splice(materialIdx, 1)
-        console.log(newData)
         cache.setData(newData)
       }
     },

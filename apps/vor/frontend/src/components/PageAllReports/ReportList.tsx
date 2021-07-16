@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import { FC } from "react"
 import { Box, Button, Flex, Text } from "theme-ui"
 import { ProgressReport } from "../../__generated__/models"

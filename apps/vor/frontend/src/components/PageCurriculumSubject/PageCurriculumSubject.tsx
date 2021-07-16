@@ -1,7 +1,6 @@
-/** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
 import { Fragment, FC, memo, useState, useEffect } from "react"
-import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
+import { Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
 import usePatchMaterial from "../../hooks/api/curriculum/usePatchMaterial"
 import usePostNewMaterial from "../../hooks/api/curriculum/usePostNewMaterial"

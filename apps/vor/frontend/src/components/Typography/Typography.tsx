@@ -1,4 +1,4 @@
-import React, { FC, PropsWithoutRef } from "react"
+import { FC, PropsWithoutRef } from "react"
 import { Heading, HeadingProps, Text, TextProps } from "theme-ui"
 
 /**

@@ -1,5 +1,5 @@
 import DOMPurify from "dompurify"
-import React, { FC } from "react"
+import { FC } from "react"
 import snarkdown from "snarkdown"
 import { Box, BoxProps } from "theme-ui"
 

@@ -1,4 +1,3 @@
-import React from "react"
 import { advanceTo } from "jest-date-mock"
 import { render } from "../../test-utils"
 import { Basic } from "./PageStudentPlanDetails.stories"

@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { FC, useState } from "react"
-import { Box, Button, Flex, jsx } from "theme-ui"
+import { Box, Button, Flex } from "theme-ui"
 import { captureException } from "../../analytics"
 import Input from "../Input/Input"
 import { Link } from "../Link/Link"

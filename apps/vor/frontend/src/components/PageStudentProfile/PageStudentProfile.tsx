@@ -1,8 +1,7 @@
-/** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
 import { FC, Fragment, useState } from "react"
-import { Box, Button, Card, Flex, jsx } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
 import { useDeleteGuardianRelation } from "../../hooks/api/guardians/useDeleteGuardianRelation"
 import { usePatchStudentApi } from "../../hooks/api/students/usePatchStudentApi"
 import { Gender } from "../../hooks/api/students/usePostNewStudent"

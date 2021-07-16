@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro"
-import React from "react"
+
 import PageNewReport from "../../../components/PageNewReport/PageNewReport"
 import SEO from "../../../components/seo"
 

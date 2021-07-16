@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/macro"
-import React, { FC } from "react"
+import { FC } from "react"
 import { Button, Card, Flex, Image } from "theme-ui"
 import { Typography } from "../Typography/Typography"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"

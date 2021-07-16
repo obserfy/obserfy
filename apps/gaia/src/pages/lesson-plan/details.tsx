@@ -1,7 +1,7 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Head from "next/head"
 import Link from "next/link"
-import React from "react"
+
 import Icon from "../../components/Icon/Icon"
 import Markdown from "../../components/Markdown/Markdown"
 import useGetLessonPlan from "../../hooks/api/useGetlessonPlan"

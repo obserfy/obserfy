@@ -192,7 +192,6 @@ exports[`PageChooseSchool should render correctly 1`] = `
 .emotion-12:hover,
 .emotion-12:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-12:hover:disabled,

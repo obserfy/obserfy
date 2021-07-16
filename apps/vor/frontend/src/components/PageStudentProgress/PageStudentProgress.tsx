@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box, Card, Flex } from "theme-ui"
 import { useGetStudent } from "../../hooks/api/useGetStudent"
 import Typography from "../Typography/Typography"

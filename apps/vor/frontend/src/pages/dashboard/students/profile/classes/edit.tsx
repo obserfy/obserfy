@@ -1,4 +1,3 @@
-import React from "react"
 import { useQueryString } from "../../../../../hooks/useQueryString"
 import PageEditStudentClass from "../../../../../components/PageEditStudentClass/PageEditStudentClass"
 

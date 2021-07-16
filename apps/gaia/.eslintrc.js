@@ -56,6 +56,7 @@ module.exports = {
     "import/prefer-default-export": 0,
     "no-unused-expressions": "off",
     "react/jsx-fragments": "off",
+    "react/react-in-jsx-scope": 0,
     "@typescript-eslint/no-use-before-define": ["error", { variables: false }],
     "no-restricted-imports": [
       "error",

@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { FC, Fragment, useState } from "react"
-import { Box, Button, Card, Flex, Image, jsx } from "theme-ui"
+import { Box, Button, Card, Flex, Image } from "theme-ui"
 import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
 

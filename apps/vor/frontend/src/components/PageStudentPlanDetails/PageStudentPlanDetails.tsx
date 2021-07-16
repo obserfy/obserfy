@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box, Button } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import useGetPlan from "../../hooks/api/plans/useGetPlan"

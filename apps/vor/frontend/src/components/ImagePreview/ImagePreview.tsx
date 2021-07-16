@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Image, ThemeUIStyleObject } from "theme-ui"
 import ImagePreviewOverlay from "../ImagePreviewOverlay/ImagePreviewOverlay"
 

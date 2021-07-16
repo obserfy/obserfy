@@ -1,5 +1,5 @@
 import Image from "next/image"
-import React, { FC } from "react"
+import { FC } from "react"
 import useGetChild from "../../hooks/api/useGetChild"
 import { ChildImage } from "../../hooks/api/useGetChildImages"
 import useGetObservationsByImage from "../../hooks/api/useGetImageObservation"

@@ -1,7 +1,6 @@
-/** @jsx jsx */
 import { Trans } from "@lingui/macro"
 import { FC } from "react"
-import { Button, Flex, ThemeUIStyleObject, jsx } from "theme-ui"
+import { Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { ReactComponent as InfoIcon } from "../../icons/info.svg"
 import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"

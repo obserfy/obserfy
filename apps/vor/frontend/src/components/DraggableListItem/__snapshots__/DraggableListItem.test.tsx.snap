@@ -42,6 +42,10 @@ exports[`DraggableListItem should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   background-color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: 54px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -59,10 +63,6 @@ exports[`DraggableListItem should render correctly 1`] = `
   z-index: 1;
   border-radius: 0;
   top: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {

@@ -1,7 +1,6 @@
-/** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
 import { FC } from "react"
-import { Box, Button, Flex, Image, jsx } from "theme-ui"
+import { Box, Button, Flex, Image } from "theme-ui"
 import { getFirstName } from "../../domain/person"
 import { useGetStudent } from "../../hooks/api/useGetStudent"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"

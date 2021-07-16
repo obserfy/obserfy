@@ -1,4 +1,3 @@
-import React from "react"
 import PageSchoolProfile from "../../../components/PageSchoolProfile/PageSchoolProfile"
 import SEO from "../../../components/seo"
 

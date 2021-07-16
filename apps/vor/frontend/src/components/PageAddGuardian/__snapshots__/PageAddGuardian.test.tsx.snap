@@ -34,30 +34,30 @@ exports[`PageNewGuardian should render correctly 1`] = `
   min-width: 0;
   margin-left: auto;
   margin-right: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   max-width: 640px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-4 {
@@ -141,7 +141,6 @@ exports[`PageNewGuardian should render correctly 1`] = `
 .emotion-5:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-6 {
@@ -163,15 +162,15 @@ exports[`PageNewGuardian should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   overflow-x: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-8 {
@@ -292,7 +291,6 @@ exports[`PageNewGuardian should render correctly 1`] = `
 .emotion-18:hover,
 .emotion-18:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-18:hover:disabled,
@@ -494,7 +492,6 @@ exports[`PageNewGuardian should render correctly 1`] = `
 .emotion-30:hover,
 .emotion-30:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-31 {
@@ -545,14 +542,14 @@ exports[`PageNewGuardian should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-36 {
@@ -582,6 +579,7 @@ exports[`PageNewGuardian should render correctly 1`] = `
   color: var(--theme-ui-colors-text);
   margin-bottom: 8px;
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
+  width: 100%;
   width: 100%;
 }
 
@@ -614,7 +612,6 @@ exports[`PageNewGuardian should render correctly 1`] = `
 .emotion-36:hover,
 .emotion-36:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-36::-webkit-input-placeholder {
@@ -667,6 +664,7 @@ exports[`PageNewGuardian should render correctly 1`] = `
   margin-bottom: 16px;
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+  width: 100%;
 }
 
 .emotion-44:autofill,
@@ -698,7 +696,6 @@ exports[`PageNewGuardian should render correctly 1`] = `
 .emotion-44:hover,
 .emotion-44:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-44::-webkit-input-placeholder {
@@ -721,6 +718,31 @@ exports[`PageNewGuardian should render correctly 1`] = `
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border);
   color: var(--theme-ui-colors-textDisabled);
+}
+
+.emotion-49 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis);
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .emotion-51 {
@@ -755,7 +777,6 @@ exports[`PageNewGuardian should render correctly 1`] = `
 .emotion-51:hover,
 .emotion-51:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-51::-webkit-input-placeholder {
@@ -1024,7 +1045,7 @@ exports[`PageNewGuardian should render correctly 1`] = `
           </div>
         </label>
         <label
-          class="emotion-27"
+          class="emotion-49"
         >
           <div
             class="emotion-28"

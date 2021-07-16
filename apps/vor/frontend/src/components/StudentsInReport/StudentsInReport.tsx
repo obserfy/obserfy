@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { FC } from "react"
-import { jsx, Box, ThemeUIStyleObject } from "theme-ui"
+import { Box, ThemeUIStyleObject } from "theme-ui"
 import { borderRight } from "../../border"
 import { useGetAllStudents } from "../../hooks/api/students/useGetAllStudents"
 import { STUDENT_REPORT_URL } from "../../routes"

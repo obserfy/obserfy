@@ -1,5 +1,5 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import Head from "next/head"
 import { useQueryString } from "../hooks/useQueryString"
 import loadCanny from "../utils/canny"

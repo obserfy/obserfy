@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { t, Trans } from "@lingui/macro"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"

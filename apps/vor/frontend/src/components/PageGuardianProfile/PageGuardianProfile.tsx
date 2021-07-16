@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { FC, Fragment, useState } from "react"
-import { Box, Card, Flex, jsx } from "theme-ui"
+import { Box, Card, Flex } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { useGetGuardian } from "../../hooks/api/guardians/useGetGuardian"
 import { usePatchGuardian } from "../../hooks/api/guardians/usePatchGuardian"

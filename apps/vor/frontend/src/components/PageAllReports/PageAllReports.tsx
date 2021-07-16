@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box } from "theme-ui"
 import { ProgressReport } from "../../__generated__/models"
 import useGetProgressReports from "../../hooks/api/useGetProgressReports"

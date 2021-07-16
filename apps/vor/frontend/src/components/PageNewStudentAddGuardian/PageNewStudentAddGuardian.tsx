@@ -1,5 +1,5 @@
 import { t, Trans } from "@lingui/macro"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box, Flex } from "theme-ui"
 import { usePostNewGuardian } from "../../hooks/api/guardians/usePostNewGuardian"
 import { GuardianRelationship } from "../../hooks/api/students/usePostNewStudent"

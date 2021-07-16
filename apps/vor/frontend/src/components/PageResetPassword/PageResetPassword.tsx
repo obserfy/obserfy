@@ -1,4 +1,4 @@
-import React, { FC, FormEvent, useState } from "react"
+import { FC, FormEvent, useState } from "react"
 import { Flex, Box, Button } from "theme-ui"
 import { track } from "../../analytics"
 import { Link } from "../Link/Link"

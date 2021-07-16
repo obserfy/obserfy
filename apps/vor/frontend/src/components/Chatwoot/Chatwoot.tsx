@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { Button } from "theme-ui"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import { getPreferredLang } from "../../i18n"

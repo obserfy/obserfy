@@ -34,30 +34,30 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
   min-width: 0;
   margin-left: auto;
   margin-right: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   max-width: 640px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-4 {
@@ -141,7 +141,6 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
 .emotion-5:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-6 {
@@ -163,15 +162,15 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   overflow-x: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-8 {
@@ -292,7 +291,6 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
 .emotion-15:hover,
 .emotion-15:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-15:hover:disabled,
@@ -494,7 +492,6 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
 .emotion-27:hover,
 .emotion-27:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-28 {
@@ -545,14 +542,14 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-33 {
@@ -582,6 +579,7 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
   color: var(--theme-ui-colors-text);
   margin-bottom: 8px;
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
+  width: 100%;
   width: 100%;
 }
 
@@ -614,7 +612,6 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
 .emotion-33:hover,
 .emotion-33:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-33::-webkit-input-placeholder {
@@ -667,6 +664,7 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
   margin-bottom: 16px;
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+  width: 100%;
 }
 
 .emotion-41:autofill,
@@ -698,7 +696,6 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
 .emotion-41:hover,
 .emotion-41:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-41::-webkit-input-placeholder {
@@ -721,6 +718,31 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border);
   color: var(--theme-ui-colors-textDisabled);
+}
+
+.emotion-46 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis);
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .emotion-48 {
@@ -755,7 +777,6 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
 .emotion-48:hover,
 .emotion-48:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-48::-webkit-input-placeholder {
@@ -1011,7 +1032,7 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
           </div>
         </label>
         <label
-          class="emotion-24"
+          class="emotion-46"
         >
           <div
             class="emotion-25"

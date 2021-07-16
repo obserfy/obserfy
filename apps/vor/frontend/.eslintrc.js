@@ -57,6 +57,7 @@ module.exports = {
     "no-unused-expressions": "off",
     "jest/no-mocks-import": "off",
     "react/jsx-fragments": "off",
+    "react/react-in-jsx-scope": 0,
     "@typescript-eslint/no-use-before-define": ["error", { variables: false }],
     "no-restricted-imports": [
       "error",

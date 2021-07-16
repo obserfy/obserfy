@@ -1,5 +1,5 @@
-import React, { useEffect } from "react"
 import Error from "next/error"
+import { useEffect } from "react"
 
 export default function NotFound() {
   useEffect(() => {

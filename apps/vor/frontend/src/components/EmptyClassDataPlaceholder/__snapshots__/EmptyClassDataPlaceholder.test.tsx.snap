@@ -187,7 +187,6 @@ exports[`EmptyClassDataPlaceholder should render correctly 1`] = `
 .emotion-8:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-8:hover:disabled,

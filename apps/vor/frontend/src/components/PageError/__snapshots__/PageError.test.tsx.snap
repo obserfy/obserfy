@@ -163,7 +163,6 @@ exports[`PageError should render correctly 1`] = `
 .emotion-6:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-6:hover:disabled,
@@ -244,7 +243,6 @@ exports[`PageError should render correctly 1`] = `
 .emotion-7:hover,
 .emotion-7:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-7:hover:disabled,

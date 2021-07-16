@@ -149,7 +149,6 @@ exports[`MarkdownEditor should render correctly 1`] = `
 .emotion-5:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-6 {
@@ -238,7 +237,6 @@ exports[`MarkdownEditor should render correctly 1`] = `
 .emotion-6:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-6:hover,

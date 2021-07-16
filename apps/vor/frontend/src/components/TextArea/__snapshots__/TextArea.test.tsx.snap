@@ -70,7 +70,6 @@ exports[`TextArea should render correctly 1`] = `
 .emotion-2:hover,
 .emotion-2:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-2::-webkit-input-placeholder {

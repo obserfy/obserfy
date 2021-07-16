@@ -158,15 +158,15 @@ exports[`PageAdmin should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-44:hover {
@@ -206,6 +206,26 @@ exports[`PageAdmin should render correctly 1`] = `
   font-size: 12px;
 }
 
+.emotion-50 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.emotion-50:hover {
+  background-color: var(--theme-ui-colors-primaryLightest);
+}
+
 .emotion-51 {
   box-sizing: border-box;
   margin: 0;
@@ -218,6 +238,18 @@ exports[`PageAdmin should render correctly 1`] = `
   flex-shrink: 0;
   width: 20px;
   height: 20px;
+}
+
+.emotion-53 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text);
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  color: var(--theme-ui-colors-textMediumEmphasis);
+  font-size: 12px;
 }
 
 .emotion-56 {
@@ -333,7 +365,6 @@ exports[`PageAdmin should render correctly 1`] = `
 .emotion-58:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-58:hover:disabled,
@@ -423,7 +454,6 @@ exports[`PageAdmin should render correctly 1`] = `
 .emotion-59:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-59:hover:disabled,
@@ -641,7 +671,7 @@ exports[`PageAdmin should render correctly 1`] = `
           />
         </div>
         <div
-          class="emotion-44"
+          class="emotion-50"
           data-cy="dark-switch"
         >
           <div
@@ -651,7 +681,7 @@ exports[`PageAdmin should render correctly 1`] = `
             class="emotion-46"
           >
             <p
-              class="emotion-47"
+              class="emotion-53"
             >
               Theme
             </p>

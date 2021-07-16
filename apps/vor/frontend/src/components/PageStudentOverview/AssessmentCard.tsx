@@ -1,7 +1,6 @@
-/** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
 import { FC, Fragment, useState } from "react"
-import { jsx, Box, Button, Card, Flex } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
 import { borderBottom } from "../../border"
 import { isEmpty } from "../../domain/array"
 import { exportMaterialProgressCsv } from "../../export"

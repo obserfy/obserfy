@@ -132,14 +132,14 @@ exports[`PageRegister should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-12 {
@@ -202,7 +202,6 @@ exports[`PageRegister should render correctly 1`] = `
 .emotion-12:hover,
 .emotion-12:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-12::-webkit-input-placeholder {
@@ -287,7 +286,6 @@ exports[`PageRegister should render correctly 1`] = `
 .emotion-20:hover,
 .emotion-20:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-20::-webkit-input-placeholder {
@@ -384,7 +382,6 @@ exports[`PageRegister should render correctly 1`] = `
 .emotion-21:hover,
 .emotion-21:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-21:hover:disabled,

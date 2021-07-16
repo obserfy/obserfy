@@ -1,4 +1,3 @@
-import React from "react"
 import { Meta, Story } from "@storybook/react"
 import { Box, Flex } from "theme-ui"
 import TranslucentBar, { TranslucentBarProps } from "./TranslucentBar"

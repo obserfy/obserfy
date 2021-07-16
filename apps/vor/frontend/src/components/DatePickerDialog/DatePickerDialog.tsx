@@ -1,4 +1,4 @@
-import React, { FC, memo, useState } from "react"
+import { FC, memo, useState } from "react"
 import { Box, Button, Flex } from "theme-ui"
 
 import { t } from "@lingui/macro"

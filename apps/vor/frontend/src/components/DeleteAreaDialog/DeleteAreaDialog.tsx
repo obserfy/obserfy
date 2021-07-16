@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import Dialog from "../Dialog/Dialog"
 import Typography from "../Typography/Typography"
 import useDeleteArea from "../../hooks/api/curriculum/useDeleteArea"

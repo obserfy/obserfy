@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { useQueryString } from "../../../../hooks/useQueryString"
 import SEO from "../../../../components/seo"
 import PageNewStudentPlans from "../../../../components/PageNewStudentPlans/PageNewStudentPlans"

@@ -1,7 +1,6 @@
-/** @jsx jsx */
 import { Trans } from "@lingui/macro"
 import { FC, useState } from "react"
-import { jsx, Box, Flex, Button } from "theme-ui"
+import { Box, Button, Flex } from "theme-ui"
 import { borderFull } from "../../border"
 import { ReactComponent as MarkdownIcon } from "../../icons/markdown.svg"
 import Icon from "../Icon/Icon"

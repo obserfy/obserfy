@@ -1,7 +1,6 @@
-/** @jsx jsx */
 import { Trans } from "@lingui/macro"
 import { FC, useState, Fragment } from "react"
-import { Box, Button, Card, Flex, jsx } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
 import { useMutation, useQuery } from "react-query"
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"

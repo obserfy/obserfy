@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { FC, Fragment, useState } from "react"
-import { Box, Card, Flex, Image, jsx } from "theme-ui"
+import { Box, Card, Flex, Image } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { ADMIN_URL } from "../../routes"

@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box } from "theme-ui"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"

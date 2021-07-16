@@ -1,5 +1,5 @@
 import { StaticImage } from "gatsby-plugin-image"
-import React, { FC, useEffect } from "react"
+import { FC, useEffect } from "react"
 import { Box, Button, Flex } from "theme-ui"
 import { track } from "../../analytics"
 import { STUDENTS_URL } from "../../routes"

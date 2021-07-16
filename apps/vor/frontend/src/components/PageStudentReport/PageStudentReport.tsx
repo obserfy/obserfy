@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/macro"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box, Card, Flex } from "theme-ui"
 import { borderBottom } from "../../border"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"

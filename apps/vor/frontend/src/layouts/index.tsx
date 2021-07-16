@@ -1,5 +1,5 @@
 import { Global } from "@emotion/react"
-import React, { FC } from "react"
+import { FC } from "react"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { Box, useColorMode } from "theme-ui"
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary"

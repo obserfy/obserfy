@@ -1,5 +1,5 @@
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
-import React, { FC, MouseEvent, TouchEvent, useRef, useState } from "react"
+import { FC, MouseEvent, TouchEvent, useRef, useState } from "react"
 import { Box, Flex, ThemeUIStyleObject } from "theme-ui"
 import { OrderedItem } from "../../hooks/useMoveDraggableItem"
 import { ReactComponent as GridIcon } from "../../icons/grid_round.svg"

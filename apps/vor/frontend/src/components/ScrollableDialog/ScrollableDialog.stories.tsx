@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box } from "theme-ui"
 import ScrollableDialog from "./ScrollableDialog"
 import Typography from "../Typography/Typography"

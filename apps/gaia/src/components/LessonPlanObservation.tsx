@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Dayjs } from "../utils/dayjs"
 import Button from "./Button/Button"
 import { EditObservationForm } from "./EditObservationForm"

@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "theme-ui",
     "baseUrl": ".",
     "module": "esnext",
     "target": "es5",
     "lib": ["es6", "dom"],
     "sourceMap": true,
-    "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "src",
     "esModuleInterop": true,

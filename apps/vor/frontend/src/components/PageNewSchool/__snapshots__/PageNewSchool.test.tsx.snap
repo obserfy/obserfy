@@ -19,16 +19,16 @@ exports[`PageNewSchool should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding-top: 128px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
   min-height: 100vh;
   min-width: 100vw;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-2 {
@@ -92,14 +92,14 @@ exports[`PageNewSchool should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-7 {
@@ -129,6 +129,7 @@ exports[`PageNewSchool should render correctly 1`] = `
   color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
+  width: 100%;
   width: 100%;
 }
 
@@ -161,7 +162,6 @@ exports[`PageNewSchool should render correctly 1`] = `
 .emotion-7:hover,
 .emotion-7:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-7::-webkit-input-placeholder {
@@ -273,7 +273,6 @@ exports[`PageNewSchool should render correctly 1`] = `
 .emotion-9:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-9:hover:disabled,
@@ -357,7 +356,6 @@ exports[`PageNewSchool should render correctly 1`] = `
 .emotion-10:hover,
 .emotion-10:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-10:hover:disabled,

@@ -1,5 +1,5 @@
 import { t, Trans } from "@lingui/macro"
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box, Button } from "theme-ui"
 import { usePostNewStudent } from "../../hooks/api/students/usePostNewStudent"
 import { NEW_STUDENT_URL, STUDENTS_URL } from "../../routes"

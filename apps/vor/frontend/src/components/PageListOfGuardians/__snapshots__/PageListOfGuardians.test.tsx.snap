@@ -28,15 +28,15 @@ exports[`PageListOfGuardians should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {
@@ -120,7 +120,6 @@ exports[`PageListOfGuardians should render correctly 1`] = `
 .emotion-4:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-5 {
@@ -142,15 +141,15 @@ exports[`PageListOfGuardians should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   overflow-x: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-7 {
@@ -326,7 +325,6 @@ exports[`PageListOfGuardians should render correctly 1`] = `
 .emotion-15:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-16 {
@@ -372,14 +370,14 @@ exports[`PageListOfGuardians should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-19 {
@@ -390,13 +388,15 @@ exports[`PageListOfGuardians should render correctly 1`] = `
   height: auto;
   margin-right: -28px;
   margin-left: 8px;
-  width: 20px;
-  height: 20px;
-  z-index: 2;
   fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  width: 24px;
+  height: 24px;
+  z-index: 2;
 }
 
 .emotion-20 {
@@ -428,9 +428,10 @@ exports[`PageListOfGuardians should render correctly 1`] = `
   padding-bottom: 8px;
   background-color: var(--theme-ui-colors-surface);
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
-  width: 100%;
   padding-left: 34px;
   font-size: 14px;
+  width: 100%;
+  width: 100%;
   background-color: var(--theme-ui-colors-background);
 }
 
@@ -463,7 +464,6 @@ exports[`PageListOfGuardians should render correctly 1`] = `
 .emotion-20:hover,
 .emotion-20:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-20::-webkit-input-placeholder {

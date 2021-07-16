@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import BackNavigation from "./BackNavigation"
 
 export default {
