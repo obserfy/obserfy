@@ -105,29 +105,37 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
 
           {filteredAssessments?.length !== 0 && observations.isSuccess && (
             <Card mb={3} sx={{ overflow: "hidden" }} py={2}>
-              {filteredAssessments?.map(({ materialName, stage }) => {
-                const stageName = materialStageToString(stage)
-                return (
-                  <Flex px={3} py={2} sx={{ alignItems: "center" }}>
-                    <Typography.Body sx={{ fontSize: 1 }} mr={3}>
-                      {materialName}
-                    </Typography.Body>
-                    <Pill
-                      color={`materialStage.on${stageName}`}
-                      backgroundColor={`materialStage.${stageName.toLowerCase()}`}
-                      text={stageName}
-                      mr={2}
-                      ml="auto"
-                    />
-                  </Flex>
-                )
-              })}
+              {filteredAssessments?.map(
+                ({ materialId, materialName, stage }) => {
+                  const stageName = materialStageToString(stage)
+                  return (
+                    <Flex
+                      key={materialId}
+                      px={3}
+                      py={2}
+                      sx={{ alignItems: "center" }}
+                    >
+                      <Typography.Body sx={{ fontSize: 1 }} mr={3}>
+                        {materialName}
+                      </Typography.Body>
+                      <Pill
+                        color={`materialStage.on${stageName}`}
+                        backgroundColor={`materialStage.${stageName.toLowerCase()}`}
+                        text={stageName}
+                        mr={2}
+                        ml="auto"
+                      />
+                    </Flex>
+                  )
+                }
+              )}
             </Card>
           )}
 
           <Typography.H6 sx={{ fontWeight: "bold" }} mb={3} mt={4}>
             <Trans>Observations</Trans>
           </Typography.H6>
+
           {filteredObservations?.length === 0 && observations.isSuccess && (
             <Card mb={3} sx={{ overflow: "hidden" }} p={3}>
               <Typography.Body>
