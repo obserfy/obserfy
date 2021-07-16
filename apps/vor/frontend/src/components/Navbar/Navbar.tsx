@@ -35,7 +35,7 @@ const Navbar: FC = () => {
         borderBottomStyle: "none",
         borderLeftStyle: "none",
         borderWidth: "1px",
-        borderColor: "borderBold",
+        borderColor: "border",
       }}
     >
       <Flex

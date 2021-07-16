@@ -3239,28 +3239,12 @@ declare namespace GatsbyTypes {
       >
     }
 
-  type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never }>
+  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
 
-  type LocalizationConfigQueryQuery = {
-    readonly themeI18N: Maybe<
-      Pick<ThemeI18n, "defaultLang" | "prefixDefault"> & {
-        readonly config: Maybe<
-          ReadonlyArray<
-            Maybe<
-              Pick<
-                Locale,
-                | "code"
-                | "hrefLang"
-                | "dateFormat"
-                | "langDir"
-                | "localName"
-                | "name"
-              >
-            >
-          >
-        >
-      }
-    >
+  type LocalizationSEOQueryQuery = {
+    readonly site: Maybe<{
+      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
+    }>
   }
 
   type GatsbyImageSharpFixedFragment = Pick<
@@ -3346,12 +3330,28 @@ declare namespace GatsbyTypes {
     "aspectRatio" | "src" | "srcSet" | "srcWebp" | "srcSetWebp" | "sizes"
   >
 
-  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
+  type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never }>
 
-  type LocalizationSEOQueryQuery = {
-    readonly site: Maybe<{
-      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
-    }>
+  type LocalizationConfigQueryQuery = {
+    readonly themeI18N: Maybe<
+      Pick<ThemeI18n, "defaultLang" | "prefixDefault"> & {
+        readonly config: Maybe<
+          ReadonlyArray<
+            Maybe<
+              Pick<
+                Locale,
+                | "code"
+                | "hrefLang"
+                | "dateFormat"
+                | "langDir"
+                | "localName"
+                | "name"
+              >
+            >
+          >
+        >
+      }
+    >
   }
 
   type PagesQueryQueryVariables = Exact<{ [key: string]: never }>
