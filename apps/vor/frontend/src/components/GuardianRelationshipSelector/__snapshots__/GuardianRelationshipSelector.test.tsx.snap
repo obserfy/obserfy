@@ -94,7 +94,6 @@ exports[`GuardianRelationshipSelector should render correctly 1`] = `
 .emotion-5:hover,
 .emotion-5:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-6 {

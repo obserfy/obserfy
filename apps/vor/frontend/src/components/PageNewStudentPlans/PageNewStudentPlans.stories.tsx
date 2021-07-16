@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import PageNewStudentPlans from "./PageNewStudentPlans"
 
 export default {

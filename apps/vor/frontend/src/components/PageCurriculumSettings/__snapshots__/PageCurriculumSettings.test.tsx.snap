@@ -116,15 +116,15 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -227,7 +227,6 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
 .emotion-5:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-6 {
@@ -249,15 +248,15 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   overflow-x: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-8 {
@@ -311,14 +310,14 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   padding-right: 16px;
   padding-top: 16px;
   padding-bottom: 16px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-13 {
@@ -436,7 +435,6 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
 .emotion-15:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-15:hover:disabled,
@@ -534,7 +532,6 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
 .emotion-17:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-17:hover:disabled,
@@ -634,6 +631,10 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -642,10 +643,6 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: var(--theme-ui-colors-border);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-34 {

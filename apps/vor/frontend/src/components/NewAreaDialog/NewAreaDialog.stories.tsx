@@ -1,5 +1,5 @@
-import React, { FC } from "react"
 import { action } from "@storybook/addon-actions"
+import { FC } from "react"
 import NewAreaDialog from "./NewAreaDialog"
 
 export default {

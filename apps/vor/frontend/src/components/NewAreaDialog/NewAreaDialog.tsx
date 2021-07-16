@@ -1,12 +1,12 @@
-import React, { FC, useState } from "react"
-import { Box } from "theme-ui"
 import { t } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
+import { FC, useState } from "react"
+import { Box } from "theme-ui"
+import usePostNewArea from "../../hooks/api/curriculum/usePostNewArea"
 import Dialog from "../Dialog/Dialog"
+import DialogHeader from "../DialogHeader/DialogHeader"
 import Input from "../Input/Input"
 import Typography from "../Typography/Typography"
-import usePostNewArea from "../../hooks/api/curriculum/usePostNewArea"
-import DialogHeader from "../DialogHeader/DialogHeader"
 
 interface Props {
   curriculumId: string

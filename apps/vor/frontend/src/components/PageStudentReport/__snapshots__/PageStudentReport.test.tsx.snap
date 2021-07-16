@@ -70,6 +70,10 @@ exports[`PageStudentReport should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding-left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   min-width: 100%;
   width: 100%;
   -webkit-box-pack: space-around;
@@ -80,10 +84,6 @@ exports[`PageStudentReport should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-7 {
@@ -319,7 +319,6 @@ exports[`PageStudentReport should render correctly 1`] = `
 .emotion-16:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-17 {
@@ -408,7 +407,6 @@ exports[`PageStudentReport should render correctly 1`] = `
 .emotion-17:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-17:hover,

@@ -43,20 +43,6 @@ exports[`PageAllObservations should render correctly 1`] = `
   }
 }
 
-@keyframes animation-0 {
-  0% {
-    opacity: 0.05;
-  }
-
-  50% {
-    opacity: 0.2;
-  }
-
-  100% {
-    opacity: 0.05;
-  }
-}
-
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
@@ -84,15 +70,15 @@ exports[`PageAllObservations should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {
@@ -176,7 +162,6 @@ exports[`PageAllObservations should render correctly 1`] = `
 .emotion-4:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-5 {
@@ -198,15 +183,15 @@ exports[`PageAllObservations should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   overflow-x: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-7 {
@@ -257,14 +242,14 @@ exports[`PageAllObservations should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding: 16px;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .emotion-15 {
@@ -352,7 +337,6 @@ exports[`PageAllObservations should render correctly 1`] = `
 .emotion-16:hover,
 .emotion-16:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-16:hover:disabled,
@@ -423,14 +407,14 @@ exports[`PageAllObservations should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-21 {
@@ -441,13 +425,15 @@ exports[`PageAllObservations should render correctly 1`] = `
   height: auto;
   margin-right: -28px;
   margin-left: 8px;
-  width: 20px;
-  height: 20px;
-  z-index: 2;
   fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  width: 24px;
+  height: 24px;
+  z-index: 2;
 }
 
 .emotion-22 {
@@ -480,11 +466,12 @@ exports[`PageAllObservations should render correctly 1`] = `
   margin-right: 16px;
   background-color: var(--theme-ui-colors-surface);
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
-  background-color: var(--theme-ui-colors-darkSurface);
-  height: 40px;
-  width: 100%;
   padding-left: 34px;
   font-size: 14px;
+  width: 100%;
+  width: 100%;
+  background-color: var(--theme-ui-colors-darkSurface);
+  height: 40px;
 }
 
 .emotion-22:autofill,
@@ -516,7 +503,6 @@ exports[`PageAllObservations should render correctly 1`] = `
 .emotion-22:hover,
 .emotion-22:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-22::-webkit-input-placeholder {
@@ -569,6 +555,10 @@ exports[`PageAllObservations should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding-left: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   min-width: 100%;
   width: 100%;
   -webkit-box-pack: start;
@@ -579,10 +569,6 @@ exports[`PageAllObservations should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-26 {
@@ -597,10 +583,6 @@ exports[`PageAllObservations should render correctly 1`] = `
   padding-right: 4px;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textPrimary);
-  line-height: 2;
-  font-size: 12px;
-  margin-left: 8px;
-  margin-right: 8px;
   white-space: nowrap;
   cursor: pointer;
   display: -webkit-box;
@@ -623,12 +605,10 @@ exports[`PageAllObservations should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   z-index: 10;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-26 {
-    font-size: 12px;
-  }
+  line-height: 2;
+  font-size: 12px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .emotion-26:after {
@@ -640,6 +620,12 @@ exports[`PageAllObservations should render correctly 1`] = `
   margin-top: 8px;
   -webkit-transition: width 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
   transition: width 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-26 {
+    font-size: 12px;
+  }
 }
 
 .emotion-27 {

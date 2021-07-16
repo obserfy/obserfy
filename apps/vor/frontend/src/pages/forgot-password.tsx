@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro"
-import React, { FC } from "react"
+import { FC } from "react"
 import SEO from "../components/seo"
 import PageForgotPassword from "../components/PageForgotPassword/PageForgotPassword"
 

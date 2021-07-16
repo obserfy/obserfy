@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { FC, useEffect } from "react"
-import { jsx, Box, Card, Flex, Button } from "theme-ui"
+import { Box, Card, Flex, Button } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { useGetUserProfile } from "../../hooks/api/useGetUserProfile"
 import { loadCanny } from "../../canny"

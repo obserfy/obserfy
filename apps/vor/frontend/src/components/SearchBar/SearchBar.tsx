@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FC } from "react"
+import { ChangeEventHandler, FC } from "react"
 import { InputProps } from "theme-ui"
 import { t } from "@lingui/macro"
 import { useLingui } from "@lingui/react"

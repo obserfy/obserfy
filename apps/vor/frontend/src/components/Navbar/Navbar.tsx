@@ -1,7 +1,7 @@
 import { t } from "@lingui/macro"
 import { useLocation } from "@reach/router"
 import { StaticImage } from "gatsby-plugin-image"
-import React, { FC, FunctionComponent, useEffect, useState } from "react"
+import { FC, FunctionComponent, useEffect, useState } from "react"
 import { Box, Flex } from "theme-ui"
 import useDetectVirtualKeyboard from "../../hooks/useDetectVirtualKeyboard"
 import useLocalizedMatch from "../../hooks/useLocalizedMatch"
@@ -35,7 +35,7 @@ const Navbar: FC = () => {
         borderBottomStyle: "none",
         borderLeftStyle: "none",
         borderWidth: "1px",
-        borderColor: "borderBold",
+        borderColor: "border",
       }}
     >
       <Flex

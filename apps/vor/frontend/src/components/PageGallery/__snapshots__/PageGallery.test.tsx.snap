@@ -35,15 +35,15 @@ exports[`PageGallery should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-4 {
@@ -127,7 +127,6 @@ exports[`PageGallery should render correctly 1`] = `
 .emotion-5:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-6 {
@@ -149,15 +148,15 @@ exports[`PageGallery should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   overflow-x: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-8 {
@@ -216,6 +215,10 @@ exports[`PageGallery should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding-left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   min-width: 100%;
   width: 100%;
   -webkit-box-pack: space-around;
@@ -226,10 +229,6 @@ exports[`PageGallery should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-17 {
@@ -244,9 +243,6 @@ exports[`PageGallery should render correctly 1`] = `
   padding-right: 4px;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textPrimary);
-  font-size: 14px;
-  margin-left: 16px;
-  margin-right: 16px;
   white-space: nowrap;
   cursor: pointer;
   display: -webkit-box;
@@ -269,12 +265,9 @@ exports[`PageGallery should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   z-index: 10;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-17 {
-    font-size: 14px;
-  }
+  font-size: 14px;
+  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .emotion-17:after {
@@ -286,6 +279,12 @@ exports[`PageGallery should render correctly 1`] = `
   margin-top: 8px;
   -webkit-transition: width 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
   transition: width 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-17 {
+    font-size: 14px;
+  }
 }
 
 .emotion-18 {
@@ -300,9 +299,6 @@ exports[`PageGallery should render correctly 1`] = `
   padding-right: 4px;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis);
-  font-size: 14px;
-  margin-left: 16px;
-  margin-right: 16px;
   white-space: nowrap;
   cursor: pointer;
   display: -webkit-box;
@@ -325,12 +321,9 @@ exports[`PageGallery should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   z-index: 10;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-18 {
-    font-size: 14px;
-  }
+  font-size: 14px;
+  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .emotion-18:after {
@@ -342,6 +335,12 @@ exports[`PageGallery should render correctly 1`] = `
   margin-top: 8px;
   -webkit-transition: width 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
   transition: width 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-18 {
+    font-size: 14px;
+  }
 }
 
 .emotion-19 {
@@ -475,7 +474,6 @@ exports[`PageGallery should render correctly 1`] = `
 .emotion-23:hover,
 .emotion-23:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-23:hover:disabled,

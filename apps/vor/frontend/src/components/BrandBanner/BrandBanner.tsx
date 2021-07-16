@@ -1,7 +1,6 @@
-/** @jsx jsx */
 import { StaticImage } from "gatsby-plugin-image"
 import { FC } from "react"
-import { Flex, jsx, Box } from "theme-ui"
+import { Flex, Box } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { Typography } from "../Typography/Typography"
 

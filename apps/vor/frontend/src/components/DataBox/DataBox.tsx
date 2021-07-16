@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box, Button, Flex } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"

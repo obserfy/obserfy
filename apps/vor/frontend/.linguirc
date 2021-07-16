@@ -15,7 +15,13 @@
   "extractBabelOptions": {
     "presets": [
       "@babel/preset-typescript",
-      "babel-preset-gatsby"
+      [
+        "babel-preset-gatsby",
+        {
+          "reactRuntime": "automatic",
+          "reactImportSource": "theme-ui"
+        }
+      ]
     ]
   }
 }

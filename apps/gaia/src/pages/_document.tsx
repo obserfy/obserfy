@@ -1,11 +1,11 @@
 /* eslint-disable react/no-danger */
-import React from "react"
+
 import Document, {
-  Html,
+  DocumentContext,
   Head,
+  Html,
   Main,
   NextScript,
-  DocumentContext,
 } from "next/document"
 
 class MyDocument extends Document {

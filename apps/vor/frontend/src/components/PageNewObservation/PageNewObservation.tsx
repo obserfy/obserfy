@@ -1,6 +1,6 @@
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box, Button, Card, Flex, Image } from "theme-ui"
 import { useImmer } from "use-immer"
 import { track } from "../../analytics"

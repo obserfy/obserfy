@@ -125,7 +125,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 .emotion-4:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-5 {
@@ -147,15 +146,15 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   overflow-x: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-7 {
@@ -277,7 +276,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 .emotion-17:hover,
 .emotion-17:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-17:hover:disabled,
@@ -351,14 +349,14 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-24 {
@@ -387,6 +385,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text);
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
+  width: 100%;
   opacity: 1!important;
   width: 100%;
 }
@@ -420,7 +419,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 .emotion-24:hover,
 .emotion-24:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-24::-webkit-input-placeholder {
@@ -522,7 +520,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 .emotion-25:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-25:hover:disabled,
@@ -605,7 +602,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 .emotion-30:hover,
 .emotion-30:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-30::-webkit-input-placeholder {
@@ -790,7 +786,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 .emotion-37:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-38 {
@@ -879,7 +874,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 .emotion-38:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-38:hover,
@@ -1018,6 +1012,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding: 8px;
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+  width: 100%;
   padding: 8px;
 }
 
@@ -1050,7 +1045,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 .emotion-47:hover,
 .emotion-47:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-47::-webkit-input-placeholder {
@@ -1148,7 +1142,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 .emotion-48:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-48:hover:disabled,
@@ -1350,7 +1343,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 .emotion-64:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-64:hover:disabled,

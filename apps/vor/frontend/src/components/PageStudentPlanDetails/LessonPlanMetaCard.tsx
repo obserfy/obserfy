@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box, Card, Flex } from "theme-ui"
 import { useLingui } from "@lingui/react"
 import { t } from "@lingui/macro"

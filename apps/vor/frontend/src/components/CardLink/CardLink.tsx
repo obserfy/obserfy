@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { FC, PropsWithoutRef } from "react"
-import { Card, CardProps, Flex, jsx } from "theme-ui"
+import { Card, CardProps, Flex } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { Link } from "../Link/Link"
 import Typography from "../Typography/Typography"

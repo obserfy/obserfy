@@ -1,7 +1,7 @@
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box } from "theme-ui"
-import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
 import Input from "../Input/Input"
+import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
 
 interface Props {
   onCancel: () => void

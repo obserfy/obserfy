@@ -1,24 +1,27 @@
-/** @jsx jsx */
 import { FC } from "react"
-import { jsx, Box, Button, Card, Flex } from "theme-ui"
+import { Box, Button, Flex, Text } from "theme-ui"
 import { ProgressReport } from "../../__generated__/models"
 import { borderBottom, borderFull } from "../../border"
+import dayjs from "../../dayjs"
+import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { MANAGE_REPORT_URL, NEW_REPORT_URL } from "../../routes"
+import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
-import { Typography } from "../Typography/Typography"
-import dayjs from "../../dayjs"
 
 const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
   return (
     <Box>
-      <TranslucentBar boxSx={{ ...borderBottom }}>
-        <Flex px={[3, 4]} pb={3} pt={4} sx={{ alignItems: "center" }}>
-          <Typography.H2 sx={{ fontSize: [4, 5] }}>
+      <TranslucentBar boxSx={{ ...borderBottom, position: "sticky", top: 0 }}>
+        <Flex px={[3, 4]} py={3} sx={{ alignItems: "center" }}>
+          <Text as="h1" sx={{ fontWeight: "bold" }}>
             Progress Reports
-          </Typography.H2>
+          </Text>
           <Link to={NEW_REPORT_URL} sx={{ ml: "auto" }}>
-            <Button>New</Button>
+            <Button>
+              <Icon as={PlusIcon} sx={{ fill: "onPrimary" }} mr={1} />
+              New Report
+            </Button>
           </Link>
         </Flex>
       </TranslucentBar>
@@ -32,27 +35,29 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
               p: 3,
               py: [2, 3],
               display: "block",
-              width: ["100%", "50%", "25%", "20%"],
+              width: ["100%", "50%", "25%"],
             }}
           >
-            <Card
+            <Flex
               as="article"
               p={3}
               sx={{
                 ...borderFull,
+                borderRadius: "default",
+                backgroundColor: "surface",
+                alignItems: "center",
                 "&:hover": {
                   borderColor: "primary",
                 },
               }}
             >
-              <Typography.H2 mb={1} sx={{ fontSize: 2 }}>
+              <Text mb={1} sx={{ fontSize: 1 }}>
                 {report.title}
-              </Typography.H2>
-              <Typography.Body color="textMediumEmphasis">
-                {dayjs(report.periodStart).format("MMMM YYYY")} -{" "}
+              </Text>
+              <Text color="textMediumEmphasis" ml="auto" sx={{ fontSize: 1 }}>
                 {dayjs(report.periodEnd).format("MMMM YYYY")}
-              </Typography.Body>
-            </Card>
+              </Text>
+            </Flex>
           </Link>
         ))}
       </Flex>

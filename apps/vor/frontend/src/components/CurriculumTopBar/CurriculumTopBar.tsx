@@ -1,5 +1,5 @@
 import { useBreakpointIndex } from "@theme-ui/match-media"
-import React, { FC } from "react"
+import { FC } from "react"
 import { borderBottom } from "../../border"
 import TopBar, { BreadcrumbData } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"

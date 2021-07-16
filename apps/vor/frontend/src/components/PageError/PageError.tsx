@@ -1,7 +1,6 @@
-/** @jsx jsx */
 import { StaticImage } from "gatsby-plugin-image"
 import { FC, useEffect } from "react"
-import { Button, Flex, jsx } from "theme-ui"
+import { Button, Flex } from "theme-ui"
 import Typography from "../Typography/Typography"
 import { useGetUserProfile } from "../../hooks/api/useGetUserProfile"
 import { loadCanny } from "../../canny"

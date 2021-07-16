@@ -1,15 +1,15 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import React, { FC, useState } from "react"
 import Head from "next/head"
 import Image from "next/image"
-import Markdown from "../components/Markdown/Markdown"
-import dayjs from "../utils/dayjs"
-import useGetTimeline from "../hooks/api/useGetTimeline"
-import { useQueryString } from "../hooks/useQueryString"
-import { GetChildTimelineResponse } from "./api/children/[childId]/timeline"
+import { FC, useState } from "react"
 import Icon from "../components/Icon/Icon"
 import ImagePreview from "../components/ImagePreview/ImagePreview"
+import Markdown from "../components/Markdown/Markdown"
 import { ChildImage } from "../hooks/api/useGetChildImages"
+import useGetTimeline from "../hooks/api/useGetTimeline"
+import { useQueryString } from "../hooks/useQueryString"
+import dayjs from "../utils/dayjs"
+import { GetChildTimelineResponse } from "./api/children/[childId]/timeline"
 
 const IndexPage = () => {
   const childId = useQueryString("childId")

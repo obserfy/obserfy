@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import { UserProvider } from "@auth0/nextjs-auth0"
 import { AppComponent } from "next/dist/next-server/lib/router/router"
-import React from "react"
+
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
 import ErrorBoundary from "../components/ErrorBoundary"

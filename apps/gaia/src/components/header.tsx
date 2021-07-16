@@ -1,12 +1,12 @@
-import React, { FC, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import ProfilePicture from "./profilePicture"
-import Button from "./Button/Button"
-import useGetUser from "../hooks/api/useGetUser"
+import { FC, useState } from "react"
 import useGetChildren from "../hooks/api/useGetChildren"
+import useGetUser from "../hooks/api/useGetUser"
 import { useQueryString } from "../hooks/useQueryString"
+import Button from "./Button/Button"
 import Icon from "./Icon/Icon"
+import ProfilePicture from "./profilePicture"
 
 const Header: FC = () => {
   const [showLogout, setShowLogout] = useState(false)

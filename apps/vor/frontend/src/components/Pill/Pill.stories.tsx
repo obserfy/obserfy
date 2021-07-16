@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import Pill from "./Pill"
 
 export default {

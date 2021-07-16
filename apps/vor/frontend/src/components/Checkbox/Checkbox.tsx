@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { ThemeUIStyleObject, Checkbox as BaseCheckbox, Label } from "theme-ui"
 import { Trans } from "@lingui/macro"
 

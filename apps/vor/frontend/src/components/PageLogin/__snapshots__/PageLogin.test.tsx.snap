@@ -144,14 +144,14 @@ exports[`PageLogin should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-13 {
@@ -214,7 +214,6 @@ exports[`PageLogin should render correctly 1`] = `
 .emotion-13:hover,
 .emotion-13:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-13::-webkit-input-placeholder {
@@ -298,7 +297,6 @@ exports[`PageLogin should render correctly 1`] = `
 .emotion-17:hover,
 .emotion-17:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-17::-webkit-input-placeholder {
@@ -397,7 +395,6 @@ exports[`PageLogin should render correctly 1`] = `
 .emotion-18:hover,
 .emotion-18:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-18:hover:disabled,

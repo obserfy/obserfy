@@ -1,9 +1,9 @@
-/** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
 import { FC } from "react"
-import { jsx, Box, Button, Card, Flex } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
 import { useGetSchool } from "../../hooks/api/schools/useGetSchool"
 import useLogout from "../../hooks/api/useLogout"
+import { ReactComponent as BookIcon } from "../../icons/book-open.svg"
 import { ReactComponent as CreditCardIcon } from "../../icons/credit-card.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PersonIcon } from "../../icons/person.svg"
@@ -24,7 +24,6 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Typography from "../Typography/Typography"
 import LanguageSwitcher from "./LanguageSwitcher"
 import ThemeSwitcher from "./ThemeSwitcher"
-import { ReactComponent as BookIcon } from "../../icons/book-open.svg"
 
 export const PageAdmin: FC = () => (
   <Box sx={{ maxWidth: "maxWidth.sm" }} m="auto" pb={5}>

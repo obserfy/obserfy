@@ -28,6 +28,10 @@ exports[`MultilineDataBox should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: var(--theme-ui-colors-border);
@@ -35,10 +39,6 @@ exports[`MultilineDataBox should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {
@@ -130,7 +130,6 @@ exports[`MultilineDataBox should render correctly 1`] = `
 .emotion-4:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-5 {

@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { PageRendererProps } from "gatsby"
 import PageStudentOverview from "../../../components/PageStudentOverview/PageStudentOverview"
 import SEO from "../../../components/seo"

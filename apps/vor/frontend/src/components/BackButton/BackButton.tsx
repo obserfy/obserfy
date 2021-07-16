@@ -1,8 +1,7 @@
-/** @jsx jsx */
 import { FC } from "react"
-import { jsx, Button } from "theme-ui"
-import Icon from "../Icon/Icon"
+import { Button } from "theme-ui"
 import { ReactComponent as Arrow } from "../../icons/arrow-back.svg"
+import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
 
 export interface BackButtonProps {

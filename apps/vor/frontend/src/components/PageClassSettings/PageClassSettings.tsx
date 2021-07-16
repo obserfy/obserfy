@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/macro"
 import { StaticImage } from "gatsby-plugin-image"
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
 
 import useGetSchoolClasses from "../../hooks/api/classes/useGetSchoolClasses"

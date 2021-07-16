@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { materialStageToString } from "../domain"
 
 const MaterialStagePill: FC<{ className?: string; stage: number }> = ({

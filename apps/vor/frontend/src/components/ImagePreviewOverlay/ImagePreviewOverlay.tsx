@@ -1,4 +1,4 @@
-import React, { FC, useLayoutEffect, useRef, useState } from "react"
+import { FC, useLayoutEffect, useRef, useState } from "react"
 import { Box, Button, Flex, Image } from "theme-ui"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 import { useGetStudent } from "../../hooks/api/useGetStudent"

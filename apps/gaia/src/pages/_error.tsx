@@ -1,7 +1,7 @@
-import React, { FC } from "react"
-import NextErrorComponent from "next/error"
 import * as Sentry from "@sentry/node"
 import { NextPageContext } from "next"
+import NextErrorComponent from "next/error"
+import { FC } from "react"
 
 // TODO: Migrate to sentry's nextjs plugin when it becomes stable
 const CustomError: FC<{

@@ -99,7 +99,6 @@ exports[`Chatwoot should render correctly 1`] = `
 .emotion-1:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 @media screen and (min-width: 40em) {

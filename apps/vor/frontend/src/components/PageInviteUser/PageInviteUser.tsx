@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { FC } from "react"
-import { Box, Button, Flex, jsx } from "theme-ui"
+import { Box, Button, Flex } from "theme-ui"
 import { nanoid } from "nanoid"
 import { useImmer } from "use-immer"
 import { t, Trans } from "@lingui/macro"

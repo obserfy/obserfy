@@ -32,7 +32,7 @@ exports[`Navbar should render correctly 1`] = `
   border-bottom-style: none;
   border-left-style: none;
   border-width: 1px;
-  border-color: var(--theme-ui-colors-borderBold);
+  border-color: var(--theme-ui-colors-border);
 }
 
 @media screen and (min-width: 40em) {
@@ -51,6 +51,10 @@ exports[`Navbar should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: space-evenly;
   -ms-flex-pack: space-evenly;
   -webkit-justify-content: space-evenly;
@@ -59,10 +63,6 @@ exports[`Navbar should render correctly 1`] = `
   -ms-flex-direction: row;
   flex-direction: row;
   height: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 @media screen and (min-width: 40em) {
@@ -95,6 +95,10 @@ exports[`Navbar should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 56px;
   height: 56px;
   -webkit-flex-direction: column;
@@ -109,10 +113,6 @@ exports[`Navbar should render correctly 1`] = `
   -webkit-justify-content: space-around;
   justify-content: space-around;
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 @media screen and (min-width: 40em) {
@@ -151,13 +151,13 @@ exports[`Navbar should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  color: var(--theme-ui-colors-textMediumEmphasis);
   fill: transparent;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 26px;
   height: 26px;
+  color: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 .emotion-8 {
@@ -259,7 +259,6 @@ exports[`Navbar should render correctly 1`] = `
 .emotion-11:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 @media screen and (min-width: 40em) {
@@ -267,6 +266,21 @@ exports[`Navbar should render correctly 1`] = `
     width: 48px;
     height: 48px;
   }
+}
+
+.emotion-12 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  color: var(--theme-ui-colors-textMediumEmphasis);
+  fill: transparent;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
 }
 
 <div>
@@ -328,7 +342,7 @@ exports[`Navbar should render correctly 1`] = `
           class="emotion-11"
         >
           <div
-            class="emotion-5"
+            class="emotion-12"
           />
         </button>
       </div>

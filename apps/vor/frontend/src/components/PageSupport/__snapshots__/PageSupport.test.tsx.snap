@@ -211,7 +211,6 @@ exports[`PageSupport should render correctly 1`] = `
 .emotion-14:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-14:hover:disabled,

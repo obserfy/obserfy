@@ -1,7 +1,7 @@
 import { t } from "@lingui/macro"
 import { useBreakpointIndex } from "@theme-ui/match-media"
 import { PageRendererProps } from "gatsby"
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box, Flex } from "theme-ui"
 import CurriculumTopBar from "../../../../components/CurriculumTopBar/CurriculumTopBar"
 import PageCurriculumArea from "../../../../components/PageCurriculumArea/PageCurriculumArea"

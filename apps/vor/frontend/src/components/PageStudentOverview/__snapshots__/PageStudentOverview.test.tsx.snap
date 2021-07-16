@@ -155,20 +155,6 @@ exports[`PageStudentOverview should render correctly 1`] = `
   }
 }
 
-@keyframes animation-0 {
-  0% {
-    opacity: 0.05;
-  }
-
-  50% {
-    opacity: 0.2;
-  }
-
-  100% {
-    opacity: 0.05;
-  }
-}
-
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
@@ -195,15 +181,15 @@ exports[`PageStudentOverview should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {
@@ -287,7 +273,6 @@ exports[`PageStudentOverview should render correctly 1`] = `
 .emotion-4:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-5 {
@@ -309,15 +294,15 @@ exports[`PageStudentOverview should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   overflow-x: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-7 {
@@ -512,7 +497,6 @@ exports[`PageStudentOverview should render correctly 1`] = `
 .emotion-17:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-17:hover:disabled,
@@ -632,7 +616,6 @@ exports[`PageStudentOverview should render correctly 1`] = `
 .emotion-27:hover,
 .emotion-27:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-27:hover:disabled,

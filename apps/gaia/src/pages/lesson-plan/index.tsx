@@ -1,6 +1,6 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Head from "next/head"
-import React, { useState } from "react"
+import { useState } from "react"
 import AllLessonPlans from "../../components/AllLessonPlans/AllLessonPlans"
 import DailyLessonPlans from "../../components/DailyLessonPlans/DailyLessonPlans"
 import CalendarIcon from "../../icons/calendar.svg"

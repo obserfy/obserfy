@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box, Button, Flex } from "theme-ui"
 import { t } from "@lingui/macro"
 import useGetObservation from "../../hooks/api/observations/useGetObservation"

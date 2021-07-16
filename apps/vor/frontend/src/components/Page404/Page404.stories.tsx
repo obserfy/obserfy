@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import Page404 from "./Page404"
 
 export default {

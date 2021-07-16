@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import SEO from "../../../components/seo"
 import PageSupport from "../../../components/PageSupport/PageSupport"
 

@@ -1,4 +1,4 @@
-import React, { FC, FormEvent, useState } from "react"
+import { FC, FormEvent, useState } from "react"
 import { Flex, Box, Button } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { navigate } from "../Link/Link"

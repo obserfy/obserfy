@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/macro"
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
 import usePostNewCurriculum from "../../hooks/api/curriculum/usePostNewCurriculum"
 import useVisibilityState from "../../hooks/useVisibilityState"

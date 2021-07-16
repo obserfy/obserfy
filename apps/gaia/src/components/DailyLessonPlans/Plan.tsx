@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { isEmpty } from "../../utils/array"
 import dayjs from "../../utils/dayjs"
 import AddObservationForm from "../AddObservationForm"

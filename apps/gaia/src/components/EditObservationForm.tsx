@@ -1,5 +1,5 @@
 import * as Sentry from "@sentry/node"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import useDeleteObservation from "../hooks/api/useDeleteObservation"
 import usePatchObservation from "../hooks/api/usePatchObservation"
 import Button from "./Button/Button"

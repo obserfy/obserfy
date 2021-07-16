@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/media-has-caption */
+import * as Sentry from "@sentry/node"
 import Hls from "hls.js"
-import React, { FC, useEffect, useRef } from "react"
 // @ts-ignore
 import mux from "mux-embed"
-import * as Sentry from "@sentry/node"
+import { FC, useEffect, useRef } from "react"
 
 export interface VideoPlayerProps {
   src: string

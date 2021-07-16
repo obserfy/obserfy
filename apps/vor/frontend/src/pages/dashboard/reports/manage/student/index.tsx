@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro"
-import React from "react"
+
 import { Box, Flex } from "theme-ui"
 import { borderBottom, borderTop } from "../../../../../border"
 import StudentsInReport from "../../../../../components/StudentsInReport/StudentsInReport"

@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { BoxProps } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import Dialog from "../Dialog/Dialog"

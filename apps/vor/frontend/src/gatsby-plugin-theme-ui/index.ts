@@ -11,6 +11,9 @@ const theme = {
     background: "#f2f3f5",
     onBackground: "rgba(0,0,0,0.87)",
 
+    backgroundLight: "#f6f6f6",
+    onBackgroundLight: "rgba(0,0,0,0.87)",
+
     // Primary Color
     primary: "#00e399",
     onPrimary: "#000",
@@ -42,6 +45,7 @@ const theme = {
     onSurfaceBlurTransparent: "#87000000",
 
     border: "rgba(0,0,0,.1)",
+    borderLight: "rgba(0,0,0,.07)",
     borderSolid: "#e5e5e5",
     borderBold: "#e5e5e5",
 
@@ -98,6 +102,9 @@ const theme = {
         background: "#101010",
         onBackground: "rgba(255,255,255, 0.87)",
 
+        backgroundLight: "#1c1c1c",
+        onBackgroundLight: "rgba(255,255,255, 0.87)",
+
         backgroundDarker: "#070707",
         onBackgroundDarker: "rgba(255,255,255, 0.87)",
 
@@ -114,7 +121,8 @@ const theme = {
 
         icon: "#979797",
 
-        border: "rgba(232,232,232, 0.07)",
+        border: "rgba(232,232,232, 0.1)",
+        borderLight: "rgb(28,28,28)",
         borderSolid: "#2c2c2c",
         borderBold: "black",
 
@@ -255,7 +263,6 @@ const theme = {
       },
       "&:hover, &:focus": {
         backgroundColor: "primaryDark",
-        outline: "none",
         "&:disabled": {
           backgroundColor: "primary",
         },
@@ -275,7 +282,6 @@ const theme = {
       "&:hover, &:focus": {
         backgroundColor: "primaryLighter",
         borderColor: "primary",
-        outline: "none",
       },
     },
     outline: {
@@ -287,7 +293,6 @@ const theme = {
       "&:hover, &:focus": {
         backgroundColor: "primaryLighter",
         borderColor: "primary",
-        outline: "none",
         "&:disabled": {
           backgroundColor: "transparent",
           borderColor: "border",
@@ -318,7 +323,6 @@ const theme = {
       color: "text",
       "&:hover, &:focus": {
         borderColor: "primary",
-        outline: "none",
       },
       "&::placeholder": {
         fontStyle: "italic",
@@ -339,7 +343,6 @@ const theme = {
       p: 12,
       "&:hover, &:focus": {
         borderColor: "primary",
-        outline: "none",
       },
     },
     textarea: {
@@ -354,7 +357,6 @@ const theme = {
       color: "text",
       "&:hover, &:focus": {
         borderColor: "primary",
-        outline: "none",
       },
       "&::placeholder": {
         fontStyle: "italic",

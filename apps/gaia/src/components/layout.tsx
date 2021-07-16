@@ -1,9 +1,9 @@
-import React, { FC } from "react"
 import { useRouter } from "next/router"
-import Header from "./header"
+import { FC } from "react"
 import useGetChildren from "../hooks/api/useGetChildren"
-import ChildInfo from "./ChildInfo/ChildInfo"
 import { useQueryString } from "../hooks/useQueryString"
+import ChildInfo from "./ChildInfo/ChildInfo"
+import Header from "./header"
 import Navbar from "./Navbar/Navbar"
 
 const Layout: FC = ({ children }) => {

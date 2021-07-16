@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { Image, Card, Flex, jsx, Label } from "theme-ui"
+import { Image, Card, Flex, Label } from "theme-ui"
 import { FC, Fragment, useState } from "react"
 import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"

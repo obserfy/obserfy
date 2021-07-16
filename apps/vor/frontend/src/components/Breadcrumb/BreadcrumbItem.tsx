@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { FC } from "react"
-import { Box, jsx, ThemeUIStyleObject } from "theme-ui"
+import { Box, ThemeUIStyleObject } from "theme-ui"
 import { Link } from "../Link/Link"
 
 interface Props {

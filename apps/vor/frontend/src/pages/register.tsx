@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro"
-import React, { FC } from "react"
+import { FC } from "react"
 import queryString from "query-string"
 import { PageRendererProps } from "gatsby"
 import PageRegister from "../components/PageRegister/PageRegister"

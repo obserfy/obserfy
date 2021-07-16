@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Card, Flex } from "theme-ui"
 import { t } from "@lingui/macro"
 import dayjs, { Dayjs } from "../../dayjs"

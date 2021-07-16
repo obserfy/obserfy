@@ -1,4 +1,3 @@
-import React from "react"
 import PageGallery from "../../../../components/PageGallery/PageGallery"
 import { useQueryString } from "../../../../hooks/useQueryString"
 

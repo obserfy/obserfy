@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/macro"
-import React from "react"
+
 import { Button, Flex } from "theme-ui"
 import { ReactComponent as EmptyIllustration } from "../../images/report-illustration.svg"
 import { NEW_REPORT_URL } from "../../routes"

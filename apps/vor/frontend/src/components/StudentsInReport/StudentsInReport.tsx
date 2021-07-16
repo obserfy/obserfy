@@ -1,10 +1,11 @@
-/** @jsx jsx */
 import { FC } from "react"
-import { jsx, Image, Box, ThemeUIStyleObject } from "theme-ui"
+import { Box, ThemeUIStyleObject } from "theme-ui"
 import { borderRight } from "../../border"
 import { useGetAllStudents } from "../../hooks/api/students/useGetAllStudents"
 import { STUDENT_REPORT_URL } from "../../routes"
 import { Link } from "../Link/Link"
+import Typography from "../Typography/Typography"
+import { ReactComponent as ChevronRight } from "../../icons/chevron-right.svg"
 
 export interface PageManageReportsProps {
   reportId: string
@@ -40,21 +41,22 @@ const StudentsInReport: FC<PageManageReportsProps> = ({
           sx={{
             backgroundColor: studentId === id ? "primaryLighter" : "",
             display: "flex",
+            alignItems: "center",
             "&:hover": {
               backgroundColor: "primaryLightest",
             },
           }}
         >
-          <Box p={3} className="truncate">
+          <Typography.Body p={3} className="truncate">
             {name}
-          </Box>
+          </Typography.Body>
 
-          <Image
-            src="/icons/chevron-right-white.svg"
-            alt=""
-            ml="auto"
-            mr={3}
-            sx={{ opacity: 0.4 }}
+          <ChevronRight
+            sx={{
+              ml: "auto",
+              mr: 3,
+              opacity: 0.4,
+            }}
           />
         </Link>
       ))}

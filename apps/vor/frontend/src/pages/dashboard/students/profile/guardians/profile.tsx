@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro"
-import React from "react"
+
 import { Box, Button } from "theme-ui"
 import AlertDialog from "../../../../../components/AlertDialog/AlertDialog"
 import { navigate } from "../../../../../components/Link/Link"

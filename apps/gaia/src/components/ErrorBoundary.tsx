@@ -1,5 +1,5 @@
-import React, { Component, ReactNode } from "react"
 import * as Sentry from "@sentry/node"
+import { Component, ReactNode } from "react"
 
 interface State {
   hasError: boolean

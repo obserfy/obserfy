@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { action } from "@storybook/addon-actions"
 import { Box } from "theme-ui"
 import ProfilePicker from "./ProfilePicker"

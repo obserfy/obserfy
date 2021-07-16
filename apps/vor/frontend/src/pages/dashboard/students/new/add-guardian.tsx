@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import PageNewStudentAddGuardian from "../../../../components/PageNewStudentAddGuardian/PageNewStudentAddGuardian"
 
 const PickGuardian: FC = () => {

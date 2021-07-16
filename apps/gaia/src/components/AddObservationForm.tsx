@@ -1,5 +1,5 @@
 import * as Sentry from "@sentry/node"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import usePostPlanObservation from "../hooks/api/usePostPlanObservation"
 import Button from "./Button/Button"
 import Textarea from "./Textarea/Textarea"

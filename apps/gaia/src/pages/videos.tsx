@@ -1,6 +1,6 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Image from "next/image"
-import React, { FC, Suspense, useState } from "react"
+import { FC, Suspense, useState } from "react"
 import Head from "next/head"
 import dayjs from "../utils/dayjs"
 import Button from "../components/Button/Button"

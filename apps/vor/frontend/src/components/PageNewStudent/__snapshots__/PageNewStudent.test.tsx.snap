@@ -48,30 +48,30 @@ exports[`PageNewStudent should render correctly 1`] = `
   min-width: 0;
   margin-left: auto;
   margin-right: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   max-width: 640px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-4 {
@@ -155,7 +155,6 @@ exports[`PageNewStudent should render correctly 1`] = `
 .emotion-5:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-6 {
@@ -177,15 +176,15 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   overflow-x: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-8 {
@@ -288,7 +287,6 @@ exports[`PageNewStudent should render correctly 1`] = `
 .emotion-14:hover,
 .emotion-14:focus {
   background-color: var(--theme-ui-colors-primaryDark);
-  outline: none;
 }
 
 .emotion-14:hover:disabled,
@@ -318,14 +316,14 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .emotion-18 {
@@ -386,6 +384,10 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   -webkit-justify-content: center;
@@ -399,10 +401,6 @@ exports[`PageNewStudent should render correctly 1`] = `
   align-items: center;
   width: 100%;
   height: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-23 {
@@ -490,7 +488,6 @@ exports[`PageNewStudent should render correctly 1`] = `
 .emotion-25:hover,
 .emotion-25:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-25::-webkit-input-placeholder {
@@ -552,14 +549,14 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-29 {
@@ -589,6 +586,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
+  width: 100%;
   width: 100%;
 }
 
@@ -621,7 +619,6 @@ exports[`PageNewStudent should render correctly 1`] = `
 .emotion-29:hover,
 .emotion-29:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-29::-webkit-input-placeholder {
@@ -683,6 +680,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text);
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
+  width: 100%;
   opacity: 1!important;
   width: 100%;
 }
@@ -716,7 +714,6 @@ exports[`PageNewStudent should render correctly 1`] = `
 .emotion-34:hover,
 .emotion-34:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-34::-webkit-input-placeholder {
@@ -818,7 +815,6 @@ exports[`PageNewStudent should render correctly 1`] = `
 .emotion-35:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-35:hover:disabled,
@@ -866,6 +862,17 @@ exports[`PageNewStudent should render correctly 1`] = `
   flex-direction: column;
 }
 
+.emotion-46 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .emotion-47 {
   box-sizing: border-box;
   margin: 0;
@@ -895,7 +902,6 @@ exports[`PageNewStudent should render correctly 1`] = `
 .emotion-47:hover,
 .emotion-47:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-48 {
@@ -907,6 +913,31 @@ exports[`PageNewStudent should render correctly 1`] = `
   -ms-flex-item-align: center;
   align-self: center;
   pointer-events: none;
+}
+
+.emotion-53 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis);
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .emotion-55 {
@@ -941,7 +972,6 @@ exports[`PageNewStudent should render correctly 1`] = `
 .emotion-55:hover,
 .emotion-55:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-55::-webkit-input-placeholder {
@@ -1058,14 +1088,14 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding: 16px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-62 {
@@ -1154,7 +1184,6 @@ exports[`PageNewStudent should render correctly 1`] = `
 .emotion-63:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-64 {
@@ -1246,7 +1275,6 @@ exports[`PageNewStudent should render correctly 1`] = `
 .emotion-65:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-65:hover:disabled,
@@ -1460,7 +1488,7 @@ exports[`PageNewStudent should render correctly 1`] = `
             Gender
           </div>
           <div
-            class="emotion-30"
+            class="emotion-46"
           >
             <select
               aria-label="Gender"
@@ -1514,7 +1542,7 @@ exports[`PageNewStudent should render correctly 1`] = `
           </div>
         </label>
         <label
-          class="emotion-44"
+          class="emotion-53"
         >
           <div
             class="emotion-27"

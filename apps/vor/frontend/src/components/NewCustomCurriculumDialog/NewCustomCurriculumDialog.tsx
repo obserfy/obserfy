@@ -1,11 +1,11 @@
-import React, { FC, useState } from "react"
-import { Box } from "theme-ui"
 import { t } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
-import DialogHeader from "../DialogHeader/DialogHeader"
-import Dialog from "../Dialog/Dialog"
-import Input from "../Input/Input"
+import { FC, useState } from "react"
+import { Box } from "theme-ui"
 import usePostNewCurriculum from "../../hooks/api/curriculum/usePostNewCurriculum"
+import Dialog from "../Dialog/Dialog"
+import DialogHeader from "../DialogHeader/DialogHeader"
+import Input from "../Input/Input"
 
 export interface NewCustomCurriculumDialogProps {
   onDismiss: () => void

@@ -58,14 +58,14 @@ exports[`NewGuardianForm should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-5 {
@@ -95,6 +95,7 @@ exports[`NewGuardianForm should render correctly 1`] = `
   color: var(--theme-ui-colors-text);
   margin-bottom: 8px;
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
+  width: 100%;
   width: 100%;
 }
 
@@ -127,7 +128,6 @@ exports[`NewGuardianForm should render correctly 1`] = `
 .emotion-5:hover,
 .emotion-5:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-5::-webkit-input-placeholder {
@@ -180,6 +180,7 @@ exports[`NewGuardianForm should render correctly 1`] = `
   margin-bottom: 16px;
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+  width: 100%;
 }
 
 .emotion-13:autofill,
@@ -211,7 +212,6 @@ exports[`NewGuardianForm should render correctly 1`] = `
 .emotion-13:hover,
 .emotion-13:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-13::-webkit-input-placeholder {
@@ -293,7 +293,6 @@ exports[`NewGuardianForm should render correctly 1`] = `
 .emotion-20:hover,
 .emotion-20:focus {
   border-color: var(--theme-ui-colors-primary);
-  outline: none;
 }
 
 .emotion-20::-webkit-input-placeholder {

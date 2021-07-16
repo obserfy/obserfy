@@ -29,20 +29,6 @@ exports[`PageEditClass should render correctly 1`] = `
   }
 }
 
-@keyframes animation-0 {
-  0% {
-    opacity: 0.05;
-  }
-
-  50% {
-    opacity: 0.2;
-  }
-
-  100% {
-    opacity: 0.05;
-  }
-}
-
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
@@ -69,14 +55,14 @@ exports[`PageEditClass should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-left: -8px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-3 {
@@ -93,6 +79,7 @@ exports[`PageEditClass should render correctly 1`] = `
   flex-shrink: 0;
   width: 24px;
   height: 24px;
+  fill: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 .emotion-4 {

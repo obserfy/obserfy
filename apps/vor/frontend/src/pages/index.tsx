@@ -1,6 +1,6 @@
 import { t } from "@lingui/macro"
 import { PageRendererProps } from "gatsby"
-import React, { FC, useEffect } from "react"
+import { FC, useEffect } from "react"
 import { navigate } from "../components/Link/Link"
 import SEO from "../components/seo"
 import { STUDENTS_URL } from "../routes"
