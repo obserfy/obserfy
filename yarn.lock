@@ -6333,10 +6333,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.17.4":
-  version: 14.17.4
-  resolution: "@types/node@npm:14.17.4"
-  checksum: a0bbe143273f9bf39c1d4f9955b6efeabfa5ddb436692ca8fe1a835ceaacfb2536cad122df54a29daaf6139dcc79a480502c39477cf5fe28b9af2709a41312e7
+"@types/node@npm:14.17.5, @types/node@npm:^14.0.10, @types/node@npm:^14.14.10, @types/node@npm:^14.14.31, @types/node@npm:^14.14.41":
+  version: 14.17.5
+  resolution: "@types/node@npm:14.17.5"
+  checksum: 8fba22a8df7bcea75039f08e00fcff8e331f6d367739a9631d3457bc3e8e5ddfdd60e1a5d685d9420312e9ed7cf2f2146d37224ec9f7d578fe8dd32ce3821e62
   languageName: node
   linkType: hard
 
@@ -6344,13 +6344,6 @@ __metadata:
   version: 15.0.2
   resolution: "@types/node@npm:15.0.2"
   checksum: 273565e1da341b248e08bec105667f0ab8ef89e347a47bbd6e18e35c0946788a53d581e0e3d8b8e3b3b5809db3237fcbf1bbb2251cf1506e5f81622739cb9ff1
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^14.0.10, @types/node@npm:^14.14.10, @types/node@npm:^14.14.31, @types/node@npm:^14.14.41":
-  version: 14.17.5
-  resolution: "@types/node@npm:14.17.5"
-  checksum: 8fba22a8df7bcea75039f08e00fcff8e331f6d367739a9631d3457bc3e8e5ddfdd60e1a5d685d9420312e9ed7cf2f2146d37224ec9f7d578fe8dd32ce3821e62
   languageName: node
   linkType: hard
 
@@ -14798,7 +14791,7 @@ fsevents@^1.2.7:
     "@types/minio": 7.0.8
     "@types/mixpanel-browser": 2.35.7
     "@types/nanoid": 3.0.0
-    "@types/node": 14.17.4
+    "@types/node": 14.17.5
     "@types/pg": 8.6.1
     "@types/pino": 6.3.9
     "@types/react": 17.0.14
