@@ -19,7 +19,7 @@
     "@sentry/webpack-plugin": "1.16.0",
     "@svgr/webpack": "5.5.0",
     "@tailwindcss/typography": "0.4.1",
-    "@types/body-scroll-lock": "2.6.1",
+    "@types/body-scroll-lock": "2.6.2",
     "@types/dompurify": "2.2.3",
     "@types/formidable": "1.0.31",
     "@types/hls.js": "1.0.0",
