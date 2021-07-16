@@ -32,7 +32,7 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
               p: 3,
               py: [2, 3],
               display: "block",
-              width: ["100%", "50%", "25%", "20%"],
+              width: ["100%", "50%", "25%"],
             }}
           >
             <Card

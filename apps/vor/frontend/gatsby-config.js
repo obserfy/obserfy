@@ -91,11 +91,7 @@ const plugins = [
 
 // this disables plugins for dev.
 if (process.env.NODE_ENV === "production") {
-  // TODO: run preact on dev too when prefresh stabilizes. Preact's HMR stops
-  //  working on gatsby v3, so we disable preact in dev. Bug might arise on
-  //  dev related to portals due to the difference between preact's and react's
-  //  event propagation.
-  plugins.push(`gatsby-plugin-preact`, {
+  plugins.push({
     resolve: "@sentry/gatsby",
     options: {
       dsn: "https://05a5ecaa1d8c4c01b96d2a7993fa9337@sentry.io/1852524",

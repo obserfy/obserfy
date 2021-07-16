@@ -3218,9 +3218,10 @@ declare namespace GatsbyTypes {
     readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>
   }
 
-  type Unnamed_1_QueryVariables = Exact<{ [key: string]: never }>
+  type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454QueryVariables =
+    Exact<{ [key: string]: never }>
 
-  type Unnamed_1_Query = {
+  type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454Query = {
     readonly site: Maybe<{
       readonly siteMetadata: Maybe<
         Pick<SiteSiteMetadata, "title" | "description" | "author">
@@ -3228,10 +3229,38 @@ declare namespace GatsbyTypes {
     }>
   }
 
-  type Unnamed_2_QueryVariables = Exact<{ [key: string]: never }>
+  type homechrisintSrcobserfynodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544QueryVariables =
+    Exact<{ [key: string]: never }>
 
-  type Unnamed_2_Query = {
-    readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, "preset" | "prismPreset">>
+  type homechrisintSrcobserfynodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544Query =
+    {
+      readonly themeUiConfig: Maybe<
+        Pick<ThemeUiConfig, "preset" | "prismPreset">
+      >
+    }
+
+  type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never }>
+
+  type LocalizationConfigQueryQuery = {
+    readonly themeI18N: Maybe<
+      Pick<ThemeI18n, "defaultLang" | "prefixDefault"> & {
+        readonly config: Maybe<
+          ReadonlyArray<
+            Maybe<
+              Pick<
+                Locale,
+                | "code"
+                | "hrefLang"
+                | "dateFormat"
+                | "langDir"
+                | "localName"
+                | "name"
+              >
+            >
+          >
+        >
+      }
+    >
   }
 
   type GatsbyImageSharpFixedFragment = Pick<
@@ -3323,30 +3352,6 @@ declare namespace GatsbyTypes {
     readonly site: Maybe<{
       readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
     }>
-  }
-
-  type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never }>
-
-  type LocalizationConfigQueryQuery = {
-    readonly themeI18N: Maybe<
-      Pick<ThemeI18n, "defaultLang" | "prefixDefault"> & {
-        readonly config: Maybe<
-          ReadonlyArray<
-            Maybe<
-              Pick<
-                Locale,
-                | "code"
-                | "hrefLang"
-                | "dateFormat"
-                | "langDir"
-                | "localName"
-                | "name"
-              >
-            >
-          >
-        >
-      }
-    >
   }
 
   type PagesQueryQueryVariables = Exact<{ [key: string]: never }>
