@@ -1,4 +1,5 @@
 const plugins = [
+  `gatsby-plugin-preact`,
   `gatsby-plugin-layout`,
   "gatsby-plugin-theme-ui",
   `gatsby-plugin-react-helmet`,
