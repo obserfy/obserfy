@@ -1,11 +1,9 @@
 import { FC } from "react"
-import { Box, ThemeUIStyleObject } from "theme-ui"
-import { borderRight } from "../../border"
+import { Box, Text, ThemeUIStyleObject } from "theme-ui"
+import { borderBottom } from "../../border"
 import { useGetAllStudents } from "../../hooks/api/students/useGetAllStudents"
 import { STUDENT_REPORT_URL } from "../../routes"
 import { Link } from "../Link/Link"
-import Typography from "../Typography/Typography"
-import { ReactComponent as ChevronRight } from "../../icons/chevron-right.svg"
 
 export interface PageManageReportsProps {
   reportId: string
@@ -16,52 +14,51 @@ export interface PageManageReportsProps {
 const StudentsInReport: FC<PageManageReportsProps> = ({
   reportId,
   studentId,
-  containerSx,
 }) => {
   const students = useGetAllStudents("", true)
 
   return (
-    <Box
-      sx={{
-        ...containerSx,
-        ...borderRight,
-        width: "100%",
-        maxWidth: [undefined, undefined, undefined, undefined, 340],
-        height: "100vh",
-        position: "sticky",
-        top: 0,
-        overflowY: "auto",
-        pb: 48,
-      }}
-    >
+    <Box>
       {students.data?.map(({ id, name }) => (
-        <Link
+        <Student
           key={id}
-          to={STUDENT_REPORT_URL(reportId, id)}
-          sx={{
-            backgroundColor: studentId === id ? "primaryLighter" : "",
-            display: "flex",
-            alignItems: "center",
-            "&:hover": {
-              backgroundColor: "primaryLightest",
-            },
-          }}
-        >
-          <Typography.Body p={3} className="truncate">
-            {name}
-          </Typography.Body>
-
-          <ChevronRight
-            sx={{
-              ml: "auto",
-              mr: 3,
-              opacity: 0.4,
-            }}
-          />
-        </Link>
+          reportId={reportId}
+          studentId={id}
+          studentId1={studentId}
+          name={name}
+        />
       ))}
     </Box>
   )
 }
+
+const Student: FC<{
+  reportId: string
+  studentId: string
+  studentId1: string
+  name: string
+}> = ({ name, reportId, studentId, studentId1 }) => (
+  <Link
+    to={STUDENT_REPORT_URL(reportId, studentId)}
+    sx={{
+      width: "100%",
+      backgroundColor: studentId1 === studentId ? "primaryLighter" : "",
+      display: "flex",
+      alignItems: "center",
+      ...borderBottom,
+      "&:hover": {
+        backgroundColor: "primaryLightest",
+      },
+    }}
+  >
+    <Text p={3} className="truncate" sx={{ fontSize: 1 }}>
+      {name}
+    </Text>
+
+    <Box>
+      <Text sx={{ fontSize: 1 }}>Joyful 1</Text>
+    </Box>
+  </Link>
+)
 
 export default StudentsInReport

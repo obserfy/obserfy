@@ -1,11 +1,10 @@
 import { t } from "@lingui/macro"
-
+import { Box, Flex, Text } from "theme-ui"
 import { borderBottom } from "../../../../border"
 import SEO from "../../../../components/seo"
 import StudentsInReport from "../../../../components/StudentsInReport/StudentsInReport"
 import TopBar, { breadCrumb } from "../../../../components/TopBar/TopBar"
 import TranslucentBar from "../../../../components/TranslucentBar/TranslucentBar"
-import Typography from "../../../../components/Typography/Typography"
 import useGetReport from "../../../../hooks/api/reports/useGetProgressReport"
 import { useQueryString } from "../../../../hooks/useQueryString"
 import { ALL_REPORT_URL } from "../../../../routes"
@@ -16,10 +15,10 @@ const ManageReports = () => {
   const report = useGetReport(reportId)
 
   return (
-    <>
+    <Box sx={{ minHeight: "100vh" }}>
       <SEO title="Progress Reports" />
 
-      <TranslucentBar boxSx={{ ...borderBottom, minHeight: 146 }}>
+      <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
           containerSx={{ ...borderBottom }}
           breadcrumbs={[
@@ -27,17 +26,21 @@ const ManageReports = () => {
             breadCrumb(report.data?.title),
           ]}
         />
-        <Typography.H6 p={3} pb={0}>
-          {report.data?.title}
-        </Typography.H6>
-        <Typography.Body p={3} color="textMediumEmphasis">
-          {report.data?.periodStart.format("DD MMMM YYYY")} -{" "}
-          {report.data?.periodStart.format("DD MMMM YYYY")}
-        </Typography.Body>
+
+        <Flex>
+          <Text p={3} pb={0} sx={{ fontSize: 1 }}>
+            {report.data?.title}
+          </Text>
+
+          <Text p={3} color="textMediumEmphasis" sx={{ fontSize: 1 }}>
+            {report.data?.periodStart.format("DD MMMM YYYY")} -{" "}
+            {report.data?.periodStart.format("DD MMMM YYYY")}
+          </Text>
+        </Flex>
       </TranslucentBar>
 
       <StudentsInReport reportId={reportId} studentId={studentId} />
-    </>
+    </Box>
   )
 }
 

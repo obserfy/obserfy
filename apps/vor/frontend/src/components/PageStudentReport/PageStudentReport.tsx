@@ -78,7 +78,7 @@ const PageStudentReport: FC<PageStudentReportProps> = ({ studentId }) => {
               p={3}
               color="texMediumEmphasis"
             >
-              <Trans>Evaluation</Trans>
+              <Trans>Description</Trans>
             </Typography.Body>
 
             <MarkdownEditor onChange={() => {}} value="" />
