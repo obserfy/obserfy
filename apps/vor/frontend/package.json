@@ -155,7 +155,9 @@
     "gen:models": "go run ../tscriptify/main.go",
     "db:reset": "node ./scripts/resetDB.js",
     "cy:run": "cypress run",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "tw:build": "tailwindcss -o src/tailwind.css",
+    "tw:watch": "tailwindcss -o src/tailwind.css --watch"
   },
   "nyc": {
     "extends": "@istanbuljs/nyc-config-typescript",

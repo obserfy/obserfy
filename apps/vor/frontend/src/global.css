@@ -22,10 +22,6 @@
   font-display: swap;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 a,
 a:hover,
 a:focus,
