@@ -1,6 +1,6 @@
 import { t, Trans } from "@lingui/macro"
 import { FC, useState } from "react"
-import { Box, Flex, Text } from "theme-ui"
+import { Box, Button, Flex, Text } from "theme-ui"
 import { borderBottom, borderFull, borderLeft } from "../../../../../border"
 import Icon from "../../../../../components/Icon/Icon"
 import ImagePreview from "../../../../../components/ImagePreview/ImagePreview"
@@ -24,6 +24,8 @@ import {
   useGetStudentObservations,
 } from "../../../../../hooks/api/useGetStudentObservations"
 import { useQueryString } from "../../../../../hooks/useQueryString"
+import { ReactComponent as ChevronDown } from "../../../../../icons/chevron-down.svg"
+import { ReactComponent as ChevronUp } from "../../../../../icons/chevron-up.svg"
 import { ReactComponent as EyeIcon } from "../../../../../icons/eye.svg"
 import { ALL_REPORT_URL, MANAGE_REPORT_URL } from "../../../../../routes"
 
@@ -60,18 +62,30 @@ const ManageReports = () => {
           ]}
         />
 
-        <Flex sx={{ ...borderBottom, alignItems: "center" }}>
-          <Text p={3} sx={{ fontWeight: "bold", fontSize: 1 }}>
+        <Flex p={3} sx={{ ...borderBottom, alignItems: "center" }}>
+          <Button variant="outline" p={0}>
+            <Icon as={ChevronUp} size={24} />
+          </Button>
+
+          <Button variant="outline" p={0} ml={1}>
+            <Icon as={ChevronDown} size={24} />
+          </Button>
+
+          <Text ml={3} mr="auto" sx={{ fontWeight: "bold", fontSize: 1 }}>
             {student.data?.name}
           </Text>
+
+          <Button>Done</Button>
         </Flex>
 
-        <Tab
-          small
-          items={areas.data?.map((area) => area.name) ?? []}
-          selectedItemIdx={areaIdx}
-          onTabClick={setAreaIdx}
-        />
+        <Box sx={{ minHeight: 47 }}>
+          <Tab
+            small
+            items={areas.data?.map((area) => area.name) ?? []}
+            selectedItemIdx={areaIdx}
+            onTabClick={setAreaIdx}
+          />
+        </Box>
       </TranslucentBar>
 
       <Box
@@ -145,7 +159,6 @@ const ManageReports = () => {
                         color={`materialStage.on${stageName}`}
                         backgroundColor={`materialStage.${stageName.toLowerCase()}`}
                         text={stageName}
-                        mr={2}
                         ml="auto"
                       />
                     </Flex>
@@ -186,7 +199,7 @@ const ObservationListItem: FC<{
   observation: Observation
   studentId: string
 }> = ({ studentId, observation }) => (
-  <Box pt={3}>
+  <Box pt={3} sx={borderBottom}>
     <Flex mb={2} mx={3}>
       <Text
         data-cy="observation-short-desc"
