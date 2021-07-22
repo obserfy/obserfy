@@ -3340,6 +3340,14 @@ declare namespace GatsbyTypes {
     "aspectRatio" | "src" | "srcSet" | "srcWebp" | "srcSetWebp" | "sizes"
   >
 
+  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
+
+  type LocalizationSEOQueryQuery = {
+    readonly site: Maybe<{
+      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
+    }>
+  }
+
   type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never }>
 
   type LocalizationConfigQueryQuery = {
@@ -3362,14 +3370,6 @@ declare namespace GatsbyTypes {
         >
       }
     >
-  }
-
-  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
-
-  type LocalizationSEOQueryQuery = {
-    readonly site: Maybe<{
-      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
-    }>
   }
 
   type PagesQueryQueryVariables = Exact<{ [key: string]: never }>

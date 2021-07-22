@@ -5,7 +5,7 @@ export default {
   textDisabled: "rgba(0,0,0, 0.38)",
   textPrimary: "#027c5b",
 
-  background: "#f2f3f5",
+  background: "#f6f7fa",
   onBackground: "rgba(0,0,0,0.87)",
 
   backgroundLight: "#f6f6f6",

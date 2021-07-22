@@ -1328,6 +1328,10 @@ video {
   border-width: 1px;
 }
 
+.border-b {
+  border-bottom-width: 1px;
+}
+
 .capitalize {
   text-transform: capitalize;
 }
