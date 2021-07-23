@@ -62,20 +62,31 @@ const StudentReports = () => {
           ]}
         />
 
-        <Flex p={3} sx={{ ...borderBottom, alignItems: "center" }}>
-          <Button variant="outline" p={0}>
-            <Icon as={ChevronUp} size={24} />
+        <Flex
+          p={3}
+          sx={{
+            ...borderBottom,
+            alignItems: ["flex-start", "center"],
+            flexDirection: ["column", "row"],
+          }}
+        >
+          <Flex sx={{ alignItems: "center" }} mr="auto">
+            <Button variant="outline" p={0}>
+              <Icon as={ChevronUp} size={24} />
+            </Button>
+
+            <Button variant="outline" p={0} ml={1}>
+              <Icon as={ChevronDown} size={24} />
+            </Button>
+
+            <Text ml={3} sx={{ fontWeight: "bold", fontSize: 1 }}>
+              {student.data?.name}
+            </Text>
+          </Flex>
+
+          <Button mt={[3, 0]} sx={{ width: ["100%", "auto"] }}>
+            Mark as done
           </Button>
-
-          <Button variant="outline" p={0} ml={1}>
-            <Icon as={ChevronDown} size={24} />
-          </Button>
-
-          <Text ml={3} mr="auto" sx={{ fontWeight: "bold", fontSize: 1 }}>
-            {student.data?.name}
-          </Text>
-
-          <Button>Done</Button>
         </Flex>
 
         <Box sx={{ minHeight: 47 }}>

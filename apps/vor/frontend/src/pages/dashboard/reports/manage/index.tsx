@@ -51,7 +51,10 @@ const ManageReports = () => {
             {report.data?.periodStart.format("DD MMMM YYYY")}
           </Text>
 
-          <Flex mt={[3, 0]} sx={{ width: "100%", alignItems: "center" }}>
+          <Flex
+            mt={[3, 0]}
+            sx={{ width: ["100%", "auto"], alignItems: "center" }}
+          >
             <Text
               ml={3}
               color="textMediumEmphasis"
