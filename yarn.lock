@@ -711,7 +711,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-nullish-coalescing-operator@npm:^7.12.1, @babel/plugin-proposal-nullish-coalescing-operator@npm:^7.14.0, @babel/plugin-proposal-nullish-coalescing-operator@npm:^7.14.5":
+"@babel/plugin-proposal-nullish-coalescing-operator@npm:^7.12.1, @babel/plugin-proposal-nullish-coalescing-operator@npm:^7.14.5":
   version: 7.14.5
   resolution: "@babel/plugin-proposal-nullish-coalescing-operator@npm:7.14.5"
   dependencies:
@@ -788,7 +788,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-optional-chaining@npm:^7.12.7, @babel/plugin-proposal-optional-chaining@npm:^7.14.0, @babel/plugin-proposal-optional-chaining@npm:^7.14.5":
+"@babel/plugin-proposal-optional-chaining@npm:^7.12.7, @babel/plugin-proposal-optional-chaining@npm:^7.14.5":
   version: 7.14.5
   resolution: "@babel/plugin-proposal-optional-chaining@npm:7.14.5"
   dependencies:
@@ -894,7 +894,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-dynamic-import@npm:^7.8.0, @babel/plugin-syntax-dynamic-import@npm:^7.8.3":
+"@babel/plugin-syntax-dynamic-import@npm:^7.8.3":
   version: 7.8.3
   resolution: "@babel/plugin-syntax-dynamic-import@npm:7.8.3"
   dependencies:
@@ -1138,7 +1138,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-classes@npm:^7.0.0, @babel/plugin-transform-classes@npm:^7.12.1, @babel/plugin-transform-classes@npm:^7.14.0, @babel/plugin-transform-classes@npm:^7.14.5":
+"@babel/plugin-transform-classes@npm:^7.0.0, @babel/plugin-transform-classes@npm:^7.12.1, @babel/plugin-transform-classes@npm:^7.14.5":
   version: 7.14.5
   resolution: "@babel/plugin-transform-classes@npm:7.14.5"
   dependencies:
@@ -1461,7 +1461,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-runtime@npm:^7.14.0, @babel/plugin-transform-runtime@npm:^7.14.5":
+"@babel/plugin-transform-runtime@npm:^7.14.5":
   version: 7.14.5
   resolution: "@babel/plugin-transform-runtime@npm:7.14.5"
   dependencies:
@@ -1488,7 +1488,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-spread@npm:^7.0.0, @babel/plugin-transform-spread@npm:^7.12.1, @babel/plugin-transform-spread@npm:^7.14.0, @babel/plugin-transform-spread@npm:^7.14.6":
+"@babel/plugin-transform-spread@npm:^7.0.0, @babel/plugin-transform-spread@npm:^7.12.1, @babel/plugin-transform-spread@npm:^7.14.6":
   version: 7.14.6
   resolution: "@babel/plugin-transform-spread@npm:7.14.6"
   dependencies:
@@ -1569,7 +1569,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-env@npm:^7.11.0, @babel/preset-env@npm:^7.12.1, @babel/preset-env@npm:^7.12.11, @babel/preset-env@npm:^7.14.0":
+"@babel/preset-env@npm:^7.11.0, @babel/preset-env@npm:^7.12.1, @babel/preset-env@npm:^7.12.11":
   version: 7.14.7
   resolution: "@babel/preset-env@npm:7.14.7"
   dependencies:
@@ -8458,17 +8458,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-remove-graphql-queries@npm:3.9.0":
-  version: 3.9.0
-  resolution: "babel-plugin-remove-graphql-queries@npm:3.9.0"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-    gatsby: ^3.0.0-next.0
-  checksum: 7b9b1a7fd337f6735ccfbef1dfef2e7c16b01eda9fd9e5bb6320e19161f893dec65edc76175726b448dd06cee8b63f86a3f248ef373865225c37a98375cf3fa2
-  languageName: node
-  linkType: hard
-
-"babel-plugin-remove-graphql-queries@npm:^3.10.0":
+"babel-plugin-remove-graphql-queries@npm:3.10.0, babel-plugin-remove-graphql-queries@npm:^3.10.0":
   version: 3.10.0
   resolution: "babel-plugin-remove-graphql-queries@npm:3.10.0"
   peerDependencies:
@@ -8582,33 +8572,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-gatsby@npm:1.9.0":
-  version: 1.9.0
-  resolution: "babel-preset-gatsby@npm:1.9.0"
-  dependencies:
-    "@babel/plugin-proposal-class-properties": ^7.14.0
-    "@babel/plugin-proposal-nullish-coalescing-operator": ^7.14.0
-    "@babel/plugin-proposal-optional-chaining": ^7.14.0
-    "@babel/plugin-syntax-dynamic-import": ^7.8.0
-    "@babel/plugin-transform-classes": ^7.14.0
-    "@babel/plugin-transform-runtime": ^7.14.0
-    "@babel/plugin-transform-spread": ^7.14.0
-    "@babel/preset-env": ^7.14.0
-    "@babel/preset-react": ^7.14.0
-    "@babel/runtime": ^7.14.0
-    babel-plugin-dynamic-import-node: ^2.3.3
-    babel-plugin-macros: ^2.8.0
-    babel-plugin-transform-react-remove-prop-types: ^0.4.24
-    gatsby-core-utils: ^2.9.0
-    gatsby-legacy-polyfills: ^1.9.0
-  peerDependencies:
-    "@babel/core": ^7.11.6
-    core-js: ^3.0.0
-  checksum: f3ad07d8f5782276fa1c14442832cf496b151031352894843f39f02b11e49ae3f0b33528881bb31289717c4a506834f0599957c14df7e379e70c01a46a5d6d1b
-  languageName: node
-  linkType: hard
-
-"babel-preset-gatsby@npm:^1.10.0":
+"babel-preset-gatsby@npm:1.10.0, babel-preset-gatsby@npm:^1.10.0":
   version: 1.10.0
   resolution: "babel-preset-gatsby@npm:1.10.0"
   dependencies:
@@ -14826,22 +14790,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-core-utils@npm:^2.9.0":
-  version: 2.9.0
-  resolution: "gatsby-core-utils@npm:2.9.0"
-  dependencies:
-    ci-info: 2.0.0
-    configstore: ^5.0.1
-    file-type: ^16.2.0
-    fs-extra: ^8.1.0
-    node-object-hash: ^2.0.0
-    proper-lockfile: ^4.1.1
-    tmp: ^0.2.1
-    xdg-basedir: ^4.0.0
-  checksum: 01346808f09d92034c4a670432e7c68445ebda76c15b062a2f39a7e1348d53b96ab3c64e61ef14066172ba16305166f790bfdd746fbc15c280d4a78f6a6ea915
-  languageName: node
-  linkType: hard
-
 "gatsby-graphiql-explorer@npm:^1.10.0":
   version: 1.10.0
   resolution: "gatsby-graphiql-explorer@npm:1.10.0"
@@ -14857,15 +14805,6 @@ fsevents@^1.2.7:
   dependencies:
     core-js-compat: 3.9.0
   checksum: d9f4823ee4a116c875f6fb1862d44b25e3e5d354a83624472065baed9e28674b85ff64ca4a299591fc2ba0786dc779fc99a582ee3741ec7c6fe96586a1d077a1
-  languageName: node
-  linkType: hard
-
-"gatsby-legacy-polyfills@npm:^1.9.0":
-  version: 1.9.0
-  resolution: "gatsby-legacy-polyfills@npm:1.9.0"
-  dependencies:
-    core-js-compat: 3.9.0
-  checksum: 80718377bbf435e0856d1af8fbeffd66fc112e256da3210946ef746888720f7de6befeac61d86763077687eaaa70421624217348d12efb27c24661b113faa516
   languageName: node
   linkType: hard
 
@@ -30107,9 +30046,9 @@ typescript@4.3.5:
     babel-loader: 8.2.2
     babel-plugin-istanbul: 6.0.0
     babel-plugin-macros: 3.1.0
-    babel-plugin-remove-graphql-queries: 3.9.0
+    babel-plugin-remove-graphql-queries: 3.10.0
     babel-plugin-transform-default-import: 1.0.0
-    babel-preset-gatsby: 1.9.0
+    babel-preset-gatsby: 1.10.0
     body-scroll-lock: 3.1.5
     browser-lang: 0.1.0
     chromatic: 5.9.2
