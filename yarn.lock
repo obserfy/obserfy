@@ -10993,9 +10993,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:7.7.0":
-  version: 7.7.0
-  resolution: "cypress@npm:7.7.0"
+"cypress@npm:8.0.0":
+  version: 8.0.0
+  resolution: "cypress@npm:8.0.0"
   dependencies:
     "@cypress/request": ^2.88.5
     "@cypress/xvfb": ^1.2.4
@@ -11040,7 +11040,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 8ad8700d448949941801b6ff25549ef93e593b659b1605a936a8021032acb50f1849c9b8f8d1ba7df713de803b8203a1978231ccd0443f2e819bd9cf1b23d562
+  checksum: 6f8444843de84fddca64d2dc09b20bad16edd578b61b830db9038793c0a8bf363b187abd9e35c55d1f12f76d7abb5adcc85a03d1556ff4178faa72d1a6a184e1
   languageName: node
   linkType: hard
 
@@ -29784,7 +29784,7 @@ typescript@4.3.5:
     chromatic: 5.9.2
     core-js: 3.15.2
     cross-env: 7.0.3
-    cypress: 7.7.0
+    cypress: 8.0.0
     dayjs: 1.10.6
     dompurify: 2.3.0
     dotenv: 10.0.0
