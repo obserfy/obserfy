@@ -96,11 +96,12 @@ const StudentReports = () => {
         }}
       >
         <Box
-          m={[0, 3]}
+          mx={[0, 3]}
+          my={3}
           sx={{
             top: 3,
-            position: "sticky",
-            borderRadius: "default",
+            position: ["relative", "sticky"],
+            borderRadius: [0, "default"],
             width: "100%",
             backgroundColor: "surface",
             ...borderFull,
@@ -122,15 +123,11 @@ const StudentReports = () => {
         <Box
           sx={{
             minHeight: "100vh",
-            width: 640,
+            width: ["auto", 640],
             ...borderLeft,
           }}
         >
-          <Box p={3} sx={{ width: "100%", ...borderBottom }}>
-            <Text sx={{ fontWeight: "bold" }}>
-              <Trans>Assessments</Trans>
-            </Text>
-          </Box>
+          <ListHeading text={t`Assessments`} />
 
           {filteredAssessments?.length === 0 && observations.isSuccess && (
             <Box p={3} sx={{ ...borderBottom }}>
@@ -141,7 +138,7 @@ const StudentReports = () => {
           )}
 
           {filteredAssessments?.length !== 0 && observations.isSuccess && (
-            <Box sx={{ overflow: "hidden" }}>
+            <Box>
               {filteredAssessments?.map(
                 ({ materialId, materialName, stage }) => {
                   const stageName = materialStageToString(stage)
@@ -168,11 +165,7 @@ const StudentReports = () => {
             </Box>
           )}
 
-          <Box p={3} sx={{ width: "100%", ...borderBottom }}>
-            <Text sx={{ fontWeight: "bold" }}>
-              <Trans>Observations</Trans>
-            </Text>
-          </Box>
+          <ListHeading text={t`Observations`} />
 
           {filteredObservations?.length === 0 && observations.isSuccess && (
             <Box mb={3} sx={{ overflow: "hidden" }} p={3}>
@@ -255,6 +248,21 @@ const ObservationListItem: FC<{
         />
       ))}
     </Flex>
+  </Box>
+)
+
+const ListHeading: FC<{ text: string }> = ({ text }) => (
+  <Box p={3} pt={4} sx={{ width: "100%", ...borderBottom }}>
+    <Text sx={{ fontWeight: "bold" }}>{text}</Text>
+    <Box
+      mt={1}
+      sx={{
+        backgroundColor: "primary",
+        height: 4,
+        width: 40,
+        borderRadius: "circle",
+      }}
+    />
   </Box>
 )
 
