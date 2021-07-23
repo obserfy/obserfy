@@ -1,4 +1,4 @@
-import { t } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import { FC } from "react"
 import { Box, Button, Flex, Image, Text } from "theme-ui"
 import { borderBottom, borderFull } from "../../../../border"
@@ -51,13 +51,20 @@ const ManageReports = () => {
             {report.data?.periodStart.format("DD MMMM YYYY")}
           </Text>
 
-          <Text ml={3} color="textMediumEmphasis" sx={{ fontSize: 0 }}>
-            0 out of {students.data?.length} done
-          </Text>
+          <Flex mt={[3, 0]} sx={{ width: "100%", alignItems: "center" }}>
+            <Text
+              ml={3}
+              color="textMediumEmphasis"
+              sx={{ fontSize: 0, display: "block" }}
+              mr="auto"
+            >
+              <Trans>0 out of {students.data?.length} done</Trans>
+            </Text>
 
-          <Button mx={3} mt={[3, 0]}>
-            Publish
-          </Button>
+            <Button mx={3}>
+              <Trans>Publish</Trans>
+            </Button>
+          </Flex>
         </Flex>
       </TranslucentBar>
 
