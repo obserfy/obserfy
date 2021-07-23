@@ -36,20 +36,13 @@ exports[`GuardianRelationshipPill should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text);
   font-size: 14px;
+  color: var(--theme-ui-colors-text);
   text-rendering: optimizeLegibility;
-  line-height: 1.5;
   color: var(--theme-ui-colors-onSurface);
+  display: block;
   font-size: 12px;
-  line-height: 1em;
   text-transform: capitalize;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-2 {
-    font-size: 12px;
-  }
 }
 
 <div>
@@ -59,11 +52,11 @@ exports[`GuardianRelationshipPill should render correctly 1`] = `
     <div
       class="emotion-1"
     >
-      <p
+      <span
         class="emotion-2"
       >
         Other
-      </p>
+      </span>
     </div>
   </div>
 </div>

@@ -237,6 +237,7 @@ declare namespace GatsbyTypes {
     readonly siteMetadata: Maybe<SiteSiteMetadata>
     readonly port: Maybe<Scalars["Int"]>
     readonly host: Maybe<Scalars["String"]>
+    readonly flags: Maybe<SiteFlags>
     readonly polyfill: Maybe<Scalars["Boolean"]>
     readonly pathPrefix: Maybe<Scalars["String"]>
     readonly id: Scalars["ID"]
@@ -250,6 +251,12 @@ declare namespace GatsbyTypes {
     fromNow: Maybe<Scalars["Boolean"]>
     difference: Maybe<Scalars["String"]>
     locale: Maybe<Scalars["String"]>
+  }
+
+  type SiteFlags = {
+    readonly FAST_DEV: Maybe<Scalars["Boolean"]>
+    readonly DEV_WEBPACK_CACHE: Maybe<Scalars["Boolean"]>
+    readonly PARALLEL_SOURCING: Maybe<Scalars["Boolean"]>
   }
 
   type SiteSiteMetadata = {
@@ -780,6 +787,7 @@ declare namespace GatsbyTypes {
     siteMetadata: Maybe<SiteSiteMetadataFilterInput>
     port: Maybe<IntQueryOperatorInput>
     host: Maybe<StringQueryOperatorInput>
+    flags: Maybe<SiteFlagsFilterInput>
     polyfill: Maybe<BooleanQueryOperatorInput>
     pathPrefix: Maybe<StringQueryOperatorInput>
     id: Maybe<StringQueryOperatorInput>
@@ -1663,6 +1671,12 @@ declare namespace GatsbyTypes {
     readonly siteUrl: Maybe<StringQueryOperatorInput>
   }
 
+  type SiteFlagsFilterInput = {
+    readonly FAST_DEV: Maybe<BooleanQueryOperatorInput>
+    readonly DEV_WEBPACK_CACHE: Maybe<BooleanQueryOperatorInput>
+    readonly PARALLEL_SOURCING: Maybe<BooleanQueryOperatorInput>
+  }
+
   type SiteConnection = {
     readonly totalCount: Scalars["Int"]
     readonly edges: ReadonlyArray<SiteEdge>
@@ -1711,6 +1725,9 @@ declare namespace GatsbyTypes {
     | "siteMetadata.siteUrl"
     | "port"
     | "host"
+    | "flags.FAST_DEV"
+    | "flags.DEV_WEBPACK_CACHE"
+    | "flags.PARALLEL_SOURCING"
     | "polyfill"
     | "pathPrefix"
     | "id"
@@ -1814,6 +1831,7 @@ declare namespace GatsbyTypes {
     readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>
     readonly port: Maybe<IntQueryOperatorInput>
     readonly host: Maybe<StringQueryOperatorInput>
+    readonly flags: Maybe<SiteFlagsFilterInput>
     readonly polyfill: Maybe<BooleanQueryOperatorInput>
     readonly pathPrefix: Maybe<StringQueryOperatorInput>
     readonly id: Maybe<StringQueryOperatorInput>
@@ -3218,10 +3236,15 @@ declare namespace GatsbyTypes {
     readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>
   }
 
-  type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454QueryVariables =
-    Exact<{ [key: string]: never }>
+  type Unnamed_1_QueryVariables = Exact<{ [key: string]: never }>
 
-  type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454Query = {
+  type Unnamed_1_Query = {
+    readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, "preset" | "prismPreset">>
+  }
+
+  type Unnamed_2_QueryVariables = Exact<{ [key: string]: never }>
+
+  type Unnamed_2_Query = {
     readonly site: Maybe<{
       readonly siteMetadata: Maybe<
         Pick<SiteSiteMetadata, "title" | "description" | "author">
@@ -3229,15 +3252,13 @@ declare namespace GatsbyTypes {
     }>
   }
 
-  type homechrisintSrcobserfynodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544QueryVariables =
-    Exact<{ [key: string]: never }>
+  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
 
-  type homechrisintSrcobserfynodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544Query =
-    {
-      readonly themeUiConfig: Maybe<
-        Pick<ThemeUiConfig, "preset" | "prismPreset">
-      >
-    }
+  type LocalizationSEOQueryQuery = {
+    readonly site: Maybe<{
+      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
+    }>
+  }
 
   type GatsbyImageSharpFixedFragment = Pick<
     ImageSharpFixed,
@@ -3344,14 +3365,6 @@ declare namespace GatsbyTypes {
         >
       }
     >
-  }
-
-  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
-
-  type LocalizationSEOQueryQuery = {
-    readonly site: Maybe<{
-      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
-    }>
   }
 
   type PagesQueryQueryVariables = Exact<{ [key: string]: never }>
