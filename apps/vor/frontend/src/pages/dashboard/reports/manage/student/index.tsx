@@ -29,7 +29,7 @@ import { ReactComponent as ChevronUp } from "../../../../../icons/chevron-up.svg
 import { ReactComponent as EyeIcon } from "../../../../../icons/eye.svg"
 import { ALL_REPORT_URL, MANAGE_REPORT_URL } from "../../../../../routes"
 
-const ManageReports = () => {
+const StudentReports = () => {
   const reportId = useQueryString("reportId")
   const studentId = useQueryString("studentId")
 
@@ -96,7 +96,7 @@ const ManageReports = () => {
         }}
       >
         <Box
-          m={3}
+          m={[0, 3]}
           sx={{
             top: 3,
             position: "sticky",
@@ -258,4 +258,4 @@ const ObservationListItem: FC<{
   </Box>
 )
 
-export default ManageReports
+export default StudentReports

@@ -34,7 +34,7 @@ export const onRouteUpdate = ({ location }) => {
 // For redirecting user to preferred language
 export const wrapPageElement = (params) => {
   i18n.loadLocaleData("en", { plurals: en })
-  i18n.loadLocaleData("en", { plurals: id })
+  i18n.loadLocaleData("id", { plurals: id })
 
   redirectToPreferredLang(
     params.props.location,
