@@ -55,7 +55,7 @@
     "pg": "8.6.0",
     "pino": "6.13.0",
     "pino-pretty": "5.1.2",
-    "postcss": "8.3.5",
+    "postcss": "8.3.6",
     "preact": "10.5.14",
     "preact-render-to-string": "5.1.19",
     "react": "npm:@preact/compat@0.0.4",
