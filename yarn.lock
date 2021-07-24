@@ -14714,7 +14714,7 @@ fsevents@^1.2.7:
     next-pwa: 5.2.24
     node-mocks-http: 1.10.1
     pg: 8.6.0
-    pino: 6.12.0
+    pino: 6.13.0
     pino-pretty: 5.1.2
     postcss: 8.3.5
     preact: 10.5.14
@@ -23297,9 +23297,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"pino@npm:6.12.0":
-  version: 6.12.0
-  resolution: "pino@npm:6.12.0"
+"pino@npm:6.13.0":
+  version: 6.13.0
+  resolution: "pino@npm:6.13.0"
   dependencies:
     fast-redact: ^3.0.0
     fast-safe-stringify: ^2.0.8
@@ -23309,7 +23309,7 @@ fsevents@^1.2.7:
     sonic-boom: ^1.0.2
   bin:
     pino: bin.js
-  checksum: 050c055574cd201fa1d972ad64158cbf7fb3fac6e6fc814ca4d9a0d25ed296bccccdd5504f95ee11682af029471f55d143696b043d8ca7ab7a88c60826bc4019
+  checksum: 7145de4287f03bc3f7ff4de0cdacfcfea9d843e5759c90f95f6a245b6898964387f6bd24813749333c23684186bc79d91a2d03f28512f2c4a3f8bc6773316a1c
   languageName: node
   linkType: hard
 
