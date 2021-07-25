@@ -25477,10 +25477,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"regenerator-runtime@npm:0.13.8, regenerator-runtime@npm:^0.13.3, regenerator-runtime@npm:^0.13.4, regenerator-runtime@npm:^0.13.7":
-  version: 0.13.8
-  resolution: "regenerator-runtime@npm:0.13.8"
-  checksum: 5f89699ab578301e3f47fe323d2a9e19ed4b7302481b37ce96843602be3a5cb1e5b66a07c1500e69d4710c1dd6fa3b3f3e56d188ef56df4c17a744d853ac36ed
+"regenerator-runtime@npm:0.13.9":
+  version: 0.13.9
+  resolution: "regenerator-runtime@npm:0.13.9"
+  checksum: 65ed455fe5afd799e2897baf691ca21c2772e1a969d19bb0c4695757c2d96249eb74ee3553ea34a91062b2a676beedf630b4c1551cc6299afb937be1426ec55e
   languageName: node
   linkType: hard
 
@@ -25488,6 +25488,13 @@ fsevents@^1.2.7:
   version: 0.11.1
   resolution: "regenerator-runtime@npm:0.11.1"
   checksum: 3c97bd2c7b2b3247e6f8e2147a002eb78c995323732dad5dc70fac8d8d0b758d0295e7015b90d3d444446ae77cbd24b9f9123ec3a77018e81d8999818301b4f4
+  languageName: node
+  linkType: hard
+
+"regenerator-runtime@npm:^0.13.3, regenerator-runtime@npm:^0.13.4, regenerator-runtime@npm:^0.13.7":
+  version: 0.13.8
+  resolution: "regenerator-runtime@npm:0.13.8"
+  checksum: 5f89699ab578301e3f47fe323d2a9e19ed4b7302481b37ce96843602be3a5cb1e5b66a07c1500e69d4710c1dd6fa3b3f3e56d188ef56df4c17a744d853ac36ed
   languageName: node
   linkType: hard
 
@@ -30126,7 +30133,7 @@ typescript@4.3.5:
     react-query: 3.19.0
     react-refresh: 0.10.0
     react-test-renderer: 17.0.2
-    regenerator-runtime: 0.13.8
+    regenerator-runtime: 0.13.9
     snarkdown: 2.0.0
     tailwindcss: 2.2.4
     theme-ui: 0.10.0
