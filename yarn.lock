@@ -15351,9 +15351,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby@npm:3.10.1":
-  version: 3.10.1
-  resolution: "gatsby@npm:3.10.1"
+"gatsby@npm:3.10.2":
+  version: 3.10.2
+  resolution: "gatsby@npm:3.10.2"
   dependencies:
     "@babel/code-frame": ^7.14.0
     "@babel/core": ^7.14.6
@@ -15512,7 +15512,7 @@ fsevents@^1.2.7:
     react-dom: ^16.9.0 || ^17.0.0
   bin:
     gatsby: ./cli.js
-  checksum: 048b156c5ab2b744a6abbb0c56574b14b0ea21eb01cfc69786fd5de715c5db11a8744e3be8ed88febafea524a39bafdd116fe25b176ca2be837b22331eee9609
+  checksum: d448c1792048847d86c372108a33ab04baa60e38a779d33bc1e63063951edbcc77c8b452c41aae6b8d88f1f1101fd7e8da1d3e407f932aadc45fb07456a57cfd
   languageName: node
   linkType: hard
 
@@ -30114,7 +30114,7 @@ typescript@4.3.5:
     eslint-plugin-react-hooks: 4.2.0
     fake-indexeddb: 3.1.3
     faker: 5.5.3
-    gatsby: 3.10.1
+    gatsby: 3.10.2
     gatsby-plugin-canonical-urls: 3.10.0
     gatsby-plugin-image: 1.10.1
     gatsby-plugin-layout: 2.10.0
