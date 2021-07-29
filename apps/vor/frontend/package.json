@@ -105,7 +105,7 @@
     "core-js": "3.15.2",
     "cross-env": "7.0.3",
     "cypress": "8.0.0",
-    "esbuild": "0.12.15",
+    "esbuild": "0.12.16",
     "eslint": "7.30.0",
     "eslint-config-airbnb-typescript": "12.3.1",
     "eslint-config-prettier": "8.3.0",
