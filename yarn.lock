@@ -6640,7 +6640,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pino@npm:*, @types/pino@npm:6.3.9":
+"@types/pino@npm:*":
   version: 6.3.9
   resolution: "@types/pino@npm:6.3.9"
   dependencies:
@@ -6649,6 +6649,18 @@ __metadata:
     "@types/pino-std-serializers": "*"
     "@types/sonic-boom": "*"
   checksum: 2b12644e4db4fdbf6b172f6b3638c057794bbddd39586ee7759b4404f7ec4ecf184c04a45372951fcaec352aa867c5ae25440ba68dec52dd79c47b08946c076a
+  languageName: node
+  linkType: hard
+
+"@types/pino@npm:6.3.11":
+  version: 6.3.11
+  resolution: "@types/pino@npm:6.3.11"
+  dependencies:
+    "@types/node": "*"
+    "@types/pino-pretty": "*"
+    "@types/pino-std-serializers": "*"
+    sonic-boom: ^2.1.0
+  checksum: 170d4a3ae1cffb7361d5a18934c271a1ebc58832d2bf479c8eeeec34954efd16da96b76e68c8d438df227fc6adb3cbc7bbd5c5318f291cb31ae9e9daa3f6873b
   languageName: node
   linkType: hard
 
@@ -14702,7 +14714,7 @@ fsevents@^1.2.7:
     "@types/nanoid": 3.0.0
     "@types/node": 14.17.6
     "@types/pg": 8.6.1
-    "@types/pino": 6.3.9
+    "@types/pino": 6.3.11
     "@types/react": 17.0.15
     "@types/react-query": 1.2.9
     "@types/uuid": 8.3.1
@@ -27020,6 +27032,15 @@ resolve@^2.0.0-next.3:
     atomic-sleep: ^1.0.0
     flatstr: ^1.0.12
   checksum: 189fa8fe5c2dc05d3513fc1a4926a2f16f132fa6fa0b511745a436010cdcd9c1d3b3cb6a9d7c05bd32a965dc77673a5ac0eb0992e920bdedd16330d95323124f
+  languageName: node
+  linkType: hard
+
+"sonic-boom@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "sonic-boom@npm:2.1.0"
+  dependencies:
+    atomic-sleep: ^1.0.0
+  checksum: 79b19f951ab6ec77b5ae34b90ad7c280f86e813fa69fb0e8b330ec2aedd4021f823cf39cea562564762a02af1e4aa259907ea9c9dddbe1f050ec162a69ab748e
   languageName: node
   linkType: hard
 
