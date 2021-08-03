@@ -24,5 +24,6 @@
   },
   "resolutions": {
     "webpack": "^5.0.0"
-  }
+  },
+  "packageManager": "yarn@3.0.0"
 }
