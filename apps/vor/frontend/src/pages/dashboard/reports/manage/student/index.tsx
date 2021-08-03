@@ -12,6 +12,10 @@ import Tab from "../../../../../components/Tab/Tab"
 import TopBar, { breadCrumb } from "../../../../../components/TopBar/TopBar"
 import TranslucentBar from "../../../../../components/TranslucentBar/TranslucentBar"
 import { getFirstName } from "../../../../../domain/person"
+import {
+  selectComment,
+  useComment,
+} from "../../../../../domain/report-comments"
 import useGetReport from "../../../../../hooks/api/reports/useGetProgressReport"
 import { Area } from "../../../../../hooks/api/useGetArea"
 import { useGetCurriculumAreas } from "../../../../../hooks/api/useGetCurriculumAreas"
@@ -93,6 +97,14 @@ const NavigationBar: FC<{
           </Text>
         </Flex>
 
+        <Button
+          variant="outline"
+          mt={[3, 0]}
+          mr={3}
+          sx={{ width: ["100%", "auto"] }}
+        >
+          <Trans>Save</Trans>
+        </Button>
         <Button mt={[3, 0]} sx={{ width: ["100%", "auto"] }}>
           Mark as done
         </Button>
@@ -111,10 +123,12 @@ const NavigationBar: FC<{
 
 const Editor: FC<{ area: Area }> = ({ area }) => {
   const studentId = useQueryString("studentId")
+  const reportId = useQueryString("reportId")
   const { data: observations } = useGetStudentObservations(studentId)
   const { data: assessments } = useGetStudentAssessments(studentId)
 
-  const [comments, setComments] = useState("")
+  const comment = useComment(selectComment(reportId, studentId, area.id))
+  const setComment = useComment((state) => state.setComment)
 
   return (
     <Box
@@ -144,9 +158,11 @@ const Editor: FC<{ area: Area }> = ({ area }) => {
             <Trans>Comments on {area.name}</Trans>
           </Text>
           <MarkdownEditor
-            onChange={setComments}
-            value={comments}
             placeholder="Add some details"
+            value={comment}
+            onChange={(value) => {
+              setComment(reportId, studentId, area.id, value)
+            }}
           />
         </Box>
       </Box>
