@@ -39,6 +39,9 @@ const StudentReports = () => {
   const studentId = useQueryString("studentId")
   const { data: student } = useGetStudent(studentId)
   const { data: areas } = useGetCurriculumAreas()
+  const { data: observations } = useGetStudentObservations(studentId)
+  const { data: assessments } = useGetStudentAssessments(studentId)
+
   const [areaIdx, setAreaIdx] = useState(0)
   const selectedArea = areas?.[areaIdx]
 
@@ -52,7 +55,36 @@ const StudentReports = () => {
         areas={areas}
       />
 
-      {selectedArea && <Editor key={selectedArea.id} area={selectedArea} />}
+      {selectedArea && (
+        <Box
+          sx={{
+            display: ["block", "block", "block", "flex"],
+            width: "100%",
+            alignItems: "flex-start",
+          }}
+        >
+          <Editor key={selectedArea.id} area={selectedArea} />
+          <Box
+            sx={{
+              minHeight: "100vh",
+              width: ["auto", "auto", "auto", 640],
+              ...borderLeft,
+            }}
+          >
+            <Assessments
+              assessments={assessments?.filter(
+                ({ areaId }) => areaId === selectedArea?.id
+              )}
+            />
+            <Observations
+              studentId={studentId}
+              observations={observations?.filter(
+                ({ area }) => area?.id === selectedArea?.id
+              )}
+            />
+          </Box>
+        </Box>
+      )}
     </Box>
   )
 }
@@ -124,64 +156,38 @@ const NavigationBar: FC<{
 const Editor: FC<{ area: Area }> = ({ area }) => {
   const studentId = useQueryString("studentId")
   const reportId = useQueryString("reportId")
-  const { data: observations } = useGetStudentObservations(studentId)
-  const { data: assessments } = useGetStudentAssessments(studentId)
 
   const comment = useComment(selectComment(reportId, studentId, area.id))
   const setComment = useComment((state) => state.setComment)
 
   return (
     <Box
-      sx={{
-        display: ["block", "block", "block", "flex"],
-        width: "100%",
-        alignItems: "flex-start",
-      }}
+      px={[0, 3]}
+      py={3}
+      sx={{ width: "100%", top: 0, position: ["relative", "sticky"] }}
     >
-      <Box px={[0, 3]} py={3} sx={{ width: "100%" }}>
-        <Box
-          sx={{
-            top: 3,
-            position: ["relative", "sticky"],
-            borderRadius: [0, "default"],
-            backgroundColor: "surface",
-            ...borderFull,
-            borderStyle: ["none", "solid"],
-          }}
-        >
-          <Text
-            px={3}
-            py={2}
-            color="textMediumEmphasis"
-            sx={{ display: "block", fontWeight: "bold" }}
-          >
-            <Trans>Comments on {area.name}</Trans>
-          </Text>
-          <MarkdownEditor
-            placeholder="Add some details"
-            value={comment}
-            onChange={(value) => {
-              setComment(reportId, studentId, area.id, value)
-            }}
-          />
-        </Box>
-      </Box>
-
       <Box
         sx={{
-          minHeight: "100vh",
-          width: ["auto", "auto", "auto", 640],
-          ...borderLeft,
+          borderRadius: [0, "default"],
+          backgroundColor: "surface",
+          ...borderFull,
+          borderStyle: ["none", "solid"],
         }}
       >
-        <Assessments
-          assessments={assessments?.filter(({ areaId }) => areaId === area.id)}
-        />
-        <Observations
-          studentId={studentId}
-          observations={observations?.filter(
-            (observation) => observation.area?.id === area.id
-          )}
+        <Text
+          px={3}
+          py={2}
+          color="textMediumEmphasis"
+          sx={{ display: "block", fontWeight: "bold" }}
+        >
+          <Trans>Comments on {area.name}</Trans>
+        </Text>
+        <MarkdownEditor
+          placeholder="Add some details"
+          value={comment}
+          onChange={(value) => {
+            setComment(reportId, studentId, area.id, value)
+          }}
         />
       </Box>
     </Box>
