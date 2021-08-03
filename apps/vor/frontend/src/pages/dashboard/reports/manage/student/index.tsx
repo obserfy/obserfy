@@ -47,7 +47,8 @@ const StudentReports = () => {
         student={student}
         areas={areas}
       />
-      {selectedArea && <Editor area={selectedArea} />}
+
+      {selectedArea && <Editor key={selectedArea.id} area={selectedArea} />}
     </Box>
   )
 }
@@ -113,6 +114,8 @@ const Editor: FC<{ area: Area }> = ({ area }) => {
   const { data: observations } = useGetStudentObservations(studentId)
   const { data: assessments } = useGetStudentAssessments(studentId)
 
+  const [comments, setComments] = useState("")
+
   return (
     <Box
       sx={{
@@ -121,34 +124,40 @@ const Editor: FC<{ area: Area }> = ({ area }) => {
         alignItems: "flex-start",
       }}
     >
-      <Box
-        mx={[0, 3]}
-        my={3}
-        sx={{
-          top: 3,
-          position: ["relative", "sticky"],
-          borderRadius: [0, "default"],
-          width: "100%",
-          backgroundColor: "surface",
-          ...borderFull,
-        }}
-      >
-        <Text
-          px={3}
-          py={2}
-          color="textMediumEmphasis"
-          sx={{ display: "block", fontWeight: "bold" }}
+      <Box px={[0, 3]} py={3} sx={{ width: "100%" }}>
+        <Box
+          sx={{
+            top: 3,
+            position: ["relative", "sticky"],
+            borderRadius: [0, "default"],
+            backgroundColor: "surface",
+            ...borderFull,
+            borderStyle: ["none", "solid"],
+          }}
         >
-          <Trans>Comments on {area.name}</Trans>
-        </Text>
-        <MarkdownEditor
-          onChange={() => {}}
-          value=""
-          placeholder="Add some details"
-        />
+          <Text
+            px={3}
+            py={2}
+            color="textMediumEmphasis"
+            sx={{ display: "block", fontWeight: "bold" }}
+          >
+            <Trans>Comments on {area.name}</Trans>
+          </Text>
+          <MarkdownEditor
+            onChange={setComments}
+            value={comments}
+            placeholder="Add some details"
+          />
+        </Box>
       </Box>
 
-      <Box sx={{ minHeight: "100vh", width: ["auto", 640], ...borderLeft }}>
+      <Box
+        sx={{
+          minHeight: "100vh",
+          width: ["auto", "auto", "auto", 640],
+          ...borderLeft,
+        }}
+      >
         <Assessments
           assessments={assessments?.filter(({ areaId }) => areaId === area.id)}
         />
