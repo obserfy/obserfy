@@ -13,9 +13,11 @@ import TopBar, { breadCrumb } from "../../../../../components/TopBar/TopBar"
 import TranslucentBar from "../../../../../components/TranslucentBar/TranslucentBar"
 import { getFirstName } from "../../../../../domain/person"
 import useGetReport from "../../../../../hooks/api/reports/useGetProgressReport"
+import { Area } from "../../../../../hooks/api/useGetArea"
 import { useGetCurriculumAreas } from "../../../../../hooks/api/useGetCurriculumAreas"
-import { useGetStudent } from "../../../../../hooks/api/useGetStudent"
+import { Student, useGetStudent } from "../../../../../hooks/api/useGetStudent"
 import {
+  MaterialProgress,
   materialStageToString,
   useGetStudentAssessments,
 } from "../../../../../hooks/api/useGetStudentAssessments"
@@ -30,176 +32,190 @@ import { ReactComponent as EyeIcon } from "../../../../../icons/eye.svg"
 import { ALL_REPORT_URL, MANAGE_REPORT_URL } from "../../../../../routes"
 
 const StudentReports = () => {
-  const reportId = useQueryString("reportId")
   const studentId = useQueryString("studentId")
-
-  const report = useGetReport(reportId)
-  const observations = useGetStudentObservations(studentId)
-  const areas = useGetCurriculumAreas()
-  const assessments = useGetStudentAssessments(studentId)
+  const { data: student } = useGetStudent(studentId)
+  const { data: areas } = useGetCurriculumAreas()
   const [areaIdx, setAreaIdx] = useState(0)
-  const student = useGetStudent(studentId)
-
-  const filteredObservations = observations.data?.filter(({ area }) => {
-    return area?.id === areas.data?.[areaIdx].id
-  })
-
-  const filteredAssessments = assessments.data?.filter(({ areaId }) => {
-    return areaId === areas.data?.[areaIdx].id
-  })
+  const selectedArea = areas?.[areaIdx]
 
   return (
     <Box sx={{ position: "relative", height: "100vh", width: "100%" }}>
-      <SEO title={`${student.data?.name} | Progress Report`} />
+      <SEO title={`${student?.name} | Progress Report`} />
+      <NavigationBar
+        areaIdx={areaIdx}
+        setAreaIdx={setAreaIdx}
+        student={student}
+        areas={areas}
+      />
+      {selectedArea && <Editor area={selectedArea} />}
+    </Box>
+  )
+}
 
-      <TranslucentBar>
-        <TopBar
-          containerSx={borderBottom}
-          breadcrumbs={[
-            breadCrumb(t`Progress Reports`, ALL_REPORT_URL),
-            breadCrumb(report.data?.title, MANAGE_REPORT_URL(reportId)),
-            breadCrumb(getFirstName(student.data)),
-          ]}
-        />
+const NavigationBar: FC<{
+  areaIdx: number
+  setAreaIdx: (idx: number) => void
+  student?: Student
+  areas?: Area[]
+}> = ({ areaIdx, setAreaIdx, areas = [], student }) => {
+  const reportId = useQueryString("reportId")
+  const report = useGetReport(reportId)
 
-        <Flex
-          p={3}
-          sx={{
-            ...borderBottom,
-            alignItems: ["flex-start", "center"],
-            flexDirection: ["column", "row"],
-          }}
-        >
-          <Flex sx={{ alignItems: "center" }} mr="auto">
-            <Button variant="outline" p={0}>
-              <Icon as={ChevronUp} size={24} />
-            </Button>
+  return (
+    <TranslucentBar>
+      <TopBar
+        containerSx={borderBottom}
+        breadcrumbs={[
+          breadCrumb(t`Progress Reports`, ALL_REPORT_URL),
+          breadCrumb(report.data?.title, MANAGE_REPORT_URL(reportId)),
+          breadCrumb(getFirstName(student)),
+        ]}
+      />
 
-            <Button variant="outline" p={0} ml={1}>
-              <Icon as={ChevronDown} size={24} />
-            </Button>
-
-            <Text ml={3} sx={{ fontWeight: "bold", fontSize: 1 }}>
-              {student.data?.name}
-            </Text>
-          </Flex>
-
-          <Button mt={[3, 0]} sx={{ width: ["100%", "auto"] }}>
-            Mark as done
-          </Button>
-        </Flex>
-
-        <Box sx={{ minHeight: 47 }}>
-          <Tab
-            small
-            items={areas.data?.map((area) => area.name) ?? []}
-            selectedItemIdx={areaIdx}
-            onTabClick={setAreaIdx}
-          />
-        </Box>
-      </TranslucentBar>
-
-      <Box
+      <Flex
+        p={3}
         sx={{
-          display: ["block", "block", "block", "flex"],
-          width: "100%",
-          alignItems: "flex-start",
+          ...borderBottom,
+          alignItems: ["flex-start", "center"],
+          flexDirection: ["column", "row"],
         }}
       >
-        <Box
-          mx={[0, 3]}
-          my={3}
-          sx={{
-            top: 3,
-            position: ["relative", "sticky"],
-            borderRadius: [0, "default"],
-            width: "100%",
-            backgroundColor: "surface",
-            ...borderFull,
-          }}
+        <Flex sx={{ alignItems: "center" }} mr="auto">
+          <Button variant="outline" p={0}>
+            <Icon as={ChevronUp} size={24} />
+          </Button>
+          <Button variant="outline" p={0} ml={1}>
+            <Icon as={ChevronDown} size={24} />
+          </Button>
+          <Text ml={3} sx={{ fontWeight: "bold", fontSize: 1 }}>
+            {student?.name}
+          </Text>
+        </Flex>
+
+        <Button mt={[3, 0]} sx={{ width: ["100%", "auto"] }}>
+          Mark as done
+        </Button>
+      </Flex>
+
+      <Tab
+        small
+        items={areas.map(({ name }) => name)}
+        selectedItemIdx={areaIdx}
+        onTabClick={setAreaIdx}
+        sx={{ minHeight: 47 }}
+      />
+    </TranslucentBar>
+  )
+}
+
+const Editor: FC<{ area: Area }> = ({ area }) => {
+  const studentId = useQueryString("studentId")
+  const { data: observations } = useGetStudentObservations(studentId)
+  const { data: assessments } = useGetStudentAssessments(studentId)
+
+  return (
+    <Box
+      sx={{
+        display: ["block", "block", "block", "flex"],
+        width: "100%",
+        alignItems: "flex-start",
+      }}
+    >
+      <Box
+        mx={[0, 3]}
+        my={3}
+        sx={{
+          top: 3,
+          position: ["relative", "sticky"],
+          borderRadius: [0, "default"],
+          width: "100%",
+          backgroundColor: "surface",
+          ...borderFull,
+        }}
+      >
+        <Text
+          px={3}
+          py={2}
+          color="textMediumEmphasis"
+          sx={{ display: "block", fontWeight: "bold" }}
         >
-          <Box px={3} py={2}>
-            <Text color="textMediumEmphasis" sx={{ fontWeight: "bold" }}>
-              <Trans>Comments on {areas.data?.[areaIdx].name}</Trans>
-            </Text>
-          </Box>
+          <Trans>Comments on {area.name}</Trans>
+        </Text>
+        <MarkdownEditor
+          onChange={() => {}}
+          value=""
+          placeholder="Add some details"
+        />
+      </Box>
 
-          <MarkdownEditor
-            onChange={() => {}}
-            value=""
-            placeholder="Add some details"
-          />
-        </Box>
-
-        <Box
-          sx={{
-            minHeight: "100vh",
-            width: ["auto", 640],
-            ...borderLeft,
-          }}
-        >
-          <ListHeading text={t`Assessments`} />
-
-          {filteredAssessments?.length === 0 && observations.isSuccess && (
-            <Box p={3} sx={{ ...borderBottom }}>
-              <Text>
-                <Trans>No assessments has been made yet.</Trans>
-              </Text>
-            </Box>
+      <Box sx={{ minHeight: "100vh", width: ["auto", 640], ...borderLeft }}>
+        <Assessments
+          assessments={assessments?.filter(({ areaId }) => areaId === area.id)}
+        />
+        <Observations
+          studentId={studentId}
+          observations={observations?.filter(
+            (observation) => observation.area?.id === area.id
           )}
-
-          {filteredAssessments?.length !== 0 && observations.isSuccess && (
-            <Box>
-              {filteredAssessments?.map(
-                ({ materialId, materialName, stage }) => {
-                  const stageName = materialStageToString(stage)
-                  return (
-                    <Flex
-                      key={materialId}
-                      px={3}
-                      py={2}
-                      sx={{ alignItems: "center", ...borderBottom }}
-                    >
-                      <Text sx={{ fontSize: 0 }} mr={3}>
-                        {materialName}
-                      </Text>
-                      <Pill
-                        color={`materialStage.on${stageName}`}
-                        backgroundColor={`materialStage.${stageName.toLowerCase()}`}
-                        text={stageName}
-                        ml="auto"
-                      />
-                    </Flex>
-                  )
-                }
-              )}
-            </Box>
-          )}
-
-          <ListHeading text={t`Observations`} />
-
-          {filteredObservations?.length === 0 && observations.isSuccess && (
-            <Box mb={3} sx={{ overflow: "hidden" }} p={3}>
-              <Text>
-                <Trans>No observation has been added.</Trans>
-              </Text>
-            </Box>
-          )}
-
-          {filteredObservations?.map((observation) => (
-            <ObservationListItem
-              key={observation.id}
-              observation={observation}
-              studentId={studentId}
-            />
-          ))}
-        </Box>
+        />
       </Box>
     </Box>
   )
 }
 
-const ObservationListItem: FC<{
+const Assessments: FC<{
+  assessments?: MaterialProgress[]
+}> = ({ assessments = [] }) => (
+  <>
+    <ListHeading text={t`Assessments`} />
+    {assessments.length === 0 && <NoAssessments />}
+    {assessments.length !== 0 && (
+      <Box>
+        {assessments?.map(({ materialId, materialName, stage }) => {
+          const stageName = materialStageToString(stage)
+          return (
+            <Flex
+              key={materialId}
+              px={3}
+              py={2}
+              sx={{ alignItems: "center", ...borderBottom }}
+            >
+              <Text sx={{ fontSize: 0 }} mr={3}>
+                {materialName}
+              </Text>
+              <Pill
+                color={`materialStage.on${stageName}`}
+                backgroundColor={`materialStage.${stageName.toLowerCase()}`}
+                text={stageName}
+                ml="auto"
+              />
+            </Flex>
+          )
+        })}
+      </Box>
+    )}
+  </>
+)
+
+const Observations: FC<{
+  observations?: Observation[]
+  studentId: string
+}> = ({ observations = [], studentId }) => (
+  <>
+    <ListHeading text={t`Observations`} />
+
+    {observations.length === 0 && <NoObservation />}
+    {observations.map((observation) => (
+      <ObservationItem
+        key={observation.id}
+        observation={observation}
+        studentId={studentId}
+      />
+    ))}
+  </>
+)
+
+const ObservationItem: FC<{
   observation: Observation
   studentId: string
 }> = ({ studentId, observation }) => (
@@ -275,6 +291,18 @@ const ListHeading: FC<{ text: string }> = ({ text }) => (
       }}
     />
   </Box>
+)
+
+const NoAssessments = () => (
+  <Text p={3} sx={{ display: "block", ...borderBottom }}>
+    <Trans>No assessments has been made yet.</Trans>
+  </Text>
+)
+
+const NoObservation = () => (
+  <Text mb={3} sx={{ display: "block", overflow: "hidden" }} p={3}>
+    <Trans>No observation has been added.</Trans>
+  </Text>
 )
 
 export default StudentReports
