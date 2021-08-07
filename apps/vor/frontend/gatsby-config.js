@@ -78,14 +78,14 @@ const plugins = [
   //     analyzerPort: 3300,
   //   },
   // },
-  {
-    resolve: `gatsby-plugin-typegen`,
-    options: {
-      emitSchema: {
-        "src/__generated__/gatsby-schema.graphql": true,
-      },
-    },
-  },
+  // {
+  //   resolve: `gatsby-plugin-typegen`,
+  //   options: {
+  //     emitSchema: {
+  //       "src/__generated__/gatsby-schema.graphql": true,
+  //     },
+  //   },
+  // },
 ]
 
 // this disables plugins for dev.
