@@ -14949,7 +14949,7 @@ fsevents@^1.2.7:
     preact-render-to-string: 5.1.19
     prettier: 2.3.2
     react: "npm:@preact/compat@0.0.4"
-    react-dom: "npm:@preact/compat@0.0.4"
+    react-dom: "npm:@preact/compat@17.0.2"
     react-query: 3.19.1
     react-ssr-prepass: "npm:preact-ssr-prepass@1.2.0"
     snarkdown: 2.0.0
@@ -25120,12 +25120,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-dom@npm:@preact/compat@0.0.4, react@npm:@preact/compat@0.0.4":
-  version: 0.0.4
-  resolution: "@preact/compat@npm:0.0.4"
+"react-dom@npm:@preact/compat@17.0.2":
+  version: 17.0.2
+  resolution: "@preact/compat@npm:17.0.2"
   peerDependencies:
     preact: "*"
-  checksum: 97126e5e2c72cb84c88c5c06ae517bc23720339e97bb436c2ead18306520e315a5b9660fd018a5b6127ca6158f1d709e5cefd6bf768572b8c96249b482a6c658
+  checksum: 4b1438e9505b71e2036337e2fdaba0b6dc51feb2fa252ef65e99db3ec0cd9fd28cfb3998af3d206ff2393114f1ca63e7766f38de001e74c736e14d60156e0c00
   languageName: node
   linkType: hard
 
@@ -25401,6 +25401,15 @@ fsevents@^1.2.7:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
+  languageName: node
+  linkType: hard
+
+"react@npm:@preact/compat@0.0.4":
+  version: 0.0.4
+  resolution: "@preact/compat@npm:0.0.4"
+  peerDependencies:
+    preact: "*"
+  checksum: 97126e5e2c72cb84c88c5c06ae517bc23720339e97bb436c2ead18306520e315a5b9660fd018a5b6127ca6158f1d709e5cefd6bf768572b8c96249b482a6c658
   languageName: node
   linkType: hard
 
