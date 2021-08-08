@@ -16,7 +16,7 @@
     "@sentry/browser": "6.10.0",
     "@sentry/integrations": "6.10.0",
     "@sentry/node": "6.10.0",
-    "@sentry/webpack-plugin": "1.16.0",
+    "@sentry/webpack-plugin": "1.17.1",
     "@svgr/webpack": "5.5.0",
     "@tailwindcss/typography": "0.4.1",
     "@types/body-scroll-lock": "2.6.2",
