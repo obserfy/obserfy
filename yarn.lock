@@ -7047,7 +7047,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:17.0.15, @types/react@npm:>=16.9.0":
+"@types/react@npm:*, @types/react@npm:>=16.9.0":
   version: 17.0.15
   resolution: "@types/react@npm:17.0.15"
   dependencies:
@@ -7055,6 +7055,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 4ee41e0c8d0e938f501f80ac75a5ee70b5e8cd5968a1f764960bf7b2694fd0d8ca01345f00325617130643b4af6e072bb3ade023dbc2bd2db7e73504b355b8d9
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:17.0.16":
+  version: 17.0.16
+  resolution: "@types/react@npm:17.0.16"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: cba60aeb284d4024feaca1364557fda72011e984b6b08f6e06a7cdc65e267eabc42d59c541ddbbb81720ab195b6df95a3535540abadd5c0e2cce26b16759dbaa
   languageName: node
   linkType: hard
 
@@ -15014,7 +15025,7 @@ fsevents@^1.2.7:
     "@types/node": 14.17.9
     "@types/pg": 8.6.1
     "@types/pino": 6.3.11
-    "@types/react": 17.0.15
+    "@types/react": 17.0.16
     "@types/react-query": 1.2.9
     "@types/uuid": 8.3.1
     "@typescript-eslint/eslint-plugin": 4.28.3
@@ -15058,7 +15069,7 @@ fsevents@^1.2.7:
     preact: 10.5.14
     preact-render-to-string: 5.1.19
     prettier: 2.3.2
-    react: "npm:@preact/compat@0.0.4"
+    react: "npm:@preact/compat@17.0.2"
     react-dom: "npm:@preact/compat@17.0.2"
     react-query: 3.19.2
     react-ssr-prepass: "npm:preact-ssr-prepass@1.2.0"
@@ -25229,7 +25240,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-dom@npm:@preact/compat@17.0.2":
+"react-dom@npm:@preact/compat@17.0.2, react@npm:@preact/compat@17.0.2":
   version: 17.0.2
   resolution: "@preact/compat@npm:17.0.2"
   peerDependencies:
@@ -25528,15 +25539,6 @@ fsevents@^1.2.7:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
-  languageName: node
-  linkType: hard
-
-"react@npm:@preact/compat@0.0.4":
-  version: 0.0.4
-  resolution: "@preact/compat@npm:0.0.4"
-  peerDependencies:
-    preact: "*"
-  checksum: 97126e5e2c72cb84c88c5c06ae517bc23720339e97bb436c2ead18306520e315a5b9660fd018a5b6127ca6158f1d709e5cefd6bf768572b8c96249b482a6c658
   languageName: node
   linkType: hard
 
@@ -30388,7 +30390,7 @@ typescript@4.3.5:
     "@types/node": 15.0.2
     "@types/query-string": 6.3.0
     "@types/reach__router": 1.3.9
-    "@types/react": 17.0.15
+    "@types/react": 17.0.16
     "@types/react-adaptive-hooks": 0.0.1
     "@types/react-dom": 17.0.9
     "@types/react-helmet": 6.1.2
