@@ -45,7 +45,7 @@
     "io-ts-types": "0.5.16",
     "minio": "7.0.18",
     "monocle-ts": "2.3.10",
-    "mux-embed": "4.0.1",
+    "mux-embed": "4.1.1",
     "nanoid": "3.1.23",
     "newtype-ts": "0.3.4",
     "next": "11.0.1",
