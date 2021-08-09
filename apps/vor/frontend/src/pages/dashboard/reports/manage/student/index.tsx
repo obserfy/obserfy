@@ -136,12 +136,12 @@ const NavigationBar: FC<{
 
   const nextStudentLink = nextStudentURL ? (
     <Link to={nextStudentURL}>
-      <Button variant="outline" p={0} ml={2}>
+      <Button variant="outline" p={0} ml={1}>
         <Icon as={ChevronDown} size={24} />
       </Button>
     </Link>
   ) : (
-    <Button variant="outline" p={0} ml={2} disabled>
+    <Button variant="outline" p={0} ml={1} disabled>
       <Icon as={ChevronDown} size={24} />
     </Button>
   )
