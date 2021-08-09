@@ -26,6 +26,10 @@ msgstr "\"{0}\" akan dihapus secara permanen. Apa anda yakin?"
 #~ msgid "(Starting on Jan 1st 2021)"
 #~ msgstr "(Mulai dari 1 Jan 2021)"
 
+#: src/pages/dashboard/reports/manage/index.tsx:64
+msgid "0 out of {0} done"
+msgstr ""
+
 #: src/components/DeleteClassDialog/DeleteClassDialog.tsx:77
 #: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:47
 msgid "<0>\"{name}\"</0> and student data related to it will be permanently deleted. Are you sure?"
@@ -168,7 +172,7 @@ msgid "Areas"
 msgstr "Bidang"
 
 #: src/components/PageStudentOverview/AssessmentCard.tsx:65
-#: src/components/PageStudentReport/PageStudentReport.tsx:95
+#: src/pages/dashboard/reports/manage/student/index.tsx:231
 msgid "Assessments"
 msgstr ""
 
@@ -187,7 +191,7 @@ msgid "Back to Billing"
 msgstr "Kembali ke Pembayaran"
 
 #: src/components/ObservationListItem/ObservationListItem.tsx:70
-#: src/components/PageStudentReport/PageStudentReport.tsx:201
+#: src/pages/dashboard/reports/manage/student/index.tsx:320
 msgid "By"
 msgstr "Oleh"
 
@@ -224,6 +228,10 @@ msgstr "Kelas"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:97
 msgid "Classes"
 msgstr "Kelas"
+
+#: src/pages/dashboard/reports/manage/student/index.tsx:213
+msgid "Comments on {0}"
+msgstr ""
 
 #: src/components/VideoPlayerDialog/VideoPlayerDialog.tsx:138
 msgid "Confirm Deletion"
@@ -477,8 +485,8 @@ msgid "End Time"
 msgstr "Waktu Selesai"
 
 #: src/components/PageStudentReport/PageStudentReport.tsx:81
-msgid "Evaluation"
-msgstr ""
+#~ msgid "Evaluation"
+#~ msgstr ""
 
 #: src/components/PageNewObservation/PageNewObservation.tsx:151
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:152
@@ -669,7 +677,7 @@ msgstr ""
 msgid "Manage your student data"
 msgstr "Kelola data murid anda"
 
-#: src/components/MarkdownEditor/MarkdownEditor.tsx:146
+#: src/components/MarkdownEditor/MarkdownEditor.tsx:137
 msgid "Markdown Supported"
 msgstr ""
 
@@ -769,7 +777,7 @@ msgstr "Buat sekolah baru"
 msgid "Next billing date"
 msgstr "Tanggal tagiahan selanjutnya"
 
-#: src/components/PageStudentReport/PageStudentReport.tsx:101
+#: src/pages/dashboard/reports/manage/student/index.tsx:359
 msgid "No assessments has been made yet."
 msgstr ""
 
@@ -803,7 +811,7 @@ msgstr "Tidak materi yang sedang dalam proses."
 msgid "No more students to add"
 msgstr "Tidak ada lagi murid untuk ditambahkan"
 
-#: src/components/PageStudentReport/PageStudentReport.tsx:142
+#: src/pages/dashboard/reports/manage/student/index.tsx:365
 msgid "No observation has been added."
 msgstr ""
 
@@ -864,7 +872,7 @@ msgstr ""
 #: src/components/PageAllObservations/ObservationsTable.tsx:62
 #: src/components/PageAllObservations/PageAllObservations.tsx:22
 #: src/components/PageStudentOverview/DailyObservationCard.tsx:50
-#: src/components/PageStudentReport/PageStudentReport.tsx:136
+#: src/pages/dashboard/reports/manage/student/index.tsx:266
 #: src/pages/dashboard/students/observations/details.tsx:33
 msgid "Observations"
 msgstr "Observasi"
@@ -963,7 +971,7 @@ msgstr "Diunggah pada"
 #~ msgid "Presented"
 #~ msgstr "Telah ditunjukan"
 
-#: src/components/MarkdownEditor/MarkdownEditor.tsx:106
+#: src/components/MarkdownEditor/MarkdownEditor.tsx:103
 msgid "Preview"
 msgstr ""
 
@@ -982,9 +990,13 @@ msgstr "Profil"
 msgid "Progress Report"
 msgstr ""
 
-#: src/pages/dashboard/reports/manage/index.tsx:26
-#: src/pages/dashboard/reports/manage/student/index.tsx:30
+#: src/pages/dashboard/reports/manage/index.tsx:28
+#: src/pages/dashboard/reports/manage/student/index.tsx:130
 msgid "Progress Reports"
+msgstr ""
+
+#: src/pages/dashboard/reports/manage/index.tsx:68
+msgid "Publish"
 msgstr ""
 
 #: src/components/PageStudentOverview/AssessmentCard.tsx:92
@@ -1068,6 +1080,7 @@ msgstr "Sabtu"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:339
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:395
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:444
+#: src/pages/dashboard/reports/manage/student/index.tsx:168
 msgid "Save"
 msgstr "Simpan"
 
@@ -1395,7 +1408,7 @@ msgstr "Selamat Datang!! Buatlah sekolah pertama anda sekarang, atau gunanakan l
 msgid "What have you found?"
 msgstr "Apa yang sudah anda temukan?"
 
-#: src/components/MarkdownEditor/MarkdownEditor.tsx:82
+#: src/components/MarkdownEditor/MarkdownEditor.tsx:80
 msgid "Write"
 msgstr ""
 

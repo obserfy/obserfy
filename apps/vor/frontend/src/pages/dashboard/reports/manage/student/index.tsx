@@ -4,6 +4,7 @@ import { Box, Button, Flex, Text } from "theme-ui"
 import { borderBottom, borderFull, borderLeft } from "../../../../../border"
 import Icon from "../../../../../components/Icon/Icon"
 import ImagePreview from "../../../../../components/ImagePreview/ImagePreview"
+import { Link } from "../../../../../components/Link/Link"
 import Markdown from "../../../../../components/Markdown/Markdown"
 import MarkdownEditor from "../../../../../components/MarkdownEditor/MarkdownEditor"
 import Pill from "../../../../../components/Pill/Pill"
@@ -17,6 +18,7 @@ import {
   useComment,
 } from "../../../../../domain/report-comments"
 import useGetReport from "../../../../../hooks/api/reports/useGetProgressReport"
+import { useGetAllStudents } from "../../../../../hooks/api/students/useGetAllStudents"
 import { Area } from "../../../../../hooks/api/useGetArea"
 import { useGetCurriculumAreas } from "../../../../../hooks/api/useGetCurriculumAreas"
 import { Student, useGetStudent } from "../../../../../hooks/api/useGetStudent"
@@ -33,7 +35,11 @@ import { useQueryString } from "../../../../../hooks/useQueryString"
 import { ReactComponent as ChevronDown } from "../../../../../icons/chevron-down.svg"
 import { ReactComponent as ChevronUp } from "../../../../../icons/chevron-up.svg"
 import { ReactComponent as EyeIcon } from "../../../../../icons/eye.svg"
-import { ALL_REPORT_URL, MANAGE_REPORT_URL } from "../../../../../routes"
+import {
+  ALL_REPORT_URL,
+  MANAGE_REPORT_URL,
+  STUDENT_REPORT_URL,
+} from "../../../../../routes"
 
 const StudentReports = () => {
   const studentId = useQueryString("studentId")
@@ -97,6 +103,48 @@ const NavigationBar: FC<{
 }> = ({ areaIdx, setAreaIdx, areas = [], student }) => {
   const reportId = useQueryString("reportId")
   const report = useGetReport(reportId)
+  const { data: students } = useGetAllStudents("", true)
+
+  const currentIdx = students?.findIndex(({ id }) => id === student?.id)
+  const prevStudentId =
+    currentIdx !== undefined && currentIdx !== -1
+      ? students?.[currentIdx - 1]?.id
+      : null
+  const nextStudentId =
+    currentIdx !== undefined && currentIdx !== -1
+      ? students?.[currentIdx + 1]?.id
+      : null
+
+  const prevStudentURL = prevStudentId
+    ? STUDENT_REPORT_URL(reportId, prevStudentId)
+    : null
+  const nextStudentURL = nextStudentId
+    ? STUDENT_REPORT_URL(reportId, nextStudentId)
+    : null
+
+  const prevStudentLink = prevStudentURL ? (
+    <Link to={prevStudentURL}>
+      <Button variant="outline" p={0}>
+        <Icon as={ChevronUp} size={24} />
+      </Button>
+    </Link>
+  ) : (
+    <Button variant="outline" p={0} disabled>
+      <Icon as={ChevronUp} size={24} />
+    </Button>
+  )
+
+  const nextStudentLink = nextStudentURL ? (
+    <Link to={nextStudentURL}>
+      <Button variant="outline" p={0} ml={2}>
+        <Icon as={ChevronDown} size={24} />
+      </Button>
+    </Link>
+  ) : (
+    <Button variant="outline" p={0} ml={2} disabled>
+      <Icon as={ChevronDown} size={24} />
+    </Button>
+  )
 
   return (
     <TranslucentBar>
@@ -118,12 +166,9 @@ const NavigationBar: FC<{
         }}
       >
         <Flex sx={{ alignItems: "center" }} mr="auto">
-          <Button variant="outline" p={0}>
-            <Icon as={ChevronUp} size={24} />
-          </Button>
-          <Button variant="outline" p={0} ml={1}>
-            <Icon as={ChevronDown} size={24} />
-          </Button>
+          {prevStudentLink}
+          {nextStudentLink}
+
           <Text ml={3} sx={{ fontWeight: "bold", fontSize: 1 }}>
             {student?.name}
           </Text>
