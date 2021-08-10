@@ -30478,7 +30478,7 @@ typescript@4.3.5:
     url-loader: 4.1.1
     use-immer: 0.6.0
     wait-on: 6.0.0
-    zustand: ^3.5.7
+    zustand: 3.5.7
   languageName: unknown
   linkType: soft
 
@@ -31766,7 +31766,7 @@ typescript@4.3.5:
   languageName: node
   linkType: hard
 
-"zustand@npm:^3.5.7":
+"zustand@npm:3.5.7":
   version: 3.5.7
   resolution: "zustand@npm:3.5.7"
   peerDependencies:
