@@ -6420,10 +6420,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/body-scroll-lock@npm:2.6.2":
-  version: 2.6.2
-  resolution: "@types/body-scroll-lock@npm:2.6.2"
-  checksum: 38eaacf3b0315c8e2d7dd00bcae4bb1d7f4fbc415e1afb85d667000063d890ba62c01d3fa40650df636c0875f55b805ecca34116eac143a3eaa2a445de7f36d8
+"@types/body-scroll-lock@npm:3.1.0":
+  version: 3.1.0
+  resolution: "@types/body-scroll-lock@npm:3.1.0"
+  checksum: 9b0d88053cd65abfc7b0f4946da844f4c822f58d47413457e03220a62bc3de897f7682339e6a04eba07658020910bbfc5dcd0a12ef8f0282780d1ce6e4d71570
   languageName: node
   linkType: hard
 
@@ -15014,7 +15014,7 @@ fsevents@^1.2.7:
     "@sentry/webpack-plugin": 1.17.1
     "@svgr/webpack": 5.5.0
     "@tailwindcss/typography": 0.4.1
-    "@types/body-scroll-lock": 2.6.2
+    "@types/body-scroll-lock": 3.1.0
     "@types/dompurify": 2.2.3
     "@types/formidable": 1.0.31
     "@types/hls.js": 1.0.0
@@ -30382,7 +30382,7 @@ typescript@4.3.5:
     "@testing-library/react": 12.0.0
     "@testing-library/react-hooks": 7.0.1
     "@theme-ui/match-media": 0.10.1
-    "@types/body-scroll-lock": 2.6.2
+    "@types/body-scroll-lock": 3.1.0
     "@types/date-fns": 2.6.0
     "@types/dompurify": 2.2.3
     "@types/faker": 5.5.7
