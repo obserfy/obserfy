@@ -4,6 +4,7 @@ import { Box, Button, Flex, Text } from "theme-ui"
 import { borderBottom, borderFull, borderLeft } from "../../../../../border"
 import Icon from "../../../../../components/Icon/Icon"
 import ImagePreview from "../../../../../components/ImagePreview/ImagePreview"
+import { Link } from "../../../../../components/Link/Link"
 import Markdown from "../../../../../components/Markdown/Markdown"
 import MarkdownEditor from "../../../../../components/MarkdownEditor/MarkdownEditor"
 import Pill from "../../../../../components/Pill/Pill"
@@ -12,10 +13,17 @@ import Tab from "../../../../../components/Tab/Tab"
 import TopBar, { breadCrumb } from "../../../../../components/TopBar/TopBar"
 import TranslucentBar from "../../../../../components/TranslucentBar/TranslucentBar"
 import { getFirstName } from "../../../../../domain/person"
-import useGetReport from "../../../../../hooks/api/reports/useGetProgressReport"
-import { useGetCurriculumAreas } from "../../../../../hooks/api/useGetCurriculumAreas"
-import { useGetStudent } from "../../../../../hooks/api/useGetStudent"
 import {
+  selectComment,
+  useComment,
+} from "../../../../../domain/report-comments"
+import useGetReport from "../../../../../hooks/api/reports/useGetProgressReport"
+import { useGetAllStudents } from "../../../../../hooks/api/students/useGetAllStudents"
+import { Area } from "../../../../../hooks/api/useGetArea"
+import { useGetCurriculumAreas } from "../../../../../hooks/api/useGetCurriculumAreas"
+import { Student, useGetStudent } from "../../../../../hooks/api/useGetStudent"
+import {
+  MaterialProgress,
   materialStageToString,
   useGetStudentAssessments,
 } from "../../../../../hooks/api/useGetStudentAssessments"
@@ -27,179 +35,263 @@ import { useQueryString } from "../../../../../hooks/useQueryString"
 import { ReactComponent as ChevronDown } from "../../../../../icons/chevron-down.svg"
 import { ReactComponent as ChevronUp } from "../../../../../icons/chevron-up.svg"
 import { ReactComponent as EyeIcon } from "../../../../../icons/eye.svg"
-import { ALL_REPORT_URL, MANAGE_REPORT_URL } from "../../../../../routes"
+import {
+  ALL_REPORT_URL,
+  MANAGE_REPORT_URL,
+  STUDENT_REPORT_URL,
+} from "../../../../../routes"
 
 const StudentReports = () => {
-  const reportId = useQueryString("reportId")
   const studentId = useQueryString("studentId")
+  const { data: student } = useGetStudent(studentId)
+  const { data: areas } = useGetCurriculumAreas()
+  const { data: observations } = useGetStudentObservations(studentId)
+  const { data: assessments } = useGetStudentAssessments(studentId)
 
-  const report = useGetReport(reportId)
-  const observations = useGetStudentObservations(studentId)
-  const areas = useGetCurriculumAreas()
-  const assessments = useGetStudentAssessments(studentId)
   const [areaIdx, setAreaIdx] = useState(0)
-  const student = useGetStudent(studentId)
-
-  const filteredObservations = observations.data?.filter(({ area }) => {
-    return area?.id === areas.data?.[areaIdx].id
-  })
-
-  const filteredAssessments = assessments.data?.filter(({ areaId }) => {
-    return areaId === areas.data?.[areaIdx].id
-  })
+  const selectedArea = areas?.[areaIdx]
 
   return (
     <Box sx={{ position: "relative", height: "100vh", width: "100%" }}>
-      <SEO title={`${student.data?.name} | Progress Report`} />
+      <SEO title={`${student?.name} | Progress Report`} />
+      <NavigationBar
+        areaIdx={areaIdx}
+        setAreaIdx={setAreaIdx}
+        student={student}
+        areas={areas}
+      />
 
-      <TranslucentBar>
-        <TopBar
-          containerSx={borderBottom}
-          breadcrumbs={[
-            breadCrumb(t`Progress Reports`, ALL_REPORT_URL),
-            breadCrumb(report.data?.title, MANAGE_REPORT_URL(reportId)),
-            breadCrumb(getFirstName(student.data)),
-          ]}
-        />
-
-        <Flex
-          p={3}
+      {selectedArea && (
+        <Box
           sx={{
-            ...borderBottom,
-            alignItems: ["flex-start", "center"],
-            flexDirection: ["column", "row"],
+            display: ["block", "block", "block", "flex"],
+            width: "100%",
+            alignItems: "flex-start",
           }}
         >
-          <Flex sx={{ alignItems: "center" }} mr="auto">
-            <Button variant="outline" p={0}>
-              <Icon as={ChevronUp} size={24} />
-            </Button>
-
-            <Button variant="outline" p={0} ml={1}>
-              <Icon as={ChevronDown} size={24} />
-            </Button>
-
-            <Text ml={3} sx={{ fontWeight: "bold", fontSize: 1 }}>
-              {student.data?.name}
-            </Text>
-          </Flex>
-
-          <Button mt={[3, 0]} sx={{ width: ["100%", "auto"] }}>
-            Mark as done
-          </Button>
-        </Flex>
-
-        <Box sx={{ minHeight: 47 }}>
-          <Tab
-            small
-            items={areas.data?.map((area) => area.name) ?? []}
-            selectedItemIdx={areaIdx}
-            onTabClick={setAreaIdx}
-          />
+          <Editor key={selectedArea.id} area={selectedArea} />
+          <Box
+            sx={{
+              minHeight: "100vh",
+              width: ["auto", "auto", "auto", 640],
+              ...borderLeft,
+            }}
+          >
+            <Assessments
+              assessments={assessments?.filter(
+                ({ areaId }) => areaId === selectedArea?.id
+              )}
+            />
+            <Observations
+              studentId={studentId}
+              observations={observations?.filter(
+                ({ area }) => area?.id === selectedArea?.id
+              )}
+            />
+          </Box>
         </Box>
-      </TranslucentBar>
+      )}
+    </Box>
+  )
+}
 
-      <Box
+const NavigationBar: FC<{
+  areaIdx: number
+  setAreaIdx: (idx: number) => void
+  student?: Student
+  areas?: Area[]
+}> = ({ areaIdx, setAreaIdx, areas = [], student }) => {
+  const reportId = useQueryString("reportId")
+  const report = useGetReport(reportId)
+  const { data: students } = useGetAllStudents("", true)
+
+  const currentIdx = students?.findIndex(({ id }) => id === student?.id)
+  const prevStudentId =
+    currentIdx !== undefined && currentIdx !== -1
+      ? students?.[currentIdx - 1]?.id
+      : null
+  const nextStudentId =
+    currentIdx !== undefined && currentIdx !== -1
+      ? students?.[currentIdx + 1]?.id
+      : null
+
+  const prevStudentURL = prevStudentId
+    ? STUDENT_REPORT_URL(reportId, prevStudentId)
+    : null
+  const nextStudentURL = nextStudentId
+    ? STUDENT_REPORT_URL(reportId, nextStudentId)
+    : null
+
+  const prevStudentLink = prevStudentURL ? (
+    <Link to={prevStudentURL}>
+      <Button variant="outline" p={0}>
+        <Icon as={ChevronUp} size={24} />
+      </Button>
+    </Link>
+  ) : (
+    <Button variant="outline" p={0} disabled>
+      <Icon as={ChevronUp} size={24} />
+    </Button>
+  )
+
+  const nextStudentLink = nextStudentURL ? (
+    <Link to={nextStudentURL}>
+      <Button variant="outline" p={0} ml={1}>
+        <Icon as={ChevronDown} size={24} />
+      </Button>
+    </Link>
+  ) : (
+    <Button variant="outline" p={0} ml={1} disabled>
+      <Icon as={ChevronDown} size={24} />
+    </Button>
+  )
+
+  return (
+    <TranslucentBar>
+      <TopBar
+        containerSx={borderBottom}
+        breadcrumbs={[
+          breadCrumb(t`Progress Reports`, ALL_REPORT_URL),
+          breadCrumb(report.data?.title, MANAGE_REPORT_URL(reportId)),
+          breadCrumb(getFirstName(student)),
+        ]}
+      />
+
+      <Flex
+        p={3}
         sx={{
-          display: ["block", "block", "block", "flex"],
-          width: "100%",
-          alignItems: "flex-start",
+          ...borderBottom,
+          alignItems: ["flex-start", "center"],
+          flexDirection: ["column", "row"],
         }}
       >
-        <Box
-          mx={[0, 3]}
-          my={3}
-          sx={{
-            top: 3,
-            position: ["relative", "sticky"],
-            borderRadius: [0, "default"],
-            width: "100%",
-            backgroundColor: "surface",
-            ...borderFull,
-          }}
+        <Flex sx={{ alignItems: "center" }} mr="auto">
+          {prevStudentLink}
+          {nextStudentLink}
+
+          <Text ml={3} sx={{ fontWeight: "bold", fontSize: 1 }}>
+            {student?.name}
+          </Text>
+        </Flex>
+
+        <Button
+          variant="outline"
+          mt={[3, 0]}
+          mr={3}
+          sx={{ width: ["100%", "auto"] }}
         >
-          <Box px={3} py={2}>
-            <Text color="textMediumEmphasis" sx={{ fontWeight: "bold" }}>
-              <Trans>Comments on {areas.data?.[areaIdx].name}</Trans>
-            </Text>
-          </Box>
+          <Trans>Save</Trans>
+        </Button>
+        <Button mt={[3, 0]} sx={{ width: ["100%", "auto"] }}>
+          Mark as done
+        </Button>
+      </Flex>
 
-          <MarkdownEditor
-            onChange={() => {}}
-            value=""
-            placeholder="Add some details"
-          />
-        </Box>
+      <Tab
+        small
+        items={areas.map(({ name }) => name)}
+        selectedItemIdx={areaIdx}
+        onTabClick={setAreaIdx}
+        sx={{ minHeight: 47 }}
+      />
+    </TranslucentBar>
+  )
+}
 
-        <Box
-          sx={{
-            minHeight: "100vh",
-            width: ["auto", 640],
-            ...borderLeft,
-          }}
+const Editor: FC<{ area: Area }> = ({ area }) => {
+  const studentId = useQueryString("studentId")
+  const reportId = useQueryString("reportId")
+
+  const comment = useComment(selectComment(reportId, studentId, area.id))
+  const setComment = useComment((state) => state.setComment)
+
+  return (
+    <Box
+      px={[0, 3]}
+      py={3}
+      sx={{ width: "100%", top: 0, position: ["relative", "sticky"] }}
+    >
+      <Box
+        sx={{
+          borderRadius: [0, "default"],
+          backgroundColor: "surface",
+          ...borderFull,
+          borderStyle: ["none", "solid"],
+        }}
+      >
+        <Text
+          px={3}
+          py={2}
+          color="textMediumEmphasis"
+          sx={{ display: "block", fontWeight: "bold" }}
         >
-          <ListHeading text={t`Assessments`} />
-
-          {filteredAssessments?.length === 0 && observations.isSuccess && (
-            <Box p={3} sx={{ ...borderBottom }}>
-              <Text>
-                <Trans>No assessments has been made yet.</Trans>
-              </Text>
-            </Box>
-          )}
-
-          {filteredAssessments?.length !== 0 && observations.isSuccess && (
-            <Box>
-              {filteredAssessments?.map(
-                ({ materialId, materialName, stage }) => {
-                  const stageName = materialStageToString(stage)
-                  return (
-                    <Flex
-                      key={materialId}
-                      px={3}
-                      py={2}
-                      sx={{ alignItems: "center", ...borderBottom }}
-                    >
-                      <Text sx={{ fontSize: 0 }} mr={3}>
-                        {materialName}
-                      </Text>
-                      <Pill
-                        color={`materialStage.on${stageName}`}
-                        backgroundColor={`materialStage.${stageName.toLowerCase()}`}
-                        text={stageName}
-                        ml="auto"
-                      />
-                    </Flex>
-                  )
-                }
-              )}
-            </Box>
-          )}
-
-          <ListHeading text={t`Observations`} />
-
-          {filteredObservations?.length === 0 && observations.isSuccess && (
-            <Box mb={3} sx={{ overflow: "hidden" }} p={3}>
-              <Text>
-                <Trans>No observation has been added.</Trans>
-              </Text>
-            </Box>
-          )}
-
-          {filteredObservations?.map((observation) => (
-            <ObservationListItem
-              key={observation.id}
-              observation={observation}
-              studentId={studentId}
-            />
-          ))}
-        </Box>
+          <Trans>Comments on {area.name}</Trans>
+        </Text>
+        <MarkdownEditor
+          placeholder="Add some details"
+          value={comment}
+          onChange={(value) => {
+            setComment(reportId, studentId, area.id, value)
+          }}
+        />
       </Box>
     </Box>
   )
 }
 
-const ObservationListItem: FC<{
+const Assessments: FC<{
+  assessments?: MaterialProgress[]
+}> = ({ assessments = [] }) => (
+  <>
+    <ListHeading text={t`Assessments`} />
+    {assessments.length === 0 && <NoAssessments />}
+    {assessments.length !== 0 && (
+      <Box>
+        {assessments?.map(({ materialId, materialName, stage }) => {
+          const stageName = materialStageToString(stage)
+          return (
+            <Flex
+              key={materialId}
+              px={3}
+              py={2}
+              sx={{ alignItems: "center", ...borderBottom }}
+            >
+              <Text sx={{ fontSize: 0 }} mr={3}>
+                {materialName}
+              </Text>
+              <Pill
+                color={`materialStage.on${stageName}`}
+                backgroundColor={`materialStage.${stageName.toLowerCase()}`}
+                text={stageName}
+                ml="auto"
+              />
+            </Flex>
+          )
+        })}
+      </Box>
+    )}
+  </>
+)
+
+const Observations: FC<{
+  observations?: Observation[]
+  studentId: string
+}> = ({ observations = [], studentId }) => (
+  <>
+    <ListHeading text={t`Observations`} />
+
+    {observations.length === 0 && <NoObservation />}
+    {observations.map((observation) => (
+      <ObservationItem
+        key={observation.id}
+        observation={observation}
+        studentId={studentId}
+      />
+    ))}
+  </>
+)
+
+const ObservationItem: FC<{
   observation: Observation
   studentId: string
 }> = ({ studentId, observation }) => (
@@ -275,6 +367,18 @@ const ListHeading: FC<{ text: string }> = ({ text }) => (
       }}
     />
   </Box>
+)
+
+const NoAssessments = () => (
+  <Text p={3} sx={{ display: "block", ...borderBottom }}>
+    <Trans>No assessments has been made yet.</Trans>
+  </Text>
+)
+
+const NoObservation = () => (
+  <Text mb={3} sx={{ display: "block", overflow: "hidden" }} p={3}>
+    <Trans>No observation has been added.</Trans>
+  </Text>
 )
 
 export default StudentReports

@@ -30478,6 +30478,7 @@ typescript@4.3.5:
     url-loader: 4.1.1
     use-immer: 0.6.0
     wait-on: 6.0.0
+    zustand: ^3.5.7
   languageName: unknown
   linkType: soft
 
@@ -31762,6 +31763,18 @@ typescript@4.3.5:
     read: ^1.0.7
     strip-ansi: ^5.2.0
   checksum: e1e60a859b21af5897501b3e12ff2c811b39f7b376e32ee8de0056bcfe7e64609c08dc265e33d7b6c20f81d07f987eb1be1dad8780473461a437828828995a79
+  languageName: node
+  linkType: hard
+
+"zustand@npm:^3.5.7":
+  version: 3.5.7
+  resolution: "zustand@npm:3.5.7"
+  peerDependencies:
+    react: ">=16.8"
+  peerDependenciesMeta:
+    react:
+      optional: true
+  checksum: cbe18c56fc211f3e32b655b72dfcde1b57fad347eeac3002f1751b81ea0e6a845e790c633b2dc81e3d905610376afed80260116ff0716e75be09d6073a5fee35
   languageName: node
   linkType: hard
 

@@ -21,6 +21,10 @@ msgstr "\"{0}\" will be permanently deleted. Are you sure?"
 #~ msgid "(Starting on Jan 1st 2021)"
 #~ msgstr "(Starting on Jan 1st 2021)"
 
+#: src/pages/dashboard/reports/manage/index.tsx:64
+msgid "0 out of {0} done"
+msgstr "0 out of {0} done"
+
 #: src/components/DeleteClassDialog/DeleteClassDialog.tsx:77
 #: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:47
 msgid "<0>\"{name}\"</0> and student data related to it will be permanently deleted. Are you sure?"
@@ -163,7 +167,7 @@ msgid "Areas"
 msgstr "Areas"
 
 #: src/components/PageStudentOverview/AssessmentCard.tsx:65
-#: src/components/PageStudentReport/PageStudentReport.tsx:95
+#: src/pages/dashboard/reports/manage/student/index.tsx:231
 msgid "Assessments"
 msgstr "Assessments"
 
@@ -182,7 +186,7 @@ msgid "Back to Billing"
 msgstr "Back to Billing"
 
 #: src/components/ObservationListItem/ObservationListItem.tsx:70
-#: src/components/PageStudentReport/PageStudentReport.tsx:201
+#: src/pages/dashboard/reports/manage/student/index.tsx:320
 msgid "By"
 msgstr "By"
 
@@ -219,6 +223,10 @@ msgstr "Class"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:97
 msgid "Classes"
 msgstr "Classes"
+
+#: src/pages/dashboard/reports/manage/student/index.tsx:213
+msgid "Comments on {0}"
+msgstr "Comments on {0}"
 
 #: src/components/VideoPlayerDialog/VideoPlayerDialog.tsx:138
 msgid "Confirm Deletion"
@@ -472,8 +480,8 @@ msgid "End Time"
 msgstr "End Time"
 
 #: src/components/PageStudentReport/PageStudentReport.tsx:81
-msgid "Evaluation"
-msgstr "Evaluation"
+#~ msgid "Evaluation"
+#~ msgstr "Evaluation"
 
 #: src/components/PageNewObservation/PageNewObservation.tsx:151
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:152
@@ -668,7 +676,7 @@ msgstr "Manage your student data"
 #~ msgid "Mario"
 #~ msgstr "Mario"
 
-#: src/components/MarkdownEditor/MarkdownEditor.tsx:146
+#: src/components/MarkdownEditor/MarkdownEditor.tsx:137
 msgid "Markdown Supported"
 msgstr "Markdown Supported"
 
@@ -768,7 +776,7 @@ msgstr "New school"
 msgid "Next billing date"
 msgstr "Next billing date"
 
-#: src/components/PageStudentReport/PageStudentReport.tsx:101
+#: src/pages/dashboard/reports/manage/student/index.tsx:359
 msgid "No assessments has been made yet."
 msgstr "No assessments has been made yet."
 
@@ -802,7 +810,7 @@ msgstr "No materials in progress."
 msgid "No more students to add"
 msgstr "No more students to add"
 
-#: src/components/PageStudentReport/PageStudentReport.tsx:142
+#: src/pages/dashboard/reports/manage/student/index.tsx:365
 msgid "No observation has been added."
 msgstr "No observation has been added."
 
@@ -863,7 +871,7 @@ msgstr "Observation Details"
 #: src/components/PageAllObservations/ObservationsTable.tsx:62
 #: src/components/PageAllObservations/PageAllObservations.tsx:22
 #: src/components/PageStudentOverview/DailyObservationCard.tsx:50
-#: src/components/PageStudentReport/PageStudentReport.tsx:136
+#: src/pages/dashboard/reports/manage/student/index.tsx:266
 #: src/pages/dashboard/students/observations/details.tsx:33
 msgid "Observations"
 msgstr "Observations"
@@ -962,7 +970,7 @@ msgstr "Posted on"
 #~ msgid "Presented"
 #~ msgstr "Presented"
 
-#: src/components/MarkdownEditor/MarkdownEditor.tsx:106
+#: src/components/MarkdownEditor/MarkdownEditor.tsx:103
 msgid "Preview"
 msgstr "Preview"
 
@@ -981,10 +989,14 @@ msgstr "Profile"
 msgid "Progress Report"
 msgstr "Progress Report"
 
-#: src/pages/dashboard/reports/manage/index.tsx:26
-#: src/pages/dashboard/reports/manage/student/index.tsx:30
+#: src/pages/dashboard/reports/manage/index.tsx:28
+#: src/pages/dashboard/reports/manage/student/index.tsx:130
 msgid "Progress Reports"
 msgstr "Progress Reports"
+
+#: src/pages/dashboard/reports/manage/index.tsx:68
+msgid "Publish"
+msgstr "Publish"
 
 #: src/components/PageStudentOverview/AssessmentCard.tsx:92
 msgid "Recently Mastered"
@@ -1067,6 +1079,7 @@ msgstr "Saturday"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:339
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:395
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:444
+#: src/pages/dashboard/reports/manage/student/index.tsx:168
 msgid "Save"
 msgstr "Save"
 
@@ -1398,7 +1411,7 @@ msgstr "Welcome!! Create your first school or use an invitation link to join an 
 msgid "What have you found?"
 msgstr "What have you found?"
 
-#: src/components/MarkdownEditor/MarkdownEditor.tsx:82
+#: src/components/MarkdownEditor/MarkdownEditor.tsx:80
 msgid "Write"
 msgstr "Write"
 
