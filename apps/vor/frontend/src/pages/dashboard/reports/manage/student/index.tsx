@@ -43,23 +43,45 @@ import {
 
 const StudentReports = () => {
   const studentId = useQueryString("studentId")
+  const reportId = useQueryString("reportId")
+
+  const { data: report } = useGetReport(reportId)
   const { data: student } = useGetStudent(studentId)
   const { data: areas } = useGetCurriculumAreas()
   const { data: observations } = useGetStudentObservations(studentId)
   const { data: assessments } = useGetStudentAssessments(studentId)
 
-  const [areaIdx, setAreaIdx] = useState(0)
-  const selectedArea = areas?.[areaIdx]
+  let tabs = ["General"]
+  if (areas) {
+    const areaNames = areas.map(({ name }) => name)
+    tabs = tabs.concat(areaNames)
+  }
+
+  const [selectedTab, setSelectedTab] = useState(0)
+  const selectedArea = selectedTab > 0 ? areas?.[selectedTab - 1] : null
 
   return (
     <Box sx={{ position: "relative", height: "100vh", width: "100%" }}>
       <SEO title={`${student?.name} | Progress Report`} />
-      <NavigationBar
-        areaIdx={areaIdx}
-        setAreaIdx={setAreaIdx}
-        student={student}
-        areas={areas}
-      />
+
+      <TranslucentBar>
+        <TopBar
+          containerSx={borderBottom}
+          breadcrumbs={[
+            breadCrumb(t`Progress Reports`, ALL_REPORT_URL),
+            breadCrumb(report?.title, MANAGE_REPORT_URL(reportId)),
+            breadCrumb(getFirstName(student)),
+          ]}
+        />
+        <ActionBar student={student} />
+        <Tab
+          small
+          items={tabs}
+          selectedItemIdx={selectedTab}
+          onTabClick={setSelectedTab}
+          sx={{ minHeight: 47 }}
+        />
+      </TranslucentBar>
 
       {selectedArea && (
         <Box
@@ -69,8 +91,9 @@ const StudentReports = () => {
             alignItems: "flex-start",
           }}
         >
-          <Editor key={selectedArea.id} area={selectedArea} />
+          <AreaCommentEditor key={selectedArea.id} area={selectedArea} />
           <Box
+            pb={6}
             sx={{
               minHeight: "100vh",
               width: ["auto", "auto", "auto", 640],
@@ -91,18 +114,16 @@ const StudentReports = () => {
           </Box>
         </Box>
       )}
+
+      {selectedTab === 0 && <GeneralCommentEditor />}
     </Box>
   )
 }
 
-const NavigationBar: FC<{
-  areaIdx: number
-  setAreaIdx: (idx: number) => void
+const ActionBar: FC<{
   student?: Student
-  areas?: Area[]
-}> = ({ areaIdx, setAreaIdx, areas = [], student }) => {
+}> = ({ student }) => {
   const reportId = useQueryString("reportId")
-  const report = useGetReport(reportId)
   const { data: students } = useGetAllStudents("", true)
 
   const currentIdx = students?.findIndex(({ id }) => id === student?.id)
@@ -147,16 +168,7 @@ const NavigationBar: FC<{
   )
 
   return (
-    <TranslucentBar>
-      <TopBar
-        containerSx={borderBottom}
-        breadcrumbs={[
-          breadCrumb(t`Progress Reports`, ALL_REPORT_URL),
-          breadCrumb(report.data?.title, MANAGE_REPORT_URL(reportId)),
-          breadCrumb(getFirstName(student)),
-        ]}
-      />
-
+    <>
       <Flex
         p={3}
         sx={{
@@ -182,23 +194,56 @@ const NavigationBar: FC<{
         >
           <Trans>Save</Trans>
         </Button>
-        <Button mt={[3, 0]} sx={{ width: ["100%", "auto"] }}>
+        <Button mt={[2, 0]} sx={{ width: ["100%", "auto"] }}>
           Mark as done
         </Button>
       </Flex>
-
-      <Tab
-        small
-        items={areas.map(({ name }) => name)}
-        selectedItemIdx={areaIdx}
-        onTabClick={setAreaIdx}
-        sx={{ minHeight: 47 }}
-      />
-    </TranslucentBar>
+    </>
   )
 }
 
-const Editor: FC<{ area: Area }> = ({ area }) => {
+const GeneralCommentEditor: FC = () => {
+  const studentId = useQueryString("studentId")
+  const reportId = useQueryString("reportId")
+
+  const comment = useComment(selectComment(reportId, studentId, "general"))
+  const setComment = useComment((state) => state.setComment)
+
+  return (
+    <Box
+      px={[0, 3]}
+      py={3}
+      sx={{ width: "100%", top: 0, position: ["relative", "sticky"] }}
+    >
+      <Box
+        sx={{
+          borderRadius: [0, "default"],
+          backgroundColor: "surface",
+          ...borderFull,
+          borderStyle: ["none", "solid"],
+        }}
+      >
+        <Text
+          px={3}
+          pt={3}
+          color="textMediumEmphasis"
+          sx={{ display: "block", fontWeight: "bold" }}
+        >
+          <Trans>General Comments</Trans>
+        </Text>
+        <MarkdownEditor
+          placeholder="Add some details"
+          value={comment}
+          onChange={(value) => {
+            setComment(reportId, studentId, "general", value)
+          }}
+        />
+      </Box>
+    </Box>
+  )
+}
+
+const AreaCommentEditor: FC<{ area: Area }> = ({ area }) => {
   const studentId = useQueryString("studentId")
   const reportId = useQueryString("reportId")
 
@@ -221,7 +266,7 @@ const Editor: FC<{ area: Area }> = ({ area }) => {
       >
         <Text
           px={3}
-          py={2}
+          pt={3}
           color="textMediumEmphasis"
           sx={{ display: "block", fontWeight: "bold" }}
         >
