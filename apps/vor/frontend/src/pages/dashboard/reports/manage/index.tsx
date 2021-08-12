@@ -1,8 +1,9 @@
 import { t, Trans } from "@lingui/macro"
-import { FC } from "react"
+import { FC, useState } from "react"
 import { Box, Button, Flex, Image, Text } from "theme-ui"
 import { borderBottom, borderFull } from "../../../../border"
 import { Link } from "../../../../components/Link/Link"
+import SearchBar from "../../../../components/SearchBar/SearchBar"
 import SEO from "../../../../components/seo"
 import StudentPicturePlaceholder from "../../../../components/StudentPicturePlaceholder/StudentPicturePlaceholder"
 import TopBar, { breadCrumb } from "../../../../components/TopBar/TopBar"
@@ -15,7 +16,8 @@ import { ALL_REPORT_URL, STUDENT_REPORT_URL } from "../../../../routes"
 const ManageReports = () => {
   const reportId = useQueryString("reportId")
   const report = useGetReport(reportId)
-  const students = useGetAllStudents("", true)
+  const { data: students } = useGetAllStudents("", true)
+  const [search, setSearch] = useState("")
 
   return (
     <Box sx={{ minHeight: "100vh" }}>
@@ -61,7 +63,7 @@ const ManageReports = () => {
               sx={{ fontSize: 0, display: "block" }}
               mr="auto"
             >
-              <Trans>0 out of {students.data?.length} done</Trans>
+              <Trans>0 out of {students?.length} done</Trans>
             </Text>
 
             <Button mx={3}>
@@ -71,16 +73,22 @@ const ManageReports = () => {
         </Flex>
       </TranslucentBar>
 
-      {students.data?.map(({ id, name, classes, profileImageUrl }) => (
-        <Student
-          key={id}
-          image={profileImageUrl}
-          reportId={reportId}
-          studentId={id}
-          name={name}
-          classes={classes}
-        />
-      ))}
+      <Flex p={3} sx={{ ...borderBottom }}>
+        <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
+      </Flex>
+
+      {students
+        ?.filter((student) => student.name.match(new RegExp(search, "i")))
+        ?.map(({ id, name, classes, profileImageUrl }) => (
+          <Student
+            key={id}
+            image={profileImageUrl}
+            reportId={reportId}
+            studentId={id}
+            name={name}
+            classes={classes}
+          />
+        ))}
     </Box>
   )
 }
@@ -157,7 +165,7 @@ const Student: FC<{
         }}
       />
 
-      <Text sx={{ fontSize: 0 }}>Todo</Text>
+      <Text sx={{ fontSize: 0 }}>Empty</Text>
     </Flex>
   </Link>
 )
