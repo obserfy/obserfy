@@ -83,6 +83,7 @@ const StudentReports = () => {
         />
       </TranslucentBar>
 
+      {selectedTab === 0 && <GeneralCommentEditor />}
       {selectedArea && (
         <Box
           sx={{
@@ -114,8 +115,6 @@ const StudentReports = () => {
           </Box>
         </Box>
       )}
-
-      {selectedTab === 0 && <GeneralCommentEditor />}
     </Box>
   )
 }
@@ -195,7 +194,7 @@ const ActionBar: FC<{
           <Trans>Save</Trans>
         </Button>
         <Button mt={[2, 0]} sx={{ width: ["100%", "auto"] }}>
-          Mark as done
+          Mark as ready
         </Button>
       </Flex>
     </>
