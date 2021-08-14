@@ -141,7 +141,7 @@ exports[`PageListOfStudents should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  margin-right: -28px;
+  margin-right: -33px;
   margin-left: 8px;
   fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
@@ -183,7 +183,7 @@ exports[`PageListOfStudents should render correctly 1`] = `
   padding-bottom: 8px;
   background-color: var(--theme-ui-colors-surface);
   --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
-  padding-left: 34px;
+  padding-left: 40px;
   font-size: 14px;
   width: 100%;
   width: 100%;
