@@ -1,7 +1,7 @@
+import formidable from "formidable-serverless"
+import { promises as fs } from "fs"
 import { NextApiRequest, NextApiResponse } from "next"
 import { v4 as uuidv4 } from "uuid"
-import { File, IncomingForm } from "formidable-serverless"
-import { promises as fs } from "fs"
 import { insertImage } from "../../../db/queries"
 import uploadFile from "../../../utils/minio"
 import { protectedApiRoute } from "../../../utils/rest"
@@ -29,11 +29,16 @@ const handlePost = async (res: NextApiResponse, req: NextApiRequest) => {
   }
 
   // Parse form
-  const data = await new Promise<File>((resolve, reject) => {
-    const form = new IncomingForm()
+  const data = await new Promise<formidable.File>((resolve, reject) => {
+    const form = new formidable.IncomingForm()
     form.parse(req, (err, fields, files) => {
       if (err) return reject(err)
-      resolve(files.image)
+      if (!Array.isArray(files.image)) {
+        resolve(files.image)
+      } else {
+        reject(new Error("can't process multiple images"))
+      }
+
       return null
     })
   })

@@ -2,11 +2,13 @@ declare const mixpanel: any
 
 declare module "formidable-serverless" {
   // eslint-disable-next-line import/no-extraneous-dependencies,import/no-unresolved
-  export * from "formidable"
+  import formidable from "formidable"
+
+  export default formidable
 }
 
 declare module "*.svg" {
-  import { FC, SVGProps, ReactSVGElement } from "react"
+  import { FC, ReactSVGElement, SVGProps } from "react"
 
   const ReactComponent: FC<SVGProps<ReactSVGElement>>
   export default ReactComponent
