@@ -1,7 +1,7 @@
 import { Global } from "@emotion/react"
 import { FC } from "react"
 import { QueryClient, QueryClientProvider } from "react-query"
-import { Box, useColorMode } from "theme-ui"
+import { Box, useColorMode, useThemeUI } from "theme-ui"
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary"
 import Layout from "../components/Layout/Layout"
 
@@ -24,13 +24,14 @@ const LayoutManager: FC<any> = ({ children, pageContext }) => (
 
 const GlobalStyle: FC = () => {
   const [mode] = useColorMode()
+  const { theme } = useThemeUI()
   const isDarkMode = mode === "dark"
 
   return (
     <Global
-      styles={({ colors }) => ({
+      styles={() => ({
         body: {
-          backgroundColor: colors.background,
+          backgroundColor: theme.colors?.background as string,
           minHeight: "100vh",
           top: 0,
         },

@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/macro"
 import {
   ChangeEventHandler,
   FC,
@@ -13,7 +14,6 @@ import {
   Label,
   ThemeUIStyleObject,
 } from "theme-ui"
-import { Trans } from "@lingui/macro"
 import Icon from "../Icon/Icon"
 
 interface Props extends PropsWithoutRef<InputProps> {
@@ -48,7 +48,7 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, Props> = (
 ) => {
   let modifiedSx = sx
   if (icon !== undefined) {
-    modifiedSx = { ...modifiedSx, pl: small ? 34 : 52 }
+    modifiedSx = { ...modifiedSx, pl: small ? 40 : 52 }
   }
   return (
     <Label
@@ -69,7 +69,7 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, Props> = (
         {icon && (
           <Icon
             as={icon}
-            mr={small ? -28 : -36}
+            mr={small ? -33 : -40}
             sx={{ width: 24, height: 24, zIndex: 2 }}
             ml={small ? 2 : 3}
           />
