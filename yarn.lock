@@ -15163,7 +15163,7 @@ fsevents@^1.2.7:
     node-mocks-http: 1.10.1
     pg: 8.7.1
     pino: 6.13.0
-    pino-pretty: 5.1.2
+    pino-pretty: 5.1.3
     postcss: 8.3.6
     preact: 10.5.14
     preact-render-to-string: 5.1.19
@@ -23755,9 +23755,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"pino-pretty@npm:5.1.2":
-  version: 5.1.2
-  resolution: "pino-pretty@npm:5.1.2"
+"pino-pretty@npm:5.1.3":
+  version: 5.1.3
+  resolution: "pino-pretty@npm:5.1.3"
   dependencies:
     "@hapi/bourne": ^2.0.0
     args: ^5.0.1
@@ -23773,7 +23773,7 @@ fsevents@^1.2.7:
     strip-json-comments: ^3.1.1
   bin:
     pino-pretty: bin.js
-  checksum: 879378b2cd8a2b729bd573eb3586eb1d10c0b1f915cf9b58c549aa59a256dc6903e4673cfede09a53f5e200c6e08233facdfdb720e805c6d26f9a3dd580f40ab
+  checksum: 440b94a82edad4296d03ec3bdd577e8ba32ad159542893c26d4b3155110f2a283f369073e5ce26d273f1c2d9ceb318141cdcdbd124f836e9aae38da5c5cb40ec
   languageName: node
   linkType: hard
 
