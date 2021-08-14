@@ -49,6 +49,7 @@ func InitTables(db *pg.Tx) error {
 		(*FileToLessonPlan)(nil),
 		(*LessonPlanToStudents)(nil),
 		(*VideoToStudents)(nil),
+		(*StudentReportObservationsToImage)(nil),
 	} {
 		orm.RegisterTable(model)
 	}
@@ -86,6 +87,11 @@ func InitTables(db *pg.Tx) error {
 		(*Video)(nil),
 		(*VideoToStudents)(nil),
 		(*ProgressReport)(nil),
+		(*StudentReport)(nil),
+		(*StudentReportsAreaComment)(nil),
+		(*StudentReportAssessment)(nil),
+		(*StudentReportObservation)(nil),
+		(*StudentReportObservationsToImage)(nil),
 	} {
 		err := db.Model(model).CreateTable(&orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -96,7 +102,7 @@ func InitTables(db *pg.Tx) error {
 }
 
 type Session struct {
-	Token  string `pg:",pk" pg:",type:uuid"`
+	Token  string `pg:",pk,type:uuid"`
 	UserId string
 }
 
@@ -435,32 +441,32 @@ type (
 		Published   bool
 	}
 
-	StudentReports struct {
+	StudentReport struct {
 		Id              uuid.UUID `pg:"type:uuid"`
 		StudentId       uuid.UUID `pg:"type:uuid"`
 		GeneralComments string
 
-		AreaComments []StudentReportsAreaComments `pg:"rel:has-many"`
+		AreaComments []StudentReportsAreaComment `pg:"rel:has-many"`
 		Published    bool
 	}
 
-	StudentReportsAreaComments struct {
+	StudentReportsAreaComment struct {
 		Id uuid.UUID `pg:"type:uuid"`
 
 		StudentReportsId uuid.UUID
-		StudentReport    StudentReports `pg:"rel:has-one"`
+		StudentReport    StudentReport `pg:"rel:has-one"`
 
 		AreaId uuid.UUID `pg:"type:uuid"`
-		Area   Area
+		Area   Area      `pg:"rel:has-one"`
 
 		Comments string
 		Ready    bool
 	}
 
-	StudentReportAssessments struct {
+	StudentReportAssessment struct {
 		Id               uuid.UUID `pg:"type:uuid"`
 		StudentReportsId uuid.UUID `pg:"type:uuid"`
-		StudentReport    StudentReports
+		StudentReport    StudentReport
 
 		MaterialId string   `pg:"type:uuid,on_delete:CASCADE"`
 		Material   Material `pg:"rel:has-one"`
@@ -469,10 +475,10 @@ type (
 		UpdatedAt   time.Time
 	}
 
-	StudentReportObservations struct {
+	StudentReportObservation struct {
 		Id               uuid.UUID `pg:"type:uuid"`
 		StudentReportsId uuid.UUID `pg:"type:uuid"`
-		StudentReport    StudentReports
+		StudentReport    StudentReport
 
 		ShortDesc string `json:"shortDesc"`
 		LongDesc  string `json:"longDesc"`
@@ -494,8 +500,15 @@ type (
 		Area   Area      `pg:"rel:has-one"`
 		AreaId uuid.UUID `pg:"type:uuid,on_delete:SET NULL"`
 
-		Images             []Image `pg:"many2many:observation_to_images,join_fk:image_id"`
+		Images             []Image `pg:"many2many:student_report_observations_to_images,join_fk:image_id"`
 		VisibleToGuardians bool    `pg:",notnull,default:false"`
+	}
+
+	StudentReportObservationsToImage struct {
+		StudentReportObservation   StudentReportObservation `pg:"rel:has-one"`
+		StudentReportObservationId uuid.UUID                `pg:"type:uuid,on_delete:CASCADE"`
+		Image                      Image                    `pg:"rel:has-one"`
+		ImageId                    uuid.UUID                `pg:"type:uuid,on_delete:CASCADE"`
 	}
 )
 
