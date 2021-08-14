@@ -36,7 +36,7 @@ const ManageReports = () => {
           py={3}
           sx={{
             flexDirection: ["column", "row"],
-            alignItems: ["start", "center"],
+            alignItems: ["start", "baseline"],
           }}
         >
           <Text ml={3} pb={[1, 0]} sx={{ fontWeight: "bold" }}>
