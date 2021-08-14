@@ -3629,12 +3629,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/bundle-analyzer@npm:11.0.1":
-  version: 11.0.1
-  resolution: "@next/bundle-analyzer@npm:11.0.1"
+"@next/bundle-analyzer@npm:11.1.0":
+  version: 11.1.0
+  resolution: "@next/bundle-analyzer@npm:11.1.0"
   dependencies:
     webpack-bundle-analyzer: 4.3.0
-  checksum: a56ecb0ab22b75a797c44be1de083271c916c73e12531a4d97e0be51bdc8a29fe317f792b2d95cd2798c14fe029935ca5464866ec9b8f5b331e1e6ff0a3c0c7b
+  checksum: b45c7b62e37bee1bf744dcb59e5088e1ba62d201fb41169355e75d62f86d900a86cc27e4f69894f19b351c8491194d91462ea4ee31bb5e39f2c7d21b2b6be146
   languageName: node
   linkType: hard
 
@@ -15097,7 +15097,7 @@ fsevents@^1.2.7:
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
     "@auth0/nextjs-auth0": 1.5.0
-    "@next/bundle-analyzer": 11.0.1
+    "@next/bundle-analyzer": 11.1.0
     "@sentry/browser": 6.11.0
     "@sentry/integrations": 6.11.0
     "@sentry/node": 6.11.0
