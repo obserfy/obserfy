@@ -15,7 +15,7 @@ require (
 	github.com/klauspost/cpuid v1.3.1 // indirect
 	github.com/mailgun/mailgun-go/v4 v4.5.2
 	github.com/minio/minio-go/v6 v6.0.57
-	github.com/muxinc/mux-go v0.13.0
+	github.com/muxinc/mux-go v1.0.0
 	github.com/pkg/errors v0.9.1
 	github.com/signintech/gopdf v0.9.20
 	github.com/stretchr/testify v1.7.0
