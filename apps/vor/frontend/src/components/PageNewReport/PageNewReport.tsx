@@ -1,20 +1,23 @@
 import { t, Trans } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import { FC, useState } from "react"
-import { Box, Flex } from "theme-ui"
+import { Box, Flex, Text } from "theme-ui"
 import dayjs from "../../dayjs"
 import usePostNewProgressReport from "../../hooks/api/schools/usePostNewProgressReport"
 import { ALL_REPORT_URL } from "../../routes"
 import DateInput from "../DateInput/DateInput"
 import Input from "../Input/Input"
 import { navigate } from "../Link/Link"
+import RadioGroup from "../RadioGroup/RadioGroup"
 import { breadCrumb } from "../TopBar/TopBar"
 import TopBarWithAction from "../TopBarWithAction/TopBarWithAction"
-import Typography from "../Typography/Typography"
 
 const PageNewReport: FC = () => {
+  const { i18n } = useLingui()
   const [title, setTitle] = useState("")
   const [periodStart, setPeriodStart] = useState(dayjs())
   const [periodEnd, setPeriodEnd] = useState(dayjs())
+  const [includedStudents, setIncludedStudents] = useState(1)
 
   const postReport = usePostNewProgressReport()
 
@@ -40,9 +43,9 @@ const PageNewReport: FC = () => {
         }}
       >
         <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} mx="auto">
-          <Typography.H5 m={3}>
+          <Text m={3} sx={{ fontWeight: "bold", fontSize: 2 }}>
             <Trans>New Progress Report</Trans>
-          </Typography.H5>
+          </Text>
         </Flex>
       </TopBarWithAction>
 
@@ -54,7 +57,7 @@ const PageNewReport: FC = () => {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <Flex p={3} sx={{ flexDirection: ["column", "row"] }}>
+        <Flex p={3} sx={{ flexDirection: ["column", "row"] }} mb={2}>
           <DateInput
             label={t`Period Start`}
             containerSx={{ mr: [0, 3], flexGrow: 1 }}
@@ -68,6 +71,22 @@ const PageNewReport: FC = () => {
             containerSx={{ mt: [3, 0], flexGrow: 1 }}
           />
         </Flex>
+
+        <RadioGroup
+          name="Included students"
+          value={includedStudents}
+          onChange={(e) => setIncludedStudents(e)}
+          options={[
+            {
+              label: i18n._(t`All Student`),
+              description: i18n._(t`Include all students into this report.`),
+            },
+            {
+              label: i18n._(t`Custom`),
+              description: i18n._(t`Select students to be included manually.`),
+            },
+          ]}
+        />
       </Box>
     </Flex>
   )

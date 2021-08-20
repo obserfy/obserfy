@@ -26,7 +26,7 @@ msgstr "\"{0}\" akan dihapus secara permanen. Apa anda yakin?"
 #~ msgid "(Starting on Jan 1st 2021)"
 #~ msgstr "(Mulai dari 1 Jan 2021)"
 
-#: src/pages/dashboard/reports/manage/index.tsx:64
+#: src/pages/dashboard/reports/manage/index.tsx:66
 msgid "0 out of {0} done"
 msgstr ""
 
@@ -112,6 +112,10 @@ msgstr "Admin"
 msgid "All Guardians"
 msgstr "Semua Wali Murid"
 
+#: src/components/PageNewReport/PageNewReport.tsx:82
+msgid "All Student"
+msgstr ""
+
 #: src/components/PageAdmin/PageAdmin.tsx:35
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:30
 msgid "All Students"
@@ -172,7 +176,7 @@ msgid "Areas"
 msgstr "Bidang"
 
 #: src/components/PageStudentOverview/AssessmentCard.tsx:65
-#: src/pages/dashboard/reports/manage/student/index.tsx:231
+#: src/pages/dashboard/reports/manage/student/index.tsx:290
 msgid "Assessments"
 msgstr ""
 
@@ -191,7 +195,7 @@ msgid "Back to Billing"
 msgstr "Kembali ke Pembayaran"
 
 #: src/components/ObservationListItem/ObservationListItem.tsx:70
-#: src/pages/dashboard/reports/manage/student/index.tsx:320
+#: src/pages/dashboard/reports/manage/student/index.tsx:379
 msgid "By"
 msgstr "Oleh"
 
@@ -229,7 +233,7 @@ msgstr "Kelas"
 msgid "Classes"
 msgstr "Kelas"
 
-#: src/pages/dashboard/reports/manage/student/index.tsx:213
+#: src/pages/dashboard/reports/manage/student/index.tsx:272
 msgid "Comments on {0}"
 msgstr ""
 
@@ -237,7 +241,7 @@ msgstr ""
 msgid "Confirm Deletion"
 msgstr ""
 
-#: src/components/PageNewReport/PageNewReport.tsx:28
+#: src/components/PageNewReport/PageNewReport.tsx:31
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:152
 msgid "Create"
 msgstr "Buat"
@@ -294,6 +298,7 @@ msgid "Curriculum name"
 msgstr "Nama kurikulum"
 
 #: src/components/PageCurriculumSettings/SetupCurriculum.tsx:49
+#: src/components/PageNewReport/PageNewReport.tsx:86
 msgid "Custom"
 msgstr "Kustom"
 
@@ -538,6 +543,10 @@ msgstr "Galeri"
 msgid "Gender"
 msgstr "Jenis Kelamin"
 
+#: src/pages/dashboard/reports/manage/student/index.tsx:231
+msgid "General Comments"
+msgstr ""
+
 #: src/components/PageSubscription/PageSubscription.tsx:146
 msgid "Get full access to all features."
 msgstr "Dapatkan akses ke seluruh fitur."
@@ -616,6 +625,10 @@ msgstr "Gambar"
 #: src/components/PageStudentOverview/AssessmentCard.tsx:83
 msgid "In Progress"
 msgstr "Dalam Proses"
+
+#: src/components/PageNewReport/PageNewReport.tsx:83
+msgid "Include all students into this report."
+msgstr ""
 
 #: src/components/InformationalCard/InformationalCard.tsx:36
 msgid "Info"
@@ -745,12 +758,12 @@ msgstr ""
 msgid "New Observation"
 msgstr "Observasi Baru"
 
-#: src/components/PageNewReport/PageNewReport.tsx:26
-#: src/components/PageNewReport/PageNewReport.tsx:44
+#: src/components/PageNewReport/PageNewReport.tsx:29
+#: src/components/PageNewReport/PageNewReport.tsx:47
 msgid "New Progress Report"
 msgstr ""
 
-#: src/pages/dashboard/reports/new.tsx:8
+#: src/pages/dashboard/reports/new.tsx:7
 msgid "New Report"
 msgstr ""
 
@@ -777,7 +790,7 @@ msgstr "Buat sekolah baru"
 msgid "Next billing date"
 msgstr "Tanggal tagiahan selanjutnya"
 
-#: src/pages/dashboard/reports/manage/student/index.tsx:359
+#: src/pages/dashboard/reports/manage/student/index.tsx:418
 msgid "No assessments has been made yet."
 msgstr ""
 
@@ -811,7 +824,7 @@ msgstr "Tidak materi yang sedang dalam proses."
 msgid "No more students to add"
 msgstr "Tidak ada lagi murid untuk ditambahkan"
 
-#: src/pages/dashboard/reports/manage/student/index.tsx:365
+#: src/pages/dashboard/reports/manage/student/index.tsx:424
 msgid "No observation has been added."
 msgstr ""
 
@@ -872,7 +885,7 @@ msgstr ""
 #: src/components/PageAllObservations/ObservationsTable.tsx:62
 #: src/components/PageAllObservations/PageAllObservations.tsx:22
 #: src/components/PageStudentOverview/DailyObservationCard.tsx:50
-#: src/pages/dashboard/reports/manage/student/index.tsx:266
+#: src/pages/dashboard/reports/manage/student/index.tsx:325
 #: src/pages/dashboard/students/observations/details.tsx:33
 msgid "Observations"
 msgstr "Observasi"
@@ -915,11 +928,11 @@ msgstr "Pembayaran Sukses"
 msgid "Payment details"
 msgstr "Detil Pembayaran"
 
-#: src/components/PageNewReport/PageNewReport.tsx:65
+#: src/components/PageNewReport/PageNewReport.tsx:68
 msgid "Period End"
 msgstr ""
 
-#: src/components/PageNewReport/PageNewReport.tsx:59
+#: src/components/PageNewReport/PageNewReport.tsx:62
 msgid "Period Start"
 msgstr ""
 
@@ -990,12 +1003,12 @@ msgstr "Profil"
 msgid "Progress Report"
 msgstr ""
 
-#: src/pages/dashboard/reports/manage/index.tsx:28
-#: src/pages/dashboard/reports/manage/student/index.tsx:130
+#: src/pages/dashboard/reports/manage/index.tsx:30
+#: src/pages/dashboard/reports/manage/student/index.tsx:71
 msgid "Progress Reports"
 msgstr ""
 
-#: src/pages/dashboard/reports/manage/index.tsx:68
+#: src/pages/dashboard/reports/manage/index.tsx:70
 msgid "Publish"
 msgstr ""
 
@@ -1045,7 +1058,7 @@ msgstr "Pengulangan"
 #~ msgid "Reporting"
 #~ msgstr "Laporan"
 
-#: src/components/PageNewReport/PageNewReport.tsx:25
+#: src/components/PageNewReport/PageNewReport.tsx:28
 msgid "Reports"
 msgstr ""
 
@@ -1080,7 +1093,7 @@ msgstr "Sabtu"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:339
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:395
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:444
-#: src/pages/dashboard/reports/manage/student/index.tsx:168
+#: src/pages/dashboard/reports/manage/student/index.tsx:194
 msgid "Save"
 msgstr "Simpan"
 
@@ -1119,6 +1132,10 @@ msgstr "Pilih wali atau buat baru"
 #: src/components/PageEditStudentClass/PageEditStudentClass.tsx:88
 msgid "Select from existing class"
 msgstr "Pilih dari kelas yang ada"
+
+#: src/components/PageNewReport/PageNewReport.tsx:87
+msgid "Select students to be included manually."
+msgstr ""
 
 #: src/components/PageInviteUser/PageInviteUser.tsx:90
 msgid "Send invites"
@@ -1323,7 +1340,7 @@ msgstr "Kamis"
 msgid "Title"
 msgstr "Judul"
 
-#: src/components/PageNewReport/PageNewReport.tsx:52
+#: src/components/PageNewReport/PageNewReport.tsx:55
 msgid "Title*"
 msgstr ""
 
