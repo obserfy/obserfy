@@ -1,9 +1,11 @@
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
 import { FC, useState } from "react"
-import { Box, Flex, Text } from "theme-ui"
+import { Box, Checkbox, Flex, Label, Text } from "theme-ui"
+import { borderFull } from "../../border"
 import dayjs from "../../dayjs"
 import usePostNewProgressReport from "../../hooks/api/schools/usePostNewProgressReport"
+import { useGetAllStudents } from "../../hooks/api/students/useGetAllStudents"
 import { ALL_REPORT_URL } from "../../routes"
 import DateInput from "../DateInput/DateInput"
 import Input from "../Input/Input"
@@ -12,12 +14,17 @@ import RadioGroup from "../RadioGroup/RadioGroup"
 import { breadCrumb } from "../TopBar/TopBar"
 import TopBarWithAction from "../TopBarWithAction/TopBarWithAction"
 
+enum IncludedStudents {
+  ALL,
+  CUSTOM,
+}
+
 const PageNewReport: FC = () => {
   const { i18n } = useLingui()
   const [title, setTitle] = useState("")
   const [periodStart, setPeriodStart] = useState(dayjs())
   const [periodEnd, setPeriodEnd] = useState(dayjs())
-  const [includedStudents, setIncludedStudents] = useState(1)
+  const [studentOption, setStudentOption] = useState(IncludedStudents.ALL)
 
   const postReport = usePostNewProgressReport()
 
@@ -74,8 +81,8 @@ const PageNewReport: FC = () => {
 
         <RadioGroup
           name="Included students"
-          value={includedStudents}
-          onChange={(e) => setIncludedStudents(e)}
+          value={studentOption}
+          onChange={(e) => setStudentOption(e)}
           options={[
             {
               label: i18n._(t`All Student`),
@@ -87,8 +94,44 @@ const PageNewReport: FC = () => {
             },
           ]}
         />
+        {IncludedStudents.CUSTOM === studentOption && <StudentSelector />}
       </Box>
     </Flex>
+  )
+}
+
+const StudentSelector = () => {
+  const { data: students } = useGetAllStudents("", true)
+  return (
+    <Box
+      mt={2}
+      mx={3}
+      py={2}
+      sx={{
+        backgroundColor: "surface",
+        ...borderFull,
+        borderRadius: "default",
+      }}
+    >
+      {students?.map((student) => (
+        <Label
+          as="label"
+          key={student.id}
+          px={3}
+          py={2}
+          sx={{
+            alignItems: "center",
+            cursor: "pointer",
+            "&:hover": {
+              backgroundColor: "black",
+            },
+          }}
+        >
+          <Checkbox sx={{ mr: 3 }} />
+          <Text>{student.name}</Text>
+        </Label>
+      ))}
+    </Box>
   )
 }
 

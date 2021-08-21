@@ -47,6 +47,10 @@ const RadioGroup: FC<RadioGroupsProps> = ({
             display: "flex",
             alignItems: "start",
             p: 3,
+            cursor: "pointer",
+            "&:hover": {
+              backgroundColor: "primaryLightest",
+            },
           }}
           onClick={() => onChange(idx)}
         >
