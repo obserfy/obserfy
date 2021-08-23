@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import { UserProvider } from "@auth0/nextjs-auth0"
-import { AppComponent } from "next/dist/next-server/lib/router/router"
-
+import { AppProps } from "next/app"
+import { FC } from "react"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
 import ErrorBoundary from "../components/ErrorBoundary"
@@ -13,7 +13,7 @@ import { initSentry } from "../utils/sentry"
 initSentry()
 const queryClient = new QueryClient()
 
-const App: AppComponent = ({ Component, pageProps }) => {
+const App: FC<AppProps> = ({ Component, pageProps }) => {
   useInitAnalytics()
 
   return (
