@@ -15169,7 +15169,7 @@ fsevents@^1.2.7:
     io-ts-types: 0.5.16
     jest: 27.0.6
     minio: 7.0.19
-    monocle-ts: 2.3.10
+    monocle-ts: 2.3.11
     mux-embed: 4.1.1
     nanoid: 3.1.25
     newtype-ts: 0.3.4
@@ -21694,12 +21694,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"monocle-ts@npm:2.3.10":
-  version: 2.3.10
-  resolution: "monocle-ts@npm:2.3.10"
+"monocle-ts@npm:2.3.11":
+  version: 2.3.11
+  resolution: "monocle-ts@npm:2.3.11"
   peerDependencies:
     fp-ts: ^2.5.0
-  checksum: 6c6ded42c9c61c75a2179bd88e2eacc8a3ac8bc7113ddb8ea0887310aa307831300ddc6c318388dc7d7e3df18cbb2238e20ab83a764d412e8a9c904126e5a182
+  checksum: b982760f42c40f548fc6fae094c32a82666752cb4463ea7b2af506e8550d9431b625b737bdf008c815a0ce01798b9f0b4bbd1dfa2a06522890f5eebf8e130fcd
   languageName: node
   linkType: hard
 
