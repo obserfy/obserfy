@@ -7685,6 +7685,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@zxing/text-encoding@npm:0.9.0":
+  version: 0.9.0
+  resolution: "@zxing/text-encoding@npm:0.9.0"
+  checksum: c23b12aee7639382e4949961304a1294776afaffa40f579e09ffecd0e5e68cf26ef3edd75009de46da8a536e571448755ca68b3e2ea707d53793c0edb2e2c34a
+  languageName: node
+  linkType: hard
+
 "abab@npm:^2.0.3, abab@npm:^2.0.5":
   version: 2.0.5
   resolution: "abab@npm:2.0.5"
@@ -15161,7 +15168,7 @@ fsevents@^1.2.7:
     io-ts: 2.2.16
     io-ts-types: 0.5.16
     jest: 27.0.6
-    minio: 7.0.18
+    minio: 7.0.19
     monocle-ts: 2.3.10
     mux-embed: 4.1.1
     nanoid: 3.1.25
@@ -21531,23 +21538,24 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"minio@npm:7.0.18":
-  version: 7.0.18
-  resolution: "minio@npm:7.0.18"
+"minio@npm:7.0.19":
+  version: 7.0.19
+  resolution: "minio@npm:7.0.19"
   dependencies:
     async: ^3.1.0
     block-stream2: ^2.0.0
     es6-error: ^4.1.1
     fast-xml-parser: ^3.17.5
     json-stream: ^1.0.0
-    lodash: ^4.17.20
+    lodash: ^4.17.21
     mime-types: ^2.1.14
     mkdirp: ^0.5.1
     querystring: 0.2.0
     through2: ^3.0.1
+    web-encoding: ^1.1.5
     xml: ^1.0.0
     xml2js: ^0.4.15
-  checksum: 297cc0b2082b861d4bd2cd34066ef6714c8bd0f9e309313fc419c5fc32b9769abb3d622648e3d4f04afa01d3ef02cf525e98ece02c85fb907753f4103278f4d7
+  checksum: 82b6f136ec22fb223dd4eba056fe8b47621bcb820e1a548adb27dd8d4e3795f3196412e505c2fabef97cff03c6d2a73a31a96c4147372be123297cb21569ca06
   languageName: node
   linkType: hard
 
@@ -30301,7 +30309,7 @@ typescript@4.3.5:
   languageName: node
   linkType: hard
 
-"util@npm:^0.12.0":
+"util@npm:^0.12.0, util@npm:^0.12.3":
   version: 0.12.4
   resolution: "util@npm:0.12.4"
   dependencies:
@@ -30686,6 +30694,19 @@ typescript@4.3.5:
   dependencies:
     defaults: ^1.0.3
   checksum: 814e9d1ddcc9798f7377ffa448a5a3892232b9275ebb30a41b529607691c0491de47cba426e917a4d08ded3ee7e9ba2f3fe32e62ee3cd9c7d3bafb7754bd553c
+  languageName: node
+  linkType: hard
+
+"web-encoding@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "web-encoding@npm:1.1.5"
+  dependencies:
+    "@zxing/text-encoding": 0.9.0
+    util: ^0.12.3
+  dependenciesMeta:
+    "@zxing/text-encoding":
+      optional: true
+  checksum: 2234a2b122f41006ce07859b3c0bf2e18f46144fda2907d5db0b571b76aa5c26977c646100ad9c00d2f8a4f6f2b848bc02147845d8c447ab365ec4eff376338d
   languageName: node
   linkType: hard
 
