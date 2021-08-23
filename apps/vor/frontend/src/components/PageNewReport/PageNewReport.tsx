@@ -1,6 +1,6 @@
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
-import { FC, useState } from "react"
+import { ChangeEvent, FC, useState } from "react"
 import { Box, Checkbox, Flex, Label, Text } from "theme-ui"
 import { borderFull } from "../../border"
 import dayjs from "../../dayjs"
@@ -14,7 +14,7 @@ import RadioGroup from "../RadioGroup/RadioGroup"
 import { breadCrumb } from "../TopBar/TopBar"
 import TopBarWithAction from "../TopBarWithAction/TopBarWithAction"
 
-enum IncludedStudents {
+enum StudentOption {
   ALL,
   CUSTOM,
 }
@@ -24,7 +24,8 @@ const PageNewReport: FC = () => {
   const [title, setTitle] = useState("")
   const [periodStart, setPeriodStart] = useState(dayjs())
   const [periodEnd, setPeriodEnd] = useState(dayjs())
-  const [studentOption, setStudentOption] = useState(IncludedStudents.ALL)
+  const [studentOption, setStudentOption] = useState(StudentOption.ALL)
+  const [selectedStudents, setSelectedStudents] = useState<string[]>([])
 
   const postReport = usePostNewProgressReport()
 
@@ -94,14 +95,31 @@ const PageNewReport: FC = () => {
             },
           ]}
         />
-        {IncludedStudents.CUSTOM === studentOption && <StudentSelector />}
+        {StudentOption.CUSTOM === studentOption && (
+          <StudentSelector
+            selectedIds={selectedStudents}
+            setSelectedIds={setSelectedStudents}
+          />
+        )}
       </Box>
     </Flex>
   )
 }
 
-const StudentSelector = () => {
+const StudentSelector: FC<{
+  selectedIds: string[]
+  setSelectedIds: (students: string[]) => void
+}> = ({ selectedIds, setSelectedIds }) => {
   const { data: students } = useGetAllStudents("", true)
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setSelectedIds([...selectedIds, e.target.value])
+    } else {
+      setSelectedIds(selectedIds.filter((id) => id !== e.target.value))
+    }
+  }
+
   return (
     <Box
       mt={2}
@@ -123,11 +141,16 @@ const StudentSelector = () => {
             alignItems: "center",
             cursor: "pointer",
             "&:hover": {
-              backgroundColor: "black",
+              backgroundColor: "primaryLightest",
             },
           }}
         >
-          <Checkbox sx={{ mr: 3 }} />
+          <Checkbox
+            sx={{ mr: 3 }}
+            value={student.id}
+            checked={selectedIds.includes(student.id)}
+            onChange={handleChange}
+          />
           <Text>{student.name}</Text>
         </Label>
       ))}
