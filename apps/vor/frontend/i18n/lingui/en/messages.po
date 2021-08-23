@@ -21,7 +21,7 @@ msgstr "\"{0}\" will be permanently deleted. Are you sure?"
 #~ msgid "(Starting on Jan 1st 2021)"
 #~ msgstr "(Starting on Jan 1st 2021)"
 
-#: src/pages/dashboard/reports/manage/index.tsx:64
+#: src/pages/dashboard/reports/manage/index.tsx:66
 msgid "0 out of {0} done"
 msgstr "0 out of {0} done"
 
@@ -107,6 +107,10 @@ msgstr "Admin"
 msgid "All Guardians"
 msgstr "All Guardians"
 
+#: src/components/PageNewReport/PageNewReport.tsx:82
+msgid "All Student"
+msgstr "All Student"
+
 #: src/components/PageAdmin/PageAdmin.tsx:35
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:30
 msgid "All Students"
@@ -167,7 +171,7 @@ msgid "Areas"
 msgstr "Areas"
 
 #: src/components/PageStudentOverview/AssessmentCard.tsx:65
-#: src/pages/dashboard/reports/manage/student/index.tsx:231
+#: src/pages/dashboard/reports/manage/student/index.tsx:290
 msgid "Assessments"
 msgstr "Assessments"
 
@@ -186,7 +190,7 @@ msgid "Back to Billing"
 msgstr "Back to Billing"
 
 #: src/components/ObservationListItem/ObservationListItem.tsx:70
-#: src/pages/dashboard/reports/manage/student/index.tsx:320
+#: src/pages/dashboard/reports/manage/student/index.tsx:379
 msgid "By"
 msgstr "By"
 
@@ -224,7 +228,7 @@ msgstr "Class"
 msgid "Classes"
 msgstr "Classes"
 
-#: src/pages/dashboard/reports/manage/student/index.tsx:213
+#: src/pages/dashboard/reports/manage/student/index.tsx:272
 msgid "Comments on {0}"
 msgstr "Comments on {0}"
 
@@ -232,7 +236,7 @@ msgstr "Comments on {0}"
 msgid "Confirm Deletion"
 msgstr "Confirm Deletion"
 
-#: src/components/PageNewReport/PageNewReport.tsx:28
+#: src/components/PageNewReport/PageNewReport.tsx:31
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:152
 msgid "Create"
 msgstr "Create"
@@ -289,6 +293,7 @@ msgid "Curriculum name"
 msgstr "Curriculum name"
 
 #: src/components/PageCurriculumSettings/SetupCurriculum.tsx:49
+#: src/components/PageNewReport/PageNewReport.tsx:86
 msgid "Custom"
 msgstr "Custom"
 
@@ -533,6 +538,10 @@ msgstr "Gallery"
 msgid "Gender"
 msgstr "Gender"
 
+#: src/pages/dashboard/reports/manage/student/index.tsx:231
+msgid "General Comments"
+msgstr "General Comments"
+
 #: src/components/PageSubscription/PageSubscription.tsx:146
 msgid "Get full access to all features."
 msgstr "Get full access to all features."
@@ -611,6 +620,10 @@ msgstr "Images"
 #: src/components/PageStudentOverview/AssessmentCard.tsx:83
 msgid "In Progress"
 msgstr "In Progress"
+
+#: src/components/PageNewReport/PageNewReport.tsx:83
+msgid "Include all students into this report."
+msgstr "Include all students into this report."
 
 #: src/components/InformationalCard/InformationalCard.tsx:36
 msgid "Info"
@@ -744,12 +757,12 @@ msgstr "New Material"
 msgid "New Observation"
 msgstr "New Observation"
 
-#: src/components/PageNewReport/PageNewReport.tsx:26
-#: src/components/PageNewReport/PageNewReport.tsx:44
+#: src/components/PageNewReport/PageNewReport.tsx:29
+#: src/components/PageNewReport/PageNewReport.tsx:47
 msgid "New Progress Report"
 msgstr "New Progress Report"
 
-#: src/pages/dashboard/reports/new.tsx:8
+#: src/pages/dashboard/reports/new.tsx:7
 msgid "New Report"
 msgstr "New Report"
 
@@ -776,7 +789,7 @@ msgstr "New school"
 msgid "Next billing date"
 msgstr "Next billing date"
 
-#: src/pages/dashboard/reports/manage/student/index.tsx:359
+#: src/pages/dashboard/reports/manage/student/index.tsx:418
 msgid "No assessments has been made yet."
 msgstr "No assessments has been made yet."
 
@@ -810,7 +823,7 @@ msgstr "No materials in progress."
 msgid "No more students to add"
 msgstr "No more students to add"
 
-#: src/pages/dashboard/reports/manage/student/index.tsx:365
+#: src/pages/dashboard/reports/manage/student/index.tsx:424
 msgid "No observation has been added."
 msgstr "No observation has been added."
 
@@ -871,7 +884,7 @@ msgstr "Observation Details"
 #: src/components/PageAllObservations/ObservationsTable.tsx:62
 #: src/components/PageAllObservations/PageAllObservations.tsx:22
 #: src/components/PageStudentOverview/DailyObservationCard.tsx:50
-#: src/pages/dashboard/reports/manage/student/index.tsx:266
+#: src/pages/dashboard/reports/manage/student/index.tsx:325
 #: src/pages/dashboard/students/observations/details.tsx:33
 msgid "Observations"
 msgstr "Observations"
@@ -914,11 +927,11 @@ msgstr "Payment Success"
 msgid "Payment details"
 msgstr "Payment details"
 
-#: src/components/PageNewReport/PageNewReport.tsx:65
+#: src/components/PageNewReport/PageNewReport.tsx:68
 msgid "Period End"
 msgstr "Period End"
 
-#: src/components/PageNewReport/PageNewReport.tsx:59
+#: src/components/PageNewReport/PageNewReport.tsx:62
 msgid "Period Start"
 msgstr "Period Start"
 
@@ -989,12 +1002,12 @@ msgstr "Profile"
 msgid "Progress Report"
 msgstr "Progress Report"
 
-#: src/pages/dashboard/reports/manage/index.tsx:28
-#: src/pages/dashboard/reports/manage/student/index.tsx:130
+#: src/pages/dashboard/reports/manage/index.tsx:30
+#: src/pages/dashboard/reports/manage/student/index.tsx:71
 msgid "Progress Reports"
 msgstr "Progress Reports"
 
-#: src/pages/dashboard/reports/manage/index.tsx:68
+#: src/pages/dashboard/reports/manage/index.tsx:70
 msgid "Publish"
 msgstr "Publish"
 
@@ -1044,7 +1057,7 @@ msgstr "Repetition"
 #~ msgid "Reporting"
 #~ msgstr "Reporting"
 
-#: src/components/PageNewReport/PageNewReport.tsx:25
+#: src/components/PageNewReport/PageNewReport.tsx:28
 msgid "Reports"
 msgstr "Reports"
 
@@ -1079,7 +1092,7 @@ msgstr "Saturday"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:339
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:395
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:444
-#: src/pages/dashboard/reports/manage/student/index.tsx:168
+#: src/pages/dashboard/reports/manage/student/index.tsx:194
 msgid "Save"
 msgstr "Save"
 
@@ -1118,6 +1131,10 @@ msgstr "Select a guardian or create one"
 #: src/components/PageEditStudentClass/PageEditStudentClass.tsx:88
 msgid "Select from existing class"
 msgstr "Select from existing class"
+
+#: src/components/PageNewReport/PageNewReport.tsx:87
+msgid "Select students to be included manually."
+msgstr "Select students to be included manually."
 
 #: src/components/PageInviteUser/PageInviteUser.tsx:90
 msgid "Send invites"
@@ -1326,7 +1343,7 @@ msgstr "Thursday"
 msgid "Title"
 msgstr "Title"
 
-#: src/components/PageNewReport/PageNewReport.tsx:52
+#: src/components/PageNewReport/PageNewReport.tsx:55
 msgid "Title*"
 msgstr "Title*"
 

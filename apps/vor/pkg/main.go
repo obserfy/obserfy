@@ -8,6 +8,7 @@ import (
 	"github.com/chrsep/vor/pkg/paddle"
 	"github.com/chrsep/vor/pkg/reports"
 	"github.com/chrsep/vor/pkg/videos"
+	"github.com/go-errors/errors"
 	"log"
 	"net/http"
 	"os"
@@ -51,10 +52,14 @@ func runServer() error {
 		if err := db.Close(); err != nil {
 			l.Error("Failed closing db", zap.Error(err))
 		}
+		if r := recover(); r != nil {
+			l.Error("panicked:", zap.Error(errors.New(r)))
+		}
 	}()
 
 	// Initialize tables
 	if err := db.RunInTransaction(db.Context(), postgres.InitTables); err != nil {
+		l.Error("failed to init tables", zap.Error(err))
 		return err
 	}
 

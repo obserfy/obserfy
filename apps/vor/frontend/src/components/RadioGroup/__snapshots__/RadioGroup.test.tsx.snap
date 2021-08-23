@@ -1,0 +1,342 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioGroups should render correctly 1`] = `
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-0 {
+    font-size: 20px;
+  }
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 14px;
+  color: var(--theme-ui-colors-text);
+  text-rendering: optimizeLegibility;
+  margin-bottom: 8px;
+  color: var(--theme-ui-colors-textMediumEmphasis);
+  display: block;
+  font-weight: bold;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--theme-ui-colors-border);
+  border-radius: 6px;
+  background-color: var(--theme-ui-colors-surface);
+}
+
+.emotion-4 {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border);
+  border-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.emotion-4:hover {
+  background-color: var(--theme-ui-colors-primaryLightest);
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: none;
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 8px;
+  border-radius: 9999px;
+  color: var(--theme-ui-colors-gray);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-right: 16px;
+}
+
+input:checked~.emotion-7 {
+  display: block;
+}
+
+input:checked~.emotion-7 {
+  color: var(--theme-ui-colors-primary);
+}
+
+input:focus~.emotion-7 {
+  background-color: var(--theme-ui-colors-highlight);
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 8px;
+  border-radius: 9999px;
+  color: var(--theme-ui-colors-gray);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-right: 16px;
+}
+
+input:checked~.emotion-8 {
+  display: none;
+}
+
+input:checked~.emotion-8 {
+  color: var(--theme-ui-colors-primary);
+}
+
+input:focus~.emotion-8 {
+  background-color: var(--theme-ui-colors-highlight);
+}
+
+.emotion-9 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+}
+
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 14px;
+  color: var(--theme-ui-colors-text);
+  text-rendering: optimizeLegibility;
+  font-weight: bold;
+}
+
+.emotion-13 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 14px;
+  color: var(--theme-ui-colors-text);
+  text-rendering: optimizeLegibility;
+  color: var(--theme-ui-colors-textMediumEmphasis);
+}
+
+.emotion-14 {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border);
+  border-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.emotion-14:hover {
+  background-color: var(--theme-ui-colors-primaryLightest);
+}
+
+<div>
+  <div
+    class="emotion-0"
+  >
+    <div
+      class="emotion-1"
+    >
+      <span
+        class="emotion-2"
+      >
+        Included students
+      </span>
+      <div
+        class="emotion-3"
+      >
+        <label
+          class="emotion-4"
+          for="All Student"
+        >
+          <div
+            class="emotion-5"
+          >
+            <input
+              checked=""
+              class="emotion-6"
+              name="Included students"
+              type="radio"
+              value="0"
+            />
+            <svg
+              aria-hidden="true"
+              class="emotion-7"
+              fill="currentcolor"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+            <svg
+              aria-hidden="true"
+              class="emotion-8"
+              fill="currentcolor"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </div>
+          <div
+            class="emotion-9"
+          >
+            <div
+              class="emotion-9"
+            >
+              <span
+                class="emotion-11"
+              >
+                All Student
+              </span>
+            </div>
+            <div
+              class="emotion-9"
+            >
+              <span
+                class="emotion-13"
+              >
+                Include all students into this report.
+              </span>
+            </div>
+          </div>
+        </label>
+        <label
+          class="emotion-14"
+          for="Custom"
+        >
+          <div
+            class="emotion-5"
+          >
+            <input
+              class="emotion-6"
+              name="Included students"
+              type="radio"
+              value="1"
+            />
+            <svg
+              aria-hidden="true"
+              class="emotion-7"
+              fill="currentcolor"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+            <svg
+              aria-hidden="true"
+              class="emotion-8"
+              fill="currentcolor"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+              />
+            </svg>
+          </div>
+          <div
+            class="emotion-9"
+          >
+            <div
+              class="emotion-9"
+            >
+              <span
+                class="emotion-11"
+              >
+                Custom
+              </span>
+            </div>
+            <div
+              class="emotion-9"
+            >
+              <span
+                class="emotion-13"
+              >
+                Select students to be included manually.
+              </span>
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,20 +1,31 @@
 import { t, Trans } from "@lingui/macro"
-import { FC, useState } from "react"
-import { Box, Flex } from "theme-ui"
+import { useLingui } from "@lingui/react"
+import { ChangeEvent, FC, useState } from "react"
+import { Box, Checkbox, Flex, Label, Text } from "theme-ui"
+import { borderFull } from "../../border"
 import dayjs from "../../dayjs"
 import usePostNewProgressReport from "../../hooks/api/schools/usePostNewProgressReport"
+import { useGetAllStudents } from "../../hooks/api/students/useGetAllStudents"
 import { ALL_REPORT_URL } from "../../routes"
 import DateInput from "../DateInput/DateInput"
 import Input from "../Input/Input"
 import { navigate } from "../Link/Link"
+import RadioGroup from "../RadioGroup/RadioGroup"
 import { breadCrumb } from "../TopBar/TopBar"
 import TopBarWithAction from "../TopBarWithAction/TopBarWithAction"
-import Typography from "../Typography/Typography"
+
+enum StudentOption {
+  ALL,
+  CUSTOM,
+}
 
 const PageNewReport: FC = () => {
+  const { i18n } = useLingui()
   const [title, setTitle] = useState("")
   const [periodStart, setPeriodStart] = useState(dayjs())
   const [periodEnd, setPeriodEnd] = useState(dayjs())
+  const [studentOption, setStudentOption] = useState(StudentOption.ALL)
+  const [selectedStudents, setSelectedStudents] = useState<string[]>([])
 
   const postReport = usePostNewProgressReport()
 
@@ -40,9 +51,9 @@ const PageNewReport: FC = () => {
         }}
       >
         <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} mx="auto">
-          <Typography.H5 m={3}>
+          <Text m={3} sx={{ fontWeight: "bold", fontSize: 2 }}>
             <Trans>New Progress Report</Trans>
-          </Typography.H5>
+          </Text>
         </Flex>
       </TopBarWithAction>
 
@@ -54,7 +65,7 @@ const PageNewReport: FC = () => {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <Flex p={3} sx={{ flexDirection: ["column", "row"] }}>
+        <Flex p={3} sx={{ flexDirection: ["column", "row"] }} mb={2}>
           <DateInput
             label={t`Period Start`}
             containerSx={{ mr: [0, 3], flexGrow: 1 }}
@@ -68,8 +79,82 @@ const PageNewReport: FC = () => {
             containerSx={{ mt: [3, 0], flexGrow: 1 }}
           />
         </Flex>
+
+        <RadioGroup
+          name="Included students"
+          value={studentOption}
+          onChange={(e) => setStudentOption(e)}
+          options={[
+            {
+              label: i18n._(t`All Student`),
+              description: i18n._(t`Include all students into this report.`),
+            },
+            {
+              label: i18n._(t`Custom`),
+              description: i18n._(t`Select students to be included manually.`),
+            },
+          ]}
+        />
+        {StudentOption.CUSTOM === studentOption && (
+          <StudentSelector
+            selectedIds={selectedStudents}
+            setSelectedIds={setSelectedStudents}
+          />
+        )}
       </Box>
     </Flex>
+  )
+}
+
+const StudentSelector: FC<{
+  selectedIds: string[]
+  setSelectedIds: (students: string[]) => void
+}> = ({ selectedIds, setSelectedIds }) => {
+  const { data: students } = useGetAllStudents("", true)
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setSelectedIds([...selectedIds, e.target.value])
+    } else {
+      setSelectedIds(selectedIds.filter((id) => id !== e.target.value))
+    }
+  }
+
+  return (
+    <Box
+      mt={2}
+      mx={3}
+      py={2}
+      sx={{
+        backgroundColor: "surface",
+        ...borderFull,
+        borderRadius: "default",
+      }}
+    >
+      {students?.map((student) => (
+        <Label
+          as="label"
+          key={student.id}
+          px={3}
+          py={2}
+          sx={{
+            alignItems: "center",
+            cursor: "pointer",
+            "&:hover": {
+              backgroundColor: "primaryLightest",
+            },
+          }}
+        >
+          <Checkbox
+            sx={{ mr: 3 }}
+            value={student.id}
+            checked={selectedIds.includes(student.id)}
+            onChange={handleChange}
+          />
+          <Text>{student.name}</Text>
+        </Label>
+      ))}
+    </Box>
   )
 }
 

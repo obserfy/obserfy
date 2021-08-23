@@ -49,6 +49,7 @@ func InitTables(db *pg.Tx) error {
 		(*FileToLessonPlan)(nil),
 		(*LessonPlanToStudents)(nil),
 		(*VideoToStudents)(nil),
+		(*StudentReportObservationsToImage)(nil),
 	} {
 		orm.RegisterTable(model)
 	}
@@ -86,6 +87,11 @@ func InitTables(db *pg.Tx) error {
 		(*Video)(nil),
 		(*VideoToStudents)(nil),
 		(*ProgressReport)(nil),
+		(*StudentReport)(nil),
+		(*StudentReportsAreaComment)(nil),
+		(*StudentReportAssessment)(nil),
+		(*StudentReportObservation)(nil),
+		(*StudentReportObservationsToImage)(nil),
 	} {
 		err := db.Model(model).CreateTable(&orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -96,7 +102,7 @@ func InitTables(db *pg.Tx) error {
 }
 
 type Session struct {
-	Token  string `pg:",pk" pg:",type:uuid"`
+	Token  string `pg:",pk,type:uuid"`
 	UserId string
 }
 
@@ -139,10 +145,12 @@ type Material struct {
 type StudentMaterialProgress struct {
 	MaterialId string   `pg:",pk,type:uuid,on_delete:CASCADE"`
 	Material   Material `pg:"rel:has-one"`
-	StudentId  string   `pg:",pk,type:uuid,on_delete:CASCADE"`
-	Student    Student  `pg:"rel:has-one"`
-	Stage      int      `pg:",notnull,use_zero"` // TODO: should be renamed to assessment
-	UpdatedAt  time.Time
+
+	StudentId string  `pg:",pk,type:uuid,on_delete:CASCADE"`
+	Student   Student `pg:"rel:has-one"`
+
+	Stage     int `pg:",notnull,use_zero"` // TODO: should be renamed to assessment
+	UpdatedAt time.Time
 }
 
 type Gender int
@@ -430,6 +438,77 @@ type (
 		Title       string
 		PeriodStart time.Time
 		PeriodEnd   time.Time
+		Published   bool
+	}
+
+	StudentReport struct {
+		Id              uuid.UUID `pg:"type:uuid"`
+		StudentId       uuid.UUID `pg:"type:uuid"`
+		GeneralComments string
+
+		AreaComments []StudentReportsAreaComment `pg:"rel:has-many"`
+		Published    bool
+	}
+
+	StudentReportsAreaComment struct {
+		Id uuid.UUID `pg:"type:uuid"`
+
+		StudentReportsId uuid.UUID
+		StudentReport    StudentReport `pg:"rel:has-one"`
+
+		AreaId uuid.UUID `pg:"type:uuid"`
+		Area   Area      `pg:"rel:has-one"`
+
+		Comments string
+		Ready    bool
+	}
+
+	StudentReportAssessment struct {
+		Id               uuid.UUID `pg:"type:uuid"`
+		StudentReportsId uuid.UUID `pg:"type:uuid"`
+		StudentReport    StudentReport
+
+		MaterialId string   `pg:"type:uuid,on_delete:CASCADE"`
+		Material   Material `pg:"rel:has-one"`
+
+		Assessments int `pg:",notnull,use_zero"`
+		UpdatedAt   time.Time
+	}
+
+	StudentReportObservation struct {
+		Id               uuid.UUID `pg:"type:uuid"`
+		StudentReportsId uuid.UUID `pg:"type:uuid"`
+		StudentReport    StudentReport
+
+		ShortDesc string `json:"shortDesc"`
+		LongDesc  string `json:"longDesc"`
+
+		StudentId   string    `pg:",type:uuid,on_delete:CASCADE"`
+		Student     *Student  `pg:"rel:has-one"`
+		CreatedDate time.Time `json:"createdDate"`
+		EventTime   time.Time
+
+		CreatorId string `pg:",type:uuid,on_delete:SET NULL"`
+		Creator   *User  `pg:"rel:has-one"`
+
+		LessonPlan   LessonPlan `pg:"rel:has-one"`
+		LessonPlanId string     `pg:"type:uuid,on_delete:SET NULL"`
+
+		Guardian   Guardian `pg:"rel:has-one"`
+		GuardianId string   `pg:"type:uuid,on_delete:SET NULL"`
+
+		Area   Area      `pg:"rel:has-one"`
+		AreaId uuid.UUID `pg:"type:uuid,on_delete:SET NULL"`
+
+		Images             []Image `pg:"many2many:student_report_observations_to_images,join_fk:image_id"`
+		VisibleToGuardians bool    `pg:",notnull,default:false"`
+	}
+
+	StudentReportObservationsToImage struct {
+		StudentReportObservation   StudentReportObservation `pg:"rel:has-one"`
+		StudentReportObservationId uuid.UUID                `pg:"type:uuid,on_delete:CASCADE"`
+		Image                      Image                    `pg:"rel:has-one"`
+		ImageId                    uuid.UUID                `pg:"type:uuid,on_delete:CASCADE"`
 	}
 )
 
