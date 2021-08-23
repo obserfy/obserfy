@@ -802,6 +802,11 @@ exports[`PageNewReport should render correctly 1`] = `
   -ms-flex-align: start;
   align-items: start;
   padding: 16px;
+  cursor: pointer;
+}
+
+.emotion-39:hover {
+  background-color: var(--theme-ui-colors-primaryLightest);
 }
 
 .emotion-40 {
@@ -923,6 +928,11 @@ input:focus~.emotion-43 {
   -ms-flex-align: start;
   align-items: start;
   padding: 16px;
+  cursor: pointer;
+}
+
+.emotion-49:hover {
+  background-color: var(--theme-ui-colors-primaryLightest);
 }
 
 <div>
@@ -1107,6 +1117,7 @@ input:focus~.emotion-43 {
                 class="emotion-40"
               >
                 <input
+                  checked=""
                   class="emotion-41"
                   name="Included students"
                   type="radio"
@@ -1170,7 +1181,6 @@ input:focus~.emotion-43 {
                 class="emotion-40"
               >
                 <input
-                  checked=""
                   class="emotion-41"
                   name="Included students"
                   type="radio"

@@ -60,6 +60,11 @@ exports[`RadioGroups should render correctly 1`] = `
   -ms-flex-align: start;
   align-items: start;
   padding: 16px;
+  cursor: pointer;
+}
+
+.emotion-4:hover {
+  background-color: var(--theme-ui-colors-primaryLightest);
 }
 
 .emotion-5 {
@@ -181,6 +186,11 @@ input:focus~.emotion-8 {
   -ms-flex-align: start;
   align-items: start;
   padding: 16px;
+  cursor: pointer;
+}
+
+.emotion-14:hover {
+  background-color: var(--theme-ui-colors-primaryLightest);
 }
 
 <div>
