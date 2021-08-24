@@ -167,7 +167,13 @@ type (
 		NewCurriculum(schoolId string, name string) error
 		CreateStudentVideo(schoolId string, studentId string, video domain.Video) error
 		UpdateSchool(schoolId string, name *string) error
-		NewProgressReport(schoolId string, title string, start time.Time, end time.Time) error
+		NewProgressReport(
+			schoolId string,
+			title string,
+			start time.Time,
+			end time.Time,
+			customStudents []string,
+		) error
 		GetReports(schoolId string) ([]domain.ProgressReport, error)
 	}
 	MailService interface {

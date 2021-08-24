@@ -16,7 +16,25 @@ type SchoolStore struct {
 	ImageStorage ImageStorage
 }
 
-func (s SchoolStore) NewProgressReport(schoolId string, title string, start time.Time, end time.Time) error {
+func (s SchoolStore) NewProgressReport(
+	schoolId string,
+	title string,
+	start time.Time,
+	end time.Time,
+	customStudents []string,
+) error {
+	var students = make([]Student, 0)
+	model := s.Model(&students).
+		Where("school_id = ? and active", &schoolId).
+		Column("id")
+
+	if customStudents != nil {
+		model = model.Where("id in (?)", pg.In(customStudents))
+	}
+	if err := model.Select(); err != nil {
+		return richErrors.Wrap(err, "failed to find students")
+	}
+
 	report := ProgressReport{
 		Id:          uuid.New(),
 		SchoolId:    schoolId,
@@ -25,9 +43,31 @@ func (s SchoolStore) NewProgressReport(schoolId string, title string, start time
 		PeriodEnd:   end,
 	}
 
-	_, err := s.Model(&report).Insert()
-	if err != nil {
-		return richErrors.Wrap(err, "failed to save new progress report")
+	studentReports := make([]StudentReport, len(students))
+	for i, student := range students {
+		studentReports[i] = StudentReport{
+			Id:               uuid.New(),
+			StudentId:        uuid.MustParse(student.Id),
+			ProgressReportId: report.Id,
+		}
+	}
+
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
+		if _, err := s.Model(&report).
+			Insert(); err != nil {
+			return richErrors.Wrap(err, "fail(db): insert progress report")
+		}
+
+		if len(studentReports) > 0 {
+			if _, err := s.Model(&studentReports).
+				Insert(); err != nil {
+				return richErrors.Wrap(err, "fail(db): insert student reports")
+			}
+		}
+
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
