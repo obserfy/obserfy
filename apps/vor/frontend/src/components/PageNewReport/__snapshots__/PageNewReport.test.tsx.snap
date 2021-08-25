@@ -18,6 +18,7 @@ exports[`PageNewReport should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  padding-bottom: 32px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1111,7 +1112,7 @@ input:focus~.emotion-43 {
           >
             <label
               class="emotion-39"
-              for="All Student"
+              for="All Students"
             >
               <div
                 class="emotion-40"
@@ -1159,7 +1160,7 @@ input:focus~.emotion-43 {
                   <span
                     class="emotion-46"
                   >
-                    All Student
+                    All Students
                   </span>
                 </div>
                 <div
@@ -1168,7 +1169,7 @@ input:focus~.emotion-43 {
                   <span
                     class="emotion-48"
                   >
-                    Include all students into this report.
+                    Include all active students into this report.
                   </span>
                 </div>
               </div>
@@ -1231,7 +1232,7 @@ input:focus~.emotion-43 {
                   <span
                     class="emotion-48"
                   >
-                    Select students to be included manually.
+                    Manually select students you want to include.
                   </span>
                 </div>
               </div>

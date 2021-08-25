@@ -2,7 +2,7 @@ import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
 import { ChangeEvent, FC, useState } from "react"
 import { Box, Checkbox, Flex, Label, Text } from "theme-ui"
-import { borderFull } from "../../border"
+import { borderFull, borderTop } from "../../border"
 import dayjs from "../../dayjs"
 import usePostNewProgressReport from "../../hooks/api/schools/usePostNewProgressReport"
 import { useGetAllStudents } from "../../hooks/api/students/useGetAllStudents"
@@ -30,7 +30,7 @@ const PageNewReport: FC = () => {
   const postReport = usePostNewProgressReport()
 
   return (
-    <Flex sx={{ flexDirection: "column" }}>
+    <Flex pb={4} sx={{ flexDirection: "column" }}>
       <TopBarWithAction
         breadcrumbs={[
           breadCrumb(t`Reports`, ALL_REPORT_URL),
@@ -86,12 +86,16 @@ const PageNewReport: FC = () => {
           onChange={(e) => setStudentOption(e)}
           options={[
             {
-              label: i18n._(t`All Student`),
-              description: i18n._(t`Include all students into this report.`),
+              label: i18n._(t`All Students`),
+              description: i18n._(
+                t`Include all active students into this report.`
+              ),
             },
             {
               label: i18n._(t`Custom`),
-              description: i18n._(t`Select students to be included manually.`),
+              description: i18n._(
+                t`Manually select students you want to include.`
+              ),
             },
           ]}
         />
@@ -124,7 +128,6 @@ const StudentSelector: FC<{
     <Box
       mt={2}
       mx={3}
-      py={2}
       sx={{
         backgroundColor: "surface",
         ...borderFull,
@@ -135,9 +138,11 @@ const StudentSelector: FC<{
         <Label
           as="label"
           key={student.id}
-          px={3}
-          py={2}
+          p={3}
           sx={{
+            "&:not(:first-child)": {
+              ...borderTop,
+            },
             alignItems: "center",
             cursor: "pointer",
             "&:hover": {
@@ -151,7 +156,15 @@ const StudentSelector: FC<{
             checked={selectedIds.includes(student.id)}
             onChange={handleChange}
           />
-          <Text>{student.name}</Text>
+          <Text
+            sx={{
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {student.name}
+          </Text>
         </Label>
       ))}
     </Box>
