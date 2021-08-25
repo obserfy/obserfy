@@ -439,15 +439,21 @@ type (
 		PeriodStart time.Time
 		PeriodEnd   time.Time
 		Published   bool
+
+		StudentReports []StudentReport `pg:"rel:has-many"`
 	}
 
 	StudentReport struct {
-		Id              uuid.UUID `pg:"type:uuid"`
-		StudentId       uuid.UUID `pg:"type:uuid"`
-		GeneralComments string
+		Id        uuid.UUID `pg:"type:uuid"`
+		StudentId uuid.UUID `pg:"type:uuid"`
+
+		ProgressReport   ProgressReport `pg:"rel:has-one"`
+		ProgressReportId uuid.UUID      `pg:"type:uuid,on_delete:CASCADE"`
 
 		AreaComments []StudentReportsAreaComment `pg:"rel:has-many"`
-		Published    bool
+
+		GeneralComments string
+		Done            bool
 	}
 
 	StudentReportsAreaComment struct {

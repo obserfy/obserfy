@@ -1278,10 +1278,13 @@ func postCreateVideoUploadLink(server rest.Server, store Store, videos domain.Vi
 }
 
 func postNewProgressReport(s rest.Server, store Store) http.Handler {
+
 	type requestBody struct {
-		Title       string    `json:"title"`
-		PeriodStart time.Time `json:"periodStart"`
-		PeriodEnd   time.Time `json:"periodEnd"`
+		Title             string    `json:"title"`
+		PeriodStart       time.Time `json:"periodStart"`
+		PeriodEnd         time.Time `json:"periodEnd"`
+		CustomizeStudents bool      `json:"customStudents"`
+		Students          []string  `json:"students"`
 	}
 	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
 		schoolId := r.GetParam("schoolId")
@@ -1291,8 +1294,25 @@ func postNewProgressReport(s rest.Server, store Store) http.Handler {
 			return s.BadRequest(err)
 		}
 
-		if err := store.NewProgressReport(schoolId, report.Title, report.PeriodStart, report.PeriodEnd); err != nil {
-			return s.InternalServerError(err)
+		if report.CustomizeStudents {
+			if err := store.NewProgressReport(
+				schoolId,
+				report.Title,
+				report.PeriodStart,
+				report.PeriodEnd,
+				report.Students,
+			); err != nil {
+				return s.InternalServerError(err)
+			}
+		} else {
+			if err := store.NewProgressReport(
+				schoolId,
+				report.Title,
+				report.PeriodStart,
+				report.PeriodEnd, nil,
+			); err != nil {
+				return s.InternalServerError(err)
+			}
 		}
 
 		return rest.ServerResponse{
