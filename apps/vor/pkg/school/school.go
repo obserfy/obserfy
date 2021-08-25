@@ -1278,12 +1278,11 @@ func postCreateVideoUploadLink(server rest.Server, store Store, videos domain.Vi
 }
 
 func postNewProgressReport(s rest.Server, store Store) http.Handler {
-
 	type requestBody struct {
 		Title             string    `json:"title"`
 		PeriodStart       time.Time `json:"periodStart"`
 		PeriodEnd         time.Time `json:"periodEnd"`
-		CustomizeStudents bool      `json:"customStudents"`
+		CustomizeStudents bool      `json:"customizeStudents"`
 		Students          []string  `json:"students"`
 	}
 	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {

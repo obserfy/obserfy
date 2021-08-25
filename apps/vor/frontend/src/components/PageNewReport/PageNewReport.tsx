@@ -29,6 +29,19 @@ const PageNewReport: FC = () => {
 
   const postReport = usePostNewProgressReport()
 
+  const handleSubmit = async () => {
+    const result = await postReport.mutateAsync({
+      title,
+      periodEnd: periodEnd.toISOString(),
+      periodStart: periodEnd.toISOString(),
+      customizeStudents: studentOption === StudentOption.CUSTOM,
+      students: selectedStudents,
+    })
+    if (result?.ok) {
+      navigate(ALL_REPORT_URL)
+    }
+  }
+
   return (
     <Flex pb={4} sx={{ flexDirection: "column" }}>
       <TopBarWithAction
@@ -39,16 +52,7 @@ const PageNewReport: FC = () => {
         actionText={t`Create`}
         disableAction={title === ""}
         isLoading={postReport.isLoading}
-        onActionClick={async () => {
-          const result = await postReport.mutateAsync({
-            title,
-            periodEnd: periodEnd.toISOString(),
-            periodStart: periodEnd.toISOString(),
-          })
-          if (result?.ok) {
-            navigate(ALL_REPORT_URL)
-          }
-        }}
+        onActionClick={handleSubmit}
       >
         <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} mx="auto">
           <Text m={3} sx={{ fontWeight: "bold", fontSize: 2 }}>

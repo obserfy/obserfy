@@ -14,7 +14,7 @@ type report struct {
 	Title             string    `json:"title"`
 	PeriodStart       time.Time `json:"periodStart"`
 	PeriodEnd         time.Time `json:"periodEnd"`
-	CustomizeStudents bool      `json:"customStudents"`
+	CustomizeStudents bool      `json:"customizeStudents"`
 	Students          []string  `json:"students"`
 }
 

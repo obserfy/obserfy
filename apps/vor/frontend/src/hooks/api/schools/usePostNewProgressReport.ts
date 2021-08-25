@@ -6,6 +6,8 @@ interface PostNewReportBody {
   title: string
   periodStart: string
   periodEnd: string
+  customizeStudents: boolean
+  students: string[]
 }
 
 const usePostNewProgressReport = () => {
