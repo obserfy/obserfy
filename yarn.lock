@@ -11144,10 +11144,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.16.2":
-  version: 3.16.2
-  resolution: "core-js@npm:3.16.2"
-  checksum: f48b988ab6d144aad1a7c09a73174946f797ec050b4566dee9bf0227560296cdd0f714b37f0ee065303eccf0e7fb8115ccca52ab3e80db12e0dcc20a88219483
+"core-js@npm:3.16.3":
+  version: 3.16.3
+  resolution: "core-js@npm:3.16.3"
+  checksum: f44f73655b3e24a8b0c66d2cdf71549c07d90d63548081bb869e09661f57c5f68b84adf3a169023bda1861f0561159b75acc6d533e5e96fca4f24e88634276ff
   languageName: node
   linkType: hard
 
@@ -30664,7 +30664,7 @@ typescript@4.3.5:
     body-scroll-lock: 3.1.5
     browser-lang: 0.1.0
     chromatic: 5.9.2
-    core-js: 3.16.2
+    core-js: 3.16.3
     cross-env: 7.0.3
     cypress: 8.3.0
     dayjs: 1.10.6
