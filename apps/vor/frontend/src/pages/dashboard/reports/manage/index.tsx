@@ -1,6 +1,7 @@
 import { t, Trans } from "@lingui/macro"
 import { FC, useState } from "react"
 import { Box, Button, Flex, Image, Text } from "theme-ui"
+import { Class } from "../../../../__generated__/models"
 import { borderBottom, borderFull } from "../../../../border"
 import { Link } from "../../../../components/Link/Link"
 import SearchBar from "../../../../components/SearchBar/SearchBar"
@@ -9,14 +10,12 @@ import StudentPicturePlaceholder from "../../../../components/StudentPicturePlac
 import TopBar, { breadCrumb } from "../../../../components/TopBar/TopBar"
 import TranslucentBar from "../../../../components/TranslucentBar/TranslucentBar"
 import useGetReport from "../../../../hooks/api/reports/useGetProgressReport"
-import { useGetAllStudents } from "../../../../hooks/api/students/useGetAllStudents"
 import { useQueryString } from "../../../../hooks/useQueryString"
 import { ALL_REPORT_URL, STUDENT_REPORT_URL } from "../../../../routes"
 
 const ManageReports = () => {
   const reportId = useQueryString("reportId")
   const report = useGetReport(reportId)
-  const { data: students } = useGetAllStudents("", true)
   const [search, setSearch] = useState("")
 
   return (
@@ -63,7 +62,9 @@ const ManageReports = () => {
               sx={{ fontSize: 0, display: "block" }}
               mr="auto"
             >
-              <Trans>0 out of {students?.length} done</Trans>
+              <Trans>
+                0 out of {report.data?.studentsReports?.length} done
+              </Trans>
             </Text>
 
             <Button mx={3}>
@@ -77,12 +78,11 @@ const ManageReports = () => {
         <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
       </Flex>
 
-      {students
-        ?.filter((student) => student.name.match(new RegExp(search, "i")))
-        ?.map(({ id, name, classes, profileImageUrl }) => (
+      {report.data?.studentsReports
+        ?.filter(({ student }) => student.name.match(new RegExp(search, "i")))
+        ?.map(({ student: { id, name, classes } }) => (
           <Student
             key={id}
-            image={profileImageUrl}
             reportId={reportId}
             studentId={id}
             name={name}
@@ -98,7 +98,7 @@ const Student: FC<{
   reportId: string
   studentId: string
   name: string
-  classes: { classId: string; className: string }[]
+  classes: Class[]
 }> = ({ image, name, reportId, studentId, classes }) => (
   <Link
     to={STUDENT_REPORT_URL(reportId, studentId)}
@@ -122,9 +122,9 @@ const Student: FC<{
       {name}
     </Text>
 
-    {classes.map(({ classId, className }) => (
+    {classes.map((c) => (
       <Text
-        key={classId}
+        key={c.id}
         mr={3}
         color="textMediumEmphasis"
         py={1}
@@ -138,7 +138,7 @@ const Student: FC<{
           flexShrink: 0,
         }}
       >
-        {className}
+        {c.name}
       </Text>
     ))}
 

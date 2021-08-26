@@ -101,20 +101,33 @@ type (
 	}
 )
 
+type Weekday struct {
+	Day time.Weekday `json:"day"`
+}
+
+type Class struct {
+	Id        string    `json:"id"`
+	School    School    `json:"school"`
+	Name      string    `json:"name"`
+	StartTime time.Time `json:"startTime"`
+	EndTime   time.Time `json:"endTime"`
+	Weekdays  []Weekday `json:"weekdays"`
+}
+
 type Student struct {
-	Id           string
-	Name         string
-	DateOfBirth  time.Time
-	DateOfEntry  time.Time
-	Note         string
-	CustomId     string
-	Active       bool
-	LessonPlans  []LessonPlan
-	Images       []Image
-	ProfileImage Image
-	Guardians    []Guardian
+	Id           string       `json:"id"`
+	Name         string       `json:"name"`
+	DateOfBirth  time.Time    `json:"dateOfBirth"`
+	DateOfEntry  time.Time    `json:"dateOfEntry"`
+	Note         string       `json:"note"`
+	CustomId     string       `json:"customId"`
+	Active       bool         `json:"active"`
+	LessonPlans  []LessonPlan `json:"lessonPlans"`
+	Images       []Image      `json:"images"`
+	ProfileImage Image        `json:"profileImage"`
+	Guardians    []Guardian   `json:"guardians"`
+	Classes      []Class      `json:"classes"`
 	//TODO: School         School
-	//TODO: Classes        []Class
 	//TODO: Gender         Gender
 }
 
@@ -172,11 +185,29 @@ type School struct {
 }
 
 type ProgressReport struct {
-	Id          uuid.UUID `json:"id"`
-	Title       string    `json:"title"`
-	PeriodStart time.Time `json:"periodStart"`
-	PeriodEnd   time.Time `json:"periodEnd"`
-	School      *School   `json:"school,omitempty"`
+	Id              uuid.UUID       `json:"id"`
+	Title           string          `json:"title"`
+	PeriodStart     time.Time       `json:"periodStart"`
+	PeriodEnd       time.Time       `json:"periodEnd"`
+	School          *School         `json:"school,omitempty"`
+	StudentsReports []StudentReport `json:"studentsReports"`
+}
+
+type StudentReport struct {
+	Id              uuid.UUID                   `json:"id"`
+	ProgressReport  ProgressReport              `json:"progressReport"`
+	AreaComments    []StudentReportsAreaComment `json:"areaComments"`
+	GeneralComments string                      `json:"generalComments"`
+	Done            bool                        `json:"done"`
+	Student         Student                     `json:"student"`
+}
+
+type StudentReportsAreaComment struct {
+	Id            uuid.UUID     `json:"id"`
+	StudentReport StudentReport `json:"studentReport"`
+	Area          Area          `json:"area"`
+	Comments      string        `json:"comments"`
+	Ready         bool          `json:"ready"`
 }
 
 type VideoStore interface {
