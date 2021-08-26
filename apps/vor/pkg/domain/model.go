@@ -194,7 +194,6 @@ type ProgressReport struct {
 }
 
 type StudentReport struct {
-	Id              uuid.UUID                   `json:"id"`
 	ProgressReport  ProgressReport              `json:"progressReport"`
 	AreaComments    []StudentReportsAreaComment `json:"areaComments"`
 	GeneralComments string                      `json:"generalComments"`
@@ -203,11 +202,15 @@ type StudentReport struct {
 }
 
 type StudentReportsAreaComment struct {
-	Id            uuid.UUID     `json:"id"`
-	StudentReport StudentReport `json:"studentReport"`
-	Area          Area          `json:"area"`
-	Comments      string        `json:"comments"`
-	Ready         bool          `json:"ready"`
+	Id uuid.UUID `json:"id"`
+
+	StudentReportProgressReportId uuid.UUID     `json:"studentReportProgressReportId"`
+	StudentReportStudentId        uuid.UUID     `json:"studentReportsId"`
+	StudentReport                 StudentReport `json:"studentReport"`
+
+	Area     Area   `json:"area"`
+	Comments string `json:"comments"`
+	Ready    bool   `json:"ready"`
 }
 
 type VideoStore interface {

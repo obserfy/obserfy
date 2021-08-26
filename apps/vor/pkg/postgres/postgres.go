@@ -444,12 +444,11 @@ type (
 	}
 
 	StudentReport struct {
-		Id        uuid.UUID `pg:"type:uuid"`
-		StudentId uuid.UUID `pg:"type:uuid"`
+		StudentId uuid.UUID `pg:"type:uuid,pk"`
 		Student   Student   `pg:"rel:has-one"`
 
 		ProgressReport   ProgressReport `pg:"rel:has-one"`
-		ProgressReportId uuid.UUID      `pg:"type:uuid,on_delete:CASCADE"`
+		ProgressReportId uuid.UUID      `pg:"type:uuid,pk,on_delete:CASCADE"`
 
 		AreaComments []StudentReportsAreaComment `pg:"rel:has-many"`
 
@@ -460,8 +459,9 @@ type (
 	StudentReportsAreaComment struct {
 		Id uuid.UUID `pg:"type:uuid"`
 
-		StudentReportsId uuid.UUID
-		StudentReport    StudentReport `pg:"rel:has-one"`
+		StudentReportProgressReportId uuid.UUID
+		StudentReportStudentId        uuid.UUID
+		StudentReport                 StudentReport `pg:"rel:has-one"`
 
 		AreaId uuid.UUID `pg:"type:uuid"`
 		Area   Area      `pg:"rel:has-one"`

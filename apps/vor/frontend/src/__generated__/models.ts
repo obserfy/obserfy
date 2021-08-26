@@ -37,7 +37,6 @@ export interface StudentReportsAreaComment {
   ready: boolean
 }
 export interface StudentReport {
-  id: string
   progressReport: ProgressReport
   areaComments: StudentReportsAreaComment[]
   generalComments: string
