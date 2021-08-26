@@ -446,6 +446,7 @@ type (
 	StudentReport struct {
 		Id        uuid.UUID `pg:"type:uuid"`
 		StudentId uuid.UUID `pg:"type:uuid"`
+		Student   Student   `pg:"rel:has-one"`
 
 		ProgressReport   ProgressReport `pg:"rel:has-one"`
 		ProgressReportId uuid.UUID      `pg:"type:uuid,on_delete:CASCADE"`

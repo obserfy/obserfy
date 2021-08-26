@@ -16,6 +16,7 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 	if err := s.Model(&report).
 		WherePK().
 		Relation("StudentReports").
+		Relation("StudentReports.Student").
 		Select(); err != nil {
 		return domain.ProgressReport{}, richErrors.Wrap(err, "failed to query progress report")
 	}
@@ -34,11 +35,25 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 				},
 			}
 		}
+
+		classes := make([]domain.Class, len(report.Student.Classes))
+		for k, c := range report.Student.Classes {
+			classes[k] = domain.Class{
+				Id:   c.Id,
+				Name: c.Name,
+			}
+		}
+
 		studentReports[i] = domain.StudentReport{
 			Id:              report.Id,
 			Done:            report.Done,
 			GeneralComments: report.GeneralComments,
 			AreaComments:    areaComments,
+			Student: domain.Student{
+				Id:      report.StudentId.String(),
+				Name:    report.Student.Name,
+				Classes: classes,
+			},
 		}
 	}
 

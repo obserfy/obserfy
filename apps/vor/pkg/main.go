@@ -8,7 +8,7 @@ import (
 	"github.com/chrsep/vor/pkg/paddle"
 	"github.com/chrsep/vor/pkg/reports"
 	"github.com/chrsep/vor/pkg/videos"
-	"github.com/go-errors/errors"
+	richErrors "github.com/pkg/errors"
 	"log"
 	"net/http"
 	"os"
@@ -53,7 +53,7 @@ func runServer() error {
 			l.Error("Failed closing db", zap.Error(err))
 		}
 		if r := recover(); r != nil {
-			l.Error("panicked:", zap.Error(errors.New(r)))
+			l.Error("panicked:", zap.Error(richErrors.Errorf("error: %v", r)))
 		}
 	}()
 
