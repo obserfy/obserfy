@@ -172,11 +172,28 @@ type School struct {
 }
 
 type ProgressReport struct {
-	Id          uuid.UUID `json:"id"`
-	Title       string    `json:"title"`
-	PeriodStart time.Time `json:"periodStart"`
-	PeriodEnd   time.Time `json:"periodEnd"`
-	School      *School   `json:"school,omitempty"`
+	Id              uuid.UUID       `json:"id"`
+	Title           string          `json:"title"`
+	PeriodStart     time.Time       `json:"periodStart"`
+	PeriodEnd       time.Time       `json:"periodEnd"`
+	School          *School         `json:"school,omitempty"`
+	StudentsReports []StudentReport `json:"studentsReports"`
+}
+
+type StudentReport struct {
+	Id              uuid.UUID                   `json:"id"`
+	ProgressReport  ProgressReport              `json:"progressReport"`
+	AreaComments    []StudentReportsAreaComment `json:"areaComments"`
+	GeneralComments string                      `json:"generalComments"`
+	Done            bool                        `json:"done"`
+}
+
+type StudentReportsAreaComment struct {
+	Id            uuid.UUID     `json:"id"`
+	StudentReport StudentReport `json:"studentReport"`
+	Area          Area          `json:"area"`
+	Comments      string        `json:"comments"`
+	Ready         bool          `json:"ready"`
 }
 
 type VideoStore interface {
