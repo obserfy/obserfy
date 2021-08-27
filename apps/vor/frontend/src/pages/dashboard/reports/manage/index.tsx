@@ -48,8 +48,8 @@ const ManageReports = () => {
             color="textMediumEmphasis"
             sx={{ fontSize: 0 }}
           >
-            {report.data?.periodStart.format("DD MMMM YYYY")} -{" "}
-            {report.data?.periodStart.format("DD MMMM YYYY")}
+            {report.data?.periodStart?.format("DD MMMM YYYY")} -{" "}
+            {report.data?.periodEnd?.format("DD MMMM YYYY")}
           </Text>
 
           <Flex

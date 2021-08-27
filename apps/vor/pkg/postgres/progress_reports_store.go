@@ -94,6 +94,7 @@ func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentI
 	report := StudentReport{StudentId: studentId, ProgressReportId: reportId}
 	if err := s.Model(&report).
 		Relation("ProgressReport").
+		Relation("Student").
 		WherePK().
 		Select(); err != nil {
 		return domain.StudentReport{}, richErrors.Wrap(err, "failed to find student report")

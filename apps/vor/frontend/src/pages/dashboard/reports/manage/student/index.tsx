@@ -17,11 +17,10 @@ import {
   selectComment,
   useComment,
 } from "../../../../../domain/report-comments"
-import useGetReport from "../../../../../hooks/api/reports/useGetProgressReport"
+import useGetStudentReport from "../../../../../hooks/api/reports/useGetStudentReport"
 import { useGetAllStudents } from "../../../../../hooks/api/students/useGetAllStudents"
 import { Area } from "../../../../../hooks/api/useGetArea"
 import { useGetCurriculumAreas } from "../../../../../hooks/api/useGetCurriculumAreas"
-import { Student, useGetStudent } from "../../../../../hooks/api/useGetStudent"
 import {
   MaterialProgress,
   materialStageToString,
@@ -42,11 +41,10 @@ import {
 } from "../../../../../routes"
 
 const StudentReports = () => {
-  const studentId = useQueryString("studentId")
   const reportId = useQueryString("reportId")
+  const studentId = useQueryString("studentId")
 
-  const { data: report } = useGetReport(reportId)
-  const { data: student } = useGetStudent(studentId)
+  const { data: report } = useGetStudentReport(reportId, studentId)
   const { data: areas } = useGetCurriculumAreas()
   const { data: observations } = useGetStudentObservations(studentId)
   const { data: assessments } = useGetStudentAssessments(studentId)
@@ -62,18 +60,25 @@ const StudentReports = () => {
 
   return (
     <Box sx={{ position: "relative", height: "100vh", width: "100%" }}>
-      <SEO title={`${student?.name} | Progress Report`} />
+      <SEO title={`${report?.student?.name} | Progress Report`} />
 
       <TranslucentBar>
         <TopBar
           containerSx={borderBottom}
           breadcrumbs={[
             breadCrumb(t`Progress Reports`, ALL_REPORT_URL),
-            breadCrumb(report?.title, MANAGE_REPORT_URL(reportId)),
-            breadCrumb(getFirstName(student)),
+            breadCrumb(
+              report?.progressReport?.title,
+              MANAGE_REPORT_URL(reportId)
+            ),
+            breadCrumb(getFirstName(report?.student)),
           ]}
         />
-        <ActionBar student={student} />
+        <ActionBar
+          studentId={report?.student?.id}
+          studentName={report?.student?.name}
+          ready={report?.ready}
+        />
         <Tab
           small
           items={tabs}
@@ -120,13 +125,14 @@ const StudentReports = () => {
 }
 
 const ActionBar: FC<{
-  student?: Student
+  studentId?: string
+  studentName?: string
   ready?: boolean
-}> = ({ student }) => {
+}> = ({ studentId, studentName }) => {
   const reportId = useQueryString("reportId")
   const { data: students } = useGetAllStudents("", true)
 
-  const currentIdx = students?.findIndex(({ id }) => id === student?.id)
+  const currentIdx = students?.findIndex(({ id }) => id === studentId)
   const prevStudentId =
     currentIdx !== undefined && currentIdx !== -1
       ? students?.[currentIdx - 1]?.id
@@ -182,7 +188,7 @@ const ActionBar: FC<{
           {nextStudentLink}
 
           <Text ml={3} sx={{ fontWeight: "bold", fontSize: 1 }}>
-            {student?.name}
+            {studentName}
           </Text>
         </Flex>
 

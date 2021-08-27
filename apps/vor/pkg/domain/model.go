@@ -116,17 +116,17 @@ type Class struct {
 
 type Student struct {
 	Id           string       `json:"id"`
-	Name         string       `json:"name"`
-	DateOfBirth  time.Time    `json:"dateOfBirth"`
-	DateOfEntry  time.Time    `json:"dateOfEntry"`
-	Note         string       `json:"note"`
-	CustomId     string       `json:"customId"`
-	Active       bool         `json:"active"`
-	LessonPlans  []LessonPlan `json:"lessonPlans"`
-	Images       []Image      `json:"images"`
-	ProfileImage Image        `json:"profileImage"`
-	Guardians    []Guardian   `json:"guardians"`
-	Classes      []Class      `json:"classes"`
+	Name         string       `json:"name,omitempty"`
+	DateOfBirth  *time.Time   `json:"dateOfBirth,omitempty"`
+	DateOfEntry  *time.Time   `json:"dateOfEntry,omitempty"`
+	Note         string       `json:"note,omitempty"`
+	CustomId     string       `json:"customId,omitempty"`
+	Active       bool         `json:"active,omitempty"`
+	LessonPlans  []LessonPlan `json:"lessonPlans,omitempty"`
+	Images       []Image      `json:"images,omitempty"`
+	ProfileImage Image        `json:"profileImage,omitempty"`
+	Guardians    []Guardian   `json:"guardians,omitempty"`
+	Classes      []Class      `json:"classes,omitempty"`
 	//TODO: School         School
 	//TODO: Gender         Gender
 }

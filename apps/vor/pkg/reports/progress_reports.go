@@ -16,28 +16,6 @@ func NewRouter(s rest.Server, store postgres.ProgressReportsStore) *chi.Mux {
 	return r
 }
 
-func getStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
-	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
-		reportId, err := uuid.Parse(r.GetParam("reportId"))
-		if err != nil {
-			return s.NotFound()
-		}
-		studentId, err := uuid.Parse(r.GetParam("reportId"))
-		if err != nil {
-			return s.NotFound()
-		}
-
-		report, err := store.FindStudentReportById(reportId, studentId)
-		if err != nil {
-			return s.InternalServerError(err)
-		}
-
-		return rest.ServerResponse{
-			Body: report,
-		}
-	})
-}
-
 func getReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
 	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
 		id, err := uuid.Parse(r.GetParam("reportId"))
@@ -65,7 +43,7 @@ func patchStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest
 		if err != nil {
 			return s.NotFound()
 		}
-		studentId, err := uuid.Parse(r.GetParam("reportId"))
+		studentId, err := uuid.Parse(r.GetParam("studentId"))
 		if err != nil {
 			return s.NotFound()
 		}
@@ -82,6 +60,28 @@ func patchStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest
 
 		return rest.ServerResponse{
 			Body: studentReport,
+		}
+	})
+}
+
+func getStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
+	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
+		reportId, err := uuid.Parse(r.GetParam("reportId"))
+		if err != nil {
+			return s.NotFound()
+		}
+		studentId, err := uuid.Parse(r.GetParam("studentId"))
+		if err != nil {
+			return s.NotFound()
+		}
+
+		report, err := store.FindStudentReportById(reportId, studentId)
+		if err != nil {
+			return s.InternalServerError(err)
+		}
+
+		return rest.ServerResponse{
+			Body: report,
 		}
 	})
 }
