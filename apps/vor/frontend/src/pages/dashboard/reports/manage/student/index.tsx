@@ -121,6 +121,7 @@ const StudentReports = () => {
 
 const ActionBar: FC<{
   student?: Student
+  ready?: boolean
 }> = ({ student }) => {
   const reportId = useQueryString("reportId")
   const { data: students } = useGetAllStudents("", true)

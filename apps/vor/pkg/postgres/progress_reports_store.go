@@ -89,3 +89,44 @@ func (s ProgressReportsStore) PatchStudentReport(reportId uuid.UUID, studentId u
 		Ready: updatedStudentReport.Ready,
 	}, nil
 }
+
+func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentId uuid.UUID) (domain.StudentReport, error) {
+	report := StudentReport{StudentId: studentId, ProgressReportId: reportId}
+	if err := s.Model(&report).
+		Relation("ProgressReport").
+		WherePK().
+		Select(); err != nil {
+		return domain.StudentReport{}, richErrors.Wrap(err, "failed to find student report")
+	}
+
+	areaComments := make([]domain.StudentReportsAreaComment, len(report.AreaComments))
+	for k, comment := range report.AreaComments {
+		areaComments[k] = domain.StudentReportsAreaComment{
+			Id:                            comment.Id,
+			StudentReportProgressReportId: comment.StudentReportProgressReportId,
+			StudentReportStudentId:        comment.StudentReportStudentId,
+			Comments:                      comment.Comments,
+			Ready:                         comment.Ready,
+			Area: domain.Area{
+				Id:   comment.Area.Id,
+				Name: comment.Area.Name,
+			},
+		}
+	}
+
+	return domain.StudentReport{
+		ProgressReport: domain.ProgressReport{
+			Id:          report.ProgressReport.Id,
+			Title:       report.ProgressReport.Title,
+			PeriodStart: report.ProgressReport.PeriodStart,
+			PeriodEnd:   report.ProgressReport.PeriodEnd,
+		},
+		AreaComments:    areaComments,
+		GeneralComments: report.GeneralComments,
+		Ready:           report.Ready,
+		Student: domain.Student{
+			Id:   report.Student.Id,
+			Name: report.Student.Name,
+		},
+	}, nil
+}

@@ -10,8 +10,32 @@ import (
 func NewRouter(s rest.Server, store postgres.ProgressReportsStore) *chi.Mux {
 	r := chi.NewRouter()
 	r.Method("GET", "/{reportId}", getReport(s, store))
+
+	r.Method("GET", "/{reportId}/students/{studentId}", getStudentReport(s, store))
 	r.Method("PATCH", "/{reportId}/students/{studentId}", patchStudentReport(s, store))
 	return r
+}
+
+func getStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
+	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
+		reportId, err := uuid.Parse(r.GetParam("reportId"))
+		if err != nil {
+			return s.NotFound()
+		}
+		studentId, err := uuid.Parse(r.GetParam("reportId"))
+		if err != nil {
+			return s.NotFound()
+		}
+
+		report, err := store.FindStudentReportById(reportId, studentId)
+		if err != nil {
+			return s.InternalServerError(err)
+		}
+
+		return rest.ServerResponse{
+			Body: report,
+		}
+	})
 }
 
 func getReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
