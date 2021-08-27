@@ -47,7 +47,7 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 		}
 
 		studentReports[i] = domain.StudentReport{
-			Done:            report.Done,
+			Ready:           report.Ready,
 			GeneralComments: report.GeneralComments,
 			AreaComments:    areaComments,
 			Student: domain.Student{
@@ -86,6 +86,6 @@ func (s ProgressReportsStore) PatchStudentReport(reportId uuid.UUID, studentId u
 	}
 
 	return domain.StudentReport{
-		Done: updatedStudentReport.Done,
+		Ready: updatedStudentReport.Ready,
 	}, nil
 }

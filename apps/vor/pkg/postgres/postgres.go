@@ -453,7 +453,7 @@ type (
 		AreaComments []StudentReportsAreaComment `pg:"rel:has-many"`
 
 		GeneralComments string
-		Done            bool
+		Ready           bool
 	}
 
 	StudentReportsAreaComment struct {

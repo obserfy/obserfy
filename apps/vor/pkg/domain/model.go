@@ -197,7 +197,7 @@ type StudentReport struct {
 	ProgressReport  ProgressReport              `json:"progressReport"`
 	AreaComments    []StudentReportsAreaComment `json:"areaComments"`
 	GeneralComments string                      `json:"generalComments"`
-	Done            bool                        `json:"done"`
+	Ready           bool                        `json:"ready"`
 	Student         Student                     `json:"student"`
 }
 
