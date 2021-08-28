@@ -40,3 +40,6 @@ func NewParseJsonError(err error) *Error {
 		richErrors.Wrap(err, "fail to parse json request body"),
 	}
 }
+
+// H is a shortcut for map[string]interface{}. Inspired by gin semantics https://github.com/gin-gonic/gin/blob/ee4de846a894e9049321e809d69f4343f62d2862/utils.go#L53
+type H = map[string]interface{}

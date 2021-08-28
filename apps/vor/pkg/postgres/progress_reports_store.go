@@ -17,6 +17,7 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 		WherePK().
 		Relation("StudentReports").
 		Relation("StudentReports.Student").
+		Relation("StudentReports.Student.Classes").
 		Select(); err != nil {
 		return domain.ProgressReport{}, richErrors.Wrap(err, "failed to query progress report")
 	}

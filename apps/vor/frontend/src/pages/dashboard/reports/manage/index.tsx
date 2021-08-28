@@ -122,7 +122,7 @@ const Student: FC<{
       {name}
     </Text>
 
-    {classes.map((c) => (
+    {classes?.map((c) => (
       <Text
         key={c.id}
         mr={3}

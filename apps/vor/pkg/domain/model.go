@@ -107,11 +107,11 @@ type Weekday struct {
 
 type Class struct {
 	Id        string    `json:"id"`
-	School    School    `json:"school"`
-	Name      string    `json:"name"`
-	StartTime time.Time `json:"startTime"`
-	EndTime   time.Time `json:"endTime"`
-	Weekdays  []Weekday `json:"weekdays"`
+	School    School    `json:"school,omitempty"`
+	Name      string    `json:"name,omitempty"`
+	StartTime time.Time `json:"startTime,omitempty"`
+	EndTime   time.Time `json:"endTime,omitempty"`
+	Weekdays  []Weekday `json:"weekdays,omitempty"`
 }
 
 type Student struct {
@@ -186,19 +186,19 @@ type School struct {
 
 type ProgressReport struct {
 	Id              uuid.UUID       `json:"id"`
-	Title           string          `json:"title"`
-	PeriodStart     time.Time       `json:"periodStart"`
-	PeriodEnd       time.Time       `json:"periodEnd"`
+	Title           string          `json:"title,omitempty"`
+	PeriodStart     time.Time       `json:"periodStart,omitempty"`
+	PeriodEnd       time.Time       `json:"periodEnd,omitempty"`
 	School          *School         `json:"school,omitempty"`
-	StudentsReports []StudentReport `json:"studentsReports"`
+	StudentsReports []StudentReport `json:"studentsReports,omitempty"`
 }
 
 type StudentReport struct {
-	ProgressReport  ProgressReport              `json:"progressReport"`
-	AreaComments    []StudentReportsAreaComment `json:"areaComments"`
-	GeneralComments string                      `json:"generalComments"`
+	ProgressReport  ProgressReport              `json:"progressReport,omitempty"`
+	AreaComments    []StudentReportsAreaComment `json:"areaComments,omitempty"`
+	GeneralComments string                      `json:"generalComments,omitempty"`
+	Student         Student                     `json:"student,omitempty"`
 	Ready           bool                        `json:"ready"`
-	Student         Student                     `json:"student"`
 }
 
 type StudentReportsAreaComment struct {

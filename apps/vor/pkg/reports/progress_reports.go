@@ -9,10 +9,11 @@ import (
 
 func NewRouter(s rest.Server, store postgres.ProgressReportsStore) *chi.Mux {
 	r := chi.NewRouter()
-	r.Method("GET", "/{reportId}", getReport(s, store))
 
+	r.Method("GET", "/{reportId}", getReport(s, store))
 	r.Method("GET", "/{reportId}/students/{studentId}", getStudentReport(s, store))
 	r.Method("PATCH", "/{reportId}/students/{studentId}", patchStudentReport(s, store))
+
 	return r
 }
 
@@ -28,8 +29,43 @@ func getReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2
 			return s.InternalServerError(err)
 		}
 
+		studentReports := make([]rest.H, len(report.StudentsReports))
+		for i, studentReport := range report.StudentsReports {
+			areaComments := make([]rest.H, len(studentReport.AreaComments))
+			for k, comment := range studentReport.AreaComments {
+				areaComments[k] = rest.H{
+					"comments": comment.Comments,
+				}
+			}
+
+			classes := make([]rest.H, len(studentReport.Student.Classes))
+			for k, c := range studentReport.Student.Classes {
+				classes[k] = rest.H{
+					"id":   c.Id,
+					"name": c.Name,
+				}
+			}
+
+			studentReports[i] = rest.H{
+				"ready":           studentReport.Ready,
+				"generalComments": studentReport.GeneralComments,
+				"areaComments":    areaComments,
+				"student": rest.H{
+					"id":      studentReport.Student.Id,
+					"name":    studentReport.Student.Name,
+					"classes": classes,
+				},
+			}
+		}
+
 		return rest.ServerResponse{
-			Body: report,
+			Body: rest.H{
+				"id":              report.Id,
+				"title":           report.Title,
+				"periodStart":     report.PeriodStart,
+				"periodEnd":       report.PeriodEnd,
+				"studentsReports": studentReports,
+			},
 		}
 	})
 }
@@ -59,7 +95,9 @@ func patchStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest
 		}
 
 		return rest.ServerResponse{
-			Body: studentReport,
+			Body: rest.H{
+				"ready": studentReport.Ready,
+			},
 		}
 	})
 }
@@ -81,7 +119,21 @@ func getStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest.H
 		}
 
 		return rest.ServerResponse{
-			Body: report,
+			Body: rest.H{
+				"progressReport": rest.H{
+					"id":          report.ProgressReport.Id,
+					"title":       report.ProgressReport.Title,
+					"periodStart": report.ProgressReport.PeriodStart,
+					"periodEnd":   report.ProgressReport.PeriodEnd,
+				},
+				"areaComments":    report.AreaComments,
+				"generalComments": report.GeneralComments,
+				"ready":           report.Ready,
+				"student": rest.H{
+					"id":   report.Student.Id,
+					"name": report.Student.Name,
+				},
+			},
 		}
 	})
 }
