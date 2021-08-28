@@ -6,6 +6,22 @@ import (
 )
 
 // contains our core domain model
+
+type Gender int
+
+const (
+	NotSet Gender = iota
+	Male
+	Female
+)
+
+const (
+	RepetitionNone = iota
+	RepetitionDaily
+	RepetitionWeekly
+	RepetitionMonthly
+)
+
 type (
 	Image struct {
 		Id        uuid.UUID
@@ -29,7 +45,6 @@ type (
 		VisibleToGuardians bool
 	}
 
-	// Curriculum data
 	Curriculum struct {
 		Id          string
 		Name        string
@@ -61,16 +76,7 @@ type (
 		Order       int
 		Description string
 	}
-)
 
-const (
-	RepetitionNone = iota
-	RepetitionDaily
-	RepetitionWeekly
-	RepetitionMonthly
-)
-
-type (
 	RepetitionPattern struct {
 		Type    int
 		EndDate time.Time
@@ -99,123 +105,123 @@ type (
 		Title       string
 		Description string
 	}
+
+	Weekday struct {
+		Day time.Weekday
+	}
+
+	Class struct {
+		Id        string
+		School    School
+		Name      string
+		StartTime time.Time
+		EndTime   time.Time
+		Weekdays  []Weekday
+	}
+
+	Student struct {
+		Id           string
+		Name         string
+		DateOfBirth  *time.Time
+		DateOfEntry  *time.Time
+		Note         string
+		CustomId     string
+		Active       bool
+		LessonPlans  []LessonPlan
+		Images       []Image
+		ProfileImage Image
+		Guardians    []Guardian
+		Classes      []Class
+		School       School
+		Gender       Gender
+	}
+
+	Guardian struct {
+		Id       string
+		Name     string
+		Email    string
+		Phone    string
+		Note     string
+		Address  string
+		Children []Student
+	}
+
+	Video struct {
+		Id            uuid.UUID
+		UploadUrl     string
+		UploadId      string
+		Status        string
+		UploadTimeout int32
+		CreatedAt     time.Time
+		UserId        string
+		SchoolId      string
+		AssetId       string
+		PlaybackId    string
+		PlaybackUrl   string
+		ThumbnailUrl  string
+		School        School
+	}
+
+	Subscription struct {
+		Id                 uuid.UUID
+		CancelUrl          string
+		Currency           string
+		Email              string
+		EventTime          time.Time
+		NextBillDate       time.Time
+		Status             string
+		SubscriptionId     string
+		SubscriptionPlanId string
+		PaddleUserId       string
+		UpdateUrl          string
+		MarketingConsent   bool
+	}
+
+	User struct {
+		Id    string
+		Name  string
+		Email string
+	}
+
+	School struct {
+		Id    uuid.UUID
+		Name  string
+		Users []User
+	}
+
+	ProgressReport struct {
+		Id              uuid.UUID
+		Title           string
+		PeriodStart     time.Time
+		PeriodEnd       time.Time
+		School          School
+		StudentsReports []StudentReport
+	}
+
+	StudentReport struct {
+		ProgressReport  ProgressReport
+		AreaComments    []StudentReportsAreaComment
+		GeneralComments string
+		Student         Student
+		Ready           bool
+	}
+
+	StudentReportsAreaComment struct {
+		Id uuid.UUID `json:"id"`
+
+		StudentReportProgressReportId uuid.UUID
+		StudentReportStudentId        uuid.UUID
+		StudentReport                 StudentReport
+
+		Area     Area
+		Comments string
+		Ready    bool
+	}
+
+	VideoStore interface {
+		UpdateVideo(video Video) error
+		DeleteVideo(id uuid.UUID) error
+		GetVideo(id uuid.UUID) (Video, error)
+		GetVideoSchool(videoId uuid.UUID) (School, error)
+	}
 )
-
-type Weekday struct {
-	Day time.Weekday `json:"day"`
-}
-
-type Class struct {
-	Id        string    `json:"id"`
-	School    School    `json:"school,omitempty"`
-	Name      string    `json:"name,omitempty"`
-	StartTime time.Time `json:"startTime,omitempty"`
-	EndTime   time.Time `json:"endTime,omitempty"`
-	Weekdays  []Weekday `json:"weekdays,omitempty"`
-}
-
-type Student struct {
-	Id           string       `json:"id"`
-	Name         string       `json:"name,omitempty"`
-	DateOfBirth  *time.Time   `json:"dateOfBirth,omitempty"`
-	DateOfEntry  *time.Time   `json:"dateOfEntry,omitempty"`
-	Note         string       `json:"note,omitempty"`
-	CustomId     string       `json:"customId,omitempty"`
-	Active       bool         `json:"active,omitempty"`
-	LessonPlans  []LessonPlan `json:"lessonPlans,omitempty"`
-	Images       []Image      `json:"images,omitempty"`
-	ProfileImage Image        `json:"profileImage,omitempty"`
-	Guardians    []Guardian   `json:"guardians,omitempty"`
-	Classes      []Class      `json:"classes,omitempty"`
-	//TODO: School         School
-	//TODO: Gender         Gender
-}
-
-type Guardian struct {
-	Id       string
-	Name     string
-	Email    string
-	Phone    string
-	Note     string
-	Address  string
-	Children []Student
-}
-
-type Video struct {
-	Id            uuid.UUID
-	UploadUrl     string
-	UploadId      string
-	Status        string
-	UploadTimeout int32
-	CreatedAt     time.Time
-	UserId        string
-	SchoolId      string
-	AssetId       string
-	PlaybackId    string
-	PlaybackUrl   string
-	ThumbnailUrl  string
-	School        School
-}
-
-type Subscription struct {
-	Id                 uuid.UUID
-	CancelUrl          string
-	Currency           string
-	Email              string
-	EventTime          time.Time
-	NextBillDate       time.Time
-	Status             string
-	SubscriptionId     string
-	SubscriptionPlanId string
-	PaddleUserId       string
-	UpdateUrl          string
-	MarketingConsent   bool
-}
-
-type User struct {
-	Id    string `json:"id"`
-	Name  string `json:"name"`
-	Email string `json:"email"`
-}
-
-type School struct {
-	Id    uuid.UUID `json:"id"`
-	Name  string    `json:"name"`
-	Users []User    `json:"users"`
-}
-
-type ProgressReport struct {
-	Id              uuid.UUID       `json:"id"`
-	Title           string          `json:"title,omitempty"`
-	PeriodStart     time.Time       `json:"periodStart,omitempty"`
-	PeriodEnd       time.Time       `json:"periodEnd,omitempty"`
-	School          *School         `json:"school,omitempty"`
-	StudentsReports []StudentReport `json:"studentsReports,omitempty"`
-}
-
-type StudentReport struct {
-	ProgressReport  ProgressReport              `json:"progressReport,omitempty"`
-	AreaComments    []StudentReportsAreaComment `json:"areaComments,omitempty"`
-	GeneralComments string                      `json:"generalComments,omitempty"`
-	Student         Student                     `json:"student,omitempty"`
-	Ready           bool                        `json:"ready"`
-}
-
-type StudentReportsAreaComment struct {
-	Id uuid.UUID `json:"id"`
-
-	StudentReportProgressReportId uuid.UUID     `json:"studentReportProgressReportId"`
-	StudentReportStudentId        uuid.UUID     `json:"studentReportsId"`
-	StudentReport                 StudentReport `json:"studentReport"`
-
-	Area     Area   `json:"area"`
-	Comments string `json:"comments"`
-	Ready    bool   `json:"ready"`
-}
-
-type VideoStore interface {
-	UpdateVideo(video Video) error
-	DeleteVideo(id uuid.UUID) error
-	GetVideo(id uuid.UUID) (Video, error)
-	GetVideoSchool(videoId uuid.UUID) (School, error)
-}
