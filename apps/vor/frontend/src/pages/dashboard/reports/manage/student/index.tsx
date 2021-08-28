@@ -224,6 +224,9 @@ const ActionBar: FC<{
             "&:hover": {
               backgroundColor: ready ? "warning" : "primaryDark",
             },
+            "&:focus": {
+              backgroundColor: ready ? "warning" : "primaryDark",
+            },
           }}
         >
           Mark as {ready && "not"} ready
