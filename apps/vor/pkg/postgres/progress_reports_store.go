@@ -68,27 +68,17 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 	}, nil
 }
 
-func (s ProgressReportsStore) PatchStudentReport(reportId uuid.UUID, studentId uuid.UUID, done bool) (domain.StudentReport, error) {
+func (s ProgressReportsStore) PatchStudentReport(reportId uuid.UUID, studentId uuid.UUID, ready bool) (domain.StudentReport, error) {
 	patchModel := make(PartialUpdateModel)
-	patchModel.AddBooleanColumn("done", &done)
+	patchModel.AddBooleanColumn("ready", &ready)
 	if _, err := s.Model(patchModel.GetModel()).
 		TableExpr("student_reports").
 		Where("student_id = ? and progress_report_id = ?", studentId, reportId).
 		Update(); err != nil {
-		return domain.StudentReport{}, richErrors.Wrap(err, "failed to query progress report")
+		return domain.StudentReport{}, richErrors.Wrap(err, "failed to update progress report")
 	}
 
-	updatedStudentReport := StudentReport{
-		StudentId:        studentId,
-		ProgressReportId: reportId,
-	}
-	if err := s.Model(&updatedStudentReport).Select(); err != nil {
-		return domain.StudentReport{}, richErrors.Wrap(err, "failed to query progress report")
-	}
-
-	return domain.StudentReport{
-		Ready: updatedStudentReport.Ready,
-	}, nil
+	return domain.StudentReport{Ready: ready}, nil
 }
 
 func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentId uuid.UUID) (domain.StudentReport, error) {

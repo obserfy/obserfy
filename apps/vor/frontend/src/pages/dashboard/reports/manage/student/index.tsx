@@ -18,6 +18,7 @@ import {
   useComment,
 } from "../../../../../domain/report-comments"
 import useGetStudentReport from "../../../../../hooks/api/reports/useGetStudentReport"
+import usePatchStudentReport from "../../../../../hooks/api/reports/usePatchStudentReport"
 import { useGetAllStudents } from "../../../../../hooks/api/students/useGetAllStudents"
 import { Area } from "../../../../../hooks/api/useGetArea"
 import { useGetCurriculumAreas } from "../../../../../hooks/api/useGetCurriculumAreas"
@@ -74,11 +75,15 @@ const StudentReports = () => {
             breadCrumb(getFirstName(report?.student)),
           ]}
         />
-        <ActionBar
-          studentId={report?.student?.id}
-          studentName={report?.student?.name}
-          ready={report?.ready}
-        />
+        {report && report.student ? (
+          <ActionBar
+            studentId={report.student.id}
+            studentName={report.student.name}
+            ready={report.ready}
+          />
+        ) : (
+          <Box sx={{ height: 65, ...borderBottom }} />
+        )}
         <Tab
           small
           items={tabs}
@@ -125,12 +130,20 @@ const StudentReports = () => {
 }
 
 const ActionBar: FC<{
-  studentId?: string
-  studentName?: string
-  ready?: boolean
-}> = ({ studentId, studentName }) => {
+  studentId: string
+  studentName: string
+  ready: boolean
+}> = ({ studentId, studentName, ready }) => {
   const reportId = useQueryString("reportId")
   const { data: students } = useGetAllStudents("", true)
+
+  const patchStudentReport = usePatchStudentReport(reportId, studentId)
+
+  const handleToggleReady = async () => {
+    await patchStudentReport.mutate({
+      ready: !ready,
+    })
+  }
 
   const currentIdx = students?.findIndex(({ id }) => id === studentId)
   const prevStudentId =
@@ -200,8 +213,20 @@ const ActionBar: FC<{
         >
           <Trans>Save</Trans>
         </Button>
-        <Button mt={[2, 0]} sx={{ width: ["100%", "auto"] }}>
-          Mark as ready
+
+        <Button
+          onClick={handleToggleReady}
+          mt={[2, 0]}
+          sx={{
+            width: ["100%", "auto"],
+            backgroundColor: ready ? "tintWarning" : "primary",
+            color: ready ? "onWarning" : "onPrimary",
+            "&:hover": {
+              backgroundColor: ready ? "warning" : "primaryDark",
+            },
+          }}
+        >
+          Mark as {ready && "not"} ready
         </Button>
       </Flex>
     </>

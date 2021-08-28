@@ -72,7 +72,7 @@ func getReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2
 
 func patchStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
 	type requestBody struct {
-		Done bool `json:"done"`
+		Ready bool `json:"ready"`
 	}
 	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
 		reportId, err := uuid.Parse(r.GetParam("reportId"))
@@ -89,7 +89,7 @@ func patchStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest
 			return s.BadRequest(err)
 		}
 
-		studentReport, err := store.PatchStudentReport(reportId, studentId, body.Done)
+		studentReport, err := store.PatchStudentReport(reportId, studentId, body.Ready)
 		if err != nil {
 			return s.InternalServerError(err)
 		}
