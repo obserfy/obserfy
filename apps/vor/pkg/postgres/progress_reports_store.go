@@ -17,6 +17,7 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 		WherePK().
 		Relation("StudentReports").
 		Relation("StudentReports.Student").
+		Relation("StudentReports.Student.Classes").
 		Select(); err != nil {
 		return domain.ProgressReport{}, richErrors.Wrap(err, "failed to query progress report")
 	}
@@ -26,9 +27,11 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 		areaComments := make([]domain.StudentReportsAreaComment, len(report.AreaComments))
 		for k, comment := range report.AreaComments {
 			areaComments[k] = domain.StudentReportsAreaComment{
-				Id:       comment.Id,
-				Comments: comment.Comments,
-				Ready:    comment.Ready,
+				Id:                            comment.Id,
+				StudentReportProgressReportId: comment.StudentReportProgressReportId,
+				StudentReportStudentId:        comment.StudentReportStudentId,
+				Comments:                      comment.Comments,
+				Ready:                         comment.Ready,
 				Area: domain.Area{
 					Id:   comment.Area.Id,
 					Name: comment.Area.Name,
@@ -45,8 +48,7 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 		}
 
 		studentReports[i] = domain.StudentReport{
-			Id:              report.Id,
-			Done:            report.Done,
+			Ready:           report.Ready,
 			GeneralComments: report.GeneralComments,
 			AreaComments:    areaComments,
 			Student: domain.Student{
@@ -63,5 +65,60 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 		PeriodStart:     report.PeriodStart,
 		PeriodEnd:       report.PeriodEnd,
 		StudentsReports: studentReports,
+	}, nil
+}
+
+func (s ProgressReportsStore) PatchStudentReport(reportId uuid.UUID, studentId uuid.UUID, ready bool) (domain.StudentReport, error) {
+	patchModel := make(PartialUpdateModel)
+	patchModel.AddBooleanColumn("ready", &ready)
+	if _, err := s.Model(patchModel.GetModel()).
+		TableExpr("student_reports").
+		Where("student_id = ? and progress_report_id = ?", studentId, reportId).
+		Update(); err != nil {
+		return domain.StudentReport{}, richErrors.Wrap(err, "failed to update progress report")
+	}
+
+	return domain.StudentReport{Ready: ready}, nil
+}
+
+func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentId uuid.UUID) (domain.StudentReport, error) {
+	report := StudentReport{StudentId: studentId, ProgressReportId: reportId}
+	if err := s.Model(&report).
+		Relation("ProgressReport").
+		Relation("Student").
+		WherePK().
+		Select(); err != nil {
+		return domain.StudentReport{}, richErrors.Wrap(err, "failed to find student report")
+	}
+
+	areaComments := make([]domain.StudentReportsAreaComment, len(report.AreaComments))
+	for k, comment := range report.AreaComments {
+		areaComments[k] = domain.StudentReportsAreaComment{
+			Id:                            comment.Id,
+			StudentReportProgressReportId: comment.StudentReportProgressReportId,
+			StudentReportStudentId:        comment.StudentReportStudentId,
+			Comments:                      comment.Comments,
+			Ready:                         comment.Ready,
+			Area: domain.Area{
+				Id:   comment.Area.Id,
+				Name: comment.Area.Name,
+			},
+		}
+	}
+
+	return domain.StudentReport{
+		ProgressReport: domain.ProgressReport{
+			Id:          report.ProgressReport.Id,
+			Title:       report.ProgressReport.Title,
+			PeriodStart: report.ProgressReport.PeriodStart,
+			PeriodEnd:   report.ProgressReport.PeriodEnd,
+		},
+		AreaComments:    areaComments,
+		GeneralComments: report.GeneralComments,
+		Ready:           report.Ready,
+		Student: domain.Student{
+			Id:   report.Student.Id,
+			Name: report.Student.Name,
+		},
 	}, nil
 }

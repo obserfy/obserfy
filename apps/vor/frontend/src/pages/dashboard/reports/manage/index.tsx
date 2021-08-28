@@ -48,8 +48,8 @@ const ManageReports = () => {
             color="textMediumEmphasis"
             sx={{ fontSize: 0 }}
           >
-            {report.data?.periodStart.format("DD MMMM YYYY")} -{" "}
-            {report.data?.periodStart.format("DD MMMM YYYY")}
+            {report.data?.periodStart?.format("DD MMMM YYYY")} -{" "}
+            {report.data?.periodEnd?.format("DD MMMM YYYY")}
           </Text>
 
           <Flex
@@ -122,7 +122,7 @@ const Student: FC<{
       {name}
     </Text>
 
-    {classes.map((c) => (
+    {classes?.map((c) => (
       <Text
         key={c.id}
         mr={3}

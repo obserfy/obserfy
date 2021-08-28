@@ -1321,6 +1321,12 @@ func postNewProgressReport(s rest.Server, store Store) http.Handler {
 }
 
 func getProgressReports(s rest.Server, store Store) http.Handler {
+	type responseBody struct {
+		Id          uuid.UUID `json:"id"`
+		Title       string    `json:"title,omitempty"`
+		PeriodStart time.Time `json:"periodStart,omitempty"`
+		PeriodEnd   time.Time `json:"periodEnd,omitempty"`
+	}
 	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
 		schoolId := r.GetParam("schoolId")
 
@@ -1329,8 +1335,18 @@ func getProgressReports(s rest.Server, store Store) http.Handler {
 			return s.InternalServerError(err)
 		}
 
+		result := make([]responseBody, len(reports))
+		for i, report := range reports {
+			result[i] = responseBody{
+				Id:          report.Id,
+				Title:       report.Title,
+				PeriodStart: report.PeriodStart,
+				PeriodEnd:   report.PeriodEnd,
+			}
+		}
+
 		return rest.ServerResponse{
-			Body: reports,
+			Body: result,
 		}
 	})
 }
