@@ -459,8 +459,8 @@ type (
 	StudentReportsAreaComment struct {
 		Id uuid.UUID `pg:"type:uuid"`
 
-		StudentReportProgressReportId uuid.UUID
-		StudentReportStudentId        uuid.UUID
+		StudentReportProgressReportId uuid.UUID     `pg:"type:uuid"`
+		StudentReportStudentId        uuid.UUID     `pg:"type:uuid"`
 		StudentReport                 StudentReport `pg:"rel:has-one"`
 
 		AreaId uuid.UUID `pg:"type:uuid"`
