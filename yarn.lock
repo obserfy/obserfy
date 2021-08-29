@@ -30599,7 +30599,7 @@ typescript@4.3.5:
     url-loader: 4.1.1
     use-immer: 0.6.0
     wait-on: 6.0.0
-    zustand: 3.5.9
+    zustand: 3.5.10
   languageName: unknown
   linkType: soft
 
@@ -31903,15 +31903,15 @@ typescript@4.3.5:
   languageName: node
   linkType: hard
 
-"zustand@npm:3.5.9":
-  version: 3.5.9
-  resolution: "zustand@npm:3.5.9"
+"zustand@npm:3.5.10":
+  version: 3.5.10
+  resolution: "zustand@npm:3.5.10"
   peerDependencies:
     react: ">=16.8"
   peerDependenciesMeta:
     react:
       optional: true
-  checksum: da5209e80b2199225c5ea1d5ac8ad1884b2454e6dac8387c50eecf4adba7a4bc7f1f4bd5a9aeb86f9793f2c4ecbab2f2e35de2868afb9039c245bd2c5a5325fb
+  checksum: a9bb68c137bda6facd9e01cf9f027c80a394b1ca788dab4271942e23deaeacda7909a22039621d3157d3c13e8c497413a2a518619ec452e2a7d16efa7cc96130
   languageName: node
   linkType: hard
 
