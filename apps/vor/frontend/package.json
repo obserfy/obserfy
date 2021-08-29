@@ -20,7 +20,7 @@
     "@tailwindcss/typography": "0.4.1",
     "@theme-ui/match-media": "0.10.1",
     "@types/dompurify": "2.2.3",
-    "autoprefixer": "10.3.2",
+    "autoprefixer": "10.3.3",
     "babel-plugin-remove-graphql-queries": "3.12.0",
     "body-scroll-lock": "3.1.5",
     "browser-lang": "0.1.0",

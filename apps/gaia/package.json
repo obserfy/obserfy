@@ -33,7 +33,7 @@
     "@types/react": "17.0.19",
     "@types/react-query": "1.2.9",
     "@types/uuid": "8.3.1",
-    "autoprefixer": "10.3.2",
+    "autoprefixer": "10.3.3",
     "body-scroll-lock": "3.1.5",
     "dayjs": "1.10.6",
     "dompurify": "2.3.1",
