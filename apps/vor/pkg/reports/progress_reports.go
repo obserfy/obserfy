@@ -12,7 +12,7 @@ func NewRouter(s rest.Server, store postgres.ProgressReportsStore) *chi.Mux {
 	r := chi.NewRouter()
 
 	r.Method("GET", "/{reportId}", getReport(s, store))
-	r.Method("PATCH", "/{reportId}", patchReport(s, store))
+	r.Method("POST", "/{reportId}/published", updateReportPublished(s, store))
 
 	r.Method("GET", "/{reportId}/students/{studentId}", getStudentReport(s, store))
 	r.Method("PATCH", "/{reportId}/students/{studentId}", patchStudentReport(s, store))
@@ -20,7 +20,7 @@ func NewRouter(s rest.Server, store postgres.ProgressReportsStore) *chi.Mux {
 	return r
 }
 
-func patchReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
+func updateReportPublished(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
 	type requestBody struct {
 		Published bool `json:"published"`
 	}
@@ -97,6 +97,7 @@ func getReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2
 				"periodStart":     report.PeriodStart,
 				"periodEnd":       report.PeriodEnd,
 				"studentsReports": studentReports,
+				"published":       report.Published,
 			},
 		}
 	})

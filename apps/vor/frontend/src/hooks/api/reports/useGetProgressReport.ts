@@ -9,7 +9,11 @@ const getProgressReport = (reportId: string) => async () => {
   const periodStart = dayjs(result.periodStart)
   const periodEnd = dayjs(result.periodEnd)
 
-  return { ...result, periodStart, periodEnd }
+  return {
+    ...result,
+    periodStart,
+    periodEnd,
+  }
 }
 
 const useGetProgressReport = (reportId: string) => {

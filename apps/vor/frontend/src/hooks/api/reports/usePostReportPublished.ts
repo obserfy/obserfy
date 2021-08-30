@@ -1,15 +1,15 @@
 import { useMutation } from "react-query"
-import { patchApi } from "../fetchApi"
+import { postApi } from "../fetchApi"
 import { useProgressReportCache } from "./useGetProgressReport"
 
 interface PatchRequestBody {
   published: boolean
 }
 
-const usePatchReport = (reportId: string) => {
+const usePostReportPublished = (reportId: string) => {
   const cache = useProgressReportCache(reportId)
-  const patchReport = patchApi<PatchRequestBody>(
-    `/progress-reports/${reportId}`
+  const patchReport = postApi<PatchRequestBody>(
+    `/progress-reports/${reportId}/published`
   )
 
   return useMutation(patchReport, {
@@ -19,4 +19,4 @@ const usePatchReport = (reportId: string) => {
   })
 }
 
-export default usePatchReport
+export default usePostReportPublished

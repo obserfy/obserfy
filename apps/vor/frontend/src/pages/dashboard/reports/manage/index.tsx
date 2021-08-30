@@ -12,6 +12,7 @@ import StudentPicturePlaceholder from "../../../../components/StudentPicturePlac
 import TopBar, { breadCrumb } from "../../../../components/TopBar/TopBar"
 import TranslucentBar from "../../../../components/TranslucentBar/TranslucentBar"
 import useGetReport from "../../../../hooks/api/reports/useGetProgressReport"
+import usePostReportPublished from "../../../../hooks/api/reports/usePostReportPublished"
 import { useQueryString } from "../../../../hooks/useQueryString"
 import useVisibilityState from "../../../../hooks/useVisibilityState"
 import { ALL_REPORT_URL, STUDENT_REPORT_URL } from "../../../../routes"
@@ -20,8 +21,6 @@ const ManageReports = () => {
   const reportId = useQueryString("reportId")
   const report = useGetReport(reportId)
   const [search, setSearch] = useState("")
-
-  const publishConfirmation = useVisibilityState()
 
   return (
     <Box sx={{ minHeight: "100vh" }}>
@@ -37,8 +36,10 @@ const ManageReports = () => {
         />
 
         <Flex
-          py={3}
+          pt={[3, 2]}
+          pb={2}
           sx={{
+            minHeight: [133, 66],
             flexDirection: ["column", "row"],
             alignItems: ["start", "baseline"],
           }}
@@ -53,29 +54,31 @@ const ManageReports = () => {
             color="textMediumEmphasis"
             sx={{ fontSize: 0 }}
           >
-            {report.data?.periodStart?.format("DD MMMM YYYY")} -{" "}
+            {report.data?.periodStart?.format("DD MMMM YYYY - ")}
             {report.data?.periodEnd?.format("DD MMMM YYYY")}
           </Text>
 
-          <Flex
-            mt={[3, 0]}
-            sx={{ width: ["100%", "auto"], alignItems: "center" }}
-          >
-            <Text
-              ml={3}
-              color="textMediumEmphasis"
-              sx={{ fontSize: 0, display: "block" }}
-              mr="auto"
+          {report.data && (
+            <Flex
+              mt={[3, 0]}
+              sx={{ width: ["100%", "auto"], alignItems: "center" }}
             >
-              <Trans>
-                0 out of {report.data?.studentsReports?.length} done
-              </Trans>
-            </Text>
+              <Text
+                pr={3}
+                m={3}
+                color="textMediumEmphasis"
+                sx={{ fontSize: 0, display: "block" }}
+                mr="auto"
+              >
+                <Trans>
+                  0 out of {report.data?.studentsReports?.length} done
+                </Trans>
+              </Text>
 
-            <Button mx={3} onClick={publishConfirmation.show}>
-              <Trans>Publish</Trans>
-            </Button>
-          </Flex>
+              {report.data.published && <UnPublishButton reportId={reportId} />}
+              {!report.data.published && <PublishButton reportId={reportId} />}
+            </Flex>
+          )}
         </Flex>
       </TranslucentBar>
 
@@ -94,13 +97,6 @@ const ManageReports = () => {
             classes={classes}
           />
         ))}
-
-      {publishConfirmation.visible && (
-        <PublishReportConfirmationModal
-          onClose={publishConfirmation.hide}
-          onPublishReport={() => {}}
-        />
-      )}
     </Box>
   )
 }
@@ -182,19 +178,86 @@ const Student: FC<{
   </Link>
 )
 
-const PublishReportConfirmationModal: FC<{
-  onPublishReport: () => void
-  onClose: () => void
-}> = ({ onClose, onPublishReport }) => {
+const UnPublishButton: FC<{
+  reportId: string
+}> = ({ reportId }) => {
   const { i18n } = useLingui()
+  const patchReport = usePostReportPublished(reportId)
+  const confirmationDialog = useVisibilityState()
+
+  const handlePublish = async () => {
+    await patchReport.mutate({
+      published: false,
+    })
+    confirmationDialog.hide()
+  }
 
   return (
-    <AlertDialog
-      title={i18n._(t`Publish report?`)}
-      body={i18n._(t`This will publish report to parents / guardians.`)}
-      onPositiveClick={onPublishReport}
-      onNegativeClick={onClose}
-    />
+    <>
+      <Button
+        mr={3}
+        onClick={confirmationDialog.show}
+        sx={{
+          backgroundColor: "danger",
+          color: "onDanger",
+          "&:hover": {
+            backgroundColor: "danger",
+          },
+          "&:focus": {
+            backgroundColor: "danger",
+          },
+        }}
+      >
+        <Trans>Unpublish</Trans>
+      </Button>
+      {confirmationDialog.visible && (
+        <AlertDialog
+          title={i18n._(t`Unpublish report?`)}
+          body={i18n._(
+            t`Parents / guardians will be unable to see these report anymore.`
+          )}
+          positiveText={i18n._(t`Unpublish`)}
+          onPositiveClick={handlePublish}
+          onNegativeClick={confirmationDialog.hide}
+        />
+      )}
+    </>
+  )
+}
+
+const PublishButton: FC<{
+  reportId: string
+}> = ({ reportId }) => {
+  const { i18n } = useLingui()
+  const patchReport = usePostReportPublished(reportId)
+  const confirmationDialog = useVisibilityState()
+
+  const handlePublish = async () => {
+    await patchReport.mutate({
+      published: true,
+    })
+    confirmationDialog.hide()
+  }
+
+  return (
+    <>
+      <Button mr={3} onClick={confirmationDialog.show}>
+        <Trans>Publish</Trans>
+      </Button>
+
+      {confirmationDialog.visible && (
+        <AlertDialog
+          title={i18n._(t`Publish report?`)}
+          body={i18n._(
+            // TODO: add learn more link to doc later.
+            t`This will publish report to parents / guardians. Observations and assessments included in these reports will be frozen.`
+          )}
+          positiveText={i18n._(t`Publish`)}
+          onPositiveClick={handlePublish}
+          onNegativeClick={confirmationDialog.hide}
+        />
+      )}
+    </>
   )
 }
 

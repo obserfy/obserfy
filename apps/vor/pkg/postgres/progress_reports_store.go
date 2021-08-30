@@ -65,6 +65,7 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 		PeriodStart:     report.PeriodStart,
 		PeriodEnd:       report.PeriodEnd,
 		StudentsReports: studentReports,
+		Published:       report.Published,
 	}, nil
 }
 
@@ -128,18 +129,21 @@ func (s ProgressReportsStore) UpdateReport(id uuid.UUID, published bool) (domain
 	data.AddBooleanColumn("published", &published)
 
 	if _, err := s.Model(data.GetModel()).
-		TableExpr("progress_report").
+		TableExpr("progress_reports").
 		Where("id = ?", id).
 		Update(); err != nil {
 		return domain.ProgressReport{}, richErrors.Wrap(err, "failed to update progress report")
 	}
 
-	report := domain.ProgressReport{Id: id}
+	report := ProgressReport{Id: id}
 	if err := s.Model(&report).
-		WherePK().
+		Where("id = ?", id).
 		Select(); err != nil {
 		return domain.ProgressReport{}, richErrors.Wrap(err, "failed to find report")
 	}
 
-	return report, nil
+	return domain.ProgressReport{
+		Id:        id,
+		Published: report.Published,
+	}, nil
 }
