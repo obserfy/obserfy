@@ -88,13 +88,14 @@ const ManageReports = () => {
 
       {report.data?.studentsReports
         ?.filter(({ student }) => student.name.match(new RegExp(search, "i")))
-        ?.map(({ student: { id, name, classes } }) => (
+        ?.map(({ ready, student: { id, name, classes } }) => (
           <Student
             key={id}
             reportId={reportId}
             studentId={id}
             name={name}
             classes={classes}
+            ready={ready}
           />
         ))}
     </Box>
@@ -107,7 +108,8 @@ const Student: FC<{
   studentId: string
   name: string
   classes: Class[]
-}> = ({ image, name, reportId, studentId, classes }) => (
+  ready: boolean
+}> = ({ image, name, reportId, studentId, classes, ready }) => (
   <Link
     to={STUDENT_REPORT_URL(reportId, studentId)}
     sx={{
@@ -167,13 +169,13 @@ const Student: FC<{
           mr: "8px",
           width: "6px",
           height: "6px",
-          backgroundColor: "red",
+          backgroundColor: ready ? "primaryDark" : "red",
           borderRadius: "circle",
           color: "textMediumEmphasis",
         }}
       />
 
-      <Text sx={{ fontSize: 0 }}>Empty</Text>
+      <Text sx={{ fontSize: 0 }}>{ready ? "Ready" : "Empty"}</Text>
     </Flex>
   </Link>
 )
