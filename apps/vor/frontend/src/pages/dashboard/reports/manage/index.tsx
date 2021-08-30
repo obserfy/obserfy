@@ -1,8 +1,10 @@
 import { t, Trans } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import { FC, useState } from "react"
 import { Box, Button, Flex, Image, Text } from "theme-ui"
 import { Class } from "../../../../__generated__/models"
 import { borderBottom, borderFull } from "../../../../border"
+import AlertDialog from "../../../../components/AlertDialog/AlertDialog"
 import { Link } from "../../../../components/Link/Link"
 import SearchBar from "../../../../components/SearchBar/SearchBar"
 import SEO from "../../../../components/seo"
@@ -11,12 +13,15 @@ import TopBar, { breadCrumb } from "../../../../components/TopBar/TopBar"
 import TranslucentBar from "../../../../components/TranslucentBar/TranslucentBar"
 import useGetReport from "../../../../hooks/api/reports/useGetProgressReport"
 import { useQueryString } from "../../../../hooks/useQueryString"
+import useVisibilityState from "../../../../hooks/useVisibilityState"
 import { ALL_REPORT_URL, STUDENT_REPORT_URL } from "../../../../routes"
 
 const ManageReports = () => {
   const reportId = useQueryString("reportId")
   const report = useGetReport(reportId)
   const [search, setSearch] = useState("")
+
+  const publishConfirmation = useVisibilityState()
 
   return (
     <Box sx={{ minHeight: "100vh" }}>
@@ -67,7 +72,7 @@ const ManageReports = () => {
               </Trans>
             </Text>
 
-            <Button mx={3}>
+            <Button mx={3} onClick={publishConfirmation.show}>
               <Trans>Publish</Trans>
             </Button>
           </Flex>
@@ -89,6 +94,13 @@ const ManageReports = () => {
             classes={classes}
           />
         ))}
+
+      {publishConfirmation.visible && (
+        <PublishReportConfirmationModal
+          onClose={publishConfirmation.hide}
+          onPublishReport={() => {}}
+        />
+      )}
     </Box>
   )
 }
@@ -169,5 +181,21 @@ const Student: FC<{
     </Flex>
   </Link>
 )
+
+const PublishReportConfirmationModal: FC<{
+  onPublishReport: () => void
+  onClose: () => void
+}> = ({ onClose, onPublishReport }) => {
+  const { i18n } = useLingui()
+
+  return (
+    <AlertDialog
+      title={i18n._(t`Publish report?`)}
+      body={i18n._(t`This will publish report to parents / guardians.`)}
+      onPositiveClick={onPublishReport}
+      onNegativeClick={onClose}
+    />
+  )
+}
 
 export default ManageReports
