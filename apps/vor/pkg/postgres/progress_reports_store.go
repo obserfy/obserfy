@@ -149,8 +149,8 @@ func (s ProgressReportsStore) UpdateReport(id uuid.UUID, published bool) (domain
 	}, nil
 }
 
-func (s ProgressReportsStore) FindReportByIdAndUserId(reportId uuid.UUID, userId string) (domain.ProgressReport, error) {
-	report := ProgressReport{Id: reportId}
+func (s ProgressReportsStore) FindUserByUserIdAndRelationToReport(reportId uuid.UUID, userId string) (domain.User, error) {
+	var report ProgressReport
 	if err := s.Model(&report).
 		Relation("School").
 		Relation("School.Users", func(q *orm.Query) (*orm.Query, error) {
@@ -158,8 +158,12 @@ func (s ProgressReportsStore) FindReportByIdAndUserId(reportId uuid.UUID, userId
 		}).
 		Where("progress_report.id = ?", reportId).
 		Select(); err != nil {
-		return domain.ProgressReport{}, richErrors.Wrap(err, "failed to find report by report and user id")
+		return domain.User{}, richErrors.Wrap(err, "failed to find report by report and user id")
 	}
 
-	return domain.ProgressReport{Id: report.Id}, nil
+	if len(report.School.Users) == 1 {
+		return domain.User{Id: report.School.Users[0].Id}, nil
+	}
+
+	return domain.User{}, nil
 }

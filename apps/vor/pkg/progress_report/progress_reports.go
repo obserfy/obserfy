@@ -1,4 +1,4 @@
-package reports
+package progress_report
 
 import (
 	"github.com/chrsep/vor/pkg/auth"
@@ -41,14 +41,22 @@ func authorizationMiddleware(s rest.Server, store postgres.ProgressReportsStore)
 				return auth.NewGetSessionError()
 			}
 
-			_, err = store.FindReportByIdAndUserId(reportId, session.UserId)
+			user, err := store.FindUserByUserIdAndRelationToReport(reportId, session.UserId)
 			if err != nil {
 				return &rest.Error{
-					Code:    http.StatusNotFound,
-					Message: "Report not found",
+					Code:    http.StatusInternalServerError,
+					Message: "failed to find report",
 					Error:   err,
 				}
 
+			}
+
+			if user.Id != session.UserId {
+				return &rest.Error{
+					Code:    http.StatusNotFound,
+					Message: "user is not related to report",
+					Error:   err,
+				}
 			}
 
 			next.ServeHTTP(w, r)
