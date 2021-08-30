@@ -20800,7 +20800,14 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"make-plural@npm:6.2.2, make-plural@npm:^6.2.2":
+"make-plural@npm:7.0.0":
+  version: 7.0.0
+  resolution: "make-plural@npm:7.0.0"
+  checksum: 6dc2069675c61ed960eeffd81bf22363bcaf2775ae2f5cb3f25f4be58e98208da8534354dec605787928a2dfbd61492dafd7310e2c5c03c0952e797b8ac86549
+  languageName: node
+  linkType: hard
+
+"make-plural@npm:^6.2.2":
   version: 6.2.2
   resolution: "make-plural@npm:6.2.2"
   checksum: 3358330c113e4586f8874a37f3ad613cd7c898ff9a0ae61d029dfbdce042ad0f76e88909464c5514be81166b842005913e58341e77f7b6378a2020630dcfc613
@@ -30608,7 +30615,7 @@ typescript@4.3.5:
     jest: 27.1.0
     jest-date-mock: 1.0.8
     jest-fetch-mock: 3.0.3
-    make-plural: 6.2.2
+    make-plural: 7.0.0
     mux-embed: 4.1.1
     nanoid: 3.1.25
     npm-run-all: 4.1.5
