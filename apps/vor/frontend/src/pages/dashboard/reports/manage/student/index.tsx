@@ -246,7 +246,8 @@ const GeneralCommentEditor: FC = () => {
   return (
     <Box
       px={[0, 3]}
-      py={3}
+      pt={3}
+      pb={6}
       sx={{ width: "100%", top: 0, position: ["relative", "sticky"] }}
     >
       <Box
