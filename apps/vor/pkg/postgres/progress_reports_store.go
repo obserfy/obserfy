@@ -122,3 +122,24 @@ func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentI
 		},
 	}, nil
 }
+
+func (s ProgressReportsStore) UpdateReport(id uuid.UUID, published bool) (domain.ProgressReport, error) {
+	data := make(PartialUpdateModel)
+	data.AddBooleanColumn("published", &published)
+
+	if _, err := s.Model(data.GetModel()).
+		TableExpr("progress_report").
+		Where("id = ?", id).
+		Update(); err != nil {
+		return domain.ProgressReport{}, richErrors.Wrap(err, "failed to update progress report")
+	}
+
+	report := domain.ProgressReport{Id: id}
+	if err := s.Model(&report).
+		WherePK().
+		Select(); err != nil {
+		return domain.ProgressReport{}, richErrors.Wrap(err, "failed to find report")
+	}
+
+	return report, nil
+}
