@@ -396,8 +396,8 @@ msgstr "Do you want to remove {name} from  {studentName}'s list of guardians?"
 #~ msgstr "Akses Awal"
 
 #: src/components/PageAllReports/EmptyPlaceholder.tsx:44
-msgid "Easily write reports for parents with all the data that you need in one place."
-msgstr "Easily write reports for parents with all the data that you need in one place."
+msgid "Easily write progress_report for parents with all the data that you need in one place."
+msgstr "Easily write progress_report for parents with all the data that you need in one place."
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:105
 msgid "Edit"
@@ -1433,8 +1433,8 @@ msgid "Write"
 msgstr "Write"
 
 #: src/components/PageAllReports/EmptyPlaceholder.tsx:33
-msgid "Write progress reports"
-msgstr "Write progress reports"
+msgid "Write progress progress_report"
+msgstr "Write progress progress_report"
 
 #: src/components/PageObservationDetails/DetailsCard.tsx:38
 #~ msgid "Write something"

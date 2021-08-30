@@ -3,6 +3,7 @@ package postgres
 import (
 	"github.com/chrsep/vor/pkg/domain"
 	"github.com/go-pg/pg/v10"
+	"github.com/go-pg/pg/v10/orm"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
 )
@@ -146,4 +147,23 @@ func (s ProgressReportsStore) UpdateReport(id uuid.UUID, published bool) (domain
 		Id:        id,
 		Published: report.Published,
 	}, nil
+}
+
+func (s ProgressReportsStore) FindUserByUserIdAndRelationToReport(reportId uuid.UUID, userId string) (domain.User, error) {
+	var report ProgressReport
+	if err := s.Model(&report).
+		Relation("School").
+		Relation("School.Users", func(q *orm.Query) (*orm.Query, error) {
+			return q.Where("user_id = ?", userId), nil
+		}).
+		Where("progress_report.id = ?", reportId).
+		Select(); err != nil {
+		return domain.User{}, richErrors.Wrap(err, "failed to find report by report and user id")
+	}
+
+	if len(report.School.Users) == 1 {
+		return domain.User{Id: report.School.Users[0].Id}, nil
+	}
+
+	return domain.User{}, nil
 }

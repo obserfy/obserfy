@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-type report struct {
+type progressReport struct {
 	Id                uuid.UUID `pg:"type:uuid"`
 	Title             string    `json:"title"`
 	PeriodStart       time.Time `json:"periodStart"`
@@ -27,7 +27,7 @@ func (s *SchoolTestSuite) TestGetReport() {
 		s.GenerateReport(school),
 	}
 
-	var response []report
+	var response []progressReport
 	result := s.ApiTest(testutils.ApiMetadata{
 		Method:   "GET",
 		Path:     "/" + school.Id + "/progress-reports",
@@ -47,7 +47,7 @@ func (s *SchoolTestSuite) TestCreateDefaultReport() {
 	s.GenerateStudent(school)
 	s.GenerateStudent(school)
 
-	var request = report{
+	var request = progressReport{
 		Title:             gofakeit.UUID(),
 		PeriodStart:       gofakeit.Date(),
 		PeriodEnd:         gofakeit.Date(),
@@ -84,7 +84,7 @@ func (s *SchoolTestSuite) TestCreateReportWithCustomStudents() {
 		s.GenerateStudent(school).Id,
 	}
 
-	var request = report{
+	var request = progressReport{
 		Title:             gofakeit.UUID(),
 		PeriodStart:       gofakeit.Date(),
 		PeriodEnd:         gofakeit.Date(),
@@ -121,7 +121,7 @@ func (s *SchoolTestSuite) TestStudentsListIgnoredWhenCustomizeStudentsFalse() {
 		s.GenerateStudent(school).Id,
 	}
 
-	var request = report{
+	var request = progressReport{
 		Title:             gofakeit.UUID(),
 		PeriodStart:       gofakeit.Date(),
 		PeriodEnd:         gofakeit.Date(),

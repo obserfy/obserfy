@@ -6,7 +6,7 @@ import (
 	"github.com/chrsep/vor/pkg/links"
 	"github.com/chrsep/vor/pkg/mux"
 	"github.com/chrsep/vor/pkg/paddle"
-	"github.com/chrsep/vor/pkg/reports"
+	"github.com/chrsep/vor/pkg/progress_report"
 	"github.com/chrsep/vor/pkg/videos"
 	richErrors "github.com/pkg/errors"
 	"log"
@@ -130,7 +130,7 @@ func runServer() error {
 		r.Mount("/links", links.NewRouter(server, linksStore))
 		r.Mount("/exports", exports.NewRouter(server, exportsStore))
 		r.Mount("/videos", videos.NewRouter(server, videoStore, videoService))
-		r.Mount("/progress-reports", reports.NewRouter(server, progressReportStore))
+		r.Mount("/progress-reports", progress_report.NewRouter(server, progressReportStore))
 	})
 
 	// Serve gatsby static frontend assets

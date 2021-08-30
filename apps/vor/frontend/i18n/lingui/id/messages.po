@@ -401,7 +401,7 @@ msgstr "Apa anda ingin menghapis {name} dari daftar wali murid {studentName}?"
 #~ msgstr "Akses Awal"
 
 #: src/components/PageAllReports/EmptyPlaceholder.tsx:44
-msgid "Easily write reports for parents with all the data that you need in one place."
+msgid "Easily write progress_report for parents with all the data that you need in one place."
 msgstr ""
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:105
@@ -1430,7 +1430,7 @@ msgid "Write"
 msgstr ""
 
 #: src/components/PageAllReports/EmptyPlaceholder.tsx:33
-msgid "Write progress reports"
+msgid "Write progress progress_report"
 msgstr ""
 
 #: src/components/PageObservationDetails/DetailsCard.tsx:38
