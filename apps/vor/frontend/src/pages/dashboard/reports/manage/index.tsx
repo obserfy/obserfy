@@ -88,15 +88,25 @@ const ManageReports = () => {
 
       {report.data?.studentsReports
         ?.filter(({ student }) => student.name.match(new RegExp(search, "i")))
-        ?.map(({ student: { id, name, classes } }) => (
-          <Student
-            key={id}
-            reportId={reportId}
-            studentId={id}
-            name={name}
-            classes={classes}
-          />
-        ))}
+        ?.map(
+          ({
+            ready,
+            areaComments,
+            generalComments,
+            student: { id, name, classes },
+          }) => (
+            <Student
+              key={id}
+              reportId={reportId}
+              studentId={id}
+              name={name}
+              classes={classes}
+              ready={ready}
+              generalComments={generalComments}
+              areaComments={areaComments}
+            />
+          )
+        )}
     </Box>
   )
 }
@@ -107,76 +117,103 @@ const Student: FC<{
   studentId: string
   name: string
   classes: Class[]
-}> = ({ image, name, reportId, studentId, classes }) => (
-  <Link
-    to={STUDENT_REPORT_URL(reportId, studentId)}
-    sx={{
-      width: "100%",
-      display: "flex",
-      alignItems: "center",
-      ...borderBottom,
-      "&:hover": {
-        backgroundColor: "primaryLightest",
-      },
-    }}
-  >
-    {image ? (
-      <Image src={image} sx={{ ml: 3, width: 24, flexShrink: 0 }} />
-    ) : (
-      <StudentPicturePlaceholder sx={{ ml: 3, width: 24, flexShrink: 0 }} />
-    )}
+  ready: boolean
+  generalComments: string
+  areaComments: object[]
+}> = ({
+  image,
+  name,
+  reportId,
+  studentId,
+  classes,
+  ready,
+  generalComments = "",
+  areaComments,
+}) => {
+  const inProgress = generalComments !== "" && areaComments.length === 0
 
-    <Text mr="auto" p={3} className="truncate">
-      {name}
-    </Text>
+  let color = "red"
+  let text = "Empty"
+  if (inProgress) {
+    color = "yellow"
+    text = "In Progress"
+  }
+  if (ready) {
+    color = "primaryDark"
+    text = "Ready"
+  }
 
-    {classes?.map((c) => (
-      <Text
-        key={c.id}
+  return (
+    <Link
+      to={STUDENT_REPORT_URL(reportId, studentId)}
+      sx={{
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        ...borderBottom,
+        "&:hover": {
+          backgroundColor: "primaryLightest",
+        },
+      }}
+    >
+      {image ? (
+        <Image src={image} sx={{ ml: 3, width: 24, flexShrink: 0 }} />
+      ) : (
+        <StudentPicturePlaceholder sx={{ ml: 3, width: 24, flexShrink: 0 }} />
+      )}
+
+      <Text mr="auto" p={3} className="truncate">
+        {name}
+      </Text>
+
+      {classes?.map((c) => (
+        <Text
+          key={c.id}
+          mr={3}
+          color="textMediumEmphasis"
+          py={1}
+          px={2}
+          sx={{
+            ...borderFull,
+            fontSize: 0,
+            borderRadius: "circle",
+            backgroundColor: "background",
+            display: ["none", "block"],
+            flexShrink: 0,
+          }}
+        >
+          {c.name}
+        </Text>
+      ))}
+
+      <Flex
         mr={3}
-        color="textMediumEmphasis"
         py={1}
         px={2}
         sx={{
           ...borderFull,
-          fontSize: 0,
           borderRadius: "circle",
           backgroundColor: "background",
-          display: ["none", "block"],
+          alignItems: "center",
           flexShrink: 0,
         }}
       >
-        {c.name}
-      </Text>
-    ))}
+        <div
+          sx={{
+            mr: "8px",
+            width: "6px",
+            height: "6px",
+            backgroundColor: color,
+            borderRadius: "circle",
+            color: "textMediumEmphasis",
+          }}
+        />
 
-    <Flex
-      mr={3}
-      py={1}
-      px={2}
-      sx={{
-        ...borderFull,
-        borderRadius: "circle",
-        backgroundColor: "background",
-        alignItems: "center",
-        flexShrink: 0,
-      }}
-    >
-      <div
-        sx={{
-          mr: "8px",
-          width: "6px",
-          height: "6px",
-          backgroundColor: "red",
-          borderRadius: "circle",
-          color: "textMediumEmphasis",
-        }}
-      />
-
-      <Text sx={{ fontSize: 0 }}>Empty</Text>
-    </Flex>
-  </Link>
-)
+        <Text sx={{ fontSize: 0 }}>{text}</Text>
+      </Flex>
+    </Link>
+  )
+}
 
 const UnPublishButton: FC<{
   reportId: string
