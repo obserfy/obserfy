@@ -1,6 +1,7 @@
 package reports
 
 import (
+	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
@@ -11,13 +12,49 @@ import (
 func NewRouter(s rest.Server, store postgres.ProgressReportsStore) *chi.Mux {
 	r := chi.NewRouter()
 
-	r.Method("GET", "/{reportId}", getReport(s, store))
-	r.Method("POST", "/{reportId}/published", updateReportPublished(s, store))
+	r.Route("/{reportId}", func(r chi.Router) {
+		r.Use(authorizationMiddleware(s, store))
+		r.Method("GET", "/", getReport(s, store))
+		r.Method("POST", "/published", updateReportPublished(s, store))
 
-	r.Method("GET", "/{reportId}/students/{studentId}", getStudentReport(s, store))
-	r.Method("PATCH", "/{reportId}/students/{studentId}", patchStudentReport(s, store))
+		r.Method("GET", "/students/{studentId}", getStudentReport(s, store))
+		r.Method("PATCH", "/students/{studentId}", patchStudentReport(s, store))
+	})
 
 	return r
+}
+
+func authorizationMiddleware(s rest.Server, store postgres.ProgressReportsStore) func(next http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+			reportId, err := uuid.Parse(chi.URLParam(r, "reportId"))
+			if err != nil {
+				return &rest.Error{
+					Code:    http.StatusNotFound,
+					Message: "can't find the given report",
+					Error:   err,
+				}
+			}
+
+			session, ok := auth.GetSessionFromCtx(r.Context())
+			if !ok {
+				return auth.NewGetSessionError()
+			}
+
+			_, err = store.FindReportByIdAndUserId(reportId, session.UserId)
+			if err != nil {
+				return &rest.Error{
+					Code:    http.StatusNotFound,
+					Message: "Report not found",
+					Error:   err,
+				}
+
+			}
+
+			next.ServeHTTP(w, r)
+			return nil
+		})
+	}
 }
 
 func updateReportPublished(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
@@ -25,10 +62,7 @@ func updateReportPublished(s rest.Server, store postgres.ProgressReportsStore) r
 		Published bool `json:"published"`
 	}
 	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
-		reportId, err := uuid.Parse(r.GetParam("reportId"))
-		if err != nil {
-			return s.NotFound()
-		}
+		reportId, _ := uuid.Parse(r.GetParam("reportId"))
 
 		var body requestBody
 		if err := rest.ParseJson(r.Body, &body); err != nil {
@@ -51,10 +85,7 @@ func updateReportPublished(s rest.Server, store postgres.ProgressReportsStore) r
 
 func getReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
 	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
-		id, err := uuid.Parse(r.GetParam("reportId"))
-		if err != nil {
-			return s.NotFound()
-		}
+		id, _ := uuid.Parse(r.GetParam("reportId"))
 
 		report, err := store.FindReportById(id)
 		if err != nil {
@@ -108,10 +139,7 @@ func patchStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest
 		Ready bool `json:"ready"`
 	}
 	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
-		reportId, err := uuid.Parse(r.GetParam("reportId"))
-		if err != nil {
-			return s.NotFound()
-		}
+		reportId, _ := uuid.Parse(r.GetParam("reportId"))
 		studentId, err := uuid.Parse(r.GetParam("studentId"))
 		if err != nil {
 			return s.NotFound()
@@ -137,10 +165,7 @@ func patchStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest
 
 func getStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
 	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
-		reportId, err := uuid.Parse(r.GetParam("reportId"))
-		if err != nil {
-			return s.NotFound()
-		}
+		reportId, _ := uuid.Parse(r.GetParam("reportId"))
 		studentId, err := uuid.Parse(r.GetParam("studentId"))
 		if err != nil {
 			return s.NotFound()
