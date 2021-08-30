@@ -1812,7 +1812,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/request@npm:^2.88.5":
+"@cypress/request@npm:^2.88.6":
   version: 2.88.6
   resolution: "@cypress/request@npm:2.88.6"
   dependencies:
@@ -11707,11 +11707,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:8.3.0":
-  version: 8.3.0
-  resolution: "cypress@npm:8.3.0"
+"cypress@npm:8.3.1":
+  version: 8.3.1
+  resolution: "cypress@npm:8.3.1"
   dependencies:
-    "@cypress/request": ^2.88.5
+    "@cypress/request": ^2.88.6
     "@cypress/xvfb": ^1.2.4
     "@types/node": ^14.14.31
     "@types/sinonjs__fake-timers": ^6.0.2
@@ -11754,7 +11754,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: acffc5ee3a347c3dc0989b43509f1d56ef2089aab6d8a2a8087f91dd93fd81d86939fa71a6df4a6690014385650e24599777bc5513c66ef7acfe34e6733dc4d6
+  checksum: fc2b3500b43a27f8a9c9ed421739147b4722b017d745068c7cdb76d576126576aac9e218769992cfb4ed32b591fb1e2b6c7d16f589597b4971c4ae60ec5149fa
   languageName: node
   linkType: hard
 
@@ -30569,7 +30569,7 @@ typescript@4.3.5:
     chromatic: 5.9.2
     core-js: 3.16.3
     cross-env: 7.0.3
-    cypress: 8.3.0
+    cypress: 8.3.1
     dayjs: 1.10.6
     dompurify: 2.3.1
     dotenv: 10.0.0
