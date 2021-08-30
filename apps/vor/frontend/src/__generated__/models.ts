@@ -73,4 +73,5 @@ export interface ProgressReport {
   periodEnd: string
   school?: School
   studentsReports: StudentReport[]
+  published: boolean
 }

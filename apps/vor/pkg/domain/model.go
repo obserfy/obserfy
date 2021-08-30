@@ -196,6 +196,7 @@ type (
 		PeriodEnd       time.Time
 		School          School
 		StudentsReports []StudentReport
+		Published       bool
 	}
 
 	StudentReport struct {
