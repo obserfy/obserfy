@@ -1602,7 +1602,7 @@ exports[`PageNewStudent should render correctly 1`] = `
       <button
         class="emotion-65"
       >
-        Ulang Formulir
+        Reset Form
       </button>
     </div>
   </div>
