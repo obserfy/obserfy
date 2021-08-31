@@ -230,7 +230,7 @@ const Student: FC<{
     <Link
       to={STUDENT_REPORT_URL(reportId, studentId)}
       sx={{
-        py: "10px",
+        height: "48px",
         width: "100%",
         display: "flex",
         alignItems: "center",
