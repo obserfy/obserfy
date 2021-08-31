@@ -11,7 +11,13 @@ import useInitAnalytics from "../hooks/useInitAnalytics"
 import { initSentry } from "../utils/sentry"
 
 initSentry()
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      notifyOnChangeProps: "tracked",
+    },
+  },
+})
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   useInitAnalytics()

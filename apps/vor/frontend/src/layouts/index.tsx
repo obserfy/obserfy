@@ -5,7 +5,13 @@ import { Box, useColorMode, useThemeUI } from "theme-ui"
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary"
 import Layout from "../components/Layout/Layout"
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      notifyOnChangeProps: "tracked",
+    },
+  },
+})
 
 // Used by gatsby-plugin-layout
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
