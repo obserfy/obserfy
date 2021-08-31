@@ -185,7 +185,7 @@ const EditReportSidebar: FC<{ open: boolean; onClose: () => void }> = ({
             <Trans>Report Details</Trans>
           </Text>
 
-          <Button variant="secondary" ml={"auto"} p={2} onClick={onClose}>
+          <Button variant="secondary" ml="auto" p={2} onClick={onClose}>
             <Icon as={CloseIcon} size={18} />
           </Button>
         </Flex>
@@ -230,6 +230,7 @@ const Student: FC<{
     <Link
       to={STUDENT_REPORT_URL(reportId, studentId)}
       sx={{
+        py: "10px",
         width: "100%",
         display: "flex",
         alignItems: "center",
@@ -240,22 +241,22 @@ const Student: FC<{
       }}
     >
       {image ? (
-        <Image src={image} sx={{ ml: 3, width: 24, flexShrink: 0 }} />
+        <Image src={image} sx={{ ml: 3, width: 18, flexShrink: 0 }} />
       ) : (
-        <StudentPicturePlaceholder sx={{ ml: 3, width: 24, flexShrink: 0 }} />
+        <StudentPicturePlaceholder sx={{ ml: 3, width: 18, flexShrink: 0 }} />
       )}
 
-      <Text mr="auto" p={3} className="truncate">
+      <Text mr="auto" px={3} className="truncate">
         {name}
       </Text>
 
       {classes?.map((c) => (
         <Text
           key={c.id}
-          mr={3}
+          mr={2}
           color="textMediumEmphasis"
           py={1}
-          px={2}
+          px="10px"
           sx={{
             ...borderFull,
             fontSize: 0,
@@ -272,7 +273,7 @@ const Student: FC<{
       <Flex
         mr={3}
         py={1}
-        px={2}
+        px="10px"
         sx={{
           ...borderFull,
           borderRadius: "circle",
