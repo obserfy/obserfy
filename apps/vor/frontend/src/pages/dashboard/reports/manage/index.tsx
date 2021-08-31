@@ -5,6 +5,7 @@ import { Box, Button, Flex, Image, Text } from "theme-ui"
 import { Class } from "../../../../__generated__/models"
 import { borderBottom, borderFull } from "../../../../border"
 import AlertDialog from "../../../../components/AlertDialog/AlertDialog"
+import Icon from "../../../../components/Icon/Icon"
 import { Link } from "../../../../components/Link/Link"
 import SearchBar from "../../../../components/SearchBar/SearchBar"
 import SEO from "../../../../components/seo"
@@ -15,12 +16,18 @@ import useGetReport from "../../../../hooks/api/reports/useGetProgressReport"
 import usePostReportPublished from "../../../../hooks/api/reports/usePostReportPublished"
 import { useQueryString } from "../../../../hooks/useQueryString"
 import useVisibilityState from "../../../../hooks/useVisibilityState"
+import { ReactComponent as EditIcon } from "../../../../icons/edit.svg"
 import { ALL_REPORT_URL, STUDENT_REPORT_URL } from "../../../../routes"
 
 const ManageReports = () => {
   const reportId = useQueryString("reportId")
-  const report = useGetReport(reportId)
+  const { data: report } = useGetReport(reportId)
   const [search, setSearch] = useState("")
+
+  let reportsDone = 0
+  report?.studentsReports.forEach(({ ready }) => {
+    if (ready) reportsDone += 1
+  })
 
   return (
     <Box sx={{ minHeight: "100vh" }}>
@@ -31,7 +38,7 @@ const ManageReports = () => {
           containerSx={{ ...borderBottom }}
           breadcrumbs={[
             breadCrumb(t`Progress Reports`, ALL_REPORT_URL),
-            breadCrumb(report.data?.title),
+            breadCrumb(report?.title),
           ]}
         />
 
@@ -45,7 +52,7 @@ const ManageReports = () => {
           }}
         >
           <Text ml={3} pb={[1, 0]} sx={{ fontWeight: "bold" }}>
-            {report.data?.title}
+            {report?.title}
           </Text>
 
           <Text
@@ -54,11 +61,11 @@ const ManageReports = () => {
             color="textMediumEmphasis"
             sx={{ fontSize: 0 }}
           >
-            {report.data?.periodStart?.format("DD MMMM YYYY - ")}
-            {report.data?.periodEnd?.format("DD MMMM YYYY")}
+            {report?.periodStart?.format("DD MMMM YYYY - ")}
+            {report?.periodEnd?.format("DD MMMM YYYY")}
           </Text>
 
-          {report.data && (
+          {report && (
             <Flex
               mt={[3, 0]}
               sx={{ width: ["100%", "auto"], alignItems: "center" }}
@@ -71,12 +78,16 @@ const ManageReports = () => {
                 mr="auto"
               >
                 <Trans>
-                  0 out of {report.data?.studentsReports?.length} done
+                  {reportsDone} out of {report?.studentsReports?.length} done
                 </Trans>
               </Text>
 
-              {report.data.published && <UnPublishButton reportId={reportId} />}
-              {!report.data.published && <PublishButton reportId={reportId} />}
+              <Button variant="outline" mr={3} p={2}>
+                <Icon as={EditIcon} size={18} />
+              </Button>
+
+              {report.published && <UnPublishButton reportId={reportId} />}
+              {!report.published && <PublishButton reportId={reportId} />}
             </Flex>
           )}
         </Flex>
@@ -86,7 +97,7 @@ const ManageReports = () => {
         <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
       </Flex>
 
-      {report.data?.studentsReports
+      {report?.studentsReports
         ?.filter(({ student }) => student.name.match(new RegExp(search, "i")))
         ?.map(
           ({
