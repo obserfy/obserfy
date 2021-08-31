@@ -1063,7 +1063,7 @@ msgstr "Reports"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:55
 msgid "Reset Form"
-msgstr "Ulang Formulir"
+msgstr "Reset Form"
 
 #: src/pages/reset-password.tsx:20
 msgid "Reset Password"
