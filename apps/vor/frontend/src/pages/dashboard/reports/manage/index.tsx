@@ -3,10 +3,11 @@ import { useLingui } from "@lingui/react"
 import { FC, useState } from "react"
 import { Box, Button, Flex, Image, Text } from "theme-ui"
 import { Class } from "../../../../__generated__/models"
-import { borderBottom, borderFull } from "../../../../border"
+import { borderBottom, borderFull, borderLeft } from "../../../../border"
 import AlertDialog from "../../../../components/AlertDialog/AlertDialog"
 import Icon from "../../../../components/Icon/Icon"
 import { Link } from "../../../../components/Link/Link"
+import Portal from "../../../../components/Portal/Portal"
 import SearchBar from "../../../../components/SearchBar/SearchBar"
 import SEO from "../../../../components/seo"
 import StudentPicturePlaceholder from "../../../../components/StudentPicturePlaceholder/StudentPicturePlaceholder"
@@ -16,13 +17,16 @@ import useGetReport from "../../../../hooks/api/reports/useGetProgressReport"
 import usePostReportPublished from "../../../../hooks/api/reports/usePostReportPublished"
 import { useQueryString } from "../../../../hooks/useQueryString"
 import useVisibilityState from "../../../../hooks/useVisibilityState"
+import { ReactComponent as CloseIcon } from "../../../../icons/close.svg"
 import { ReactComponent as EditIcon } from "../../../../icons/edit.svg"
 import { ALL_REPORT_URL, STUDENT_REPORT_URL } from "../../../../routes"
 
 const ManageReports = () => {
   const reportId = useQueryString("reportId")
   const { data: report } = useGetReport(reportId)
+
   const [search, setSearch] = useState("")
+  const [editReport, setEditReport] = useState(false)
 
   let reportsDone = 0
   report?.studentsReports.forEach(({ ready }) => {
@@ -82,7 +86,12 @@ const ManageReports = () => {
                 </Trans>
               </Text>
 
-              <Button variant="outline" mr={3} p={2}>
+              <Button
+                variant="outline"
+                mr={2}
+                p={2}
+                onClick={() => setEditReport(true)}
+              >
                 <Icon as={EditIcon} size={18} />
               </Button>
 
@@ -118,7 +127,70 @@ const ManageReports = () => {
             />
           )
         )}
+
+      <EditReportSidebar
+        open={editReport}
+        onClose={() => setEditReport(false)}
+      />
     </Box>
+  )
+}
+
+const EditReportSidebar: FC<{ open: boolean; onClose: () => void }> = ({
+  open,
+  onClose,
+}) => {
+  return (
+    <Portal>
+      <Box
+        onClick={onClose}
+        sx={{
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          position: "fixed",
+          backgroundColor: "black",
+          opacity: open ? 0.4 : 0,
+          zIndex: 900,
+          display: ["none", "block"],
+          pointerEvents: open ? undefined : "none",
+          transition: "ease-in-out 200ms opacity",
+        }}
+      />
+
+      <Flex
+        sx={{
+          ...borderLeft,
+          backgroundColor: "surface",
+          position: "fixed",
+          top: 0,
+          right: open ? 0 : ["-100%", -400],
+          bottom: 0,
+          width: ["100%", 400],
+          zIndex: 1000,
+          transition: "ease-in-out 120ms right",
+        }}
+      >
+        <Flex
+          px={3}
+          sx={{
+            ...borderBottom,
+            height: 48,
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Text sx={{ fontWeight: "bold", color: "textMediumEmphasis" }}>
+            <Trans>Report Details</Trans>
+          </Text>
+
+          <Button variant="secondary" ml={"auto"} p={2} onClick={onClose}>
+            <Icon as={CloseIcon} size={18} />
+          </Button>
+        </Flex>
+      </Flex>
+    </Portal>
   )
 }
 
