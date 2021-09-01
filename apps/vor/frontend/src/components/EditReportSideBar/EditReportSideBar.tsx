@@ -1,5 +1,6 @@
-import { Trans } from "@lingui/macro"
-import { FC } from "react"
+import { t, Trans } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
+import { FC, useState } from "react"
 import { Box, Button, Flex, Text } from "theme-ui"
 import { borderBottom, borderLeft } from "../../border"
 import { Dayjs } from "../../dayjs"
@@ -8,7 +9,10 @@ import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
+import Dialog from "../Dialog/Dialog"
+import DialogHeader from "../DialogHeader/DialogHeader"
 import Icon from "../Icon/Icon"
+import Input from "../Input/Input"
 import Portal from "../Portal/Portal"
 
 export interface EditReportSideBarProps {
@@ -85,7 +89,7 @@ const EditReportSideBar: FC<EditReportSideBarProps> = ({
           <Title>
             <Trans>Title</Trans>
           </Title>
-          <TitleField title={title} />
+          <TitleField reportId={reportId} value={title} />
         </Row>
 
         <Row>
@@ -107,14 +111,55 @@ const EditReportSideBar: FC<EditReportSideBarProps> = ({
 )
 
 const TitleField: FC<{
-  title: string
-}> = ({ title }) => {
+  reportId: string
+  value: string
+}> = ({ reportId, value }) => {
   const edit = useVisibilityState()
+  const patchReport = usePatchReport(reportId)
 
   return (
     <>
-      <Value onClick={edit.show}>{title}</Value>
+      <Value onClick={edit.show}>{value}</Value>
+      {edit.visible && (
+        <EditTitleDialog
+          defaultValue={value}
+          isLoading={patchReport.isLoading}
+          onClose={edit.hide}
+          onSubmit={async (title) => {
+            const result = await patchReport.mutateAsync({ title })
+            if (result?.ok) {
+              edit.hide()
+            }
+          }}
+        />
+      )}
     </>
+  )
+}
+
+const EditTitleDialog: FC<{
+  defaultValue: string
+  onSubmit: (value: string) => void
+  onClose: () => void
+  isLoading: boolean
+}> = ({ defaultValue, isLoading, onSubmit, onClose }) => {
+  const [value, setValue] = useState(defaultValue)
+  const { i18n } = useLingui()
+
+  return (
+    <Dialog>
+      <DialogHeader
+        title={i18n._(t`Report Title`)}
+        loading={isLoading}
+        onCancel={onClose}
+        onAccept={() => {
+          onSubmit(value)
+        }}
+      />
+      <Box p={3} sx={{ backgroundColor: "background" }}>
+        <Input value={value} onChange={(e) => setValue(e.target.value)} />
+      </Box>
+    </Dialog>
   )
 }
 
@@ -175,7 +220,7 @@ const PeriodEndField: FC<{
 }
 
 const Row: FC = ({ children }) => (
-  <Flex px={3} mb={3} sx={{ alignItems: "center" }}>
+  <Flex px={3} mb={3} sx={{ alignItems: "center", overflow: "hidden" }}>
     {children}
   </Flex>
 )
@@ -204,7 +249,6 @@ const Value: FC<{
     sx={{
       color: "text",
       textOverflow: "ellipsis",
-      overflow: "hidden",
     }}
   >
     {children}
