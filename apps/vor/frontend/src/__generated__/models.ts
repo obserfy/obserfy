@@ -1,5 +1,5 @@
 /* Do not change, this code is generated from Golang structs */
-
+// eslint-disable-next-line no-restricted-imports
 import { Dayjs } from "dayjs"
 
 export interface Weekday {

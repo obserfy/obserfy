@@ -11,6 +11,7 @@ describe("EditReportSideBar", () => {
         title="The end is nigh"
         onClose={() => {}}
         open
+        reportId="asdfasdfa"
       />
     )
     expect(container).toMatchSnapshot()
