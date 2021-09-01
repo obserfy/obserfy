@@ -7,6 +7,7 @@ import (
 	"github.com/go-chi/chi"
 	"github.com/google/uuid"
 	"net/http"
+	"time"
 )
 
 func NewRouter(s rest.Server, store postgres.ProgressReportsStore) *chi.Mux {
@@ -15,6 +16,7 @@ func NewRouter(s rest.Server, store postgres.ProgressReportsStore) *chi.Mux {
 	r.Route("/{reportId}", func(r chi.Router) {
 		r.Use(authorizationMiddleware(s, store))
 		r.Method("GET", "/", getReport(s, store))
+		r.Method("PATCH", "/", patchReport(s, store))
 		r.Method("POST", "/published", updateReportPublished(s, store))
 
 		r.Method("GET", "/students/{studentId}", getStudentReport(s, store))
@@ -65,32 +67,6 @@ func authorizationMiddleware(s rest.Server, store postgres.ProgressReportsStore)
 	}
 }
 
-func updateReportPublished(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
-	type requestBody struct {
-		Published bool `json:"published"`
-	}
-	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
-		reportId, _ := uuid.Parse(r.GetParam("reportId"))
-
-		var body requestBody
-		if err := rest.ParseJson(r.Body, &body); err != nil {
-			return s.BadRequest(err)
-		}
-
-		report, err := store.UpdateReport(reportId, body.Published)
-		if err != nil {
-			return s.InternalServerError(err)
-		}
-
-		return rest.ServerResponse{
-			Status: http.StatusOK,
-			Body: rest.H{
-				"published": report.Published,
-			},
-		}
-	})
-}
-
 func getReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
 	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
 		id, _ := uuid.Parse(r.GetParam("reportId"))
@@ -137,6 +113,63 @@ func getReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2
 				"periodEnd":       report.PeriodEnd,
 				"studentsReports": studentReports,
 				"published":       report.Published,
+			},
+		}
+	})
+}
+
+func patchReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
+	type requestBody struct {
+		Title       *string    `json:"title"`
+		PeriodStart *time.Time `json:"periodStart"`
+		PeriodEnd   *time.Time `json:"periodEnd"`
+	}
+	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
+		id, _ := uuid.Parse(r.GetParam("reportId"))
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return s.BadRequest(err)
+		}
+
+		report, err := store.UpdateReport(id, nil, body.Title, body.PeriodStart, body.PeriodEnd)
+		if err != nil {
+			return s.InternalServerError(err)
+		}
+
+		return rest.ServerResponse{
+			Body: rest.H{
+				"id":          report.Id,
+				"title":       report.Title,
+				"periodStart": report.PeriodStart,
+				"periodEnd":   report.PeriodEnd,
+				"published":   report.Published,
+			},
+		}
+	})
+}
+
+func updateReportPublished(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
+	type requestBody struct {
+		Published bool `json:"published"`
+	}
+	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
+		reportId, _ := uuid.Parse(r.GetParam("reportId"))
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return s.BadRequest(err)
+		}
+
+		report, err := store.UpdateReport(reportId, &body.Published, nil, nil, nil)
+		if err != nil {
+			return s.InternalServerError(err)
+		}
+
+		return rest.ServerResponse{
+			Status: http.StatusOK,
+			Body: rest.H{
+				"published": report.Published,
 			},
 		}
 	})

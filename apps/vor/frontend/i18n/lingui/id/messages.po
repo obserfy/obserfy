@@ -27,8 +27,8 @@ msgstr "\"{0}\" akan dihapus secara permanen. Apa anda yakin?"
 #~ msgstr "(Mulai dari 1 Jan 2021)"
 
 #: src/pages/dashboard/reports/manage/index.tsx:66
-msgid "0 out of {0} done"
-msgstr ""
+#~ msgid "0 out of {0} done"
+#~ msgstr ""
 
 #: src/components/DeleteClassDialog/DeleteClassDialog.tsx:77
 #: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:47
@@ -113,11 +113,12 @@ msgid "All Guardians"
 msgstr "Semua Wali Murid"
 
 #: src/components/PageNewReport/PageNewReport.tsx:82
-msgid "All Student"
-msgstr ""
+#~ msgid "All Student"
+#~ msgstr ""
 
 #: src/components/PageAdmin/PageAdmin.tsx:35
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:30
+#: src/components/PageNewReport/PageNewReport.tsx:93
 msgid "All Students"
 msgstr "Semua Murid"
 
@@ -176,7 +177,7 @@ msgid "Areas"
 msgstr "Bidang"
 
 #: src/components/PageStudentOverview/AssessmentCard.tsx:65
-#: src/pages/dashboard/reports/manage/student/index.tsx:290
+#: src/pages/dashboard/reports/manage/student/index.tsx:326
 msgid "Assessments"
 msgstr ""
 
@@ -195,7 +196,7 @@ msgid "Back to Billing"
 msgstr "Kembali ke Pembayaran"
 
 #: src/components/ObservationListItem/ObservationListItem.tsx:70
-#: src/pages/dashboard/reports/manage/student/index.tsx:379
+#: src/pages/dashboard/reports/manage/student/index.tsx:415
 msgid "By"
 msgstr "Oleh"
 
@@ -233,7 +234,7 @@ msgstr "Kelas"
 msgid "Classes"
 msgstr "Kelas"
 
-#: src/pages/dashboard/reports/manage/student/index.tsx:272
+#: src/pages/dashboard/reports/manage/student/index.tsx:308
 msgid "Comments on {0}"
 msgstr ""
 
@@ -241,7 +242,7 @@ msgstr ""
 msgid "Confirm Deletion"
 msgstr ""
 
-#: src/components/PageNewReport/PageNewReport.tsx:31
+#: src/components/PageNewReport/PageNewReport.tsx:52
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:152
 msgid "Create"
 msgstr "Buat"
@@ -298,7 +299,7 @@ msgid "Curriculum name"
 msgstr "Nama kurikulum"
 
 #: src/components/PageCurriculumSettings/SetupCurriculum.tsx:49
-#: src/components/PageNewReport/PageNewReport.tsx:86
+#: src/components/PageNewReport/PageNewReport.tsx:99
 msgid "Custom"
 msgstr "Kustom"
 
@@ -401,7 +402,11 @@ msgstr "Apa anda ingin menghapis {name} dari daftar wali murid {studentName}?"
 #~ msgstr "Akses Awal"
 
 #: src/components/PageAllReports/EmptyPlaceholder.tsx:44
-msgid "Easily write progress_report for parents with all the data that you need in one place."
+#~ msgid "Easily write progress_report for parents with all the data that you need in one place."
+#~ msgstr ""
+
+#: src/components/PageAllReports/EmptyPlaceholder.tsx:44
+msgid "Easily write reports for parents with all the data that you need in one place."
 msgstr ""
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:105
@@ -543,7 +548,7 @@ msgstr "Galeri"
 msgid "Gender"
 msgstr "Jenis Kelamin"
 
-#: src/pages/dashboard/reports/manage/student/index.tsx:231
+#: src/pages/dashboard/reports/manage/student/index.tsx:267
 msgid "General Comments"
 msgstr ""
 
@@ -626,9 +631,13 @@ msgstr "Gambar"
 msgid "In Progress"
 msgstr "Dalam Proses"
 
-#: src/components/PageNewReport/PageNewReport.tsx:83
-msgid "Include all students into this report."
+#: src/components/PageNewReport/PageNewReport.tsx:95
+msgid "Include all active students into this report."
 msgstr ""
+
+#: src/components/PageNewReport/PageNewReport.tsx:83
+#~ msgid "Include all students into this report."
+#~ msgstr ""
 
 #: src/components/InformationalCard/InformationalCard.tsx:36
 msgid "Info"
@@ -689,6 +698,10 @@ msgstr ""
 #: src/pages/login.tsx:8
 msgid "Manage your student data"
 msgstr "Kelola data murid anda"
+
+#: src/components/PageNewReport/PageNewReport.tsx:101
+msgid "Manually select students you want to include."
+msgstr ""
 
 #: src/components/MarkdownEditor/MarkdownEditor.tsx:137
 msgid "Markdown Supported"
@@ -758,8 +771,8 @@ msgstr ""
 msgid "New Observation"
 msgstr "Observasi Baru"
 
-#: src/components/PageNewReport/PageNewReport.tsx:29
-#: src/components/PageNewReport/PageNewReport.tsx:47
+#: src/components/PageNewReport/PageNewReport.tsx:50
+#: src/components/PageNewReport/PageNewReport.tsx:59
 msgid "New Progress Report"
 msgstr ""
 
@@ -790,7 +803,7 @@ msgstr "Buat sekolah baru"
 msgid "Next billing date"
 msgstr "Tanggal tagiahan selanjutnya"
 
-#: src/pages/dashboard/reports/manage/student/index.tsx:418
+#: src/pages/dashboard/reports/manage/student/index.tsx:454
 msgid "No assessments has been made yet."
 msgstr ""
 
@@ -824,7 +837,7 @@ msgstr "Tidak materi yang sedang dalam proses."
 msgid "No more students to add"
 msgstr "Tidak ada lagi murid untuk ditambahkan"
 
-#: src/pages/dashboard/reports/manage/student/index.tsx:424
+#: src/pages/dashboard/reports/manage/student/index.tsx:460
 msgid "No observation has been added."
 msgstr ""
 
@@ -885,7 +898,7 @@ msgstr ""
 #: src/components/PageAllObservations/ObservationsTable.tsx:62
 #: src/components/PageAllObservations/PageAllObservations.tsx:22
 #: src/components/PageStudentOverview/DailyObservationCard.tsx:50
-#: src/pages/dashboard/reports/manage/student/index.tsx:325
+#: src/pages/dashboard/reports/manage/student/index.tsx:361
 #: src/pages/dashboard/students/observations/details.tsx:33
 msgid "Observations"
 msgstr "Observasi"
@@ -920,6 +933,10 @@ msgstr "Dashboard wali murid"
 #~ msgid "Parent portal"
 #~ msgstr "Portal orang tua"
 
+#: src/pages/dashboard/reports/manage/index.tsx:284
+msgid "Parents / guardians will be unable to see these report anymore."
+msgstr ""
+
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:22
 msgid "Payment Success"
 msgstr "Pembayaran Sukses"
@@ -928,11 +945,13 @@ msgstr "Pembayaran Sukses"
 msgid "Payment details"
 msgstr "Detil Pembayaran"
 
-#: src/components/PageNewReport/PageNewReport.tsx:68
+#: src/components/EditReportSideBar/EditReportSideBar.tsx:98
+#: src/components/PageNewReport/PageNewReport.tsx:80
 msgid "Period End"
 msgstr ""
 
-#: src/components/PageNewReport/PageNewReport.tsx:62
+#: src/components/EditReportSideBar/EditReportSideBar.tsx:91
+#: src/components/PageNewReport/PageNewReport.tsx:74
 msgid "Period Start"
 msgstr ""
 
@@ -1003,13 +1022,18 @@ msgstr "Profil"
 msgid "Progress Report"
 msgstr ""
 
-#: src/pages/dashboard/reports/manage/index.tsx:30
-#: src/pages/dashboard/reports/manage/student/index.tsx:71
+#: src/pages/dashboard/reports/manage/index.tsx:43
+#: src/pages/dashboard/reports/manage/student/index.tsx:70
 msgid "Progress Reports"
 msgstr ""
 
-#: src/pages/dashboard/reports/manage/index.tsx:70
+#: src/pages/dashboard/reports/manage/index.tsx:312
+#: src/pages/dashboard/reports/manage/index.tsx:322
 msgid "Publish"
+msgstr ""
+
+#: src/pages/dashboard/reports/manage/index.tsx:317
+msgid "Publish report?"
 msgstr ""
 
 #: src/components/PageStudentOverview/AssessmentCard.tsx:92
@@ -1054,11 +1078,15 @@ msgstr "Ulang sampai"
 msgid "Repetition"
 msgstr "Pengulangan"
 
+#: src/components/EditReportSideBar/EditReportSideBar.tsx:73
+msgid "Report Details"
+msgstr ""
+
 #: src/components/PageSubscription/PageSubscription.tsx:102
 #~ msgid "Reporting"
 #~ msgstr "Laporan"
 
-#: src/components/PageNewReport/PageNewReport.tsx:28
+#: src/components/PageNewReport/PageNewReport.tsx:49
 msgid "Reports"
 msgstr ""
 
@@ -1093,7 +1121,7 @@ msgstr "Sabtu"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:339
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:395
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:444
-#: src/pages/dashboard/reports/manage/student/index.tsx:194
+#: src/pages/dashboard/reports/manage/student/index.tsx:214
 msgid "Save"
 msgstr "Simpan"
 
@@ -1134,8 +1162,8 @@ msgid "Select from existing class"
 msgstr "Pilih dari kelas yang ada"
 
 #: src/components/PageNewReport/PageNewReport.tsx:87
-msgid "Select students to be included manually."
-msgstr ""
+#~ msgid "Select students to be included manually."
+#~ msgstr ""
 
 #: src/components/PageInviteUser/PageInviteUser.tsx:90
 msgid "Send invites"
@@ -1331,16 +1359,21 @@ msgstr "Ini akan mengekspor semua observasi yang terlihat saat ini sebagai file 
 msgid "This will permanently delete ${name} and data related to it. Are you sure?"
 msgstr ""
 
+#: src/pages/dashboard/reports/manage/index.tsx:320
+msgid "This will publish report to parents / guardians. Observations and assessments included in these reports will be frozen."
+msgstr ""
+
 #: src/components/PageNewClass/PageNewClass.tsx:23
 msgid "Thursday"
 msgstr "Kamis"
 
+#: src/components/EditReportSideBar/EditReportSideBar.tsx:84
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:122
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:155
 msgid "Title"
 msgstr "Judul"
 
-#: src/components/PageNewReport/PageNewReport.tsx:55
+#: src/components/PageNewReport/PageNewReport.tsx:67
 msgid "Title*"
 msgstr ""
 
@@ -1367,6 +1400,15 @@ msgstr "Selasa"
 #: src/components/PageSubscription/PageSubscription.tsx:155
 msgid "Unlimited students"
 msgstr "Murid tak terbatas"
+
+#: src/pages/dashboard/reports/manage/index.tsx:278
+#: src/pages/dashboard/reports/manage/index.tsx:286
+msgid "Unpublish"
+msgstr ""
+
+#: src/pages/dashboard/reports/manage/index.tsx:282
+msgid "Unpublish report?"
+msgstr ""
 
 #: src/components/PageGallery/PageGallery.tsx:111
 msgid "Upload Photo"
@@ -1430,7 +1472,11 @@ msgid "Write"
 msgstr ""
 
 #: src/components/PageAllReports/EmptyPlaceholder.tsx:33
-msgid "Write progress progress_report"
+#~ msgid "Write progress progress_report"
+#~ msgstr ""
+
+#: src/components/PageAllReports/EmptyPlaceholder.tsx:33
+msgid "Write progress reports"
 msgstr ""
 
 #: src/components/PageObservationDetails/DetailsCard.tsx:38
@@ -1482,3 +1528,7 @@ msgstr "tidak aktif"
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:152
 msgid "new guardian"
 msgstr "wali baru"
+
+#: src/pages/dashboard/reports/manage/index.tsx:83
+msgid "{reportsDone} out of {0} done"
+msgstr ""

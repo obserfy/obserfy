@@ -24,86 +24,84 @@ const EditReportSideBar: FC<EditReportSideBarProps> = ({
   title,
   periodEnd,
   periodStart,
-}) => {
-  return (
-    <Portal>
-      <Box
-        onClick={onClose}
-        sx={{
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-          position: "fixed",
-          backgroundColor: "black",
-          opacity: open ? 0.4 : 0,
-          zIndex: 900,
-          display: ["none", "block"],
-          pointerEvents: open ? undefined : "none",
-          transition: "ease-in-out 200ms opacity",
-        }}
-      />
+}) => (
+  <Portal>
+    <Box
+      onClick={onClose}
+      sx={{
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        position: "fixed",
+        backgroundColor: "black",
+        opacity: open ? 0.4 : 0,
+        zIndex: 900,
+        display: ["none", "block"],
+        pointerEvents: open ? undefined : "none",
+        transition: "ease-in-out 200ms opacity",
+      }}
+    />
 
-      <Box
+    <Box
+      sx={{
+        ...borderLeft,
+        backgroundColor: "surface",
+        position: "fixed",
+        top: 0,
+        right: open ? 0 : ["-100%", -400],
+        bottom: 0,
+        width: ["100%", 400],
+        zIndex: 1000,
+        transition: "ease-in-out 120ms right",
+      }}
+    >
+      <Flex
         sx={{
-          ...borderLeft,
-          backgroundColor: "surface",
-          position: "fixed",
-          top: 0,
-          right: open ? 0 : ["-100%", -400],
-          bottom: 0,
-          width: ["100%", 400],
-          zIndex: 1000,
-          transition: "ease-in-out 120ms right",
+          ...borderBottom,
+          height: 48,
+          alignItems: "center",
+          width: "100%",
         }}
       >
-        <Flex
-          sx={{
-            ...borderBottom,
-            height: 48,
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          <Button variant="secondary" p={2} onClick={onClose} ml={2}>
-            <Icon as={CloseIcon} size={18} />
-          </Button>
+        <Button variant="secondary" p={2} onClick={onClose} ml={2}>
+          <Icon as={CloseIcon} size={18} />
+        </Button>
 
-          <Text sx={{ fontWeight: "bold", color: "textMediumEmphasis" }} ml={2}>
-            <Trans>Report Details</Trans>
-          </Text>
+        <Text sx={{ fontWeight: "bold", color: "textMediumEmphasis" }} ml={2}>
+          <Trans>Report Details</Trans>
+        </Text>
 
-          <Button variant="secondary" ml="auto" p={2} onClick={onClose} mr={2}>
-            <Icon as={TrashIcon} size={18} />
-          </Button>
-        </Flex>
+        <Button variant="secondary" ml="auto" p={2} onClick={onClose} mr={2}>
+          <Icon as={TrashIcon} size={18} />
+        </Button>
+      </Flex>
 
-        <Box py={3}>
-          <Row>
-            <Title>
-              <Trans>Title</Trans>
-            </Title>
-            <TitleField title={title} />
-          </Row>
+      <Box py={3}>
+        <Row>
+          <Title>
+            <Trans>Title</Trans>
+          </Title>
+          <TitleField title={title} />
+        </Row>
 
-          <Row>
-            <Title>
-              <Trans>Period Start</Trans>
-            </Title>
-            <PeriodStartField periodStart={periodStart} />
-          </Row>
+        <Row>
+          <Title>
+            <Trans>Period Start</Trans>
+          </Title>
+          <PeriodStartField periodStart={periodStart} />
+        </Row>
 
-          <Row>
-            <Title>
-              <Trans>Period End</Trans>
-            </Title>
-            <PeriodEndField periodEnd={periodEnd} />
-          </Row>
-        </Box>
+        <Row>
+          <Title>
+            <Trans>Period End</Trans>
+          </Title>
+          <PeriodEndField periodEnd={periodEnd} />
+        </Row>
       </Box>
-    </Portal>
-  )
-}
+    </Box>
+  </Portal>
+)
 
 const TitleField: FC<{
   title: string
@@ -125,7 +123,11 @@ const PeriodStartField: FC<{
     <>
       <Value onClick={edit.show}>{periodStart.format("DD MMM YYYY")}</Value>
       {edit.visible && (
-        <DatePickerDialog onDismiss={edit.hide} onConfirm={() => {}} />
+        <DatePickerDialog
+          title="Period Start"
+          onDismiss={edit.hide}
+          onConfirm={() => {}}
+        />
       )}
     </>
   )
@@ -139,7 +141,11 @@ const PeriodEndField: FC<{
     <>
       <Value onClick={edit.show}>{periodEnd.format("DD MMM YYYY")}</Value>
       {edit.visible && (
-        <DatePickerDialog onDismiss={edit.hide} onConfirm={() => {}} />
+        <DatePickerDialog
+          title="Period End"
+          onDismiss={edit.hide}
+          onConfirm={() => {}}
+        />
       )}
     </>
   )

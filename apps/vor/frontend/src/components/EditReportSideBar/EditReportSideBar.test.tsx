@@ -1,4 +1,4 @@
-import dayjs from "dayjs"
+import dayjs from "../../dayjs"
 import { render } from "../../test-utils"
 import EditReportSideBar from "./EditReportSideBar"
 
@@ -8,7 +8,7 @@ describe("EditReportSideBar", () => {
       <EditReportSideBar
         periodStart={dayjs()}
         periodEnd={dayjs()}
-        title={"The end is nigh"}
+        title="The end is nigh"
         onClose={() => {}}
         open
       />

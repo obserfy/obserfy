@@ -6,6 +6,7 @@ import (
 	"github.com/go-pg/pg/v10/orm"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
+	"time"
 )
 
 type ProgressReportsStore struct {
@@ -125,9 +126,18 @@ func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentI
 	}, nil
 }
 
-func (s ProgressReportsStore) UpdateReport(id uuid.UUID, published bool) (domain.ProgressReport, error) {
+func (s ProgressReportsStore) UpdateReport(
+	id uuid.UUID,
+	published *bool,
+	title *string,
+	start *time.Time,
+	end *time.Time,
+) (domain.ProgressReport, error) {
 	data := make(PartialUpdateModel)
-	data.AddBooleanColumn("published", &published)
+	data.AddBooleanColumn("published", published)
+	data.AddStringColumn("title", title)
+	data.AddDateColumn("priod_start", start)
+	data.AddDateColumn("period_end", end)
 
 	if _, err := s.Model(data.GetModel()).
 		TableExpr("progress_reports").
