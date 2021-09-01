@@ -4,15 +4,19 @@ import { FC, useState } from "react"
 import { Box, Button, Flex, Text } from "theme-ui"
 import { borderBottom, borderLeft } from "../../border"
 import { Dayjs } from "../../dayjs"
+import useDeleteReport from "../../hooks/api/reports/useDeleteReport"
 import usePatchReport from "../../hooks/api/reports/usePatchReport"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
+import { ALL_REPORT_URL } from "../../routes"
+import AlertDialog from "../AlertDialog/AlertDialog"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import Icon from "../Icon/Icon"
 import Input from "../Input/Input"
+import { navigate } from "../Link/Link"
 import Portal from "../Portal/Portal"
 
 export interface EditReportSideBarProps {
@@ -79,9 +83,7 @@ const EditReportSideBar: FC<EditReportSideBarProps> = ({
           <Trans>Report Details</Trans>
         </Text>
 
-        <Button variant="secondary" ml="auto" p={2} onClick={onClose} mr={2}>
-          <Icon as={TrashIcon} size={18} />
-        </Button>
+        <DeleteReportButton reportId={reportId} />
       </Flex>
 
       <Box py={3}>
@@ -109,6 +111,42 @@ const EditReportSideBar: FC<EditReportSideBarProps> = ({
     </Box>
   </Portal>
 )
+
+const DeleteReportButton: FC<{
+  reportId: string
+}> = ({ reportId }) => {
+  const deleteDialog = useVisibilityState()
+  const deleteReport = useDeleteReport(reportId)
+
+  return (
+    <>
+      <Button
+        variant="secondary"
+        ml="auto"
+        p={2}
+        mr={2}
+        onClick={deleteDialog.show}
+      >
+        <Icon as={TrashIcon} size={18} />
+      </Button>
+
+      {deleteDialog.visible && (
+        <AlertDialog
+          title="Delete Report?"
+          body="This will permanently delete this report."
+          positiveText="Delete"
+          onNegativeClick={deleteDialog.hide}
+          onPositiveClick={async () => {
+            const result = await deleteReport.mutateAsync()
+            if (result?.ok) {
+              navigate(ALL_REPORT_URL)
+            }
+          }}
+        />
+      )}
+    </>
+  )
+}
 
 const TitleField: FC<{
   reportId: string
