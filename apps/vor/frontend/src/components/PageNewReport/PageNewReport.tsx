@@ -32,8 +32,8 @@ const PageNewReport: FC = () => {
   const handleSubmit = async () => {
     const result = await postReport.mutateAsync({
       title,
+      periodStart: periodStart.toISOString(),
       periodEnd: periodEnd.toISOString(),
-      periodStart: periodEnd.toISOString(),
       customizeStudents: studentOption === StudentOption.CUSTOM,
       students: selectedStudents,
     })
