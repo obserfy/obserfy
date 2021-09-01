@@ -136,7 +136,7 @@ func (s ProgressReportsStore) UpdateReport(
 	data := make(PartialUpdateModel)
 	data.AddBooleanColumn("published", published)
 	data.AddStringColumn("title", title)
-	data.AddDateColumn("priod_start", start)
+	data.AddDateColumn("period_start", start)
 	data.AddDateColumn("period_end", end)
 
 	if _, err := s.Model(data.GetModel()).
@@ -154,8 +154,11 @@ func (s ProgressReportsStore) UpdateReport(
 	}
 
 	return domain.ProgressReport{
-		Id:        id,
-		Published: report.Published,
+		Id:          id,
+		Published:   report.Published,
+		PeriodEnd:   report.PeriodEnd,
+		PeriodStart: report.PeriodStart,
+		Title:       report.Title,
 	}, nil
 }
 

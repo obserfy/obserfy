@@ -3,6 +3,7 @@ import { FC } from "react"
 import { Box, Button, Flex, Text } from "theme-ui"
 import { borderBottom, borderLeft } from "../../border"
 import { Dayjs } from "../../dayjs"
+import usePatchReport from "../../hooks/api/reports/usePatchReport"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
@@ -16,6 +17,7 @@ export interface EditReportSideBarProps {
   periodEnd: Dayjs
   open: boolean
   onClose: () => void
+  reportId: string
 }
 
 const EditReportSideBar: FC<EditReportSideBarProps> = ({
@@ -24,6 +26,7 @@ const EditReportSideBar: FC<EditReportSideBarProps> = ({
   title,
   periodEnd,
   periodStart,
+  reportId,
 }) => (
   <Portal>
     <Box
@@ -89,14 +92,14 @@ const EditReportSideBar: FC<EditReportSideBarProps> = ({
           <Title>
             <Trans>Period Start</Trans>
           </Title>
-          <PeriodStartField periodStart={periodStart} />
+          <PeriodStartField reportId={reportId} currentValue={periodStart} />
         </Row>
 
         <Row>
           <Title>
             <Trans>Period End</Trans>
           </Title>
-          <PeriodEndField periodEnd={periodEnd} />
+          <PeriodEndField reportId={reportId} currentValue={periodEnd} />
         </Row>
       </Box>
     </Box>
@@ -116,17 +119,27 @@ const TitleField: FC<{
 }
 
 const PeriodStartField: FC<{
-  periodStart: Dayjs
-}> = ({ periodStart }) => {
+  reportId: string
+  currentValue: Dayjs
+}> = ({ reportId, currentValue }) => {
   const edit = useVisibilityState()
+  const patchReport = usePatchReport(reportId)
+
   return (
     <>
-      <Value onClick={edit.show}>{periodStart.format("DD MMM YYYY")}</Value>
+      <Value onClick={edit.show}>{currentValue.format("DD MMM YYYY")}</Value>
       {edit.visible && (
         <DatePickerDialog
           title="Period Start"
           onDismiss={edit.hide}
-          onConfirm={() => {}}
+          isLoading={patchReport.isLoading}
+          defaultDate={currentValue}
+          onConfirm={async (periodStart) => {
+            const result = await patchReport.mutateAsync({ periodStart })
+            if (result?.ok) {
+              edit.hide()
+            }
+          }}
         />
       )}
     </>
@@ -134,17 +147,27 @@ const PeriodStartField: FC<{
 }
 
 const PeriodEndField: FC<{
-  periodEnd: Dayjs
-}> = ({ periodEnd }) => {
+  reportId: string
+  currentValue: Dayjs
+}> = ({ currentValue, reportId }) => {
   const edit = useVisibilityState()
+  const patchReport = usePatchReport(reportId)
+
   return (
     <>
-      <Value onClick={edit.show}>{periodEnd.format("DD MMM YYYY")}</Value>
+      <Value onClick={edit.show}>{currentValue.format("DD MMM YYYY")}</Value>
       {edit.visible && (
         <DatePickerDialog
           title="Period End"
           onDismiss={edit.hide}
-          onConfirm={() => {}}
+          isLoading={patchReport.isLoading}
+          defaultDate={currentValue}
+          onConfirm={async (periodEnd) => {
+            const result = await patchReport.mutateAsync({ periodEnd })
+            if (result?.ok) {
+              edit.hide()
+            }
+          }}
         />
       )}
     </>

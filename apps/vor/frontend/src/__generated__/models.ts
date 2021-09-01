@@ -1,5 +1,7 @@
 /* Do not change, this code is generated from Golang structs */
 
+import { Dayjs } from "dayjs"
+
 export interface Weekday {
   day: number
 }
@@ -69,8 +71,8 @@ export interface School {
 export interface ProgressReport {
   id: string
   title: string
-  periodStart: string
-  periodEnd: string
+  periodStart: Dayjs
+  periodEnd: Dayjs
   school?: School
   studentsReports: StudentReport[]
   published: boolean

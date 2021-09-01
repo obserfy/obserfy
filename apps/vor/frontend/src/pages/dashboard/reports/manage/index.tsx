@@ -129,6 +129,7 @@ const ManageReports = () => {
 
       {report && (
         <EditReportSideBar
+          reportId={reportId}
           periodStart={report.periodStart}
           periodEnd={report.periodEnd}
           title={report.title}
