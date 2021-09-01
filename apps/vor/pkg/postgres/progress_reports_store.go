@@ -177,3 +177,14 @@ func (s ProgressReportsStore) FindUserByUserIdAndRelationToReport(reportId uuid.
 
 	return domain.User{}, nil
 }
+
+func (s ProgressReportsStore) DeleteReportById(reportId uuid.UUID) error {
+	report := ProgressReport{Id: reportId}
+	if _, err := s.Model(&report).
+		WherePK().
+		Delete(); err != nil {
+		return richErrors.Wrap(err, "failed to delete report by id")
+	}
+
+	return nil
+}

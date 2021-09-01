@@ -17,6 +17,8 @@ func NewRouter(s rest.Server, store postgres.ProgressReportsStore) *chi.Mux {
 		r.Use(authorizationMiddleware(s, store))
 		r.Method("GET", "/", getReport(s, store))
 		r.Method("PATCH", "/", patchReport(s, store))
+		r.Method("DELETE", "/", deleteReport(s, store))
+
 		r.Method("POST", "/published", updateReportPublished(s, store))
 
 		r.Method("GET", "/students/{studentId}", getStudentReport(s, store))
@@ -146,6 +148,18 @@ func patchReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handle
 				"published":   report.Published,
 			},
 		}
+	})
+}
+
+func deleteReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2 {
+	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
+		id, _ := uuid.Parse(r.GetParam("reportId"))
+
+		if err := store.DeleteReportById(id); err != nil {
+			return s.InternalServerError(err)
+		}
+
+		return rest.ServerResponse{Status: http.StatusOK}
 	})
 }
 
