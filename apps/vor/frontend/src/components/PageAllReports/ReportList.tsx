@@ -54,7 +54,7 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
               fontWeight: "bold",
               color: "white",
               lineHeight: 1.1,
-              fontFamily: "heading",
+              fontFamily: "display",
             }}
             mb={3}
             pb={2}
