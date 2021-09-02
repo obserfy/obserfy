@@ -30,6 +30,12 @@ export default {
   secondary: "#30c",
   onSecondary: "#fff",
 
+  tertiary: {
+    900: "black",
+    800: "#343434",
+  },
+  onTertiary: "#fff",
+
   surface: "#fff",
   onSurface: "rgba(0,0,0,0.87)",
 
@@ -41,7 +47,7 @@ export default {
   surfaceBlurTransparent: "rgba(255,255,255,0.9)",
   onSurfaceBlurTransparent: "#87000000",
 
-  border: "rgba(0,0,0,.08)",
+  border: "rgba(0,0,0,.1)",
   borderSolid: "#e5e5e5",
 
   overlay: "rgba(0,0,0,.7)",
@@ -93,6 +99,12 @@ export default {
 
       primaryDark: "#009c6e",
       onPrimaryDark: "rgba(255,255,255, 0.87)",
+
+      tertiary: {
+        900: "white",
+        800: "#cecece",
+      },
+      onTertiary: "black",
 
       background: "#101010",
       onBackground: "rgba(255,255,255, 0.87)",

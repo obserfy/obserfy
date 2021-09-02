@@ -3,6 +3,7 @@ import { track } from "./src/analytics"
 import { i18n } from "@lingui/core"
 import { en, id } from "make-plural/plurals"
 import { Severity } from "@sentry/gatsby"
+import "@fontsource/lora/700.css"
 import "./src/global.css"
 import "./src/tailwind.css"
 

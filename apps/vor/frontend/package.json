@@ -8,6 +8,7 @@
     "@babel/runtime": "7.15.3",
     "@emotion/jest": "11.3.0",
     "@emotion/react": "11.4.1",
+    "@fontsource/lora": "^4.5.0",
     "@lingui/cli": "3.10.2",
     "@lingui/core": "3.10.4",
     "@lingui/macro": "3.10.2",
