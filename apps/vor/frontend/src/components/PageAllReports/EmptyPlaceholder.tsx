@@ -1,10 +1,9 @@
 import { Trans } from "@lingui/macro"
 
-import { Button, Flex } from "theme-ui"
+import { Button, Flex, Text } from "theme-ui"
 import { ReactComponent as EmptyIllustration } from "../../images/report-illustration.svg"
 import { NEW_REPORT_URL } from "../../routes"
 import { Link } from "../Link/Link"
-import Typography from "../Typography/Typography"
 
 const EmptyPlaceholder = () => (
   <Flex
@@ -26,15 +25,18 @@ const EmptyPlaceholder = () => (
         alignItems: ["center", "center", "flex-start"],
       }}
     >
-      <Typography.H4
+      <Text
         mb={3}
-        sx={{ textAlign: ["center", "center", "inherit"], lineHeight: 1.2 }}
+        sx={{
+          fontSize: [4, 5],
+          fontWeight: "bold",
+          textAlign: ["center", "center", "inherit"],
+        }}
       >
         <Trans>Write progress reports</Trans>
-      </Typography.H4>
-      <Typography.Body
+      </Text>
+      <Text
         mb={3}
-        my={3}
         sx={{
           textAlign: ["center", "center", "inherit"],
           fontSize: 2,
@@ -45,7 +47,7 @@ const EmptyPlaceholder = () => (
           Easily write reports for parents with all the data that you need in
           one place.
         </Trans>
-      </Typography.Body>
+      </Text>
 
       <Link to={NEW_REPORT_URL}>
         <Button>
@@ -54,7 +56,12 @@ const EmptyPlaceholder = () => (
       </Link>
     </Flex>
 
-    <EmptyIllustration width="320px" />
+    <EmptyIllustration
+      sx={{
+        pt: [4, 0],
+        width: [240, 320],
+      }}
+    />
   </Flex>
 )
 
