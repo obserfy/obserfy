@@ -1326,6 +1326,7 @@ func getProgressReports(s rest.Server, store Store) http.Handler {
 		Title       string    `json:"title,omitempty"`
 		PeriodStart time.Time `json:"periodStart,omitempty"`
 		PeriodEnd   time.Time `json:"periodEnd,omitempty"`
+		Published   bool      `json:"published,omitempty"`
 	}
 	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
 		schoolId := r.GetParam("schoolId")
@@ -1342,6 +1343,7 @@ func getProgressReports(s rest.Server, store Store) http.Handler {
 				Title:       report.Title,
 				PeriodStart: report.PeriodStart,
 				PeriodEnd:   report.PeriodEnd,
+				Published:   report.Published,
 			}
 		}
 

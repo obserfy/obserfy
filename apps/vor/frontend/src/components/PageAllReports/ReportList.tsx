@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { Box, Button, Flex, Text } from "theme-ui"
 import { ProgressReport } from "../../__generated__/models"
-import { borderBottom, borderFull } from "../../border"
+import { borderBottom, borderFull, borderTop } from "../../border"
 import dayjs from "../../dayjs"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { MANAGE_REPORT_URL, NEW_REPORT_URL } from "../../routes"
@@ -13,7 +13,12 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
   return (
     <Box>
       <TranslucentBar boxSx={{ ...borderBottom, position: "sticky", top: 0 }}>
-        <Flex px={[3, 4]} py={3} sx={{ alignItems: "center" }}>
+        <Flex
+          px={[3, 0]}
+          py={3}
+          mx="auto"
+          sx={{ alignItems: "center", maxWidth: "maxWidth.lg" }}
+        >
           <Text as="h1" sx={{ fontWeight: "bold" }}>
             Progress Reports
           </Text>
@@ -26,41 +31,116 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
         </Flex>
       </TranslucentBar>
 
-      <Flex sx={{ flexWrap: "wrap" }} mt={3} mx={[0, 3]}>
+      <Box
+        mt={3}
+        mx={[0, "auto"]}
+        sx={{
+          ...borderFull,
+          borderLeftStyle: ["none", "solid"],
+          borderRightStyle: ["none", "solid"],
+          borderRadius: [0, "default"],
+          backgroundColor: "surface",
+          maxWidth: "maxWidth.lg",
+          overflow: "hidden",
+        }}
+      >
+        <Flex p={3} sx={{ backgroundColor: "darkSurface" }}>
+          <Text color="textMediumEmphasis" sx={{ width: "65%" }}>
+            Title
+          </Text>
+          <Text
+            color="textMediumEmphasis"
+            sx={{ width: "20%", display: ["none", "block"] }}
+          >
+            Start Date
+          </Text>
+          <Text color="textMediumEmphasis" sx={{ width: "5%" }}>
+            Status
+          </Text>
+        </Flex>
         {reports.map((report) => (
           <Link
             to={MANAGE_REPORT_URL(report.id)}
             key={report.id}
             sx={{
               p: 3,
-              py: [2, 3],
-              display: "block",
-              width: ["100%", "50%", "25%"],
+              ...borderTop,
+              display: "flex",
+              width: "100%",
+              alignItems: "center",
+              flexWrap: "wrap",
+              "&:hover": {
+                backgroundColor: "primaryLightest",
+              },
             }}
           >
-            <Flex
-              as="article"
-              p={3}
-              sx={{
-                ...borderFull,
-                borderRadius: "default",
-                backgroundColor: "surface",
-                alignItems: "center",
-                "&:hover": {
-                  borderColor: "primary",
-                },
-              }}
+            <Text
+              color="textMediumEmphasis"
+              sx={{ fontWeight: "bold", width: "65%" }}
             >
-              <Text mb={1} sx={{ fontSize: 1 }}>
-                {report.title}
-              </Text>
-              <Text color="textMediumEmphasis" ml="auto" sx={{ fontSize: 1 }}>
-                {dayjs(report.periodEnd).format("MMMM YYYY")}
-              </Text>
-            </Flex>
+              {report.title}
+            </Text>
+            <Text sx={{ width: "20%", display: ["none", "block"] }}>
+              {dayjs(report.periodStart).format("DD MMM YYYY")}
+            </Text>
+            {report.published ? (
+              <Flex
+                px={2}
+                sx={{
+                  ...borderFull,
+                  borderRadius: "circle",
+                  alignItems: "baseline",
+                }}
+              >
+                <Box
+                  mb={1}
+                  mr={2}
+                  sx={{
+                    width: "8px",
+                    height: "8px",
+                    backgroundColor: "primaryDark",
+                    borderRadius: "circle",
+                  }}
+                />
+                <Text sx={{ fontSize: 0, width: "10%", color: "primaryDark" }}>
+                  Published
+                </Text>
+              </Flex>
+            ) : (
+              <Flex
+                px={2}
+                sx={{
+                  ...borderFull,
+                  borderRadius: "circle",
+                  alignItems: "baseline",
+                }}
+              >
+                <Box
+                  mb={1}
+                  mr={2}
+                  sx={{
+                    width: "8px",
+                    height: "8px",
+                    backgroundColor: "warning",
+                    borderRadius: "circle",
+                  }}
+                />
+                <Text sx={{ fontSize: 0, width: "15%", color: "warning" }}>
+                  Unpublished
+                </Text>
+              </Flex>
+            )}
+
+            <Text
+              color="textMediumEmphasis"
+              mt={1}
+              sx={{ width: "100%", display: ["block", "none"] }}
+            >
+              {dayjs(report.periodStart).format("DD MMM YYYY")}
+            </Text>
           </Link>
         ))}
-      </Flex>
+      </Box>
     </Box>
   )
 }

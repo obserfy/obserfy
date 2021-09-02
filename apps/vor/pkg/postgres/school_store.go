@@ -898,6 +898,7 @@ func (s SchoolStore) CreateStudentVideo(schoolId string, studentId string, video
 func (s SchoolStore) GetReports(schoolId string) ([]domain.ProgressReport, error) {
 	var reports []ProgressReport
 	err := s.DB.Model(&reports).
+		Order("period_start desc").
 		Where("school_id=?", schoolId).
 		Select()
 
@@ -908,6 +909,7 @@ func (s SchoolStore) GetReports(schoolId string) ([]domain.ProgressReport, error
 			Title:       report.Title,
 			PeriodStart: report.PeriodStart,
 			PeriodEnd:   report.PeriodEnd,
+			Published:   report.Published,
 		})
 	}
 
