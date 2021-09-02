@@ -11,6 +11,7 @@ export const StudentPicturePlaceholder: FC<{
     src="../../images/gradients/1.jpg"
     width={32}
     className={`rounded-full ${className}`}
+    imgClassName="rounded-full"
     placeholder="blurred"
     alt=""
   />

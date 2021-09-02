@@ -5,6 +5,8 @@ import { Box, Button, Flex, Image, Text } from "theme-ui"
 import { Class } from "../../../../__generated__/models"
 import { borderBottom, borderFull } from "../../../../border"
 import AlertDialog from "../../../../components/AlertDialog/AlertDialog"
+import EditReportSideBar from "../../../../components/EditReportSideBar/EditReportSideBar"
+import Icon from "../../../../components/Icon/Icon"
 import { Link } from "../../../../components/Link/Link"
 import SearchBar from "../../../../components/SearchBar/SearchBar"
 import SEO from "../../../../components/seo"
@@ -15,12 +17,20 @@ import useGetReport from "../../../../hooks/api/reports/useGetProgressReport"
 import usePostReportPublished from "../../../../hooks/api/reports/usePostReportPublished"
 import { useQueryString } from "../../../../hooks/useQueryString"
 import useVisibilityState from "../../../../hooks/useVisibilityState"
+import { ReactComponent as EditIcon } from "../../../../icons/edit.svg"
 import { ALL_REPORT_URL, STUDENT_REPORT_URL } from "../../../../routes"
 
 const ManageReports = () => {
   const reportId = useQueryString("reportId")
-  const report = useGetReport(reportId)
+  const { data: report } = useGetReport(reportId)
+
   const [search, setSearch] = useState("")
+  const [editReport, setEditReport] = useState(false)
+
+  let reportsDone = 0
+  report?.studentsReports.forEach(({ ready }) => {
+    if (ready) reportsDone += 1
+  })
 
   return (
     <Box sx={{ minHeight: "100vh" }}>
@@ -31,7 +41,7 @@ const ManageReports = () => {
           containerSx={{ ...borderBottom }}
           breadcrumbs={[
             breadCrumb(t`Progress Reports`, ALL_REPORT_URL),
-            breadCrumb(report.data?.title),
+            breadCrumb(report?.title),
           ]}
         />
 
@@ -45,7 +55,7 @@ const ManageReports = () => {
           }}
         >
           <Text ml={3} pb={[1, 0]} sx={{ fontWeight: "bold" }}>
-            {report.data?.title}
+            {report?.title}
           </Text>
 
           <Text
@@ -54,11 +64,11 @@ const ManageReports = () => {
             color="textMediumEmphasis"
             sx={{ fontSize: 0 }}
           >
-            {report.data?.periodStart?.format("DD MMMM YYYY - ")}
-            {report.data?.periodEnd?.format("DD MMMM YYYY")}
+            {report?.periodStart?.format("DD MMMM YYYY - ")}
+            {report?.periodEnd?.format("DD MMMM YYYY")}
           </Text>
 
-          {report.data && (
+          {report && (
             <Flex
               mt={[3, 0]}
               sx={{ width: ["100%", "auto"], alignItems: "center" }}
@@ -71,12 +81,21 @@ const ManageReports = () => {
                 mr="auto"
               >
                 <Trans>
-                  0 out of {report.data?.studentsReports?.length} done
+                  {reportsDone} out of {report?.studentsReports?.length} done
                 </Trans>
               </Text>
 
-              {report.data.published && <UnPublishButton reportId={reportId} />}
-              {!report.data.published && <PublishButton reportId={reportId} />}
+              <Button
+                variant="outline"
+                mr={2}
+                p={2}
+                onClick={() => setEditReport(true)}
+              >
+                <Icon as={EditIcon} size={18} />
+              </Button>
+
+              {report.published && <UnPublishButton reportId={reportId} />}
+              {!report.published && <PublishButton reportId={reportId} />}
             </Flex>
           )}
         </Flex>
@@ -86,7 +105,7 @@ const ManageReports = () => {
         <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
       </Flex>
 
-      {report.data?.studentsReports
+      {report?.studentsReports
         ?.filter(({ student }) => student.name.match(new RegExp(search, "i")))
         ?.map(
           ({
@@ -107,6 +126,17 @@ const ManageReports = () => {
             />
           )
         )}
+
+      {report && (
+        <EditReportSideBar
+          reportId={reportId}
+          periodStart={report.periodStart}
+          periodEnd={report.periodEnd}
+          title={report.title}
+          open={editReport}
+          onClose={() => setEditReport(false)}
+        />
+      )}
     </Box>
   )
 }
@@ -147,6 +177,7 @@ const Student: FC<{
     <Link
       to={STUDENT_REPORT_URL(reportId, studentId)}
       sx={{
+        height: "48px",
         width: "100%",
         display: "flex",
         alignItems: "center",
@@ -157,22 +188,22 @@ const Student: FC<{
       }}
     >
       {image ? (
-        <Image src={image} sx={{ ml: 3, width: 24, flexShrink: 0 }} />
+        <Image src={image} sx={{ ml: 3, width: 18, flexShrink: 0 }} />
       ) : (
-        <StudentPicturePlaceholder sx={{ ml: 3, width: 24, flexShrink: 0 }} />
+        <StudentPicturePlaceholder sx={{ ml: 3, width: 18, flexShrink: 0 }} />
       )}
 
-      <Text mr="auto" p={3} className="truncate">
+      <Text mr="auto" px={3} className="truncate">
         {name}
       </Text>
 
       {classes?.map((c) => (
         <Text
           key={c.id}
-          mr={3}
+          mr={2}
           color="textMediumEmphasis"
           py={1}
-          px={2}
+          px="10px"
           sx={{
             ...borderFull,
             fontSize: 0,
@@ -189,7 +220,7 @@ const Student: FC<{
       <Flex
         mr={3}
         py={1}
-        px={2}
+        px="10px"
         sx={{
           ...borderFull,
           borderRadius: "circle",

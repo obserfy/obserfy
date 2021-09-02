@@ -41,10 +41,8 @@ export default {
   surfaceBlurTransparent: "rgba(255,255,255,0.9)",
   onSurfaceBlurTransparent: "#87000000",
 
-  border: "rgba(0,0,0,.1)",
-  borderLight: "rgba(0,0,0,.07)",
+  border: "rgba(0,0,0,.08)",
   borderSolid: "#e5e5e5",
-  borderBold: "#e5e5e5",
 
   overlay: "rgba(0,0,0,.7)",
   onOverlay: "#fff",
@@ -119,9 +117,7 @@ export default {
       icon: "#979797",
 
       border: "rgba(232,232,232, 0.1)",
-      borderLight: "rgb(28,28,28)",
       borderSolid: "#2c2c2c",
-      borderBold: "black",
 
       muted: "#222222",
       mutedLight: "#212121",
