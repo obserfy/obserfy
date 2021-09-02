@@ -1,3 +1,4 @@
+import { StaticImage } from "gatsby-plugin-image"
 import { FC } from "react"
 import { Box, Button, Flex, Text } from "theme-ui"
 import { ProgressReport } from "../../__generated__/models"
@@ -14,18 +15,35 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
       <Box
         sx={{
           ...borderBottom,
-          position: "sticky",
+          position: "relative",
           top: 0,
           background:
             "linear-gradient(52deg, rgba(34,90,195,1) 0%, rgba(45,253,130,1) 100%)",
         }}
       >
+        <StaticImage
+          alt=""
+          src="../../../static/background/progress-report.jpeg"
+          placeholder="blurred"
+          sx={{
+            opacity: 0.2,
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            right: 0,
+            left: 0,
+            zIndex: 0,
+          }}
+        />
+
         <Flex
-          px={[3, 3, 0]}
+          px={[3, 3, 3, 0]}
           mx="auto"
           sx={{
+            position: "relative",
             alignItems: "flex-end",
             maxWidth: "maxWidth.lg",
+            zIndex: 1,
             height: 160,
           }}
         >
@@ -35,9 +53,11 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
               fontSize: 5,
               fontWeight: "bold",
               color: "white",
-              lineHeight: 1.2,
+              lineHeight: 1.1,
+              fontFamily: "heading",
             }}
             mb={3}
+            pb={2}
           >
             Progress Reports
           </Text>
@@ -63,7 +83,7 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
               }}
             >
               <Icon as={PlusIcon} sx={{ fill: "onTertiary" }} mr={1} />
-              Report
+              New Report
             </Button>
           </Link>
         </Flex>
@@ -71,7 +91,7 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
 
       <Box
         mt={4}
-        mx={[0, 3, "auto"]}
+        mx={[0, 3, 3, "auto"]}
         sx={{
           ...borderFull,
           borderLeftStyle: ["none", "solid"],
@@ -88,7 +108,7 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
           </Text>
           <Text
             color="textMediumEmphasis"
-            sx={{ width: "20%", display: ["none", "block"] }}
+            sx={{ width: "20%", display: ["none", "none", "block"] }}
           >
             Start Date
           </Text>
@@ -118,7 +138,7 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
             >
               {report.title}
             </Text>
-            <Text sx={{ width: "20%", display: ["none", "block"] }}>
+            <Text sx={{ width: "20%", display: ["none", "none", "block"] }}>
               {dayjs(report.periodStart).format("DD MMM YYYY")}
             </Text>
             {report.published ? (
@@ -176,7 +196,7 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
             <Text
               color="textMediumEmphasis"
               mt={1}
-              sx={{ width: "100%", display: ["block", "none"] }}
+              sx={{ width: "100%", display: ["block", "block", "none"] }}
             >
               {dayjs(report.periodStart).format("DD MMM YYYY")}
             </Text>

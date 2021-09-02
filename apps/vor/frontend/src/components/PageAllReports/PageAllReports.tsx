@@ -18,7 +18,9 @@ const PageAllReports: FC<PageAllReportsProps> = () => {
 }
 
 const Success: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
-  if (reports.length === 0) return <EmptyPlaceholder />
+  if (reports.length === 0) {
+    return <EmptyPlaceholder />
+  }
   return <ReportLists reports={reports} />
 }
 
