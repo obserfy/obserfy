@@ -43,6 +43,7 @@ const Navbar: FC = () => {
           justifyContent: "space-evenly",
           flexDirection: ["row", "column"],
           height: ["auto", "100%"],
+          mr: [0, "-1px"],
         }}
       >
         <Box mx="auto" my={2} mb={3} sx={{ display: ["none", "block"] }}>
