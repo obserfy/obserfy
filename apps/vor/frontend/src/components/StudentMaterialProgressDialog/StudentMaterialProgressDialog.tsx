@@ -1,12 +1,12 @@
 import { FC, useState } from "react"
 import { Box } from "theme-ui"
-import { Assessment } from "../../hooks/api/useGetStudentAssessments"
 import dayjs from "../../dayjs"
+import usePatchAssessments from "../../hooks/api/students/usePatchAssessments"
+import { Assessment } from "../../hooks/api/useGetStudentAssessments"
+import Chip from "../Chip/Chip"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import Typography from "../Typography/Typography"
-import Chip from "../Chip/Chip"
-import usePatchStudentMaterialProgress from "../../hooks/api/students/usePatchStudentMaterialProgress"
 
 export const StudentMaterialProgressDialog: FC<{
   studentId: string
@@ -26,7 +26,7 @@ export const StudentMaterialProgressDialog: FC<{
   onDismiss,
   // progress,
 }) => {
-  const patchStudentMaterialProgress = usePatchStudentMaterialProgress(
+  const patchStudentMaterialProgress = usePatchAssessments(
     studentId,
     materialId
   )

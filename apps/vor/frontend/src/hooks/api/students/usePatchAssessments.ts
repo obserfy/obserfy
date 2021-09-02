@@ -7,10 +7,7 @@ interface RequestBody {
   stage: number
 }
 
-const usePatchStudentMaterialProgress = (
-  studentId: string,
-  materialId: string
-) => {
+const usePatchAssessments = (studentId: string, materialId: string) => {
   const cache = useGetStudentMaterialProgressCache(studentId)
   const patchStudentMaterialProgress = patchApi<RequestBody>(
     `/students/${studentId}/materialsProgress/${materialId}`
@@ -46,4 +43,4 @@ const usePatchStudentMaterialProgress = (
   })
 }
 
-export default usePatchStudentMaterialProgress
+export default usePatchAssessments
