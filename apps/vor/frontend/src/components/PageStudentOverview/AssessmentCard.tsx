@@ -29,8 +29,9 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [selected, setSelected] = useState<MaterialProgress>()
   const areas = useGetCurriculumAreas()
-  const progress = useGetStudentAssessments(studentId)
-  const isLoading = areas.isLoading || progress.isLoading
+  const { data: assessments, isLoading: isAssessmentsLoading } =
+    useGetStudentAssessments(studentId)
+  const isLoading = areas.isLoading || isAssessmentsLoading
   // const exportDialog = useVisibilityState()
 
   const handleItemClick = (item: MaterialProgress) => {
@@ -44,7 +45,7 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
 
   // Derived state
   const areaId = areas.data?.[tab]?.id
-  const inSelectedArea = progress.data?.filter((p) => p.areaId === areaId)
+  const inSelectedArea = assessments?.filter((p) => p.areaId === areaId)
   const inProgress = inSelectedArea?.filter(
     ({ stage }) => stage >= Assessment.PRESENTED && stage < Assessment.MASTERED
   )

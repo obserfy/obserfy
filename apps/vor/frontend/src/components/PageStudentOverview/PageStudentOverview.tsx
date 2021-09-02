@@ -18,31 +18,32 @@ import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
-import AssessmentCard from "./AssessmentCard"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import Typography from "../Typography/Typography"
+import AssessmentCard from "./AssessmentCard"
 import DailyObservationCard from "./DailyObservationCard"
 
 interface Props {
   id: string
 }
+
 export const PageStudentOverview: FC<Props> = ({ id }) => {
-  const student = useGetStudent(id)
+  const { data: student } = useGetStudent(id)
 
   return (
     <Box sx={{ maxWidth: "maxWidth.md" }} margin="auto" pb={5}>
       <TopBar
         breadcrumbs={[
           breadCrumb(t`Students`, STUDENTS_URL),
-          breadCrumb(getFirstName(student.data)),
+          breadCrumb(getFirstName(student)),
         ]}
       />
 
       <Flex sx={{ alignItems: "center" }} mx={3}>
         <Box sx={{ flexShrink: 0 }}>
-          {student.data?.profilePic ? (
+          {student?.profilePic ? (
             <Image
-              src={student.data?.profilePic}
+              src={student?.profilePic}
               sx={{ width: 32, height: 32, borderRadius: "circle" }}
             />
           ) : (
@@ -54,7 +55,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
           mb={2}
           sx={{ wordWrap: "break-word", fontWeight: "bold", lineHeight: 1.4 }}
         >
-          {student.data?.name || (
+          {student?.name || (
             <LoadingPlaceholder sx={{ width: "12rem", height: 28 }} />
           )}
         </Typography.H6>
@@ -94,7 +95,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
 
       <DailyObservationCard studentId={id} />
 
-      <AssessmentCard studentId={id} studentName={student.data?.name} />
+      <AssessmentCard studentId={id} studentName={student?.name} />
     </Box>
   )
 }
