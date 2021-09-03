@@ -88,8 +88,15 @@ const ManageReports = () => {
               <Button
                 variant="outline"
                 mr={2}
-                p={2}
+                p={0}
                 onClick={() => setEditReport(true)}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: 32,
+                  width: 32,
+                }}
               >
                 <Icon as={EditIcon} size={18} />
               </Button>
