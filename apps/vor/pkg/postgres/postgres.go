@@ -457,13 +457,11 @@ type (
 	}
 
 	StudentReportsAreaComment struct {
-		Id uuid.UUID `pg:"type:uuid"`
-
-		StudentReportProgressReportId uuid.UUID     `pg:"type:uuid"`
-		StudentReportStudentId        uuid.UUID     `pg:"type:uuid"`
+		StudentReportProgressReportId uuid.UUID     `pg:"type:uuid,pk"`
+		StudentReportStudentId        uuid.UUID     `pg:"type:uuid,pk"`
 		StudentReport                 StudentReport `pg:"rel:has-one"`
 
-		AreaId uuid.UUID `pg:"type:uuid"`
+		AreaId uuid.UUID `pg:"type:uuid,pk"`
 		Area   Area      `pg:"rel:has-one"`
 
 		Comments string

@@ -29,7 +29,6 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 		areaComments := make([]domain.StudentReportsAreaComment, len(report.AreaComments))
 		for k, comment := range report.AreaComments {
 			areaComments[k] = domain.StudentReportsAreaComment{
-				Id:                            comment.Id,
 				StudentReportProgressReportId: comment.StudentReportProgressReportId,
 				StudentReportStudentId:        comment.StudentReportStudentId,
 				Comments:                      comment.Comments,
@@ -97,7 +96,6 @@ func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentI
 	areaComments := make([]domain.StudentReportsAreaComment, len(report.AreaComments))
 	for k, comment := range report.AreaComments {
 		areaComments[k] = domain.StudentReportsAreaComment{
-			Id:                            comment.Id,
 			StudentReportProgressReportId: comment.StudentReportProgressReportId,
 			StudentReportStudentId:        comment.StudentReportStudentId,
 			Comments:                      comment.Comments,
