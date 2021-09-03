@@ -5,13 +5,13 @@ import { borderFull } from "../../border"
 import { ReactComponent as MarkdownIcon } from "../../icons/markdown.svg"
 import Icon from "../Icon/Icon"
 import Markdown from "../Markdown/Markdown"
-import { Typography } from "../Typography/Typography"
 
 export interface MarkdownEditorProps {
   value?: string
   onChange: (value: string) => void
   placeholder?: string
 }
+
 const MarkdownEditor: FC<MarkdownEditorProps> = ({
   onChange,
   placeholder = "Write something",
@@ -122,20 +122,6 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({
           }}
         >
           <Icon as={MarkdownIcon} mr={2} mt={2} sx={{ color: "inherit" }} />
-
-          <Typography.Body
-            pr={2}
-            mt={2}
-            mb={1}
-            sx={{
-              fontSize: 0,
-              color: "inherit",
-              lineHeight: 1,
-              display: ["none", "none", "block"],
-            }}
-          >
-            <Trans>Markdown Supported</Trans>
-          </Typography.Body>
         </a>
       </Flex>
     </Box>
