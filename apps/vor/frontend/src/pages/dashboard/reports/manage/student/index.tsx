@@ -14,10 +14,6 @@ import Tab from "../../../../../components/Tab/Tab"
 import TopBar, { breadCrumb } from "../../../../../components/TopBar/TopBar"
 import TranslucentBar from "../../../../../components/TranslucentBar/TranslucentBar"
 import { getFirstName } from "../../../../../domain/person"
-import {
-  selectComment,
-  useComment,
-} from "../../../../../domain/report-comments"
 import useGetStudentReport from "../../../../../hooks/api/reports/useGetStudentReport"
 import usePatchStudentReport from "../../../../../hooks/api/reports/usePatchStudentReport"
 import { useGetAllStudents } from "../../../../../hooks/api/students/useGetAllStudents"
@@ -52,14 +48,13 @@ const StudentReports = () => {
   const { data: observations } = useGetStudentObservations(studentId)
   const { data: assessments } = useGetStudentAssessments(studentId)
 
+  const [selectedTab, setSelectedTab] = useState(0)
+  const selectedArea = selectedTab > 0 ? areas?.[selectedTab - 1] : null
   let tabs = ["General"]
   if (areas) {
     const areaNames = areas.map(({ name }) => name)
     tabs = tabs.concat(areaNames)
   }
-
-  const [selectedTab, setSelectedTab] = useState(0)
-  const selectedArea = selectedTab > 0 ? areas?.[selectedTab - 1] : null
 
   return (
     <Box sx={{ position: "relative", height: "100vh", width: "100%" }}>
@@ -111,7 +106,13 @@ const StudentReports = () => {
             alignItems: "flex-start",
           }}
         >
-          <AreaCommentEditor area={selectedArea} />
+          <AreaCommentEditor
+            area={selectedArea}
+            defaultValue={
+              report?.areaComments.find(({ area }) => area === selectedArea)
+                ?.comments
+            }
+          />
           <Box
             pb={6}
             sx={{
@@ -214,18 +215,12 @@ const ActionBar: FC<{
         </Flex>
 
         <Button
+          variant={ready ? "outline" : "primary"}
           onClick={handleToggleReady}
           mt={[3, 0]}
           sx={{
             width: ["100%", "auto"],
-            backgroundColor: ready ? "tintWarning" : "primary",
-            color: ready ? "onWarning" : "onPrimary",
-            "&:hover": {
-              backgroundColor: ready ? "warning" : "primaryDark",
-            },
-            "&:focus": {
-              backgroundColor: ready ? "warning" : "primaryDark",
-            },
+            color: ready ? "warning" : "onPrimary",
           }}
         >
           <Trans>Mark as {ready ? "not" : ""} ready</Trans>
@@ -240,11 +235,9 @@ const GeneralCommentEditor: FC<{
 }> = ({ defaultValue }) => {
   const studentId = useQueryString("studentId")
   const reportId = useQueryString("reportId")
-
   const patchStudentReport = usePatchStudentReport(reportId, studentId)
 
   const [comment, setComment] = useState(defaultValue)
-
   const debouncedComment = useDebounce(comment, 300)
 
   useEffect(() => {
@@ -332,21 +325,22 @@ const GeneralCommentEditor: FC<{
         <MarkdownEditor
           placeholder="Add some details"
           value={comment}
-          onChange={(value) => {
-            setComment(value)
-          }}
+          onChange={setComment}
         />
       </Box>
     </Box>
   )
 }
 
-const AreaCommentEditor: FC<{ area: Area }> = ({ area }) => {
+const AreaCommentEditor: FC<{
+  area: Area
+  defaultValue?: string
+}> = ({ area, defaultValue }) => {
   const studentId = useQueryString("studentId")
   const reportId = useQueryString("reportId")
 
-  const comment = useComment(selectComment(reportId, studentId, area.id))
-  const setComment = useComment((state) => state.setComment)
+  const [comment, setComment] = useState(defaultValue)
+  const debouncedComment = useDebounce(comment, 300)
 
   return (
     <Box
@@ -374,18 +368,12 @@ const AreaCommentEditor: FC<{ area: Area }> = ({ area }) => {
           >
             <Trans>Comments on {area.name}</Trans>
           </Text>
-
-          <Button variant="outline" ml="auto" disabled>
-            <Trans>Save</Trans>
-          </Button>
         </Flex>
 
         <MarkdownEditor
           placeholder="Add some details"
           value={comment}
-          onChange={(value) => {
-            setComment(reportId, studentId, area.id, value)
-          }}
+          onChange={setComment}
         />
       </Box>
     </Box>
