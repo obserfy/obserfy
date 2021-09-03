@@ -276,7 +276,15 @@ const GeneralCommentEditor: FC<{
           borderRightStyle: ["none", "solid"],
         }}
       >
-        <Flex sx={{ ...borderBottom, alignItems: "center", fontSize: 0 }} p={3}>
+        <Flex
+          sx={{
+            ...borderBottom,
+            alignItems: "center",
+            fontSize: 0,
+            position: "relative",
+          }}
+          p={3}
+        >
           <Text
             color="textMediumEmphasis"
             sx={{ display: "block", fontWeight: "bold" }}
@@ -302,6 +310,23 @@ const GeneralCommentEditor: FC<{
             }}
           >
             Autosaving
+          </Text>
+
+          <Text
+            mr={2}
+            color="textMediumEmphasis"
+            sx={{
+              display: ["none", "block"],
+              opacity:
+                patchStudentReport.isSuccess && comment === defaultValue
+                  ? 1
+                  : 0,
+              transition: "opacity 100ms ease-in-out",
+              position: "absolute",
+              right: 2,
+            }}
+          >
+            Saved
           </Text>
         </Flex>
         <MarkdownEditor
