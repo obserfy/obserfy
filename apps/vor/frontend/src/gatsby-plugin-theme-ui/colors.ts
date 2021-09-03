@@ -47,7 +47,7 @@ export default {
   surfaceBlurTransparent: "rgba(255,255,255,0.9)",
   onSurfaceBlurTransparent: "#87000000",
 
-  border: "rgba(0,0,0,.1)",
+  border: "rgba(0,0,0,.11)",
   borderSolid: "#e5e5e5",
 
   overlay: "rgba(0,0,0,.7)",

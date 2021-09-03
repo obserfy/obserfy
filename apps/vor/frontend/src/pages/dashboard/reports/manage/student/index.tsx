@@ -82,7 +82,7 @@ const StudentReports = () => {
             ready={report.ready}
           />
         ) : (
-          <Box sx={{ height: 65, ...borderBottom }} />
+          <Box sx={{ height: [107, 65], ...borderBottom }} />
         )}
         <Tab
           small
@@ -107,7 +107,7 @@ const StudentReports = () => {
             pb={6}
             sx={{
               minHeight: "100vh",
-              width: ["auto", "auto", "auto", 640],
+              width: ["auto", "auto", "auto", 600],
               ...borderLeft,
             }}
           >
@@ -206,17 +206,8 @@ const ActionBar: FC<{
         </Flex>
 
         <Button
-          variant="outline"
-          mt={[3, 0]}
-          mr={3}
-          sx={{ width: ["100%", "auto"] }}
-        >
-          <Trans>Save</Trans>
-        </Button>
-
-        <Button
           onClick={handleToggleReady}
-          mt={[2, 0]}
+          mt={[3, 0]}
           sx={{
             width: ["100%", "auto"],
             backgroundColor: ready ? "tintWarning" : "primary",
@@ -229,7 +220,7 @@ const ActionBar: FC<{
             },
           }}
         >
-          Mark as {ready && "not"} ready
+          <Trans>Mark as {ready ? "not" : ""} ready</Trans>
         </Button>
       </Flex>
     </>
@@ -255,17 +246,22 @@ const GeneralCommentEditor: FC = () => {
           borderRadius: [0, "default"],
           backgroundColor: "surface",
           ...borderFull,
-          borderStyle: ["none", "solid"],
+          borderLeftStyle: ["none", "solid"],
+          borderRightStyle: ["none", "solid"],
         }}
       >
-        <Text
-          px={3}
-          pt={3}
-          color="textMediumEmphasis"
-          sx={{ display: "block", fontWeight: "bold" }}
-        >
-          <Trans>General Comments</Trans>
-        </Text>
+        <Flex sx={{ ...borderBottom, alignItems: "center", fontSize: 0 }} p={3}>
+          <Text
+            color="textMediumEmphasis"
+            sx={{ display: "block", fontWeight: "bold" }}
+          >
+            <Trans>General Comments</Trans>
+          </Text>
+
+          <Button variant="outline" ml="auto" disabled>
+            <Trans>Save</Trans>
+          </Button>
+        </Flex>
         <MarkdownEditor
           placeholder="Add some details"
           value={comment}
@@ -296,17 +292,23 @@ const AreaCommentEditor: FC<{ area: Area }> = ({ area }) => {
           borderRadius: [0, "default"],
           backgroundColor: "surface",
           ...borderFull,
-          borderStyle: ["none", "solid"],
+          borderLeftStyle: ["none", "solid"],
+          borderRightStyle: ["none", "solid"],
         }}
       >
-        <Text
-          px={3}
-          pt={3}
-          color="textMediumEmphasis"
-          sx={{ display: "block", fontWeight: "bold" }}
-        >
-          <Trans>Comments on {area.name}</Trans>
-        </Text>
+        <Flex sx={{ ...borderBottom, alignItems: "center", fontSize: 0 }} p={3}>
+          <Text
+            color="textMediumEmphasis"
+            sx={{ display: "block", fontWeight: "bold" }}
+          >
+            <Trans>Comments on {area.name}</Trans>
+          </Text>
+
+          <Button variant="outline" ml="auto" disabled>
+            <Trans>Save</Trans>
+          </Button>
+        </Flex>
+
         <MarkdownEditor
           placeholder="Add some details"
           value={comment}
