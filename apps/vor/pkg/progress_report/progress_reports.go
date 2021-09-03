@@ -213,7 +213,8 @@ func patchStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest
 
 		return rest.ServerResponse{
 			Body: rest.H{
-				"ready": studentReport.Ready,
+				"ready":           studentReport.Ready,
+				"generalComments": studentReport.GeneralComments,
 			},
 		}
 	})

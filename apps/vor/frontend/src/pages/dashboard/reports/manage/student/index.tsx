@@ -1,10 +1,11 @@
 import { t, Trans } from "@lingui/macro"
-import { FC, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { Box, Button, Flex, Text } from "theme-ui"
 import { borderBottom, borderFull } from "../../../../../border"
 import Icon from "../../../../../components/Icon/Icon"
 import ImagePreview from "../../../../../components/ImagePreview/ImagePreview"
 import { Link } from "../../../../../components/Link/Link"
+import LoadingIndicator from "../../../../../components/LoadingIndicator/LoadingIndicator"
 import Markdown from "../../../../../components/Markdown/Markdown"
 import MarkdownEditor from "../../../../../components/MarkdownEditor/MarkdownEditor"
 import Pill from "../../../../../components/Pill/Pill"
@@ -31,6 +32,7 @@ import {
   Observation,
   useGetStudentObservations,
 } from "../../../../../hooks/api/useGetStudentObservations"
+import useDebounce from "../../../../../hooks/useDebounce"
 import { useQueryString } from "../../../../../hooks/useQueryString"
 import { ReactComponent as ChevronDown } from "../../../../../icons/chevron-down.svg"
 import { ReactComponent as ChevronUp } from "../../../../../icons/chevron-up.svg"
@@ -93,16 +95,23 @@ const StudentReports = () => {
         />
       </TranslucentBar>
 
-      {selectedTab === 0 && <GeneralCommentEditor />}
+      {selectedTab === 0 && (
+        <GeneralCommentEditor
+          key={studentId}
+          defaultValue={report?.generalComments}
+        />
+      )}
+
       {selectedArea && (
         <Box
+          key={selectedArea.id}
           sx={{
             display: ["block", "block", "block", "flex"],
             width: "100%",
             alignItems: "flex-start",
           }}
         >
-          <AreaCommentEditor key={selectedArea.id} area={selectedArea} />
+          <AreaCommentEditor area={selectedArea} />
           <Box
             pb={6}
             sx={{
@@ -226,12 +235,30 @@ const ActionBar: FC<{
   )
 }
 
-const GeneralCommentEditor: FC = () => {
+const GeneralCommentEditor: FC<{
+  defaultValue?: string
+}> = ({ defaultValue }) => {
   const studentId = useQueryString("studentId")
   const reportId = useQueryString("reportId")
 
-  const comment = useComment(selectComment(reportId, studentId, "general"))
-  const setComment = useComment((state) => state.setComment)
+  const patchStudentReport = usePatchStudentReport(reportId, studentId)
+
+  const [comment, setComment] = useState(defaultValue)
+
+  const debouncedComment = useDebounce(comment, 300)
+
+  useEffect(() => {
+    if (defaultValue && comment === undefined) {
+      setComment(defaultValue)
+    } else if (
+      debouncedComment !== undefined &&
+      debouncedComment !== defaultValue
+    ) {
+      patchStudentReport.mutate({
+        generalComments: debouncedComment,
+      })
+    }
+  }, [debouncedComment, defaultValue])
 
   return (
     <Box
@@ -253,19 +280,35 @@ const GeneralCommentEditor: FC = () => {
           <Text
             color="textMediumEmphasis"
             sx={{ display: "block", fontWeight: "bold" }}
+            mr="auto"
           >
             <Trans>General Comments</Trans>
           </Text>
 
-          <Button variant="outline" ml="auto" disabled>
-            <Trans>Save</Trans>
-          </Button>
+          <LoadingIndicator
+            mr={2}
+            sx={{
+              opacity: patchStudentReport.isLoading ? 1 : 0,
+              transition: "opacity 100ms ease-in-out",
+            }}
+          />
+          <Text
+            mr={2}
+            color="textMediumEmphasis"
+            sx={{
+              display: ["none", "block"],
+              opacity: patchStudentReport.isLoading ? 1 : 0,
+              transition: "opacity 100ms ease-in-out",
+            }}
+          >
+            Autosaving
+          </Text>
         </Flex>
         <MarkdownEditor
           placeholder="Add some details"
           value={comment}
           onChange={(value) => {
-            setComment(reportId, studentId, "general", value)
+            setComment(value)
           }}
         />
       </Box>
