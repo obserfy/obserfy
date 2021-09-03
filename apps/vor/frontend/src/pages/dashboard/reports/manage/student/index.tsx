@@ -122,7 +122,7 @@ const StudentReports = () => {
           >
             <Assessments
               assessments={assessments?.filter(
-                ({ areaId }) => areaId === selectedArea?.id
+                ({ areaId, stage }) => areaId === selectedArea?.id && stage >= 0
               )}
             />
             <Observations
