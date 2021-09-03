@@ -119,7 +119,7 @@ exports[`PageHome should render correctly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .emotion-5 {

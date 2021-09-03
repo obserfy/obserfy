@@ -175,7 +175,7 @@ exports[`TopBarWithAction should render correctly 1`] = `
 
 .emotion-8 {
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }

@@ -1,7 +1,7 @@
 import { t, Trans } from "@lingui/macro"
 import { FC, useState } from "react"
 import { Box, Button, Flex, Text } from "theme-ui"
-import { borderBottom, borderFull, borderLeft } from "../../../../../border"
+import { borderBottom, borderFull } from "../../../../../border"
 import Icon from "../../../../../components/Icon/Icon"
 import ImagePreview from "../../../../../components/ImagePreview/ImagePreview"
 import { Link } from "../../../../../components/Link/Link"
@@ -108,7 +108,6 @@ const StudentReports = () => {
             sx={{
               minHeight: "100vh",
               width: ["auto", "auto", "auto", 600],
-              ...borderLeft,
             }}
           >
             <Assessments
@@ -285,7 +284,11 @@ const AreaCommentEditor: FC<{ area: Area }> = ({ area }) => {
     <Box
       px={[0, 3]}
       py={3}
-      sx={{ width: "100%", top: 0, position: ["relative", "sticky"] }}
+      sx={{
+        width: "100%",
+        top: 0,
+        position: ["relative", "relative", "relative", "sticky"],
+      }}
     >
       <Box
         sx={{
@@ -324,7 +327,18 @@ const AreaCommentEditor: FC<{ area: Area }> = ({ area }) => {
 const Assessments: FC<{
   assessments?: MaterialProgress[]
 }> = ({ assessments = [] }) => (
-  <>
+  <Box
+    mt={3}
+    mr={[0, 3]}
+    ml={[0, 3, 3, 0]}
+    sx={{
+      borderRadius: [0, "default"],
+      backgroundColor: "surface",
+      ...borderFull,
+      borderLeftStyle: ["none", "solid"],
+      borderRightStyle: ["none", "solid"],
+    }}
+  >
     <ListHeading text={t`Assessments`} />
     {assessments.length === 0 && <NoAssessments />}
     {assessments.length !== 0 && (
@@ -336,7 +350,12 @@ const Assessments: FC<{
               key={materialId}
               px={3}
               py={2}
-              sx={{ alignItems: "center", ...borderBottom }}
+              sx={{
+                alignItems: "center",
+                "&:not(:last-child)": {
+                  ...borderBottom,
+                },
+              }}
             >
               <Text sx={{ fontSize: 0 }} mr={3}>
                 {materialName}
@@ -352,14 +371,25 @@ const Assessments: FC<{
         })}
       </Box>
     )}
-  </>
+  </Box>
 )
 
 const Observations: FC<{
   observations?: Observation[]
   studentId: string
 }> = ({ observations = [], studentId }) => (
-  <>
+  <Box
+    mt={3}
+    mr={[0, 3]}
+    ml={[0, 3, 3, 0]}
+    sx={{
+      borderRadius: [0, "default"],
+      backgroundColor: "surface",
+      ...borderFull,
+      borderLeftStyle: ["none", "solid"],
+      borderRightStyle: ["none", "solid"],
+    }}
+  >
     <ListHeading text={t`Observations`} />
 
     {observations.length === 0 && <NoObservation />}
@@ -370,18 +400,25 @@ const Observations: FC<{
         studentId={studentId}
       />
     ))}
-  </>
+  </Box>
 )
 
 const ObservationItem: FC<{
   observation: Observation
   studentId: string
 }> = ({ studentId, observation }) => (
-  <Box pt={3} sx={borderBottom}>
+  <Box
+    pt={3}
+    sx={{
+      "&:not(:last-child)": {
+        ...borderBottom,
+      },
+    }}
+  >
     <Flex mb={2} mx={3}>
       <Text
         data-cy="observation-short-desc"
-        sx={{ fontWeight: "bold", alignItems: "center" }}
+        sx={{ fontSize: 0, fontWeight: "bold", alignItems: "center" }}
       >
         {observation.shortDesc}
       </Text>
@@ -394,6 +431,9 @@ const ObservationItem: FC<{
         mb={3}
         data-cy="observation-long-desc"
         markdown={observation.longDesc}
+        sx={{
+          fontSize: 0,
+        }}
       />
     )}
 
@@ -437,7 +477,7 @@ const ObservationItem: FC<{
 )
 
 const ListHeading: FC<{ text: string }> = ({ text }) => (
-  <Box p={3} pt={4} sx={{ width: "100%", ...borderBottom }}>
+  <Box p={3} sx={{ width: "100%", ...borderBottom }}>
     <Text sx={{ fontWeight: "bold" }}>{text}</Text>
     <Box
       mt={1}
@@ -458,7 +498,7 @@ const NoAssessments = () => (
 )
 
 const NoObservation = () => (
-  <Text mb={3} sx={{ display: "block", overflow: "hidden" }} p={3}>
+  <Text sx={{ display: "block", overflow: "hidden" }} p={3}>
     <Trans>No observation has been added.</Trans>
   </Text>
 )

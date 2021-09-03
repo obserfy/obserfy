@@ -92,8 +92,8 @@ exports[`UserCard should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 0;
+  padding-bottom: 0;
   padding-left: 8px;
   padding-right: 8px;
   margin: 4px;
@@ -117,7 +117,7 @@ exports[`UserCard should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   color: var(--theme-ui-colors-onPrimary);
   display: block;
-  font-size: 12px;
+  font-size: 13px;
   text-transform: capitalize;
 }
 

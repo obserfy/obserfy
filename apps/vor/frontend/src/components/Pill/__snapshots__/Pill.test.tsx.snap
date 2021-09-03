@@ -18,8 +18,8 @@ exports[`Pill should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 0;
+  padding-bottom: 0;
   padding-left: 8px;
   padding-right: 8px;
   border-width: 1px;
@@ -40,7 +40,7 @@ exports[`Pill should render correctly 1`] = `
   color: var(--theme-ui-colors-text);
   text-rendering: optimizeLegibility;
   display: block;
-  font-size: 12px;
+  font-size: 13px;
   text-transform: capitalize;
 }
 

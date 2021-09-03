@@ -8,7 +8,7 @@ interface Props extends Omit<BoxProps, "css"> {
 }
 export const Pill: FC<Props> = ({ sx, color, text, ...props }) => (
   <Box
-    py={1}
+    py={0}
     px={2}
     sx={{
       ...borderFull,

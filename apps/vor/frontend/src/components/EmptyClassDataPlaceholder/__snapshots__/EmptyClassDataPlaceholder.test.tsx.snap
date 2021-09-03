@@ -175,7 +175,7 @@ exports[`EmptyClassDataPlaceholder should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   color: var(--theme-ui-colors-warning);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .emotion-8:disabled {

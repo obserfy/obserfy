@@ -159,7 +159,7 @@ exports[`PageNewObservation should render correctly 1`] = `
 
 .emotion-7 {
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
@@ -187,7 +187,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
@@ -681,7 +681,7 @@ input:focus~.emotion-24 {
   font-weight: bold;
   background-color: var(--theme-ui-colors-primaryLightest);
   color: var(--theme-ui-colors-textPrimary);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .emotion-31:disabled {
@@ -768,7 +768,7 @@ input:focus~.emotion-24 {
   border-color: var(--theme-ui-colors-border);
   font-weight: bold;
   color: var(--theme-ui-colors-textMediumEmphasis);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .emotion-32:disabled {

@@ -173,7 +173,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
 
 .emotion-7 {
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
@@ -201,7 +201,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
@@ -302,7 +302,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   margin-bottom: 4px;
   color: var(--theme-ui-colors-textMediumEmphasis);
   line-height: 1;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .emotion-26 {

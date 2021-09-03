@@ -134,7 +134,7 @@ exports[`MarkdownEditor should render correctly 1`] = `
   font-weight: bold;
   background-color: var(--theme-ui-colors-primaryLightest);
   color: var(--theme-ui-colors-textPrimary);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .emotion-5:disabled {
@@ -221,7 +221,7 @@ exports[`MarkdownEditor should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border);
   font-weight: bold;
   color: var(--theme-ui-colors-textMediumEmphasis);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .emotion-6:disabled {

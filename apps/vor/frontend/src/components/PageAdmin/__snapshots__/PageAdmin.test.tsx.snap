@@ -203,7 +203,7 @@ exports[`PageAdmin should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-textMediumEmphasis);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .emotion-50 {
@@ -249,7 +249,7 @@ exports[`PageAdmin should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-textMediumEmphasis);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .emotion-56 {
