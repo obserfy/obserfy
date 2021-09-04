@@ -1661,7 +1661,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:7.15.3, @babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.14.0, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.3.4, @babel/runtime@npm:^7.5.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.2, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:7.15.3, @babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.14.0, @babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.3.4, @babel/runtime@npm:^7.5.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.2, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.15.3
   resolution: "@babel/runtime@npm:7.15.3"
   dependencies:
@@ -14596,15 +14596,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.24":
-  version: 1.1.24
-  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.24"
+"gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.25":
+  version: 1.1.25
+  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.25"
   dependencies:
-    "@babel/runtime": ^7.14.6
+    "@babel/runtime": ^7.15.3
     webpack-bundle-analyzer: ^4.4.2
   peerDependencies:
     gatsby: ^2.0.0 || ^3.0.0
-  checksum: 1c1a16071b080ea7ef7f30155028cc5cd228639aabe43cc9e2c73438765f31a08eba967d963fd9c544cf8f488fa7b700351b9139854b0d8dd2f2e239676429d0
+  checksum: 1df44169b832746f45aeb5065730d9c8b13d83b11f9279c75090078c8e949e5770117414120c433189650aab7e1d13fe160c7ecd4fb7eeb9a84ac36844179b03
   languageName: node
   linkType: hard
 
@@ -28632,7 +28632,7 @@ typescript@4.3.5:
     gatsby-plugin-svgr: v3.0.0-beta.0
     gatsby-plugin-theme-ui: 0.10.1
     gatsby-plugin-typegen: 2.2.4
-    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.24
+    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.25
     gatsby-source-filesystem: 3.13.0
     gatsby-theme-i18n: 2.0.0
     gatsby-theme-i18n-lingui: 2.0.0
