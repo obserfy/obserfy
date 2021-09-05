@@ -8087,7 +8087,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:10.3.3, autoprefixer@npm:^10.2.4":
+"autoprefixer@npm:10.3.4":
+  version: 10.3.4
+  resolution: "autoprefixer@npm:10.3.4"
+  dependencies:
+    browserslist: ^4.16.8
+    caniuse-lite: ^1.0.30001252
+    colorette: ^1.3.0
+    fraction.js: ^4.1.1
+    normalize-range: ^0.1.2
+    postcss-value-parser: ^4.1.0
+  peerDependencies:
+    postcss: ^8.1.0
+  bin:
+    autoprefixer: bin/autoprefixer
+  checksum: fa037d78767158f3fd9b30e27870590824bddc7e38ffadf22b697e1a9d23b32cb4a164bef01e94b7820c8d719117ca5028db1764855fb6146fb2776d7bffe0e9
+  languageName: node
+  linkType: hard
+
+"autoprefixer@npm:^10.2.4":
   version: 10.3.3
   resolution: "autoprefixer@npm:10.3.3"
   dependencies:
@@ -14159,7 +14177,7 @@ __metadata:
     "@types/uuid": 8.3.1
     "@typescript-eslint/eslint-plugin": 4.28.3
     "@typescript-eslint/parser": 4.28.3
-    autoprefixer: 10.3.3
+    autoprefixer: 10.3.4
     body-scroll-lock: 3.1.5
     dayjs: 1.10.6
     dompurify: 2.3.1
@@ -28586,7 +28604,7 @@ typescript@4.3.5:
     "@types/react-helmet": 6.1.2
     "@typescript-eslint/eslint-plugin": 4.28.3
     "@typescript-eslint/parser": 4.28.3
-    autoprefixer: 10.3.3
+    autoprefixer: 10.3.4
     babel-jest: 27.1.0
     babel-loader: 8.2.2
     babel-plugin-istanbul: 6.0.0
