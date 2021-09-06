@@ -24,7 +24,7 @@ func NewRouter(s rest.Server, store postgres.ProgressReportsStore) *chi.Mux {
 		r.Method("GET", "/students/{studentId}", getStudentReport(s, store))
 		r.Method("PATCH", "/students/{studentId}", patchStudentReport(s, store))
 
-		r.Method("PUT", "/students/{studentId}/comments/{areaId}", putStudentAreaComment(s, store))
+		r.Method("PUT", "/students/{studentId}/areas/{areaId}/comments", putStudentAreaComment(s, store))
 	})
 
 	return r
@@ -224,7 +224,7 @@ func patchStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest
 
 func putStudentAreaComment(s rest.Server, store postgres.ProgressReportsStore) http.Handler {
 	type requestBody struct {
-		Comments string `json:"generalComments"`
+		Comments string `json:"comments"`
 	}
 	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
 		reportId, _ := uuid.Parse(r.GetParam("reportId"))
