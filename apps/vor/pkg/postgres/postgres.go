@@ -465,7 +465,6 @@ type (
 		Area   Area      `pg:"rel:has-one"`
 
 		Comments string
-		Ready    bool
 	}
 
 	StudentReportAssessment struct {

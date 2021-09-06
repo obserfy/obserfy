@@ -110,8 +110,9 @@ const StudentReports = () => {
           <AreaCommentEditor
             area={selectedArea}
             defaultValue={
-              report?.areaComments.find(({ area }) => area === selectedArea)
-                ?.comments
+              report?.areaComments.find(
+                ({ areaId }) => areaId === selectedArea?.id
+              )?.comments
             }
           />
           <Box

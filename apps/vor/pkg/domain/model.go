@@ -216,7 +216,6 @@ type (
 
 		Area     Area
 		Comments string
-		Ready    bool
 	}
 
 	VideoStore interface {
