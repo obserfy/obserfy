@@ -205,7 +205,7 @@ func (s ProgressReportsStore) DeleteReportById(reportId uuid.UUID) error {
 	return nil
 }
 
-func (s ProgressReportsStore) PatchAreaComments(reportId uuid.UUID, studentId uuid.UUID, areaId uuid.UUID, comments string) (domain.StudentReportsAreaComment, error) {
+func (s ProgressReportsStore) UpsertStudentReportAreaComments(reportId uuid.UUID, studentId uuid.UUID, areaId uuid.UUID, comments string) (domain.StudentReportsAreaComment, error) {
 	c := StudentReportsAreaComment{
 		StudentReportProgressReportId: reportId,
 		StudentReportStudentId:        studentId,
@@ -214,7 +214,7 @@ func (s ProgressReportsStore) PatchAreaComments(reportId uuid.UUID, studentId uu
 	}
 	if _, err := s.Model(&c).
 		WherePK().
-		OnConflict("DO UPDATE").
+		OnConflict("(area_id, student_report_progress_report_id, student_report_student_id) DO UPDATE").
 		Insert(); err != nil {
 		return domain.StudentReportsAreaComment{}, richErrors.Wrap(err, "failed to upsert area comments")
 	}

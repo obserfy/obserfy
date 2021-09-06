@@ -239,7 +239,7 @@ func putStudentAreaComment(s rest.Server, store postgres.ProgressReportsStore) h
 			return s.BadRequest(err)
 		}
 
-		studentReport, err := store.PatchAreaComments(reportId, studentId, areaId, body.Comments)
+		studentReport, err := store.UpsertStudentReportAreaComments(reportId, studentId, areaId, body.Comments)
 		if err != nil {
 			return s.InternalServerError(err)
 		}

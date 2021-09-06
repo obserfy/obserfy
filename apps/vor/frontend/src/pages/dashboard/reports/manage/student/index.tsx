@@ -16,6 +16,7 @@ import TranslucentBar from "../../../../../components/TranslucentBar/Translucent
 import { getFirstName } from "../../../../../domain/person"
 import useGetStudentReport from "../../../../../hooks/api/reports/useGetStudentReport"
 import usePatchStudentReport from "../../../../../hooks/api/reports/usePatchStudentReport"
+import usePutReportStudentAreaComments from "../../../../../hooks/api/reports/usePutReportStudentAreaComments"
 import { useGetAllStudents } from "../../../../../hooks/api/students/useGetAllStudents"
 import { Area } from "../../../../../hooks/api/useGetArea"
 import { useGetCurriculumAreas } from "../../../../../hooks/api/useGetCurriculumAreas"
@@ -338,9 +339,27 @@ const AreaCommentEditor: FC<{
 }> = ({ area, defaultValue }) => {
   const studentId = useQueryString("studentId")
   const reportId = useQueryString("reportId")
+  const putStudentReportAreaComments = usePutReportStudentAreaComments(
+    reportId,
+    studentId,
+    area.id
+  )
 
   const [comment, setComment] = useState(defaultValue)
   const debouncedComment = useDebounce(comment, 300)
+
+  useEffect(() => {
+    if (defaultValue && comment === undefined) {
+      setComment(defaultValue)
+    } else if (
+      debouncedComment !== undefined &&
+      debouncedComment !== defaultValue
+    ) {
+      putStudentReportAreaComments.mutate({
+        comments: debouncedComment,
+      })
+    }
+  }, [debouncedComment, defaultValue])
 
   return (
     <Box
@@ -363,10 +382,48 @@ const AreaCommentEditor: FC<{
       >
         <Flex sx={{ ...borderBottom, alignItems: "center", fontSize: 0 }} p={3}>
           <Text
+            mr="auto"
             color="textMediumEmphasis"
             sx={{ display: "block", fontWeight: "bold" }}
           >
             <Trans>Comments on {area.name}</Trans>
+          </Text>
+
+          <LoadingIndicator
+            mr={2}
+            sx={{
+              opacity: putStudentReportAreaComments.isLoading ? 1 : 0,
+              transition: "opacity 100ms ease-in-out",
+            }}
+          />
+          <Text
+            mr={2}
+            color="textMediumEmphasis"
+            sx={{
+              display: ["none", "block"],
+              opacity: putStudentReportAreaComments.isLoading ? 1 : 0,
+              transition: "opacity 100ms ease-in-out",
+            }}
+          >
+            Autosaving
+          </Text>
+
+          <Text
+            mr={2}
+            color="textMediumEmphasis"
+            sx={{
+              display: ["none", "block"],
+              opacity:
+                putStudentReportAreaComments.isSuccess &&
+                comment === defaultValue
+                  ? 1
+                  : 0,
+              transition: "opacity 100ms ease-in-out",
+              position: "absolute",
+              right: 2,
+            }}
+          >
+            Saved
           </Text>
         </Flex>
 
