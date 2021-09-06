@@ -23,6 +23,8 @@ func NewRouter(s rest.Server, store postgres.ProgressReportsStore) *chi.Mux {
 
 		r.Method("GET", "/students/{studentId}", getStudentReport(s, store))
 		r.Method("PATCH", "/students/{studentId}", patchStudentReport(s, store))
+
+		r.Method("PUT", "/students/{studentId}/comments/{areaId}", putStudentAreaComment(s, store))
 	})
 
 	return r
@@ -215,6 +217,36 @@ func patchStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest
 			Body: rest.H{
 				"ready":           studentReport.Ready,
 				"generalComments": studentReport.GeneralComments,
+			},
+		}
+	})
+}
+
+func putStudentAreaComment(s rest.Server, store postgres.ProgressReportsStore) http.Handler {
+	type requestBody struct {
+		Comments string `json:"generalComments"`
+	}
+	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
+		reportId, _ := uuid.Parse(r.GetParam("reportId"))
+		studentId, err := uuid.Parse(r.GetParam("studentId"))
+		areaId, err := uuid.Parse(r.GetParam("areaId"))
+		if err != nil {
+			return s.NotFound()
+		}
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return s.BadRequest(err)
+		}
+
+		studentReport, err := store.PatchAreaComments(reportId, studentId, areaId, body.Comments)
+		if err != nil {
+			return s.InternalServerError(err)
+		}
+
+		return rest.ServerResponse{
+			Body: rest.H{
+				"comments": studentReport.Comments,
 			},
 		}
 	})
