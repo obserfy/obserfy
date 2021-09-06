@@ -381,7 +381,15 @@ const AreaCommentEditor: FC<{
           borderRightStyle: ["none", "solid"],
         }}
       >
-        <Flex sx={{ ...borderBottom, alignItems: "center", fontSize: 0 }} p={3}>
+        <Flex
+          sx={{
+            ...borderBottom,
+            alignItems: "center",
+            fontSize: 0,
+            position: "relative",
+          }}
+          p={3}
+        >
           <Text
             mr="auto"
             color="textMediumEmphasis"

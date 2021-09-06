@@ -32,7 +32,6 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 				StudentReportProgressReportId: comment.StudentReportProgressReportId,
 				StudentReportStudentId:        comment.StudentReportStudentId,
 				Comments:                      comment.Comments,
-				Ready:                         comment.Ready,
 				Area: domain.Area{
 					Id:   comment.Area.Id,
 					Name: comment.Area.Name,
@@ -115,7 +114,6 @@ func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentI
 			StudentReportProgressReportId: comment.StudentReportProgressReportId,
 			StudentReportStudentId:        comment.StudentReportStudentId,
 			Comments:                      comment.Comments,
-			Ready:                         comment.Ready,
 			Area: domain.Area{
 				Id:   comment.AreaId.String(),
 				Name: comment.Area.Name,
