@@ -103,6 +103,7 @@ func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentI
 	if err := s.Model(&report).
 		Relation("ProgressReport").
 		Relation("Student").
+		Relation("AreaComments").
 		WherePK().
 		Select(); err != nil {
 		return domain.StudentReport{}, richErrors.Wrap(err, "failed to find student report")
@@ -116,7 +117,7 @@ func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentI
 			Comments:                      comment.Comments,
 			Ready:                         comment.Ready,
 			Area: domain.Area{
-				Id:   comment.Area.Id,
+				Id:   comment.AreaId.String(),
 				Name: comment.Area.Name,
 			},
 		}
@@ -222,7 +223,9 @@ func (s ProgressReportsStore) UpsertStudentReportAreaComments(reportId uuid.UUID
 	return domain.StudentReportsAreaComment{
 		StudentReportProgressReportId: reportId,
 		StudentReportStudentId:        studentId,
-		AreaId:                        areaId,
 		Comments:                      comments,
+		Area: domain.Area{
+			Id: areaId.String(),
+		},
 	}, nil
 }

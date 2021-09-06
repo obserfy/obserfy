@@ -214,7 +214,6 @@ type (
 		StudentReportStudentId        uuid.UUID
 		StudentReport                 StudentReport
 
-		AreaId   uuid.UUID `json:"areaId"`
 		Area     Area
 		Comments string
 		Ready    bool
