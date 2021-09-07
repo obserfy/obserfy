@@ -1,9 +1,8 @@
+import { Trans } from "@lingui/macro"
 import { FC } from "react"
 import { Button, Flex } from "theme-ui"
-
-import { Trans } from "@lingui/macro"
-import Typography from "../Typography/Typography"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import Typography from "../Typography/Typography"
 
 interface Props {
   onCancel?: () => void
@@ -44,7 +43,7 @@ export const DialogHeader: FC<Props> = ({
       <Trans id={title} />
     </Typography.H6>
     <Button
-      variant="secondary"
+      variant="text"
       color="danger"
       my={1}
       onClick={onCancel}
@@ -54,7 +53,7 @@ export const DialogHeader: FC<Props> = ({
       <Trans id={onCancelText} />
     </Button>
     <Button
-      variant="secondary"
+      variant="text"
       ml="auto"
       my={1}
       onClick={onAccept}

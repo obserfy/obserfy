@@ -66,7 +66,7 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
             <Trans>Assessments</Trans>
           </Typography.H6>
 
-          <Button variant="secondary" ml="auto" onClick={handleExport}>
+          <Button variant="text" ml="auto" onClick={handleExport}>
             Export
           </Button>
         </Flex>
@@ -105,7 +105,7 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
             to={STUDENT_PROGRESS_URL(studentId, areaId ?? "")}
             sx={{ ml: "auto" }}
           >
-            <Button variant="secondary">
+            <Button variant="text">
               <Trans>See All {areas.data?.[tab]?.name} Progress</Trans>
             </Button>
           </Link>

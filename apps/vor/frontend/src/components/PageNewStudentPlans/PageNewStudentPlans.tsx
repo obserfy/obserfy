@@ -1,41 +1,40 @@
+import { t, Trans } from "@lingui/macro"
+import { nanoid } from "nanoid"
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, Image } from "theme-ui"
 import { useImmer } from "use-immer"
-import { nanoid } from "nanoid"
-
-import { t, Trans } from "@lingui/macro"
 import { borderFull } from "../../border"
-import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
+import dayjs from "../../dayjs"
 import usePostNewPlan, {
   PostNewLessonPlanBody,
 } from "../../hooks/api/plans/usePostNewPlan"
-import dayjs from "../../dayjs"
+import { Student } from "../../hooks/api/students/useGetAllStudents"
+import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
+import { useGetStudent } from "../../hooks/api/useGetStudent"
+import { ReactComponent as LinkIcon } from "../../icons/link.svg"
+import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import {
   ADMIN_CURRICULUM_URL,
   STUDENT_OVERVIEW_URL,
   STUDENT_PLANS_URL,
   STUDENTS_URL,
 } from "../../routes"
-import MarkdownEditor from "../MarkdownEditor/MarkdownEditor"
-import { Typography } from "../Typography/Typography"
-import DateInput from "../DateInput/DateInput"
-import Input from "../Input/Input"
-import Chip from "../Chip/Chip"
-import { navigate } from "../Link/Link"
-import { useGetStudent } from "../../hooks/api/useGetStudent"
-import { ReactComponent as LinkIcon } from "../../icons/link.svg"
-import Icon from "../Icon/Icon"
-import LinkInput from "../LinkInput/LinkInput"
-import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
-import InformationalCard from "../InformationalCard/InformationalCard"
-import { Student } from "../../hooks/api/students/useGetAllStudents"
-import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 import BackButton from "../BackButton/BackButton"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
+import Chip from "../Chip/Chip"
+import DateInput from "../DateInput/DateInput"
+import Icon from "../Icon/Icon"
+import InformationalCard from "../InformationalCard/InformationalCard"
+import Input from "../Input/Input"
+import { navigate } from "../Link/Link"
+import LinkInput from "../LinkInput/LinkInput"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import MarkdownEditor from "../MarkdownEditor/MarkdownEditor"
 import StudentPickerDialog from "../StudentPickerDialog/StudentPickerDialog"
+import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
+import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import { Typography } from "../Typography/Typography"
 
 interface Props {
   studentId: string
@@ -262,7 +261,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
               </Typography.Body>
               <Button
                 data-cy="delete-student"
-                variant="secondary"
+                variant="text"
                 onClick={() =>
                   setOtherStudents((draft) => {
                     return draft.filter(({ id }) => id !== otherStudent.id)

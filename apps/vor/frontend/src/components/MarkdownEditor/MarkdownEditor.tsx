@@ -61,7 +61,7 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({
 
       <Flex px={2} pb={3} sx={{ alignItems: "center" }}>
         <Button
-          variant="secondary"
+          variant="text"
           as="button"
           ml={2}
           mr={0}
@@ -80,7 +80,7 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({
           <Trans>Write</Trans>
         </Button>
         <Button
-          variant="secondary"
+          variant="text"
           as="button"
           ml={2}
           mr={0}

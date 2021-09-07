@@ -70,19 +70,8 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
               mb: -19,
             }}
           >
-            <Button
-              variant="outline"
-              sx={{
-                borderRadius: "circle",
-                backgroundColor: "tertiary.900",
-                color: "onTertiary",
-                "&:hover": {
-                  backgroundColor: "tertiary.800",
-                  borderColor: "tertiary.800",
-                },
-              }}
-            >
-              <Icon as={PlusIcon} sx={{ fill: "onTertiary" }} mr={1} />
+            <Button variant="secondary" sx={{ borderRadius: "circle" }}>
+              <Icon as={PlusIcon} sx={{ fill: "onSecondary" }} mr={1} />
               New Report
             </Button>
           </Link>

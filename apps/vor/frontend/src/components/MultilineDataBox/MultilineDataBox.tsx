@@ -29,7 +29,7 @@ export const MultilineDataBox: FC<MultilineDataBoxProps> = ({
           <Trans id={label} />
         </Typography.Body>
         <Button
-          variant="secondary"
+          variant="text"
           ml="auto"
           mr={3}
           p={2}
