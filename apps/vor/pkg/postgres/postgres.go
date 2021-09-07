@@ -437,7 +437,8 @@ type (
 		PeriodEnd   time.Time
 		Published   bool
 
-		StudentReports []StudentReport `pg:"rel:has-many"`
+		StudentReports    []StudentReport `pg:"rel:has-many"`
+		FreezeAssessments bool
 	}
 
 	StudentReport struct {
