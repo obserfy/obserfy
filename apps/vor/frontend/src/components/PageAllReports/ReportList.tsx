@@ -132,13 +132,11 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
               },
             }}
           >
+            <Text sx={{ width: "65%" }}>{report.title}</Text>
             <Text
+              sx={{ width: "20%", display: ["none", "none", "block"] }}
               color="textMediumEmphasis"
-              sx={{ fontWeight: "bold", width: "65%" }}
             >
-              {report.title}
-            </Text>
-            <Text sx={{ width: "20%", display: ["none", "none", "block"] }}>
               {dayjs(report.periodStart).format("DD MMM YYYY")}
             </Text>
             {report.published ? (

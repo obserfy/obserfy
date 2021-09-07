@@ -270,16 +270,18 @@ const UnPublishButton: FC<{
   return (
     <>
       <Button
+        variant="outline"
         mr={3}
         onClick={confirmationDialog.show}
         sx={{
-          backgroundColor: "danger",
-          color: "onDanger",
+          color: "danger",
           "&:hover": {
-            backgroundColor: "danger",
+            backgroundColor: "tintDanger",
+            borderColor: "danger",
           },
           "&:focus": {
-            backgroundColor: "danger",
+            backgroundColor: "tintDanger",
+            borderColor: "danger",
           },
         }}
       >

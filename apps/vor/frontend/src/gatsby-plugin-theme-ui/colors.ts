@@ -70,6 +70,7 @@ export default {
 
   danger: "#d50000",
   onDanger: "#FFFFFF",
+  tintDanger: "rgba(213,0,0,0.17)",
 
   tintYellow: "rgba(255,199,1,0.2)",
   onTintYellow: "yellow",
