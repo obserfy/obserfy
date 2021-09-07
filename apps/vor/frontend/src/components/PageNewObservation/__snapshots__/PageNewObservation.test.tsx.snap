@@ -159,7 +159,7 @@ exports[`PageNewObservation should render correctly 1`] = `
 
 .emotion-7 {
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
@@ -187,7 +187,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
@@ -681,7 +681,7 @@ input:focus~.emotion-24 {
   font-weight: bold;
   background-color: var(--theme-ui-colors-primaryLightest);
   color: var(--theme-ui-colors-textPrimary);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .emotion-31:disabled {
@@ -768,7 +768,7 @@ input:focus~.emotion-24 {
   border-color: var(--theme-ui-colors-border);
   font-weight: bold;
   color: var(--theme-ui-colors-textMediumEmphasis);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .emotion-32:disabled {
@@ -836,40 +836,11 @@ input:focus~.emotion-24 {
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  padding-right: 8px;
-  margin-top: 8px;
-  margin-bottom: 4px;
-  font-size: 12px;
-  color: inherit;
-  line-height: 1;
-  display: none;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-35 {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 52em) {
-  .emotion-35 {
-    display: block;
-  }
-}
-
-.emotion-36 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text);
-  font-size: 14px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
   margin-bottom: 8px;
   color: var(--theme-ui-colors-textMediumEmphasis);
 }
 
-.emotion-37 {
+.emotion-36 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -884,7 +855,7 @@ input:focus~.emotion-24 {
   flex-wrap: wrap;
 }
 
-.emotion-38 {
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -895,7 +866,7 @@ input:focus~.emotion-24 {
   display: flex;
 }
 
-.emotion-42 {
+.emotion-41 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -926,60 +897,60 @@ input:focus~.emotion-24 {
   width: 100%;
 }
 
-.emotion-42:autofill,
-.emotion-42:autofill:hover,
-.emotion-42:autofill:focus {
+.emotion-41:autofill,
+.emotion-41:autofill:hover,
+.emotion-41:autofill:focus {
   box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
   font-size: inherit;
 }
 
-.emotion-42:autofill:first-line,
-.emotion-42:autofill:hover:first-line,
-.emotion-42:autofill:focus:first-line {
+.emotion-41:autofill:first-line,
+.emotion-41:autofill:hover:first-line,
+.emotion-41:autofill:focus:first-line {
   font-size: 1rem;
 }
 
-.emotion-42:-webkit-autofill,
-.emotion-42:-webkit-autofill:hover,
-.emotion-42:-webkit-autofill:focus {
+.emotion-41:-webkit-autofill,
+.emotion-41:-webkit-autofill:hover,
+.emotion-41:-webkit-autofill:focus {
   box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
   font-size: inherit;
 }
 
-.emotion-42:-webkit-autofill:first-line,
-.emotion-42:-webkit-autofill:hover:first-line,
-.emotion-42:-webkit-autofill:focus:first-line {
+.emotion-41:-webkit-autofill:first-line,
+.emotion-41:-webkit-autofill:hover:first-line,
+.emotion-41:-webkit-autofill:focus:first-line {
   font-size: 1rem;
 }
 
-.emotion-42:hover,
-.emotion-42:focus {
+.emotion-41:hover,
+.emotion-41:focus {
   border-color: var(--theme-ui-colors-primary);
 }
 
-.emotion-42::-webkit-input-placeholder {
+.emotion-41::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-42::-moz-placeholder {
+.emotion-41::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-42:-ms-input-placeholder {
+.emotion-41:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-42::placeholder {
+.emotion-41::placeholder {
   font-style: italic;
 }
 
-.emotion-42:disabled {
+.emotion-41:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border);
   color: var(--theme-ui-colors-textDisabled);
 }
 
-.emotion-43 {
+.emotion-42 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -1047,24 +1018,24 @@ input:focus~.emotion-24 {
   flex-shrink: 0;
 }
 
-.emotion-43:disabled {
+.emotion-42:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-43:hover,
-.emotion-43:focus {
+.emotion-42:hover,
+.emotion-42:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
 }
 
-.emotion-43:hover:disabled,
-.emotion-43:focus:disabled {
+.emotion-42:hover:disabled,
+.emotion-42:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border);
 }
 
-.emotion-44 {
+.emotion-43 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -1078,7 +1049,7 @@ input:focus~.emotion-24 {
   height: 20px;
 }
 
-.emotion-46 {
+.emotion-45 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -1096,7 +1067,7 @@ input:focus~.emotion-24 {
   flex-wrap: wrap;
 }
 
-.emotion-47 {
+.emotion-46 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -1128,11 +1099,11 @@ input:focus~.emotion-24 {
   border-color: var(--theme-ui-colors-border);
 }
 
-.emotion-47:hover {
+.emotion-46:hover {
   border-color: var(--theme-ui-colors-primary);
 }
 
-.emotion-51 {
+.emotion-50 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -1162,54 +1133,54 @@ input:focus~.emotion-24 {
   display: none;
 }
 
-.emotion-51:autofill,
-.emotion-51:autofill:hover,
-.emotion-51:autofill:focus {
+.emotion-50:autofill,
+.emotion-50:autofill:hover,
+.emotion-50:autofill:focus {
   box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
   font-size: inherit;
 }
 
-.emotion-51:autofill:first-line,
-.emotion-51:autofill:hover:first-line,
-.emotion-51:autofill:focus:first-line {
+.emotion-50:autofill:first-line,
+.emotion-50:autofill:hover:first-line,
+.emotion-50:autofill:focus:first-line {
   font-size: 1rem;
 }
 
-.emotion-51:-webkit-autofill,
-.emotion-51:-webkit-autofill:hover,
-.emotion-51:-webkit-autofill:focus {
+.emotion-50:-webkit-autofill,
+.emotion-50:-webkit-autofill:hover,
+.emotion-50:-webkit-autofill:focus {
   box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
   font-size: inherit;
 }
 
-.emotion-51:-webkit-autofill:first-line,
-.emotion-51:-webkit-autofill:hover:first-line,
-.emotion-51:-webkit-autofill:focus:first-line {
+.emotion-50:-webkit-autofill:first-line,
+.emotion-50:-webkit-autofill:hover:first-line,
+.emotion-50:-webkit-autofill:focus:first-line {
   font-size: 1rem;
 }
 
-.emotion-51:hover,
-.emotion-51:focus {
+.emotion-50:hover,
+.emotion-50:focus {
   border-color: var(--theme-ui-colors-primary);
 }
 
-.emotion-51::-webkit-input-placeholder {
+.emotion-50::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-51::-moz-placeholder {
+.emotion-50::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-51:-ms-input-placeholder {
+.emotion-50:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-51::placeholder {
+.emotion-50::placeholder {
   font-style: italic;
 }
 
-.emotion-51:disabled {
+.emotion-50:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border);
   color: var(--theme-ui-colors-textDisabled);
@@ -1390,25 +1361,20 @@ input:focus~.emotion-24 {
               <div
                 class="emotion-34"
               />
-              <p
-                class="emotion-35"
-              >
-                Markdown Supported
-              </p>
             </a>
           </div>
         </div>
       </div>
       <p
-        class="emotion-36"
+        class="emotion-35"
       >
         Related Area
       </p>
       <div
-        class="emotion-37"
+        class="emotion-36"
       />
       <div
-        class="emotion-38"
+        class="emotion-37"
       >
         <label
           class="emotion-16"
@@ -1422,7 +1388,7 @@ input:focus~.emotion-24 {
             class="emotion-18"
           >
             <input
-              class="emotion-42"
+              class="emotion-41"
               disabled=""
               placeholder="Not Set"
               value="Wednesday, 27 Jun 2018"
@@ -1430,27 +1396,27 @@ input:focus~.emotion-24 {
           </div>
         </label>
         <button
-          class="emotion-43"
+          class="emotion-42"
           data-cy="Event Time"
         >
           <div
-            class="emotion-44"
+            class="emotion-43"
           />
         </button>
       </div>
       <p
-        class="emotion-36"
+        class="emotion-35"
       >
         Attach Images
       </p>
       <div
-        class="emotion-46"
+        class="emotion-45"
       >
         <label
-          class="emotion-47"
+          class="emotion-46"
         >
           <div
-            class="emotion-44"
+            class="emotion-43"
           />
           <label
             class="emotion-16"
@@ -1460,7 +1426,7 @@ input:focus~.emotion-24 {
             >
               <input
                 accept="image/*"
-                class="emotion-51"
+                class="emotion-50"
                 data-cy="upload-image"
                 type="file"
                 value=""

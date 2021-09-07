@@ -134,7 +134,7 @@ exports[`MarkdownEditor should render correctly 1`] = `
   font-weight: bold;
   background-color: var(--theme-ui-colors-primaryLightest);
   color: var(--theme-ui-colors-textPrimary);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .emotion-5:disabled {
@@ -221,7 +221,7 @@ exports[`MarkdownEditor should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border);
   font-weight: bold;
   color: var(--theme-ui-colors-textMediumEmphasis);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .emotion-6:disabled {
@@ -281,35 +281,6 @@ exports[`MarkdownEditor should render correctly 1`] = `
   color: inherit;
 }
 
-.emotion-9 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text);
-  font-size: 14px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  padding-right: 8px;
-  margin-top: 8px;
-  margin-bottom: 4px;
-  font-size: 12px;
-  color: inherit;
-  line-height: 1;
-  display: none;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-9 {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 52em) {
-  .emotion-9 {
-    display: block;
-  }
-}
-
 <div>
   <div
     class="emotion-0"
@@ -348,11 +319,6 @@ exports[`MarkdownEditor should render correctly 1`] = `
           <div
             class="emotion-8"
           />
-          <p
-            class="emotion-9"
-          >
-            Markdown Supported
-          </p>
         </a>
       </div>
     </div>

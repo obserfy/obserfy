@@ -6,7 +6,7 @@ export const fonts = {
     "Lora,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,serif ",
 }
 
-export const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64, 96]
+export const fontSizes = [13, 14, 16, 20, 24, 32, 48, 64, 96]
 
 export const fontWeights = {
   heading: "bold",

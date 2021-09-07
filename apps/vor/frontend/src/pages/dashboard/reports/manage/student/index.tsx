@@ -1,10 +1,11 @@
 import { t, Trans } from "@lingui/macro"
-import { FC, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { Box, Button, Flex, Text } from "theme-ui"
-import { borderBottom, borderFull, borderLeft } from "../../../../../border"
+import { borderBottom, borderFull } from "../../../../../border"
 import Icon from "../../../../../components/Icon/Icon"
 import ImagePreview from "../../../../../components/ImagePreview/ImagePreview"
 import { Link } from "../../../../../components/Link/Link"
+import LoadingIndicator from "../../../../../components/LoadingIndicator/LoadingIndicator"
 import Markdown from "../../../../../components/Markdown/Markdown"
 import MarkdownEditor from "../../../../../components/MarkdownEditor/MarkdownEditor"
 import Pill from "../../../../../components/Pill/Pill"
@@ -13,12 +14,9 @@ import Tab from "../../../../../components/Tab/Tab"
 import TopBar, { breadCrumb } from "../../../../../components/TopBar/TopBar"
 import TranslucentBar from "../../../../../components/TranslucentBar/TranslucentBar"
 import { getFirstName } from "../../../../../domain/person"
-import {
-  selectComment,
-  useComment,
-} from "../../../../../domain/report-comments"
 import useGetStudentReport from "../../../../../hooks/api/reports/useGetStudentReport"
 import usePatchStudentReport from "../../../../../hooks/api/reports/usePatchStudentReport"
+import usePutReportStudentAreaComments from "../../../../../hooks/api/reports/usePutReportStudentAreaComments"
 import { useGetAllStudents } from "../../../../../hooks/api/students/useGetAllStudents"
 import { Area } from "../../../../../hooks/api/useGetArea"
 import { useGetCurriculumAreas } from "../../../../../hooks/api/useGetCurriculumAreas"
@@ -31,6 +29,7 @@ import {
   Observation,
   useGetStudentObservations,
 } from "../../../../../hooks/api/useGetStudentObservations"
+import useDebounce from "../../../../../hooks/useDebounce"
 import { useQueryString } from "../../../../../hooks/useQueryString"
 import { ReactComponent as ChevronDown } from "../../../../../icons/chevron-down.svg"
 import { ReactComponent as ChevronUp } from "../../../../../icons/chevron-up.svg"
@@ -50,14 +49,13 @@ const StudentReports = () => {
   const { data: observations } = useGetStudentObservations(studentId)
   const { data: assessments } = useGetStudentAssessments(studentId)
 
+  const [selectedTab, setSelectedTab] = useState(0)
+  const selectedArea = selectedTab > 0 ? areas?.[selectedTab - 1] : null
   let tabs = ["General"]
   if (areas) {
     const areaNames = areas.map(({ name }) => name)
     tabs = tabs.concat(areaNames)
   }
-
-  const [selectedTab, setSelectedTab] = useState(0)
-  const selectedArea = selectedTab > 0 ? areas?.[selectedTab - 1] : null
 
   return (
     <Box sx={{ position: "relative", height: "100vh", width: "100%" }}>
@@ -82,7 +80,7 @@ const StudentReports = () => {
             ready={report.ready}
           />
         ) : (
-          <Box sx={{ height: 65, ...borderBottom }} />
+          <Box sx={{ height: [107, 65], ...borderBottom }} />
         )}
         <Tab
           small
@@ -93,27 +91,40 @@ const StudentReports = () => {
         />
       </TranslucentBar>
 
-      {selectedTab === 0 && <GeneralCommentEditor />}
+      {selectedTab === 0 && (
+        <GeneralCommentEditor
+          key={studentId}
+          defaultValue={report?.generalComments}
+        />
+      )}
+
       {selectedArea && (
         <Box
+          key={selectedArea.id}
           sx={{
             display: ["block", "block", "block", "flex"],
             width: "100%",
             alignItems: "flex-start",
           }}
         >
-          <AreaCommentEditor key={selectedArea.id} area={selectedArea} />
+          <AreaCommentEditor
+            area={selectedArea}
+            defaultValue={
+              report?.areaComments.find(
+                ({ areaId }) => areaId === selectedArea?.id
+              )?.comments
+            }
+          />
           <Box
             pb={6}
             sx={{
               minHeight: "100vh",
-              width: ["auto", "auto", "auto", 640],
-              ...borderLeft,
+              width: ["auto", "auto", "auto", 600],
             }}
           >
             <Assessments
               assessments={assessments?.filter(
-                ({ areaId }) => areaId === selectedArea?.id
+                ({ areaId, stage }) => areaId === selectedArea?.id && stage >= 0
               )}
             />
             <Observations
@@ -206,42 +217,43 @@ const ActionBar: FC<{
         </Flex>
 
         <Button
-          variant="outline"
-          mt={[3, 0]}
-          mr={3}
-          sx={{ width: ["100%", "auto"] }}
-        >
-          <Trans>Save</Trans>
-        </Button>
-
-        <Button
+          variant={ready ? "outline" : "primary"}
           onClick={handleToggleReady}
-          mt={[2, 0]}
+          mt={[3, 0]}
           sx={{
             width: ["100%", "auto"],
-            backgroundColor: ready ? "tintWarning" : "primary",
-            color: ready ? "onWarning" : "onPrimary",
-            "&:hover": {
-              backgroundColor: ready ? "warning" : "primaryDark",
-            },
-            "&:focus": {
-              backgroundColor: ready ? "warning" : "primaryDark",
-            },
+            color: ready ? "warning" : "onPrimary",
           }}
         >
-          Mark as {ready && "not"} ready
+          <Trans>Mark as {ready ? "not" : ""} ready</Trans>
         </Button>
       </Flex>
     </>
   )
 }
 
-const GeneralCommentEditor: FC = () => {
+const GeneralCommentEditor: FC<{
+  defaultValue?: string
+}> = ({ defaultValue }) => {
   const studentId = useQueryString("studentId")
   const reportId = useQueryString("reportId")
+  const patchStudentReport = usePatchStudentReport(reportId, studentId)
 
-  const comment = useComment(selectComment(reportId, studentId, "general"))
-  const setComment = useComment((state) => state.setComment)
+  const [comment, setComment] = useState(defaultValue)
+  const debouncedComment = useDebounce(comment, 300)
+
+  useEffect(() => {
+    if (defaultValue && comment === undefined) {
+      setComment(defaultValue)
+    } else if (
+      debouncedComment !== undefined &&
+      debouncedComment !== defaultValue
+    ) {
+      patchStudentReport.mutate({
+        generalComments: debouncedComment,
+      })
+    }
+  }, [debouncedComment, defaultValue])
 
   return (
     <Box
@@ -255,64 +267,179 @@ const GeneralCommentEditor: FC = () => {
           borderRadius: [0, "default"],
           backgroundColor: "surface",
           ...borderFull,
-          borderStyle: ["none", "solid"],
+          borderLeftStyle: ["none", "solid"],
+          borderRightStyle: ["none", "solid"],
         }}
       >
-        <Text
-          px={3}
-          pt={3}
-          color="textMediumEmphasis"
-          sx={{ display: "block", fontWeight: "bold" }}
+        <Flex
+          sx={{
+            ...borderBottom,
+            alignItems: "center",
+            fontSize: 0,
+            position: "relative",
+          }}
+          p={3}
         >
-          <Trans>General Comments</Trans>
-        </Text>
+          <Text
+            color="textMediumEmphasis"
+            sx={{ display: "block", fontWeight: "bold" }}
+            mr="auto"
+          >
+            <Trans>General Comments</Trans>
+          </Text>
+
+          <LoadingIndicator
+            mr={2}
+            sx={{
+              opacity: patchStudentReport.isLoading ? 1 : 0,
+              transition: "opacity 100ms ease-in-out",
+            }}
+          />
+          <Text
+            mr={2}
+            color="textMediumEmphasis"
+            sx={{
+              display: ["none", "block"],
+              opacity: patchStudentReport.isLoading ? 1 : 0,
+              transition: "opacity 100ms ease-in-out",
+            }}
+          >
+            Autosaving
+          </Text>
+
+          <Text
+            mr={2}
+            color="textMediumEmphasis"
+            sx={{
+              display: ["none", "block"],
+              opacity:
+                patchStudentReport.isSuccess && comment === defaultValue
+                  ? 1
+                  : 0,
+              transition: "opacity 100ms ease-in-out",
+              position: "absolute",
+              right: 2,
+            }}
+          >
+            Saved
+          </Text>
+        </Flex>
         <MarkdownEditor
           placeholder="Add some details"
           value={comment}
-          onChange={(value) => {
-            setComment(reportId, studentId, "general", value)
-          }}
+          onChange={setComment}
         />
       </Box>
     </Box>
   )
 }
 
-const AreaCommentEditor: FC<{ area: Area }> = ({ area }) => {
+const AreaCommentEditor: FC<{
+  area: Area
+  defaultValue?: string
+}> = ({ area, defaultValue }) => {
   const studentId = useQueryString("studentId")
   const reportId = useQueryString("reportId")
+  const putStudentReportAreaComments = usePutReportStudentAreaComments(
+    reportId,
+    studentId,
+    area.id
+  )
 
-  const comment = useComment(selectComment(reportId, studentId, area.id))
-  const setComment = useComment((state) => state.setComment)
+  const [comment, setComment] = useState(defaultValue)
+  const debouncedComment = useDebounce(comment, 300)
+
+  useEffect(() => {
+    if (defaultValue && comment === undefined) {
+      setComment(defaultValue)
+    } else if (
+      debouncedComment !== undefined &&
+      debouncedComment !== defaultValue
+    ) {
+      putStudentReportAreaComments.mutate({
+        comments: debouncedComment,
+      })
+    }
+  }, [debouncedComment, defaultValue])
 
   return (
     <Box
       px={[0, 3]}
       py={3}
-      sx={{ width: "100%", top: 0, position: ["relative", "sticky"] }}
+      sx={{
+        width: "100%",
+        top: 0,
+        position: ["relative", "relative", "relative", "sticky"],
+      }}
     >
       <Box
         sx={{
           borderRadius: [0, "default"],
           backgroundColor: "surface",
           ...borderFull,
-          borderStyle: ["none", "solid"],
+          borderLeftStyle: ["none", "solid"],
+          borderRightStyle: ["none", "solid"],
         }}
       >
-        <Text
-          px={3}
-          pt={3}
-          color="textMediumEmphasis"
-          sx={{ display: "block", fontWeight: "bold" }}
+        <Flex
+          sx={{
+            ...borderBottom,
+            alignItems: "center",
+            fontSize: 0,
+            position: "relative",
+          }}
+          p={3}
         >
-          <Trans>Comments on {area.name}</Trans>
-        </Text>
+          <Text
+            mr="auto"
+            color="textMediumEmphasis"
+            sx={{ display: "block", fontWeight: "bold" }}
+          >
+            <Trans>Comments on {area.name}</Trans>
+          </Text>
+
+          <LoadingIndicator
+            mr={2}
+            sx={{
+              opacity: putStudentReportAreaComments.isLoading ? 1 : 0,
+              transition: "opacity 100ms ease-in-out",
+            }}
+          />
+          <Text
+            mr={2}
+            color="textMediumEmphasis"
+            sx={{
+              display: ["none", "block"],
+              opacity: putStudentReportAreaComments.isLoading ? 1 : 0,
+              transition: "opacity 100ms ease-in-out",
+            }}
+          >
+            Autosaving
+          </Text>
+
+          <Text
+            mr={2}
+            color="textMediumEmphasis"
+            sx={{
+              display: ["none", "block"],
+              opacity:
+                putStudentReportAreaComments.isSuccess &&
+                comment === defaultValue
+                  ? 1
+                  : 0,
+              transition: "opacity 100ms ease-in-out",
+              position: "absolute",
+              right: 2,
+            }}
+          >
+            Saved
+          </Text>
+        </Flex>
+
         <MarkdownEditor
           placeholder="Add some details"
           value={comment}
-          onChange={(value) => {
-            setComment(reportId, studentId, area.id, value)
-          }}
+          onChange={setComment}
         />
       </Box>
     </Box>
@@ -322,7 +449,18 @@ const AreaCommentEditor: FC<{ area: Area }> = ({ area }) => {
 const Assessments: FC<{
   assessments?: MaterialProgress[]
 }> = ({ assessments = [] }) => (
-  <>
+  <Box
+    mt={3}
+    mr={[0, 3]}
+    ml={[0, 3, 3, 0]}
+    sx={{
+      borderRadius: [0, "default"],
+      backgroundColor: "surface",
+      ...borderFull,
+      borderLeftStyle: ["none", "solid"],
+      borderRightStyle: ["none", "solid"],
+    }}
+  >
     <ListHeading text={t`Assessments`} />
     {assessments.length === 0 && <NoAssessments />}
     {assessments.length !== 0 && (
@@ -334,7 +472,12 @@ const Assessments: FC<{
               key={materialId}
               px={3}
               py={2}
-              sx={{ alignItems: "center", ...borderBottom }}
+              sx={{
+                alignItems: "center",
+                "&:not(:last-child)": {
+                  ...borderBottom,
+                },
+              }}
             >
               <Text sx={{ fontSize: 0 }} mr={3}>
                 {materialName}
@@ -350,14 +493,25 @@ const Assessments: FC<{
         })}
       </Box>
     )}
-  </>
+  </Box>
 )
 
 const Observations: FC<{
   observations?: Observation[]
   studentId: string
 }> = ({ observations = [], studentId }) => (
-  <>
+  <Box
+    mt={3}
+    mr={[0, 3]}
+    ml={[0, 3, 3, 0]}
+    sx={{
+      borderRadius: [0, "default"],
+      backgroundColor: "surface",
+      ...borderFull,
+      borderLeftStyle: ["none", "solid"],
+      borderRightStyle: ["none", "solid"],
+    }}
+  >
     <ListHeading text={t`Observations`} />
 
     {observations.length === 0 && <NoObservation />}
@@ -368,18 +522,25 @@ const Observations: FC<{
         studentId={studentId}
       />
     ))}
-  </>
+  </Box>
 )
 
 const ObservationItem: FC<{
   observation: Observation
   studentId: string
 }> = ({ studentId, observation }) => (
-  <Box pt={3} sx={borderBottom}>
+  <Box
+    pt={3}
+    sx={{
+      "&:not(:last-child)": {
+        ...borderBottom,
+      },
+    }}
+  >
     <Flex mb={2} mx={3}>
       <Text
         data-cy="observation-short-desc"
-        sx={{ fontWeight: "bold", alignItems: "center" }}
+        sx={{ fontSize: 0, fontWeight: "bold", alignItems: "center" }}
       >
         {observation.shortDesc}
       </Text>
@@ -392,6 +553,9 @@ const ObservationItem: FC<{
         mb={3}
         data-cy="observation-long-desc"
         markdown={observation.longDesc}
+        sx={{
+          fontSize: 0,
+        }}
       />
     )}
 
@@ -435,7 +599,7 @@ const ObservationItem: FC<{
 )
 
 const ListHeading: FC<{ text: string }> = ({ text }) => (
-  <Box p={3} pt={4} sx={{ width: "100%", ...borderBottom }}>
+  <Box p={3} sx={{ width: "100%", ...borderBottom }}>
     <Text sx={{ fontWeight: "bold" }}>{text}</Text>
     <Box
       mt={1}
@@ -456,7 +620,7 @@ const NoAssessments = () => (
 )
 
 const NoObservation = () => (
-  <Text mb={3} sx={{ display: "block", overflow: "hidden" }} p={3}>
+  <Text sx={{ display: "block", overflow: "hidden" }} p={3}>
     <Trans>No observation has been added.</Trans>
   </Text>
 )

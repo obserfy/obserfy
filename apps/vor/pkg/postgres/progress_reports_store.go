@@ -29,11 +29,9 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 		areaComments := make([]domain.StudentReportsAreaComment, len(report.AreaComments))
 		for k, comment := range report.AreaComments {
 			areaComments[k] = domain.StudentReportsAreaComment{
-				Id:                            comment.Id,
 				StudentReportProgressReportId: comment.StudentReportProgressReportId,
 				StudentReportStudentId:        comment.StudentReportStudentId,
 				Comments:                      comment.Comments,
-				Ready:                         comment.Ready,
 				Area: domain.Area{
 					Id:   comment.Area.Id,
 					Name: comment.Area.Name,
@@ -71,9 +69,11 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressRepor
 	}, nil
 }
 
-func (s ProgressReportsStore) PatchStudentReport(reportId uuid.UUID, studentId uuid.UUID, ready bool) (domain.StudentReport, error) {
+func (s ProgressReportsStore) PatchStudentReport(reportId uuid.UUID, studentId uuid.UUID, ready *bool, comments *string) (domain.StudentReport, error) {
 	patchModel := make(PartialUpdateModel)
-	patchModel.AddBooleanColumn("ready", &ready)
+	patchModel.AddBooleanColumn("ready", ready)
+	patchModel.AddStringColumn("general_comments", comments)
+
 	if _, err := s.Model(patchModel.GetModel()).
 		TableExpr("student_reports").
 		Where("student_id = ? and progress_report_id = ?", studentId, reportId).
@@ -81,7 +81,20 @@ func (s ProgressReportsStore) PatchStudentReport(reportId uuid.UUID, studentId u
 		return domain.StudentReport{}, richErrors.Wrap(err, "failed to update progress report")
 	}
 
-	return domain.StudentReport{Ready: ready}, nil
+	report := StudentReport{
+		StudentId:        studentId,
+		ProgressReportId: reportId,
+	}
+	if err := s.Model(&report).
+		WherePK().
+		Select(); err != nil {
+		return domain.StudentReport{}, richErrors.Wrap(err, "failed to query progress report")
+	}
+
+	return domain.StudentReport{
+		Ready:           report.Ready,
+		GeneralComments: report.GeneralComments,
+	}, nil
 }
 
 func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentId uuid.UUID) (domain.StudentReport, error) {
@@ -89,6 +102,7 @@ func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentI
 	if err := s.Model(&report).
 		Relation("ProgressReport").
 		Relation("Student").
+		Relation("AreaComments").
 		WherePK().
 		Select(); err != nil {
 		return domain.StudentReport{}, richErrors.Wrap(err, "failed to find student report")
@@ -97,13 +111,11 @@ func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentI
 	areaComments := make([]domain.StudentReportsAreaComment, len(report.AreaComments))
 	for k, comment := range report.AreaComments {
 		areaComments[k] = domain.StudentReportsAreaComment{
-			Id:                            comment.Id,
 			StudentReportProgressReportId: comment.StudentReportProgressReportId,
 			StudentReportStudentId:        comment.StudentReportStudentId,
 			Comments:                      comment.Comments,
-			Ready:                         comment.Ready,
 			Area: domain.Area{
-				Id:   comment.Area.Id,
+				Id:   comment.AreaId.String(),
 				Name: comment.Area.Name,
 			},
 		}
@@ -190,4 +202,28 @@ func (s ProgressReportsStore) DeleteReportById(reportId uuid.UUID) error {
 	}
 
 	return nil
+}
+
+func (s ProgressReportsStore) UpsertStudentReportAreaComments(reportId uuid.UUID, studentId uuid.UUID, areaId uuid.UUID, comments string) (domain.StudentReportsAreaComment, error) {
+	c := StudentReportsAreaComment{
+		StudentReportProgressReportId: reportId,
+		StudentReportStudentId:        studentId,
+		AreaId:                        areaId,
+		Comments:                      comments,
+	}
+	if _, err := s.Model(&c).
+		WherePK().
+		OnConflict("(area_id, student_report_progress_report_id, student_report_student_id) DO UPDATE").
+		Insert(); err != nil {
+		return domain.StudentReportsAreaComment{}, richErrors.Wrap(err, "failed to upsert area comments")
+	}
+
+	return domain.StudentReportsAreaComment{
+		StudentReportProgressReportId: reportId,
+		StudentReportStudentId:        studentId,
+		Comments:                      comments,
+		Area: domain.Area{
+			Id: areaId.String(),
+		},
+	}, nil
 }

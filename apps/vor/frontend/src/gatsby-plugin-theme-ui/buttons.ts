@@ -50,6 +50,22 @@ export default {
       borderColor: "primary",
     },
   },
+  tertiary: {
+    variant: "buttons.primary",
+    backgroundColor: "tertiary.900",
+    color: "onTertiary",
+    border: "none",
+    flexShrink: 0,
+    boxShadow: "none",
+    "&:hover, &:focus": {
+      backgroundColor: "tertiary.800",
+      borderColor: "primary",
+    },
+    "&:disabled": {
+      opacity: 0.1,
+      cursor: "auto",
+    },
+  },
   outline: {
     variant: "buttons.primary",
     backgroundColor: "surface",

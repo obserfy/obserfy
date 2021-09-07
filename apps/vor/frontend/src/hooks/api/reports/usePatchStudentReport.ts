@@ -3,7 +3,8 @@ import { patchApi } from "../fetchApi"
 import { useGetStudentReportCache } from "./useGetStudentReport"
 
 interface PatchStudentReport {
-  ready: boolean
+  ready?: boolean
+  generalComments?: string
 }
 
 const usePatchStudentReport = (reportId: string, studentId: string) => {

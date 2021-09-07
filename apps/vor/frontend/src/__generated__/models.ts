@@ -39,13 +39,13 @@ export interface Student {
 export interface Area {}
 
 export interface StudentReportsAreaComment {
-  id: string
   studentReportProgressReportId: string
   studentReportsId: string
   studentReport: StudentReport
+  areaId: string
+
   area: Area
   comments: string
-  ready: boolean
 }
 
 export interface StudentReport {

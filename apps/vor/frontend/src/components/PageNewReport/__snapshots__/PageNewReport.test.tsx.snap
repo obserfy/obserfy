@@ -189,7 +189,7 @@ exports[`PageNewReport should render correctly 1`] = `
 
 .emotion-9 {
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
@@ -217,7 +217,7 @@ exports[`PageNewReport should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
