@@ -84,9 +84,21 @@ func (s ProgressReportsStore) UpdateReport(
 		return ProgressReport{}, richErrors.Wrap(err, "failed to update progress report")
 	}
 
-	//if freezeAssessments {
-	//
-	//}
+	if *freezeAssessments {
+		// language=postgreSQL
+		if _, err := s.Exec(`
+			insert into "student_report_assessments" (student_report_progress_report_id, student_report_student_id, material_id, assessments, updated_at) 
+			select sr.progress_report_id, sr.student_id, smp.material_id, smp.stage as asssss, smp.updated_at from student_reports sr
+				join students s on sr.student_id = s.id
+				join student_material_progresses smp on s.id = smp.student_id
+			where sr.progress_report_id = ? and smp.stage is not null
+			on conflict (student_report_progress_report_id, student_report_student_id, material_id) 
+			    do update set assessments = excluded.assessments
+
+		`, id); err != nil {
+			return ProgressReport{}, richErrors.Wrap(err, "failed to freeze assessments")
+		}
+	}
 
 	report, err := s.FindReportById(id)
 	if err != nil {

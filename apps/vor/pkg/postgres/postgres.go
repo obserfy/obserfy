@@ -466,11 +466,11 @@ type (
 	}
 
 	StudentReportAssessment struct {
-		Id               uuid.UUID `pg:"type:uuid"`
-		StudentReportsId uuid.UUID `pg:"type:uuid"`
-		StudentReport    StudentReport
+		StudentReportProgressReportId uuid.UUID     `pg:"type:uuid,pk"`
+		StudentReportStudentId        uuid.UUID     `pg:"type:uuid,pk"`
+		StudentReport                 StudentReport `pg:"rel:has-one"`
 
-		MaterialId string   `pg:"type:uuid,on_delete:CASCADE"`
+		MaterialId string   `pg:"type:uuid,on_delete:CASCADE,pk"`
 		Material   Material `pg:"rel:has-one"`
 
 		Assessments int `pg:",notnull,use_zero"`
