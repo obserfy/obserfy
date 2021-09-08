@@ -205,6 +205,14 @@ type (
 		GeneralComments string
 		Student         Student
 		Ready           bool
+		Assessments     []Assessments
+	}
+
+	Assessments struct {
+		Student   Student
+		Material  Material
+		Stage     int
+		UpdatedAt time.Time
 	}
 
 	StudentReportsAreaComment struct {

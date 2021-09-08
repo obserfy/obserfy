@@ -80,8 +80,8 @@ func getReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2
 			return s.InternalServerError(err)
 		}
 
-		studentReports := make([]rest.H, len(report.StudentsReports))
-		for i, studentReport := range report.StudentsReports {
+		studentReports := make([]rest.H, len(report.StudentReports))
+		for i, studentReport := range report.StudentReports {
 			areaComments := make([]rest.H, len(studentReport.AreaComments))
 			for k, comment := range studentReport.AreaComments {
 				areaComments[k] = rest.H{
@@ -136,7 +136,7 @@ func patchReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handle
 			return s.BadRequest(err)
 		}
 
-		report, err := store.UpdateReport(id, nil, body.Title, body.PeriodStart, body.PeriodEnd)
+		report, err := store.UpdateReport(id, body.Title, body.PeriodStart, body.PeriodEnd, nil, nil)
 		if err != nil {
 			return s.InternalServerError(err)
 		}
@@ -177,7 +177,13 @@ func updateReportPublished(s rest.Server, store postgres.ProgressReportsStore) r
 			return s.BadRequest(err)
 		}
 
-		report, err := store.UpdateReport(reportId, &body.Published, nil, nil, nil)
+		var freezeAssessments *bool = nil
+		if body.Published {
+			b := true
+			freezeAssessments = &b
+		}
+
+		report, err := store.UpdateReport(reportId, nil, nil, nil, &body.Published, freezeAssessments)
 		if err != nil {
 			return s.InternalServerError(err)
 		}
