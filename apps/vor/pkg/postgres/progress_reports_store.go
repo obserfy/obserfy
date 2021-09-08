@@ -84,10 +84,12 @@ func (s ProgressReportsStore) UpdateReport(
 		return ProgressReport{}, richErrors.Wrap(err, "failed to update progress report")
 	}
 
-	report := ProgressReport{Id: id}
-	if err := s.Model(&report).
-		Where("id = ?", id).
-		Select(); err != nil {
+	//if freezeAssessments {
+	//
+	//}
+
+	report, err := s.FindReportById(id)
+	if err != nil {
 		return ProgressReport{}, richErrors.Wrap(err, "failed to find report")
 	}
 
