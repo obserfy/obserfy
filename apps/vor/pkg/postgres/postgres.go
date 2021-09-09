@@ -473,8 +473,8 @@ type (
 		MaterialId string   `pg:"type:uuid,on_delete:CASCADE,pk"`
 		Material   Material `pg:"rel:has-one"`
 
-		Assessments int `pg:",notnull,use_zero"`
-		UpdatedAt   time.Time
+		Assessment int `pg:",notnull,use_zero"`
+		UpdatedAt  time.Time
 	}
 )
 

@@ -25,6 +25,7 @@ func NewRouter(s rest.Server, store postgres.ProgressReportsStore) *chi.Mux {
 		r.Method("PATCH", "/students/{studentId}", patchStudentReport(s, store))
 
 		r.Method("PUT", "/students/{studentId}/areas/{areaId}/comments", putStudentAreaComment(s, store))
+		r.Method("GET", "/students/{studentId}/areas/{areaId}/assessments", getStudentReportAssessmentsByArea(s, store))
 	})
 
 	return r
@@ -75,7 +76,7 @@ func getReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2
 	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
 		id, _ := uuid.Parse(r.GetParam("reportId"))
 
-		report, err := store.FindReportById(id)
+		report, err := store.FindReportWithStudentReportsById(id)
 		if err != nil {
 			return s.InternalServerError(err)
 		}
@@ -290,5 +291,61 @@ func getStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest.H
 				},
 			},
 		}
+	})
+}
+
+func getStudentReportAssessmentsByArea(s rest.Server, store postgres.ProgressReportsStore) http.Handler {
+	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
+		reportId, _ := uuid.Parse(r.GetParam("reportId"))
+		studentId, err := uuid.Parse(r.GetParam("studentId"))
+		areaId, err := uuid.Parse(r.GetParam("areaId"))
+		if err != nil {
+			return s.NotFound()
+		}
+
+		report, err := store.FindReportById(reportId)
+		if err != nil {
+			return s.InternalServerError(err)
+		}
+
+		// use frozen assessments when report is frozen
+		if report.FreezeAssessments {
+			assessments, err := store.FindFrozenStudentAssessmentByArea(reportId, studentId, areaId)
+			if err != nil {
+				return s.InternalServerError(err)
+			}
+
+			responseBody := make([]rest.H, len(assessments))
+			for i, assessment := range assessments {
+				responseBody[i] = rest.H{
+					"areaId":       assessment.Material.Subject.AreaId,
+					"materialName": assessment.Material.Name,
+					"materialId":   assessment.MaterialId,
+					"assessments":  assessment.Assessment,
+					"updatedAt":    assessment.UpdatedAt,
+				}
+			}
+
+			return rest.ServerResponse{Body: responseBody}
+		}
+
+		// find live assessment data when not frozen
+		assessments, err := store.FindLiveStudentAssessmentByArea(studentId, areaId)
+		if err != nil {
+			return s.InternalServerError(err)
+		}
+
+		responseBody := make([]rest.H, len(assessments))
+		for i, assessment := range assessments {
+			responseBody[i] = rest.H{
+				"areaId":       assessment.Material.Subject.AreaId,
+				"materialName": assessment.Material.Name,
+				"materialId":   assessment.MaterialId,
+				"assessments":  assessment.Stage,
+				"updatedAt":    assessment.UpdatedAt,
+			}
+		}
+
+		return rest.ServerResponse{Body: responseBody}
 	})
 }

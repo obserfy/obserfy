@@ -12,13 +12,24 @@ type ProgressReportsStore struct {
 	*pg.DB
 }
 
-func (s ProgressReportsStore) FindReportById(id uuid.UUID) (ProgressReport, error) {
+func (s ProgressReportsStore) FindReportWithStudentReportsById(id uuid.UUID) (ProgressReport, error) {
 	report := ProgressReport{Id: id}
 	if err := s.Model(&report).
 		WherePK().
 		Relation("StudentReports").
 		Relation("StudentReports.Student").
 		Relation("StudentReports.Student.Classes").
+		Select(); err != nil {
+		return ProgressReport{}, richErrors.Wrap(err, "failed to query progress report with student reports")
+	}
+
+	return report, nil
+}
+
+func (s ProgressReportsStore) FindReportById(id uuid.UUID) (ProgressReport, error) {
+	report := ProgressReport{Id: id}
+	if err := s.Model(&report).
+		WherePK().
 		Select(); err != nil {
 		return ProgressReport{}, richErrors.Wrap(err, "failed to query progress report")
 	}
@@ -81,7 +92,7 @@ func (s ProgressReportsStore) UpdateReport(
 	if !report.FreezeAssessments && published != nil && *published {
 		if _, err := s.Exec(`
 			insert into "student_report_assessments" (student_report_progress_report_id, student_report_student_id, material_id, assessments, updated_at) 
-			select sr.progress_report_id, sr.student_id, smp.material_id, smp.stage as asssss, smp.updated_at from student_reports sr
+			select sr.progress_report_id, sr.student_id, smp.material_id, smp.stage, smp.updated_at from student_reports sr
 				join students s on sr.student_id = s.id
 				join student_material_progresses smp on s.id = smp.student_id
 			where sr.progress_report_id = ? and smp.stage is not null
@@ -165,4 +176,29 @@ func (s ProgressReportsStore) UpsertStudentReportAreaComments(reportId uuid.UUID
 	}
 
 	return c, nil
+}
+
+func (s ProgressReportsStore) FindFrozenStudentAssessmentByArea(reportId uuid.UUID, studentId uuid.UUID, areaId uuid.UUID) ([]StudentReportAssessment, error) {
+	var a []StudentReportAssessment
+	if err := s.Model(&a).
+		Relation("Material").
+		Relation("Material.Subject").
+		Where("student_report_progress_report_id = ?, student_report_student_id = ?, area_id = ?", reportId, studentId, areaId).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to query report assessments by area")
+	}
+	return a, nil
+}
+
+func (s ProgressReportsStore) FindLiveStudentAssessmentByArea(studentId uuid.UUID, areaId uuid.UUID) ([]StudentMaterialProgress, error) {
+	var m []StudentMaterialProgress
+	if err := s.Model(&m).
+		Relation("Material").
+		Relation("Material.Subject").
+		Where("student_id = ? and subject.area_id = ?", studentId, areaId).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to find student material progress")
+	}
+
+	return m, nil
 }
