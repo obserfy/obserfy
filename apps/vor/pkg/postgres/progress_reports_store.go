@@ -68,24 +68,17 @@ func (s ProgressReportsStore) UpdateReport(
 	start *time.Time,
 	end *time.Time,
 	published *bool,
-	freezeAssessments *bool,
 ) (ProgressReport, error) {
-	data := make(PartialUpdateModel)
-	data.AddBooleanColumn("published", published)
-	data.AddStringColumn("title", title)
-	data.AddDateColumn("period_start", start)
-	data.AddDateColumn("period_end", end)
-	data.AddBooleanColumn("freeze_assessments", freezeAssessments)
-
-	if _, err := s.Model(data.GetModel()).
-		TableExpr("progress_reports").
-		Where("id = ?", id).
-		Update(); err != nil {
-		return ProgressReport{}, richErrors.Wrap(err, "failed to update progress report")
+	valueToUpdate := make(PartialUpdateModel)
+	report := ProgressReport{Id: id}
+	if err := s.Model(&report).
+		WherePK().
+		Select(); err != nil {
+		return ProgressReport{}, richErrors.Wrap(err, "failed to find report")
 	}
 
-	if *freezeAssessments {
-		// language=postgreSQL
+	// only freeze report the first time it is published (aka when FreezeAssessments is still false)
+	if !report.FreezeAssessments && published != nil && *published {
 		if _, err := s.Exec(`
 			insert into "student_report_assessments" (student_report_progress_report_id, student_report_student_id, material_id, assessments, updated_at) 
 			select sr.progress_report_id, sr.student_id, smp.material_id, smp.stage as asssss, smp.updated_at from student_reports sr
@@ -98,10 +91,26 @@ func (s ProgressReportsStore) UpdateReport(
 		`, id); err != nil {
 			return ProgressReport{}, richErrors.Wrap(err, "failed to freeze assessments")
 		}
+		b := true
+		valueToUpdate.AddBooleanColumn("freeze_assessments", &b)
 	}
 
-	report, err := s.FindReportById(id)
-	if err != nil {
+	valueToUpdate.AddBooleanColumn("published", published)
+	valueToUpdate.AddStringColumn("title", title)
+	valueToUpdate.AddDateColumn("period_start", start)
+	valueToUpdate.AddDateColumn("period_end", end)
+
+	if _, err := s.Model(valueToUpdate.GetModel()).
+		TableExpr("progress_reports").
+		Where("id = ?", id).
+		Update(); err != nil {
+		return ProgressReport{}, richErrors.Wrap(err, "failed to update progress report")
+	}
+
+	// get the updated report to return
+	if err := s.Model(&report).
+		WherePK().
+		Select(); err != nil {
 		return ProgressReport{}, richErrors.Wrap(err, "failed to find report")
 	}
 

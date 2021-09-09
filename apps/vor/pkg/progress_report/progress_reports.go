@@ -136,7 +136,7 @@ func patchReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handle
 			return s.BadRequest(err)
 		}
 
-		report, err := store.UpdateReport(id, body.Title, body.PeriodStart, body.PeriodEnd, nil, nil)
+		report, err := store.UpdateReport(id, body.Title, body.PeriodStart, body.PeriodEnd, nil)
 		if err != nil {
 			return s.InternalServerError(err)
 		}
@@ -177,13 +177,7 @@ func updateReportPublished(s rest.Server, store postgres.ProgressReportsStore) r
 			return s.BadRequest(err)
 		}
 
-		var freezeAssessments *bool = nil
-		if body.Published {
-			b := true
-			freezeAssessments = &b
-		}
-
-		report, err := store.UpdateReport(reportId, nil, nil, nil, &body.Published, freezeAssessments)
+		report, err := store.UpdateReport(reportId, nil, nil, nil, &body.Published)
 		if err != nil {
 			return s.InternalServerError(err)
 		}
