@@ -16,7 +16,9 @@ func (s ProgressReportsStore) FindReportWithStudentReportsById(id uuid.UUID) (Pr
 	report := ProgressReport{Id: id}
 	if err := s.Model(&report).
 		WherePK().
-		Relation("StudentReports").
+		Relation("StudentReports", func(q *orm.Query) (*orm.Query, error) {
+			return q.Order("student.name"), nil
+		}).
 		Relation("StudentReports.Student").
 		Relation("StudentReports.Student.Classes").
 		Select(); err != nil {
@@ -91,13 +93,13 @@ func (s ProgressReportsStore) UpdateReport(
 	// only freeze report the first time it is published (aka when FreezeAssessments is still false)
 	if !report.FreezeAssessments && published != nil && *published {
 		if _, err := s.Exec(`
-			insert into "student_report_assessments" (student_report_progress_report_id, student_report_student_id, material_id, assessments, updated_at) 
-			select sr.progress_report_id, sr.student_id, smp.material_id, smp.stage, smp.updated_at from student_reports sr
+			insert into "student_report_assessments" (student_report_progress_report_id, student_report_student_id, material_id, assessment, updated_at) 
+			select sr.progress_report_id, sr.student_id, smp.material_id, coalesce(smp.stage, 0), smp.updated_at from student_reports sr
 				join students s on sr.student_id = s.id
 				join student_material_progresses smp on s.id = smp.student_id
-			where sr.progress_report_id = ? and smp.stage is not null
+			where sr.progress_report_id = ?
 			on conflict (student_report_progress_report_id, student_report_student_id, material_id) 
-			    do update set assessments = excluded.assessments
+			    do update set assessment = excluded.assessment
 
 		`, id); err != nil {
 			return ProgressReport{}, richErrors.Wrap(err, "failed to freeze assessments")
@@ -181,9 +183,10 @@ func (s ProgressReportsStore) UpsertStudentReportAreaComments(reportId uuid.UUID
 func (s ProgressReportsStore) FindFrozenStudentAssessmentByArea(reportId uuid.UUID, studentId uuid.UUID, areaId uuid.UUID) ([]StudentReportAssessment, error) {
 	var a []StudentReportAssessment
 	if err := s.Model(&a).
+		Order("assessment asc").
 		Relation("Material").
 		Relation("Material.Subject").
-		Where("student_report_progress_report_id = ?, student_report_student_id = ?, area_id = ?", reportId, studentId, areaId).
+		Where("student_report_progress_report_id = ? and student_report_student_id = ? and area_id = ?", reportId, studentId, areaId).
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "failed to query report assessments by area")
 	}
@@ -193,9 +196,10 @@ func (s ProgressReportsStore) FindFrozenStudentAssessmentByArea(reportId uuid.UU
 func (s ProgressReportsStore) FindLiveStudentAssessmentByArea(studentId uuid.UUID, areaId uuid.UUID) ([]StudentMaterialProgress, error) {
 	var m []StudentMaterialProgress
 	if err := s.Model(&m).
+		Order("stage asc nulls first").
 		Relation("Material").
 		Relation("Material.Subject").
-		Where("student_id = ? and subject.area_id = ?", studentId, areaId).
+		Where("student_id = ? and material__subject.area_id = ?", studentId, areaId).
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "failed to find student material progress")
 	}

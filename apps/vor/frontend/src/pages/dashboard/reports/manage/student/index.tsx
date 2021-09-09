@@ -15,16 +15,13 @@ import TopBar, { breadCrumb } from "../../../../../components/TopBar/TopBar"
 import TranslucentBar from "../../../../../components/TranslucentBar/TranslucentBar"
 import { getFirstName } from "../../../../../domain/person"
 import useGetStudentReport from "../../../../../hooks/api/reports/useGetStudentReport"
+import useGetStudentReportAssessmentByArea from "../../../../../hooks/api/reports/useGetStudentReportAssessmentByArea"
 import usePatchStudentReport from "../../../../../hooks/api/reports/usePatchStudentReport"
 import usePutReportStudentAreaComments from "../../../../../hooks/api/reports/usePutReportStudentAreaComments"
 import { useGetAllStudents } from "../../../../../hooks/api/students/useGetAllStudents"
 import { Area } from "../../../../../hooks/api/useGetArea"
 import { useGetCurriculumAreas } from "../../../../../hooks/api/useGetCurriculumAreas"
-import {
-  MaterialProgress,
-  materialStageToString,
-  useGetStudentAssessments,
-} from "../../../../../hooks/api/useGetStudentAssessments"
+import { materialStageToString } from "../../../../../hooks/api/useGetStudentAssessments"
 import {
   Observation,
   useGetStudentObservations,
@@ -47,7 +44,6 @@ const StudentReports = () => {
   const { data: report } = useGetStudentReport(reportId, studentId)
   const { data: areas } = useGetCurriculumAreas()
   const { data: observations } = useGetStudentObservations(studentId)
-  const { data: assessments } = useGetStudentAssessments(studentId)
 
   const [selectedTab, setSelectedTab] = useState(0)
   const selectedArea = selectedTab > 0 ? areas?.[selectedTab - 1] : null
@@ -123,9 +119,9 @@ const StudentReports = () => {
             }}
           >
             <Assessments
-              assessments={assessments?.filter(
-                ({ areaId, stage }) => areaId === selectedArea?.id && stage >= 0
-              )}
+              areaId={selectedArea.id}
+              studentId={studentId}
+              reportId={reportId}
             />
             <Observations
               studentId={studentId}
@@ -447,54 +443,64 @@ const AreaCommentEditor: FC<{
 }
 
 const Assessments: FC<{
-  assessments?: MaterialProgress[]
-}> = ({ assessments = [] }) => (
-  <Box
-    mt={3}
-    mr={[0, 3]}
-    ml={[0, 3, 3, 0]}
-    sx={{
-      borderRadius: [0, "default"],
-      backgroundColor: "surface",
-      ...borderFull,
-      borderLeftStyle: ["none", "solid"],
-      borderRightStyle: ["none", "solid"],
-    }}
-  >
-    <ListHeading text={t`Assessments`} />
-    {assessments.length === 0 && <NoAssessments />}
-    {assessments.length !== 0 && (
-      <Box>
-        {assessments?.map(({ materialId, materialName, stage }) => {
-          const stageName = materialStageToString(stage)
-          return (
-            <Flex
-              key={materialId}
-              px={3}
-              py={2}
-              sx={{
-                alignItems: "center",
-                "&:not(:last-child)": {
-                  ...borderBottom,
-                },
-              }}
-            >
-              <Text sx={{ fontSize: 0 }} mr={3}>
-                {materialName}
-              </Text>
-              <Pill
-                color={`materialStage.on${stageName}`}
-                backgroundColor={`materialStage.${stageName.toLowerCase()}`}
-                text={stageName}
-                ml="auto"
-              />
-            </Flex>
-          )
-        })}
-      </Box>
-    )}
-  </Box>
-)
+  reportId: string
+  studentId: string
+  areaId: string
+}> = ({ areaId, studentId, reportId }) => {
+  const { data: assessments } = useGetStudentReportAssessmentByArea(
+    reportId,
+    studentId,
+    areaId
+  )
+
+  return (
+    <Box
+      mt={3}
+      mr={[0, 3]}
+      ml={[0, 3, 3, 0]}
+      sx={{
+        borderRadius: [0, "default"],
+        backgroundColor: "surface",
+        ...borderFull,
+        borderLeftStyle: ["none", "solid"],
+        borderRightStyle: ["none", "solid"],
+      }}
+    >
+      <ListHeading text={t`Assessments`} />
+      {assessments?.length === 0 && <NoAssessments />}
+      {assessments?.length !== 0 && (
+        <Box>
+          {assessments?.map(({ materialId, materialName, assessment }) => {
+            const stageName = materialStageToString(assessment)
+            return (
+              <Flex
+                key={materialId}
+                px={3}
+                py={2}
+                sx={{
+                  alignItems: "center",
+                  "&:not(:last-child)": {
+                    ...borderBottom,
+                  },
+                }}
+              >
+                <Text sx={{ fontSize: 0 }} mr={3}>
+                  {materialName}
+                </Text>
+                <Pill
+                  color={`materialStage.on${stageName}`}
+                  backgroundColor={`materialStage.${stageName.toLowerCase()}`}
+                  text={stageName}
+                  ml="auto"
+                />
+              </Flex>
+            )
+          })}
+        </Box>
+      )}
+    </Box>
+  )
+}
 
 const Observations: FC<{
   observations?: Observation[]

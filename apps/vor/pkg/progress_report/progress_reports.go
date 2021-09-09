@@ -321,7 +321,7 @@ func getStudentReportAssessmentsByArea(s rest.Server, store postgres.ProgressRep
 					"areaId":       assessment.Material.Subject.AreaId,
 					"materialName": assessment.Material.Name,
 					"materialId":   assessment.MaterialId,
-					"assessments":  assessment.Assessment,
+					"assessment":   assessment.Assessment,
 					"updatedAt":    assessment.UpdatedAt,
 				}
 			}
@@ -341,7 +341,7 @@ func getStudentReportAssessmentsByArea(s rest.Server, store postgres.ProgressRep
 				"areaId":       assessment.Material.Subject.AreaId,
 				"materialName": assessment.Material.Name,
 				"materialId":   assessment.MaterialId,
-				"assessments":  assessment.Stage,
+				"assessment":   assessment.Stage,
 				"updatedAt":    assessment.UpdatedAt,
 			}
 		}
