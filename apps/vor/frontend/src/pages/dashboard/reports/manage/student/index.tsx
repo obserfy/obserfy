@@ -620,7 +620,7 @@ const ListHeading: FC<{ text: string }> = ({ text }) => (
 )
 
 const NoAssessments = () => (
-  <Text p={3} sx={{ display: "block", ...borderBottom }}>
+  <Text p={3} sx={{ display: "block" }}>
     <Trans>No assessments has been made yet.</Trans>
   </Text>
 )
