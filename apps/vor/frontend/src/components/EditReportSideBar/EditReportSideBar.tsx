@@ -75,7 +75,7 @@ const EditReportSideBar: FC<EditReportSideBarProps> = ({
           width: "100%",
         }}
       >
-        <Button variant="secondary" p={2} onClick={onClose} ml={2}>
+        <Button variant="text" p={2} onClick={onClose} ml={2}>
           <Icon as={CloseIcon} size={18} />
         </Button>
 
@@ -120,13 +120,7 @@ const DeleteReportButton: FC<{
 
   return (
     <>
-      <Button
-        variant="secondary"
-        ml="auto"
-        p={2}
-        mr={2}
-        onClick={deleteDialog.show}
-      >
+      <Button variant="text" ml="auto" p={2} mr={2} onClick={deleteDialog.show}>
         <Icon as={TrashIcon} size={18} />
       </Button>
 
@@ -282,7 +276,7 @@ const Value: FC<{
 }> = ({ children, onClick }) => (
   <Button
     p={2}
-    variant="secondary"
+    variant="text"
     onClick={onClick}
     sx={{
       color: "text",

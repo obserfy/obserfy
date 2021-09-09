@@ -1,19 +1,18 @@
+import { t } from "@lingui/macro"
 import { FC, memo, useState } from "react"
 import { Box, Button, Flex } from "theme-ui"
-
-import { t } from "@lingui/macro"
-import Dialog from "../Dialog/Dialog"
+import { borderBottom } from "../../border"
 
 import dayjs, { Dayjs } from "../../dayjs"
-import { DialogHeader } from "../DialogHeader/DialogHeader"
-import Typography from "../Typography/Typography"
-import Icon from "../Icon/Icon"
-import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
-import { ReactComponent as NestedCircleIcon } from "../../icons/nested-circle.svg"
-import { ReactComponent as RightDoubleArrowIcon } from "../../icons/right-double-arrow.svg"
 import { ReactComponent as LeftDoubleArrowIcon } from "../../icons/left-double-arrow.svg"
-import { borderBottom } from "../../border"
+import { ReactComponent as NestedCircleIcon } from "../../icons/nested-circle.svg"
+import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
+import { ReactComponent as RightDoubleArrowIcon } from "../../icons/right-double-arrow.svg"
+import Dialog from "../Dialog/Dialog"
+import { DialogHeader } from "../DialogHeader/DialogHeader"
+import Icon from "../Icon/Icon"
+import Typography from "../Typography/Typography"
 
 const range = (length: number) => [...Array(length).keys()]
 
@@ -160,7 +159,7 @@ const DatesTable: FC<{
             }}
           >
             <Button
-              variant={isSelected ? "primary" : "secondary"}
+              variant={isSelected ? "primary" : "text"}
               color={isSelected ? "onPrimary" : "text"}
               px={0}
               sx={{

@@ -27,14 +27,11 @@ export default {
   primaryLightest: "rgba(0,227,153,0.05)",
   onPrimaryLightest: "text",
 
-  secondary: "#30c",
-  onSecondary: "#fff",
-
-  tertiary: {
+  secondary: {
     900: "black",
     800: "#343434",
   },
-  onTertiary: "#fff",
+  onSecondary: "#fff",
 
   surface: "#fff",
   onSurface: "rgba(0,0,0,0.87)",
@@ -70,6 +67,7 @@ export default {
 
   danger: "#d50000",
   onDanger: "#FFFFFF",
+  tintDanger: "rgba(213,0,0,0.17)",
 
   tintYellow: "rgba(255,199,1,0.2)",
   onTintYellow: "yellow",

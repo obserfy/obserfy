@@ -2,16 +2,16 @@ import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
+import { borderTop } from "../../border"
+import dayjs from "../../dayjs"
+import { getFirstName } from "../../domain/person"
 import { useDeleteGuardianRelation } from "../../hooks/api/guardians/useDeleteGuardianRelation"
 import { usePatchStudentApi } from "../../hooks/api/students/usePatchStudentApi"
 import { Gender } from "../../hooks/api/students/usePostNewStudent"
 import { useGetStudent } from "../../hooks/api/useGetStudent"
-import { borderTop } from "../../border"
-import dayjs from "../../dayjs"
-import { getFirstName } from "../../domain/person"
 import useVisibilityState from "../../hooks/useVisibilityState"
-import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
+import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import {
   ADD_GUARDIAN_URL,
   EDIT_STUDENT_CLASS_URL,
@@ -101,7 +101,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
             sx={{ ml: "auto" }}
             data-cy="edit-classes"
           >
-            <Button data-cy="edit-class" variant="secondary" ml="auto" p={2}>
+            <Button data-cy="edit-class" variant="text" ml="auto" p={2}>
               <Trans>Edit</Trans>
             </Button>
           </Link>
@@ -131,7 +131,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
             sx={{ ml: "auto" }}
             data-cy="add-guardian"
           >
-            <Button data-cy="add-guardians" variant="secondary" p={2}>
+            <Button data-cy="add-guardians" variant="text" p={2}>
               <Trans>Add</Trans>
             </Button>
           </Link>

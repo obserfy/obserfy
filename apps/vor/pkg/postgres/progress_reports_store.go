@@ -1,7 +1,6 @@
 package postgres
 
 import (
-	"github.com/chrsep/vor/pkg/domain"
 	"github.com/go-pg/pg/v10"
 	"github.com/go-pg/pg/v10/orm"
 	"github.com/google/uuid"
@@ -13,63 +12,34 @@ type ProgressReportsStore struct {
 	*pg.DB
 }
 
-func (s ProgressReportsStore) FindReportById(id uuid.UUID) (domain.ProgressReport, error) {
+func (s ProgressReportsStore) FindReportWithStudentReportsById(id uuid.UUID) (ProgressReport, error) {
 	report := ProgressReport{Id: id}
 	if err := s.Model(&report).
 		WherePK().
-		Relation("StudentReports").
+		Relation("StudentReports", func(q *orm.Query) (*orm.Query, error) {
+			return q.Order("student.name"), nil
+		}).
 		Relation("StudentReports.Student").
 		Relation("StudentReports.Student.Classes").
 		Select(); err != nil {
-		return domain.ProgressReport{}, richErrors.Wrap(err, "failed to query progress report")
+		return ProgressReport{}, richErrors.Wrap(err, "failed to query progress report with student reports")
 	}
 
-	studentReports := make([]domain.StudentReport, len(report.StudentReports))
-	for i, report := range report.StudentReports {
-		areaComments := make([]domain.StudentReportsAreaComment, len(report.AreaComments))
-		for k, comment := range report.AreaComments {
-			areaComments[k] = domain.StudentReportsAreaComment{
-				StudentReportProgressReportId: comment.StudentReportProgressReportId,
-				StudentReportStudentId:        comment.StudentReportStudentId,
-				Comments:                      comment.Comments,
-				Area: domain.Area{
-					Id:   comment.Area.Id,
-					Name: comment.Area.Name,
-				},
-			}
-		}
-
-		classes := make([]domain.Class, len(report.Student.Classes))
-		for k, c := range report.Student.Classes {
-			classes[k] = domain.Class{
-				Id:   c.Id,
-				Name: c.Name,
-			}
-		}
-
-		studentReports[i] = domain.StudentReport{
-			Ready:           report.Ready,
-			GeneralComments: report.GeneralComments,
-			AreaComments:    areaComments,
-			Student: domain.Student{
-				Id:      report.StudentId.String(),
-				Name:    report.Student.Name,
-				Classes: classes,
-			},
-		}
-	}
-
-	return domain.ProgressReport{
-		Id:              report.Id,
-		Title:           report.Title,
-		PeriodStart:     report.PeriodStart,
-		PeriodEnd:       report.PeriodEnd,
-		StudentsReports: studentReports,
-		Published:       report.Published,
-	}, nil
+	return report, nil
 }
 
-func (s ProgressReportsStore) PatchStudentReport(reportId uuid.UUID, studentId uuid.UUID, ready *bool, comments *string) (domain.StudentReport, error) {
+func (s ProgressReportsStore) FindReportById(id uuid.UUID) (ProgressReport, error) {
+	report := ProgressReport{Id: id}
+	if err := s.Model(&report).
+		WherePK().
+		Select(); err != nil {
+		return ProgressReport{}, richErrors.Wrap(err, "failed to query progress report")
+	}
+
+	return report, nil
+}
+
+func (s ProgressReportsStore) PatchStudentReport(reportId uuid.UUID, studentId uuid.UUID, ready *bool, comments *string) (StudentReport, error) {
 	patchModel := make(PartialUpdateModel)
 	patchModel.AddBooleanColumn("ready", ready)
 	patchModel.AddStringColumn("general_comments", comments)
@@ -78,26 +48,20 @@ func (s ProgressReportsStore) PatchStudentReport(reportId uuid.UUID, studentId u
 		TableExpr("student_reports").
 		Where("student_id = ? and progress_report_id = ?", studentId, reportId).
 		Update(); err != nil {
-		return domain.StudentReport{}, richErrors.Wrap(err, "failed to update progress report")
+		return StudentReport{}, richErrors.Wrap(err, "failed to update progress report")
 	}
 
-	report := StudentReport{
-		StudentId:        studentId,
-		ProgressReportId: reportId,
-	}
+	report := StudentReport{StudentId: studentId, ProgressReportId: reportId}
 	if err := s.Model(&report).
 		WherePK().
 		Select(); err != nil {
-		return domain.StudentReport{}, richErrors.Wrap(err, "failed to query progress report")
+		return StudentReport{}, richErrors.Wrap(err, "failed to query progress report")
 	}
 
-	return domain.StudentReport{
-		Ready:           report.Ready,
-		GeneralComments: report.GeneralComments,
-	}, nil
+	return report, nil
 }
 
-func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentId uuid.UUID) (domain.StudentReport, error) {
+func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentId uuid.UUID) (StudentReport, error) {
 	report := StudentReport{StudentId: studentId, ProgressReportId: reportId}
 	if err := s.Model(&report).
 		Relation("ProgressReport").
@@ -105,76 +69,68 @@ func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentI
 		Relation("AreaComments").
 		WherePK().
 		Select(); err != nil {
-		return domain.StudentReport{}, richErrors.Wrap(err, "failed to find student report")
+		return StudentReport{}, richErrors.Wrap(err, "failed to find student report")
 	}
 
-	areaComments := make([]domain.StudentReportsAreaComment, len(report.AreaComments))
-	for k, comment := range report.AreaComments {
-		areaComments[k] = domain.StudentReportsAreaComment{
-			StudentReportProgressReportId: comment.StudentReportProgressReportId,
-			StudentReportStudentId:        comment.StudentReportStudentId,
-			Comments:                      comment.Comments,
-			Area: domain.Area{
-				Id:   comment.AreaId.String(),
-				Name: comment.Area.Name,
-			},
-		}
-	}
-
-	return domain.StudentReport{
-		ProgressReport: domain.ProgressReport{
-			Id:          report.ProgressReport.Id,
-			Title:       report.ProgressReport.Title,
-			PeriodStart: report.ProgressReport.PeriodStart,
-			PeriodEnd:   report.ProgressReport.PeriodEnd,
-		},
-		AreaComments:    areaComments,
-		GeneralComments: report.GeneralComments,
-		Ready:           report.Ready,
-		Student: domain.Student{
-			Id:   report.Student.Id,
-			Name: report.Student.Name,
-		},
-	}, nil
+	return report, nil
 }
 
 func (s ProgressReportsStore) UpdateReport(
 	id uuid.UUID,
-	published *bool,
 	title *string,
 	start *time.Time,
 	end *time.Time,
-) (domain.ProgressReport, error) {
-	data := make(PartialUpdateModel)
-	data.AddBooleanColumn("published", published)
-	data.AddStringColumn("title", title)
-	data.AddDateColumn("period_start", start)
-	data.AddDateColumn("period_end", end)
+	published *bool,
+) (ProgressReport, error) {
+	valueToUpdate := make(PartialUpdateModel)
+	report := ProgressReport{Id: id}
+	if err := s.Model(&report).
+		WherePK().
+		Select(); err != nil {
+		return ProgressReport{}, richErrors.Wrap(err, "failed to find report")
+	}
 
-	if _, err := s.Model(data.GetModel()).
+	// only freeze report the first time it is published (aka when FreezeAssessments is still false)
+	if !report.FreezeAssessments && published != nil && *published {
+		if _, err := s.Exec(`
+			insert into "student_report_assessments" (student_report_progress_report_id, student_report_student_id, material_id, assessment, updated_at) 
+			select sr.progress_report_id, sr.student_id, smp.material_id, coalesce(smp.stage, 0), smp.updated_at from student_reports sr
+				join students s on sr.student_id = s.id
+				join student_material_progresses smp on s.id = smp.student_id
+			where sr.progress_report_id = ?
+			on conflict (student_report_progress_report_id, student_report_student_id, material_id) 
+			    do update set assessment = excluded.assessment
+
+		`, id); err != nil {
+			return ProgressReport{}, richErrors.Wrap(err, "failed to freeze assessments")
+		}
+		b := true
+		valueToUpdate.AddBooleanColumn("freeze_assessments", &b)
+	}
+
+	valueToUpdate.AddBooleanColumn("published", published)
+	valueToUpdate.AddStringColumn("title", title)
+	valueToUpdate.AddDateColumn("period_start", start)
+	valueToUpdate.AddDateColumn("period_end", end)
+
+	if _, err := s.Model(valueToUpdate.GetModel()).
 		TableExpr("progress_reports").
 		Where("id = ?", id).
 		Update(); err != nil {
-		return domain.ProgressReport{}, richErrors.Wrap(err, "failed to update progress report")
+		return ProgressReport{}, richErrors.Wrap(err, "failed to update progress report")
 	}
 
-	report := ProgressReport{Id: id}
+	// get the updated report to return
 	if err := s.Model(&report).
-		Where("id = ?", id).
+		WherePK().
 		Select(); err != nil {
-		return domain.ProgressReport{}, richErrors.Wrap(err, "failed to find report")
+		return ProgressReport{}, richErrors.Wrap(err, "failed to find report")
 	}
 
-	return domain.ProgressReport{
-		Id:          id,
-		Published:   report.Published,
-		PeriodEnd:   report.PeriodEnd,
-		PeriodStart: report.PeriodStart,
-		Title:       report.Title,
-	}, nil
+	return report, nil
 }
 
-func (s ProgressReportsStore) FindUserByUserIdAndRelationToReport(reportId uuid.UUID, userId string) (domain.User, error) {
+func (s ProgressReportsStore) FindUserByUserIdAndRelationToReport(reportId uuid.UUID, userId string) (User, error) {
 	var report ProgressReport
 	if err := s.Model(&report).
 		Relation("School").
@@ -183,14 +139,14 @@ func (s ProgressReportsStore) FindUserByUserIdAndRelationToReport(reportId uuid.
 		}).
 		Where("progress_report.id = ?", reportId).
 		Select(); err != nil {
-		return domain.User{}, richErrors.Wrap(err, "failed to find report by report and user id")
+		return User{}, richErrors.Wrap(err, "failed to find report by report and user id")
 	}
 
 	if len(report.School.Users) == 1 {
-		return domain.User{Id: report.School.Users[0].Id}, nil
+		return report.School.Users[0], nil
 	}
 
-	return domain.User{}, nil
+	return User{}, nil
 }
 
 func (s ProgressReportsStore) DeleteReportById(reportId uuid.UUID) error {
@@ -200,11 +156,10 @@ func (s ProgressReportsStore) DeleteReportById(reportId uuid.UUID) error {
 		Delete(); err != nil {
 		return richErrors.Wrap(err, "failed to delete report by id")
 	}
-
 	return nil
 }
 
-func (s ProgressReportsStore) UpsertStudentReportAreaComments(reportId uuid.UUID, studentId uuid.UUID, areaId uuid.UUID, comments string) (domain.StudentReportsAreaComment, error) {
+func (s ProgressReportsStore) UpsertStudentReportAreaComments(reportId uuid.UUID, studentId uuid.UUID, areaId uuid.UUID, comments string) (StudentReportsAreaComment, error) {
 	c := StudentReportsAreaComment{
 		StudentReportProgressReportId: reportId,
 		StudentReportStudentId:        studentId,
@@ -215,15 +170,39 @@ func (s ProgressReportsStore) UpsertStudentReportAreaComments(reportId uuid.UUID
 		WherePK().
 		OnConflict("(area_id, student_report_progress_report_id, student_report_student_id) DO UPDATE").
 		Insert(); err != nil {
-		return domain.StudentReportsAreaComment{}, richErrors.Wrap(err, "failed to upsert area comments")
+		return StudentReportsAreaComment{}, richErrors.Wrap(err, "failed to upsert area comments")
 	}
 
-	return domain.StudentReportsAreaComment{
-		StudentReportProgressReportId: reportId,
-		StudentReportStudentId:        studentId,
-		Comments:                      comments,
-		Area: domain.Area{
-			Id: areaId.String(),
-		},
-	}, nil
+	if err := s.Model(&c).WherePK().Select(); err != nil {
+		return StudentReportsAreaComment{}, richErrors.Wrap(err, "failed to upsert area comments")
+	}
+
+	return c, nil
+}
+
+func (s ProgressReportsStore) FindFrozenStudentAssessmentByArea(reportId uuid.UUID, studentId uuid.UUID, areaId uuid.UUID) ([]StudentReportAssessment, error) {
+	var a []StudentReportAssessment
+	if err := s.Model(&a).
+		Order("assessment asc").
+		Relation("Material").
+		Relation("Material.Subject").
+		Where("student_report_progress_report_id = ? and student_report_student_id = ? and area_id = ?", reportId, studentId, areaId).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to query report assessments by area")
+	}
+	return a, nil
+}
+
+func (s ProgressReportsStore) FindLiveStudentAssessmentByArea(studentId uuid.UUID, areaId uuid.UUID) ([]StudentMaterialProgress, error) {
+	var m []StudentMaterialProgress
+	if err := s.Model(&m).
+		Order("stage asc nulls first").
+		Relation("Material").
+		Relation("Material.Subject").
+		Where("student_id = ? and material__subject.area_id = ?", studentId, areaId).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to find student material progress")
+	}
+
+	return m, nil
 }

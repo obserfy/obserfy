@@ -17,7 +17,7 @@ export const BackButton: FC<BackButtonProps> = ({ to, state }) => (
     data-cy="back-button"
     state={state}
   >
-    <Button p={1} variant="secondary">
+    <Button p={1} variant="text">
       <Icon as={Arrow} sx={{ fill: "textMediumEmphasis" }} />
     </Button>
   </Link>

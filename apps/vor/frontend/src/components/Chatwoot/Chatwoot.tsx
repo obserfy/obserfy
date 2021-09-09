@@ -79,7 +79,7 @@ const Chatwoot: FC<ChatwootProps> = () => {
 
   return (
     <Button
-      variant="secondary"
+      variant="text"
       sx={{
         borderBottom: 0,
         alignItems: "center",

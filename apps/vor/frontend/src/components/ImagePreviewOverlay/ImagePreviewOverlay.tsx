@@ -1,15 +1,15 @@
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 import { FC, useLayoutEffect, useRef, useState } from "react"
 import { Box, Button, Flex, Image } from "theme-ui"
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
+import useDeleteImage from "../../hooks/api/useDeleteImage"
 import { useGetStudent } from "../../hooks/api/useGetStudent"
-import Portal from "../Portal/Portal"
-import Icon from "../Icon/Icon"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
+import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
+import Icon from "../Icon/Icon"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import Portal from "../Portal/Portal"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
-import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
-import useDeleteImage from "../../hooks/api/useDeleteImage"
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 export interface ImagePreviewOverlayProps {
   imageId: string
@@ -65,7 +65,7 @@ const ImagePreviewOverlay: FC<ImagePreviewOverlayProps> = ({
       >
         <Button
           onClick={onDismiss}
-          variant="secondary"
+          variant="text"
           sx={{
             position: "absolute",
             right: 0,

@@ -1,19 +1,19 @@
+import { t, Trans } from "@lingui/macro"
 import { FC, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
-import { t, Trans } from "@lingui/macro"
 import { borderTop } from "../../border"
+import { useGetSchoolGuardians } from "../../hooks/api/guardians/useGetSchoolGuardians"
 import { ReactComponent as ChevronRight } from "../../icons/next-arrow.svg"
-import { Link } from "../Link/Link"
 import {
   ADMIN_URL,
-  NEW_GUARDIAN_ADMIN_URL,
   GUARDIAN_PROFILE_URL,
+  NEW_GUARDIAN_ADMIN_URL,
 } from "../../routes"
+import Icon from "../Icon/Icon"
+import { Link } from "../Link/Link"
+import SearchBar from "../SearchBar/SearchBar"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import Typography from "../Typography/Typography"
-import { useGetSchoolGuardians } from "../../hooks/api/guardians/useGetSchoolGuardians"
-import Icon from "../Icon/Icon"
-import SearchBar from "../SearchBar/SearchBar"
 
 export const PageListOfGuardians: FC = () => {
   const guardians = useGetSchoolGuardians()
@@ -38,7 +38,7 @@ export const PageListOfGuardians: FC = () => {
           </Typography.H6>
 
           <Link to={NEW_GUARDIAN_ADMIN_URL} sx={{ ml: "auto", mr: 3 }}>
-            <Button variant="secondary" data-cy="addGuardian">
+            <Button variant="text" data-cy="addGuardian">
               <Trans>Create New</Trans>
             </Button>
           </Link>

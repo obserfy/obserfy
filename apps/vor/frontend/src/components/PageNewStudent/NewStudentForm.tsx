@@ -172,7 +172,7 @@ export const NewStudentForm = () => {
             <Trans>Guardians</Trans>
           </Typography.H6>
           <Link to={NEW_STUDENT_ADD_GUARDIAN_URL} data-cy="add-guardian">
-            <Button variant="secondary">
+            <Button variant="text">
               <Trans>Add</Trans>
             </Button>
           </Link>
@@ -237,7 +237,7 @@ const Guardian: FC<{
       <Button
         data-cy={`delete-${guardian.data?.name ?? ""}`}
         p={2}
-        variant="secondary"
+        variant="text"
         ml={2}
         onClick={() => setShowRemoveDialog(true)}
         sx={{ flexShrink: 0 }}

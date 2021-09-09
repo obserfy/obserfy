@@ -180,7 +180,7 @@ const DateRangeSelector: FC<{
       >
         <Icon as={CalendarIcon} ml={2} sx={{ display: ["none", "block"] }} />
         <Button
-          variant="secondary"
+          variant="text"
           color="textMediumEmphasis"
           px={2}
           m={1}
@@ -190,7 +190,7 @@ const DateRangeSelector: FC<{
         </Button>
         <Box mb={1}>-</Box>
         <Button
-          variant="secondary"
+          variant="text"
           color="textMediumEmphasis"
           px={2}
           m={1}

@@ -70,19 +70,8 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
               mb: -19,
             }}
           >
-            <Button
-              variant="outline"
-              sx={{
-                borderRadius: "circle",
-                backgroundColor: "tertiary.900",
-                color: "onTertiary",
-                "&:hover": {
-                  backgroundColor: "tertiary.800",
-                  borderColor: "tertiary.800",
-                },
-              }}
-            >
-              <Icon as={PlusIcon} sx={{ fill: "onTertiary" }} mr={1} />
+            <Button variant="secondary" sx={{ borderRadius: "circle" }}>
+              <Icon as={PlusIcon} sx={{ fill: "onSecondary" }} mr={1} />
               New Report
             </Button>
           </Link>
@@ -132,13 +121,11 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
               },
             }}
           >
+            <Text sx={{ width: "65%" }}>{report.title}</Text>
             <Text
+              sx={{ width: "20%", display: ["none", "none", "block"] }}
               color="textMediumEmphasis"
-              sx={{ fontWeight: "bold", width: "65%" }}
             >
-              {report.title}
-            </Text>
-            <Text sx={{ width: "20%", display: ["none", "none", "block"] }}>
               {dayjs(report.periodStart).format("DD MMM YYYY")}
             </Text>
             {report.published ? (

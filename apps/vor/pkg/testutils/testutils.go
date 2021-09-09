@@ -523,6 +523,8 @@ func (s *BaseTestSuite) NewSession(userId string) auth.Session {
 	}
 }
 
+type H = map[string]interface{}
+
 type ApiMetadata struct {
 	Method   string
 	Path     string

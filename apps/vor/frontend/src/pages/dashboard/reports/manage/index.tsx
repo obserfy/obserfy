@@ -172,7 +172,7 @@ const Student: FC<{
   let color = "red"
   let text = "Empty"
   if (inProgress) {
-    color = "yellow"
+    color = "#ffd600"
     text = "In Progress"
   }
   if (ready) {
@@ -209,8 +209,8 @@ const Student: FC<{
           key={c.id}
           mr={2}
           color="textMediumEmphasis"
-          py={1}
-          px="10px"
+          py={0}
+          px={2}
           sx={{
             ...borderFull,
             fontSize: 0,
@@ -226,8 +226,8 @@ const Student: FC<{
 
       <Flex
         mr={3}
-        py={1}
-        px="10px"
+        py={0}
+        px={2}
         sx={{
           ...borderFull,
           borderRadius: "circle",
@@ -270,16 +270,18 @@ const UnPublishButton: FC<{
   return (
     <>
       <Button
+        variant="outline"
         mr={3}
         onClick={confirmationDialog.show}
         sx={{
-          backgroundColor: "danger",
-          color: "onDanger",
+          color: "danger",
           "&:hover": {
-            backgroundColor: "danger",
+            backgroundColor: "tintDanger",
+            borderColor: "danger",
           },
           "&:focus": {
-            backgroundColor: "danger",
+            backgroundColor: "tintDanger",
+            borderColor: "danger",
           },
         }}
       >

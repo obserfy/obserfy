@@ -40,3 +40,26 @@ func (s *ProgressReportTestSuite) TestAuthorization() {
 	})
 	s.Equal(validUserIdResult.Code, http.StatusOK)
 }
+
+func (s *ProgressReportTestSuite) TestPublishReport() {
+	school, userId := s.GenerateSchool()
+	report := s.GenerateReport(school)
+
+	result := s.ApiTest(testutils.ApiMetadata{
+		Method: "POST",
+		UserId: userId,
+		Path:   "/" + report.Id.String() + "/published",
+		Body: testutils.H{
+			"published": true,
+		},
+	})
+
+	s.Equal(result.Code, http.StatusOK)
+
+	savedReport := postgres.ProgressReport{Id: report.Id}
+	err := s.DB.Model(&savedReport).WherePK().Select()
+	s.NoError(err)
+	s.Equal(report.Title, savedReport.Title)
+	s.Equal(true, savedReport.Published)
+	s.Equal(true, savedReport.FreezeAssessments)
+}

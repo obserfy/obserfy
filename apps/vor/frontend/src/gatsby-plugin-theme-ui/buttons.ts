@@ -38,7 +38,7 @@ export default {
     variant: "buttons.primary",
     py: 3,
   },
-  secondary: {
+  text: {
     variant: "buttons.primary",
     color: "textPrimary",
     bg: "transparent",
@@ -50,15 +50,15 @@ export default {
       borderColor: "primary",
     },
   },
-  tertiary: {
+  secondary: {
     variant: "buttons.primary",
-    backgroundColor: "tertiary.900",
+    backgroundColor: "secondary.900",
     color: "onTertiary",
     border: "none",
     flexShrink: 0,
     boxShadow: "none",
     "&:hover, &:focus": {
-      backgroundColor: "tertiary.800",
+      backgroundColor: "secondary.800",
       borderColor: "primary",
     },
     "&:disabled": {
