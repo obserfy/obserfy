@@ -14307,7 +14307,7 @@ __metadata:
     next-pwa: 5.3.1
     node-mocks-http: 1.10.1
     pg: 8.7.1
-    pino: 6.13.1
+    pino: 6.13.2
     pino-pretty: 6.0.0
     postcss: 8.3.6
     preact: 10.5.14
@@ -22355,9 +22355,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino@npm:6.13.1":
-  version: 6.13.1
-  resolution: "pino@npm:6.13.1"
+"pino@npm:6.13.2":
+  version: 6.13.2
+  resolution: "pino@npm:6.13.2"
   dependencies:
     fast-redact: ^3.0.0
     fast-safe-stringify: ^2.0.8
@@ -22368,7 +22368,7 @@ __metadata:
     sonic-boom: ^1.0.2
   bin:
     pino: bin.js
-  checksum: 8124217b9fd9f44f00126bf38eaf183c659d47d6e030cb614a988bb8adbae710a5f3184fa4d8323dcb3b6aa79ece199fbaed61e484b0b621629a5f3c369d8302
+  checksum: daed08099630e8fd8970ed95e9145f8cc40e36671b3acd1324a459c1758b93e3dbe8eea7573ccff00e48ebf1afc1dcc612732e92a5e40e47ab8f91ac0a81ad4b
   languageName: node
   linkType: hard
 
