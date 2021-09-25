@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { FC } from "react"
@@ -14,6 +15,7 @@ const Navbar: FC<Props> = ({ childId }) => (
         <NavbarItem to="/lesson-plan" text="Lesson Plan" childId={childId} />
         <NavbarItem to="/images" text="Images" childId={childId} />
         <NavbarItem to="/videos" text="Videos" childId={childId} />
+        <NavbarItem2 href={`/${childId}/reports`} text="Reports" />
         <NavbarItem to="/support" text="Support" childId={childId} />
       </ul>
     </nav>
@@ -34,6 +36,26 @@ const NavbarItem: FC<{ to: string; text: string; childId: string }> = ({
           className={`${
             router.pathname === to ? "border-b-2 border-black" : "text-gray-700"
           } bg-white inline-block p-2 text-sm`}
+        >
+          {text}
+        </a>
+      </Link>
+    </li>
+  )
+}
+
+const NavbarItem2: FC<{ href: string; text: string }> = ({ href, text }) => {
+  const router = useRouter()
+  const isActive = router.pathname === href
+
+  return (
+    <li className="mr-1 flex-shrink-0">
+      <Link href={href}>
+        <a
+          className={clsx(
+            "bg-white inline-block p-2 text-sm text-gray-700",
+            isActive && "border-b-2 border-black text-black"
+          )}
         >
           {text}
         </a>
