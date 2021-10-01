@@ -1762,17 +1762,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bahmutov/cypress-esbuild-preprocessor@npm:2.1.1":
-  version: 2.1.1
-  resolution: "@bahmutov/cypress-esbuild-preprocessor@npm:2.1.1"
-  dependencies:
-    debug: 4.3.2
-  peerDependencies:
-    esbuild: "*"
-  checksum: 57c8b727cbbd6add3dd04aa546f141afc9881d0615cb14847810407eae98a3f3e53554b69a384472deb25f730352336182a630a3ce5fe100215a9507855e74db
-  languageName: node
-  linkType: hard
-
 "@base2/pretty-print-object@npm:1.0.0":
   version: 1.0.0
   resolution: "@base2/pretty-print-object@npm:1.0.0"
@@ -11376,7 +11365,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:4.3.2, debug@npm:^4.0.0, debug@npm:^4.0.1, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:~4.3.1":
+"debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.0.1, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:~4.3.1":
   version: 4.3.2
   resolution: "debug@npm:4.3.2"
   dependencies:
@@ -12572,15 +12561,6 @@ __metadata:
     es6-iterator: ^2.0.3
     es6-symbol: ^3.1.1
   checksum: 19ca15f46d50948ce78c2da5f21fb5b1ef45addd4fe17b5df952ff1f2a3d6ce4781249bc73b90995257264be2a98b2ec749bb2aba0c14b5776a1154178f9c927
-  languageName: node
-  linkType: hard
-
-"esbuild@npm:0.12.25":
-  version: 0.12.25
-  resolution: "esbuild@npm:0.12.25"
-  bin:
-    esbuild: bin/esbuild
-  checksum: fd92b0541c17e6d863d3b1cf628a35c9844831a1f1f2d16c3091bc7a130a601a8164083b84a65cd3178209e7c395fc61d454f92c8b1a4869d443fd0ca5a51a8d
   languageName: node
   linkType: hard
 
@@ -28885,7 +28865,6 @@ typescript@4.3.5:
   dependencies:
     "@babel/preset-typescript": 7.15.0
     "@babel/runtime": 7.15.4
-    "@bahmutov/cypress-esbuild-preprocessor": 2.1.1
     "@emotion/jest": 11.3.0
     "@emotion/react": 11.4.1
     "@fontsource/lora": 4.5.0
@@ -28940,7 +28919,6 @@ typescript@4.3.5:
     dayjs: 1.10.6
     dompurify: 2.3.1
     dotenv: 10.0.0
-    esbuild: 0.12.25
     eslint: 7.30.0
     eslint-config-airbnb-typescript: 12.3.1
     eslint-config-prettier: 8.3.0
