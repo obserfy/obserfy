@@ -1,6 +1,7 @@
 /* eslint-disable react/no-danger */
 import { UserProvider } from "@auth0/nextjs-auth0"
 import { AppProps } from "next/app"
+import Script from "next/script"
 import { FC } from "react"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
@@ -8,9 +9,7 @@ import ErrorBoundary from "../components/ErrorBoundary"
 import Layout from "../components/layout"
 import "../global.css"
 import useInitAnalytics from "../hooks/useInitAnalytics"
-import { initSentry } from "../utils/sentry"
 
-initSentry()
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -24,6 +23,16 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
 
   return (
     <ErrorBoundary>
+      <Script
+        src="https://js.sentry-cdn.com/cb901298e868441898d8717f07a20188.min.js"
+        crossOrigin="anonymous"
+        data-lazy="no"
+        strategy="beforeInteractive"
+        onLoad={() => {
+          Sentry.init()
+        }}
+      />
+
       <QueryClientProvider client={queryClient}>
         <UserProvider>
           <Layout>

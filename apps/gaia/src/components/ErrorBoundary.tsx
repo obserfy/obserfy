@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/node"
 import { Component, ReactNode } from "react"
 
 interface State {

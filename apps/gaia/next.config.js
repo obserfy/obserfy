@@ -1,13 +1,13 @@
+const { withSentryConfig } = require("@sentry/nextjs")
 const withPlugins = require("next-compose-plugins")
 const withPreact = require("next-plugin-preact")
 const withPWA = require("./withPWA")
-const withSentry = require("./withSentry")
 const version = require("./version")
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 })
 
-const plugins = [withPWA, withPreact, withSentry, withBundleAnalyzer]
+const plugins = [withSentryConfig, withPWA, withPreact, withBundleAnalyzer]
 
 const config = {
   env: {

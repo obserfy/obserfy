@@ -1,5 +1,4 @@
 import { useQuery } from "react-query"
-import * as Sentry from "@sentry/node"
 import { UserData } from "../../pages/api/me"
 import { getApi } from "./apiHelpers"
 

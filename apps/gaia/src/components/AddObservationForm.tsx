@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/node"
 import { FC, useState } from "react"
 import usePostPlanObservation from "../hooks/api/usePostPlanObservation"
 import Button from "./Button/Button"

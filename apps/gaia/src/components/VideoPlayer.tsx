@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import * as Sentry from "@sentry/node"
+
 import Hls from "hls.js"
 // @ts-ignore
 import mux from "mux-embed"

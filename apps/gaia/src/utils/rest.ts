@@ -1,10 +1,7 @@
 import { withApiAuthRequired } from "@auth0/nextjs-auth0"
+import * as Sentry from "@sentry/nextjs"
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next"
-import * as Sentry from "@sentry/node"
 import logger from "../logger"
-import { initSentry } from "./sentry"
-
-initSentry()
 
 export const getFirstQueryValue = (
   req: NextApiRequest,

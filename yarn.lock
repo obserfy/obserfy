@@ -4218,6 +4218,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/nextjs@npm:6.12.0":
+  version: 6.12.0
+  resolution: "@sentry/nextjs@npm:6.12.0"
+  dependencies:
+    "@sentry/core": 6.12.0
+    "@sentry/integrations": 6.12.0
+    "@sentry/node": 6.12.0
+    "@sentry/react": 6.12.0
+    "@sentry/tracing": 6.12.0
+    "@sentry/utils": 6.12.0
+    "@sentry/webpack-plugin": 1.17.1
+    tslib: ^1.9.3
+  peerDependencies:
+    next: ^10.0.8 || ^11.0
+    react: 15.x || 16.x || 17.x
+  checksum: cecdc7e6c7e1f6ba82e6d6f76eb983bd4ebd81f74aca0b2b97fbfcc1ebd031c7c96ed4b01b83c069f45fa72db94936e261aeabfa1c1f6a31e269a6f428768bca
+  languageName: node
+  linkType: hard
+
 "@sentry/node@npm:6.12.0":
   version: 6.12.0
   resolution: "@sentry/node@npm:6.12.0"
@@ -14379,10 +14398,7 @@ __metadata:
   dependencies:
     "@auth0/nextjs-auth0": 1.5.0
     "@next/bundle-analyzer": 11.1.2
-    "@sentry/browser": 6.12.0
-    "@sentry/integrations": 6.12.0
-    "@sentry/node": 6.12.0
-    "@sentry/webpack-plugin": 1.17.1
+    "@sentry/nextjs": 6.12.0
     "@svgr/webpack": 5.5.0
     "@tailwindcss/typography": 0.4.1
     "@types/body-scroll-lock": 3.1.0
@@ -14445,6 +14461,7 @@ __metadata:
     react-dom: "npm:@preact/compat@17.0.2"
     react-query: 3.21.1
     react-ssr-prepass: "npm:preact-ssr-prepass@1.2.0"
+    sharp: ^0.29.1
     snarkdown: 2.0.0
     stylelint: 13.13.1
     stylelint-config-prettier: 8.0.2
@@ -25679,7 +25696,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"sharp@npm:^0.29.0":
+"sharp@npm:^0.29.0, sharp@npm:^0.29.1":
   version: 0.29.1
   resolution: "sharp@npm:0.29.1"
   dependencies:
