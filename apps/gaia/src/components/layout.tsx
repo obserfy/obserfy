@@ -14,7 +14,7 @@ const Layout: FC = ({ children }) => {
   if (router.pathname === "/no-data") {
     return (
       <div className="bg-background">
-        <div className="bg-surface min-h-screen">
+        <div className="min-h-screen bg-surface">
           <Header />
           <main>{children}</main>
         </div>
@@ -24,7 +24,7 @@ const Layout: FC = ({ children }) => {
 
   return (
     <div className="bg-background">
-      <div className="bg-surface pb-3">
+      <div className="pb-3 bg-surface">
         <Header />
         <ChildInfo childId={childId} />
       </div>

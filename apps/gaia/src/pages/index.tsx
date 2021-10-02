@@ -20,8 +20,8 @@ const IndexPage = () => {
       <Head>
         <title>Obserfy for Parents</title>
       </Head>
-      <div className="max-w-3xl mx-auto">
-        <div className="border-l ml-8 pt-3">
+      <div className="mx-auto max-w-3xl">
+        <div className="pt-3 ml-8 border-l">
           {timeline?.map(({ date, observations }) => (
             <ObservationList
               key={date}
@@ -31,8 +31,8 @@ const IndexPage = () => {
             />
           ))}
 
-          <div className="flex items-center font-bold -ml-3">
-            <div className="w-4 h-4  mx-1 bg-white rounded-full border " />
+          <div className="flex items-center -ml-3 font-bold">
+            <div className="mx-1 w-4 h-4 bg-white rounded-full border" />
           </div>
         </div>
         {isSuccess && (timeline?.length ?? 0) === 0 && (
@@ -57,8 +57,8 @@ const ObservationList: FC<{
   setImagePreview: Function
 }> = ({ date, observations, setImagePreview }) => (
   <div className="mb-12">
-    <div className="flex items-center font-bold -ml-5 mb-3">
-      <div className="w-8 h-8  mx-1 flex items-center justify-center bg-white rounded-full border ">
+    <div className="flex items-center mb-3 -ml-5 font-bold">
+      <div className="flex justify-center items-center mx-1 w-8 h-8 bg-white rounded-full border">
         <Icon src="/icons/calendar.svg" />
       </div>
       <div className="ml-3 text-xs text-gray-700">
@@ -67,18 +67,18 @@ const ObservationList: FC<{
     </div>
 
     {observations.map(({ id, shortDesc, longDesc, images, areaName }) => (
-      <div className="flex -ml-5 mb-6" key={id}>
-        <div className="w-8 h-8 mx-1 flex items-center justify-center bg-white rounded-full border flex-shrink-0">
+      <div className="flex mb-6 -ml-5" key={id}>
+        <div className="flex flex-shrink-0 justify-center items-center mx-1 w-8 h-8 bg-white rounded-full border">
           <Icon src="/icons/edit.svg" />
         </div>
         <div className="pt-1">
-          <div className="mx-3 font-bold mb-1">{shortDesc}</div>
+          <div className="mx-3 mb-1 font-bold">{shortDesc}</div>
           <Markdown
-            className="mx-3 max-w-md text-gray-900 mb-2"
+            className="mx-3 mb-2 max-w-md text-gray-900"
             markdown={longDesc}
           />
-          <div className="mx-3 max-w-md text-green-900 mb-3">{areaName}</div>
-          <div className="flex ml-3 flex-wrap">
+          <div className="mx-3 mb-3 max-w-md text-green-900">{areaName}</div>
+          <div className="flex flex-wrap ml-3">
             {images.map((img) => (
               <div className="mr-3 mb-3" key={img.id}>
                 <button
@@ -89,7 +89,7 @@ const ObservationList: FC<{
                     src={img.originalImageUrl}
                     height={60}
                     width={60}
-                    className="rounded border object-cover"
+                    className="object-cover rounded border"
                   />
                 </button>
               </div>

@@ -10,7 +10,7 @@ const ChildInfo: FC<Props> = ({ childId }) => {
 
   return child.status === "success" ? (
     <>
-      <div className="flex px-3 py-3 max-w-3xl mx-auto items-center">
+      <div className="flex items-center py-3 px-3 mx-auto max-w-3xl">
         <div className="flex-shrink-0">
           {child.data?.profilePic ? (
             <Image
@@ -18,7 +18,7 @@ const ChildInfo: FC<Props> = ({ childId }) => {
               src={child.data.profilePic}
               width={60}
               height={60}
-              className="rounded-full object-cover"
+              className="object-cover rounded-full"
             />
           ) : (
             <Image
@@ -31,7 +31,7 @@ const ChildInfo: FC<Props> = ({ childId }) => {
           )}
         </div>
         <div className="ml-4">
-          <div className="text-xl leading-tight font-bold mb-1">
+          <div className="mb-1 text-xl font-bold leading-tight">
             {child.data?.name}
           </div>
           <div className="text-sm text-gray-700">{child.data?.schoolName}</div>
@@ -44,17 +44,17 @@ const ChildInfo: FC<Props> = ({ childId }) => {
 }
 
 const LoadingPlaceholder = () => (
-  <div className="bg-white flex px-3 py-2 max-w-3xl mx-auto items-center">
+  <div className="flex items-center py-2 px-3 mx-auto max-w-3xl bg-white">
     <div
-      className="rounded-full loading-placeholder my-1"
+      className="my-1 rounded-full loading-placeholder"
       style={{
         width: 60,
         height: 60,
       }}
     />
     <div>
-      <div className="loading-placeholder ml-4 text-2xl leading-tight my-2 w-32 h-6 rounded" />
-      <div className="loading-placeholder ml-4 text-sm text-gray-700 my-2 w-24 h-4 rounded" />
+      <div className="my-2 ml-4 w-32 h-6 text-2xl leading-tight rounded loading-placeholder" />
+      <div className="my-2 ml-4 w-24 h-4 text-sm text-gray-700 rounded loading-placeholder" />
     </div>
   </div>
 )

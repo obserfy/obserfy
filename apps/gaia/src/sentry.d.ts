@@ -1,1 +1,1 @@
-declare const Sentry: any
+declare const Sentry: typeof import("@sentry/nextjs")

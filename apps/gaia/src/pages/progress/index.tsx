@@ -1,4 +1,5 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
+import Icon from "@components/Icon/Icon"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
@@ -8,7 +9,6 @@ import Chip from "../../components/Chip/Chip"
 import MaterialStagePill from "../../components/MaterialStagePill"
 import useGetCurriculumProgress from "../../hooks/api/useGetCurriculumProgress"
 import { useQueryString } from "../../hooks/useQueryString"
-import ChevronRightIcon from "../../icons/chevron-right.svg"
 
 const ProgressPage = () => {
   const [areaIdx, setAreaIdx] = useState(0)
@@ -39,8 +39,8 @@ const ProgressPage = () => {
         <title>Curriculum Progress | Obserfy for Parents</title>
       </Head>
 
-      <div className="font-bold px-3 pt-3">CURRICULUM AREAS</div>
-      <div className="flex flex-wrap pt-2 md-rounded pl-1">
+      <div className="px-3 pt-3 font-bold">CURRICULUM AREAS</div>
+      <div className="flex flex-wrap pt-2 pl-1 md-rounded">
         {progress.map((area, idx) => (
           <Chip
             key={area.id}
@@ -52,12 +52,12 @@ const ProgressPage = () => {
           </Chip>
         ))}
       </div>
-      <div className="font-bold px-3 pb-3 pt-6">MATERIALS</div>
+      <div className="px-3 pt-6 pb-3 font-bold">MATERIALS</div>
 
       {progress[areaIdx].subjects.map((subject) => (
         <div
           key={subject.id}
-          className="bg-white mb-6 border md:rounded md:mx-3"
+          className="md:mx-3 mb-6 bg-white md:rounded border"
         >
           <div className="px-3 my-3 font-bold">{subject.name}</div>
 
@@ -67,11 +67,14 @@ const ProgressPage = () => {
             >
               <a
                 key={material.id}
-                className="flex px-3 py-2 items-center display-block hover:bg-primaryLightest"
+                className="flex items-center py-2 px-3 hover:bg-primaryLightest display-block"
               >
                 <div className="pr-3">{material.name}</div>
                 <MaterialStagePill stage={material.stage} className="ml-auto" />
-                <ChevronRightIcon className="opacity-60 ml-3" />
+                <Icon
+                  src="/icons/chevron-right.svg"
+                  className="ml-3 opacity-60"
+                />
               </a>
             </Link>
           ))}
@@ -107,14 +110,14 @@ const EmptyCurriculumPlaceholder: FC<{ loading?: boolean }> = ({ loading }) => (
 const ErrorIllustration: FC<{
   onRetryClick: () => void
 }> = ({ onRetryClick }) => (
-  <div className="flex flex-col items-center pt-8 transition-opacity duration-200 max-w-3xl mx-auto">
+  <div className="flex flex-col items-center pt-8 mx-auto max-w-3xl transition-opacity duration-200">
     <Image
       alt="empty curriculum illustration"
       src="/undraw_network.svg"
       width={250}
       height={250}
     />
-    <h5 className="text-xl mx-4 text-center transition-opacity duration-200 font-bold">
+    <h5 className="mx-4 text-xl font-bold text-center transition-opacity duration-200">
       We can&apos;t seem to connect to the server, please try again.
     </h5>
     <Button onClick={onRetryClick}>Retry</Button>
@@ -123,20 +126,20 @@ const ErrorIllustration: FC<{
 
 const LoadingState: FC = () => (
   <div className="mx-auto max-w-3xl">
-    <div className="bg-gray-300 rounded p-3 my-3 w-48 mx-3" />
-    <div className="flex mx-3 flex-wrap">
-      <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
-      <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
-      <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
-      <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
-      <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
+    <div className="p-3 my-3 mx-3 w-48 bg-gray-300 rounded" />
+    <div className="flex flex-wrap mx-3">
+      <div className="p-3 my-3 mr-3 w-24 bg-gray-300 rounded" />
+      <div className="p-3 my-3 mr-3 w-24 bg-gray-300 rounded" />
+      <div className="p-3 my-3 mr-3 w-24 bg-gray-300 rounded" />
+      <div className="p-3 my-3 mr-3 w-24 bg-gray-300 rounded" />
+      <div className="p-3 my-3 mr-3 w-24 bg-gray-300 rounded" />
     </div>
 
-    <div className="bg-gray-300 rounded p-3 mb-3 mt-6 w-48 mx-3" />
-    <div className="bg-gray-300 rounded p-3 my-3 h-64" />
-    <div className="bg-gray-300 rounded p-3 my-3 h-64" />
-    <div className="bg-gray-300 rounded p-3 my-3 h-64" />
-    <div className="bg-gray-300 rounded p-3 my-3 h-64" />
+    <div className="p-3 mx-3 mt-6 mb-3 w-48 bg-gray-300 rounded" />
+    <div className="p-3 my-3 h-64 bg-gray-300 rounded" />
+    <div className="p-3 my-3 h-64 bg-gray-300 rounded" />
+    <div className="p-3 my-3 h-64 bg-gray-300 rounded" />
+    <div className="p-3 my-3 h-64 bg-gray-300 rounded" />
   </div>
 )
 

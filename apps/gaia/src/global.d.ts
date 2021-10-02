@@ -6,12 +6,3 @@ declare module "formidable-serverless" {
 
   export default formidable
 }
-
-declare module "*.svg" {
-  import { FC, ReactSVGElement, SVGProps } from "react"
-
-  const ReactComponent: FC<SVGProps<ReactSVGElement>>
-  export default ReactComponent
-}
-
-declare const Canny: (method: string, data: any) => void

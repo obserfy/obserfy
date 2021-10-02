@@ -15,7 +15,7 @@ const useInitAnalytics = () => {
     return () => {
       router.events.off("routeChangeComplete", pageRoutingAnalytics)
     }
-  }, [])
+  }, [router])
 }
 
 export default useInitAnalytics

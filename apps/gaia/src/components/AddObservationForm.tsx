@@ -31,7 +31,7 @@ const AddObservationForm: FC<{
     <>
       <div className="px-3 w-full">
         <Textarea
-          className="w-full mt-3"
+          className="mt-3 w-full"
           label="Observation"
           value={observation}
           onChange={(e) => setObservation(e.target.value)}
@@ -41,14 +41,14 @@ const AddObservationForm: FC<{
       <div className="flex ml-auto">
         <Button
           outline
-          className="ml-auto mr-3 mt-3"
+          className="mt-3 mr-3 ml-auto"
           onClick={onDismiss}
           disabled={loading}
         >
           Cancel
         </Button>
         <Button
-          className="ml-auto mr-3 mt-3"
+          className="mt-3 mr-3 ml-auto"
           disabled={loading}
           onClick={handleSubmit}
         >

@@ -20,7 +20,7 @@ const ImagePreview: FC<{
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
     <div
       ref={ref}
-      className="fixed h-screen w-screen bg-overlay top-0 left-0 right-0 bottom-0 z-50 flex md:items-center justify-center overflow-y-auto scrolling-touch"
+      className="flex overflow-y-auto fixed top-0 right-0 bottom-0 left-0 z-50 justify-center md:items-center w-screen h-screen bg-overlay scrolling-touch"
       onClick={onDismiss}
     >
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
@@ -28,8 +28,8 @@ const ImagePreview: FC<{
         className="
           w-full
           max-w-2xl
-          bg-white
           max-h-screen
+          bg-white
         "
         onClick={(e) => e.stopPropagation()}
         style={{ minHeight: 300 }}
@@ -49,13 +49,13 @@ const ImagePreview: FC<{
             </div>
           </div>
           <button data-cy="close" className="ml-auto" onClick={onDismiss}>
-            <Icon src="/icons/close.svg" size={20} />
+            <Icon src="/icons/close.svg" />
           </button>
         </div>
         <img
           src={img.originalImageUrl}
           alt="preview"
-          className="w-full object-cover"
+          className="object-cover w-full"
         />
         {observations.data?.map((obv) => (
           <div className="p-4 bg-white">

@@ -17,18 +17,18 @@ const DailyLessonPlans: FC = () => {
 
   return (
     <>
-      <div className="max-w-3xl mx-auto flex items-center p-3 border-t">
+      <div className="flex items-center p-3 mx-auto max-w-3xl border-t">
         <div className="text-xs font-bold text-gray-700">
           {date.format("dddd, DD MMM YYYY")}
         </div>
         <Button className="ml-auto" outline iconOnly onClick={changeDate(-1)}>
-          <Icon src="/icons/chevron-left.svg" size={16} />
+          <Icon src="/icons/chevron-left.svg" />
         </Button>
         <Button className="ml-1" outline iconOnly onClick={changeDate(1)}>
-          <Icon alt="Next date" src="/icons/chevron-right.svg" size={16} />
+          <Icon src="/icons/chevron-right.svg" />
         </Button>
         <Button
-          className="ml-1 font-normal text-sm"
+          className="ml-1 text-sm font-normal"
           outline
           small
           onClick={() => setDate(dayjs())}
@@ -47,7 +47,7 @@ const DailyLessonPlans: FC = () => {
         />
       )}
 
-      <div className="max-w-3xl mx-auto">
+      <div className="mx-auto max-w-3xl">
         {childPlans.data?.map((plan) => (
           <Plan
             key={plan.id}

@@ -9,7 +9,6 @@ import useGetChild from "../hooks/api/useGetChild"
 import useGetChildImages, { ChildImage } from "../hooks/api/useGetChildImages"
 import usePostImage from "../hooks/api/usePostImage"
 import { useQueryString } from "../hooks/useQueryString"
-import UploadIcon from "../icons/upload.svg"
 
 const GalleryPage = () => {
   const childId = useQueryString("childId")
@@ -33,8 +32,8 @@ const GalleryPage = () => {
         <title>Images | Obserfy for Parents</title>
       </Head>
 
-      <div className="max-w-3xl mx-auto">
-        <div className="flex flex-wrap w-full pr-1">
+      <div className="mx-auto max-w-3xl">
+        <div className="flex flex-wrap pr-1 w-full">
           {childImages.isSuccess && childImages.data?.length === 0 ? (
             <EmptyState
               isLoading={childImages.isLoading}
@@ -63,18 +62,18 @@ const ImageItems: FC<{ childId: string; img: ChildImage }> = ({
     <>
       <button
         data-cy="image"
-        className="w-1/3 md:w-1/5 relative cursor-pointer"
+        className="relative w-1/3 md:w-1/5 cursor-pointer"
         onClick={() => setShowPreview(true)}
       >
         {img.isUploading ? (
           <div style={{ width: "100%", paddingBottom: "100%" }}>
-            <p className=" font-bold left-0 right-0 top-0 bottom-0 absolute flex items-center justify-center z-10 ">
+            <p className="flex absolute top-0 right-0 bottom-0 left-0 z-10 justify-center items-center font-bold">
               Uploading
             </p>
             <img
               src={img.imageUrl}
               alt="children activity"
-              className="absolute w-full h-full object-cover opacity-25"
+              className="object-cover absolute w-full h-full opacity-25"
             />
           </div>
         ) : (
@@ -82,7 +81,7 @@ const ImageItems: FC<{ childId: string; img: ChildImage }> = ({
             <Image
               src={img.originalImageUrl}
               alt="children activity"
-              className="absolute w-full h-full object-cover bg-white m-1 md:m-2"
+              className="object-cover absolute m-1 md:m-2 w-full h-full bg-white"
               loading="lazy"
               layout="fill"
             />
@@ -104,14 +103,14 @@ const ImageItems: FC<{ childId: string; img: ChildImage }> = ({
 const UploadImageButton: FC<{
   onChange: ChangeEventHandler<HTMLInputElement>
 }> = ({ onChange }) => (
-  <div className="w-1/3 md:w-1/5 ">
-    <div className="m-3 relative">
+  <div className="w-1/3 md:w-1/5">
+    <div className="relative m-3">
       <div style={{ width: "100%", paddingBottom: "100%" }}>
         <label
           htmlFor="upload-image"
-          className="absolute top-0 left-0 flex flex-col items-center justify-center font-bold text-sm border rounded w-full h-full bg-white"
+          className="flex absolute top-0 left-0 flex-col justify-center items-center w-full h-full text-sm font-bold bg-white rounded border"
         >
-          <Icon src="/icons/upload.svg" size={20} />
+          <Icon src="/icons/upload.svg" className="mb-1 !w-6 !h-6" />
           <span>
             Upload <span className="hidden md:inline">Image</span>
           </span>
@@ -132,13 +131,13 @@ const EmptyState: FC<{
   isLoading: boolean
   onChange: ChangeEventHandler<HTMLInputElement>
 }> = ({ isLoading, onChange }) => (
-  <div className="flex flex-col mx-auto items-center pb-8">
+  <div className="flex flex-col items-center pb-8 mx-auto">
     <EmptyGalleryIllustration loading={isLoading} />
     <label
-      className="flex py-2 px-6 rounded text-onPrimary bg-primary text-sm border shadow-xs items-center"
+      className="flex items-center py-2 px-6 text-sm text-onPrimary bg-primary rounded border shadow-xs"
       htmlFor="upload-image-small"
     >
-      <UploadIcon className="mr-3" />
+      <Icon src="/icons/upload.svg" className="mr-3" />
       Upload Image
       <input
         id="upload-image-small"
@@ -159,7 +158,7 @@ const EmptyGalleryIllustration: FC<{ loading: boolean }> = ({ loading }) => (
   >
     <Image
       src="/images/no-images-illustration.svg"
-      className="w-64 md:w-1/2 mb-3"
+      className="mb-3 w-64 md:w-1/2"
       height={200}
       width={200}
     />

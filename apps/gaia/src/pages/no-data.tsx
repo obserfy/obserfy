@@ -1,10 +1,10 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import { useEffect } from "react"
+import Head from "next/head"
 import Image from "next/image"
 import { useRouter } from "next/router"
-import Head from "next/head"
-import useGetUser from "../hooks/api/useGetUser"
+import { useEffect } from "react"
 import useGetChildren from "../hooks/api/useGetChildren"
+import useGetUser from "../hooks/api/useGetUser"
 
 const NoData = () => {
   const children = useGetChildren()
@@ -18,7 +18,7 @@ const NoData = () => {
       const redirectUrl = `/?childId=${newId}`
       router.replace(redirectUrl)
     }
-  }, [children.data])
+  }, [router, children.data])
 
   return (
     <>
@@ -26,8 +26,8 @@ const NoData = () => {
         <title>We can&apos;t find your data | Obserfy for Parents</title>
       </Head>
 
-      <div className="max-w-3xl mx-auto">
-        <div className="h-full prose prose-sm max-w-lg p-3 pt-8">
+      <div className="mx-auto max-w-3xl">
+        <div className="p-3 pt-8 max-w-lg h-full prose prose-sm">
           <Image src="/undraw_void_3ggu.svg" width={180} height={180} />
           <h1>We can&apos;t seem to find your data yet</h1>
           <p>

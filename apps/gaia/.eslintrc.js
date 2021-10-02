@@ -3,13 +3,19 @@ module.exports = {
   parserOptions: {
     project: "./tsconfig.eslint.json",
   },
+  settings: {
+    "import/resolver": {
+      typescript: {},
+    },
+  },
+  plugins: ["tailwindcss", "import"],
   extends: [
-    "airbnb-typescript",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
-    "plugin:prettier/recommended",
     "plugin:@next/next/recommended",
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:prettier/recommended",
+    "plugin:tailwindcss/recommended",
   ],
   overrides: [
     {

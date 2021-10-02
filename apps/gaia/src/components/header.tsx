@@ -23,37 +23,37 @@ const Header: FC = () => {
 
   return (
     <>
-      <div className="px-3 flex items-center max-w-3xl mx-auto h-16">
+      <div className="flex items-center px-3 mx-auto max-w-3xl h-16">
         <ProfilePicture src={user.data?.picture ?? ""} />
         <div className="ml-2 text-sm font-bold">{user.data?.name}</div>
         <Button
           outline
-          className="ml-auto p-2 cursor-pointer hover:bg-gray-200"
+          className="p-2 ml-auto hover:bg-gray-200 cursor-pointer"
           onClick={() => setShowChildPicker(true)}
         >
-          <Icon alt="logout icon" src="/icons/users.svg" />
+          <Icon src="/icons/users.svg" />
         </Button>
 
         <Button
           outline
-          className="ml-3 p-2 cursor-pointer hover:bg-gray-200"
+          className="p-2 ml-3 hover:bg-gray-200 cursor-pointer"
           onClick={() => setShowLogout(true)}
         >
-          <Icon alt="logout icon" src="/icons/log-out.svg" />
+          <Icon src="/icons/log-out.svg" />
         </Button>
       </div>
 
       {showLogout && (
-        <div className="fixed h-screen w-screen bg-overlay z-50 top-0 left-0 flex items-center justify-center">
-          <div className="bg-white rounded shadow-md p-3 flex flex-col items-center">
-            <div className="text-xl mx-6 mb-6 mt-3">Do you want to logout?</div>
+        <div className="flex fixed top-0 left-0 z-50 justify-center items-center w-screen h-screen bg-overlay">
+          <div className="flex flex-col items-center p-3 bg-white rounded shadow-md">
+            <div className="mx-6 mt-3 mb-6 text-xl">Do you want to logout?</div>
             <div className="flex w-full">
               <Button outline onClick={() => setShowLogout(false)}>
                 Cancel
               </Button>
               <a href="/api/auth/logout" className="block ml-3 w-full">
                 <Button
-                  className="w-full bg-red-700 text-white"
+                  className="w-full text-white bg-red-700"
                   onClick={() => mixpanel.reset()}
                 >
                   Yes
@@ -76,13 +76,13 @@ const ChildPicker: FC<{ onClose: () => void }> = ({ onClose }) => {
   const { data: children } = useGetChildren()
 
   return (
-    <div className="fixed h-screen w-screen bg-overlay z-50 top-0 left-0 flex items-center justify-center">
-      <div className="bg-white rounded shadow-md mx-3 overflow-hidden">
+    <div className="flex fixed top-0 left-0 z-50 justify-center items-center w-screen h-screen bg-overlay">
+      <div className="overflow-hidden mx-3 bg-white rounded shadow-md">
         <div className="flex items-end py-3">
-          <div className="text-xl font-bold px-6">Switch</div>
+          <div className="px-6 text-xl font-bold">Switch</div>
 
-          <Button outline onClick={onClose} className="p-1 ml-auto mr-3">
-            <Icon src="/icons/close.svg" size={20} />
+          <Button outline onClick={onClose} className="p-1 mr-3 ml-auto">
+            <Icon src="/icons/close.svg" />
           </Button>
         </div>
         {children?.map(({ id, name }) => (
@@ -105,7 +105,7 @@ const ChildPicker: FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
               <Icon
                 src="/icons/chevron-right.svg"
-                className="ml-auto w-6 h-6 mr-4 opacity-50"
+                className="mr-4 ml-auto w-6 h-6 opacity-50"
               />
             </a>
           </Link>
@@ -116,17 +116,17 @@ const ChildPicker: FC<{ onClose: () => void }> = ({ onClose }) => {
 }
 
 const LoadingPlaceholder = () => (
-  <div className="h-16 px-3 flex items-center max-w-3xl mx-auto">
+  <div className="flex items-center px-3 mx-auto max-w-3xl h-16">
     <div
-      className="rounded-full bg-gray-200"
+      className="bg-gray-200 rounded-full"
       style={{ width: 30, height: 30 }}
     />
-    <div className="bg-gray-200 w-16 h-4 rounded ml-3" />
+    <div className="ml-3 w-16 h-4 bg-gray-200 rounded" />
   </div>
 )
 
 const ErrorPlaceholder = () => (
-  <div className="h-16 px-3 flex items-center max-w-3xl mx-auto">
+  <div className="flex items-center px-3 mx-auto max-w-3xl h-16">
     <Image alt="obserfy logo" src="/images/logo.svg" height={30} width={30} />
     <h1 className="ml-3 text-lg font-bold">
       Obserfy <span className="font-normal">for Parents</span>

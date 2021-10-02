@@ -23,7 +23,7 @@ const EmptyPlaceholder: FC<Props> = ({
   >
     <Image
       src={imageSrc}
-      className="w-64 md:w-1/2 mb-3"
+      className="mb-3 w-64 md:w-1/2"
       width={imageSize}
       height={imageSize}
     />

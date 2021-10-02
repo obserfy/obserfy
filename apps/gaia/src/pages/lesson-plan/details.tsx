@@ -1,12 +1,10 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Head from "next/head"
 import Link from "next/link"
-
 import Icon from "../../components/Icon/Icon"
 import Markdown from "../../components/Markdown/Markdown"
 import useGetLessonPlan from "../../hooks/api/useGetlessonPlan"
 import { useQueryString } from "../../hooks/useQueryString"
-import BackIcon from "../../icons/arrow-back.svg"
 
 const LessonPlanDetails = () => {
   const childId = useQueryString("childId")
@@ -19,11 +17,11 @@ const LessonPlanDetails = () => {
         <title>Lesson Plans | Obserfy for Parents</title>
       </Head>
 
-      <div className="w-full border-b flex ">
-        <div className="w-full max-w-3xl mx-auto flex px-1 items-center">
+      <div className="flex w-full border-b">
+        <div className="flex items-center px-1 mx-auto w-full max-w-3xl">
           <Link href={`/lesson-plan?childId=${childId}`}>
             <button className="m-1 hover:text-green-700">
-              <BackIcon className="w-4 h-4 m-2" />
+              <Icon src="/icons/arrow-back.svg" className="m-2 w-4 h-4" />
             </button>
           </Link>
           <Link href={`/lesson-plan?childId=${childId}`}>
@@ -34,8 +32,8 @@ const LessonPlanDetails = () => {
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto">
-        <div className="prose px-3 pt-3">
+      <div className="mx-auto max-w-3xl">
+        <div className="px-3 pt-3 prose">
           <h2>{lessonPlan.data?.title}</h2>
         </div>
 
@@ -51,12 +49,12 @@ const LessonPlanDetails = () => {
             <a
               key={l.id}
               href={l.url}
-              className="overflow-x-auto max-w-full px-3 py-2 flex items-center text-sm leading-tight block hover:underline"
+              className="flex overflow-x-auto items-center py-2 px-3 max-w-full text-sm leading-tight hover:underline"
               rel="noopener noreferrer"
               target="_blank"
             >
-              <Icon src="/icons/link.svg" className="flex-shrink-0" size={16} />
-              <div className="whitespace-no-wrap ml-2">{l.url}</div>
+              <Icon src="/icons/link.svg" className="flex-shrink-0 !w-3" />
+              <div className="ml-2 whitespace-no-wrap">{l.url}</div>
             </a>
           ))}
         </div>

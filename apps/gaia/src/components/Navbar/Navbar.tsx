@@ -7,8 +7,8 @@ interface Props {
   childId: string
 }
 const Navbar: FC<Props> = ({ childId }) => (
-  <div className="sticky top-0 bg-surface border-b z-30">
-    <nav className="w-full flex max-w-3xl mx-auto pl-1">
+  <div className="sticky top-0 z-30 bg-surface border-b">
+    <nav className="flex pl-1 mx-auto w-full max-w-3xl">
       <ul className="flex overflow-x-auto">
         <NavbarItem to="/" text="Timeline" childId={childId} />
         <NavbarItem to="/progress" text="Progress" childId={childId} />
@@ -16,7 +16,6 @@ const Navbar: FC<Props> = ({ childId }) => (
         <NavbarItem to="/images" text="Images" childId={childId} />
         <NavbarItem to="/videos" text="Videos" childId={childId} />
         <NavbarItem2 href={`/${childId}/reports`} text="Reports" />
-        <NavbarItem to="/support" text="Support" childId={childId} />
       </ul>
     </nav>
   </div>
@@ -30,7 +29,7 @@ const NavbarItem: FC<{ to: string; text: string; childId: string }> = ({
   const router = useRouter()
 
   return (
-    <li className="mr-1 flex-shrink-0">
+    <li className="flex-shrink-0 mr-1">
       <Link href={`${to}?childId=${childId}`}>
         <a
           className={`${
@@ -49,12 +48,12 @@ const NavbarItem2: FC<{ href: string; text: string }> = ({ href, text }) => {
   const isActive = router.pathname === href
 
   return (
-    <li className="mr-1 flex-shrink-0">
+    <li className="flex-shrink-0 mr-1">
       <Link href={href}>
         <a
           className={clsx(
-            "bg-white inline-block p-2 text-sm text-gray-700",
-            isActive && "border-b-2 border-black text-black"
+            "inline-block p-2 text-sm text-gray-700 bg-white",
+            isActive && "text-black border-b-2 border-black"
           )}
         >
           {text}

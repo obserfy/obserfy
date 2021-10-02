@@ -48,7 +48,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster }) => {
         hls.destroy()
       }
     }
-  }, [src, video.current])
+  }, [src])
 
   return (
     <video

@@ -1,10 +1,9 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
+import Icon from "@components/Icon/Icon"
 import Head from "next/head"
 import { useState } from "react"
 import AllLessonPlans from "../../components/AllLessonPlans/AllLessonPlans"
 import DailyLessonPlans from "../../components/DailyLessonPlans/DailyLessonPlans"
-import CalendarIcon from "../../icons/calendar.svg"
-import ListIcon from "../../icons/list.svg"
 
 enum ViewMode {
   Daily,
@@ -20,13 +19,14 @@ const IndexPage = () => {
         <title>Lesson Plans | Obserfy for Parents</title>
       </Head>
 
-      <div className="w-full flex ">
-        <div className="w-full max-w-3xl mx-auto flex px-1">
+      <div className="flex w-full">
+        <div className="flex px-1 mx-auto w-full max-w-3xl">
           <button
             onClick={() => setViewMode(ViewMode.Daily)}
-            className="ml-auto m-1 hover:text-green-700"
+            className="m-1 ml-auto hover:text-green-700"
           >
-            <CalendarIcon
+            <Icon
+              src="/icons/list.svg"
               className={`
               w-4 h-4 m-2
               ${viewMode === ViewMode.Daily ? "text-green-700" : "opacity-80"}
@@ -37,7 +37,8 @@ const IndexPage = () => {
             onClick={() => setViewMode(ViewMode.All)}
             className="m-1 hover:text-green-700"
           >
-            <ListIcon
+            <Icon
+              src="/icons/calendar.svg"
               className={`
               w-4 h-4 m-2
               ${viewMode === ViewMode.All ? "text-green-700" : "opacity-80"}

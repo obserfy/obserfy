@@ -44,11 +44,11 @@ const Plan: FC<Props> = ({
   const [showAddObservationForm, setShowAddObservationForm] = useState(false)
 
   return (
-    <div className="flex flex-col items-start bg-surface md:rounded mb-2 border py-3">
-      {area && <div className="text-sm text-green-700 px-3 mb-2">{area}</div>}
-      <div className="text-md px-3 font-bold">{name}</div>
+    <div className="flex flex-col items-start py-3 mb-2 bg-surface md:rounded border">
+      {area && <div className="px-3 mb-2 text-sm text-green-700">{area}</div>}
+      <div className="px-3 font-bold text-md">{name}</div>
       <Markdown
-        className="text-gray-700 my-2 px-3"
+        className="px-3 my-2 text-gray-700"
         markdown={description ?? ""}
       />
 
@@ -56,17 +56,17 @@ const Plan: FC<Props> = ({
         <a
           key={link.id}
           href={link.url}
-          className="overflow-x-auto max-w-full px-3 py-2 flex items-center text-sm leading-tight block"
+          className="flex overflow-x-auto items-center py-2 px-3 max-w-full text-sm leading-tight"
           rel="noopener noreferrer"
           target="_blank"
         >
-          <Icon src="/icons/link.svg" className="flex-shrink-0" size={16} />
-          <div className="whitespace-no-wrap ml-2">{link.url}</div>
+          <Icon src="/icons/link.svg" className="flex-shrink-0 !w-3" />
+          <div className="ml-2 whitespace-no-wrap">{link.url}</div>
         </a>
       ))}
 
       {files.length > 0 && (
-        <div className="text-sm text-gray-700 mb-1">Files</div>
+        <div className="mb-1 text-sm text-gray-700">Files</div>
       )}
 
       {showAddObservationForm ? (
@@ -78,7 +78,7 @@ const Plan: FC<Props> = ({
       ) : (
         <Button
           outline
-          className="ml-auto mr-3 mt-3"
+          className="mt-3 mr-3 ml-auto"
           onClick={() => setShowAddObservationForm(true)}
         >
           Add observation

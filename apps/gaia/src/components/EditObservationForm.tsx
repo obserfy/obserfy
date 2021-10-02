@@ -29,7 +29,7 @@ export const EditObservationForm: FC<{
           data-cy="delete-observation"
           iconOnly
           outline
-          className="mr-2 text-red-700 px-2"
+          className="px-2 mr-2 text-red-700"
           onClick={() => setShowDeleteDialog(true)}
           disabled={patchObservation.isLoading}
         >
@@ -37,7 +37,7 @@ export const EditObservationForm: FC<{
         </Button>
         <Button
           outline
-          className="ml-auto mr-2"
+          className="mr-2 ml-auto"
           onClick={onDismiss}
           disabled={patchObservation.isLoading}
         >
@@ -59,7 +59,7 @@ export const EditObservationForm: FC<{
       </div>
       {showDeleteDialog && (
         <Dialog>
-          <div className="text-xl mx-6 mb-6 mt-3">Delete this observation?</div>
+          <div className="mx-6 mt-3 mb-6 text-xl">Delete this observation?</div>
           <div className="flex w-full">
             <Button
               outline
@@ -69,7 +69,7 @@ export const EditObservationForm: FC<{
               Cancel
             </Button>
             <Button
-              className="w-full bg-red-700 text-white ml-2"
+              className="ml-2 w-full text-white bg-red-700"
               onClick={async () => {
                 try {
                   await deleteObservation.mutateAsync()

@@ -1,8 +1,7 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
+import Head from "next/head"
 import Image from "next/image"
 import { FC, Suspense, useState } from "react"
-import Head from "next/head"
-import dayjs from "../utils/dayjs"
 import Button from "../components/Button/Button"
 import Icon from "../components/Icon/Icon"
 import { LazyVideoPlayer } from "../components/LazyVideoPlayer"
@@ -11,6 +10,7 @@ import useGetChild from "../hooks/api/useGetChild"
 import useGetChildVideos from "../hooks/api/useGetChildVideos"
 import useBodyScrollLock from "../hooks/useBodyScrollLock"
 import { useQueryString } from "../hooks/useQueryString"
+import dayjs from "../utils/dayjs"
 
 const VideosPage = () => {
   const childId = useQueryString("childId")
@@ -30,7 +30,7 @@ const VideosPage = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="mx-auto max-w-3xl">
       <Head>
         <title>Videos | Obserfy for Parents</title>
       </Head>
@@ -60,13 +60,13 @@ const Video: FC<{
 
   return (
     <>
-      <div className="w-1/3 md:w-1/5 relative cursor-pointer">
+      <div className="relative w-1/3 md:w-1/5 cursor-pointer">
         <div className="w-full" style={{ paddingTop: "100%" }}>
           <Image
             src={thumbnailSrc}
             layout="fill"
             objectFit="cover"
-            className="cursor-pointer m-1 md:m-2"
+            className="m-1 md:m-2 cursor-pointer"
             onClick={() => setShowPlayer(true)}
           />
         </div>
@@ -95,13 +95,13 @@ const VideoPlayerDialog: FC<{
   const ref = useBodyScrollLock()
 
   return (
-    <div className="bg-overlay fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center ">
+    <div className="flex fixed top-0 right-0 bottom-0 left-0 z-50 items-center bg-overlay">
       <div
-        className="bg-white md:max-w-2xl w-full md:mx-auto flex flex-col md:flex-row-reverse md:items-start md:rounded-lg overflow-hidden md:h-auto top-0 fixed bottom-0 left-0 right-0 md:relative max-h-screen"
+        className="flex overflow-hidden fixed md:relative top-0 right-0 bottom-0 left-0 flex-col md:flex-row-reverse md:items-start md:mx-auto w-full md:max-w-2xl md:h-auto max-h-screen bg-white md:rounded-lg"
         ref={ref}
         style={{ minHeight: 200 }}
       >
-        <div className="bg-white md:w-1/2 p-3 flex items-center items-start">
+        <div className="flex items-center p-3 md:w-1/2 bg-white">
           <div className="w-full">
             <div className="mr-auto font-bold">{childName}</div>
             <div className="mr-auto text-xs">
@@ -109,11 +109,11 @@ const VideoPlayerDialog: FC<{
             </div>
           </div>
           <Button className="px-2 bg-white" onClick={onClick}>
-            <Icon src="/icons/close.svg" size={20} />
+            <Icon src="/icons/close.svg" />
           </Button>
         </div>
 
-        <Suspense fallback={<LoadingPlaceholder className="h-96 w-full" />}>
+        <Suspense fallback={<LoadingPlaceholder className="w-full h-96" />}>
           <LazyVideoPlayer src={src} poster={poster} />
         </Suspense>
       </div>
@@ -129,7 +129,7 @@ const EmptyState: FC<{ loading: boolean }> = ({ loading }) => (
   >
     <Image
       src="/images/no-videos-illustrations.svg"
-      className="w-64 md:w-1/2 mb-3"
+      className="mb-3 w-64 md:w-1/2"
       height={250}
       width={200}
     />
