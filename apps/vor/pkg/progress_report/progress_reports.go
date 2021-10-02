@@ -270,7 +270,7 @@ func getStudentReport(s rest.Server, store postgres.ProgressReportsStore) rest.H
 		for k, comment := range report.AreaComments {
 			areaComments[k] = rest.H{
 				"comments": comment.Comments,
-				"areaId":   comment.Area.Id,
+				"areaId":   comment.AreaId,
 			}
 		}
 
