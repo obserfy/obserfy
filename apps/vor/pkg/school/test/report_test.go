@@ -63,12 +63,12 @@ func (s *SchoolTestSuite) TestCreateDefaultReport() {
 	reportInDB := postgres.ProgressReport{}
 	err := s.DB.Model(&reportInDB).
 		Where("title = ?", request.Title).
-		Relation("StudentReports").
+		Relation("StudentProgressReports").
 		Select()
 
 	s.NoError(err)
 	s.Equal(result.Code, http.StatusCreated)
-	s.Len(reportInDB.StudentReports, 4)
+	s.Len(reportInDB.StudentProgressReports, 4)
 	s.Equal(reportInDB.Title, request.Title)
 }
 
@@ -101,12 +101,12 @@ func (s *SchoolTestSuite) TestCreateReportWithCustomStudents() {
 	reportInDB := postgres.ProgressReport{}
 	err := s.DB.Model(&reportInDB).
 		Where("title = ?", request.Title).
-		Relation("StudentReports").
+		Relation("StudentProgressReports").
 		Select()
 
 	s.NoError(err)
 	s.Equal(result.Code, http.StatusCreated)
-	s.Len(reportInDB.StudentReports, len(includedStudents))
+	s.Len(reportInDB.StudentProgressReports, len(includedStudents))
 }
 
 func (s *SchoolTestSuite) TestStudentsListIgnoredWhenCustomizeStudentsFalse() {
@@ -138,10 +138,10 @@ func (s *SchoolTestSuite) TestStudentsListIgnoredWhenCustomizeStudentsFalse() {
 	reportInDB := postgres.ProgressReport{}
 	err := s.DB.Model(&reportInDB).
 		Where("title = ?", request.Title).
-		Relation("StudentReports").
+		Relation("StudentProgressReports").
 		Select()
 
 	s.NoError(err)
 	s.Equal(result.Code, http.StatusCreated)
-	s.Len(reportInDB.StudentReports, 5)
+	s.Len(reportInDB.StudentProgressReports, 5)
 }

@@ -81,8 +81,8 @@ func getReport(s rest.Server, store postgres.ProgressReportsStore) rest.Handler2
 			return s.InternalServerError(err)
 		}
 
-		studentReports := make([]rest.H, len(report.StudentReports))
-		for i, studentReport := range report.StudentReports {
+		studentReports := make([]rest.H, len(report.StudentProgressReports))
+		for i, studentReport := range report.StudentProgressReports {
 			areaComments := make([]rest.H, len(studentReport.AreaComments))
 			for k, comment := range studentReport.AreaComments {
 				areaComments[k] = rest.H{

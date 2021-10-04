@@ -86,9 +86,9 @@ func InitTables(db *pg.Tx) error {
 		(*Video)(nil),
 		(*VideoToStudents)(nil),
 		(*ProgressReport)(nil),
-		(*StudentReport)(nil),
-		(*StudentReportsAreaComment)(nil),
-		(*StudentReportAssessment)(nil),
+		(*StudentProgressReport)(nil),
+		(*StudentProgressReportsAreaComment)(nil),
+		(*StudentProgressReportAssessment)(nil),
 	} {
 		err := db.Model(model).CreateTable(&orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -437,27 +437,27 @@ type (
 		PeriodEnd   time.Time
 		Published   bool
 
-		StudentReports    []StudentReport `pg:"rel:has-many"`
-		FreezeAssessments bool
+		StudentProgressReports []StudentProgressReport `pg:"rel:has-many"`
+		FreezeAssessments      bool
 	}
 
-	StudentReport struct {
+	StudentProgressReport struct {
 		StudentId uuid.UUID `pg:"type:uuid,pk"`
 		Student   Student   `pg:"rel:has-one"`
 
 		ProgressReport   ProgressReport `pg:"rel:has-one"`
 		ProgressReportId uuid.UUID      `pg:"type:uuid,pk,on_delete:CASCADE"`
 
-		AreaComments []StudentReportsAreaComment `pg:"rel:has-many"`
+		AreaComments []StudentProgressReportsAreaComment `pg:"rel:has-many"`
 
 		GeneralComments string
 		Ready           bool
 	}
 
-	StudentReportsAreaComment struct {
-		StudentReportProgressReportId uuid.UUID     `pg:"type:uuid,pk"`
-		StudentReportStudentId        uuid.UUID     `pg:"type:uuid,pk"`
-		StudentReport                 StudentReport `pg:"rel:has-one"`
+	StudentProgressReportsAreaComment struct {
+		StudentProgressReportProgressReportId uuid.UUID             `pg:"type:uuid,pk"`
+		StudentProgressReportStudentId        uuid.UUID             `pg:"type:uuid,pk"`
+		StudentProgressReport                 StudentProgressReport `pg:"rel:has-one"`
 
 		AreaId uuid.UUID `pg:"type:uuid,pk"`
 		Area   Area      `pg:"rel:has-one"`
@@ -465,10 +465,10 @@ type (
 		Comments string
 	}
 
-	StudentReportAssessment struct {
-		StudentReportProgressReportId uuid.UUID     `pg:"type:uuid,pk"`
-		StudentReportStudentId        uuid.UUID     `pg:"type:uuid,pk"`
-		StudentReport                 StudentReport `pg:"rel:has-one"`
+	StudentProgressReportAssessment struct {
+		StudentProgressReportProgressReportId uuid.UUID             `pg:"type:uuid,pk"`
+		StudentProgressReportStudentId        uuid.UUID             `pg:"type:uuid,pk"`
+		StudentProgressReport                 StudentProgressReport `pg:"rel:has-one"`
 
 		MaterialId string   `pg:"type:uuid,on_delete:CASCADE,pk"`
 		Material   Material `pg:"rel:has-one"`

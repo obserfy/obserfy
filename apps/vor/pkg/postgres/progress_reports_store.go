@@ -16,11 +16,11 @@ func (s ProgressReportsStore) FindReportWithStudentReportsById(id uuid.UUID) (Pr
 	report := ProgressReport{Id: id}
 	if err := s.Model(&report).
 		WherePK().
-		Relation("StudentReports", func(q *orm.Query) (*orm.Query, error) {
+		Relation("StudentProgressReports", func(q *orm.Query) (*orm.Query, error) {
 			return q.Order("student.name"), nil
 		}).
-		Relation("StudentReports.Student").
-		Relation("StudentReports.Student.Classes").
+		Relation("StudentProgressReports.Student").
+		Relation("StudentProgressReports.Student.Classes").
 		Select(); err != nil {
 		return ProgressReport{}, richErrors.Wrap(err, "failed to query progress report with student reports")
 	}
@@ -39,37 +39,37 @@ func (s ProgressReportsStore) FindReportById(id uuid.UUID) (ProgressReport, erro
 	return report, nil
 }
 
-func (s ProgressReportsStore) PatchStudentReport(reportId uuid.UUID, studentId uuid.UUID, ready *bool, comments *string) (StudentReport, error) {
+func (s ProgressReportsStore) PatchStudentReport(reportId uuid.UUID, studentId uuid.UUID, ready *bool, comments *string) (StudentProgressReport, error) {
 	patchModel := make(PartialUpdateModel)
 	patchModel.AddBooleanColumn("ready", ready)
 	patchModel.AddStringColumn("general_comments", comments)
 
 	if _, err := s.Model(patchModel.GetModel()).
-		TableExpr("student_reports").
+		TableExpr("student_progress_reports").
 		Where("student_id = ? and progress_report_id = ?", studentId, reportId).
 		Update(); err != nil {
-		return StudentReport{}, richErrors.Wrap(err, "failed to update progress report")
+		return StudentProgressReport{}, richErrors.Wrap(err, "failed to update progress report")
 	}
 
-	report := StudentReport{StudentId: studentId, ProgressReportId: reportId}
+	report := StudentProgressReport{StudentId: studentId, ProgressReportId: reportId}
 	if err := s.Model(&report).
 		WherePK().
 		Select(); err != nil {
-		return StudentReport{}, richErrors.Wrap(err, "failed to query progress report")
+		return StudentProgressReport{}, richErrors.Wrap(err, "failed to query progress report")
 	}
 
 	return report, nil
 }
 
-func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentId uuid.UUID) (StudentReport, error) {
-	report := StudentReport{StudentId: studentId, ProgressReportId: reportId}
+func (s ProgressReportsStore) FindStudentReportById(reportId uuid.UUID, studentId uuid.UUID) (StudentProgressReport, error) {
+	report := StudentProgressReport{StudentId: studentId, ProgressReportId: reportId}
 	if err := s.Model(&report).
 		Relation("ProgressReport").
 		Relation("Student").
 		Relation("AreaComments").
 		WherePK().
 		Select(); err != nil {
-		return StudentReport{}, richErrors.Wrap(err, "failed to find student report")
+		return StudentProgressReport{}, richErrors.Wrap(err, "failed to find student report")
 	}
 
 	return report, nil
@@ -93,12 +93,12 @@ func (s ProgressReportsStore) UpdateReport(
 	// only freeze report the first time it is published (aka when FreezeAssessments is still false)
 	if !report.FreezeAssessments && published != nil && *published {
 		if _, err := s.Exec(`
-			insert into "student_report_assessments" (student_report_progress_report_id, student_report_student_id, material_id, assessment, updated_at) 
-			select sr.progress_report_id, sr.student_id, smp.material_id, coalesce(smp.stage, 0), smp.updated_at from student_reports sr
+			insert into "student_progress_report_assessments" (student_progress_report_progress_report_id, student_progress_report_student_id, material_id, assessment, updated_at) 
+			select sr.progress_report_id, sr.student_id, smp.material_id, coalesce(smp.stage, 0), smp.updated_at from student_progress_reports sr
 				join students s on sr.student_id = s.id
 				join student_material_progresses smp on s.id = smp.student_id
 			where sr.progress_report_id = ?
-			on conflict (student_report_progress_report_id, student_report_student_id, material_id) 
+			on conflict (student_progress_report_progress_report_id, student_progress_report_student_id, material_id) 
 			    do update set assessment = excluded.assessment
 
 		`, id); err != nil {
@@ -159,34 +159,34 @@ func (s ProgressReportsStore) DeleteReportById(reportId uuid.UUID) error {
 	return nil
 }
 
-func (s ProgressReportsStore) UpsertStudentReportAreaComments(reportId uuid.UUID, studentId uuid.UUID, areaId uuid.UUID, comments string) (StudentReportsAreaComment, error) {
-	c := StudentReportsAreaComment{
-		StudentReportProgressReportId: reportId,
-		StudentReportStudentId:        studentId,
-		AreaId:                        areaId,
-		Comments:                      comments,
+func (s ProgressReportsStore) UpsertStudentReportAreaComments(reportId uuid.UUID, studentId uuid.UUID, areaId uuid.UUID, comments string) (StudentProgressReportsAreaComment, error) {
+	c := StudentProgressReportsAreaComment{
+		StudentProgressReportProgressReportId: reportId,
+		StudentProgressReportStudentId:        studentId,
+		AreaId:                                areaId,
+		Comments:                              comments,
 	}
 	if _, err := s.Model(&c).
 		WherePK().
-		OnConflict("(area_id, student_report_progress_report_id, student_report_student_id) DO UPDATE").
+		OnConflict("(area_id, student_progress_report_progress_report_id, student_progress_report_student_id) DO UPDATE").
 		Insert(); err != nil {
-		return StudentReportsAreaComment{}, richErrors.Wrap(err, "failed to upsert area comments")
+		return StudentProgressReportsAreaComment{}, richErrors.Wrap(err, "failed to upsert area comments")
 	}
 
 	if err := s.Model(&c).WherePK().Select(); err != nil {
-		return StudentReportsAreaComment{}, richErrors.Wrap(err, "failed to upsert area comments")
+		return StudentProgressReportsAreaComment{}, richErrors.Wrap(err, "failed to upsert area comments")
 	}
 
 	return c, nil
 }
 
-func (s ProgressReportsStore) FindFrozenStudentAssessmentByArea(reportId uuid.UUID, studentId uuid.UUID, areaId uuid.UUID) ([]StudentReportAssessment, error) {
-	var a []StudentReportAssessment
+func (s ProgressReportsStore) FindFrozenStudentAssessmentByArea(reportId uuid.UUID, studentId uuid.UUID, areaId uuid.UUID) ([]StudentProgressReportAssessment, error) {
+	var a []StudentProgressReportAssessment
 	if err := s.Model(&a).
 		Order("assessment asc").
 		Relation("Material").
 		Relation("Material.Subject").
-		Where("student_report_progress_report_id = ? and student_report_student_id = ? and area_id = ?", reportId, studentId, areaId).
+		Where("student_progress_report_progress_report_id = ? and student_progress_report_student_id = ? and area_id = ?", reportId, studentId, areaId).
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "failed to query report assessments by area")
 	}
