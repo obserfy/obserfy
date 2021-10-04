@@ -208,9 +208,9 @@ type GuardianToStudent struct {
 }
 
 type StudentToClass struct {
-	StudentId string  `pg:"type:uuid,on_delete:CASCADE"`
+	StudentId string  `pg:"type:uuid,on_delete:CASCADE,pk"`
 	Student   Student `pg:"rel:has-one"`
-	ClassId   string  `pg:"type:uuid,on_delete:CASCADE"`
+	ClassId   string  `pg:"type:uuid,on_delete:CASCADE,pk"`
 	Class     Class   `pg:"rel:has-one"`
 }
 
@@ -237,9 +237,9 @@ type Observation struct {
 
 type ObservationToImage struct {
 	Observation   Observation `pg:"rel:has-one"`
-	ObservationId string      `pg:"type:uuid,on_delete:CASCADE"`
+	ObservationId string      `pg:"type:uuid,on_delete:CASCADE,pk"`
 	Image         Image       `pg:"rel:has-one"`
-	ImageId       uuid.UUID   `pg:"type:uuid,on_delete:CASCADE"`
+	ImageId       uuid.UUID   `pg:"type:uuid,on_delete:CASCADE,pk"`
 }
 
 type Subscription struct {
@@ -280,9 +280,9 @@ type Attendance struct {
 }
 
 type UserToSchool struct {
-	SchoolId string `pg:",type:uuid,unique:school_user"`
+	SchoolId string `pg:",type:uuid,unique:school_user,pk"`
 	School   School `pg:"rel:has-one"`
-	UserId   string `pg:",type:uuid,unique:school_user"`
+	UserId   string `pg:",type:uuid,unique:school_user,pk"`
 	User     User   `pg:"rel:has-one"`
 }
 
@@ -350,9 +350,9 @@ type (
 	// Each plan can have some more additional students attached to it.
 	LessonPlanToStudents struct {
 		LessonPlan   LessonPlan `pg:"rel:has-one"`
-		LessonPlanId string     `pg:"type:uuid,on_delete:CASCADE"`
+		LessonPlanId string     `pg:"type:uuid,on_delete:CASCADE,pk"`
 		Student      Student    `pg:"rel:has-one"`
-		StudentId    string     `pg:"type:uuid,on_delete:CASCADE"`
+		StudentId    string     `pg:"type:uuid,on_delete:CASCADE,pk"`
 	}
 
 	LessonPlan struct {
@@ -373,9 +373,9 @@ type (
 	}
 
 	FileToLessonPlan struct {
-		LessonPlanDetailsId string            `pg:"type:uuid,on_delete:CASCADE"`
+		LessonPlanDetailsId string            `pg:"type:uuid,on_delete:CASCADE,pk"`
 		LessonPlanDetails   LessonPlanDetails `pg:"rel:has-one"`
-		FileId              string            `pg:"type:uuid,on_delete:CASCADE"`
+		FileId              string            `pg:"type:uuid,on_delete:CASCADE,pk"`
 		File                File              `pg:"rel:has-one"`
 	}
 
@@ -388,9 +388,9 @@ type (
 	}
 
 	ImageToStudents struct {
-		StudentId string  `pg:"type:uuid,on_delete:CASCADE"`
+		StudentId string  `pg:"type:uuid,on_delete:CASCADE,pk"`
 		Student   Student `pg:"rel:has-one"`
-		ImageId   string  `pg:"type:uuid,on_delete:CASCADE"`
+		ImageId   string  `pg:"type:uuid,on_delete:CASCADE,pk"`
 		Image     Image   `pg:"rel:has-one"`
 	}
 
@@ -422,9 +422,9 @@ type (
 	}
 
 	VideoToStudents struct {
-		StudentId string    `pg:"type:uuid,on_delete:CASCADE"`
+		StudentId string    `pg:"type:uuid,on_delete:CASCADE,pk"`
 		Student   Student   `pg:"rel:has-one"`
-		VideoId   uuid.UUID `pg:"type:uuid,on_delete:CASCADE"`
+		VideoId   uuid.UUID `pg:"type:uuid,on_delete:CASCADE,pk"`
 		Video     Video     `pg:"rel:has-one"`
 	}
 
