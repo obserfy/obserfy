@@ -3,8 +3,8 @@ import Markdown from "$components/Markdown/Markdown"
 import MaterialStagePill from "$components/MaterialStagePill"
 import useGetMaterialDetails from "$hooks/api/useGetMaterialDetails"
 import { useQueryString } from "$hooks/useQueryString"
+import BaseLayout from "$layouts/BaseLayout"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Head from "next/head"
 import Link from "next/link"
 import { FC } from "react"
 
@@ -15,11 +15,7 @@ const Details: FC = () => {
   const details = useGetMaterialDetails(studentId, materialId)
 
   return (
-    <div>
-      <Head>
-        <title>Curriculum Progress | Obserfy for Parents</title>
-      </Head>
-
+    <BaseLayout title="Assessments">
       <div className="flex items-center px-1 mx-auto w-full max-w-3xl">
         <Link href={`/${studentId}/assessments`}>
           <button className="m-1 hover:text-green-700">
@@ -57,7 +53,7 @@ const Details: FC = () => {
           )}
         </div>
       )}
-    </div>
+    </BaseLayout>
   )
 }
 

@@ -4,8 +4,8 @@ import Icon from "$components/Icon/Icon"
 import MaterialStagePill from "$components/MaterialStagePill"
 import useGetCurriculumProgress from "$hooks/api/useGetCurriculumProgress"
 import { useQueryString } from "$hooks/useQueryString"
+import BaseLayout from "$layouts/BaseLayout"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import { FC, useState } from "react"
@@ -34,53 +34,54 @@ const ProgressPage = () => {
   }
 
   return (
-    <div className="mx-auto max-w-3xl">
-      <Head>
-        <title>Curriculum Progress | Obserfy for Parents</title>
-      </Head>
-
-      <div className="px-3 pt-3 font-bold">CURRICULUM AREAS</div>
-      <div className="flex flex-wrap pt-2 pl-1 md-rounded">
-        {progress.map((area, idx) => (
-          <Chip
-            key={area.id}
-            containerStyle="ml-2 mb-2"
-            isActive={idx === areaIdx}
-            onClick={() => setAreaIdx(idx)}
-          >
-            {area.name}
-          </Chip>
-        ))}
-      </div>
-      <div className="px-3 pt-6 pb-3 font-bold">MATERIALS</div>
-
-      {progress[areaIdx].subjects.map((subject) => (
-        <div
-          key={subject.id}
-          className="md:mx-3 mb-6 bg-white md:rounded border"
-        >
-          <div className="px-3 my-3 font-bold">{subject.name}</div>
-
-          {subject.materials.map((material) => (
-            <Link
-              href={`/${studentId}/assessments/details?materialId=${material.id}`}
+    <BaseLayout title="Assessments">
+      <div className="mx-auto max-w-3xl">
+        <div className="px-3 pt-3 font-bold">CURRICULUM AREAS</div>
+        <div className="flex flex-wrap pt-2 pl-1 md-rounded">
+          {progress.map((area, idx) => (
+            <Chip
+              key={area.id}
+              containerStyle="ml-2 mb-2"
+              isActive={idx === areaIdx}
+              onClick={() => setAreaIdx(idx)}
             >
-              <a
-                key={material.id}
-                className="flex items-center py-2 px-3 hover:bg-primaryLightest"
-              >
-                <div className="pr-3">{material.name}</div>
-                <MaterialStagePill stage={material.stage} className="ml-auto" />
-                <Icon
-                  src="/icons/chevron-right.svg"
-                  className="ml-3 opacity-60"
-                />
-              </a>
-            </Link>
+              {area.name}
+            </Chip>
           ))}
         </div>
-      ))}
-    </div>
+        <div className="px-3 pt-6 pb-3 font-bold">MATERIALS</div>
+
+        {progress[areaIdx].subjects.map((subject) => (
+          <div
+            key={subject.id}
+            className="md:mx-3 mb-6 bg-white md:rounded border"
+          >
+            <div className="px-3 my-3 font-bold">{subject.name}</div>
+
+            {subject.materials.map((material) => (
+              <Link
+                href={`/${studentId}/assessments/details?materialId=${material.id}`}
+              >
+                <a
+                  key={material.id}
+                  className="flex items-center py-2 px-3 hover:bg-primaryLightest"
+                >
+                  <div className="pr-3">{material.name}</div>
+                  <MaterialStagePill
+                    stage={material.stage}
+                    className="ml-auto"
+                  />
+                  <Icon
+                    src="/icons/chevron-right.svg"
+                    className="ml-3 opacity-60"
+                  />
+                </a>
+              </Link>
+            ))}
+          </div>
+        ))}
+      </div>
+    </BaseLayout>
   )
 }
 

@@ -4,9 +4,9 @@ import ImagePreview from "$components/ImagePreview/ImagePreview"
 import Markdown from "$components/Markdown/Markdown"
 import { ChildImage } from "$hooks/api/useGetChildImages"
 import { useQueryString } from "$hooks/useQueryString"
+import BaseLayout from "$layouts/BaseLayout"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import { NextPage } from "next"
-import Head from "next/head"
 import Image from "next/image"
 import { FC, useState } from "react"
 import { isFilled } from "ts-is-present"
@@ -36,10 +36,7 @@ const IndexPage: NextPage<Props> = ({ timeline }) => {
   const [imagePreview, setImagePreview] = useState<ChildImage>()
 
   return (
-    <div>
-      <Head>
-        <title>Obserfy for Parents</title>
-      </Head>
+    <BaseLayout title="Timeline">
       <div className="mx-auto max-w-3xl">
         <div className="pt-3 ml-8 border-l">
           {timeline?.map(({ date, observations }) => (
@@ -64,7 +61,7 @@ const IndexPage: NextPage<Props> = ({ timeline }) => {
           />
         )}
       </div>
-    </div>
+    </BaseLayout>
   )
 }
 

@@ -1,37 +1,26 @@
-import Header from "$components/Header"
-import Navbar from "$components/Navbar"
-import StudentInfo from "$components/StudentInfo"
-import { useQueryString } from "$hooks/useQueryString"
-import { useRouter } from "next/router"
+import BottomNavigationBar from "$components/BottomNavigationBar"
+import SEO from "$components/Seo"
+import SideBar from "$components/SideBar"
 import { FC } from "react"
-import useGetChildren from "../hooks/api/useGetChildren"
 
-const BaseLayout: FC = ({ children }) => {
-  useGetChildren()
-  const router = useRouter()
-  const studentId = useQueryString("studentId")
+const BaseLayout: FC<{
+  title: string
+}> = ({ title, children }) => (
+  <div className="sm:flex">
+    <SEO title={title} />
+    <SideBar />
 
-  if (router.pathname === "/no-data") {
-    return (
-      <div className="bg-background">
-        <div className="min-h-screen bg-surface">
-          <Header />
-          <main>{children}</main>
-        </div>
-      </div>
-    )
-  }
-
-  return (
-    <div className="bg-background">
-      <div className="pb-3 bg-surface">
-        <Header />
-        <StudentInfo studentId={studentId} />
-      </div>
-      <Navbar studentId={studentId} />
+    <div className="w-full">
+      <TopBar />
       <main>{children}</main>
     </div>
-  )
-}
+
+    <BottomNavigationBar />
+  </div>
+)
+
+const TopBar = () => (
+  <div className="sm:sticky sm:top-0 z-10 h-16 bg-surface border-b" />
+)
 
 export default BaseLayout

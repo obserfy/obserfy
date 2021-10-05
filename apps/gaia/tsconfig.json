@@ -21,7 +21,8 @@
       "$lib/*": ["./src/lib/*"],
       "$hooks/*": ["./src/hooks/*"],
       "$api/*": ["./src/pages/api/*"],
-      "$public/*": ["./public/*"]
+      "$styles/*": ["./src/styles/*"],
+      "$public/*": ["./public/*"],
     }
   },
   "exclude": ["node_modules"],

@@ -6,8 +6,8 @@ import useGetStudent from "$hooks/api/useGetChild"
 import useGetStudentVideos from "$hooks/api/useGetChildVideos"
 import useBodyScrollLock from "$hooks/useBodyScrollLock"
 import { useQueryString } from "$hooks/useQueryString"
+import BaseLayout from "$layouts/BaseLayout"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Head from "next/head"
 import Image from "next/image"
 import { FC, Suspense, useState } from "react"
 import dayjs from "../../utils/dayjs"
@@ -19,34 +19,28 @@ const VideosPage = () => {
 
   if (videos.isLoading || (videos.isSuccess && videos.data.length === 0)) {
     return (
-      <>
-        <Head>
-          <title>Videos | Obserfy for Parents</title>
-        </Head>
-
+      <BaseLayout title="Videos">
         <EmptyState loading={videos.isLoading} />
-      </>
+      </BaseLayout>
     )
   }
 
   return (
-    <div className="mx-auto max-w-3xl">
-      <Head>
-        <title>Videos | Obserfy for Parents</title>
-      </Head>
-
-      <div className="flex flex-wrap pr-1">
-        {videos.data?.map((v) => (
-          <Video
-            key={`${v.id}1`}
-            thumbnailSrc={v.thumbnailUrl}
-            playbackUrl={v.playbackUrl}
-            childName={student.data?.name}
-            createdAt={v.createdAt}
-          />
-        ))}
+    <BaseLayout title="Videos">
+      <div className="mx-auto max-w-3xl">
+        <div className="flex flex-wrap pr-1">
+          {videos.data?.map((v) => (
+            <Video
+              key={`${v.id}1`}
+              thumbnailSrc={v.thumbnailUrl}
+              playbackUrl={v.playbackUrl}
+              childName={student.data?.name}
+              createdAt={v.createdAt}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </BaseLayout>
   )
 }
 

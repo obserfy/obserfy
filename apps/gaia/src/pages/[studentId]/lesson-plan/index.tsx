@@ -1,8 +1,8 @@
 import AllLessonPlans from "$components/AllLessonPlans/AllLessonPlans"
 import DailyLessonPlans from "$components/DailyLessonPlans/DailyLessonPlans"
 import Icon from "$components/Icon/Icon"
+import BaseLayout from "$layouts/BaseLayout"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Head from "next/head"
 import { useState } from "react"
 
 enum ViewMode {
@@ -14,11 +14,7 @@ const IndexPage = () => {
   const [viewMode, setViewMode] = useState(ViewMode.Daily)
 
   return (
-    <div>
-      <Head>
-        <title>Lesson Plans | Obserfy for Parents</title>
-      </Head>
-
+    <BaseLayout title="Lesson Plans">
       <div className="flex w-full">
         <div className="flex px-1 mx-auto w-full max-w-3xl">
           <button
@@ -50,7 +46,7 @@ const IndexPage = () => {
 
       {viewMode === ViewMode.Daily && <DailyLessonPlans />}
       {viewMode === ViewMode.All && <AllLessonPlans />}
-    </div>
+    </BaseLayout>
   )
 }
 

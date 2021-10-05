@@ -2,8 +2,8 @@ import Icon from "$components/Icon/Icon"
 import Markdown from "$components/Markdown/Markdown"
 import useGetLessonPlan from "$hooks/api/useGetlessonPlan"
 import { useQueryString } from "$hooks/useQueryString"
+import BaseLayout from "$layouts/BaseLayout"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Head from "next/head"
 import Link from "next/link"
 
 const LessonPlanDetails = () => {
@@ -12,11 +12,7 @@ const LessonPlanDetails = () => {
   const lessonPlan = useGetLessonPlan(planId)
 
   return (
-    <div>
-      <Head>
-        <title>Lesson Plans | Obserfy for Parents</title>
-      </Head>
-
+    <BaseLayout title="Lesson Plans">
       <div className="flex w-full border-b">
         <div className="flex items-center px-1 mx-auto w-full max-w-3xl">
           <Link href={`/${studentId}/lesson-plan`}>
@@ -59,7 +55,7 @@ const LessonPlanDetails = () => {
           ))}
         </div>
       </div>
-    </div>
+    </BaseLayout>
   )
 }
 

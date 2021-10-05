@@ -1,14 +1,15 @@
 /* eslint-disable react/no-danger */
-import BaseLayout from "$layouts//BaseLayout"
+import ErrorBoundary from "$components/ErrorBoundary"
+import useInitAnalytics from "$hooks/useInitAnalytics"
+import "$styles/global.css"
 import { UserProvider } from "@auth0/nextjs-auth0"
+import "@fontsource/open-sans/400.css"
+import "@fontsource/open-sans/500.css"
+import "@fontsource/open-sans/700.css"
 import { NextPage } from "next"
 import { AppProps } from "next/app"
 import Script from "next/script"
 import { QueryClient, QueryClientProvider } from "react-query"
-import { ReactQueryDevtools } from "react-query/devtools"
-import ErrorBoundary from "../components/ErrorBoundary"
-import "../global.css"
-import useInitAnalytics from "../hooks/useInitAnalytics"
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,55 +34,13 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
         }}
       />
 
-      <QueryClientProvider client={queryClient}>
-        <UserProvider>
-          <BaseLayout>
-            <Component {...pageProps} />
-          </BaseLayout>
-        </UserProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
-        <LoadFonts />
-      </QueryClientProvider>
+      <UserProvider>
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
+      </UserProvider>
     </ErrorBoundary>
   )
 }
-
-const LoadFonts = () => (
-  <style
-    dangerouslySetInnerHTML={{
-      __html: `
-          @font-face {
-            font-family: "Open Sans";
-            font-style: normal;
-            font-weight: 400;
-            src: local("Open Sans Regular"), local("OpenSans-Regular"),
-              url(/google-fonts/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0b.woff2)
-                format("woff2"),
-              url(/google-fonts/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0d.woff)
-                format("woff");
-            font-display: swap;
-          }
-          
-          @font-face {
-            font-family: "Open Sans";
-            font-style: normal;
-            font-weight: 700;
-            src: local("Open Sans Bold"), local("OpenSans-Bold"),
-              url(/google-fonts/s/opensans/v17/mem5YaGs126MiZpBA-UN7rgOUuhp.woff2)
-                format("woff2"),
-              url(/google-fonts/s/opensans/v17/mem5YaGs126MiZpBA-UN7rgOUuhv.woff)
-                format("woff");
-            font-display: swap;
-          }
-          
-          html {
-            font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
-              Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Helvetica Neue",
-              Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-              "Noto Color Emoji";
-          } `,
-    }}
-  />
-)
 
 export default App

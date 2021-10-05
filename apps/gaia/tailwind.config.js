@@ -1,6 +1,5 @@
 module.exports = {
   mode: "jit",
-  important: true,
   purge: ["**/*.tsx"],
   theme: {
     extend: {
