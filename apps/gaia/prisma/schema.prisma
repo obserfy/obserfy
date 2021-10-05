@@ -1,0 +1,408 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model areas {
+  id                                     String                                   @id @db.Uuid
+  curriculum_id                          String?                                  @db.Uuid
+  name                                   String?
+  description                            String?
+  curriculums                            curriculums?                             @relation(fields: [curriculum_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  lesson_plan_details                    lesson_plan_details[]
+  observations                           observations[]
+  student_progress_reports_area_comments student_progress_reports_area_comments[]
+  subjects                               subjects[]
+}
+
+model attendances {
+  id         String    @id @db.Uuid
+  student_id String?   @db.Uuid
+  class_id   String?   @db.Uuid
+  date       DateTime? @db.Timestamptz(6)
+  classes    classes?  @relation(fields: [class_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  students   students? @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model classes {
+  id                  String                @id @db.Uuid
+  school_id           String?               @db.Uuid
+  name                String?
+  start_time          DateTime              @db.Timestamptz(6)
+  end_time            DateTime              @db.Timestamptz(6)
+  schools             schools?              @relation(fields: [school_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  attendances         attendances[]
+  lesson_plan_details lesson_plan_details[]
+  student_to_classes  student_to_classes[]
+  weekdays            weekdays[]
+}
+
+model curriculums {
+  id           String    @id @db.Uuid
+  name         String?
+  descriptions String?
+  areas        areas[]
+  schools      schools[]
+}
+
+model file_to_lesson_plans {
+  lesson_plan_details_id String              @db.Uuid
+  file_id                String              @db.Uuid
+  files                  files               @relation(fields: [file_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  lesson_plan_details    lesson_plan_details @relation(fields: [lesson_plan_details_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([lesson_plan_details_id, file_id])
+}
+
+model files {
+  id                   String                 @id @db.Uuid
+  school_id            String?                @db.Uuid
+  name                 String?
+  object_key           String?
+  schools              schools?               @relation(fields: [school_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  file_to_lesson_plans file_to_lesson_plans[]
+}
+
+model guardian_to_students {
+  student_id   String    @db.Uuid
+  guardian_id  String    @db.Uuid
+  relationship Int?
+  guardians    guardians @relation(fields: [guardian_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  students     students  @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([student_id, guardian_id])
+}
+
+model guardians {
+  id                   String                 @id @db.Uuid
+  name                 String
+  email                String?
+  phone                String?
+  note                 String?
+  address              String?
+  school_id            String?                @db.Uuid
+  schools              schools?               @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  guardian_to_students guardian_to_students[]
+  observations         observations[]
+}
+
+model image_to_students {
+  student_id String   @db.Uuid
+  image_id   String   @db.Uuid
+  images     images   @relation(fields: [image_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  students   students @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([student_id, image_id])
+}
+
+model images {
+  id                    String                  @id @db.Uuid
+  school_id             String?                 @db.Uuid
+  object_key            String?
+  created_at            DateTime?               @default(now()) @db.Timestamptz(6)
+  schools               schools?                @relation(fields: [school_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  image_to_students     image_to_students[]
+  observation_to_images observation_to_images[]
+  students              students[]
+}
+
+model lesson_plan_details {
+  id                   String                 @id @db.Uuid
+  title                String?
+  description          String?
+  user_id              String?                @db.Uuid
+  class_id             String?                @db.Uuid
+  school_id            String?                @db.Uuid
+  repetition_type      BigInt?
+  repetition_end_date  DateTime?              @db.Timestamptz(6)
+  area_id              String?                @db.Uuid
+  material_id          String?                @db.Uuid
+  areas                areas?                 @relation(fields: [area_id], references: [id], onUpdate: NoAction)
+  classes              classes?               @relation(fields: [class_id], references: [id], onUpdate: NoAction)
+  materials            materials?             @relation(fields: [material_id], references: [id], onUpdate: NoAction)
+  users                users?                 @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  file_to_lesson_plans file_to_lesson_plans[]
+  lesson_plan_links    lesson_plan_links[]
+  lesson_plans         lesson_plans[]
+}
+
+model lesson_plan_links {
+  id                     String               @id @db.Uuid
+  title                  String?
+  url                    String?
+  image                  String?
+  description            String?
+  lesson_plan_details_id String?              @db.Uuid
+  lesson_plan_details    lesson_plan_details? @relation(fields: [lesson_plan_details_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model lesson_plan_to_students {
+  lesson_plan_id String       @db.Uuid
+  student_id     String       @db.Uuid
+  lesson_plans   lesson_plans @relation(fields: [lesson_plan_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  students       students     @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([lesson_plan_id, student_id])
+}
+
+model lesson_plans {
+  id                      String                    @id @db.Uuid
+  date                    DateTime                  @db.Timestamptz(6)
+  lesson_plan_details_id  String?                   @db.Uuid
+  lesson_plan_details     lesson_plan_details?      @relation(fields: [lesson_plan_details_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  lesson_plan_to_students lesson_plan_to_students[]
+  observations            observations[]
+}
+
+model materials {
+  id                                  String                                @id @db.Uuid
+  subject_id                          String?                               @db.Uuid
+  name                                String?
+  order                               BigInt?
+  description                         String?
+  subjects                            subjects?                             @relation(fields: [subject_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  lesson_plan_details                 lesson_plan_details[]
+  student_material_progresses         student_material_progresses[]
+  student_progress_report_assessments student_progress_report_assessments[]
+}
+
+model observation_to_images {
+  observation_id String       @db.Uuid
+  image_id       String       @db.Uuid
+  images         images       @relation(fields: [image_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  observations   observations @relation(fields: [observation_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([observation_id, image_id])
+}
+
+model observations {
+  id                    String                  @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  student_id            String?                 @db.Uuid
+  short_desc            String?
+  long_desc             String?
+  category_id           String?
+  created_date          DateTime?               @db.Timestamptz(6)
+  event_time            DateTime?               @db.Timestamptz(6)
+  creator_id            String?                 @db.Uuid
+  lesson_plan_id        String?                 @db.Uuid
+  guardian_id           String?                 @db.Uuid
+  area_id               String?                 @db.Uuid
+  visible_to_guardians  Boolean                 @default(false)
+  areas                 areas?                  @relation(fields: [area_id], references: [id], onUpdate: NoAction)
+  users                 users?                  @relation(fields: [creator_id], references: [id], onUpdate: NoAction)
+  guardians             guardians?              @relation(fields: [guardian_id], references: [id], onUpdate: NoAction)
+  lesson_plans          lesson_plans?           @relation(fields: [lesson_plan_id], references: [id], onUpdate: NoAction)
+  students              students?               @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  observation_to_images observation_to_images[]
+}
+
+model password_reset_tokens {
+  token      String   @id @db.Uuid
+  created_at DateTime @db.Timestamptz(6)
+  expired_at DateTime @db.Timestamptz(6)
+  user_id    String   @db.Uuid
+  users      users    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model progress_reports {
+  id                       String                     @id @db.Uuid
+  school_id                String?                    @db.Uuid
+  title                    String?
+  period_start             DateTime?                  @db.Timestamptz(6)
+  period_end               DateTime?                  @db.Timestamptz(6)
+  published                Boolean?
+  freeze_assessments       Boolean?
+  schools                  schools?                   @relation(fields: [school_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  student_progress_reports student_progress_reports[]
+}
+
+model schools {
+  id               String             @id @db.Uuid
+  name             String?
+  invite_code      String?
+  curriculum_id    String?            @db.Uuid
+  subscription_id  String?            @db.Uuid
+  created_at       DateTime?          @default(now()) @db.Timestamptz(6)
+  curriculums      curriculums?       @relation(fields: [curriculum_id], references: [id], onUpdate: NoAction)
+  subscriptions    subscriptions?     @relation(fields: [subscription_id], references: [id], onUpdate: NoAction)
+  classes          classes[]
+  files            files[]
+  guardians        guardians[]
+  images           images[]
+  progress_reports progress_reports[]
+  students         students[]
+  user_to_schools  user_to_schools[]
+  videos           videos[]
+}
+
+model sessions {
+  token   String  @id @db.Uuid
+  user_id String?
+}
+
+model student_material_progresses {
+  material_id String    @db.Uuid
+  student_id  String    @db.Uuid
+  stage       BigInt
+  updated_at  DateTime? @db.Timestamptz(6)
+  materials   materials @relation(fields: [material_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  students    students  @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([material_id, student_id])
+}
+
+model student_progress_report_assessments {
+  student_progress_report_progress_report_id String                   @db.Uuid
+  student_progress_report_student_id         String                   @db.Uuid
+  material_id                                String                   @db.Uuid
+  assessment                                 BigInt
+  updated_at                                 DateTime?                @db.Timestamptz(6)
+  materials                                  materials                @relation(fields: [material_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  student_progress_reports                   student_progress_reports @relation(fields: [student_progress_report_student_id, student_progress_report_progress_report_id], references: [student_id, progress_report_id], onDelete: NoAction, onUpdate: NoAction, map: "student_progress_report_asses_student_progress_report_stud_fkey")
+
+  @@id([student_progress_report_progress_report_id, student_progress_report_student_id, material_id])
+}
+
+model student_progress_reports {
+  student_id                             String                                   @db.Uuid
+  progress_report_id                     String                                   @db.Uuid
+  general_comments                       String?
+  ready                                  Boolean?
+  progress_reports                       progress_reports                         @relation(fields: [progress_report_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  students                               students                                 @relation(fields: [student_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  student_progress_report_assessments    student_progress_report_assessments[]
+  student_progress_reports_area_comments student_progress_reports_area_comments[]
+
+  @@id([student_id, progress_report_id])
+}
+
+model student_progress_reports_area_comments {
+  student_progress_report_progress_report_id String                   @db.Uuid
+  student_progress_report_student_id         String                   @db.Uuid
+  area_id                                    String                   @db.Uuid
+  comments                                   String?
+  areas                                      areas                    @relation(fields: [area_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  student_progress_reports                   student_progress_reports @relation(fields: [student_progress_report_student_id, student_progress_report_progress_report_id], references: [student_id, progress_report_id], onDelete: NoAction, onUpdate: NoAction, map: "student_progress_reports_area_student_progress_report_stud_fkey")
+
+  @@id([student_progress_report_progress_report_id, student_progress_report_student_id, area_id])
+}
+
+model student_to_classes {
+  student_id String   @db.Uuid
+  class_id   String   @db.Uuid
+  classes    classes  @relation(fields: [class_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  students   students @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([student_id, class_id])
+}
+
+model students {
+  id                          String                        @id @db.Uuid
+  name                        String?
+  school_id                   String?                       @db.Uuid
+  date_of_birth               DateTime?                     @db.Timestamptz(6)
+  gender                      Int?
+  date_of_entry               DateTime?                     @db.Timestamptz(6)
+  note                        String?
+  custom_id                   String?
+  active                      Boolean                       @default(true)
+  profile_pic                 String?
+  profile_image_id            String?                       @db.Uuid
+  images                      images?                       @relation(fields: [profile_image_id], references: [id], onUpdate: NoAction)
+  schools                     schools?                      @relation(fields: [school_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  attendances                 attendances[]
+  guardian_to_students        guardian_to_students[]
+  image_to_students           image_to_students[]
+  lesson_plan_to_students     lesson_plan_to_students[]
+  observations                observations[]
+  student_material_progresses student_material_progresses[]
+  student_progress_reports    student_progress_reports[]
+  student_to_classes          student_to_classes[]
+  video_to_students           video_to_students[]
+}
+
+model subjects {
+  id          String      @id @db.Uuid
+  area_id     String?     @db.Uuid
+  name        String?
+  order       BigInt?
+  description String?
+  areas       areas?      @relation(fields: [area_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  materials   materials[]
+}
+
+model subscriptions {
+  id                   String    @id @db.Uuid
+  cancel_url           String?
+  currency             String?
+  email                String?
+  event_time           DateTime? @db.Timestamptz(6)
+  marketing_consent    Boolean?
+  next_bill_date       DateTime? @db.Timestamptz(6)
+  status               String?
+  subscription_id      String?
+  subscription_plan_id String?
+  paddle_user_id       String?
+  update_url           String?
+  schools              schools[]
+}
+
+model user_to_schools {
+  school_id String  @db.Uuid
+  user_id   String  @db.Uuid
+  schools   schools @relation(fields: [school_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users     users   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([school_id, user_id])
+}
+
+model users {
+  id                    String                  @id @db.Uuid
+  email                 String?                 @unique
+  name                  String?
+  password              Bytes?
+  lesson_plan_details   lesson_plan_details[]
+  observations          observations[]
+  password_reset_tokens password_reset_tokens[]
+  user_to_schools       user_to_schools[]
+  videos                videos[]
+}
+
+model video_to_students {
+  student_id String   @db.Uuid
+  video_id   String   @db.Uuid
+  students   students @relation(fields: [student_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  videos     videos   @relation(fields: [video_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([student_id, video_id])
+}
+
+model videos {
+  id                String              @id @db.Uuid
+  asset_id          String?
+  playback_id       String?
+  playback_url      String?
+  thumbnail_url     String?
+  upload_url        String?
+  upload_id         String?
+  status            String?
+  upload_timeout    Int?
+  created_at        DateTime?           @db.Timestamptz(6)
+  user_id           String?             @db.Uuid
+  school_id         String?             @db.Uuid
+  schools           schools?            @relation(fields: [school_id], references: [id], onUpdate: NoAction)
+  users             users?              @relation(fields: [user_id], references: [id], onUpdate: NoAction)
+  video_to_students video_to_students[]
+}
+
+model weekdays {
+  class_id String  @db.Uuid
+  day      BigInt  @default(autoincrement())
+  classes  classes @relation(fields: [class_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([class_id, day])
+}

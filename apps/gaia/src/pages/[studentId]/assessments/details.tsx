@@ -1,18 +1,18 @@
+import Icon from "$components/Icon/Icon"
+import Markdown from "$components/Markdown/Markdown"
+import MaterialStagePill from "$components/MaterialStagePill"
+import useGetMaterialDetails from "$hooks/api/useGetMaterialDetails"
+import { useQueryString } from "$hooks/useQueryString"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Icon from "@components/Icon/Icon"
 import Head from "next/head"
 import Link from "next/link"
 import { FC } from "react"
-import Markdown from "../../components/Markdown/Markdown"
-import MaterialStagePill from "../../components/MaterialStagePill"
-import useGetMaterialDetails from "../../hooks/api/useGetMaterialDetails"
-import { useQueryString } from "../../hooks/useQueryString"
 
 const Details: FC = () => {
-  const childId = useQueryString("childId")
+  const studentId = useQueryString("studentId")
   const materialId = useQueryString("materialId")
 
-  const details = useGetMaterialDetails(childId, materialId)
+  const details = useGetMaterialDetails(studentId, materialId)
 
   return (
     <div>
@@ -21,12 +21,12 @@ const Details: FC = () => {
       </Head>
 
       <div className="flex items-center px-1 mx-auto w-full max-w-3xl">
-        <Link href={`/progress?childId=${childId}`}>
+        <Link href={`/${studentId}/assessments`}>
           <button className="m-1 hover:text-green-700">
             <Icon src="/icons/arrow-back.svg" className="m-2 w-4 h-4" />
           </button>
         </Link>
-        <Link href={`/progress?childId=${childId}`}>
+        <Link href={`/${studentId}/assessments`}>
           <a className="text-xs">Progress</a>
         </Link>
         <div className="mx-3">/</div>

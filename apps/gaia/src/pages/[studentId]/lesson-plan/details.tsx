@@ -1,13 +1,13 @@
+import Icon from "$components/Icon/Icon"
+import Markdown from "$components/Markdown/Markdown"
+import useGetLessonPlan from "$hooks/api/useGetlessonPlan"
+import { useQueryString } from "$hooks/useQueryString"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Head from "next/head"
 import Link from "next/link"
-import Icon from "../../components/Icon/Icon"
-import Markdown from "../../components/Markdown/Markdown"
-import useGetLessonPlan from "../../hooks/api/useGetlessonPlan"
-import { useQueryString } from "../../hooks/useQueryString"
 
 const LessonPlanDetails = () => {
-  const childId = useQueryString("childId")
+  const studentId = useQueryString("studentId")
   const planId = useQueryString("planId")
   const lessonPlan = useGetLessonPlan(planId)
 
@@ -19,12 +19,12 @@ const LessonPlanDetails = () => {
 
       <div className="flex w-full border-b">
         <div className="flex items-center px-1 mx-auto w-full max-w-3xl">
-          <Link href={`/lesson-plan?childId=${childId}`}>
+          <Link href={`/${studentId}/lesson-plan`}>
             <button className="m-1 hover:text-green-700">
               <Icon src="/icons/arrow-back.svg" className="m-2 w-4 h-4" />
             </button>
           </Link>
-          <Link href={`/lesson-plan?childId=${childId}`}>
+          <Link href={`/${studentId}/lesson-plan`}>
             <div className="text-xs">Lesson Plans</div>
           </Link>
           <div className="mx-3">/</div>
@@ -54,7 +54,7 @@ const LessonPlanDetails = () => {
               target="_blank"
             >
               <Icon src="/icons/link.svg" className="flex-shrink-0 !w-3" />
-              <div className="ml-2 whitespace-no-wrap">{l.url}</div>
+              <div className="ml-2 whitespace-nowrap">{l.url}</div>
             </a>
           ))}
         </div>

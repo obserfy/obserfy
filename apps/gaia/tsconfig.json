@@ -16,12 +16,12 @@
     "types": ["jest"],
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@layouts/*": ["./src/layouts/*"],
-      "@lib/*": ["./src/lib/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@api/*": ["./src/pages/api/*"],
-      "@public/*": ["./public/*"]
+      "$components/*": ["./src/components/*"],
+      "$layouts/*": ["./src/layouts/*"],
+      "$lib/*": ["./src/lib/*"],
+      "$hooks/*": ["./src/hooks/*"],
+      "$api/*": ["./src/pages/api/*"],
+      "$public/*": ["./public/*"]
     }
   },
   "exclude": ["node_modules"],

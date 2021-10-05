@@ -1,12 +1,12 @@
+import useGetChild from "$hooks/api/useGetChild"
 import Image from "next/image"
 import { FC } from "react"
-import useGetChild from "../../hooks/api/useGetChild"
 
 interface Props {
-  childId: string
+  studentId: string
 }
-const ChildInfo: FC<Props> = ({ childId }) => {
-  const child = useGetChild(childId)
+const StudentInfo: FC<Props> = ({ studentId }) => {
+  const child = useGetChild(studentId)
 
   return child.status === "success" ? (
     <>
@@ -59,4 +59,4 @@ const LoadingPlaceholder = () => (
   </div>
 )
 
-export default ChildInfo
+export default StudentInfo

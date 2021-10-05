@@ -1,8 +1,10 @@
-import { Pool } from "pg"
+/** @DEPRECATED replaced by @lib/prisma */
 import { isLeft } from "fp-ts/Either"
 import { Decoder } from "io-ts"
+import { Pool } from "pg"
 import logger from "../logger"
 
+/** @DEPRECATED replaced by @lib/prisma */
 const pgPool = new Pool({
   user: process.env.PG_USER,
   host: process.env.PG_HOST,
@@ -20,6 +22,7 @@ pgPool.on("error", (err) => {
   logger.error("Unexpected error in PostgresSQL connection pool", err)
 })
 
+/** @DEPRECATED replaced by @lib/prisma */
 export const query = async (sql: string, params: string[]) => {
   const client = await pgPool.connect()
   try {
@@ -29,6 +32,7 @@ export const query = async (sql: string, params: string[]) => {
   }
 }
 
+/** @DEPRECATED replaced by @lib/prisma */
 export const typedQuery = async <T>(
   decoder: Decoder<any, T>,
   params: string[],

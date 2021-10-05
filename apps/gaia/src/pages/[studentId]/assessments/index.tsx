@@ -1,25 +1,25 @@
+import Button from "$components/Button/Button"
+import Chip from "$components/Chip/Chip"
+import Icon from "$components/Icon/Icon"
+import MaterialStagePill from "$components/MaterialStagePill"
+import useGetCurriculumProgress from "$hooks/api/useGetCurriculumProgress"
+import { useQueryString } from "$hooks/useQueryString"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Icon from "@components/Icon/Icon"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import { FC, useState } from "react"
-import Button from "../../components/Button/Button"
-import Chip from "../../components/Chip/Chip"
-import MaterialStagePill from "../../components/MaterialStagePill"
-import useGetCurriculumProgress from "../../hooks/api/useGetCurriculumProgress"
-import { useQueryString } from "../../hooks/useQueryString"
 
 const ProgressPage = () => {
   const [areaIdx, setAreaIdx] = useState(0)
-  const childId = useQueryString("childId")
+  const studentId = useQueryString("studentId")
   const {
     data: progress,
     isLoading,
     isError,
     isSuccess,
     refetch,
-  } = useGetCurriculumProgress(childId)
+  } = useGetCurriculumProgress(studentId)
 
   if (isLoading) {
     return <LoadingState />
@@ -63,11 +63,11 @@ const ProgressPage = () => {
 
           {subject.materials.map((material) => (
             <Link
-              href={`/progress/details?childId=${childId}&materialId=${material.id}`}
+              href={`/${studentId}/assessments/details?materialId=${material.id}`}
             >
               <a
                 key={material.id}
-                className="flex items-center py-2 px-3 hover:bg-primaryLightest display-block"
+                className="flex items-center py-2 px-3 hover:bg-primaryLightest"
               >
                 <div className="pr-3">{material.name}</div>
                 <MaterialStagePill stage={material.stage} className="ml-auto" />
@@ -101,8 +101,7 @@ const EmptyCurriculumPlaceholder: FC<{ loading?: boolean }> = ({ loading }) => (
         loading && "opacity-0"
       } transition-opacity duration-200 font-bold`}
     >
-      No curriculum progress data <br />
-      available yet
+      No assessments have been made
     </h5>
   </div>
 )

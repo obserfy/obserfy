@@ -1,4 +1,4 @@
-import Icon from "@components/Icon/Icon"
+import Icon from "$components/Icon/Icon"
 import Link from "next/link"
 import { FC, useState } from "react"
 import useGetAllLessonPlans from "../../hooks/api/useGetAllLessonPlans"
@@ -9,10 +9,10 @@ import dayjs from "../../utils/dayjs"
 
 const AllLessonPlans: FC = () => {
   const [search, setSearch] = useState("")
-  const childId = useQueryString("childId")
-  const childPlans = useGetAllLessonPlans(childId)
+  const studentId = useQueryString("studentId")
+  const studentLessonPlans = useGetAllLessonPlans(studentId)
 
-  const plans = childPlans.data?.filter(({ title }) =>
+  const plans = studentLessonPlans.data?.filter(({ title }) =>
     title.match(new RegExp(search, "i"))
   )
 
@@ -28,22 +28,22 @@ const AllLessonPlans: FC = () => {
         />
       </div>
 
-      {isEmpty(plans) && childPlans.isSuccess && (
+      {isEmpty(plans) && studentLessonPlans.isSuccess && (
         <div className="p-3">No lesson plan found</div>
       )}
 
       {plans?.map((plan) => (
-        <Plan key={plan.id} plan={plan} childId={childId} />
+        <Plan key={plan.id} plan={plan} studentId={studentId} />
       ))}
     </div>
   )
 }
 
-const Plan: FC<{ plan: GetChildPlansResponse; childId: string }> = ({
-  plan,
-  childId,
-}) => (
-  <Link href={`/lesson-plan/details?childId=${childId}&planId=${plan.id}`}>
+const Plan: FC<{
+  plan: GetChildPlansResponse
+  studentId: string
+}> = ({ plan, studentId }) => (
+  <Link href={`/${studentId}/lesson-plan/details?planId=${plan.id}`}>
     <div className="p-3 hover:bg-gray-100 border-t">
       <div className="flex-1 font-bold text-gray-700">{plan.title}</div>
       <div className="flex pt-2 text-xs">

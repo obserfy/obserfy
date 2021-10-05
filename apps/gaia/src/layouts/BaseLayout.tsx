@@ -1,15 +1,15 @@
+import Header from "$components/Header"
+import Navbar from "$components/Navbar"
+import StudentInfo from "$components/StudentInfo"
+import { useQueryString } from "$hooks/useQueryString"
 import { useRouter } from "next/router"
 import { FC } from "react"
 import useGetChildren from "../hooks/api/useGetChildren"
-import { useQueryString } from "../hooks/useQueryString"
-import ChildInfo from "./ChildInfo/ChildInfo"
-import Header from "./header"
-import Navbar from "./Navbar/Navbar"
 
-const Layout: FC = ({ children }) => {
+const BaseLayout: FC = ({ children }) => {
   useGetChildren()
-  const childId = useQueryString("childId")
   const router = useRouter()
+  const studentId = useQueryString("studentId")
 
   if (router.pathname === "/no-data") {
     return (
@@ -26,12 +26,12 @@ const Layout: FC = ({ children }) => {
     <div className="bg-background">
       <div className="pb-3 bg-surface">
         <Header />
-        <ChildInfo childId={childId} />
+        <StudentInfo studentId={studentId} />
       </div>
-      <Navbar childId={childId} />
+      <Navbar studentId={studentId} />
       <main>{children}</main>
     </div>
   )
 }
 
-export default Layout
+export default BaseLayout

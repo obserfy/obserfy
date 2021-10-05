@@ -1,20 +1,20 @@
+import Icon from "$components/Icon/Icon"
+import ImagePreview from "$components/ImagePreview/ImagePreview"
+import useGetChild from "$hooks/api/useGetChild"
+import useGetChildImages, { ChildImage } from "$hooks/api/useGetChildImages"
+import usePostImage from "$hooks/api/usePostImage"
+import { useQueryString } from "$hooks/useQueryString"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Head from "next/head"
 import Image from "next/image"
 import { ChangeEventHandler, FC, useState } from "react"
 import { v4 as uuidv4 } from "uuid"
-import Icon from "../components/Icon/Icon"
-import ImagePreview from "../components/ImagePreview/ImagePreview"
-import useGetChild from "../hooks/api/useGetChild"
-import useGetChildImages, { ChildImage } from "../hooks/api/useGetChildImages"
-import usePostImage from "../hooks/api/usePostImage"
-import { useQueryString } from "../hooks/useQueryString"
 
 const GalleryPage = () => {
-  const childId = useQueryString("childId")
-  const childImages = useGetChildImages(childId)
-  const child = useGetChild(childId)
-  const postImage = usePostImage(childId, child.data?.schoolId ?? "")
+  const studentId = useQueryString("studentId")
+  const studentImages = useGetChildImages(studentId)
+  const student = useGetChild(studentId)
+  const postImage = usePostImage(studentId, student.data?.schoolId ?? "")
 
   const handleImageUpload: ChangeEventHandler<HTMLInputElement> = async (e) => {
     if (!e.target.files?.length) {
@@ -34,17 +34,17 @@ const GalleryPage = () => {
 
       <div className="mx-auto max-w-3xl">
         <div className="flex flex-wrap pr-1 w-full">
-          {childImages.isSuccess && childImages.data?.length === 0 ? (
+          {studentImages.isSuccess && studentImages.data?.length === 0 ? (
             <EmptyState
-              isLoading={childImages.isLoading}
+              isLoading={studentImages.isLoading}
               onChange={handleImageUpload}
             />
           ) : (
             <UploadImageButton onChange={handleImageUpload} />
           )}
 
-          {childImages.data?.map((img) => (
-            <ImageItems key={img.id} img={img} childId={childId} />
+          {studentImages.data?.map((img) => (
+            <ImageItems key={img.id} img={img} childId={studentId} />
           ))}
         </div>
       </div>

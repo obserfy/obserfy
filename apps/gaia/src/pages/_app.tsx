@@ -1,12 +1,12 @@
 /* eslint-disable react/no-danger */
+import BaseLayout from "$layouts//BaseLayout"
 import { UserProvider } from "@auth0/nextjs-auth0"
+import { NextPage } from "next"
 import { AppProps } from "next/app"
 import Script from "next/script"
-import { FC } from "react"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
 import ErrorBoundary from "../components/ErrorBoundary"
-import Layout from "../components/layout"
 import "../global.css"
 import useInitAnalytics from "../hooks/useInitAnalytics"
 
@@ -18,7 +18,7 @@ const queryClient = new QueryClient({
   },
 })
 
-const App: FC<AppProps> = ({ Component, pageProps }) => {
+const App: NextPage<AppProps> = ({ Component, pageProps }) => {
   useInitAnalytics()
 
   return (
@@ -29,15 +29,15 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         data-lazy="no"
         strategy="beforeInteractive"
         onLoad={() => {
-          Sentry.init()
+          Sentry.init({})
         }}
       />
 
       <QueryClientProvider client={queryClient}>
         <UserProvider>
-          <Layout>
+          <BaseLayout>
             <Component {...pageProps} />
-          </Layout>
+          </BaseLayout>
         </UserProvider>
         <ReactQueryDevtools initialIsOpen={false} />
         <LoadFonts />

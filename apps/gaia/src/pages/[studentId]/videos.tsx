@@ -1,21 +1,21 @@
+import Button from "$components/Button/Button"
+import Icon from "$components/Icon/Icon"
+import { LazyVideoPlayer } from "$components/LazyVideoPlayer"
+import LoadingPlaceholder from "$components/LoadingPlaceholder/LoadingPlaceholder"
+import useGetStudent from "$hooks/api/useGetChild"
+import useGetStudentVideos from "$hooks/api/useGetChildVideos"
+import useBodyScrollLock from "$hooks/useBodyScrollLock"
+import { useQueryString } from "$hooks/useQueryString"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Head from "next/head"
 import Image from "next/image"
 import { FC, Suspense, useState } from "react"
-import Button from "../components/Button/Button"
-import Icon from "../components/Icon/Icon"
-import { LazyVideoPlayer } from "../components/LazyVideoPlayer"
-import LoadingPlaceholder from "../components/LoadingPlaceholder/LoadingPlaceholder"
-import useGetChild from "../hooks/api/useGetChild"
-import useGetChildVideos from "../hooks/api/useGetChildVideos"
-import useBodyScrollLock from "../hooks/useBodyScrollLock"
-import { useQueryString } from "../hooks/useQueryString"
-import dayjs from "../utils/dayjs"
+import dayjs from "../../utils/dayjs"
 
 const VideosPage = () => {
-  const childId = useQueryString("childId")
-  const child = useGetChild(childId)
-  const videos = useGetChildVideos(childId)
+  const studentId = useQueryString("studentId")
+  const student = useGetStudent(studentId)
+  const videos = useGetStudentVideos(studentId)
 
   if (videos.isLoading || (videos.isSuccess && videos.data.length === 0)) {
     return (
@@ -41,7 +41,7 @@ const VideosPage = () => {
             key={`${v.id}1`}
             thumbnailSrc={v.thumbnailUrl}
             playbackUrl={v.playbackUrl}
-            childName={child.data?.name}
+            childName={student.data?.name}
             createdAt={v.createdAt}
           />
         ))}

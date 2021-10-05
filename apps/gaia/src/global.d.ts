@@ -6,3 +6,9 @@ declare module "formidable-serverless" {
 
   export default formidable
 }
+
+declare module NodeJS {
+  interface Global {
+    prisma: any
+  }
+}

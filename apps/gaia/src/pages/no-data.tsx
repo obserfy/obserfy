@@ -15,10 +15,10 @@ const NoData = () => {
     // throw user to root page when they have data
     if ((children.data?.length ?? 0) > 0) {
       const newId = children.data?.[0]?.id
-      const redirectUrl = `/?childId=${newId}`
-      router.replace(redirectUrl)
+      router.replace(`/${newId}`)
     }
-  }, [router, children.data])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [children.data])
 
   return (
     <>

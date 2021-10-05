@@ -9,9 +9,9 @@ import Icon from "../Icon/Icon"
 import Plan from "./Plan"
 
 const DailyLessonPlans: FC = () => {
-  const childId = useQueryString("childId")
   const [date, setDate] = useState(dayjs())
-  const childPlans = useGetDailyLessonPlans(childId, date)
+  const studentId = useQueryString("studentId")
+  const childPlans = useGetDailyLessonPlans(studentId, date)
 
   const changeDate = (count: number) => () => setDate(date.add(count, "day"))
 
@@ -51,7 +51,7 @@ const DailyLessonPlans: FC = () => {
         {childPlans.data?.map((plan) => (
           <Plan
             key={plan.id}
-            childId={childId}
+            childId={studentId}
             planId={plan.id}
             name={plan.title}
             area={plan.area?.name ?? ""}

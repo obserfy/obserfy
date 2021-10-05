@@ -1,9 +1,9 @@
+import AllLessonPlans from "$components/AllLessonPlans/AllLessonPlans"
+import DailyLessonPlans from "$components/DailyLessonPlans/DailyLessonPlans"
+import Icon from "$components/Icon/Icon"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Icon from "@components/Icon/Icon"
 import Head from "next/head"
 import { useState } from "react"
-import AllLessonPlans from "../../components/AllLessonPlans/AllLessonPlans"
-import DailyLessonPlans from "../../components/DailyLessonPlans/DailyLessonPlans"
 
 enum ViewMode {
   Daily,

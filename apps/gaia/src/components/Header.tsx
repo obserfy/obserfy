@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import Image from "next/image"
 import Link from "next/link"
 import { FC, useState } from "react"
@@ -72,7 +73,7 @@ const Header: FC = () => {
 }
 
 const ChildPicker: FC<{ onClose: () => void }> = ({ onClose }) => {
-  const childId = useQueryString("childId")
+  const studentId = useQueryString("studentId")
   const { data: children } = useGetChildren()
 
   return (
@@ -86,20 +87,20 @@ const ChildPicker: FC<{ onClose: () => void }> = ({ onClose }) => {
           </Button>
         </div>
         {children?.map(({ id, name }) => (
-          <Link href={`/?childId=${id}`} key={id}>
+          <Link href={`/${id}`} key={id}>
             {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
             <a
-              className={`flex items-center leading-tight ${
-                id === childId
-                  ? "border-l-4 border-green-700 text-green-800"
-                  : ""
-              } `}
+              className={clsx(
+                `flex items-center leading-tight`,
+                id === studentId && "text-green-800 border-l-4 border-green-700"
+              )}
               onClick={onClose}
             >
               <div
-                className={`text-lg py-4 px-6 ${
-                  id === childId ? "font-bold" : ""
-                }`}
+                className={clsx(
+                  `py-4 px-6 text-lg`,
+                  id === studentId && "font-bold"
+                )}
               >
                 {name}
               </div>
