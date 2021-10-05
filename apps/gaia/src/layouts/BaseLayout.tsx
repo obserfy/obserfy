@@ -1,7 +1,7 @@
+import { FC } from "react"
 import BottomNavigationBar from "$components/BottomNavigationBar"
 import SEO from "$components/Seo"
 import SideBar from "$components/SideBar"
-import { FC } from "react"
 
 const BaseLayout: FC<{
   title: string

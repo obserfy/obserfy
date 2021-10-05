@@ -1,3 +1,6 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
+import Image from "next/image"
+import { FC, Suspense, useState } from "react"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
 import { LazyVideoPlayer } from "$components/LazyVideoPlayer"
@@ -7,9 +10,6 @@ import useGetStudentVideos from "$hooks/api/useGetChildVideos"
 import useBodyScrollLock from "$hooks/useBodyScrollLock"
 import { useQueryString } from "$hooks/useQueryString"
 import BaseLayout from "$layouts/BaseLayout"
-import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Image from "next/image"
-import { FC, Suspense, useState } from "react"
 import dayjs from "../../utils/dayjs"
 
 const VideosPage = () => {

@@ -1,10 +1,10 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
+import Link from "next/link"
 import Icon from "$components/Icon/Icon"
 import Markdown from "$components/Markdown/Markdown"
 import useGetLessonPlan from "$hooks/api/useGetlessonPlan"
 import { useQueryString } from "$hooks/useQueryString"
 import BaseLayout from "$layouts/BaseLayout"
-import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Link from "next/link"
 
 const LessonPlanDetails = () => {
   const studentId = useQueryString("studentId")

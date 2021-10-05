@@ -1,9 +1,9 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
+import { useState } from "react"
 import AllLessonPlans from "$components/AllLessonPlans/AllLessonPlans"
 import DailyLessonPlans from "$components/DailyLessonPlans/DailyLessonPlans"
 import Icon from "$components/Icon/Icon"
 import BaseLayout from "$layouts/BaseLayout"
-import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import { useState } from "react"
 
 enum ViewMode {
   Daily,

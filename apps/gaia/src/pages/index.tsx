@@ -1,5 +1,5 @@
-import { findOneOfRelatedStudent } from "$lib/db"
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0"
+import { findOneOfRelatedStudent } from "$lib/db"
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps({ req, res }) {

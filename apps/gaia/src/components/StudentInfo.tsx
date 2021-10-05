@@ -1,6 +1,6 @@
-import useGetChild from "$hooks/api/useGetChild"
 import Image from "next/image"
 import { FC } from "react"
+import useGetChild from "$hooks/api/useGetChild"
 
 interface Props {
   studentId: string

@@ -1,3 +1,7 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
+import Image from "next/image"
+import Link from "next/link"
+import { FC, useState } from "react"
 import Button from "$components/Button/Button"
 import Chip from "$components/Chip/Chip"
 import Icon from "$components/Icon/Icon"
@@ -5,10 +9,6 @@ import MaterialStagePill from "$components/MaterialStagePill"
 import useGetCurriculumProgress from "$hooks/api/useGetCurriculumProgress"
 import { useQueryString } from "$hooks/useQueryString"
 import BaseLayout from "$layouts/BaseLayout"
-import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Image from "next/image"
-import Link from "next/link"
-import { FC, useState } from "react"
 
 const ProgressPage = () => {
   const [areaIdx, setAreaIdx] = useState(0)

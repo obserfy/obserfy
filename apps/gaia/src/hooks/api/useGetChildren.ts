@@ -1,5 +1,5 @@
-import { GetChildrenResponse } from "$api/me/children"
 import { useQuery } from "react-query"
+import { GetChildrenResponse } from "$api/me/children"
 import { getApi } from "./apiHelpers"
 
 const useGetChildren = () => {

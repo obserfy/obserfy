@@ -1,7 +1,7 @@
-import BaseLayout from "$layouts/BaseLayout"
-import { findStudentProgressReports } from "$lib/db"
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next"
 import { FC } from "react"
+import BaseLayout from "$layouts/BaseLayout"
+import { findStudentProgressReports } from "$lib/db"
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 type Context = GetServerSidePropsContext<{ studentId: string }>

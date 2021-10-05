@@ -1,12 +1,12 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
+import Link from "next/link"
+import { FC } from "react"
 import Icon from "$components/Icon/Icon"
 import Markdown from "$components/Markdown/Markdown"
 import MaterialStagePill from "$components/MaterialStagePill"
 import useGetMaterialDetails from "$hooks/api/useGetMaterialDetails"
 import { useQueryString } from "$hooks/useQueryString"
 import BaseLayout from "$layouts/BaseLayout"
-import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Link from "next/link"
-import { FC } from "react"
 
 const Details: FC = () => {
   const studentId = useQueryString("studentId")

@@ -1,15 +1,15 @@
 /* eslint-disable react/no-danger */
-import ErrorBoundary from "$components/ErrorBoundary"
-import useInitAnalytics from "$hooks/useInitAnalytics"
 import "$styles/global.css"
 import { UserProvider } from "@auth0/nextjs-auth0"
-import "@fontsource/open-sans/400.css"
-import "@fontsource/open-sans/500.css"
-import "@fontsource/open-sans/700.css"
+import "@fontsource/source-sans-pro/400.css"
+import "@fontsource/source-sans-pro/600.css"
+import "@fontsource/source-sans-pro/700.css"
 import { NextPage } from "next"
 import { AppProps } from "next/app"
 import Script from "next/script"
 import { QueryClient, QueryClientProvider } from "react-query"
+import ErrorBoundary from "$components/ErrorBoundary"
+import useInitAnalytics from "$hooks/useInitAnalytics"
 
 const queryClient = new QueryClient({
   defaultOptions: {

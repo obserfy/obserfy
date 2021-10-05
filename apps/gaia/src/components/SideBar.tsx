@@ -1,9 +1,9 @@
-import Icon from "$components/Icon/Icon"
-import { useQueryString } from "$hooks/useQueryString"
 import clsx from "clsx"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { FC } from "react"
+import { useQueryString } from "$hooks/useQueryString"
+import Icon from "$components/Icon/Icon"
 
 const SideBar = () => {
   const studentId = useQueryString("studentId")
@@ -13,7 +13,12 @@ const SideBar = () => {
       <div className="h-16 border-b" />
 
       <ul className="p-2 ">
-        <Item href={`/${studentId}`} text="Home" iconSrc="/icons/home.svg" />
+        <Item
+          href={`/${studentId}`}
+          text="Home"
+          iconSrc="/icons/home.svg"
+          exact
+        />
         <Item
           href={`/${studentId}/lesson-plan`}
           text="Lessons"
@@ -43,22 +48,22 @@ const Item: FC<{
   href: string
   text: string
   iconSrc: string
-}> = ({ href, text, iconSrc }) => {
+  exact?: boolean
+}> = ({ href, text, iconSrc, exact = false }) => {
   const router = useRouter()
-  const isActive = router.asPath === href
+  const isActive = exact
+    ? router.asPath === href
+    : router.asPath.startsWith(href)
 
   return (
-    <li
-      className={clsx(
-        "flex flex-col flex-grow-0 justify-center p-2 mb-2 rounded-lg",
-        isActive ? "bg-green-100 ring-1 ring-green-300" : "hover:bg-green-50 "
-      )}
-    >
+    <li className={clsx("flex flex-col flex-grow-0 justify-center mb-2")}>
       <Link href={href}>
         <a
           className={clsx(
-            "flex items-center font-medium",
-            isActive ? "text-green-900" : "opacity-50"
+            "flex items-center p-2 font-semibold rounded-lg",
+            isActive
+              ? "text-green-900 bg-green-100 ring-1 ring-green-300"
+              : "hover:bg-green-50 opacity-60"
           )}
         >
           <Icon

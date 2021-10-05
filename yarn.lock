@@ -2178,10 +2178,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/open-sans@npm:^4.5.1":
-  version: 4.5.1
-  resolution: "@fontsource/open-sans@npm:4.5.1"
-  checksum: 9ef47cd26535ccbda954010eb1072726f5185f23ae1e29f8fb2695cb7f57a68d2af48f542353b3792b004cf662d902c48fd26a6b73e8bad149076e67890994a3
+"@fontsource/source-sans-pro@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "@fontsource/source-sans-pro@npm:4.5.0"
+  checksum: c242375b820beeedfce415d937132439f48d682f28f6d22702311f7414c43f3cea227edcba2df8c22b52c4c27a0b27a31bbe5acee7191fa1e0fa0ed7fb56bff1
   languageName: node
   linkType: hard
 
@@ -14440,7 +14440,7 @@ __metadata:
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
     "@auth0/nextjs-auth0": 1.5.0
-    "@fontsource/open-sans": ^4.5.1
+    "@fontsource/source-sans-pro": ^4.5.0
     "@headlessui/react": ^1.4.1
     "@next/bundle-analyzer": 11.1.2
     "@prisma/client": ^3.1.1

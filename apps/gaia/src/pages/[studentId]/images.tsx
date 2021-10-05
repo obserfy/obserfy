@@ -1,3 +1,7 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
+import Image from "next/image"
+import { ChangeEventHandler, FC, useState } from "react"
+import { v4 as uuidv4 } from "uuid"
 import Icon from "$components/Icon/Icon"
 import ImagePreview from "$components/ImagePreview/ImagePreview"
 import useGetChild from "$hooks/api/useGetChild"
@@ -5,10 +9,6 @@ import useGetChildImages, { ChildImage } from "$hooks/api/useGetChildImages"
 import usePostImage from "$hooks/api/usePostImage"
 import { useQueryString } from "$hooks/useQueryString"
 import BaseLayout from "$layouts/BaseLayout"
-import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import Image from "next/image"
-import { ChangeEventHandler, FC, useState } from "react"
-import { v4 as uuidv4 } from "uuid"
 
 const GalleryPage = () => {
   const studentId = useQueryString("studentId")

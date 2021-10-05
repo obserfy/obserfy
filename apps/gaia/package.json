@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "1.5.0",
-    "@fontsource/open-sans": "^4.5.1",
+    "@fontsource/source-sans-pro": "^4.5.0",
     "@headlessui/react": "^1.4.1",
     "@prisma/client": "^3.1.1",
     "@sentry/nextjs": "6.12.0",
