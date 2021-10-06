@@ -57,21 +57,30 @@ const Item: FC<{
     <li
       className={clsx(
         "flex flex-col flex-grow-0 justify-center mb-2",
-        isActive && "border-r-2 border-teal-600"
+        isActive && "border-r-2 border-emerald-500"
       )}
     >
       <Link href={href}>
         <a
           className={clsx(
-            "flex items-center py-1 px-4 font-semibold rounded-lg",
-            isActive ? "text-teal-700" : "text-gray-500 hover:text-green-800"
+            "flex items-center px-4 rounded-lg",
+            isActive
+              ? "font-semibold text-emerald-600"
+              : "text-gray-800 hover:text-green-800"
           )}
         >
-          <Icon
-            src={iconSrc}
-            className="mr-3 !w-5 !h-5"
-            color={isActive ? "bg-teal-800" : "bg-gray-800"}
-          />
+          <div
+            className={clsx(
+              "p-1 mr-3 rounded-lg",
+              isActive && "bg-emerald-300"
+            )}
+          >
+            <Icon
+              src={iconSrc}
+              className="!w-5 !h-5"
+              color={isActive ? "bg-black" : "bg-gray-800"}
+            />
+          </div>
           {text}
         </a>
       </Link>

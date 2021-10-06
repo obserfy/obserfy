@@ -1,4 +1,5 @@
 import Image from "next/image"
+import useGetChildren from "$hooks/api/useGetChildren"
 import Icon from "$components/Icon/Icon"
 import useGetChild from "$hooks/api/useGetChild"
 import useGetUser from "$hooks/api/useGetUser"
@@ -8,6 +9,7 @@ const TopBar = () => {
   const studentId = useQueryString("studentId")
   const { data: student } = useGetChild(studentId)
   const { data: user } = useGetUser()
+  const { data: students } = useGetChildren()
 
   return (
     <div className="sm:sticky sm:top-0 z-10 h-16 bg-surface sm:border-b">
