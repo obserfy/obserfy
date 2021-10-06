@@ -8,7 +8,7 @@ const Icon: FC<{
   <div
     role="img"
     aria-hidden="true"
-    className={`w-4 h-4 ${color} ${className}`}
+    className={`w-5 h-5 ${color} ${className}`}
     style={{
       maskImage: `url(${src})`,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment

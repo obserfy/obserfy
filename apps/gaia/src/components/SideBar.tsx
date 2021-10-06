@@ -2,6 +2,7 @@ import clsx from "clsx"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { FC } from "react"
+import { navigationItems } from "$lib/navigation"
 import { useQueryString } from "$hooks/useQueryString"
 import Icon from "$components/Icon/Icon"
 
@@ -11,32 +12,9 @@ const SideBar = () => {
   return (
     <nav className="hidden sm:block fixed top-0 bottom-0 left-0 pt-16 w-sidebar h-screen bg-background border-r">
       <ul className="py-3">
-        <Item
-          href={`/${studentId}`}
-          text="Home"
-          iconSrc="/icons/home.svg"
-          exact
-        />
-        <Item
-          href={`/${studentId}/lesson-plan`}
-          text="Lessons"
-          iconSrc="/icons/book.svg"
-        />
-        <Item
-          href={`/${studentId}/reports`}
-          text="Reports"
-          iconSrc="/icons/folder.svg"
-        />
-        <Item
-          href={`/${studentId}/assessments`}
-          text="Records"
-          iconSrc="/icons/archive.svg"
-        />
-        <Item
-          href={`/${studentId}/images`}
-          text="Media"
-          iconSrc="/icons/camera.svg"
-        />
+        {navigationItems(studentId).map((item) => (
+          <Item key={item.href} {...item} />
+        ))}
       </ul>
     </nav>
   )
