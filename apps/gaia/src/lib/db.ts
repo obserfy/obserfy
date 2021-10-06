@@ -10,6 +10,9 @@ export const findStudentProgressReports = async (student_id: string) => {
 
 export const findRelatedStudents = async (userEmail: string) => {
   return prisma.students.findMany({
+    include: {
+      images: { select: { object_key: true } },
+    },
     where: {
       guardian_to_students: {
         some: {
