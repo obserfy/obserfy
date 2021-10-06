@@ -10,8 +10,6 @@ const SideBar = () => {
 
   return (
     <nav className="hidden sm:block sticky top-0 left-0 w-80 h-screen bg-background border-r">
-      <div className="h-16 border-b" />
-
       <ul className="p-2 ">
         <Item
           href={`/${studentId}`}
