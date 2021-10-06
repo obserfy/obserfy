@@ -7,18 +7,16 @@ import TopBar from "$components/TopBar"
 const BaseLayout: FC<{
   title: string
 }> = ({ title, children }) => (
-  <div>
+  <>
     <SEO title={title} />
-    <TopBar />
 
+    <TopBar />
     <div className="sm:flex w-full">
       <SideBar />
-
-      <main className="w-full">{children}</main>
+      <main className="sm:pl-sidebar w-full">{children}</main>
     </div>
-
     <BottomNavigationBar />
-  </div>
+  </>
 )
 
 export default BaseLayout

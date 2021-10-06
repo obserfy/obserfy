@@ -11,8 +11,8 @@ const TopBar = () => {
 
   return (
     <div className="sm:sticky sm:top-0 z-10 h-16 bg-surface sm:border-b">
-      <div className="flex items-center px-4 h-16">
-        <div className="hidden sm:block mr-4 w-64 font-bold text-gray-600 border-r">
+      <div className="flex items-center px-4 sm:pl-0 h-16">
+        <div className="hidden sm:block px-4 mr-4 w-sidebar font-bold text-gray-600 border-r">
           {student?.schoolName}
         </div>
 
@@ -47,7 +47,7 @@ const TopBar = () => {
             className="rounded-full"
           />
 
-          <p className="hidden sm:block ml-2 text-sm font-semibold text-gray-700">
+          <p className="hidden md:block ml-2 text-sm font-semibold text-gray-700">
             {user?.name}
           </p>
         </div>

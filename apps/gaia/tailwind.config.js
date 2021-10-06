@@ -1,8 +1,10 @@
 module.exports = {
-  mode: "jit",
-  purge: ["**/*.tsx"],
+  content: ["**/*.tsx"],
   theme: {
     extend: {
+      spacing: {
+        sidebar: 290,
+      },
       colors: {
         surface: "#fff",
         background: "#fafafa",

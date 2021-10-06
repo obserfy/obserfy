@@ -18,7 +18,7 @@
     "@prisma/client": "^3.1.1",
     "@sentry/nextjs": "6.12.0",
     "@svgr/webpack": "5.5.0",
-    "@tailwindcss/typography": "0.4.1",
+    "@tailwindcss/typography": "next",
     "@types/body-scroll-lock": "3.1.0",
     "@types/dompurify": "2.2.3",
     "@types/formidable": "1.2.3",
@@ -65,7 +65,7 @@
     "react-ssr-prepass": "npm:preact-ssr-prepass@1.2.0",
     "sharp": "^0.29.1",
     "snarkdown": "2.0.0",
-    "tailwindcss": "2.2.9",
+    "tailwindcss": "next",
     "ts-is-present": "1.2.1",
     "typescript": "4.3.5",
     "uuid": "8.3.2"
