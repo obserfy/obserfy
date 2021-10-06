@@ -63,7 +63,7 @@ const Item: FC<{
       <Link href={href}>
         <a
           className={clsx(
-            "flex items-center px-4 rounded-lg",
+            "flex items-center px-3 rounded-lg",
             isActive
               ? "font-semibold text-emerald-600"
               : "text-gray-800 hover:text-green-800"
@@ -72,13 +72,13 @@ const Item: FC<{
           <div
             className={clsx(
               "p-1 mr-3 rounded-lg",
-              isActive && "bg-emerald-300"
+              isActive && "bg-emerald-200"
             )}
           >
             <Icon
               src={iconSrc}
               className="!w-5 !h-5"
-              color={isActive ? "bg-black" : "bg-gray-800"}
+              color={isActive ? "bg-black opacity-80" : "bg-gray-800"}
             />
           </div>
           {text}
