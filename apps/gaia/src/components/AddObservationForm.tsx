@@ -40,7 +40,7 @@ const AddObservationForm: FC<{
       </div>
       <div className="flex ml-auto">
         <Button
-          outline
+          variant="outline"
           className="mt-3 mr-3 ml-auto"
           onClick={onDismiss}
           disabled={loading}

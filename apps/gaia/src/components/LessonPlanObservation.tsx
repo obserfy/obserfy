@@ -29,7 +29,7 @@ const LessonPlanObservation: FC<{
             <div className="flex mt-2 w-full item-center">
               <div className="text-sm">{createdAt.format("HH:mm")}</div>
               <Button
-                outline
+                variant="outline"
                 className="p-0 mr-3 ml-auto text-sm underline border-none cursor-pointer"
                 onClick={() => setIsEditing(true)}
               >

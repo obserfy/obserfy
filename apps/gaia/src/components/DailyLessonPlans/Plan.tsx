@@ -77,7 +77,7 @@ const Plan: FC<Props> = ({
         />
       ) : (
         <Button
-          outline
+          variant="outline"
           className="mt-3 mr-3 ml-auto"
           onClick={() => setShowAddObservationForm(true)}
         >

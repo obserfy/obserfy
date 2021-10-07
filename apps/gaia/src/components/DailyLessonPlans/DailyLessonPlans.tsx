@@ -21,15 +21,25 @@ const DailyLessonPlans: FC = () => {
         <div className="text-xs font-bold text-gray-700">
           {date.format("dddd, DD MMM YYYY")}
         </div>
-        <Button className="ml-auto" outline iconOnly onClick={changeDate(-1)}>
+        <Button
+          className="ml-auto"
+          variant="outline"
+          iconOnly
+          onClick={changeDate(-1)}
+        >
           <Icon src="/icons/chevron-left.svg" />
         </Button>
-        <Button className="ml-1" outline iconOnly onClick={changeDate(1)}>
+        <Button
+          className="ml-1"
+          variant="outline"
+          iconOnly
+          onClick={changeDate(1)}
+        >
           <Icon src="/icons/chevron-right.svg" />
         </Button>
         <Button
           className="ml-1 text-sm font-normal"
-          outline
+          variant="outline"
           small
           onClick={() => setDate(dayjs())}
           disabled={date.isSame(dayjs(), "day")}

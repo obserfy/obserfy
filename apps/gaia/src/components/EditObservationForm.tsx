@@ -27,8 +27,8 @@ export const EditObservationForm: FC<{
       <div className="flex mt-2">
         <Button
           data-cy="delete-observation"
-          iconOnly
-          outline
+          // iconOnly TODO: create icon button component
+          variant="outline"
           className="px-2 mr-2 text-red-700"
           onClick={() => setShowDeleteDialog(true)}
           disabled={patchObservation.isLoading}
@@ -36,7 +36,7 @@ export const EditObservationForm: FC<{
           <Icon src="/icons/trash.svg" />
         </Button>
         <Button
-          outline
+          variant="outline"
           className="mr-2 ml-auto"
           onClick={onDismiss}
           disabled={patchObservation.isLoading}
@@ -62,7 +62,7 @@ export const EditObservationForm: FC<{
           <div className="mx-6 mt-3 mb-6 text-xl">Delete this observation?</div>
           <div className="flex w-full">
             <Button
-              outline
+              variant="outline"
               onClick={() => setShowDeleteDialog(false)}
               disabled={deleteObservation.isLoading}
             >
