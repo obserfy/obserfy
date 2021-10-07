@@ -1,8 +1,8 @@
-import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-import { NextPage } from "next"
 import Image from "next/image"
 import { FC, useState } from "react"
 import { isFilled } from "ts-is-present"
+import { withPageAuthRequired } from "$lib/nextjs-auth0"
+import { SSR } from "$lib/next"
 import { GetChildTimelineResponse } from "$api/children/[childId]/timeline"
 import Icon from "$components/Icon/Icon"
 import ImagePreview from "$components/ImagePreview/ImagePreview"
@@ -14,24 +14,7 @@ import { findChildObservationsGroupedByDate } from "../../db/queries"
 import dayjs from "../../utils/dayjs"
 import { generateOriginalUrl, generateUrl } from "../../utils/imgproxy"
 
-interface Props {
-  timeline: Array<{
-    date: string
-    observations: Array<{
-      id: string
-      shortDesc: string
-      longDesc: string
-      areaName: string
-      images: Array<{
-        id: string
-        thumbnailUrl: string
-        originalImageUrl: string
-      }>
-    }>
-  }>
-}
-
-const IndexPage: NextPage<Props> = ({ timeline }) => {
+const IndexPage: SSR<typeof getServerSideProps> = ({ timeline }) => {
   const studentId = useQueryString("studentId")
   const [imagePreview, setImagePreview] = useState<ChildImage>()
 

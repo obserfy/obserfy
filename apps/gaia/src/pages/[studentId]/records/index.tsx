@@ -34,6 +34,11 @@ const RecordsPage = () => {
           </nav>
         </div>
       </div>
+
+      <div className="flex">
+        <div />
+        <div />
+      </div>
     </BaseLayout>
   )
 }

@@ -38,3 +38,21 @@ export const findOneOfRelatedStudent = async (userEmail: string) => {
     },
   })
 }
+
+export const findStudentByStudentIdAndUserEmail = (
+  id: string,
+  userEmail: string
+) => {
+  return prisma.students.findFirst({
+    where: {
+      id,
+      guardian_to_students: {
+        some: {
+          guardians: {
+            email: userEmail,
+          },
+        },
+      },
+    },
+  })
+}
