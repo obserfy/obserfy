@@ -3,12 +3,11 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        sidebar: 290,
+        sidebar: 240,
       },
       colors: {
         surface: "#fff",
         background: "#fafafa",
-        primary: "#00e399",
         onPrimary: "#000",
         overlay: "rgba(0, 0, 0, 0.8)",
 
@@ -24,6 +23,19 @@ module.exports = {
 
           mastered: "#00c853",
           onMastered: "black",
+        },
+
+        primary: {
+          50: "#ecfdf5",
+          100: "#d1fae5",
+          200: "#a7f3d0",
+          300: "#6ee7b7",
+          400: "#34d399",
+          500: "#10b981",
+          600: "#059669",
+          700: "#047857",
+          800: "#065f46",
+          900: "#064e3b",
         },
       },
 
@@ -90,8 +102,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      heading: ["Open Sans"],
-      body: ["Open Sans"],
+      heading: ["Source Sans Pro"],
+      body: ["Source Sans Pro"],
     },
   },
   // variants: {

@@ -44,7 +44,7 @@ const SelectedStudent: FC<{ student?: Student }> = ({ student }) => (
       height={20}
       className="rounded-full"
     />
-    <p className="ml-3 font-semibold leading-none text-gray-900 truncate max-w-[140px] md:max-w-[200px]">
+    <p className="ml-3 font-semibold text-gray-900 truncate max-w-[140px] md:max-w-[200px]">
       {student?.name}
     </p>
     <Icon

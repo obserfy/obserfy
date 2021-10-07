@@ -35,7 +35,7 @@ const Item: FC<{
     <li
       className={clsx(
         "flex flex-col flex-grow-0 justify-center mb-2",
-        isActive && "border-r-2 border-emerald-500"
+        isActive && "border-r-2 border-primary-500"
       )}
     >
       <Link href={href}>
@@ -43,14 +43,14 @@ const Item: FC<{
           className={clsx(
             "flex items-center px-3 rounded-lg",
             isActive
-              ? "font-semibold text-emerald-600"
+              ? "font-semibold text-primary-600"
               : "text-gray-800 hover:text-green-800"
           )}
         >
           <div
             className={clsx(
               "p-1 mr-3 rounded-lg",
-              isActive && "bg-emerald-200"
+              isActive && "bg-primary-200"
             )}
           >
             <Icon
