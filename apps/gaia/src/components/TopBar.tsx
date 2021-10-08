@@ -19,8 +19,6 @@ const TopBar = () => {
   const { data: user } = useGetUser()
   const { data: students } = useGetChildren()
 
-  const selectedStudent = students?.find(({ id }) => id === studentId)
-
   return (
     <div className="sm:sticky sm:top-0 z-10 h-16 bg-surface sm:border-b">
       <div className="flex items-center px-4 sm:pl-0 h-16">
@@ -31,7 +29,7 @@ const TopBar = () => {
         {students && student && (
           <StudentSelector
             students={students}
-            selectedStudent={selectedStudent}
+            selectedStudent={student}
             setSelectedStudent={(s) => {
               router.push(router.asPath.replace(student.id, s.id))
             }}

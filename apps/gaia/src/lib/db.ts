@@ -53,3 +53,23 @@ export const findStudentAndGuardianById = (id: string, userEmail: string) => {
     where: { id },
   })
 }
+
+export const findStudentObservations = (studentId: string) => {
+  return prisma.observations.findMany({
+    where: {
+      student_id: studentId,
+      visible_to_guardians: true,
+    },
+    orderBy: {
+      event_time: "desc",
+    },
+    include: {
+      areas: true,
+      observation_to_images: {
+        include: {
+          images: true,
+        },
+      },
+    },
+  })
+}

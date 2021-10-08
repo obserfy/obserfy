@@ -2,7 +2,6 @@
 @tailwind components;
 
 body {
-  @apply text-sm;
   font-family: "Source Sans Pro", system-ui, -apple-system, Segoe UI, Roboto,
     Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont,
     "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji",

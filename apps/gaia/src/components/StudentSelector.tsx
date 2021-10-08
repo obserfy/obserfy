@@ -8,6 +8,7 @@ interface Student {
   id: string
   name: string
   profilePic: string
+  schoolName?: string
 }
 
 const StudentSelector: FC<{
@@ -37,19 +38,24 @@ const StudentSelector: FC<{
 )
 
 const SelectedStudent: FC<{ student?: Student }> = ({ student }) => (
-  <Listbox.Button className="flex items-center p-2 pl-3 mr-4 sm:text-sm text-left bg-white rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 shadow-sm cursor-pointer focus:outline-none">
+  <Listbox.Button className="flex items-center p-0.5 mr-4 sm:text-sm text-left bg-white rounded-full focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 cursor-pointer focus:outline-none">
     <StudentProfile
       src={student?.profilePic}
-      width={20}
-      height={20}
+      width={32}
+      height={32}
       className="rounded-full"
     />
-    <p className="ml-3 font-semibold text-gray-900 truncate max-w-[140px] md:max-w-[200px]">
-      {student?.name}
-    </p>
+    <div>
+      <p className="ml-3 text-sm font-semibold text-gray-900 truncate max-w-[140px] md:max-w-[200px]">
+        {student?.name}
+      </p>
+      <p className="sm:hidden ml-3 text-xs text-gray-700 truncate max-w-[140px] md:max-w-[200px]">
+        {student?.schoolName}
+      </p>
+    </div>
     <Icon
       src="/icons/chevron-down.svg"
-      className="flex-shrink-0 ml-1 opacity-70 !w-6 !h-6"
+      className="flex-shrink-0 ml-2 opacity-70 !w-6 !h-6"
     />
   </Listbox.Button>
 )
