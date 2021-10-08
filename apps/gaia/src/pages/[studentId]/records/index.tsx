@@ -5,7 +5,7 @@ import { findStudentObservations } from "$lib/db"
 import { getStudentId, SSR } from "$lib/next"
 
 const RecordsPage: SSR<typeof getServerSideProps> = ({ observations }) => (
-  <RecordsLayout>
+  <RecordsLayout title="Observations">
     <div className="sm:flex items-start m-4">
       <div className="hidden lg:block sticky top-0 flex-shrink-0 w-1/3">
         <h2>Areas</h2>

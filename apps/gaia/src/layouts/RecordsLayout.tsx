@@ -20,14 +20,14 @@ const getTabs = (studentId: string) => [
   },
 ]
 
-const RecordsLayout: FC = ({ children }) => {
+const RecordsLayout: FC<{ title: string }> = ({ title, children }) => {
   const { asPath } = useRouter()
   const studentId = useQueryString("studentId")
 
   const tabs = getTabs(studentId)
 
   return (
-    <BaseLayout title="Records | Observations" className="max-w-7xl">
+    <BaseLayout title={`${title} | Records`} className="max-w-7xl">
       <div className="overflow-hidden relative mx-4 mt-2 sm:mt-4 rounded-2xl shadow-md">
         <RecordsHeroImage className="absolute inset-0" />
 
