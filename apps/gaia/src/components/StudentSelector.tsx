@@ -46,10 +46,10 @@ const SelectedStudent: FC<{ student?: Student }> = ({ student }) => (
       className="rounded-full"
     />
     <div>
-      <p className="ml-3 text-sm font-semibold text-gray-900 truncate max-w-[140px] md:max-w-[200px]">
+      <p className="ml-3 text-sm font-semibold leading-tight text-gray-900 truncate max-w-[140px] md:max-w-[200px]">
         {student?.name}
       </p>
-      <p className="sm:hidden ml-3 text-xs text-gray-700 truncate max-w-[140px] md:max-w-[200px]">
+      <p className="sm:hidden ml-3 text-xs leading-tight text-gray-600 truncate max-w-[140px] md:max-w-[200px]">
         {student?.schoolName}
       </p>
     </div>
