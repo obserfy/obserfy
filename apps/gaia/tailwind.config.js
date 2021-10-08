@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       spacing: {
         sidebar: 240,
+        "bottom-navigation": 100,
       },
       colors: {
         surface: "#fff",
