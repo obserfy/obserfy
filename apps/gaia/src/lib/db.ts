@@ -39,20 +39,17 @@ export const findOneOfRelatedStudent = async (userEmail: string) => {
   })
 }
 
-export const findStudentByStudentIdAndUserEmail = (
-  id: string,
-  userEmail: string
-) => {
+export const findStudentAndGuardianById = (id: string, userEmail: string) => {
   return prisma.students.findFirst({
-    where: {
-      id,
+    include: {
       guardian_to_students: {
-        some: {
+        where: {
           guardians: {
             email: userEmail,
           },
         },
       },
     },
+    where: { id },
   })
 }

@@ -1,8 +1,6 @@
 import Image from "next/image"
 import { FC, useState } from "react"
 import { isFilled } from "ts-is-present"
-import { withPageAuthRequired } from "$lib/nextjs-auth0"
-import { SSR } from "$lib/next"
 import { GetChildTimelineResponse } from "$api/children/[childId]/timeline"
 import Icon from "$components/Icon/Icon"
 import ImagePreview from "$components/ImagePreview/ImagePreview"
@@ -10,6 +8,8 @@ import Markdown from "$components/Markdown/Markdown"
 import { ChildImage } from "$hooks/api/useGetChildImages"
 import { useQueryString } from "$hooks/useQueryString"
 import BaseLayout from "$layouts/BaseLayout"
+import { withAuthorization } from "$lib/auth"
+import { SSR } from "$lib/next"
 import { findChildObservationsGroupedByDate } from "../../db/queries"
 import dayjs from "../../utils/dayjs"
 import { generateOriginalUrl, generateUrl } from "../../utils/imgproxy"
@@ -98,37 +98,31 @@ const ObservationList: FC<{
   </div>
 )
 
-export const getServerSideProps = withPageAuthRequired({
-  async getServerSideProps({ params }) {
-    const data = await findChildObservationsGroupedByDate(
-      params?.studentId as string
-    )
+export const getServerSideProps = withAuthorization(async ({ params }) => {
+  const data = await findChildObservationsGroupedByDate(
+    params?.studentId as string
+  )
 
-    const timeline = data.map(({ date, observations }) => ({
-      date: date.toISOString(),
-      observations: observations.map(
-        ({ id, long_desc, short_desc, images, area_name }) => ({
-          id,
-          shortDesc: short_desc,
-          longDesc: long_desc ?? "",
-          areaName: area_name ?? "",
-          images: images
-            .filter(isFilled)
-            .map(({ id: imageId, object_key }) => ({
-              id: imageId,
-              thumbnailUrl: generateUrl(object_key, 100, 100),
-              originalImageUrl: generateOriginalUrl(object_key),
-            })),
-        })
-      ),
-    }))
+  const timeline = data.map(({ date, observations }) => ({
+    date: date.toISOString(),
+    observations: observations.map(
+      ({ id, long_desc, short_desc, images, area_name }) => ({
+        id,
+        shortDesc: short_desc,
+        longDesc: long_desc ?? "",
+        areaName: area_name ?? "",
+        images: images.filter(isFilled).map(({ id: imageId, object_key }) => ({
+          id: imageId,
+          thumbnailUrl: generateUrl(object_key, 100, 100),
+          originalImageUrl: generateOriginalUrl(object_key),
+        })),
+      })
+    ),
+  }))
 
-    return {
-      props: {
-        timeline,
-      },
-    }
-  },
+  return {
+    props: { timeline },
+  }
 })
 
 export default IndexPage
