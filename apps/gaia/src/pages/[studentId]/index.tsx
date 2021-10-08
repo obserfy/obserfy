@@ -11,7 +11,7 @@ import BaseLayout from "$layouts/BaseLayout"
 import { withAuthorization } from "$lib/auth"
 import { SSR } from "$lib/next"
 import { findChildObservationsGroupedByDate } from "../../db/queries"
-import dayjs from "../../utils/dayjs"
+import dayjs from "$lib/dayjs"
 import { generateOriginalUrl, generateUrl } from "../../utils/imgproxy"
 
 const IndexPage: SSR<typeof getServerSideProps> = ({ timeline }) => {

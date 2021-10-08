@@ -4,7 +4,7 @@ import { date } from "io-ts-types"
 import { nullable } from "io-ts/Type"
 import { LessonPlan } from "../domain"
 import { isEmpty } from "../utils/array"
-import dayjs from "../utils/dayjs"
+import dayjs from "$lib/dayjs"
 import { query, typedQuery } from "./pg"
 
 /** @DEPRECATED replaced by @lib/db */

@@ -5,7 +5,7 @@ import useGetAllLessonPlans from "../../hooks/api/useGetAllLessonPlans"
 import { useQueryString } from "../../hooks/useQueryString"
 import { GetChildPlansResponse } from "../../pages/api/children/[childId]/plans/all"
 import { isEmpty } from "../../utils/array"
-import dayjs from "../../utils/dayjs"
+import dayjs from "$lib/dayjs"
 
 const AllLessonPlans: FC = () => {
   const [search, setSearch] = useState("")

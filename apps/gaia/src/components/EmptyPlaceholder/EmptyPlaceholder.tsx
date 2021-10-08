@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { FC } from "react"
-import { Dayjs } from "../../utils/dayjs"
+import { Dayjs } from "$lib/dayjs"
 
 interface Props {
   loading: boolean

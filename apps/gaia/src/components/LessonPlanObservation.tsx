@@ -1,5 +1,5 @@
 import { FC, useState } from "react"
-import { Dayjs } from "../utils/dayjs"
+import { Dayjs } from "$lib/dayjs"
 import Button from "./Button/Button"
 import { EditObservationForm } from "./EditObservationForm"
 import Markdown from "./Markdown/Markdown"

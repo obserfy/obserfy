@@ -130,7 +130,7 @@ const EmptyState: FC<{
   <div className="flex flex-col items-center pb-8 mx-auto">
     <EmptyGalleryIllustration loading={isLoading} />
     <label
-      className="flex items-center py-2 px-6 text-sm text-onPrimary bg-primary rounded border shadow-xs"
+      className="flex items-center py-2 px-6 text-sm text-onPrimary rounded border bg-primary shadow-xs"
       htmlFor="upload-image-small"
     >
       <Icon src="/icons/upload.svg" className="mr-3" />

@@ -1,6 +1,6 @@
 import { FC, useState } from "react"
 import { isEmpty } from "../../utils/array"
-import dayjs from "../../utils/dayjs"
+import dayjs from "$lib/dayjs"
 import AddObservationForm from "../AddObservationForm"
 import Button from "../Button/Button"
 import Icon from "../Icon/Icon"

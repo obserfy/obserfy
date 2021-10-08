@@ -4,7 +4,7 @@ import useGetChild from "../../hooks/api/useGetChild"
 import { ChildImage } from "../../hooks/api/useGetChildImages"
 import useGetObservationsByImage from "../../hooks/api/useGetImageObservation"
 import useBodyScrollLock from "../../hooks/useBodyScrollLock"
-import dayjs from "../../utils/dayjs"
+import dayjs from "$lib/dayjs"
 import Icon from "../Icon/Icon"
 
 const ImagePreview: FC<{

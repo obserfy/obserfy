@@ -1,8 +1,8 @@
-import dayjs from "dayjs"
 import RecordsLayout from "$layouts/RecordsLayout"
 import { withAuthorization } from "$lib/auth"
 import { findStudentObservations } from "$lib/db"
 import { getStudentId, SSR } from "$lib/next"
+import dayjs from "$lib/dayjs"
 
 const RecordsPage: SSR<typeof getServerSideProps> = ({ observations }) => (
   <RecordsLayout title="Observations">

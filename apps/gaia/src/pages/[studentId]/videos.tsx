@@ -10,7 +10,7 @@ import useGetStudentVideos from "$hooks/api/useGetChildVideos"
 import useBodyScrollLock from "$hooks/useBodyScrollLock"
 import { useQueryString } from "$hooks/useQueryString"
 import BaseLayout from "$layouts/BaseLayout"
-import dayjs from "../../utils/dayjs"
+import dayjs from "$lib/dayjs"
 
 const VideosPage = () => {
   const studentId = useQueryString("studentId")
