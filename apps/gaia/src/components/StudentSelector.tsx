@@ -38,7 +38,7 @@ const StudentSelector: FC<{
 )
 
 const SelectedStudent: FC<{ student?: Student }> = ({ student }) => (
-  <Listbox.Button className="flex items-center p-0.5 mr-4 sm:text-sm text-left bg-white rounded-full focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 cursor-pointer focus:outline-none">
+  <Listbox.Button className="flex items-center p-0.5 mr-4 sm:text-sm text-left rounded-full focus:border-primary-500 focus:ring-1 focus:ring-primary-500 cursor-pointer focus:outline-none">
     <StudentProfile
       src={student?.profilePic}
       width={32}
@@ -64,7 +64,7 @@ const Option: FC<Student> = (student) => (
   <Listbox.Option
     className={({ active }) =>
       clsx(
-        active ? "text-white bg-indigo-600" : "text-gray-900",
+        active ? "text-white bg-primary-600" : "text-gray-900",
         "relative py-2 pr-9 pl-3 cursor-pointer select-none"
       )
     }
@@ -92,7 +92,7 @@ const Option: FC<Student> = (student) => (
         {selected ? (
           <span
             className={clsx(
-              active ? "text-white" : "text-indigo-600",
+              active ? "text-white" : "text-primary-600",
               "flex absolute inset-y-0 right-0 items-center pr-4"
             )}
           >

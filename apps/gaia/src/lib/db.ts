@@ -73,3 +73,21 @@ export const findStudentObservations = (studentId: string) => {
     },
   })
 }
+
+export const findCurriculumAreasByStudentId = (studentId: string) => {
+  return prisma.areas.findMany({
+    where: {
+      curriculums: {
+        schools: {
+          some: {
+            students: {
+              some: {
+                id: studentId,
+              },
+            },
+          },
+        },
+      },
+    },
+  })
+}
