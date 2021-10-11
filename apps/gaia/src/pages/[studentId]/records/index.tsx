@@ -1,5 +1,7 @@
 import { useRouter } from "next/router"
 import { ChangeEventHandler, useState } from "react"
+import TextFieldWithIcon from "$components/TextFieldWithIcon"
+import Icon from "$components/Icon/Icon"
 import { useQueryString } from "$hooks/useQueryString"
 import RecordsLayout from "$layouts/RecordsLayout"
 import { withAuthorization } from "$lib/auth"
@@ -32,10 +34,12 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
   const areaQuery = useQueryString("area")
   const fromQuery = useQueryString("from")
   const toQuery = useQueryString("to")
+  const searchQuery = useQueryString("search")
 
   const [area, setArea] = useState(areaQuery ?? "all")
   const [from, setFrom] = useState(dayjs(fromQuery || oldestDate))
   const [to, setTo] = useState(toQuery ? dayjs(toQuery) : today)
+  const [search, setSearch] = useState(searchQuery || "")
 
   const handleAreaChange: ChangeEventHandler<HTMLSelectElement> = async (e) => {
     await setQueries({ area: e.target.value })
@@ -54,10 +58,35 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
     setTo(value)
   }
 
+  const handleChangeSearch: ChangeEventHandler<HTMLInputElement> = async (
+    e
+  ) => {
+    const { value } = e.target
+    await setQueries({ search: value })
+    setSearch(value)
+  }
+
   return (
     <RecordsLayout title="Observations">
       <div className="sm:flex items-start m-4">
-        <div className="hidden lg:block sticky top-20 flex-shrink-0 mr-4 w-1/3 rounded-xl">
+        <div className="hidden sm:block sticky top-20 flex-shrink-0 p-4 mr-4 mb-6 w-full sm:w-1/3 bg-gray-100 rounded-xl">
+          <h2 className="flex justify-center items-center mb-3 font-semibold leading-none opacity-50">
+            <Icon
+              src="/icons/filter.svg"
+              className="mr-1"
+              color="bg-gray-800"
+            />
+            Filters
+          </h2>
+
+          <TextFieldWithIcon
+            label="Search"
+            name="search"
+            value={search}
+            onChange={handleChangeSearch}
+            placeholder={`"Reading ..."`}
+          />
+
           <label htmlFor="areas">
             <span className="block text-sm font-medium text-gray-700">
               Area
