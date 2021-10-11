@@ -1,7 +1,7 @@
-import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Image from "next/image"
 import { ChangeEventHandler, FC, useState } from "react"
 import { v4 as uuidv4 } from "uuid"
+import { withPageAuthRequired } from "$lib/auth"
 import Icon from "$components/Icon/Icon"
 import ImagePreview from "$components/ImagePreview/ImagePreview"
 import useGetChild from "$hooks/api/useGetChild"
@@ -168,4 +168,6 @@ const EmptyGalleryIllustration: FC<{ loading: boolean }> = ({ loading }) => (
   </div>
 )
 
-export default withPageAuthRequired(GalleryPage)
+export const getServerSideProps = withPageAuthRequired()
+
+export default GalleryPage

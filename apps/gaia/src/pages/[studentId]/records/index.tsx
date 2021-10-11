@@ -56,13 +56,10 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
     <RecordsLayout title="Observations">
       <div className="sm:flex items-start m-4">
         <div className="hidden lg:block sticky top-20 flex-shrink-0 mr-4 w-1/3 rounded-xl">
-          <div>
-            <label
-              htmlFor="areas"
-              className="block text-sm font-medium text-gray-700"
-            >
+          <label htmlFor="areas">
+            <span className="block text-sm font-medium text-gray-700">
               Area
-            </label>
+            </span>
             <select
               id="areas"
               name="areas"
@@ -78,16 +75,16 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
                 </option>
               ))}
             </select>
-          </div>
+          </label>
 
           <div className="isolate mt-4 -space-y-px bg-white rounded-md shadow-sm">
-            <div className="relative focus-within:z-10 py-2 px-3 rounded-md rounded-b-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600">
-              <label
-                htmlFor="date-from"
-                className="block text-sm font-medium text-gray-700"
-              >
+            <label
+              htmlFor="date-from"
+              className="relative focus-within:z-10 py-2 px-3 rounded-md rounded-b-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+            >
+              <span className="block text-sm font-medium text-gray-700">
                 From
-              </label>
+              </span>
               <input
                 type="date"
                 name="date-from"
@@ -98,14 +95,14 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
                 max={to.format("YYYY-MM-DD")}
                 onChange={handleFromChange}
               />
-            </div>
-            <div className="relative focus-within:z-10 py-2 px-3 rounded-md rounded-t-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600">
-              <label
-                htmlFor="date-from"
-                className="block w-full text-sm font-medium text-gray-700"
-              >
+            </label>
+            <label
+              htmlFor="date-from"
+              className="relative focus-within:z-10 py-2 px-3 rounded-md rounded-t-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+            >
+              <span className="block w-full text-sm font-medium text-gray-700">
                 To
-              </label>
+              </span>
               <input
                 type="date"
                 name="date-to"
@@ -116,7 +113,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
                 max={today.format("YYYY-MM-DD")}
                 onChange={handleToChange}
               />
-            </div>
+            </label>
           </div>
         </div>
 

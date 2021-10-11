@@ -1,7 +1,7 @@
-import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Image from "next/image"
 import Link from "next/link"
 import { FC, useState } from "react"
+import { withPageAuthRequired } from "$lib/auth"
 import Button from "$components/Button/Button"
 import Chip from "$components/Chip/Chip"
 import Icon from "$components/Icon/Icon"
@@ -143,4 +143,6 @@ const LoadingState: FC = () => (
   </div>
 )
 
-export default withPageAuthRequired(ProgressPage)
+export const getServerSideProps = withPageAuthRequired()
+
+export default ProgressPage

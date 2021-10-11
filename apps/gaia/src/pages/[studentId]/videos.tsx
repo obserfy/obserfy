@@ -1,6 +1,6 @@
-import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Image from "next/image"
 import { FC, Suspense, useState } from "react"
+import { withPageAuthRequired } from "$lib/auth"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
 import { LazyVideoPlayer } from "$components/LazyVideoPlayer"
@@ -137,4 +137,6 @@ const EmptyState: FC<{ loading: boolean }> = ({ loading }) => (
   </div>
 )
 
-export default withPageAuthRequired(VideosPage)
+export const getServerSideProps = withPageAuthRequired()
+
+export default VideosPage

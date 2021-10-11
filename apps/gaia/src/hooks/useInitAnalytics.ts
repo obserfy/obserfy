@@ -6,7 +6,9 @@ const useInitAnalytics = () => {
 
   useEffect(() => {
     // Setup analytics
-    mixpanel.init("bb93616fa99d71364cdee8cae08d4644")
+    mixpanel.init("bb93616fa99d71364cdee8cae08d4644", {
+      mute: process.env.NODE_ENV !== "production",
+    })
     const pageRoutingAnalytics = (url: string) => {
       mixpanel.track("Loaded a Page", { url })
     }

@@ -1,7 +1,7 @@
 .container {
-    @apply px-3 py-1 border rounded cursor-pointer bg-white;
+  @apply px-3 py-1 border rounded cursor-pointer bg-white;
 }
 
 .active {
-    @apply bg-primary;
+  @apply bg-primary-700;
 }

@@ -1,6 +1,6 @@
-import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Link from "next/link"
 import { FC } from "react"
+import { withPageAuthRequired } from "$lib/auth"
 import Icon from "$components/Icon/Icon"
 import Markdown from "$components/Markdown/Markdown"
 import MaterialStagePill from "$components/MaterialStagePill"
@@ -57,4 +57,6 @@ const Details: FC = () => {
   )
 }
 
-export default withPageAuthRequired(Details)
+export const getServerSideProps = withPageAuthRequired()
+
+export default Details

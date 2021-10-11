@@ -1,4 +1,4 @@
-import { Dayjs } from "./utils/dayjs"
+import { Dayjs } from "$lib/dayjs"
 
 export interface Area {
   id: string

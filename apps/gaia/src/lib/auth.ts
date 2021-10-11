@@ -15,7 +15,7 @@ interface Options<P> {
 }
 
 /** fix withPageAuthRequired type inference */
-function withPageAuthRequired<P>(opts: Options<P>) {
+export function withPageAuthRequired<P>(opts?: Options<P>) {
   return withPageAuthRequiredOriginal(opts) as GetServerSideProps<
     { user?: Claims | null } & P
   >
