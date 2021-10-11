@@ -38,12 +38,14 @@ const RecordsLayout: FC<{ title: string }> = ({ title, children }) => {
               <Link key={tab.name} href={tab.href}>
                 <a
                   className={clsx(
-                    tab.href === asPath
+                    asPath.startsWith(tab.href)
                       ? "text-white bg-black bg-opacity-50"
                       : "text-white bg-black bg-opacity-0 hover:bg-opacity-20 opacity-90",
                     "flex items-center py-2 px-3 text-sm font-medium rounded-md"
                   )}
-                  aria-current={tab.name === asPath ? "page" : undefined}
+                  aria-current={
+                    asPath.startsWith(tab.href) ? "page" : undefined
+                  }
                 >
                   <Icon src={tab.iconSrc} color="bg-white" className="mr-1" />
                   {tab.name}

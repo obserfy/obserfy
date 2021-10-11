@@ -15,3 +15,13 @@ export const getStudentId = (ctx: GetServerSidePropsContext) => {
 
   throw new Error("no student id")
 }
+
+export const getQueryString = (ctx: GetServerSidePropsContext, key: string) => {
+  const value = ctx.query[key]
+
+  if (typeof value === "string" && value !== "") {
+    return value
+  }
+
+  return undefined
+}

@@ -1,4 +1,5 @@
 import prisma from "$lib/prisma"
+import { Dayjs } from "$lib/dayjs"
 
 export const findStudentProgressReports = async (student_id: string) => {
   return prisma.student_progress_reports.findMany({
@@ -54,11 +55,40 @@ export const findStudentAndGuardianById = (id: string, userEmail: string) => {
   })
 }
 
-export const findStudentObservations = (studentId: string) => {
+export const findStudentObservations = (
+  studentId: string,
+  query?: {
+    search?: string
+    area?: string
+    to?: Dayjs
+    from?: Dayjs
+  }
+) => {
   return prisma.observations.findMany({
     where: {
       student_id: studentId,
       visible_to_guardians: true,
+      area_id: query?.area,
+      event_time: {
+        gte: query?.from?.toDate(),
+        lte: query?.to?.toDate(),
+      },
+      OR: !query?.search
+        ? undefined
+        : [
+            {
+              short_desc: {
+                contains: query.search,
+                mode: "insensitive",
+              },
+            },
+            {
+              long_desc: {
+                contains: query.search,
+                mode: "insensitive",
+              },
+            },
+          ],
     },
     orderBy: {
       event_time: "desc",
@@ -70,6 +100,20 @@ export const findStudentObservations = (studentId: string) => {
           images: true,
         },
       },
+    },
+  })
+}
+
+export const findOldestObservationDate = (studentId: string) => {
+  return prisma.observations.findFirst({
+    where: {
+      student_id: studentId,
+    },
+    orderBy: {
+      event_time: "asc",
+    },
+    select: {
+      event_time: true,
     },
   })
 }

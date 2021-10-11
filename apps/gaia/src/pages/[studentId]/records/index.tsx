@@ -7,9 +7,10 @@ import RecordsLayout from "$layouts/RecordsLayout"
 import { withAuthorization } from "$lib/auth"
 import {
   findCurriculumAreasByStudentId,
+  findOldestObservationDate,
   findStudentObservations,
 } from "$lib/db"
-import { getStudentId, SSR } from "$lib/next"
+import { getQueryString, getStudentId, SSR } from "$lib/next"
 import dayjs from "$lib/dayjs"
 
 const today = dayjs()
@@ -148,7 +149,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
           </div>
         </div>
 
-        <ul className="overflow-hidden rounded-xl border divide-y divide-gray-200 shadow-sm">
+        <ul className="overflow-hidden w-full rounded-xl border divide-y divide-gray-200 shadow-sm">
           {observations.map(
             ({ id, short_desc, long_desc, event_time, areas: a }) => (
               <li
@@ -187,22 +188,29 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
 
 export const getServerSideProps = withAuthorization(async (ctx) => {
   const studentId = getStudentId(ctx)
-  const observations = await findStudentObservations(studentId)
-  const areas = await findCurriculumAreasByStudentId(studentId)
+  const search = getQueryString(ctx, "search")
+  const area = getQueryString(ctx, "area")
+  const to = getQueryString(ctx, "to")
+  const from = getQueryString(ctx, "from")
 
-  const firstDate =
-    observations.length > 0
-      ? observations[observations.length - 1].event_time?.toISOString()
-      : undefined
+  const oldestDate = await findOldestObservationDate(studentId)
+  const observations = await findStudentObservations(studentId, {
+    search,
+    area: area === "all" ? undefined : area,
+    to: to ? dayjs(to) : undefined,
+    from: from ? dayjs(from) : undefined,
+  })
+  const areas = await findCurriculumAreasByStudentId(studentId)
 
   return {
     props: {
-      oldestDate: firstDate,
+      oldestDate:
+        oldestDate?.event_time?.toISOString() ?? dayjs().toISOString(),
       areas: areas ?? [],
       observations: observations.map((o) => ({
         ...o,
-        created_date: o.created_date?.toISOString(),
-        event_time: o.event_time?.toISOString(),
+        created_date: o.created_date?.toISOString() ?? "",
+        event_time: o.event_time?.toISOString() ?? "",
       })),
     },
   }
