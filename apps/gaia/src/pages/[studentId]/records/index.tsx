@@ -12,43 +12,45 @@ import dayjs from "$lib/dayjs"
 
 const today = dayjs()
 
-const RecordsPage: SSR<typeof getServerSideProps> = ({
-  observations,
-  areas,
-  oldestObservationDate,
-}) => {
+const useSetQueries = () => {
   const router = useRouter()
-  const areaQuery = useQueryString("area")
-  const fromQuery = useQueryString("from")
-  const toQuery = useQueryString("to")
-
-  const [area, setArea] = useState(areaQuery ?? "all")
-  const [from, setFrom] = useState(
-    fromQuery ? dayjs(fromQuery) : dayjs(oldestObservationDate)
-  )
-  const [to, setTo] = useState(toQuery ? dayjs(toQuery) : today)
-
-  const updateQuery = async (query: any) => {
+  return async (query: any) => {
     await router.push({
       pathname: router.pathname,
       query: { ...router.query, ...query },
     })
   }
+}
+
+const RecordsPage: SSR<typeof getServerSideProps> = ({
+  observations,
+  areas,
+  oldestDate,
+}) => {
+  const setQueries = useSetQueries()
+
+  const areaQuery = useQueryString("area")
+  const fromQuery = useQueryString("from")
+  const toQuery = useQueryString("to")
+
+  const [area, setArea] = useState(areaQuery ?? "all")
+  const [from, setFrom] = useState(dayjs(fromQuery || oldestDate))
+  const [to, setTo] = useState(toQuery ? dayjs(toQuery) : today)
 
   const handleAreaChange: ChangeEventHandler<HTMLSelectElement> = async (e) => {
-    await updateQuery({ area: e.target.value })
+    await setQueries({ area: e.target.value })
     setArea(e.target.value)
   }
 
   const handleFromChange: ChangeEventHandler<HTMLInputElement> = async (e) => {
-    const value = dayjs(e.target.value)
-    await updateQuery({ from: value.format("YYYY-MM-DD") })
+    const value = dayjs(e.target.value || oldestDate)
+    await setQueries({ from: value.format("YYYY-MM-DD") })
     setFrom(value)
   }
 
   const handleToChange: ChangeEventHandler<HTMLInputElement> = async (e) => {
-    const value = dayjs(e.target.value)
-    await updateQuery({ to: value.format("YYYY-MM-DD") })
+    const value = dayjs(e.target.value || today)
+    await setQueries({ to: value.format("YYYY-MM-DD") })
     setTo(value)
   }
 
@@ -80,7 +82,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
           <div className="isolate mt-4 -space-y-px bg-white rounded-md shadow-sm">
             <label
               htmlFor="date-from"
-              className="relative focus-within:z-10 py-2 px-3 rounded-md rounded-b-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+              className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-b-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
             >
               <span className="block text-sm font-medium text-gray-700">
                 From
@@ -91,14 +93,14 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
                 id="date-from"
                 className="block p-0 w-full placeholder-gray-500 text-gray-900 border-0 focus:ring-0"
                 value={from.format("YYYY-MM-DD")}
-                min={dayjs(oldestObservationDate).format("YYYY-MM-DD")}
+                min={dayjs(oldestDate).format("YYYY-MM-DD")}
                 max={to.format("YYYY-MM-DD")}
                 onChange={handleFromChange}
               />
             </label>
             <label
               htmlFor="date-from"
-              className="relative focus-within:z-10 py-2 px-3 rounded-md rounded-t-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+              className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-t-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
             >
               <span className="block w-full text-sm font-medium text-gray-700">
                 To
@@ -166,7 +168,7 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
 
   return {
     props: {
-      oldestObservationDate: firstDate,
+      oldestDate: firstDate,
       areas: areas ?? [],
       observations: observations.map((o) => ({
         ...o,
