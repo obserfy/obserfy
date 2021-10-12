@@ -1,12 +1,9 @@
-import React, { useEffect } from "react"
 import Link from "next/link"
+import React from "react"
+import { useTrack } from "$lib/mixpanel"
 
 const NotFound = () => {
-  useEffect(() => {
-    if (mixpanel.track) {
-      mixpanel.track("404 visited")
-    }
-  }, [])
+  useTrack("404 visited")
 
   return (
     <div className="md:grid md:place-items-center py-16 sm:py-24 px-4 sm:px-6 lg:px-8 min-h-screen bg-white">

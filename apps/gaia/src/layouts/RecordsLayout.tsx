@@ -41,7 +41,7 @@ const RecordsLayout: FC<{ title: string }> = ({ title, children }) => {
                     asPath.startsWith(tab.href)
                       ? "text-white bg-black bg-opacity-50"
                       : "text-white bg-black bg-opacity-0 hover:bg-opacity-20 opacity-90",
-                    "flex items-center py-2 px-3 text-sm font-medium rounded-md"
+                    "flex items-center py-2 px-3 text-sm font-medium rounded-lg"
                   )}
                   aria-current={
                     asPath.startsWith(tab.href) ? "page" : undefined

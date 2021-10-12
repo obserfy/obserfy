@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import { ChangeEventHandler, FC } from "react"
 import Icon from "$components/Icon/Icon"
 
@@ -8,17 +9,35 @@ const TextFieldWithIcon: FC<{
   onChange: ChangeEventHandler<HTMLInputElement>
   placeholder?: string
   containerClassName?: string
+  hideLabel?: boolean
+  inputClassName?: string
 }> = ({
   value,
   name,
   label,
   onChange,
-  placeholder = "",
   containerClassName,
+  hideLabel,
+  inputClassName,
+  placeholder = "",
 }) => (
   <label htmlFor={name} className={`block ${containerClassName}`}>
-    <span className="block text-sm font-medium text-gray-700">{label}</span>
-    <div className="relative mt-1 rounded-md shadow-sm">
+    <span
+      className={clsx(
+        "block text-sm font-medium text-gray-700",
+        hideLabel && "sr-only"
+      )}
+    >
+      {label}
+    </span>
+
+    <div
+      className={clsx(
+        "relative rounded-md shadow-sm",
+        inputClassName,
+        hideLabel || "mt-1 "
+      )}
+    >
       <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
         <Icon
           src="/icons/search.svg"
@@ -30,7 +49,10 @@ const TextFieldWithIcon: FC<{
         type="text"
         name={name}
         id={name}
-        className="block pl-10 w-full sm:text-sm rounded-md border-gray-200 focus:border-primary-500 focus:ring-primary-500"
+        className={clsx(
+          "block pl-10 w-full sm:text-sm rounded-md border-gray-200 focus:border-primary-500 focus:ring-primary-500",
+          inputClassName
+        )}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
