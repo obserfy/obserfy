@@ -82,7 +82,7 @@ const Option: FC<Student> = (student) => (
           <span
             className={clsx(
               selected ? "font-semibold" : "font-normal",
-              "block ml-3 truncate"
+              "block ml-3 text-sm truncate"
             )}
           >
             {student.name}
