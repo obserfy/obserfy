@@ -1,5 +1,6 @@
 import { useRouter } from "next/router"
 import { ChangeEventHandler, useState } from "react"
+import Select from "$components/Select"
 import TextFieldWithIcon from "$components/TextFieldWithIcon"
 import Icon from "$components/Icon/Icon"
 import { useQueryString } from "$hooks/useQueryString"
@@ -86,28 +87,23 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
             value={search}
             onChange={handleChangeSearch}
             placeholder={`"Reading ..."`}
+            containerClassName="mb-2"
           />
 
-          <label htmlFor="areas">
-            <span className="block text-sm font-medium text-gray-700">
-              Area
-            </span>
-            <select
-              id="areas"
-              name="areas"
-              className="block py-2 pr-10 pl-3 mt-1 w-full text-base sm:text-sm rounded-md border-gray-200 focus:border-primary-500 focus:ring-primary-500 shadow-sm focus:outline-none"
-              defaultValue={area}
-              value={area}
-              onChange={handleAreaChange}
-            >
-              <option value="all">All</option>
-              {areas.map(({ id, name }) => (
-                <option key={id} value={id}>
-                  {name}
-                </option>
-              ))}
-            </select>
-          </label>
+          <Select
+            defaultValue={area}
+            value={area}
+            onChange={handleAreaChange}
+            label="Area"
+            name="area"
+          >
+            <option value="all">All</option>
+            {areas.map(({ id, name }) => (
+              <option key={id} value={id}>
+                {name}
+              </option>
+            ))}
+          </Select>
 
           <div className="isolate mt-4 -space-y-px bg-white rounded-md shadow-sm">
             <label

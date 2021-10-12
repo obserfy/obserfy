@@ -7,8 +7,16 @@ const TextFieldWithIcon: FC<{
   value: string
   onChange: ChangeEventHandler<HTMLInputElement>
   placeholder?: string
-}> = ({ value, name, label, onChange, placeholder = "" }) => (
-  <label htmlFor={name} className="block mb-2">
+  containerClassName?: string
+}> = ({
+  value,
+  name,
+  label,
+  onChange,
+  placeholder = "",
+  containerClassName,
+}) => (
+  <label htmlFor={name} className={`block ${containerClassName}`}>
     <span className="block text-sm font-medium text-gray-700">{label}</span>
     <div className="relative mt-1 rounded-md shadow-sm">
       <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
