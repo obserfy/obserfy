@@ -1,22 +1,21 @@
 import { useRouter } from "next/router"
-import { ChangeEventHandler, FC, Fragment, ReactNode, useState } from "react"
-import { Dialog, Transition } from "@headlessui/react"
-import SlideOver from "$components/SlideOver"
+import { ChangeEventHandler, FC, ReactNode, useState } from "react"
 import Button from "$components/Button/Button"
-import useToogle from "$hooks/useToogle"
-import Select from "$components/Select"
-import TextFieldWithIcon from "$components/TextFieldWithIcon"
 import Icon from "$components/Icon/Icon"
+import Select from "$components/Select"
+import SlideOver from "$components/SlideOver"
+import TextFieldWithIcon from "$components/TextFieldWithIcon"
 import { useQueryString } from "$hooks/useQueryString"
+import useToggle from "$hooks/useToggle"
 import RecordsLayout from "$layouts/RecordsLayout"
 import { withAuthorization } from "$lib/auth"
+import dayjs from "$lib/dayjs"
 import {
   findCurriculumAreasByStudentId,
   findOldestObservationDate,
   findStudentObservations,
 } from "$lib/db"
 import { getQueryString, getStudentId, SSR } from "$lib/next"
-import dayjs from "$lib/dayjs"
 
 const today = dayjs()
 
@@ -36,7 +35,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
   oldestDate,
 }) => {
   const setQueries = useSetQueries()
-  const filterSlideOver = useToogle()
+  const filterSlideOver = useToggle()
 
   const areaQuery = useQueryString("area")
   const fromQuery = useQueryString("from")
@@ -285,13 +284,13 @@ const Observation: FC<{
 }> = ({ short_desc, areas, event_time, long_desc }) => (
   <li className="relative py-5 px-4 bg-white hover:bg-primary-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600">
     <div className="flex justify-between space-x-3">
-      <a href="#" className="block truncate focus:outline-none">
+      <button className="block text-left truncate focus:outline-none">
         <span className="absolute inset-0" aria-hidden="true" />
         <p className="font-semibold text-gray-900 truncate">{short_desc}</p>
         <p className="font-semibold text-primary-600 truncate">
           {areas?.name ?? "Others"}
         </p>
-      </a>
+      </button>
 
       <time
         dateTime={event_time}
