@@ -245,7 +245,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
         </ul>
       </div>
 
-      <FilterSlideOver
+      <ObservationFilterSlideOver
         isOpen={filterSlideOver.isOn}
         oldestDate={oldestDate}
         areas={areas}
@@ -263,7 +263,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
   )
 }
 
-const FilterSlideOver: FC<{
+const ObservationFilterSlideOver: FC<{
   isOpen: boolean
   oldestDate: string
   areas: Array<{ id: string; name: string | null }>
