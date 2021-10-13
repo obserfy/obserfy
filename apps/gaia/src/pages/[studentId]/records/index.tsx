@@ -1,7 +1,7 @@
+import { observation_to_images } from "@prisma/client"
 import { useRouter } from "next/router"
 import { ChangeEvent, FC, useEffect, useState } from "react"
-import Markdown from "$components/Markdown/Markdown"
-import dayjs, { Dayjs } from "$lib/dayjs"
+import Image from "next/image"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
 import Select from "$components/Select"
@@ -12,12 +12,14 @@ import { useQueryString } from "$hooks/useQueryString"
 import useToggle from "$hooks/useToggle"
 import RecordsLayout from "$layouts/RecordsLayout"
 import { withAuthorization } from "$lib/auth"
+import dayjs, { Dayjs } from "$lib/dayjs"
 import {
   findCurriculumAreasByStudentId,
   findOldestObservationDate,
   findStudentObservations,
 } from "$lib/db"
 import { getQueryString, getStudentId, SSR } from "$lib/next"
+import { generateOriginalUrl } from "../../../utils/imgproxy"
 import { markdownToHtml } from "../../../utils/markdown"
 
 const today = dayjs()
@@ -222,13 +224,21 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
 
         <ul className="overflow-hidden w-full rounded-xl border divide-y divide-gray-200 shadow-sm">
           {observations.map(
-            ({ id, short_desc, long_desc, event_time, areas: a }) => (
+            ({
+              id,
+              short_desc,
+              long_desc,
+              event_time,
+              areas: a,
+              observation_to_images: img,
+            }) => (
               <Observation
                 key={id}
                 areas={a}
                 short_desc={short_desc}
                 long_desc={long_desc}
                 event_time={event_time}
+                images={img}
               />
             )
           )}
@@ -350,7 +360,8 @@ const Observation: FC<{
   short_desc: string | null
   long_desc: string | null
   areas: { name: string | null } | null
-}> = ({ short_desc, areas, event_time, long_desc }) => (
+  images: Array<{ src: string | null }>
+}> = ({ short_desc, areas, event_time, long_desc, images }) => (
   <li className="relative py-5 px-4 bg-white hover:bg-primary-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600">
     <div className="flex justify-between space-x-3">
       <button className="block text-left truncate focus:outline-none">
@@ -376,6 +387,29 @@ const Observation: FC<{
           dangerouslySetInnerHTML={{ __html: long_desc }}
         />
       )}
+    </div>
+
+    {images.length > 0 && (
+      <h3 className="mt-2 mb-2 font-semibold text-gray-500">Images</h3>
+    )}
+    <div className="flex space-x-2">
+      {images.map(({ src }) => {
+        if (src) {
+          return (
+            <div className="flex w-12 h-12">
+              <Image
+                src={src}
+                width={100}
+                height={100}
+                objectFit="cover"
+                className="block rounded-lg"
+              />
+            </div>
+          )
+        }
+
+        return <div />
+      })}
     </div>
   </li>
 )
@@ -406,6 +440,11 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
         long_desc: o.long_desc ? markdownToHtml(o.long_desc) : o.long_desc,
         created_date: o.created_date?.toISOString() ?? "",
         event_time: o.event_time?.toISOString() ?? "",
+        observation_to_images: o.observation_to_images?.map((image) => ({
+          src: image.images.object_key
+            ? generateOriginalUrl(image.images.object_key)
+            : image.images.object_key,
+        })),
       })),
     },
   }

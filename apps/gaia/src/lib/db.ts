@@ -97,7 +97,11 @@ export const findStudentObservations = (
       areas: true,
       observation_to_images: {
         include: {
-          images: true,
+          images: {
+            select: {
+              object_key: true,
+            },
+          },
         },
       },
     },
