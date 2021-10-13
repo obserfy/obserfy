@@ -1,5 +1,14 @@
+import { Dayjs } from "dayjs"
 import { useRouter } from "next/router"
-import { ChangeEventHandler, FC, ReactNode, useState } from "react"
+import {
+  ChangeEvent,
+  ChangeEventHandler,
+  FC,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react"
+import useDebounce from "$hooks/useDebounce"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
 import Select from "$components/Select"
@@ -29,48 +38,97 @@ const useSetQueries = () => {
   }
 }
 
+const useFilterQueries = () => {
+  return {
+    area: useQueryString("area"),
+    from: useQueryString("from"),
+    to: useQueryString("to"),
+    search: useQueryString("search"),
+  }
+}
+
 const RecordsPage: SSR<typeof getServerSideProps> = ({
   observations,
   areas,
   oldestDate,
 }) => {
-  const setQueries = useSetQueries()
   const filterSlideOver = useToggle()
 
-  const areaQuery = useQueryString("area")
-  const fromQuery = useQueryString("from")
-  const toQuery = useQueryString("to")
-  const searchQuery = useQueryString("search")
+  const query = useFilterQueries()
+  const setQueries = useSetQueries()
 
-  const [area, setArea] = useState(areaQuery ?? "all")
-  const [from, setFrom] = useState(dayjs(fromQuery || oldestDate))
-  const [to, setTo] = useState(toQuery ? dayjs(toQuery) : today)
-  const [search, setSearch] = useState(searchQuery || "")
+  const [area, setArea] = useState(query.area || "all")
+  const [from, setFrom] = useState(dayjs(query.from || oldestDate))
+  const [to, setTo] = useState(query.to ? dayjs(query.to) : today)
+  const [search, setSearch] = useState(query.search || "")
 
-  const handleAreaChange: ChangeEventHandler<HTMLSelectElement> = async (e) => {
+  const handleAreaChange = async (e: ChangeEvent<HTMLSelectElement>) => {
     await setQueries({ area: e.target.value })
     setArea(e.target.value)
   }
 
-  const handleFromChange: ChangeEventHandler<HTMLInputElement> = async (e) => {
+  const handleFromChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const value = dayjs(e.target.value || oldestDate)
     await setQueries({ from: value.format("YYYY-MM-DD") })
     setFrom(value)
   }
 
-  const handleToChange: ChangeEventHandler<HTMLInputElement> = async (e) => {
+  const handleToChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const value = dayjs(e.target.value || today)
     await setQueries({ to: value.format("YYYY-MM-DD") })
     setTo(value)
   }
 
-  const handleChangeSearch: ChangeEventHandler<HTMLInputElement> = async (
-    e
-  ) => {
-    const { value } = e.target
-    await setQueries({ search: value })
-    setSearch(value)
+  const handleSearchChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value)
   }
+
+  const debouncedSearch = useDebounce(search, 250)
+  useEffect(() => {
+    if (query.search !== debouncedSearch) {
+      // noinspection JSIgnoredPromiseFromCall
+      setQueries({ search: debouncedSearch })
+    }
+  }, [debouncedSearch, query.search, setQueries])
+
+  const handleBulkChange = async (val: {
+    search: string
+    area: string
+    from: Dayjs
+    to: Dayjs
+  }) => {
+    if (!val.to.isSame(to)) {
+      await setQueries({ to: val.to.format("YYYY-MM-DD") })
+      setTo(val.to)
+    }
+    if (!val.from.isSame(from)) {
+      await setQueries({ from: val.from.format("YYYY-MM-DD") })
+      setTo(val.from)
+    }
+    if (val.area !== area) {
+      await setQueries({ area: val.area })
+      setArea(val.area)
+    }
+    if (val.search !== search) {
+      await setQueries({ search: val.search })
+      setSearch(val.search)
+    }
+  }
+
+  const handleReset = async () => {
+    await handleBulkChange({
+      to: today,
+      from: dayjs(oldestDate),
+      search: "",
+      area: "all",
+    })
+  }
+
+  const isFiltered =
+    !to.isSame(today) ||
+    !from.isSame(dayjs(oldestDate)) ||
+    search !== "" ||
+    area !== "all"
 
   return (
     <RecordsLayout title="Observations">
@@ -81,7 +139,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
               label="Search"
               name="search"
               value={search}
-              onChange={handleChangeSearch}
+              onChange={handleSearchChange}
               placeholder={`"Reading ..."`}
               containerClassName="rounded-lg w-full"
               inputClassName="!rounded-xl"
@@ -117,7 +175,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
             label="Search"
             name="search"
             value={search}
-            onChange={handleChangeSearch}
+            onChange={handleSearchChange}
             placeholder={`"Reading ..."`}
             containerClassName="mb-2"
           />
@@ -175,6 +233,16 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
               />
             </label>
           </div>
+
+          {isFiltered && (
+            <Button
+              variant="outline"
+              className="mt-4 w-full"
+              onClick={handleReset}
+            >
+              Reset
+            </Button>
+          )}
         </div>
 
         <ul className="overflow-hidden w-full rounded-xl border divide-y divide-gray-200 shadow-sm">
@@ -194,64 +262,17 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
 
       <FilterSlideOver
         isOpen={filterSlideOver.isOn}
-        close={filterSlideOver.toggle}
-        form={
-          <>
-            <Select
-              defaultValue={area}
-              value={area}
-              onChange={handleAreaChange}
-              label="Area"
-              name="area"
-            >
-              <option value="all">All</option>
-              {areas.map(({ id, name }) => (
-                <option key={id} value={id}>
-                  {name}
-                </option>
-              ))}
-            </Select>
-
-            <div className="isolate mt-4 -space-y-px bg-white rounded-md shadow-sm">
-              <label
-                htmlFor="date-from"
-                className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-b-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
-              >
-                <span className="block text-sm font-medium text-gray-700">
-                  From
-                </span>
-                <input
-                  type="date"
-                  name="date-from"
-                  id="date-from"
-                  className="block p-0 w-full placeholder-gray-500 text-gray-900 border-0 focus:ring-0"
-                  value={from.format("YYYY-MM-DD")}
-                  min={dayjs(oldestDate).format("YYYY-MM-DD")}
-                  max={to.format("YYYY-MM-DD")}
-                  onChange={handleFromChange}
-                />
-              </label>
-              <label
-                htmlFor="date-from"
-                className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-t-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
-              >
-                <span className="block w-full text-sm font-medium text-gray-700">
-                  To
-                </span>
-                <input
-                  type="date"
-                  name="date-to"
-                  id="date-to"
-                  className="p-0 w-full placeholder-gray-500 text-gray-900 border-0 focus:ring-0"
-                  value={to.format("YYYY-MM-DD")}
-                  min={from.format("YYYY-MM-DD")}
-                  max={today.format("YYYY-MM-DD")}
-                  onChange={handleToChange}
-                />
-              </label>
-            </div>
-          </>
-        }
+        oldestDate={oldestDate}
+        areas={areas}
+        onClose={filterSlideOver.toggle}
+        onSet={async (values) => {
+          await handleBulkChange({ ...values, search })
+          filterSlideOver.toggle()
+        }}
+        onReset={async () => {
+          await handleReset()
+          filterSlideOver.toggle()
+        }}
       />
     </RecordsLayout>
   )
@@ -259,22 +280,95 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
 
 const FilterSlideOver: FC<{
   isOpen: boolean
-  close: () => void
-  form: ReactNode
-}> = ({ close, isOpen, form }) => (
-  <SlideOver show={isOpen} onClose={close} title="Filters">
-    <div className="relative flex-1 px-4 sm:px-6 pt-3 mt-3 bg-gray-50 border-t">
-      {form}
-    </div>
+  oldestDate: string
+  areas: Array<{ id: string; name: string | null }>
+  onClose: () => void
+  onSet: (value: { area: string; from: Dayjs; to: Dayjs }) => void
+  onReset: () => void
+}> = ({ onClose, isOpen, oldestDate, areas, onSet, onReset }) => {
+  const query = useFilterQueries()
 
-    <div className="flex flex-shrink-0 justify-end py-4 px-4 border-t">
-      <Button variant="outline" onClick={close}>
-        Cancel
-      </Button>
-      <Button className="ml-4">Save</Button>
-    </div>
-  </SlideOver>
-)
+  const [area, setArea] = useState(query.area ?? "all")
+  const [from, setFrom] = useState(dayjs(query.from || oldestDate))
+  const [to, setTo] = useState(query.to ? dayjs(query.to) : today)
+
+  return (
+    <SlideOver show={isOpen} onClose={onClose} title="Filters">
+      <div className="relative flex-1 px-4 sm:px-6 pt-3 mt-3 bg-gray-50 border-t">
+        <Select
+          defaultValue={area}
+          value={area}
+          onChange={(e) => setArea(e.target.value)}
+          label="Area"
+          name="area"
+        >
+          <option value="all">All</option>
+          {areas.map(({ id, name }) => (
+            <option key={id} value={id}>
+              {name}
+            </option>
+          ))}
+        </Select>
+
+        <div className="isolate mt-4 -space-y-px bg-white rounded-md shadow-sm">
+          <label
+            htmlFor="date-from"
+            className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-b-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+          >
+            <span className="block text-sm font-medium text-gray-700">
+              From
+            </span>
+            <input
+              type="date"
+              name="date-from"
+              id="date-from"
+              className="block p-0 w-full placeholder-gray-500 text-gray-900 border-0 focus:ring-0"
+              value={from.format("YYYY-MM-DD")}
+              min={dayjs(oldestDate).format("YYYY-MM-DD")}
+              max={to.format("YYYY-MM-DD")}
+              onChange={(e) => setFrom(dayjs(e.target.value || oldestDate))}
+            />
+          </label>
+          <label
+            htmlFor="date-from"
+            className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-t-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+          >
+            <span className="block w-full text-sm font-medium text-gray-700">
+              To
+            </span>
+            <input
+              type="date"
+              name="date-to"
+              id="date-to"
+              className="p-0 w-full placeholder-gray-500 text-gray-900 border-0 focus:ring-0"
+              value={to.format("YYYY-MM-DD")}
+              min={from.format("YYYY-MM-DD")}
+              max={today.format("YYYY-MM-DD")}
+              onChange={(e) => setTo(dayjs(e.target.value || today))}
+            />
+          </label>
+        </div>
+      </div>
+
+      <div className="flex flex-shrink-0 justify-end py-4 px-4 border-t">
+        <Button
+          variant="outline"
+          onClick={() => {
+            setArea("all")
+            setFrom(dayjs(oldestDate))
+            setTo(today)
+            onReset()
+          }}
+        >
+          Reset
+        </Button>
+        <Button className="ml-4" onClick={() => onSet({ area, from, to })}>
+          Set
+        </Button>
+      </div>
+    </SlideOver>
+  )
+}
 
 const Observation: FC<{
   event_time: string

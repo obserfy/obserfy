@@ -17,7 +17,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
     const secondary =
       "border-transparent text-sm leading-4 font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
     const outline =
-      "border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+      "border border-gray-200 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
 
     const icon =
       "hover:text-gray-500 bg-white rounded-md focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:outline-none !p-1 border-none"
