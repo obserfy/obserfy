@@ -78,6 +78,7 @@ jobs:
           node-version: 15
       - name: Install Dependencies
         run: yarn install
+      - run: yarn workspace gaia prisma generate
       - run: yarn workspace gaia run build
       - uses: actions/upload-artifact@v2
         with:
