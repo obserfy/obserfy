@@ -350,7 +350,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-module-imports@npm:^7.0.0, @babel/helper-module-imports@npm:^7.0.0-beta.49, @babel/helper-module-imports@npm:^7.10.4, @babel/helper-module-imports@npm:^7.12.13, @babel/helper-module-imports@npm:^7.14.5, @babel/helper-module-imports@npm:^7.15.4":
+"@babel/helper-module-imports@npm:^7.0.0, @babel/helper-module-imports@npm:^7.0.0-beta.49, @babel/helper-module-imports@npm:^7.10.4, @babel/helper-module-imports@npm:^7.12.13, @babel/helper-module-imports@npm:^7.13.12, @babel/helper-module-imports@npm:^7.14.5, @babel/helper-module-imports@npm:^7.15.4":
   version: 7.15.4
   resolution: "@babel/helper-module-imports@npm:7.15.4"
   dependencies:
@@ -1752,7 +1752,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.0.0, @babel/types@npm:^7.0.0-beta.49, @babel/types@npm:^7.10.5, @babel/types@npm:^7.11.5, @babel/types@npm:^7.12.11, @babel/types@npm:^7.12.13, @babel/types@npm:^7.12.6, @babel/types@npm:^7.12.7, @babel/types@npm:^7.14.9, @babel/types@npm:^7.15.4, @babel/types@npm:^7.15.6, @babel/types@npm:^7.2.0, @babel/types@npm:^7.3.0, @babel/types@npm:^7.3.3, @babel/types@npm:^7.4.4, @babel/types@npm:^7.8.3":
+"@babel/types@npm:^7.0.0, @babel/types@npm:^7.0.0-beta.49, @babel/types@npm:^7.10.5, @babel/types@npm:^7.11.5, @babel/types@npm:^7.12.11, @babel/types@npm:^7.12.13, @babel/types@npm:^7.12.6, @babel/types@npm:^7.12.7, @babel/types@npm:^7.13.17, @babel/types@npm:^7.14.9, @babel/types@npm:^7.15.4, @babel/types@npm:^7.15.6, @babel/types@npm:^7.2.0, @babel/types@npm:^7.3.0, @babel/types@npm:^7.3.3, @babel/types@npm:^7.4.4, @babel/types@npm:^7.8.3":
   version: 7.15.6
   resolution: "@babel/types@npm:7.15.6"
   dependencies:
@@ -8670,6 +8670,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-superjson-next@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "babel-plugin-superjson-next@npm:0.4.1"
+  dependencies:
+    "@babel/helper-module-imports": ^7.13.12
+    "@babel/types": ^7.13.17
+    hoist-non-react-statics: ^3.3.2
+  peerDependencies:
+    next: ">=9.0.0"
+    superjson: 1.x
+  checksum: 9f0ac7d78c3f9751bfceeb5dbd521e75400a10d2ed4f28189470b415c09525f3e5e506e880219fe2e628bd4df5910c28bf7d22f1a4d19452982c7e7df7ebd081
+  languageName: node
+  linkType: hard
+
 "babel-plugin-syntax-jsx@npm:^6.18.0":
   version: 6.18.0
   resolution: "babel-plugin-syntax-jsx@npm:6.18.0"
@@ -14510,6 +14524,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 4.28.3
     "@typescript-eslint/parser": 4.28.3
     autoprefixer: 10.3.4
+    babel-plugin-superjson-next: ^0.4.1
     body-scroll-lock: 3.1.5
     clsx: ^1.1.1
     dayjs: 1.10.6
@@ -14561,6 +14576,7 @@ __metadata:
     stylelint: 13.13.1
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 22.0.0
+    superjson: ^1.7.5
     tailwindcss: next
     ts-is-present: 1.2.1
     typescript: 4.3.5
@@ -27168,6 +27184,16 @@ resolve@^2.0.0-next.3:
   dependencies:
     postcss: ^7.0.2
   checksum: 777abf31671b67aafc5bb6dbca0853070ff9c129b7a52e90cfbe1a24ff069765e53b03767f85407386edf01c26fe2c2861aae2841f9a391751df891694137839
+  languageName: node
+  linkType: hard
+
+"superjson@npm:^1.7.5":
+  version: 1.7.5
+  resolution: "superjson@npm:1.7.5"
+  dependencies:
+    debug: ^4.3.1
+    lodash.clonedeep: ^4.5.0
+  checksum: 629c3cf3343203f8ab585046a7dfb9c730df3e08b00f4e78a029ddf148f93c22c65e0455dc4a7c6a72b3228dd9a8b39ff46ed5845ca555c14e92d85e02d2cae5
   languageName: node
   linkType: hard
 

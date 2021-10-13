@@ -1,7 +1,6 @@
-import { observation_to_images } from "@prisma/client"
+import Image from "next/image"
 import { useRouter } from "next/router"
 import { ChangeEvent, FC, useEffect, useState } from "react"
-import Image from "next/image"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
 import Select from "$components/Select"
@@ -108,7 +107,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
     area !== "all"
 
   return (
-    <RecordsLayout title="Observations">
+    <RecordsLayout title="Observations" currentPage="Observations">
       <div className="lg:flex items-start mx-4 lg:mt-4">
         <div className="lg:hidden sticky top-0 z-10 py-4 bg-gradient-to-b from-white via-white">
           <div className="flex">

@@ -57,7 +57,7 @@ export const findStudentAndGuardianById = (id: string, userEmail: string) => {
 
 export const findStudentObservations = (
   studentId: string,
-  query?: {
+  where?: {
     search?: string
     area?: string
     to?: Dayjs
@@ -68,23 +68,23 @@ export const findStudentObservations = (
     where: {
       student_id: studentId,
       visible_to_guardians: true,
-      area_id: query?.area,
+      area_id: where?.area,
       event_time: {
-        gte: query?.from?.toDate(),
-        lte: query?.to?.toDate(),
+        gte: where?.from?.toDate(),
+        lte: where?.to?.toDate(),
       },
-      OR: !query?.search
+      OR: !where?.search
         ? undefined
         : [
             {
               short_desc: {
-                contains: query.search,
+                contains: where.search,
                 mode: "insensitive",
               },
             },
             {
               long_desc: {
-                contains: query.search,
+                contains: where.search,
                 mode: "insensitive",
               },
             },
@@ -132,6 +132,38 @@ export const findCurriculumAreasByStudentId = (studentId: string) => {
               some: {
                 id: studentId,
               },
+            },
+          },
+        },
+      },
+    },
+  })
+}
+
+export const findMaterialAssessmentByStudentIdAndAreaId = async (
+  studentId: string,
+  areaId: string,
+  where?: { search?: string }
+) => {
+  return prisma.subjects.findMany({
+    where: {
+      area_id: areaId,
+    },
+    include: {
+      materials: {
+        where: {
+          name: {
+            contains: where?.search,
+            mode: "insensitive",
+          },
+        },
+        include: {
+          student_material_progresses: {
+            select: {
+              stage: true,
+            },
+            where: {
+              student_id: studentId,
             },
           },
         },

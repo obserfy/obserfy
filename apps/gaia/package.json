@@ -77,6 +77,7 @@
     "@tailwindcss/typography": "next",
     "@typescript-eslint/eslint-plugin": "4.28.3",
     "@typescript-eslint/parser": "4.28.3",
+    "babel-plugin-superjson-next": "^0.4.1",
     "eslint": "7.30.0",
     "eslint-config-airbnb-typescript": "12.3.1",
     "eslint-config-next": "^11.0.1",
@@ -97,6 +98,7 @@
     "stylelint": "13.13.1",
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-standard": "22.0.0",
+    "superjson": "^1.7.5",
     "tailwindcss": "next"
   }
 }

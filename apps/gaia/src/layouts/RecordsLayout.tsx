@@ -20,8 +20,10 @@ const getTabs = (studentId: string) => [
   },
 ]
 
-const RecordsLayout: FC<{ title: string }> = ({ title, children }) => {
-  const { asPath } = useRouter()
+const RecordsLayout: FC<{
+  title: string
+  currentPage: "Assessments" | "Observations"
+}> = ({ title, children, currentPage }) => {
   const studentId = useQueryString("studentId")
 
   const tabs = getTabs(studentId)
@@ -38,14 +40,12 @@ const RecordsLayout: FC<{ title: string }> = ({ title, children }) => {
               <Link key={tab.name} href={tab.href}>
                 <a
                   className={clsx(
-                    asPath.startsWith(tab.href)
+                    tab.name === currentPage
                       ? "text-white bg-black bg-opacity-50"
                       : "text-white bg-black bg-opacity-0 hover:bg-opacity-20 opacity-90",
                     "flex items-center py-2 px-3 text-sm font-medium rounded-lg"
                   )}
-                  aria-current={
-                    asPath.startsWith(tab.href) ? "page" : undefined
-                  }
+                  aria-current={tab.name === currentPage ? "page" : undefined}
                 >
                   <Icon src={tab.iconSrc} color="bg-white" className="mr-1" />
                   {tab.name}
