@@ -11,7 +11,7 @@ const useDebounce = <P>(value: P, duration: number): P => {
     return () => {
       clearTimeout(timeout)
     }
-  }, [value])
+  }, [duration, value])
 
   return debounced
 }

@@ -1,24 +1,16 @@
-import { Dayjs } from "dayjs"
 import { useRouter } from "next/router"
-import {
-  ChangeEvent,
-  ChangeEventHandler,
-  FC,
-  ReactNode,
-  useEffect,
-  useState,
-} from "react"
-import useDebounce from "$hooks/useDebounce"
+import { ChangeEvent, FC, useEffect, useState } from "react"
+import dayjs, { Dayjs } from "$lib/dayjs"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
 import Select from "$components/Select"
 import SlideOver from "$components/SlideOver"
 import TextFieldWithIcon from "$components/TextFieldWithIcon"
+import useDebounce from "$hooks/useDebounce"
 import { useQueryString } from "$hooks/useQueryString"
 import useToggle from "$hooks/useToggle"
 import RecordsLayout from "$layouts/RecordsLayout"
 import { withAuthorization } from "$lib/auth"
-import dayjs from "$lib/dayjs"
 import {
   findCurriculumAreasByStudentId,
   findOldestObservationDate,
@@ -27,25 +19,6 @@ import {
 import { getQueryString, getStudentId, SSR } from "$lib/next"
 
 const today = dayjs()
-
-const useSetQueries = () => {
-  const router = useRouter()
-  return async (query: any) => {
-    await router.push({
-      pathname: router.pathname,
-      query: { ...router.query, ...query },
-    })
-  }
-}
-
-const useFilterQueries = () => {
-  return {
-    area: useQueryString("area"),
-    from: useQueryString("from"),
-    to: useQueryString("to"),
-    search: useQueryString("search"),
-  }
-}
 
 const RecordsPage: SSR<typeof getServerSideProps> = ({
   observations,
@@ -428,5 +401,24 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
     },
   }
 })
+
+const useSetQueries = () => {
+  const router = useRouter()
+  return async (query: any) => {
+    await router.push({
+      pathname: router.pathname,
+      query: { ...router.query, ...query },
+    })
+  }
+}
+
+const useFilterQueries = () => {
+  return {
+    area: useQueryString("area"),
+    from: useQueryString("from"),
+    to: useQueryString("to"),
+    search: useQueryString("search"),
+  }
+}
 
 export default RecordsPage

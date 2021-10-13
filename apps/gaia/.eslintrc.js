@@ -69,7 +69,7 @@ module.exports = {
       {
         name: "dayjs",
         message:
-          "Please use ./src/dayjs instead. It setups required plugins correctly.",
+          "Please use $lib/dayjs instead. It setups required plugins correctly.",
       },
     ],
   },
