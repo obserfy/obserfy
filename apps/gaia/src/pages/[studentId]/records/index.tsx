@@ -1,5 +1,6 @@
 import { useRouter } from "next/router"
 import { ChangeEvent, FC, useEffect, useState } from "react"
+import Markdown from "$components/Markdown/Markdown"
 import dayjs, { Dayjs } from "$lib/dayjs"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
@@ -17,6 +18,7 @@ import {
   findStudentObservations,
 } from "$lib/db"
 import { getQueryString, getStudentId, SSR } from "$lib/next"
+import { markdownToHtml } from "../../../utils/markdown"
 
 const today = dayjs()
 
@@ -367,7 +369,13 @@ const Observation: FC<{
       </time>
     </div>
     <div className="mt-1">
-      <p className="text-gray-600 line-clamp-2">{long_desc}</p>
+      {long_desc && (
+        <div
+          className="max-w-none text-gray-700 prose"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: long_desc }}
+        />
+      )}
     </div>
   </li>
 )
@@ -395,6 +403,7 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
       areas: areas ?? [],
       observations: observations.map((o) => ({
         ...o,
+        long_desc: o.long_desc ? markdownToHtml(o.long_desc) : o.long_desc,
         created_date: o.created_date?.toISOString() ?? "",
         event_time: o.event_time?.toISOString() ?? "",
       })),
