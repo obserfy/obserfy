@@ -132,7 +132,9 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
           {subjects.map(({ id, name, materials }) => (
             <li className="mb-4 w-full rounded-xl border shadow-sm" key={id}>
               <div className="p-4">
-                <p className="text-gray-600">Subject</p>
+                <p className="text-xs tracking-wider text-gray-800 uppercase">
+                  Subject
+                </p>
                 <h3 className="text-xl font-bold text-gray-800">{name}</h3>
               </div>
 

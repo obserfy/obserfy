@@ -41,13 +41,13 @@ const RecordsLayout: FC<{
                 <a
                   className={clsx(
                     tab.name === currentPage
-                      ? "text-white bg-black bg-opacity-50"
-                      : "text-white bg-black bg-opacity-0 hover:bg-opacity-20 opacity-90",
+                      ? "text-white bg-white bg-opacity-20"
+                      : "text-white bg-white bg-opacity-0 hover:bg-opacity-10 opacity-90",
                     "flex items-center py-2 px-3 text-sm font-medium rounded-lg"
                   )}
                   aria-current={tab.name === currentPage ? "page" : undefined}
                 >
-                  <Icon src={tab.iconSrc} color="bg-white" className="mr-1" />
+                  <Icon src={tab.iconSrc} color="bg-white" className="mr-2" />
                   {tab.name}
                 </a>
               </Link>
