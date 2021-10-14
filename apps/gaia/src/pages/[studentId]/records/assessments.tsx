@@ -114,18 +114,17 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
             ))}
           </Select>
 
-          {search !== "" ||
-            (area !== defaultArea && (
-              <Button
-                variant="outline"
-                className="mt-4 w-full"
-                onClick={async () => {
-                  await handleBulkChange({ search: "", area: defaultArea })
-                }}
-              >
-                Reset
-              </Button>
-            ))}
+          {(search !== "" || area !== defaultArea) && (
+            <Button
+              variant="outline"
+              className="mt-4 w-full"
+              onClick={async () => {
+                await handleBulkChange({ search: "", area: defaultArea })
+              }}
+            >
+              Reset
+            </Button>
+          )}
         </div>
 
         <ul className="w-full">
@@ -135,7 +134,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
                 <p className="text-xs tracking-wider text-gray-800 uppercase">
                   Subject
                 </p>
-                <h3 className="text-xl font-bold text-gray-800">{name}</h3>
+                <h3 className="text-xl font-bold text-gray-700">{name}</h3>
               </div>
 
               <div className="flex py-2 pl-4 font-semibold text-gray-600 bg-gray-100 border-y">
@@ -155,6 +154,24 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
                     />
                   </li>
                 ))}
+
+                {materials.length === 0 && (
+                  <div className="px-8 mt-8 mb-12 text-center">
+                    <Icon
+                      src="/icons/search.svg"
+                      className="mx-auto !w-10 !h-10"
+                      color="bg-gray-400"
+                    />
+                    <h3 className="mt-2 font-medium text-gray-900">
+                      No material found
+                    </h3>
+                    <p className="mt-1 text-gray-500">
+                      {search
+                        ? `No material named "${search}" under ${name}.`
+                        : `${name} has no material.`}
+                    </p>
+                  </div>
+                )}
               </ul>
             </li>
           ))}
