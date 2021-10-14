@@ -136,7 +136,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
                 <h3 className="text-xl font-bold text-gray-700">{name}</h3>
               </div>
 
-              <div className="flex py-2 pl-4 font-semibold text-gray-600 bg-gray-100 border-y">
+              <div className="flex py-2 pl-4 font-semibold text-gray-600 bg-gray-100 border-y text-sm">
                 <p>Material Name</p>
                 <p className="mr-4 ml-auto">Assessment</p>
               </div>

@@ -380,15 +380,15 @@ const Observation: FC<{
   areas: { name: string | null } | null
   images: Array<{ src: string | null }>
 }> = ({ short_desc, areas, event_time, long_desc, images }) => (
-  <li className="relative py-5 px-4 bg-white hover:bg-primary-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600">
+  <li className="relative py-5 px-4 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600">
     <div className="flex justify-between space-x-3">
-      <button className="block text-left truncate focus:outline-none">
+      <div className="block text-left truncate focus:outline-none">
         <span className="absolute inset-0" aria-hidden="true" />
         <p className="font-semibold text-gray-900 truncate">{short_desc}</p>
         <p className="font-semibold text-primary-600 truncate">
           {areas?.name ?? "Others"}
         </p>
-      </button>
+      </div>
 
       <time
         dateTime={event_time}
