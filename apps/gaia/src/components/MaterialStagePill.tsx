@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { materialStageToString } from "../domain"
 
-const MaterialStagePill: FC<{ className?: string; stage: number }> = ({
+const MaterialStagePill: FC<{ className?: string; stage: number | bigint }> = ({
   stage,
   className,
 }) => {

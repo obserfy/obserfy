@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { useRouter } from "next/router"
 import { ChangeEvent, FC, useEffect, useState } from "react"
 import Button from "$components/Button/Button"
@@ -9,7 +8,6 @@ import useDebounce from "$hooks/useDebounce"
 import { useQueryString } from "$hooks/useQueryString"
 import RecordsLayout from "$layouts/RecordsLayout"
 import { withAuthorization } from "$lib/auth"
-import dayjs from "$lib/dayjs"
 import {
   findCurriculumAreasByStudentId,
   findMaterialAssessmentByStudentIdAndAreaId,
@@ -17,22 +15,22 @@ import {
 import { getQueryString, getStudentId, SSR } from "$lib/next"
 
 const RecordsPage: SSR<typeof getServerSideProps> = ({
-  observations,
+  subjects,
   areas,
   defaultArea,
 }) => {
-  const query = useFilterQueries()
+  const queries = useFilterQueries()
   const setQueries = useSetQueries()
 
-  const [area, setArea] = useState(query.area || defaultArea)
-  const [search, setSearch] = useState(query.search || "")
+  const [area, setArea] = useState(queries.area || defaultArea)
+  const [search, setSearch] = useState(queries.search || "")
 
   const debouncedSearch = useDebounce(search, 250)
   useEffect(() => {
-    if (query.search !== debouncedSearch) {
+    if (queries.search !== debouncedSearch) {
       setQueries({ search: debouncedSearch })
     }
-  }, [debouncedSearch, query.search, setQueries])
+  }, [debouncedSearch, queries.search, setQueries])
 
   const handleAreaChange = async (e: ChangeEvent<HTMLSelectElement>) => {
     await setQueries({ area: e.target.value })
@@ -50,11 +48,6 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
     }
   }
 
-  const handleReset = async () =>
-    handleBulkChange({ search: "", area: defaultArea })
-
-  const isFiltered = search !== "" || area !== defaultArea
-
   return (
     <RecordsLayout title="Assessments" currentPage="Assessments">
       <div className="lg:flex items-start mx-4 lg:mt-4">
@@ -64,7 +57,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
           onChange={handleAreaChange}
           label="Area"
           name="area"
-          containerClassName="lg:hidden mt-4 z-2"
+          containerClassName="lg:hidden mt-4 -mb-2 z-20 relative"
           selectClassName="rounded-xl"
           hideLabel
         >
@@ -121,125 +114,82 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
             ))}
           </Select>
 
-          {isFiltered && (
-            <Button
-              variant="outline"
-              className="mt-4 w-full"
-              onClick={handleReset}
-            >
-              Reset
-            </Button>
-          )}
+          {search !== "" ||
+            (area !== defaultArea && (
+              <Button
+                variant="outline"
+                className="mt-4 w-full"
+                onClick={async () => {
+                  await handleBulkChange({ search: "", area: defaultArea })
+                }}
+              >
+                Reset
+              </Button>
+            ))}
         </div>
 
-        <ul className="overflow-hidden w-full rounded-xl border divide-y divide-gray-200 shadow-sm">
-          {observations.map(
-            ({
-              id,
-              short_desc,
-              long_desc,
-              event_time,
-              areas: a,
-              observation_to_images: img,
-            }) => (
-              <Observation
-                key={id}
-                areas={a}
-                short_desc={short_desc}
-                long_desc={long_desc}
-                event_time={event_time}
-                images={img}
-              />
-            )
-          )}
+        <ul className="w-full">
+          {subjects.map(({ id, name, materials }) => (
+            <li className="mb-4 w-full rounded-xl border shadow-sm" key={id}>
+              <div className="p-4">
+                <p className="text-gray-600">Subject</p>
+                <h3 className="text-xl font-bold text-gray-800">{name}</h3>
+              </div>
+
+              <div className="flex py-2 pl-4 font-semibold text-gray-600 bg-gray-100 border-y">
+                <p>Material Name</p>
+                <p className="mr-4 ml-auto">Assessment</p>
+              </div>
+
+              <ul className="overflow-hidden mb-1 w-full divide-y divide-gray-200">
+                {materials.map((m) => (
+                  <li
+                    key={m.id}
+                    className="flex items-center py-2 pr-2 pl-4 text-gray-700"
+                  >
+                    <h4 className="mr-auto truncate">{m.name}</h4>
+                    <AssessmentIndicator
+                      stage={m.student_material_progresses?.[0]?.stage?.toString()}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
         </ul>
       </div>
     </RecordsLayout>
   )
 }
 
-const Observation: FC<{
-  event_time: string
-  short_desc: string | null
-  long_desc: string | null
-  areas: { name: string | null } | null
-  images: Array<{ src: string | null }>
-}> = ({ short_desc, areas, event_time, long_desc, images }) => (
-  <li className="relative py-5 px-4 bg-white hover:bg-primary-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600">
-    <div className="flex justify-between space-x-3">
-      <button className="block text-left truncate focus:outline-none">
-        <span className="absolute inset-0" aria-hidden="true" />
-        <p className="font-semibold text-gray-900 truncate">{short_desc}</p>
-        <p className="font-semibold text-primary-600 truncate">
-          {areas?.name ?? "Others"}
-        </p>
-      </button>
-
-      <time
-        dateTime={event_time}
-        className="flex flex-shrink-0 text-gray-500 whitespace-nowrap"
-      >
-        {dayjs(event_time).format("DD MMM YYYY")}
-      </time>
-    </div>
-    <div className="mt-1">
-      {long_desc && (
-        <div
-          className="max-w-none text-gray-700 prose"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: long_desc }}
-        />
-      )}
-    </div>
-
-    {images.length > 0 && (
-      <h3 className="mt-2 mb-2 font-semibold text-gray-500">Images</h3>
-    )}
-    <div className="flex space-x-2">
-      {images.map(({ src }) => {
-        if (src) {
-          return (
-            <div className="flex w-12 h-12">
-              <Image
-                src={src}
-                width={100}
-                height={100}
-                objectFit="cover"
-                className="block rounded-lg"
-              />
-            </div>
-          )
-        }
-
-        return <div />
-      })}
-    </div>
-  </li>
-)
-
-export const getServerSideProps = withAuthorization(async (ctx) => {
-  const studentId = getStudentId(ctx)
-  const search = getQueryString(ctx, "search")
-
-  const areas = await findCurriculumAreasByStudentId(studentId)
-  const defaultArea = areas?.[0].id
-  const area = getQueryString(ctx, "area") || defaultArea
-
-  const assessments = await findMaterialAssessmentByStudentIdAndAreaId(
-    studentId,
-    area,
-    { search }
-  )
-
-  return {
-    props: {
-      defaultArea,
-      areas: areas ?? [],
-      observations: [],
-      assessments,
-    },
+const AssessmentIndicator: FC<{
+  className?: string
+  stage: string
+}> = ({ stage, className }) => {
+  let style = ""
+  if (stage === "0") {
+    style = "bg-red-100 text-red-900 "
   }
-})
+  if (stage === "1") {
+    style = "bg-orange-100 text-orange-900 "
+  }
+  if (stage === "2") {
+    style = "bg-emerald-100 text-emerald-900"
+  }
+
+  return (
+    <p className={`rounded-full px-2 text-sm ${className} ${style}`}>
+      {getAssessmentText(stage)}
+    </p>
+  )
+}
+
+export const getAssessmentText = (stage: string) => {
+  if (stage === "0") return "Presented"
+  if (stage === "1") return "Practiced"
+  if (stage === "2") return "Mastered"
+  return ""
+}
 
 const useSetQueries = () => {
   const router = useRouter()
@@ -251,11 +201,32 @@ const useSetQueries = () => {
   }
 }
 
-const useFilterQueries = () => {
+const useFilterQueries = () => ({
+  area: useQueryString("area"),
+  search: useQueryString("search"),
+})
+
+export const getServerSideProps = withAuthorization(async (ctx) => {
+  const studentId = getStudentId(ctx)
+  const search = getQueryString(ctx, "search")
+
+  const areas = await findCurriculumAreasByStudentId(studentId)
+  const defaultArea = areas?.[0].id
+  const area = getQueryString(ctx, "area") || defaultArea
+
+  const subjects = await findMaterialAssessmentByStudentIdAndAreaId(
+    studentId,
+    area,
+    { search }
+  )
+
   return {
-    area: useQueryString("area"),
-    search: useQueryString("search"),
+    props: {
+      defaultArea,
+      areas: areas ?? [],
+      subjects,
+    },
   }
-}
+})
 
 export default RecordsPage

@@ -39,7 +39,7 @@ export interface Observation {
   createdAt: string
 }
 
-export const materialStageToString = (stage: number) => {
+export const materialStageToString = (stage: number | bigint) => {
   if (stage === 0) {
     return "Presented"
   }

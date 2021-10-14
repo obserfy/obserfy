@@ -146,11 +146,17 @@ export const findMaterialAssessmentByStudentIdAndAreaId = async (
   where?: { search?: string }
 ) => {
   return prisma.subjects.findMany({
+    orderBy: {
+      order: "asc",
+    },
     where: {
       area_id: areaId,
     },
     include: {
       materials: {
+        orderBy: {
+          order: "asc",
+        },
         where: {
           name: {
             contains: where?.search,
