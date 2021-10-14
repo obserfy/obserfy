@@ -1,10 +1,9 @@
 import clsx from "clsx"
-import { useRouter } from "next/router"
-import { FC } from "react"
 import Link from "next/link"
+import { FC } from "react"
 import Icon from "$components/Icon/Icon"
-import { useQueryString } from "$hooks/useQueryString"
 import RecordsHeroImage from "$components/RecordsHeroImage"
+import { useQueryString } from "$hooks/useQueryString"
 import BaseLayout from "$layouts/BaseLayout"
 
 const getTabs = (studentId: string) => [
@@ -42,7 +41,7 @@ const RecordsLayout: FC<{
                   className={clsx(
                     tab.name === currentPage
                       ? "text-white bg-white bg-opacity-20"
-                      : "text-white bg-white bg-opacity-0 hover:bg-opacity-10 opacity-90",
+                      : "text-white bg-white bg-opacity-0 hover:bg-opacity-10 opacity-90 transition",
                     "flex items-center py-2 px-3 text-sm font-medium rounded-lg border border-white border-opacity-20"
                   )}
                   aria-current={tab.name === currentPage ? "page" : undefined}
