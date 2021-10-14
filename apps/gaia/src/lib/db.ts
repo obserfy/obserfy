@@ -59,7 +59,7 @@ export const findStudentObservations = (
   studentId: string,
   where?: {
     search?: string
-    area?: string
+    area?: string | null
     to?: Dayjs
     from?: Dayjs
   }

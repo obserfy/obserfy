@@ -168,6 +168,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
                 {name}
               </option>
             ))}
+            <option value="others">Others</option>
           </Select>
 
           <div className="isolate mt-4 -space-y-px bg-white rounded-md shadow-sm">
@@ -309,6 +310,7 @@ const ObservationFilterSlideOver: FC<{
               {name}
             </option>
           ))}
+          <option value="others">Others</option>
         </Select>
 
         <div className="isolate mt-4 -space-y-px bg-white rounded-md shadow-sm">
@@ -437,10 +439,17 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
   const to = getQueryString(ctx, "to")
   const from = getQueryString(ctx, "from")
 
+  let transformedArea: string | null | undefined = area
+  if (area === "all") {
+    transformedArea = undefined
+  } else if (area === "others") {
+    transformedArea = null
+  }
+
   const oldestDate = await findOldestObservationDate(studentId)
   const observations = await findStudentObservations(studentId, {
     search,
-    area: area === "all" ? undefined : area,
+    area: transformedArea,
     to: to ? dayjs(to) : undefined,
     from: from ? dayjs(from) : undefined,
   })
