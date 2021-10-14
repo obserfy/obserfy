@@ -1,4 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react"
+import clsx from "clsx"
 import { FC, Fragment } from "react"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
@@ -7,11 +8,12 @@ const SlideOver: FC<{
   show: boolean
   onClose: () => void
   title: string
-}> = ({ show, onClose, children, title }) => (
+  className?: string
+}> = ({ show, onClose, children, title, className }) => (
   <Transition.Root show={show} as={Fragment}>
     <Dialog
       as="div"
-      className="sm:hidden overflow-hidden fixed inset-0 z-20"
+      className={clsx("overflow-hidden fixed inset-0 z-20", className)}
       onClose={onClose}
     >
       <div className="overflow-hidden absolute inset-0">
@@ -53,7 +55,7 @@ const SlideOver: FC<{
                   </div>
                 </div>
 
-                {children}
+                <div className="mt-4 h-full">{children}</div>
               </div>
             </div>
           </Transition.Child>

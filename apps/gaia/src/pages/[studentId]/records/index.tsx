@@ -295,8 +295,13 @@ const ObservationFilterSlideOver: FC<{
   const [to, setTo] = useState(query.to ? dayjs(query.to) : today)
 
   return (
-    <SlideOver show={isOpen} onClose={onClose} title="Filters">
-      <div className="relative flex-1 px-4 sm:px-6 pt-3 mt-3 bg-gray-50 border-t">
+    <SlideOver
+      show={isOpen}
+      onClose={onClose}
+      title="Filters"
+      className="sm:hidden "
+    >
+      <div className="relative flex-1 px-4 sm:px-6 pt-3 bg-gray-50 border-t">
         <Select
           defaultValue={area}
           value={area}

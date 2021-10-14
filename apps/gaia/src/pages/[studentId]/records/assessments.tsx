@@ -2,8 +2,12 @@ import { useRouter } from "next/router"
 import { ChangeEvent, FC, useEffect, useState } from "react"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
+import Markdown from "$components/Markdown/Markdown"
+import MaterialStagePill from "$components/MaterialStagePill"
 import Select from "$components/Select"
+import SlideOver from "$components/SlideOver"
 import TextFieldWithIcon from "$components/TextFieldWithIcon"
+import useGetMaterialDetails from "$hooks/api/useGetMaterialDetails"
 import useDebounce from "$hooks/useDebounce"
 import { useQueryString } from "$hooks/useQueryString"
 import RecordsLayout from "$layouts/RecordsLayout"
@@ -19,11 +23,13 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
   areas,
   defaultArea,
 }) => {
+  const studentId = useQueryString("studentId")
   const queries = useFilterQueries()
   const setQueries = useSetQueries()
 
   const [area, setArea] = useState(queries.area || defaultArea)
   const [search, setSearch] = useState(queries.search || "")
+  const [materialPreview, setMaterialPreview] = useState("")
 
   const debouncedSearch = useDebounce(search, 250)
   useEffect(() => {
@@ -73,7 +79,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
             name="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder={`"Reading ..."`}
+            placeholder={`"Number ..."`}
             containerClassName="rounded-lg w-full"
             inputClassName="!rounded-xl"
             hideLabel
@@ -95,7 +101,7 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
             name="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder={`"Reading ..."`}
+            placeholder={`"Number ..."`}
             containerClassName="mb-2"
           />
 
@@ -143,14 +149,16 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
 
               <ul className="overflow-hidden mb-1 w-full divide-y divide-gray-200">
                 {materials.map((m) => (
-                  <li
-                    key={m.id}
-                    className="flex items-center py-2 pr-2 pl-4 text-gray-700"
-                  >
-                    <h4 className="mr-auto truncate">{m.name}</h4>
-                    <AssessmentIndicator
-                      stage={m.student_material_progresses?.[0]?.stage?.toString()}
-                    />
+                  <li key={m.id}>
+                    <button
+                      className="flex items-center py-2 pr-2 pl-4 w-full text-gray-700 hover:bg-primary-50"
+                      onClick={() => setMaterialPreview(m.id)}
+                    >
+                      <h4 className="mr-auto truncate">{m.name}</h4>
+                      <AssessmentIndicator
+                        stage={m.student_material_progresses?.[0]?.stage?.toString()}
+                      />
+                    </button>
                   </li>
                 ))}
 
@@ -193,7 +201,55 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
           )}
         </ul>
       </div>
+
+      <SlideOver
+        title="Material Assessment"
+        onClose={() => setMaterialPreview("")}
+        show={materialPreview !== ""}
+      >
+        <AssessmentsSlideOver
+          studentId={studentId}
+          materialId={materialPreview}
+        />
+      </SlideOver>
     </RecordsLayout>
+  )
+}
+
+const AssessmentsSlideOver: FC<{
+  studentId: string
+  materialId: string
+}> = ({ studentId, materialId }) => {
+  const { data: details } = useGetMaterialDetails(studentId, materialId)
+
+  return (
+    <div className="h-full bg-gray-50 border-t">
+      <div className="flex flex-col items-start p-4 sm:px-6">
+        <p className="text-gray-600">Name</p>
+        <h4 className="mb-2 text-lg font-bold leading-tight text-gray-800">
+          {details?.name}
+        </h4>
+
+        {details && details?.stage !== "-1" && (
+          <AssessmentIndicator stage={details?.stage?.toString()} />
+        )}
+        {details && details?.stage === "-1" && (
+          <p className="px-2 text-sm text-gray-900 bg-gray-200 rounded-full border">
+            Net yet Introduced
+          </p>
+        )}
+      </div>
+
+      {details?.description && (
+        <div className="p-4 sm:px-6 pt-8 mt-4 bg-gray-50 border-t">
+          <p className="text-gray-600">About this Material</p>
+          <Markdown
+            markdown={details?.description}
+            className="mt-3 text-gray-800"
+          />
+        </div>
+      )}
+    </div>
   )
 }
 
