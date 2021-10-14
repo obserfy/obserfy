@@ -43,7 +43,6 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
       setArea(val.area)
     }
     if (val.search !== search) {
-      await setQueries({ search: val.search })
       setSearch(val.search)
     }
   }
@@ -175,6 +174,23 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
               </ul>
             </li>
           ))}
+
+          {subjects.length === 0 && (
+            <div className="px-8 mt-8 mb-12 text-center">
+              <Icon
+                src="/icons/search.svg"
+                className="mx-auto !w-10 !h-10"
+                color="bg-gray-400"
+              />
+              <h3 className="mt-2 font-medium text-gray-900">
+                No subjects found
+              </h3>
+              <p className="mt-1 text-gray-500">
+                We can&apos;t seem to find any subjects related to{" "}
+                {areas.find(({ id }) => area === id)?.name}
+              </p>
+            </div>
+          )}
         </ul>
       </div>
     </RecordsLayout>
