@@ -18,7 +18,7 @@ import {
 import { getQueryString, getStudentId, SSR } from "$lib/next"
 import useToggle from "$hooks/useToggle"
 
-const RecordsPage: SSR<typeof getServerSideProps> = ({
+const AssessmentRecordsPage: SSR<typeof getServerSideProps> = ({
   subjects,
   areas,
   defaultArea,
@@ -325,4 +325,4 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
   }
 })
 
-export default RecordsPage
+export default AssessmentRecordsPage

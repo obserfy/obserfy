@@ -10,7 +10,7 @@ const BottomNavigationBar = () => {
   const studentId = useQueryString("studentId")
 
   return (
-    <nav className="flex sm:hidden fixed right-0 bottom-0 left-0 flex-col justify-end h-bottom-navigation bg-gradient-to-t from-white via-white pointer-events-none">
+    <nav className="flex sm:hidden fixed right-0 bottom-0 left-0 flex-col justify-end h-bottom-navigation bg-gradient-to-t from-white pointer-events-none via-[rgba(255,255,255,0.95)]">
       <ul className="flex justify-around items-center h-16 pointer-events-auto">
         {navigationItems(studentId).map((item) => (
           <Item key={item.href} {...item} />

@@ -41,7 +41,7 @@ const SlideOver: FC<{
           >
             <div className="w-screen max-w-md">
               <div className="flex overflow-y-scroll flex-col pt-6 h-full bg-white shadow-xl">
-                <div className="px-4 sm:px-6">
+                <div className="px-4 sm:px-6 mb-4">
                   <div className="flex justify-between items-start">
                     <Dialog.Title className="text-lg font-medium text-gray-900">
                       {title}
@@ -55,7 +55,7 @@ const SlideOver: FC<{
                   </div>
                 </div>
 
-                <div className="mt-4 h-full">{children}</div>
+                {children}
               </div>
             </div>
           </Transition.Child>

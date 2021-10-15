@@ -1,28 +1,27 @@
 import clsx from "clsx"
 import Link from "next/link"
 import { FC } from "react"
-import Image from "next/image"
-import Icon from "$components/Icon/Icon"
-import RecordsHeroImage from "$public/hero/records-hero.svg"
 import { useQueryString } from "$hooks/useQueryString"
+import Icon from "$components/Icon/Icon"
+import RecordsHeroImage from "$components/RecordsHeroImage"
 import BaseLayout from "$layouts/BaseLayout"
 
 const getTabs = (studentId: string) => [
   {
-    name: "Observations",
-    href: `/${studentId}/records`,
+    name: "Photos",
+    href: `/${studentId}/media`,
     iconSrc: "/icons/edit.svg",
   },
   {
-    name: "Assessments",
-    href: `/${studentId}/records/assessments`,
+    name: "Videos",
+    href: `/${studentId}/media/videos`,
     iconSrc: "/icons/chart.svg",
   },
 ]
 
-const RecordsLayout: FC<{
+const MediaLayout: FC<{
   title: string
-  currentPage: "Assessments" | "Observations"
+  currentPage: "Photos" | "Videos"
 }> = ({ title, children, currentPage }) => {
   const studentId = useQueryString("studentId")
   const tabs = getTabs(studentId)
@@ -30,21 +29,11 @@ const RecordsLayout: FC<{
   return (
     <BaseLayout title={`${title} | Records`} className="max-w-7xl">
       <div className="overflow-hidden relative mx-4 mt-2 sm:mt-4 rounded-2xl shadow-md">
-        <div className="absolute inset-0">
-          <Image
-            src={RecordsHeroImage}
-            objectFit="cover"
-            className="w-full h-full"
-            layout="fill"
-          />
-        </div>
+        <RecordsHeroImage className="absolute inset-0" />
 
-        <div className="relative p-4 pt-16 lg:pt-24 pb-8 lg:pb-12 bg-gradient-to-t from-[rgba(0,0,0,0.6)]">
-          <h1 className="mb-4 text-4xl lg:text-5xl font-bold text-center text-white">
-            Records
-          </h1>
-
-          <nav className="flex justify-center space-x-2" aria-label="Tabs">
+        <div className="relative p-4 pt-16 lg:pt-32 bg-gradient-to-t from-[rgba(0,0,0,0.6)]">
+          <h1 className="mb-4 text-4xl font-bold text-white">Records</h1>
+          <nav className="flex space-x-4" aria-label="Tabs">
             {tabs.map((tab) => (
               <Link key={tab.name} href={tab.href}>
                 <a
@@ -56,11 +45,7 @@ const RecordsLayout: FC<{
                   )}
                   aria-current={tab.name === currentPage ? "page" : undefined}
                 >
-                  <Icon
-                    src={tab.iconSrc}
-                    color="bg-white"
-                    className="mr-2 hidden sm:block"
-                  />
+                  <Icon src={tab.iconSrc} color="bg-white" className="mr-2" />
                   {tab.name}
                 </a>
               </Link>
@@ -74,4 +59,4 @@ const RecordsLayout: FC<{
   )
 }
 
-export default RecordsLayout
+export default MediaLayout

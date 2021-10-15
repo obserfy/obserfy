@@ -23,7 +23,7 @@ import { markdownToHtml } from "../../../utils/markdown"
 
 const today = dayjs()
 
-const RecordsPage: SSR<typeof getServerSideProps> = ({
+const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
   observations,
   areas,
   oldestDate,
@@ -499,4 +499,4 @@ const useFilterQueries = () => {
   }
 }
 
-export default RecordsPage
+export default ObservationRecordsPage
