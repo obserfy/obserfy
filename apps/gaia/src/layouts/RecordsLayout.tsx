@@ -59,7 +59,7 @@ const RecordsLayout: FC<{
                   <Icon
                     src={tab.iconSrc}
                     color="bg-white"
-                    className="mr-2 hidden sm:block"
+                    className="hidden sm:block mr-2"
                   />
                   {tab.name}
                 </a>

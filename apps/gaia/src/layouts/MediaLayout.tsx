@@ -1,21 +1,22 @@
 import clsx from "clsx"
+import Image from "next/image"
 import Link from "next/link"
 import { FC } from "react"
 import { useQueryString } from "$hooks/useQueryString"
 import Icon from "$components/Icon/Icon"
-import RecordsHeroImage from "$components/RecordsHeroImage"
 import BaseLayout from "$layouts/BaseLayout"
+import MediaHeroImage from "$public/hero/media-hero.svg"
 
 const getTabs = (studentId: string) => [
   {
     name: "Photos",
     href: `/${studentId}/media`,
-    iconSrc: "/icons/edit.svg",
+    iconSrc: "/icons/camera.svg",
   },
   {
     name: "Videos",
     href: `/${studentId}/media/videos`,
-    iconSrc: "/icons/chart.svg",
+    iconSrc: "/icons/video.svg",
   },
 ]
 
@@ -29,11 +30,21 @@ const MediaLayout: FC<{
   return (
     <BaseLayout title={`${title} | Records`} className="max-w-7xl">
       <div className="overflow-hidden relative mx-4 mt-2 sm:mt-4 rounded-2xl shadow-md">
-        <RecordsHeroImage className="absolute inset-0" />
+        <div className="absolute inset-0">
+          <Image
+            src={MediaHeroImage}
+            objectFit="cover"
+            className="w-full h-full"
+            layout="fill"
+          />
+        </div>
 
-        <div className="relative p-4 pt-16 lg:pt-32 bg-gradient-to-t from-[rgba(0,0,0,0.6)]">
-          <h1 className="mb-4 text-4xl font-bold text-white">Records</h1>
-          <nav className="flex space-x-4" aria-label="Tabs">
+        <div className="relative p-4 pt-16 lg:pt-24 pb-8 lg:pb-12 bg-gradient-to-t from-[rgba(0,0,0,0.6)]">
+          <h1 className="mb-4 text-4xl lg:text-5xl font-bold text-center text-white">
+            Media
+          </h1>
+
+          <nav className="flex justify-center space-x-2" aria-label="Tabs">
             {tabs.map((tab) => (
               <Link key={tab.name} href={tab.href}>
                 <a

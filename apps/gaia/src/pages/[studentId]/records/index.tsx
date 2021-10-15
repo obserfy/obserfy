@@ -221,45 +221,51 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
           )}
         </div>
 
-        <ul className="overflow-hidden w-full rounded-xl border divide-y divide-gray-200 shadow-sm">
-          {observations.map(
-            ({
-              id,
-              short_desc,
-              long_desc,
-              event_time,
-              areas: a,
-              observation_to_images: img,
-            }) => (
-              <Observation
-                key={id}
-                areas={a}
-                short_desc={short_desc}
-                long_desc={long_desc}
-                event_time={event_time}
-                images={img}
-              />
-            )
-          )}
+        <div className="overflow-hidden w-full rounded-xl border shadow-sm">
+          <p className="py-2 font-semibold text-center text-gray-600 bg-gray-100 border-b">
+            Observations
+          </p>
 
-          {observations.length === 0 && (
-            <div className="px-8 mt-8 mb-12 text-center">
-              <Icon
-                src="/icons/search.svg"
-                className="mx-auto !w-10 !h-10"
-                color="bg-gray-400"
-              />
-              <h3 className="mt-2 font-medium text-gray-900">
-                No observations found
-              </h3>
-              <p className="mt-1 text-gray-500">
-                {isFiltered
-                  ? `No observations meets the given filter.`
-                  : `No observations have been added.`}
-              </p>
-            </div>
-          )}
-        </ul>
+          <ul className="divide-y divide-gray-200">
+            {observations.map(
+              ({
+                id,
+                short_desc,
+                long_desc,
+                event_time,
+                areas: a,
+                observation_to_images: img,
+              }) => (
+                <Observation
+                  key={id}
+                  areas={a}
+                  short_desc={short_desc}
+                  long_desc={long_desc}
+                  event_time={event_time}
+                  images={img}
+                />
+              )
+            )}
+
+            {observations.length === 0 && (
+              <div className="px-8 mt-8 mb-12 text-center">
+                <Icon
+                  src="/icons/search.svg"
+                  className="mx-auto !w-10 !h-10"
+                  color="bg-gray-400"
+                />
+                <h3 className="mt-2 font-medium text-gray-900">
+                  No observations found
+                </h3>
+                <p className="mt-1 text-gray-500">
+                  {isFiltered
+                    ? `No observations meets the given filter.`
+                    : `No observations have been added.`}
+                </p>
+              </div>
+            )}
+          </ul>
+        </div>
       </div>
 
       <ObservationFilterSlideOver
