@@ -3,7 +3,6 @@ import { ChangeEvent, FC, useEffect, useState } from "react"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
 import Markdown from "$components/Markdown/Markdown"
-import MaterialStagePill from "$components/MaterialStagePill"
 import Select from "$components/Select"
 import SlideOver from "$components/SlideOver"
 import TextFieldWithIcon from "$components/TextFieldWithIcon"
@@ -17,6 +16,7 @@ import {
   findMaterialAssessmentByStudentIdAndAreaId,
 } from "$lib/db"
 import { getQueryString, getStudentId, SSR } from "$lib/next"
+import useToggle from "$hooks/useToggle"
 
 const RecordsPage: SSR<typeof getServerSideProps> = ({
   subjects,
@@ -24,12 +24,14 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
   defaultArea,
 }) => {
   const studentId = useQueryString("studentId")
+
   const queries = useFilterQueries()
   const setQueries = useSetQueries()
 
+  const materialPreview = useToggle()
   const [area, setArea] = useState(queries.area || defaultArea)
   const [search, setSearch] = useState(queries.search || "")
-  const [materialPreview, setMaterialPreview] = useState("")
+  const [materialPreviewId, setMaterialPreviewId] = useState("")
 
   const debouncedSearch = useDebounce(search, 250)
   useEffect(() => {
@@ -152,7 +154,10 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
                   <li key={m.id}>
                     <button
                       className="flex items-center py-2 pr-2 pl-4 w-full text-gray-700 hover:bg-primary-50"
-                      onClick={() => setMaterialPreview(m.id)}
+                      onClick={() => {
+                        setMaterialPreviewId(m.id)
+                        materialPreview.toggle()
+                      }}
                     >
                       <h4 className="mr-auto truncate">{m.name}</h4>
                       <AssessmentIndicator
@@ -202,54 +207,54 @@ const RecordsPage: SSR<typeof getServerSideProps> = ({
         </ul>
       </div>
 
-      <SlideOver
-        title="Material Assessment"
-        onClose={() => setMaterialPreview("")}
-        show={materialPreview !== ""}
-      >
-        <AssessmentsSlideOver
-          studentId={studentId}
-          materialId={materialPreview}
-        />
-      </SlideOver>
+      <AssessmentsSlideOver
+        studentId={studentId}
+        materialId={materialPreviewId}
+        onClose={materialPreview.toggle}
+        show={materialPreview.isOn}
+      />
     </RecordsLayout>
   )
 }
 
 const AssessmentsSlideOver: FC<{
+  show: boolean
+  onClose: () => void
   studentId: string
   materialId: string
-}> = ({ studentId, materialId }) => {
+}> = ({ studentId, materialId, show, onClose }) => {
   const { data: details } = useGetMaterialDetails(studentId, materialId)
 
   return (
-    <div className="h-full bg-gray-50 border-t">
-      <div className="flex flex-col items-start p-4 sm:px-6">
-        <p className="text-gray-600">Name</p>
-        <h4 className="mb-2 text-lg font-bold leading-tight text-gray-800">
-          {details?.name}
-        </h4>
+    <SlideOver title="Material Assessment" onClose={onClose} show={show}>
+      <div className="h-full bg-gray-50 border-t">
+        <div className="flex flex-col items-start p-4 sm:px-6">
+          <p className="text-gray-600">Name</p>
+          <h4 className="mb-2 text-lg font-bold leading-tight text-gray-800">
+            {details?.name}
+          </h4>
 
-        {details && details?.stage !== "-1" && (
-          <AssessmentIndicator stage={details?.stage?.toString()} />
-        )}
-        {details && details?.stage === "-1" && (
-          <p className="px-2 text-sm text-gray-900 bg-gray-200 rounded-full border">
-            Net yet Introduced
-          </p>
+          {details && details?.stage !== "-1" && (
+            <AssessmentIndicator stage={details?.stage?.toString()} />
+          )}
+          {details && details?.stage === "-1" && (
+            <p className="px-2 text-sm text-gray-900 bg-gray-200 rounded-full border">
+              Net yet Introduced
+            </p>
+          )}
+        </div>
+
+        {details?.description && (
+          <div className="p-4 sm:px-6 pt-8 mt-4 bg-gray-50 border-t">
+            <p className="text-gray-600">About this Material</p>
+            <Markdown
+              markdown={details?.description}
+              className="mt-3 text-gray-800"
+            />
+          </div>
         )}
       </div>
-
-      {details?.description && (
-        <div className="p-4 sm:px-6 pt-8 mt-4 bg-gray-50 border-t">
-          <p className="text-gray-600">About this Material</p>
-          <Markdown
-            markdown={details?.description}
-            className="mt-3 text-gray-800"
-          />
-        </div>
-      )}
-    </div>
+    </SlideOver>
   )
 }
 
