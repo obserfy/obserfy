@@ -77,7 +77,7 @@ const AssessmentRecordsPage: SSR<typeof getServerSideProps> = ({
 
         <div className="lg:hidden sticky top-0 z-10 py-4 bg-gradient-to-b from-white via-white">
           <TextFieldWithIcon
-            label="Search"
+            label="Material Name"
             name="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -99,7 +99,7 @@ const AssessmentRecordsPage: SSR<typeof getServerSideProps> = ({
           </h2>
 
           <TextFieldWithIcon
-            label="Search"
+            label="Material Name"
             name="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}

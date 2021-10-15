@@ -111,7 +111,7 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
         <div className="lg:hidden sticky top-0 z-10 py-4 bg-gradient-to-b from-white via-white">
           <div className="flex">
             <TextFieldWithIcon
-              label="Search"
+              label="Text"
               name="search"
               value={search}
               onChange={handleSearchChange}
@@ -147,7 +147,7 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
           </h2>
 
           <TextFieldWithIcon
-            label="Search"
+            label="Text"
             name="search"
             value={search}
             onChange={handleSearchChange}
