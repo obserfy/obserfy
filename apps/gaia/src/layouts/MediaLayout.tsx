@@ -9,7 +9,7 @@ import MediaHeroImage from "$public/hero/media-hero.svg"
 
 const getTabs = (studentId: string) => [
   {
-    name: "Photos",
+    name: "Images",
     href: `/${studentId}/media`,
     iconSrc: "/icons/camera.svg",
   },
@@ -22,13 +22,17 @@ const getTabs = (studentId: string) => [
 
 const MediaLayout: FC<{
   title: string
-  currentPage: "Photos" | "Videos"
-}> = ({ title, children, currentPage }) => {
+  currentPage: "Images" | "Videos"
+  className?: string
+}> = ({ title, children, currentPage, className }) => {
   const studentId = useQueryString("studentId")
   const tabs = getTabs(studentId)
 
   return (
-    <BaseLayout title={`${title} | Records`} className="max-w-7xl">
+    <BaseLayout
+      title={`${title} | Records`}
+      className={clsx("max-w-7xl", className)}
+    >
       <div className="overflow-hidden relative mx-4 mt-2 sm:mt-4 rounded-2xl shadow-md">
         <div className="absolute inset-0">
           <Image
@@ -39,7 +43,7 @@ const MediaLayout: FC<{
           />
         </div>
 
-        <div className="relative p-4 pt-16 lg:pt-24 pb-8 lg:pb-12 bg-gradient-to-t from-[rgba(0,0,0,0.6)]">
+        <div className="relative p-4 pt-16 lg:pt-24 pb-12 lg:pb-12 bg-gradient-to-t from-[rgba(0,0,0,0.6)]">
           <h1 className="mb-4 text-4xl lg:text-5xl font-bold text-center text-white">
             Media
           </h1>

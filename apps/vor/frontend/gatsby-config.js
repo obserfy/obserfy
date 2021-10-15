@@ -113,6 +113,13 @@ const developMiddleware = (app) => {
     })
   )
   app.use(
+    "/webhooks",
+    require("http-proxy-middleware").createProxyMiddleware({
+      secure: false,
+      target: "https://localhost:8000",
+    })
+  )
+  app.use(
     "/auth",
     require("http-proxy-middleware").createProxyMiddleware({
       secure: false,

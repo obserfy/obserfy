@@ -1,11 +1,11 @@
 import MediaLayout from "$layouts/MediaLayout"
 
-const MediaPage = () => {
+const VideosPage = () => {
   return (
-    <MediaLayout title="MediaPage" currentPage="Photos">
+    <MediaLayout title="MediaPage" currentPage="Videos">
       <div>test</div>
     </MediaLayout>
   )
 }
 
-export default MediaPage
+export default VideosPage

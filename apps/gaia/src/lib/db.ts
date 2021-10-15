@@ -177,3 +177,18 @@ export const findMaterialAssessmentByStudentIdAndAreaId = async (
     },
   })
 }
+
+export const findImagesByStudentId = (studentId: string) => {
+  return prisma.images.findMany({
+    orderBy: {
+      created_at: "desc",
+    },
+    where: {
+      image_to_students: {
+        some: {
+          student_id: studentId,
+        },
+      },
+    },
+  })
+}

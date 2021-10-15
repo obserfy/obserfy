@@ -20,7 +20,7 @@ const TopBar = () => {
   const { data: students } = useGetChildren()
 
   return (
-    <div className="relative sm:sticky sm:top-0 z-10 h-16 bg-surface bg-opacity-90 sm:border-b backdrop-filter backdrop-blur-lg">
+    <div className="relative sm:sticky sm:top-0 z-20 h-16 bg-surface bg-opacity-90 sm:border-b backdrop-filter backdrop-blur-lg">
       <div className="flex items-center px-4 sm:pl-0 h-16">
         <div className="hidden sm:block flex-shrink-0 px-4 mr-4 w-sidebar font-bold text-gray-600 border-r">
           {student?.schoolName}
