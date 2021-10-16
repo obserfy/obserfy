@@ -43,7 +43,7 @@ const MediaLayout: FC<{
           />
         </div>
 
-        <div className="relative p-4 pt-16 lg:pt-24 pb-12 lg:pb-12 bg-gradient-to-t from-[rgba(0,0,0,0.6)]">
+        <div className="relative p-4 pt-12 lg:pt-24 pb-12 lg:pb-12 bg-gradient-to-t from-[rgba(0,0,0,0.6)]">
           <h1 className="mb-4 text-4xl lg:text-5xl font-bold text-center text-white">
             Media
           </h1>

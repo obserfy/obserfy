@@ -16,7 +16,7 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({ imagesByMonth }) => {
   return (
     <MediaLayout title="MediaPage" currentPage="Images">
       <div className="flex relative z-10 -mt-6 lg:-mt-8 mb-4">
-        <button className="group flex items-center mr-9 lg:mr-12 ml-auto text-base font-semibold text-primary-900 hover:text-black bg-primary-200 hover:bg-primary-300 focus:bg-primary-200 rounded-full ring ring-white focus:ring-primary-500 shadow hover:shadow-lg transition lg:!px-6 !p-4">
+        <button className="group flex items-center mr-9 lg:mr-12 ml-auto text-base font-semibold text-primary-900 hover:text-black bg-primary-300 hover:bg-primary-300 focus:bg-primary-200 rounded-full ring ring-white focus:ring-primary-500 shadow hover:shadow-lg transition lg:!px-6 !p-4">
           <Icon
             src="/icons/image-add.svg"
             color="bg-primary-900 group-hover:bg-black"
