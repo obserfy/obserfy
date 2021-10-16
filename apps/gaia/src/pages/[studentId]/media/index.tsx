@@ -26,10 +26,10 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({ imagesByMonth }) => {
   return (
     <MediaLayout title="MediaPage" currentPage="Images">
       <div className="flex relative z-10 -mt-6 lg:-mt-8 mb-4">
-        <button className="group flex items-center mr-9 lg:mr-12 ml-auto text-base font-semibold text-primary-800 hover:text-black bg-primary-100 hover:bg-primary-300 focus:bg-primary-200 rounded-full ring ring-white focus:ring-primary-500 hover:shadow-lg transition lg:!px-6 !p-4">
+        <button className="group flex items-center mr-9 lg:mr-12 ml-auto text-base font-semibold text-primary-900 hover:text-black bg-primary-200 hover:bg-primary-300 focus:bg-primary-200 rounded-full ring ring-white focus:ring-primary-500 shadow hover:shadow-lg transition lg:!px-6 !p-4">
           <Icon
             src="/icons/image-add.svg"
-            color="bg-primary-800 group-hover:bg-black"
+            color="bg-primary-900 group-hover:bg-black"
           />
           <span className="hidden lg:block ml-2">Upload Image</span>
         </button>
@@ -37,12 +37,12 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({ imagesByMonth }) => {
 
       {Object.keys(imagesByMonth).map((month) => (
         <section className="mb-16">
-          <p className="flex sticky top-4 sm:top-20 z-10 flex-col items-center py-2 lg:py-3 px-4 mx-8 sm:mx-auto mb-2 sm:max-w-md font-semibold leading-none text-center text-gray-900 bg-white bg-opacity-90 rounded-full backdrop-filter backdrop-blur">
+          <p className="flex sticky top-4 sm:top-20 z-10 flex-col items-center py-2 lg:py-3 px-4 mx-8 sm:mx-auto mb-2 sm:max-w-md font-semibold leading-none text-center text-gray-900 bg-white bg-opacity-80 rounded-full backdrop-filter backdrop-blur">
             {month}
             <div className="mt-1 w-6 h-1 bg-primary-500 rounded-full" />
           </p>
 
-          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-4 lg:gap-y-8 px-4 mt-2">
+          <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 lg:gap-x-8 gap-y-4 lg:gap-y-8 px-4 mt-2">
             {imagesByMonth[month].map(({ id, src }) => (
               <li className="flex rounded-xl shadow">
                 <Image
