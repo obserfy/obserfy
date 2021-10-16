@@ -1,5 +1,8 @@
 import Image from "next/image"
 import { images as Images } from "@prisma/client"
+import Link from "next/link"
+import { useQueryString } from "$hooks/useQueryString"
+import { monthNames } from "$lib/dayjs"
 import Icon from "$components/Icon/Icon"
 import MediaLayout from "$layouts/MediaLayout"
 import { withAuthorization } from "$lib/auth"
@@ -7,22 +10,9 @@ import { findImagesByStudentId } from "$lib/db"
 import { getStudentId, SSR } from "$lib/next"
 import { generateOriginalUrl } from "../../../utils/imgproxy"
 
-const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-]
-
 const ImagesPage: SSR<typeof getServerSideProps> = ({ imagesByMonth }) => {
+  const studentId = useQueryString("studentId")
+
   return (
     <MediaLayout title="MediaPage" currentPage="Images">
       <div className="flex relative z-10 -mt-6 lg:-mt-8 mb-4">
@@ -42,17 +32,21 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({ imagesByMonth }) => {
             <div className="mt-1 w-6 h-1 bg-primary-500 rounded-full" />
           </p>
 
-          <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 lg:gap-x-8 gap-y-4 lg:gap-y-8 px-4 mt-2">
+          <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-4 lg:gap-y-8 px-4 mt-2">
             {imagesByMonth[month].map(({ id, src }) => (
-              <li className="flex rounded-xl shadow">
-                <Image
-                  key={id}
-                  src={src}
-                  width={400}
-                  height={400}
-                  objectFit="cover"
-                  className="rounded-xl"
-                />
+              <li>
+                <Link href={`/${studentId}/media/images/${id}`}>
+                  <a className="flex rounded-xl shadow">
+                    <Image
+                      key={id}
+                      src={src}
+                      width={400}
+                      height={300}
+                      objectFit="cover"
+                      className="rounded-xl"
+                    />
+                  </a>
+                </Link>
               </li>
             ))}
           </ul>

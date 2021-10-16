@@ -11,7 +11,7 @@ const SideBar = () => {
 
   return (
     <nav className="hidden sm:block fixed top-0 bottom-0 left-0 pt-16 w-sidebar h-screen bg-background border-r">
-      <ul className="py-3">
+      <ul className="py-3 mr-[-1px]">
         {navigationItems(studentId).map((item) => (
           <Item key={item.href} {...item} />
         ))}

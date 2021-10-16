@@ -192,3 +192,39 @@ export const findImagesByStudentId = (studentId: string) => {
     },
   })
 }
+
+export const findImageByStudentIdAndImageId = (
+  studentId: string,
+  imageId: string
+) => {
+  return prisma.images.findFirst({
+    orderBy: {
+      created_at: "desc",
+    },
+    include: {
+      schools: true,
+      observation_to_images: {
+        include: {
+          observations: true,
+        },
+      },
+      image_to_students: {
+        include: {
+          students: {
+            include: {
+              images: { select: { object_key: true } },
+            },
+          },
+        },
+      },
+    },
+    where: {
+      id: imageId,
+      image_to_students: {
+        some: {
+          student_id: studentId,
+        },
+      },
+    },
+  })
+}
