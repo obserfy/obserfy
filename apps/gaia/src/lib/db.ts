@@ -205,7 +205,11 @@ export const findImageByStudentIdAndImageId = (
       schools: true,
       observation_to_images: {
         include: {
-          observations: true,
+          observations: {
+            include: {
+              areas: true,
+            },
+          },
         },
       },
       image_to_students: {
@@ -223,6 +227,30 @@ export const findImageByStudentIdAndImageId = (
       image_to_students: {
         some: {
           student_id: studentId,
+        },
+      },
+    },
+  })
+}
+
+export const findRelatedImageByImageId = (imageId: string) => {
+  return prisma.images.findMany({
+    orderBy: {
+      created_at: "desc",
+    },
+    where: {
+      id: {
+        not: imageId,
+      },
+      observation_to_images: {
+        some: {
+          observations: {
+            observation_to_images: {
+              some: {
+                image_id: imageId,
+              },
+            },
+          },
         },
       },
     },

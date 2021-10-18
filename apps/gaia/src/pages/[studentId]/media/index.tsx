@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { images as Images } from "@prisma/client"
 import Link from "next/link"
+import ImageListHeader from "$components/ImageListHeader"
 import { useQueryString } from "$hooks/useQueryString"
 import { monthNames } from "$lib/dayjs"
 import Icon from "$components/Icon/Icon"
@@ -27,10 +28,7 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({ imagesByMonth }) => {
 
       {Object.keys(imagesByMonth).map((month) => (
         <section className="mb-16">
-          <p className="flex sticky top-4 sm:top-20 z-10 flex-col items-center py-2 lg:py-3 px-4 mx-8 sm:mx-auto mb-2 sm:max-w-md font-semibold leading-none text-center text-gray-900 bg-white bg-opacity-80 rounded-full backdrop-filter backdrop-blur">
-            {month}
-            <div className="mt-1 w-6 h-1 bg-primary-500 rounded-full" />
-          </p>
+          <ImageListHeader>{month}</ImageListHeader>
 
           <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-4 lg:gap-y-8 px-4 mt-2">
             {imagesByMonth[month].map(({ id, src }) => (

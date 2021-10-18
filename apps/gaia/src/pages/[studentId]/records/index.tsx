@@ -227,25 +227,9 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
           </p>
 
           <ul className="divide-y divide-gray-200">
-            {observations.map(
-              ({
-                id,
-                short_desc,
-                long_desc,
-                event_time,
-                areas: a,
-                observation_to_images: img,
-              }) => (
-                <Observation
-                  key={id}
-                  areas={a}
-                  short_desc={short_desc}
-                  long_desc={long_desc}
-                  event_time={event_time}
-                  images={img}
-                />
-              )
-            )}
+            {observations.map((observation) => (
+              <Observation key={observation.id} {...observation} />
+            ))}
 
             {observations.length === 0 && (
               <div className="px-8 mt-8 mb-12 text-center">
@@ -389,8 +373,8 @@ const Observation: FC<{
   short_desc: string | null
   long_desc: string | null
   areas: { name: string | null } | null
-  images: Array<{ src: string | null }>
-}> = ({ short_desc, areas, event_time, long_desc, images }) => (
+  observation_to_images: Array<{ src: string | null }>
+}> = ({ short_desc, areas, event_time, long_desc, observation_to_images }) => (
   <li className="relative py-5 px-4 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600">
     <div className="flex justify-between space-x-3">
       <div className="block text-left truncate focus:outline-none">
@@ -418,11 +402,11 @@ const Observation: FC<{
       )}
     </div>
 
-    {images.length > 0 && (
+    {observation_to_images.length > 0 && (
       <h3 className="mt-2 mb-2 font-semibold text-gray-500">Images</h3>
     )}
     <div className="flex space-x-2">
-      {images.map(({ src }) => {
+      {observation_to_images.map(({ src }) => {
         if (src) {
           return (
             <div className="flex w-12 h-12">
