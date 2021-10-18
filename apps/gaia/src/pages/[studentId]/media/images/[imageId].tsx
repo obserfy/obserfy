@@ -55,7 +55,10 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
             <h3 className="py-4 px-4 font-semibold text-gray-900">Students</h3>
             <ul className="px-4 border-t border-gray-200 divide-y divide-gray-200">
               {image.image_to_students?.map(({ students }) => (
-                <li className="flex items-center py-3 font-medium">
+                <li
+                  className="flex items-center py-3 font-medium"
+                  key={students.id}
+                >
                   <StudentProfile
                     src={students.profile_pic}
                     width={32}
@@ -92,7 +95,7 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
                       <Image
                         src={src}
                         width={400}
-                        height={400}
+                        height={300}
                         objectFit="cover"
                         className="rounded-xl"
                       />
