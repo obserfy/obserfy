@@ -13,6 +13,7 @@ const BaseLayout: FC<{
     <SEO title={title} />
 
     <TopBar />
+
     <div className="sm:flex w-full">
       <SideBar />
       <main

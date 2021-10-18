@@ -20,6 +20,10 @@ const IndexPage: SSR<typeof getServerSideProps> = ({ timeline }) => {
 
   return (
     <BaseLayout title="Timeline">
+      {/* <div className="installed:hidden relative z-20 p-4 m-4 text-blue-800 bg-blue-100 rounded-xl text-sm"> */}
+      {/*  Install as an App */}
+      {/* </div> */}
+
       <div className="mx-auto max-w-3xl">
         <div className="pt-3 ml-8 border-l">
           {timeline?.map(({ date, observations }) => (

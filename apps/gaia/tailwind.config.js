@@ -40,6 +40,10 @@ module.exports = {
           900: "#064e3b",
         },
       },
+      // screen: {
+      //   installed: { raw: "(display-mode: standalone)" },
+      //   "not-installed": { raw: "not(display-mode: standalone)" },
+      // },
 
       // typography: {
       //   DEFAULT: {
