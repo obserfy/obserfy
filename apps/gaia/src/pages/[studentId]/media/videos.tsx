@@ -1,27 +1,25 @@
-import { images as Images } from "@prisma/client"
+import { videos as Videos } from "@prisma/client"
 import Image from "next/image"
 import Link from "next/link"
-import { withAuthorization } from "$lib/auth"
-import { monthNames } from "$lib/dayjs"
-import { findImagesByStudentId } from "$lib/db"
-import { getStudentId } from "$lib/next"
-import Icon from "$components/Icon/Icon"
 import ImageListHeader from "$components/ImageListHeader"
 import { useQueryString } from "$hooks/useQueryString"
 import MediaLayout from "$layouts/MediaLayout"
-import { generateOriginalUrl } from "../../../utils/imgproxy"
+import { withAuthorization } from "$lib/auth"
+import { monthNames } from "$lib/dayjs"
+import { findVideosByStudentId } from "$lib/db"
+import { getStudentId, SSR } from "$lib/next"
 
-const VideosPage = ({ imagesByMonth }) => {
+const VideosPage: SSR<typeof getServerSideProps> = ({ videosByMonth }) => {
   const studentId = useQueryString("studentId")
 
   return (
     <MediaLayout title="MediaPage" currentPage="Videos">
-      {Object.keys(imagesByMonth).map((month) => (
-        <section className="mb-16">
+      {Object.keys(videosByMonth).map((month) => (
+        <section className="mt-8">
           <ImageListHeader>{month}</ImageListHeader>
 
-          <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-4 lg:gap-y-8 px-4 mt-2">
-            {imagesByMonth[month].map(({ id, src }) => (
+          <ul className="grid grid-cols-2 md:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-4 lg:gap-y-8 px-4 mt-2">
+            {videosByMonth[month].map(({ id, src }) => (
               <li key={id}>
                 <Link href={`/${studentId}/media/images/${id}`}>
                   <a className="flex rounded-xl shadow">
@@ -45,24 +43,22 @@ const VideosPage = ({ imagesByMonth }) => {
 
 export const getServerSideProps = withAuthorization(async (ctx) => {
   const studentId = getStudentId(ctx)
-  const images = await findImagesByStudentId(studentId)
+  const videos = await findVideosByStudentId(studentId)
 
-  const imagesByMonth: { [key: string]: Array<Images & { src: string }> } = {}
-  images.forEach((image) => {
-    const month = image.created_at
-      ? monthNames[image.created_at.getMonth()]
-      : "-"
-    const year = image.created_at?.getFullYear() ?? 0
+  const videosByMonth: { [key: string]: Array<Videos & { src: string }> } = {}
+  videos.forEach((v) => {
+    const month = v.created_at ? monthNames[v.created_at.getMonth()] : "-"
+    const year = v.created_at?.getFullYear() ?? 0
 
     const key = `${month} ${year}`
-    imagesByMonth[key] ??= []
-    imagesByMonth[key].push({
-      ...image,
-      src: image.object_key ? generateOriginalUrl(image.object_key) : "",
+    videosByMonth[key] ??= []
+    videosByMonth[key].push({
+      ...v,
+      src: v.thumbnail_url || "",
     })
   })
 
-  return { props: { imagesByMonth } }
+  return { props: { videosByMonth } }
 })
 
 export default VideosPage

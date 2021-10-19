@@ -30,7 +30,7 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({ imagesByMonth }) => {
         <section className="mb-16">
           <ImageListHeader>{month}</ImageListHeader>
 
-          <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-4 lg:gap-y-8 px-4 mt-2">
+          <ul className="grid grid-cols-2 md:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-4 lg:gap-y-8 px-4 mt-2">
             {imagesByMonth[month].map(({ id, src }) => (
               <li key={id}>
                 <Link href={`/${studentId}/media/images/${id}`}>

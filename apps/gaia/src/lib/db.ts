@@ -256,3 +256,18 @@ export const findRelatedImageByImageId = (imageId: string) => {
     },
   })
 }
+
+export const findVideosByStudentId = (studentId: string) => {
+  return prisma.videos.findMany({
+    orderBy: {
+      created_at: "desc",
+    },
+    where: {
+      video_to_students: {
+        some: {
+          student_id: studentId,
+        },
+      },
+    },
+  })
+}
