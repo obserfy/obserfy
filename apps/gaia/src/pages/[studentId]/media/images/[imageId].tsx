@@ -30,7 +30,7 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
       </div>
 
       <div className="lg:flex flex-row-reverse mx-auto max-w-7xl">
-        <div className="lg:max-w-sm ">
+        <div className="w-full lg:max-w-sm">
           <div className="p-4 w-full">
             <Breadcrumb />
           </div>
