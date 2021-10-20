@@ -198,9 +198,6 @@ export const findImageByStudentIdAndImageId = (
   imageId: string
 ) => {
   return prisma.images.findFirst({
-    orderBy: {
-      created_at: "desc",
-    },
     include: {
       schools: true,
       observation_to_images: {
@@ -263,6 +260,55 @@ export const findVideosByStudentId = (studentId: string) => {
       created_at: "desc",
     },
     where: {
+      video_to_students: {
+        some: {
+          student_id: studentId,
+        },
+      },
+    },
+  })
+}
+
+export const findOtherVideosByStudentId = (
+  studentId: string,
+  excludedVideoId: string
+) => {
+  return prisma.videos.findMany({
+    orderBy: {
+      created_at: "desc",
+    },
+    where: {
+      id: {
+        not: excludedVideoId,
+      },
+      video_to_students: {
+        some: {
+          student_id: studentId,
+        },
+      },
+    },
+  })
+}
+
+export const findVideoByStudentIdAndImageId = (
+  studentId: string,
+  imageId: string
+) => {
+  return prisma.videos.findFirst({
+    include: {
+      schools: true,
+      video_to_students: {
+        include: {
+          students: {
+            include: {
+              images: { select: { object_key: true } },
+            },
+          },
+        },
+      },
+    },
+    where: {
+      id: imageId,
       video_to_students: {
         some: {
           student_id: studentId,

@@ -33,8 +33,8 @@ const handlePost = async (res: NextApiResponse, req: NextApiRequest) => {
     const form = new formidable.IncomingForm()
     form.parse(req, (err, fields, files) => {
       if (err) return reject(err)
-      if (!Array.isArray(files.image)) {
-        resolve(files.image)
+      if (!Array.isArray(files.video)) {
+        resolve(files.video)
       } else {
         reject(new Error("can't process multiple images"))
       }

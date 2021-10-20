@@ -12,3 +12,7 @@ declare module NodeJS {
     prisma: any
   }
 }
+
+declare module "mux-embed" {
+  const monitor: any
+}

@@ -21,7 +21,7 @@ const VideosPage: SSR<typeof getServerSideProps> = ({ videosByMonth }) => {
           <ul className="grid grid-cols-2 md:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-4 lg:gap-y-8 px-4 mt-2">
             {videosByMonth[month].map(({ id, src }) => (
               <li key={id}>
-                <Link href={`/${studentId}/media/images/${id}`}>
+                <Link href={`/${studentId}/media/videos/${id}`}>
                   <a className="flex rounded-xl shadow">
                     <Image
                       src={src}
