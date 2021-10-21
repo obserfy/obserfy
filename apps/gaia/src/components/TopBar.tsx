@@ -31,7 +31,7 @@ const TopBar = () => {
             students={students}
             selectedStudent={student}
             setSelectedStudent={(s) => {
-              router.push(router.asPath.replace(student.id, s.id))
+              router.push(`/${s.id}`)
             }}
           />
         )}
