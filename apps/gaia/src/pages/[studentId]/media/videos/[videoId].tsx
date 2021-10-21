@@ -36,7 +36,7 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
                 objectFit="contain"
               />
               <button onClick={player.toggle}>
-                <div className="flex absolute inset-0 z-20 justify-center items-center bg-black bg-opacity-30">
+                <div className="flex absolute inset-0 z-10 justify-center items-center bg-black bg-opacity-30">
                   <Icon
                     src="/icons/play.svg"
                     className="!w-16 !h-16"
@@ -149,7 +149,7 @@ const Breadcrumb = () => {
             <Link href={`/${studentId}/media`}>
               <a className="text-gray-400 hover:text-gray-500">
                 <Icon
-                  src="/icons/camera.svg"
+                  src="/icons/video.svg"
                   className="flex-shrink-0 !w-6 !h-6"
                   color="bg-gray-500"
                   aria-hidden="true"
