@@ -1,4 +1,5 @@
 import { images as Images } from "@prisma/client"
+import clsx from "clsx"
 import Image from "next/image"
 import Link from "next/link"
 import { ChangeEventHandler, FC } from "react"
@@ -34,7 +35,10 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({
   return (
     <MediaLayout title="MediaPage" currentPage="Images">
       <div className="flex relative z-10 -mt-6 lg:-mt-8 mb-4">
-        <UploadImageButton onChange={handleImageUpload} />
+        <UploadImageButton
+          onChange={handleImageUpload}
+          isLoading={postImage.isLoading}
+        />
       </div>
 
       {Object.keys(imagesByMonth).map((month) => (
@@ -66,22 +70,38 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({
 
 const UploadImageButton: FC<{
   onChange: ChangeEventHandler<HTMLInputElement>
-}> = ({ onChange }) => (
+  isLoading: boolean
+}> = ({ onChange, isLoading }) => (
   <label
     htmlFor="upload-image"
-    className="group flex items-center mr-9 lg:mr-12 ml-auto text-base font-semibold text-primary-900 hover:text-black bg-primary-300 hover:bg-primary-300 focus:bg-primary-200 rounded-full ring ring-white focus:ring-primary-500 shadow hover:shadow-lg transition cursor-pointer lg:!px-6 !p-4"
+    className={clsx(
+      "group flex items-center mr-9 lg:mr-12 ml-auto text-base font-semibold text-primary-900 hover:text-black bg-primary-300 hover:bg-primary-300 focus:bg-primary-200 rounded-full ring ring-white focus:ring-primary-500 shadow hover:shadow-lg transition cursor-pointer lg:!px-6 !p-4",
+      isLoading && "!bg-primary-500"
+    )}
   >
-    <Icon
-      src="/icons/image-add.svg"
-      color="bg-primary-900 group-hover:bg-black"
-    />
-    <span className="hidden lg:block ml-2">Upload Image</span>
+    {isLoading ? (
+      <Icon
+        src="/icons/spinner.svg"
+        color="bg-primary-900 group-hover:bg-black"
+        className="animate-spin !w-6 !h-6"
+      />
+    ) : (
+      <Icon
+        src="/icons/image-add.svg"
+        color="bg-primary-900 group-hover:bg-black"
+      />
+    )}
+
+    <span className="hidden lg:block ml-2">
+      {isLoading ? "Uploading" : "Upload Image"}
+    </span>
     <input
       id="upload-image"
       type="file"
       accept="image/*"
       className="hidden"
       onChange={onChange}
+      disabled={isLoading}
     />
   </label>
 )
