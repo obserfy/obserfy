@@ -317,3 +317,11 @@ export const findVideoByStudentIdAndImageId = (
     },
   })
 }
+
+export const findStudentByStudentId = (id: string) => {
+  return prisma.students.findUnique({
+    where: {
+      id,
+    },
+  })
+}
