@@ -320,8 +320,28 @@ export const findVideoByStudentIdAndImageId = (
 
 export const findStudentByStudentId = (id: string) => {
   return prisma.students.findUnique({
+    where: { id },
+  })
+}
+
+export const findStudentLessonPlans = (studentId: string) => {
+  return prisma.lesson_plans.findMany({
+    orderBy: {
+      date: "desc",
+    },
+    include: {
+      lesson_plan_details: {
+        include: {
+          areas: true,
+        },
+      },
+    },
     where: {
-      id,
+      lesson_plan_to_students: {
+        some: {
+          student_id: studentId,
+        },
+      },
     },
   })
 }

@@ -6,7 +6,7 @@ const TextFieldWithIcon: FC<{
   label: string
   name: string
   value: string
-  onChange: ChangeEventHandler<HTMLInputElement>
+  onChange?: ChangeEventHandler<HTMLInputElement>
   placeholder?: string
   containerClassName?: string
   hideLabel?: boolean
