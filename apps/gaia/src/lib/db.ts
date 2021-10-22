@@ -345,3 +345,18 @@ export const findStudentLessonPlans = (studentId: string) => {
     },
   })
 }
+
+export const findLessonPlanById = (id: string) => {
+  return prisma.lesson_plans.findUnique({
+    where: { id },
+    include: {
+      lesson_plan_details: {
+        include: {
+          lesson_plan_links: true,
+          file_to_lesson_plans: true,
+          areas: true,
+        },
+      },
+    },
+  })
+}

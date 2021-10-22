@@ -1,8 +1,14 @@
+import { Dayjs } from "dayjs"
 import Image from "next/image"
 import { FC, useState } from "react"
+import { areas, lesson_plans, lesson_plan_details } from "@prisma/client"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
+import Markdown from "$components/Markdown/Markdown"
+import SlideOver from "$components/SlideOver"
 import TextFieldWithIcon from "$components/TextFieldWithIcon"
+import useGetLessonPlan from "$hooks/api/useGetlessonPlan"
+import useToggle from "$hooks/useToggle"
 import BaseLayout from "$layouts/BaseLayout"
 import { withAuthorization } from "$lib/auth"
 import dayjs from "$lib/dayjs"
@@ -10,72 +16,105 @@ import { findStudentLessonPlans } from "$lib/db"
 import { getQueryString, getStudentId, SSR } from "$lib/next"
 import RecordsHeroImage from "$public/hero/records-hero.svg"
 
-const IndexPage: SSR<typeof getServerSideProps> = ({ lessonPlans }) => (
-  <BaseLayout title="Lesson Plans" className="max-w-7xl">
-    <div className="overflow-hidden relative mx-4 mt-2 sm:mt-4 rounded-2xl shadow-md">
-      <div className="absolute inset-0">
-        <Image
-          src={RecordsHeroImage}
-          objectFit="cover"
-          className="w-full h-full"
-          layout="fill"
-        />
+const LessonPlansPage: SSR<typeof getServerSideProps> = ({ lessonPlans }) => {
+  const detailsSlideOver = useToggle()
+  const [lessonPlanId, setLessonPlanId] = useState("")
+
+  const handleLessonPlanClick = (id: string) => {
+    setLessonPlanId(id)
+    detailsSlideOver.toggle()
+  }
+
+  return (
+    <BaseLayout title="Lesson Plans" className="max-w-7xl">
+      <Header />
+      <FilterBarMobile />
+
+      <div className="lg:flex items-start mx-4 lg:mt-4">
+        <FilterCardDesktop />
+
+        <div className="overflow-hidden w-full bg-surface rounded-xl border shadow-sm">
+          <p className="py-2 font-semibold text-center text-gray-600 bg-gray-100 border-b">
+            Lesson Plans
+          </p>
+
+          <ul>
+            {lessonPlans.map(({ date, id, lesson_plan_details: details }) => (
+              <LessonPlan
+                key={id}
+                title={details?.title ?? ""}
+                areaName={details?.areas?.name ?? ""}
+                repetitionType={details?.repetition_type?.toString()}
+                start={dayjs(date)}
+                end={
+                  details?.repetition_end_date
+                    ? dayjs(details.repetition_end_date)
+                    : undefined
+                }
+                onClick={() => handleLessonPlanClick(id)}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
 
-      <div className="relative p-4 pt-20 lg:pt-24 pb-8 lg:pb-12 bg-gradient-to-t from-[rgba(0,0,0,0.6)]">
-        <h1 className="mb-4 text-3xl lg:text-4xl font-bold text-center text-white">
-          Lesson Plans
-        </h1>
-      </div>
+      <LessonPlanDetailsSlideOver
+        show={detailsSlideOver.isOn}
+        onClose={detailsSlideOver.toggle}
+        lessonPlanId={lessonPlanId}
+      />
+    </BaseLayout>
+  )
+}
+
+const LessonPlan: FC<{
+  title: string
+  areaName: string
+  start: Dayjs
+  repetitionType?: string
+  end?: Dayjs
+  onClick?: () => void
+}> = ({ start, areaName, end, repetitionType, title, onClick }) => {
+  const isRepeating = repetitionType !== "0" && end && start.isBefore(end)
+  return (
+    <li className="border-t first:border-none">
+      <button
+        onClick={onClick}
+        className="p-4 w-full text-left hover:bg-gray-100"
+      >
+        <h3 className="flex-1 mb-1 font-semibold text-gray-700">{title}</h3>
+        <p className="flex mb-1 text-gray-500">
+          {start.format("D MMM YYYY")}
+          {isRepeating && (
+            <span className="ml-1">{` - ${end?.format("D MMM YYYY")}`}</span>
+          )}
+        </p>
+        <p className="font-semibold text-primary-600">{areaName}</p>
+      </button>
+    </li>
+  )
+}
+
+const Header = () => (
+  <div className="overflow-hidden relative mx-4 mt-2 sm:mt-4 rounded-2xl shadow-md">
+    <div className="absolute inset-0">
+      <Image
+        src={RecordsHeroImage}
+        objectFit="cover"
+        className="w-full h-full"
+        layout="fill"
+      />
     </div>
 
-    <MobileFilter />
-
-    <div className="mx-4 lg:mt-4 bg-surface rounded-xl border shadow-sm">
-      <p className="py-2 font-semibold text-center text-gray-600 bg-gray-100 border-b">
+    <div className="relative p-4 pt-20 lg:pt-24 pb-8 lg:pb-12 bg-gradient-to-t from-[rgba(0,0,0,0.6)]">
+      <h1 className="mb-4 text-3xl lg:text-4xl font-bold text-center text-white">
         Lesson Plans
-      </p>
-
-      <ul>
-        {lessonPlans.map(({ date, id, lesson_plan_details }) => {
-          const startDate = dayjs(date)
-          const endDate = lesson_plan_details?.repetition_end_date
-            ? dayjs(lesson_plan_details?.repetition_end_date)
-            : null
-
-          const haveEndDate =
-            lesson_plan_details?.repetition_type?.toString() !== "0" &&
-            endDate &&
-            startDate.isBefore(endDate)
-
-          return (
-            <li
-              key={id}
-              className="block p-4 hover:bg-gray-100 border-t first:border-none"
-            >
-              <p className="flex-1 font-bold text-gray-700">
-                {lesson_plan_details?.title}
-              </p>
-              <p className="font-bold text-primary-600">
-                {lesson_plan_details?.areas?.name}
-              </p>
-              <p className="flex text-gray-500">
-                {startDate.format("D MMM YYYY")}
-                {haveEndDate && (
-                  <span className="ml-1">
-                    {` - ${endDate?.format("D MMM YYYY")}`}
-                  </span>
-                )}
-              </p>
-            </li>
-          )
-        })}
-      </ul>
+      </h1>
     </div>
-  </BaseLayout>
+  </div>
 )
 
-const MobileFilter: FC = () => {
+const FilterBarMobile: FC = () => {
   const [search, setSearch] = useState("")
 
   return (
@@ -105,6 +144,140 @@ const MobileFilter: FC = () => {
   )
 }
 
+const FilterCardDesktop = () => {
+  return (
+    <div className="hidden lg:block sticky top-20 flex-shrink-0 p-4 mr-4 mb-6 w-full lg:w-1/3 bg-gray-100 rounded-xl">
+      <h2 className="flex justify-center items-center mb-3 font-semibold leading-none opacity-50">
+        <Icon src="/icons/filter.svg" className="mr-1" color="bg-gray-800" />
+        Filters
+      </h2>
+
+      <TextFieldWithIcon
+        label="Text"
+        name="search"
+        // value={search}
+        // onChange={handleSearchChange}
+        placeholder={`"Reading ..."`}
+        containerClassName="mb-2"
+      />
+
+      {/* <Select */}
+      {/*  // defaultValue={area} */}
+      {/*  // value={area} */}
+      {/*  // onChange={handleAreaChange} */}
+      {/*  label="Area" */}
+      {/*  name="area" */}
+      {/* > */}
+      {/*  <option value="all">All</option> */}
+      {/*  {areas.map(({ id, name }) => ( */}
+      {/*    <option key={id} value={id}> */}
+      {/*      {name} */}
+      {/*    </option> */}
+      {/*  ))} */}
+      {/*  <option value="others">Others</option> */}
+      {/* </Select> */}
+
+      <div className="isolate mt-4 -space-y-px bg-white rounded-md shadow-sm">
+        <label
+          htmlFor="date-from"
+          className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-b-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+        >
+          <span className="block text-sm font-medium text-gray-700">From</span>
+          <input
+            type="date"
+            name="date-from"
+            id="date-from"
+            className="block p-0 w-full placeholder-gray-500 text-gray-900 border-0 focus:ring-0"
+            // value={from.format("YYYY-MM-DD")}
+            // min={dayjs(oldestDate).format("YYYY-MM-DD")}
+            // max={to.format("YYYY-MM-DD")}
+            // onChange={handleFromChange}
+          />
+        </label>
+        <label
+          htmlFor="date-from"
+          className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-t-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+        >
+          <span className="block w-full text-sm font-medium text-gray-700">
+            To
+          </span>
+          <input
+            type="date"
+            name="date-to"
+            id="date-to"
+            className="p-0 w-full placeholder-gray-500 text-gray-900 border-0 focus:ring-0"
+            // value={to.format("YYYY-MM-DD")}
+            // min={from.format("YYYY-MM-DD")}
+            // max={today.format("YYYY-MM-DD")}
+            // onChange={handleToChange}
+          />
+        </label>
+      </div>
+    </div>
+  )
+}
+
+const LessonPlanDetailsSlideOver: FC<{
+  show: boolean
+  onClose: () => void
+  lessonPlanId: string
+}> = ({ lessonPlanId, show, onClose }) => {
+  const { data: lp } = useGetLessonPlan(lessonPlanId)
+
+  return (
+    <SlideOver show={show} onClose={onClose} title="Lesson Details">
+      <div className="relative">
+        <div className="px-4 lg:px-6 pt-4 mb-4 border-t">
+          <p className="text-gray-600">Lesson Name</p>
+          <h4 className="mb-2 font-semibold leading-tight text-gray-800">
+            {lp?.title}
+          </h4>
+        </div>
+
+        <div className="px-4 lg:px-6 pb-4 border-b">
+          <p className="text-gray-600">Area</p>
+          <h5 className="mb-2 font-semibold leading-tight text-primary-800">
+            {lp?.areaName || "Other"}
+          </h5>
+        </div>
+
+        {lp?.description && (
+          <div className="p-4 lg:p-6">
+            <div
+              className="prose"
+              dangerouslySetInnerHTML={{ __html: lp.description }}
+            />
+          </div>
+        )}
+
+        {(lp?.links?.length ?? 0) > 0 && (
+          <div className="absolute right-0 left-0 px-4 lg:px-6 pt-4 mb-2 border-t">
+            <p className="mb-2 text-gray-600">Links</p>
+            <ul>
+              {lp?.links.map((l) => (
+                <li key={l.id} className="mb-4 rounded-lg border shadow-sm">
+                  <a
+                    href={l.url ?? "#"}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    className="flex items-center p-3 truncate"
+                  >
+                    <Icon
+                      src="/icons/link.svg"
+                      className="flex-shrink-0 mr-3"
+                    />
+                    <span className="flex-grow-0">{l.url}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </SlideOver>
+  )
+}
+
 export const getServerSideProps = withAuthorization(async (ctx) => {
   const studentId = getStudentId(ctx)
   const search = getQueryString(ctx, "search")
@@ -120,4 +293,4 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
   }
 })
 
-export default IndexPage
+export default LessonPlansPage

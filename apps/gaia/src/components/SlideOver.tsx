@@ -39,7 +39,7 @@ const SlideOver: FC<{
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <div className="w-screen max-w-md">
+            <div className="w-screen max-w-md border-t">
               <div className="flex overflow-y-scroll flex-col pt-6 h-full bg-white shadow-xl">
                 <div className="px-4 sm:px-6 mb-4">
                   <div className="flex justify-between items-start">

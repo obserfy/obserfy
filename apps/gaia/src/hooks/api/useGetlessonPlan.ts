@@ -4,7 +4,9 @@ import { getApi } from "./apiHelpers"
 
 const useGetLessonPlan = (id: string) => {
   const getLessonPlan = getApi<GetLessonPlanResponse>(`/plans/${id}`)
-  return useQuery(["lesson-plan", id], getLessonPlan)
+  return useQuery(["lesson-plan", id], getLessonPlan, {
+    enabled: id !== "",
+  })
 }
 
 export default useGetLessonPlan
