@@ -225,8 +225,8 @@ const LessonPlanDetailsSlideOver: FC<{
   const { data: lp } = useGetLessonPlan(lessonPlanId)
 
   return (
-    <SlideOver show={show} onClose={onClose} title="Lesson Details">
-      <div className="relative">
+    <SlideOver show={show} onClose={onClose} title="Details">
+      <div>
         <div className="px-4 lg:px-6 pt-4 mb-4 border-t">
           <p className="text-gray-600">Lesson Name</p>
           <h4 className="mb-2 font-semibold leading-tight text-gray-800">
@@ -242,7 +242,7 @@ const LessonPlanDetailsSlideOver: FC<{
         </div>
 
         {lp?.description && (
-          <div className="p-4 lg:p-6">
+          <div className="p-4 lg:p-6 mb-2">
             <div
               className="prose"
               dangerouslySetInnerHTML={{ __html: lp.description }}
@@ -251,28 +251,41 @@ const LessonPlanDetailsSlideOver: FC<{
         )}
 
         {(lp?.links?.length ?? 0) > 0 && (
-          <div className="absolute right-0 left-0 px-4 lg:px-6 pt-4 mb-2 border-t">
-            <p className="mb-2 text-gray-600">Links</p>
+          <div className="right-0 left-0 p-4 lg:p-6 sm:max-w-none border-t bg-gray-100">
+            <h4 className="mb-2 text-gray-600">Links</h4>
             <ul>
               {lp?.links.map((l) => (
-                <li key={l.id} className="mb-4 rounded-lg border shadow-sm">
+                <li
+                  key={l.id}
+                  className="relative right-0 left-0 mb-4 rounded-lg border ring-0 hover:ring-2 hover:ring-primary-500 shadow-sm bg-surface"
+                >
                   <a
                     href={l.url ?? "#"}
                     rel="noopener noreferrer"
                     target="_blank"
-                    className="flex items-center p-3 truncate"
+                    className="flex items-center p-3"
                   >
                     <Icon
                       src="/icons/link.svg"
                       className="flex-shrink-0 mr-3"
+                      color="bg-gray-600"
                     />
-                    <span className="flex-grow-0">{l.url}</span>
+                    <span className="flex-grow-0 text-sm break-all">
+                      {l.url}
+                    </span>
                   </a>
                 </li>
               ))}
             </ul>
           </div>
         )}
+
+        <div className="p-4 lg:p-6 border-y bg-gray-100">
+          <h4 className="mb-2 text-gray-600">Observations</h4>
+          {lp?.observations.map(() => (
+            <div>asd</div>
+          ))}
+        </div>
       </div>
     </SlideOver>
   )

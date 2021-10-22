@@ -1,4 +1,5 @@
 import { isPresent } from "ts-is-present"
+import { observations as Observations } from "@prisma/client"
 import { findLessonPlanById } from "$lib/db"
 import { markdownToHtml } from "../../../../utils/markdown"
 import { protectedApiRoute } from "../../../../utils/rest"
@@ -12,6 +13,7 @@ export interface GetLessonPlanResponse {
   links: Array<{ id?: string | null; url?: string | null }>
   repetitionType?: string
   startDate: string
+  observations: Observations[]
 }
 const handleLessonPlan = protectedApiRoute(async (req, res) => {
   const { planId } = req.query
@@ -30,6 +32,7 @@ const handleLessonPlan = protectedApiRoute(async (req, res) => {
         endDate: details?.repetition_end_date?.toISOString(),
         startDate: lp.date.toISOString(),
         repetitionType: details?.repetition_type?.toString(),
+        observations: lp.observations,
       }
       return res.json(response)
     }

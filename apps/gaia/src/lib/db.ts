@@ -350,6 +350,11 @@ export const findLessonPlanById = (id: string) => {
   return prisma.lesson_plans.findUnique({
     where: { id },
     include: {
+      observations: {
+        orderBy: {
+          event_time: "desc",
+        },
+      },
       lesson_plan_details: {
         include: {
           lesson_plan_links: true,

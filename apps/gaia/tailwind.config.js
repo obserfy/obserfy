@@ -7,6 +7,9 @@ module.exports = {
         sidebar: 240,
         "bottom-navigation": 100,
       },
+      maxWidth: {
+        sidebar: "calc(100% - 40px)",
+      },
       colors: {
         surface: "#fff",
         background: "#fafafa",
