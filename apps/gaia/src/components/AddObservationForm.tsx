@@ -17,7 +17,7 @@ const AddObservationForm: FC<{
       setLoading(true)
       await postObservation.mutateAsync({
         observation,
-        childId,
+        studentId: childId,
       })
       onDismiss()
     } catch (e) {

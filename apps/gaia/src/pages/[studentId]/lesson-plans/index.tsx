@@ -1,13 +1,13 @@
 import { Dayjs } from "dayjs"
 import Image from "next/image"
 import { FC, useState } from "react"
-import { areas, lesson_plans, lesson_plan_details } from "@prisma/client"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
-import Markdown from "$components/Markdown/Markdown"
 import SlideOver from "$components/SlideOver"
 import TextFieldWithIcon from "$components/TextFieldWithIcon"
 import useGetLessonPlan from "$hooks/api/useGetlessonPlan"
+import usePostPlanObservation from "$hooks/api/usePostPlanObservation"
+import { useQueryString } from "$hooks/useQueryString"
 import useToggle from "$hooks/useToggle"
 import BaseLayout from "$layouts/BaseLayout"
 import { withAuthorization } from "$lib/auth"
@@ -222,6 +222,7 @@ const LessonPlanDetailsSlideOver: FC<{
   onClose: () => void
   lessonPlanId: string
 }> = ({ lessonPlanId, show, onClose }) => {
+  const studentId = useQueryString("studentId")
   const { data: lp } = useGetLessonPlan(lessonPlanId)
 
   return (
@@ -242,7 +243,7 @@ const LessonPlanDetailsSlideOver: FC<{
         </div>
 
         {lp?.description && (
-          <div className="p-4 lg:p-6 mb-2">
+          <div className="p-4 lg:p-6 py-8 border-b">
             <div
               className="prose"
               dangerouslySetInnerHTML={{ __html: lp.description }}
@@ -251,13 +252,13 @@ const LessonPlanDetailsSlideOver: FC<{
         )}
 
         {(lp?.links?.length ?? 0) > 0 && (
-          <div className="right-0 left-0 p-4 lg:p-6 sm:max-w-none border-t bg-gray-100">
+          <div className="right-0 left-0 p-4 lg:p-6 sm:max-w-none bg-gray-100 border-b">
             <h4 className="mb-2 text-gray-600">Links</h4>
             <ul>
               {lp?.links.map((l) => (
                 <li
                   key={l.id}
-                  className="relative right-0 left-0 mb-4 rounded-lg border ring-0 hover:ring-2 hover:ring-primary-500 shadow-sm bg-surface"
+                  className="relative right-0 left-0 mb-4 bg-surface rounded-lg border ring-0 hover:ring-2 hover:ring-primary-500 shadow-sm"
                 >
                   <a
                     href={l.url ?? "#"}
@@ -280,14 +281,99 @@ const LessonPlanDetailsSlideOver: FC<{
           </div>
         )}
 
-        <div className="p-4 lg:p-6 border-y bg-gray-100">
+        <div className="p-4 lg:p-6 bg-gray-100 border-b">
           <h4 className="mb-2 text-gray-600">Observations</h4>
-          {lp?.observations.map(() => (
-            <div>asd</div>
-          ))}
+          <ul>
+            {lp?.observations.map((o) => (
+              <Observation
+                key={o.id}
+                long_desc={o.long_desc}
+                event_time={dayjs(o.event_time)}
+              />
+            ))}
+          </ul>
+
+          <PostObservationForm lessonPlanId={lp?.id} studentId={studentId} />
         </div>
       </div>
     </SlideOver>
+  )
+}
+
+const Observation: FC<{
+  event_time: Dayjs
+  long_desc: string | null
+}> = ({ event_time, long_desc }) => {
+  return (
+    <li className="relative py-5 px-4 pt-4 mb-2 bg-white rounded-xl border border-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600">
+      <div>
+        {long_desc && (
+          <div
+            className="max-w-none text-gray-700 prose"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: long_desc }}
+          />
+        )}
+      </div>
+
+      <time
+        dateTime={event_time.toISOString()}
+        className="flex flex-shrink-0 mt-2 text-sm text-gray-500 whitespace-nowrap"
+      >
+        {event_time.format("HH:mm DD MMM YYYY")}
+      </time>
+    </li>
+  )
+}
+
+const PostObservationForm: FC<{
+  lessonPlanId?: string
+  studentId?: string
+}> = ({ lessonPlanId, studentId }) => {
+  const [observation, setObservation] = useState("")
+
+  const { mutateAsync, isLoading } = usePostPlanObservation(lessonPlanId)
+
+  return (
+    <div className="flex overflow-hidden flex-col h-80 bg-white rounded-xl border border-gray-300 focus-within:ring-2 ring-primary-500">
+      <label
+        htmlFor="new-observation"
+        className="w-full h-full outline-none focus:outline-none"
+      >
+        <span className="sr-only">Observation</span>
+        <textarea
+          id="new-observation"
+          placeholder="Post an observation..."
+          className="p-4 w-full h-full border-none resize-none focus:!outline-none"
+          value={observation}
+          onChange={(e) => {
+            setObservation(e.target.value)
+          }}
+        />
+      </label>
+      <Button
+        className="m-2 ml-auto"
+        disabled={observation === "" || isLoading}
+        onClick={async () => {
+          if (studentId) {
+            await mutateAsync({
+              observation,
+              studentId,
+            })
+            setObservation("")
+          }
+        }}
+      >
+        {isLoading && (
+          <Icon
+            src="/icons/spinner.svg"
+            color="bg-white"
+            className="animate-spin !w-4 !h-4"
+          />
+        )}
+        Submit
+      </Button>
+    </div>
   )
 }
 

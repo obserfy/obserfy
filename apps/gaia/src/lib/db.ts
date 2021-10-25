@@ -352,7 +352,7 @@ export const findLessonPlanById = (id: string) => {
     include: {
       observations: {
         orderBy: {
-          event_time: "desc",
+          event_time: "asc",
         },
       },
       lesson_plan_details: {

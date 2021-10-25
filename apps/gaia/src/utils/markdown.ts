@@ -2,6 +2,8 @@ import snarkdown from "snarkdown"
 import xss from "xss"
 
 export const markdownToHtml = (markdown: string) => {
+  if (markdown === "") return markdown
+
   const htmls = markdown.split(/(?:\r?\n){2,}/).map((line) => {
     return [" ", "\t", "#", "-", "*"].some((char) => line.startsWith(char))
       ? snarkdown(line)

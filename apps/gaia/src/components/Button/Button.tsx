@@ -11,7 +11,7 @@ interface Props
 const Button = forwardRef<HTMLButtonElement, Props>(
   ({ className, variant = "primary", type = "button", ...props }, ref) => {
     const base =
-      "inline-flex items-center px-4 py-2 border justify-center flex-shrink-0"
+      "inline-flex items-center px-4 py-2 border justify-center flex-shrink-0 disabled:opacity-30 transition-opacity"
     const primary =
       "border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
     const secondary =
