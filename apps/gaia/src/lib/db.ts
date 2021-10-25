@@ -70,8 +70,8 @@ export const findStudentObservations = (
       visible_to_guardians: true,
       area_id: where?.area,
       event_time: {
-        gte: where?.from?.toDate(),
-        lte: where?.to?.toDate(),
+        gte: where?.from?.startOf("day").toDate(),
+        lte: where?.to?.endOf("day").toDate(),
       },
       OR: !where?.search
         ? undefined
