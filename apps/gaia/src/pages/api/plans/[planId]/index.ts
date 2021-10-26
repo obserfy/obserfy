@@ -1,4 +1,4 @@
-import { observations as Observations } from "@prisma/client"
+import { guardians, observations as Observations, users } from "@prisma/client"
 import { isPresent } from "ts-is-present"
 import { findLessonPlanById } from "$lib/db"
 import { markdownToHtml } from "../../../../utils/markdown"
@@ -13,7 +13,10 @@ export interface GetLessonPlanResponse {
   links: Array<{ id?: string | null; url?: string | null }>
   repetitionType?: string
   startDate: string
-  observations: Observations[]
+  observations: (Observations & {
+    guardians: guardians | null
+    users: users | null
+  })[]
 }
 const handleLessonPlan = protectedApiRoute(async (req, res) => {
   const { planId } = req.query

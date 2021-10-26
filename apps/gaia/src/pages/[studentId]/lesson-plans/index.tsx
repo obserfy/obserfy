@@ -77,7 +77,7 @@ const LessonPlan: FC<{
     <li className="border-t first:border-none">
       <button
         onClick={onClick}
-        className="p-4 w-full text-left hover:bg-gray-100"
+        className="p-4 w-full text-left hover:bg-gray-50"
       >
         <h3 className="flex-1 mb-1 font-semibold text-gray-700">{title}</h3>
         <p className="flex mb-1 text-gray-500">

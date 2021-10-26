@@ -351,6 +351,10 @@ export const findLessonPlanById = (id: string) => {
     where: { id },
     include: {
       observations: {
+        include: {
+          users: true,
+          guardians: true,
+        },
         orderBy: {
           event_time: "asc",
         },

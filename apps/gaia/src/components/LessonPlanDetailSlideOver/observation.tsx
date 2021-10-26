@@ -1,22 +1,57 @@
 import { Menu, Transition } from "@headlessui/react"
 import clsx from "clsx"
-import { Dayjs } from "dayjs"
 import { FC, Fragment, useState } from "react"
+import {
+  guardians as Guardians,
+  observations as Observations,
+  users as Users,
+} from "@prisma/client"
+import dayjs, { Dayjs } from "$lib/dayjs"
 import AlertDialog from "$components/AlertDialog"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
 import usePostPlanObservation from "$hooks/api/usePostPlanObservation"
 import useToggle from "$hooks/useToggle"
 
-export const Observation: FC<{
+export const ObservationsList: FC<{
+  lessonPlanId: string
+  studentId: string
+  observations: (Observations & {
+    guardians: Guardians | null
+    users: Users | null
+  })[]
+}> = ({ observations, lessonPlanId, studentId }) => (
+  <div className="p-4 lg:p-6 bg-gray-50 border-b">
+    <h4 className="mb-2 text-gray-600">Observations</h4>
+    {observations.length > 0 && (
+      <ul className="pb-4">
+        {observations.map((o) => (
+          <Observation
+            key={o.id}
+            long_desc={o.long_desc}
+            event_time={dayjs(o.event_time)}
+            userName={o.users?.name}
+            guardianName={o.guardians?.name}
+          />
+        ))}
+      </ul>
+    )}
+
+    <PostObservationForm lessonPlanId={lessonPlanId} studentId={studentId} />
+  </div>
+)
+
+const Observation: FC<{
   event_time: Dayjs
   long_desc: string | null
-}> = ({ event_time, long_desc }) => {
+  userName?: string | null
+  guardianName?: string | null
+}> = ({ event_time, long_desc, guardianName, userName }) => {
   const deleteDialog = useToggle()
   const editForm = useToggle()
 
   return (
-    <li className="p-4 mb-2 bg-white rounded-xl border border-gray-300">
+    <li className="p-4 mb-2 bg-white rounded-xl border border-gray-200">
       <div className="flex items-start">
         {long_desc && (
           <div
@@ -29,12 +64,15 @@ export const Observation: FC<{
         <ObservationDropdown onDeleteClick={() => {}} onEditClick={() => {}} />
       </div>
 
-      <time
-        dateTime={event_time.toISOString()}
-        className="flex flex-shrink-0 text-sm text-gray-500 whitespace-nowrap"
-      >
-        {event_time.format("HH:mm DD MMM YYYY")}
-      </time>
+      <div className="flex">
+        <p className="text-sm text-gray-500">{userName || guardianName}</p>
+        <time
+          dateTime={event_time.toISOString()}
+          className="flex flex-shrink-0 ml-2 text-sm text-gray-500 whitespace-nowrap"
+        >
+          {event_time.format("DD MMM YYYY")}
+        </time>
+      </div>
     </li>
   )
 }
@@ -140,7 +178,7 @@ export const PostObservationForm: FC<{
   const { mutateAsync, isLoading } = usePostPlanObservation(lessonPlanId)
 
   return (
-    <div className="flex overflow-hidden flex-col h-80 bg-white rounded-xl border border-gray-300 focus-within:ring-2 ring-primary-500">
+    <div className="flex overflow-hidden flex-col h-80 bg-white rounded-xl border border-gray-200 focus-within:ring-2 ring-primary-500">
       <label
         htmlFor="new-observation"
         className="w-full h-full outline-none focus:outline-none"
@@ -149,7 +187,7 @@ export const PostObservationForm: FC<{
         <textarea
           id="new-observation"
           placeholder="Post an observation..."
-          className="p-4 w-full h-full border-none resize-none focus:!outline-none"
+          className="p-4 w-full h-full placeholder-gray-400 border-none resize-none focus:!outline-none"
           value={observation}
           onChange={(e) => {
             setObservation(e.target.value)
@@ -158,7 +196,7 @@ export const PostObservationForm: FC<{
       </label>
       <Button
         className="m-2 ml-auto"
-        disabled={observation === "" || isLoading}
+        disabled={observation === undefined || observation === "" || isLoading}
         onClick={async () => {
           if (studentId) {
             await mutateAsync({
