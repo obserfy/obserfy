@@ -56,7 +56,7 @@ const MediaLayout: FC<{
                     tab.name === currentPage
                       ? "text-white bg-white bg-opacity-20"
                       : "text-white bg-white bg-opacity-0 hover:bg-opacity-10 opacity-90 transition",
-                    "flex items-center py-2 px-3 text-sm font-medium rounded-lg border border-white border-opacity-20"
+                    "flex items-center py-2 px-3 text-sm font-medium rounded-lg border border-white border-opacity-20 backdrop-filter backdrop-blur-sm "
                   )}
                   aria-current={tab.name === currentPage ? "page" : undefined}
                 >

@@ -14,6 +14,8 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const config = {
+  swcMinify: true,
+  reactStrictMode: true,
   env: {
     NEXT_PUBLIC_RELEASE: version,
   },
@@ -22,6 +24,10 @@ const config = {
       process.env.NEXT_OPTIMIZED_IMG_DOMAIN || "media.obserfy.com",
       "image.mux.com",
     ],
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+    ignoreBuildErrors: true,
   },
 }
 
