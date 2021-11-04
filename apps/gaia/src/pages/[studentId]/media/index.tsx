@@ -112,7 +112,9 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
   const images = await findImagesByStudentId(studentId)
   const student = await findStudentByStudentId(studentId)
 
-  const imagesByMonth: { [key: string]: Array<Images & { src: string }> } = {}
+  const imagesByMonth: {
+    [key: string]: Array<{ src: string; created_at?: string; id: string }>
+  } = {}
   images.forEach((image) => {
     const month = image.created_at
       ? monthNames[image.created_at.getMonth()]
@@ -122,14 +124,18 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
     const key = `${month} ${year}`
     imagesByMonth[key] ??= []
     imagesByMonth[key].push({
-      ...image,
+      id: image.id,
       src: image.object_key ? generateOriginalUrl(image.object_key) : "",
+      created_at: image.created_at?.toISOString(),
     })
   })
 
   return {
     props: {
-      student,
+      student: {
+        id: student?.id,
+        school_id: student?.school_id,
+      },
       imagesByMonth,
     },
   }

@@ -160,9 +160,7 @@ const AssessmentRecordsPage: SSR<typeof getServerSideProps> = ({
                       }}
                     >
                       <h4 className="mr-auto truncate">{m.name}</h4>
-                      <AssessmentIndicator
-                        stage={m.student_material_progresses?.[0]?.stage?.toString()}
-                      />
+                      <AssessmentIndicator stage={m.stage} />
                     </button>
                   </li>
                 ))}
@@ -306,7 +304,7 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
   const studentId = getStudentId(ctx)
   const search = getQueryString(ctx, "search")
 
-  const areas = await findCurriculumAreasByStudentId(studentId)
+  const areas = (await findCurriculumAreasByStudentId(studentId)) ?? []
   const defaultArea = areas?.[0].id
   const area = getQueryString(ctx, "area") || defaultArea
 
@@ -318,9 +316,18 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
 
   return {
     props: {
-      defaultArea,
-      areas: areas ?? [],
-      subjects,
+      defaultArea: areas?.[0].id,
+      areas: areas.map(({ id, name }) => ({ id, name })),
+      subjects: subjects.map(({ id, name, materials }) => ({
+        id,
+        name,
+        materials: materials.map((m) => ({
+          id: m.id,
+          name: m.name,
+          order: m.order?.toString(),
+          stage: m.student_material_progresses[0]?.stage.toString() ?? null,
+        })),
+      })),
     },
   }
 })

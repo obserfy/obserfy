@@ -20,7 +20,7 @@
     "postinstall": "husky install"
   },
   "dependencies": {
-    "prettier": "2.3.2"
+    "prettier": "2.4.1"
   },
   "resolutions": {
     "webpack": "^5.0.0"

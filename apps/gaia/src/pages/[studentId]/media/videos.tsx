@@ -45,7 +45,9 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
   const studentId = getStudentId(ctx)
   const videos = await findVideosByStudentId(studentId)
 
-  const videosByMonth: { [key: string]: Array<Videos & { src: string }> } = {}
+  const videosByMonth: {
+    [key: string]: Array<{ id: string; src: string }>
+  } = {}
   videos.forEach((v) => {
     const month = v.created_at ? monthNames[v.created_at.getMonth()] : "-"
     const year = v.created_at?.getFullYear() ?? 0
@@ -53,7 +55,7 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
     const key = `${month} ${year}`
     videosByMonth[key] ??= []
     videosByMonth[key].push({
-      ...v,
+      id: v.id,
       src: v.thumbnail_url || "",
     })
   })

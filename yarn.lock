@@ -55,24 +55,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auth0/nextjs-auth0@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@auth0/nextjs-auth0@npm:1.5.0"
+"@auth0/nextjs-auth0@npm:1.6.1":
+  version: 1.6.1
+  resolution: "@auth0/nextjs-auth0@npm:1.6.1"
   dependencies:
     base64url: ^3.0.1
     cookie: ^0.4.1
     debug: ^4.3.2
-    futoin-hkdf: ^1.3.2
+    futoin-hkdf: ^1.4.2
     http-errors: ^1.8.0
-    joi: ^17.4.0
+    joi: ^17.4.1
     jose: ^2.0.5
     on-headers: ^1.0.2
-    openid-client: ^4.7.4
-    tslib: ^2.3.0
+    openid-client: ^4.9.0
+    tslib: ^2.3.1
     url-join: ^4.0.1
   peerDependencies:
     next: ">=10"
-  checksum: f6f37fce9396ff47822562c5312cdd2b44d19ec5a08ffc60968adf4906e6807b28d0cb62b08970596a5efc626410d1fb1aa1ba86404f4c9531acf6d92f8c453b
+  checksum: 50819f9424a2c0db7821f965f14f9b4a47c0b9a4b1453d9e460ab5930dd306f5942b67b744a16472d50fc05d2a2e6996e4239f5e7ef8da92caecabcccd0a46f0
   languageName: node
   linkType: hard
 
@@ -350,7 +350,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-module-imports@npm:^7.0.0, @babel/helper-module-imports@npm:^7.0.0-beta.49, @babel/helper-module-imports@npm:^7.10.4, @babel/helper-module-imports@npm:^7.12.13, @babel/helper-module-imports@npm:^7.13.12, @babel/helper-module-imports@npm:^7.14.5, @babel/helper-module-imports@npm:^7.15.4":
+"@babel/helper-module-imports@npm:^7.0.0, @babel/helper-module-imports@npm:^7.0.0-beta.49, @babel/helper-module-imports@npm:^7.10.4, @babel/helper-module-imports@npm:^7.12.13, @babel/helper-module-imports@npm:^7.14.5, @babel/helper-module-imports@npm:^7.15.4":
   version: 7.15.4
   resolution: "@babel/helper-module-imports@npm:7.15.4"
   dependencies:
@@ -1743,7 +1743,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.0.0, @babel/types@npm:^7.0.0-beta.49, @babel/types@npm:^7.10.5, @babel/types@npm:^7.11.5, @babel/types@npm:^7.12.11, @babel/types@npm:^7.12.13, @babel/types@npm:^7.12.6, @babel/types@npm:^7.12.7, @babel/types@npm:^7.13.17, @babel/types@npm:^7.14.9, @babel/types@npm:^7.15.4, @babel/types@npm:^7.15.6, @babel/types@npm:^7.2.0, @babel/types@npm:^7.3.0, @babel/types@npm:^7.3.3, @babel/types@npm:^7.4.4, @babel/types@npm:^7.8.3":
+"@babel/types@npm:^7.0.0, @babel/types@npm:^7.0.0-beta.49, @babel/types@npm:^7.10.5, @babel/types@npm:^7.11.5, @babel/types@npm:^7.12.11, @babel/types@npm:^7.12.13, @babel/types@npm:^7.12.6, @babel/types@npm:^7.12.7, @babel/types@npm:^7.14.9, @babel/types@npm:^7.15.4, @babel/types@npm:^7.15.6, @babel/types@npm:^7.2.0, @babel/types@npm:^7.3.0, @babel/types@npm:^7.3.3, @babel/types@npm:^7.4.4, @babel/types@npm:^7.8.3":
   version: 7.15.6
   resolution: "@babel/types@npm:7.15.6"
   dependencies:
@@ -3645,12 +3645,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/bundle-analyzer@npm:11.1.2":
-  version: 11.1.2
-  resolution: "@next/bundle-analyzer@npm:11.1.2"
+"@next/bundle-analyzer@npm:12.0.2":
+  version: 12.0.2
+  resolution: "@next/bundle-analyzer@npm:12.0.2"
   dependencies:
     webpack-bundle-analyzer: 4.3.0
-  checksum: f869e7067a612b5ebb78dab4225fa3159ffa52d0f33c43e51941f21daff96b24e2d0519f4ba2899917cb353ad1b963f1d1b0d718b5947a17d760e9279d8df55a
+  checksum: a5fe57bf74c6d7faf3eed2a7d87fdcee0304d9f546eb704ed573a8305cc45fc42be4e35af131085ca20dbdcf7c2f53e27531e73ae072b6a5c0cb0859436f78e5
   languageName: node
   linkType: hard
 
@@ -4067,31 +4067,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "@prisma/client@npm:3.1.1"
+"@prisma/client@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "@prisma/client@npm:3.4.0"
   dependencies:
-    "@prisma/engines-version": 3.1.0-24.c22652b7e418506fab23052d569b85d3aec4883f
+    "@prisma/engines-version": 3.4.0-27.1c9fdaa9e2319b814822d6dbfd0a69e1fcc13a85
   peerDependencies:
     prisma: "*"
   peerDependenciesMeta:
     prisma:
       optional: true
-  checksum: 340af98c734922957af282474d28e741110fe9d29b7d2a0b71ae125a05a45ec9f0eaaadf90e92a7129411bba6e5483d6042e5a6169d4df557d329c561d25520b
+  checksum: b87d37665e4803117e4863c7d23dcddb341c698db5401d07e667811bad2415f9bc416e0966a5f70ceb40ec5c5aa987c39a3606bb9d5939d339ea0c20ac49b3dd
   languageName: node
   linkType: hard
 
-"@prisma/engines-version@npm:3.1.0-24.c22652b7e418506fab23052d569b85d3aec4883f":
-  version: 3.1.0-24.c22652b7e418506fab23052d569b85d3aec4883f
-  resolution: "@prisma/engines-version@npm:3.1.0-24.c22652b7e418506fab23052d569b85d3aec4883f"
-  checksum: ec5a1a75bdc1f4bf3e115e28486faabb0c5cb16ed4299fab328e07b867c77cafadadcd1d92dae057429f0e8ac7d079320ecbe8b6555760daed4b9ac296781b36
+"@prisma/engines-version@npm:3.4.0-27.1c9fdaa9e2319b814822d6dbfd0a69e1fcc13a85":
+  version: 3.4.0-27.1c9fdaa9e2319b814822d6dbfd0a69e1fcc13a85
+  resolution: "@prisma/engines-version@npm:3.4.0-27.1c9fdaa9e2319b814822d6dbfd0a69e1fcc13a85"
+  checksum: 74eb74f65b0683d47cff33fa54513dd2d9139bb74c2be14160c5e8c8a2378c329288f04808a8fd97f50d53e0bca251de33ddf6f5b86037dd25744a666743ae2f
   languageName: node
   linkType: hard
 
-"@prisma/engines@npm:3.1.0-24.c22652b7e418506fab23052d569b85d3aec4883f":
-  version: 3.1.0-24.c22652b7e418506fab23052d569b85d3aec4883f
-  resolution: "@prisma/engines@npm:3.1.0-24.c22652b7e418506fab23052d569b85d3aec4883f"
-  checksum: 4933734151d31eeffcefb31e8e036f599588f58e4eb13294230465e77a2f07e90194bb09da04bdb1beffafe7c8f157bf70b83b5aa05957a267faca9d4eb418e7
+"@prisma/engines@npm:3.4.0-27.1c9fdaa9e2319b814822d6dbfd0a69e1fcc13a85":
+  version: 3.4.0-27.1c9fdaa9e2319b814822d6dbfd0a69e1fcc13a85
+  resolution: "@prisma/engines@npm:3.4.0-27.1c9fdaa9e2319b814822d6dbfd0a69e1fcc13a85"
+  checksum: 097ccfaab4e09cd2fb2d7acd83faa88a9916c754d4289abb9d5c383dd49a8570ab9eb982c9d92ebcef8285a89e40c20bf807f973e1fe508f2ec16a7917ac3911
   languageName: node
   linkType: hard
 
@@ -4189,15 +4189,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:6.12.0":
-  version: 6.12.0
-  resolution: "@sentry/browser@npm:6.12.0"
+"@sentry/browser@npm:6.14.0":
+  version: 6.14.0
+  resolution: "@sentry/browser@npm:6.14.0"
   dependencies:
-    "@sentry/core": 6.12.0
-    "@sentry/types": 6.12.0
-    "@sentry/utils": 6.12.0
+    "@sentry/core": 6.14.0
+    "@sentry/types": 6.14.0
+    "@sentry/utils": 6.14.0
     tslib: ^1.9.3
-  checksum: 929cbd78b4aa163d64df841124c350e35a49e611dbe3ff49479555bfa236d11eff2e5ae3370b776e80f6f402cb74c49a0ca2b1e594e9c6f97ed4b4b15955fba4
+  checksum: f08e784979007823dc4463ee240cd1c7dd954d0291c351a48d9652c218f50e213f92dd8451736e4b5793d2feb242dc157576b585f1ddef3d8b63ec4aa721ac37
   languageName: node
   linkType: hard
 
@@ -4217,153 +4217,155 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/core@npm:6.12.0":
-  version: 6.12.0
-  resolution: "@sentry/core@npm:6.12.0"
+"@sentry/core@npm:6.14.0":
+  version: 6.14.0
+  resolution: "@sentry/core@npm:6.14.0"
   dependencies:
-    "@sentry/hub": 6.12.0
-    "@sentry/minimal": 6.12.0
-    "@sentry/types": 6.12.0
-    "@sentry/utils": 6.12.0
+    "@sentry/hub": 6.14.0
+    "@sentry/minimal": 6.14.0
+    "@sentry/types": 6.14.0
+    "@sentry/utils": 6.14.0
     tslib: ^1.9.3
-  checksum: 3e0a2d433dcb9a9620030a1799aec8cb74e110b962b8aa1ec62ac0d6a8613d9443a94e6d70c7d2864ff6cc8d2b79d623e6456e14c572ac7776a18d8a1a1b97b9
+  checksum: 09f3e08fb33b9d71c085c8dedc9bb2b62cf74190395f64e64c5877a4a62eded3f411bd485fbe1abf944641c324964399cd4d00d612cb2dc33e19ca56cd59f9a8
   languageName: node
   linkType: hard
 
-"@sentry/gatsby@npm:6.12.0":
-  version: 6.12.0
-  resolution: "@sentry/gatsby@npm:6.12.0"
+"@sentry/gatsby@npm:6.14.0":
+  version: 6.14.0
+  resolution: "@sentry/gatsby@npm:6.14.0"
   dependencies:
-    "@sentry/react": 6.12.0
-    "@sentry/tracing": 6.12.0
+    "@sentry/react": 6.14.0
+    "@sentry/tracing": 6.14.0
   peerDependencies:
     gatsby: ^2.0.0 || ^3.0.0
-  checksum: 7fd962f75cdc7f99495a9752d069777d7554ca053d65db37f5481fd39b352f0780d82ddcddb85f8011ec959acc744b117e3e81b6fb35f1e7e3f54d6ecf4ddb03
+  checksum: 63dcb68bca54a09e5410c6a95ca225752d5f01c6bee8bfa750f7ed9011574555cd04fe044a25255ae09ea05db3b827583e371b9b3bf10ffe92cbf1ca25cdf87e
   languageName: node
   linkType: hard
 
-"@sentry/hub@npm:6.12.0":
-  version: 6.12.0
-  resolution: "@sentry/hub@npm:6.12.0"
+"@sentry/hub@npm:6.14.0":
+  version: 6.14.0
+  resolution: "@sentry/hub@npm:6.14.0"
   dependencies:
-    "@sentry/types": 6.12.0
-    "@sentry/utils": 6.12.0
+    "@sentry/types": 6.14.0
+    "@sentry/utils": 6.14.0
     tslib: ^1.9.3
-  checksum: 4de66e939a15237c4e1061c3532a1791da32a7d6f53f967849f7dc25e185c8794bea97f6a4a54adce13165127c8e0f718e24409db21861d56b8705f348a80320
+  checksum: 3bfbaf756b2b009adbd39c0eeb71664660bb40aaf3ea2a2c32ec1e2e27ba05566e52fcf025e98e4ec18597e01de361ae838e6cd679ed3e76054ff5897ca8e093
   languageName: node
   linkType: hard
 
-"@sentry/integrations@npm:6.12.0":
-  version: 6.12.0
-  resolution: "@sentry/integrations@npm:6.12.0"
+"@sentry/integrations@npm:6.14.0":
+  version: 6.14.0
+  resolution: "@sentry/integrations@npm:6.14.0"
   dependencies:
-    "@sentry/types": 6.12.0
-    "@sentry/utils": 6.12.0
+    "@sentry/types": 6.14.0
+    "@sentry/utils": 6.14.0
     localforage: ^1.8.1
     tslib: ^1.9.3
-  checksum: 529c6ff345d6cc356537923167efb7c56b8908e481fb74ea7a8d57639faadfff8307ce14292cfc2bd065428a763cf14834c8a1db7dcb856e64d73bd4c34a14cb
+  checksum: 35b52d0a11feb5c3a1919fe2a1506e8170d3d10d32b0ee56f9ffbf0fc03b93004688ceac5af0b67074e225b5a7ab4e85f28177a107a2f1b823002030034f5663
   languageName: node
   linkType: hard
 
-"@sentry/minimal@npm:6.12.0":
-  version: 6.12.0
-  resolution: "@sentry/minimal@npm:6.12.0"
+"@sentry/minimal@npm:6.14.0":
+  version: 6.14.0
+  resolution: "@sentry/minimal@npm:6.14.0"
   dependencies:
-    "@sentry/hub": 6.12.0
-    "@sentry/types": 6.12.0
+    "@sentry/hub": 6.14.0
+    "@sentry/types": 6.14.0
     tslib: ^1.9.3
-  checksum: 896895320cd54a5f8097dc4be32738e67dfa237abd0508d4c71b65db31afe932bfc8115cfdf93bca01313e288ff69143d95f95cd7675183775dd354f77230ef7
+  checksum: f555c02b4a644ebeb82861082260ec5bf725cce4128690e57f4b2bff8c28f2a70550efa4df2533adb59b36be1cd62d86a53ca050548c7068d8f328deed8a6984
   languageName: node
   linkType: hard
 
-"@sentry/nextjs@npm:6.12.0":
-  version: 6.12.0
-  resolution: "@sentry/nextjs@npm:6.12.0"
+"@sentry/nextjs@npm:6.14.0":
+  version: 6.14.0
+  resolution: "@sentry/nextjs@npm:6.14.0"
   dependencies:
-    "@sentry/core": 6.12.0
-    "@sentry/integrations": 6.12.0
-    "@sentry/node": 6.12.0
-    "@sentry/react": 6.12.0
-    "@sentry/tracing": 6.12.0
-    "@sentry/utils": 6.12.0
-    "@sentry/webpack-plugin": 1.17.1
+    "@sentry/core": 6.14.0
+    "@sentry/hub": 6.14.0
+    "@sentry/integrations": 6.14.0
+    "@sentry/node": 6.14.0
+    "@sentry/react": 6.14.0
+    "@sentry/tracing": 6.14.0
+    "@sentry/utils": 6.14.0
+    "@sentry/webpack-plugin": 1.18.1
     tslib: ^1.9.3
   peerDependencies:
     next: ^10.0.8 || ^11.0
     react: 15.x || 16.x || 17.x
-  checksum: cecdc7e6c7e1f6ba82e6d6f76eb983bd4ebd81f74aca0b2b97fbfcc1ebd031c7c96ed4b01b83c069f45fa72db94936e261aeabfa1c1f6a31e269a6f428768bca
+    webpack: ">= 4.0.0"
+  checksum: c57f40c4c386729e34d4649b6aad5803c20585b3ae6dea9cbf04a0ff842f1b814b0d77f940d3212a71aaffd847932a4694d73797fe956e949a279c39417467ec
   languageName: node
   linkType: hard
 
-"@sentry/node@npm:6.12.0":
-  version: 6.12.0
-  resolution: "@sentry/node@npm:6.12.0"
+"@sentry/node@npm:6.14.0":
+  version: 6.14.0
+  resolution: "@sentry/node@npm:6.14.0"
   dependencies:
-    "@sentry/core": 6.12.0
-    "@sentry/hub": 6.12.0
-    "@sentry/tracing": 6.12.0
-    "@sentry/types": 6.12.0
-    "@sentry/utils": 6.12.0
+    "@sentry/core": 6.14.0
+    "@sentry/hub": 6.14.0
+    "@sentry/tracing": 6.14.0
+    "@sentry/types": 6.14.0
+    "@sentry/utils": 6.14.0
     cookie: ^0.4.1
     https-proxy-agent: ^5.0.0
     lru_map: ^0.3.3
     tslib: ^1.9.3
-  checksum: 13668f69d7f1304992e19832c355f854151c8bc4ab83a5450a51d16bab80c0bd85045cf7a8120306c88960ea0b9a6ccab40db3ed95256f35ca793ef1d2e0502f
+  checksum: 4fa32ecb397514be0d7869ece452bf611524d0e7ef574d10286b4bcb0f9fe728ffb217ed7bd4fdaa9448d9b4271d1b718520b60d8acde1093f552663c7837d81
   languageName: node
   linkType: hard
 
-"@sentry/react@npm:6.12.0":
-  version: 6.12.0
-  resolution: "@sentry/react@npm:6.12.0"
+"@sentry/react@npm:6.14.0":
+  version: 6.14.0
+  resolution: "@sentry/react@npm:6.14.0"
   dependencies:
-    "@sentry/browser": 6.12.0
-    "@sentry/minimal": 6.12.0
-    "@sentry/types": 6.12.0
-    "@sentry/utils": 6.12.0
+    "@sentry/browser": 6.14.0
+    "@sentry/minimal": 6.14.0
+    "@sentry/types": 6.14.0
+    "@sentry/utils": 6.14.0
     hoist-non-react-statics: ^3.3.2
     tslib: ^1.9.3
   peerDependencies:
     react: 15.x || 16.x || 17.x
-  checksum: b484a87160abb52eaf4f53a0e17b60507cd44c125be24e77b98cdcbe76cc8b6ca990110515c59253f7df9d38929a651ee51a93e9d3e69273417cfdefd30247b2
+  checksum: c4489fc72e7d1e87161d385c8fb3d66a10e8b61f53fa6065de7036cc342e7354d4f48a674ab7bd7c7669a8d8614ac0e9bb32b6615155166db38e87457b7ed148
   languageName: node
   linkType: hard
 
-"@sentry/tracing@npm:6.12.0":
-  version: 6.12.0
-  resolution: "@sentry/tracing@npm:6.12.0"
+"@sentry/tracing@npm:6.14.0":
+  version: 6.14.0
+  resolution: "@sentry/tracing@npm:6.14.0"
   dependencies:
-    "@sentry/hub": 6.12.0
-    "@sentry/minimal": 6.12.0
-    "@sentry/types": 6.12.0
-    "@sentry/utils": 6.12.0
+    "@sentry/hub": 6.14.0
+    "@sentry/minimal": 6.14.0
+    "@sentry/types": 6.14.0
+    "@sentry/utils": 6.14.0
     tslib: ^1.9.3
-  checksum: 9b4b7c8f13932dd6c9e522ba952d068b06d37db4ce8e94f2c644c29499712a82091bf062a2e9ffa002d92cc07942ebd500cf8c7545d3fc4d31018bdcce4c6f6a
+  checksum: c45731b25e4aca1ed135f29c7b08122c926193e98569db4c46c29827a061d8fed33b6bd649e870e8254205fd9fc2730e7a1a10f9d494212f3b77ef957deecfa7
   languageName: node
   linkType: hard
 
-"@sentry/types@npm:6.12.0":
-  version: 6.12.0
-  resolution: "@sentry/types@npm:6.12.0"
-  checksum: f70b5d0507a9ee13b22ace5548f2cb1fb2b5defacbbfe12225ac66fed456d59843fa9ef4e72f9f9c21d5f94240d167e0ef0a0ad98f5c39055ab5e354843e179d
+"@sentry/types@npm:6.14.0":
+  version: 6.14.0
+  resolution: "@sentry/types@npm:6.14.0"
+  checksum: 3264f449b59ac00d4b2a85faa1233348e42904195fe1ea39a139d9e85c5427494fac0b359693e7ebe42a307a74475d90d7ea7c5d93338da32c8c8601fea0f1c5
   languageName: node
   linkType: hard
 
-"@sentry/utils@npm:6.12.0":
-  version: 6.12.0
-  resolution: "@sentry/utils@npm:6.12.0"
+"@sentry/utils@npm:6.14.0":
+  version: 6.14.0
+  resolution: "@sentry/utils@npm:6.14.0"
   dependencies:
-    "@sentry/types": 6.12.0
+    "@sentry/types": 6.14.0
     tslib: ^1.9.3
-  checksum: 7573fa4e774c8a1e72434f9805b7751d2ffe6688aff925e0cce0a8d93b921d84ebeff41c71da3c7a92f97b210c383b35a1d2cb023a70c25447c0fde7ff5a80bd
+  checksum: 83120c8ba7239b835a35e34ed5e44237f03b0604f8e590e9afc724b3e63bab3a885b98a8cca103c239b864e615324584b1e8aa98107916abb7d029470e9f5053
   languageName: node
   linkType: hard
 
-"@sentry/webpack-plugin@npm:1.17.1":
-  version: 1.17.1
-  resolution: "@sentry/webpack-plugin@npm:1.17.1"
+"@sentry/webpack-plugin@npm:1.18.1":
+  version: 1.18.1
+  resolution: "@sentry/webpack-plugin@npm:1.18.1"
   dependencies:
     "@sentry/cli": ^1.68.0
-  checksum: 1916e1bb5c43a4a440c237a8739280c62974a248daa95c5b9b9c264a4a5a8fe887a7cdc79ffa484fef43b393361bb329cd41468d59ed13cfdbbed8b6818b5544
+  checksum: 260d0c55ea246f461bf21200f0d242a8d7944c529f2fa4a697bf589691073155c330ed39d135a914e29126b3e14ca4a0dc781bb3ef015f84360f13ec9a498c92
   languageName: node
   linkType: hard
 
@@ -8674,20 +8676,6 @@ __metadata:
     "@babel/core": ^7.0.0
     gatsby: ^3.0.0-next.0
   checksum: e2a7bed8afaeb6a202ff608b42138b6a649047e7f9ffd97ffb922682ed457c41361aaa7c6a4c030e7a87a5d2bf0d964d670726ad0a6413b8b07b4bbae3608a43
-  languageName: node
-  linkType: hard
-
-"babel-plugin-superjson-next@npm:^0.4.1":
-  version: 0.4.1
-  resolution: "babel-plugin-superjson-next@npm:0.4.1"
-  dependencies:
-    "@babel/helper-module-imports": ^7.13.12
-    "@babel/types": ^7.13.17
-    hoist-non-react-statics: ^3.3.2
-  peerDependencies:
-    next: ">=9.0.0"
-    superjson: 1.x
-  checksum: 9f0ac7d78c3f9751bfceeb5dbd521e75400a10d2ed4f28189470b415c09525f3e5e506e880219fe2e628bd4df5910c28bf7d22f1a4d19452982c7e7df7ebd081
   languageName: node
   linkType: hard
 
@@ -14461,7 +14449,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"futoin-hkdf@npm:^1.3.2":
+"futoin-hkdf@npm:^1.4.2":
   version: 1.4.2
   resolution: "futoin-hkdf@npm:1.4.2"
   checksum: 273c7368ae1adb39bdf13eeee0ba504b0a28a27bd13838497e802e4fe47a6687290d649c5b82a1cde4981a939747f0e684236bccf4f5a05b4ce14105b90490f1
@@ -14479,12 +14467,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
-    "@auth0/nextjs-auth0": 1.5.0
+    "@auth0/nextjs-auth0": 1.6.1
     "@fontsource/source-sans-pro": ^4.5.0
     "@headlessui/react": ^1.4.1
-    "@next/bundle-analyzer": 11.1.2
-    "@prisma/client": ^3.1.1
-    "@sentry/nextjs": 6.12.0
+    "@next/bundle-analyzer": 12.0.2
+    "@prisma/client": ^3.4.0
+    "@sentry/nextjs": 6.14.0
     "@svgr/webpack": 5.5.0
     "@tailwindcss/aspect-ratio": ^0.3.0
     "@tailwindcss/forms": next
@@ -14507,7 +14495,6 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 4.28.3
     "@typescript-eslint/parser": 4.28.3
     autoprefixer: 10.3.4
-    babel-plugin-superjson-next: ^0.4.1
     body-scroll-lock: 3.1.5
     clsx: ^1.1.1
     dayjs: 1.10.6
@@ -14548,21 +14535,20 @@ __metadata:
     postcss: 8.3.6
     preact: 10.5.14
     preact-render-to-string: 5.1.19
-    prettier: 2.3.2
-    prisma: ^3.1.1
+    prettier: 2.4.1
+    prisma: ^3.4.0
     react: "npm:@preact/compat@17.0.2"
     react-dom: "npm:@preact/compat@17.0.2"
     react-query: 3.21.1
     react-ssr-prepass: "npm:preact-ssr-prepass@1.2.0"
-    sharp: ^0.29.1
+    sharp: ^0.29.2
     snarkdown: 2.0.0
     stylelint: 13.13.1
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 22.0.0
-    superjson: ^1.7.5
     tailwindcss: next
     ts-is-present: 1.2.1
-    typescript: 4.3.5
+    typescript: 4.4.4
     uuid: 8.3.2
     xss: ^1.0.10
   languageName: unknown
@@ -18697,7 +18683,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"joi@npm:^17.2.1, joi@npm:^17.4.0, joi@npm:^17.4.2":
+"joi@npm:^17.2.1, joi@npm:^17.4.0, joi@npm:^17.4.1, joi@npm:^17.4.2":
   version: 17.4.2
   resolution: "joi@npm:17.4.2"
   dependencies:
@@ -21150,7 +21136,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-addon-api@npm:^4.1.0":
+"node-addon-api@npm:^4.1.0, node-addon-api@npm:^4.2.0":
   version: 4.2.0
   resolution: "node-addon-api@npm:4.2.0"
   dependencies:
@@ -21752,9 +21738,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openid-client@npm:^4.7.4":
-  version: 4.9.0
-  resolution: "openid-client@npm:4.9.0"
+"openid-client@npm:^4.9.0":
+  version: 4.9.1
+  resolution: "openid-client@npm:4.9.1"
   dependencies:
     aggregate-error: ^3.1.0
     got: ^11.8.0
@@ -21763,7 +21749,7 @@ __metadata:
     make-error: ^1.3.6
     object-hash: ^2.0.1
     oidc-token-hash: ^5.0.1
-  checksum: e2424187e68b282c727723a760172101c1cdefec425ccdd52d845a45ba4f6261de6cdff2963964189289ec7dd14dfb9fa340b21e40067b92b051b0a4287d5b9b
+  checksum: f40f1b4f2c4618cc823c77b7c6fed2a8240550d2c2f73710c823c127233a80af5e8c30acc248115bd17e2766d5d5bc1032989a515aa135259ffd5ebcdf90226c
   languageName: node
   linkType: hard
 
@@ -23546,16 +23532,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.3.2":
-  version: 2.3.2
-  resolution: "prettier@npm:2.3.2"
-  bin:
-    prettier: bin-prettier.js
-  checksum: 17ce5784ac67621c292df58e2da60b2ee150c2d6aebea22a6ad9e52fcd6a5e66c349d0a8436ea3bd8ff9d778920a5f68000d7625b74f43558718a49755aa5259
-  languageName: node
-  linkType: hard
-
-"prettier@npm:^2.3.2":
+"prettier@npm:2.4.1, prettier@npm:^2.3.2":
   version: 2.4.1
   resolution: "prettier@npm:2.4.1"
   bin:
@@ -23650,15 +23627,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prisma@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "prisma@npm:3.1.1"
+"prisma@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "prisma@npm:3.4.0"
   dependencies:
-    "@prisma/engines": 3.1.0-24.c22652b7e418506fab23052d569b85d3aec4883f
+    "@prisma/engines": 3.4.0-27.1c9fdaa9e2319b814822d6dbfd0a69e1fcc13a85
   bin:
     prisma: build/index.js
     prisma2: build/index.js
-  checksum: 2197b8dbe4a5c91948248f6dffdd40a46fd699e906515fdb3cfc42cee5619b865b0d5080084e4292bf00cb20423be87d1674bea16af9acb07050148dad2ccc32
+  checksum: 78e7157e3ff00da2802826191c04604bea6c06c027da7a466120e83d3f97a2965ad6dd1e5b06a15f0bde42215317f009ac8b0ca4837b3ed29eb02e969caaa12a
   languageName: node
   linkType: hard
 
@@ -25428,7 +25405,7 @@ resolve@^2.0.0-next.3:
     eslint: 7.30.0
     husky: 7.0.2
     lint-staged: 11.1.2
-    prettier: 2.3.2
+    prettier: 2.4.1
   languageName: unknown
   linkType: soft
 
@@ -25818,7 +25795,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"sharp@npm:^0.29.0, sharp@npm:^0.29.1":
+"sharp@npm:^0.29.0":
   version: 0.29.1
   resolution: "sharp@npm:0.29.1"
   dependencies:
@@ -25832,6 +25809,23 @@ resolve@^2.0.0-next.3:
     tar-fs: ^2.1.1
     tunnel-agent: ^0.6.0
   checksum: 10e47d82069882d247b95713f0bd42514cb7f6c5dddc83225553a335fa167ac9b2b9f6d118dd38de0069893218156390b1373aa63637b2bfdc27a6a09aa071b2
+  languageName: node
+  linkType: hard
+
+"sharp@npm:^0.29.2":
+  version: 0.29.2
+  resolution: "sharp@npm:0.29.2"
+  dependencies:
+    color: ^4.0.1
+    detect-libc: ^1.0.3
+    node-addon-api: ^4.2.0
+    node-gyp: latest
+    prebuild-install: ^6.1.4
+    semver: ^7.3.5
+    simple-get: ^3.1.0
+    tar-fs: ^2.1.1
+    tunnel-agent: ^0.6.0
+  checksum: 08d241c63bcf2f9eaf6130bf4c264ddf112ab66d02685879cb8d9df1fff571c8fd50fe4e6c046ce82dadb7e5edfd0eaaa3a21e35e84785b8bd9a20e2b1b7ff8c
   languageName: node
   linkType: hard
 
@@ -27120,16 +27114,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"superjson@npm:^1.7.5":
-  version: 1.7.5
-  resolution: "superjson@npm:1.7.5"
-  dependencies:
-    debug: ^4.3.1
-    lodash.clonedeep: ^4.5.0
-  checksum: 629c3cf3343203f8ab585046a7dfb9c730df3e08b00f4e78a029ddf148f93c22c65e0455dc4a7c6a72b3228dd9a8b39ff46ed5845ca555c14e92d85e02d2cae5
-  languageName: node
-  linkType: hard
-
 "supports-color@npm:^2.0.0":
   version: 2.0.0
   resolution: "supports-color@npm:2.0.0"
@@ -28047,7 +28031,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2, tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.2.0, tslib@npm:^2.3.0, tslib@npm:~2.3.0":
+"tslib@npm:^2, tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.2.0, tslib@npm:^2.3.0, tslib@npm:^2.3.1, tslib@npm:~2.3.0":
   version: 2.3.1
   resolution: "tslib@npm:2.3.1"
   checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9
@@ -28244,23 +28228,23 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-typescript@4.3.5:
-  version: 4.3.5
-  resolution: "typescript@npm:4.3.5"
+"typescript@npm:4.4.4":
+  version: 4.4.4
+  resolution: "typescript@npm:4.4.4"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: bab033b5e2b0790dd35b77fd005df976ef80b8d84fd2c6e63cc31808151875beae9216e5a315fe7068e8499905c3c354248fe83272cdfc13b7705635f0c66c97
+  checksum: 89ecb8436bb48ef5594d49289f5f89103071716b6e4844278f4fb3362856e31203e187a9c76d205c3f0b674d221a058fd28310dbcbcf5d95e9a57229bb5203f1
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.3.5#~builtin<compat/typescript>":
-  version: 4.3.5
-  resolution: "typescript@patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=ddd1e8"
+"typescript@patch:typescript@4.4.4#~builtin<compat/typescript>":
+  version: 4.4.4
+  resolution: "typescript@patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=ddd1e8"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 61fc1a2ca5037420de5bbe17c6ddc4cbcc0d52301ed94f0a7b5821c55ff9eb96307f0816f745ca8f0fc87ed92f3951cde6d97cd6fd6bc6920c02ea63b5b26259
+  checksum: bd629ad0da4a15d79aaad56baf3ee7d96f6a181760d430ae77f8c5325df7bffd9edee57544a3970e3651e8b796fe03a5838a7eb39c6d46cc3866c0b23d36a0dd
   languageName: node
   linkType: hard
 
@@ -29060,8 +29044,8 @@ typescript@4.3.5:
     "@lingui/react": 3.12.1
     "@mux/upchunk": 2.2.2
     "@reach/router": 1.3.4
-    "@sentry/gatsby": 6.12.0
-    "@sentry/tracing": 6.12.0
+    "@sentry/gatsby": 6.14.0
+    "@sentry/tracing": 6.14.0
     "@storybook/addon-actions": 6.3.7
     "@storybook/addon-essentials": 6.3.7
     "@storybook/addons": 6.3.7
@@ -29151,7 +29135,7 @@ typescript@4.3.5:
     npm-run-all: 4.1.5
     preact: 10.5.14
     preact-render-to-string: 5.1.19
-    prettier: 2.3.2
+    prettier: 2.4.1
     query-string: 7.0.1
     react: 17.0.2
     react-adaptive-hooks: 0.0.8
@@ -29164,7 +29148,7 @@ typescript@4.3.5:
     snarkdown: 2.0.0
     tailwindcss: 2.2.9
     theme-ui: 0.10.0
-    typescript: 4.3.5
+    typescript: 4.4.4
     url-loader: 4.1.1
     use-immer: 0.6.0
     wait-on: 6.0.0

@@ -20,6 +20,7 @@ import { generateOriginalUrl } from "../../../../utils/imgproxy"
 const ImageDetails: SSR<typeof getServerSideProps> = ({
   relatedVideos,
   video,
+  students,
 }) => {
   const player = useToggle()
   const studentId = useQueryString("studentId")
@@ -85,18 +86,15 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
 
             <h3 className="py-4 px-4 font-semibold text-gray-900">Students</h3>
             <ul className="px-4 border-t border-gray-200 divide-y divide-gray-200">
-              {video.video_to_students?.map(({ students }) => (
-                <li
-                  className="flex items-center py-3 font-medium"
-                  key={students.id}
-                >
+              {students?.map(({ id, name, profile_pic }) => (
+                <li className="flex items-center py-3 font-medium" key={id}>
                   <StudentProfile
-                    src={students.profile_pic}
+                    src={profile_pic}
                     width={32}
                     height={32}
                     className="rounded-full"
                   />
-                  <p className="ml-3 text-gray-900">{students.name}</p>
+                  <p className="ml-3 text-gray-900">{name}</p>
                 </li>
               ))}
             </ul>
@@ -201,7 +199,15 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
   return {
     props: {
       relatedVideos,
-      video,
+      video: {
+        id: video.id,
+        thumbnail_url: video.thumbnail_url,
+        schools: {
+          name: video.schools?.name,
+        },
+        created_at: video.created_at?.toISOString(),
+        playback_url: video.playback_url,
+      },
       students: video?.video_to_students.map(({ students }) => {
         const profilePic = students.images?.object_key
           ? generateOriginalUrl(students.images?.object_key)

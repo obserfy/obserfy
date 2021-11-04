@@ -277,6 +277,10 @@ export const findOtherVideosByStudentId = (
     orderBy: {
       created_at: "desc",
     },
+    select: {
+      id: true,
+      thumbnail_url: true,
+    },
     where: {
       id: {
         not: excludedVideoId,
@@ -301,7 +305,9 @@ export const findVideoByStudentIdAndImageId = (
         include: {
           students: {
             include: {
-              images: { select: { object_key: true } },
+              images: {
+                select: { object_key: true },
+              },
             },
           },
         },

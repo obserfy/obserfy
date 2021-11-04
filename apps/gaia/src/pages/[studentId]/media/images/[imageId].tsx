@@ -48,34 +48,31 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
 
               <div className="flex justify-between py-3 font-medium">
                 <dt className="text-gray-500">School</dt>
-                <dd className="text-gray-900">{image.schools?.name}</dd>
+                <dd className="text-gray-900">{image.school.name}</dd>
               </div>
             </dl>
 
             <h3 className="py-4 px-4 font-semibold text-gray-900">Students</h3>
             <ul className="px-4 border-t border-gray-200 divide-y divide-gray-200">
-              {image.image_to_students?.map(({ students }) => (
-                <li
-                  className="flex items-center py-3 font-medium"
-                  key={students.id}
-                >
+              {image.students?.map(({ id, profile_pic, name }) => (
+                <li className="flex items-center py-3 font-medium" key={id}>
                   <StudentProfile
-                    src={students.profile_pic}
+                    src={profile_pic}
                     width={32}
                     height={32}
                     className="rounded-full"
                   />
-                  <p className="ml-3 text-gray-900">{students.name}</p>
+                  <p className="ml-3 text-gray-900">{name}</p>
                 </li>
               ))}
             </ul>
           </div>
-          {(image.observation_to_images?.length ?? 0) > 0 && (
+          {(image.observations?.length ?? 0) > 0 && (
             <div className="overflow-hidden mx-4 mt-4 rounded-xl border shadow-sm">
               <h3 className="p-4 font-semibold text-gray-900">Observations</h3>
               <ul className="border-t border-gray-200 divide-y divide-gray-200">
-                {image.observation_to_images?.map(({ observations }) => (
-                  <Observation key={observations.id} {...observations} />
+                {image.observations?.map((o) => (
+                  <Observation key={o.id} {...o} />
                 ))}
               </ul>
             </div>
@@ -112,7 +109,7 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
 }
 
 const Observation: FC<{
-  event_time: Date | null
+  event_time?: string
   short_desc: string | null
   long_desc: string | null
   areas: { name: string | null } | null
@@ -128,7 +125,7 @@ const Observation: FC<{
       </div>
 
       <time
-        dateTime={event_time?.toISOString()}
+        dateTime={event_time}
         className="flex flex-shrink-0 text-gray-500 whitespace-nowrap"
       >
         {dayjs(event_time).format("DD MMM YYYY")}
@@ -209,6 +206,10 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
   const image = await findImageByStudentIdAndImageId(studentId, imageId)
   const relatedImages = await findRelatedImageByImageId(imageId)
 
+  if (!image) {
+    return { notFound: true }
+  }
+
   return {
     props: {
       relatedImage: relatedImages.map((img) => ({
@@ -216,7 +217,18 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
         src: img?.object_key ? generateOriginalUrl(img.object_key) : "",
       })),
       image: {
-        ...image,
+        id: image?.id,
+        created_at: image?.created_at?.toISOString(),
+        school: {
+          name: image?.schools?.name,
+        },
+        observations: image?.observation_to_images.map(({ observations }) => ({
+          id: observations.id,
+          event_time: observations?.event_time?.toISOString(),
+          short_desc: observations?.short_desc,
+          long_desc: observations?.long_desc,
+          areas: observations?.areas,
+        })),
         src: image?.object_key ? generateOriginalUrl(image.object_key) : "",
         students: image?.image_to_students.map(({ students }) => {
           const profilePic = students.images?.object_key
