@@ -1,6 +1,6 @@
-import { Dayjs } from "dayjs"
 import Image from "next/image"
 import { FC, useState } from "react"
+import dayjs, { Dayjs } from "$lib/dayjs"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
 import LessonPlanDetailsSlideOver from "$components/LessonPlanDetailSlideOver"
@@ -8,7 +8,6 @@ import TextFieldWithIcon from "$components/TextFieldWithIcon"
 import useToggle from "$hooks/useToggle"
 import BaseLayout from "$layouts/BaseLayout"
 import { withAuthorization } from "$lib/auth"
-import dayjs from "$lib/dayjs"
 import { findStudentLessonPlans } from "$lib/db"
 import { getQueryString, getStudentId, SSR } from "$lib/next"
 import RecordsHeroImage from "$public/hero/records-hero.svg"
@@ -36,16 +35,16 @@ const LessonPlansPage: SSR<typeof getServerSideProps> = ({ lessonPlans }) => {
           </p>
 
           <ul>
-            {lessonPlans.map(({ date, id, lesson_plan_details: details }) => (
+            {lessonPlans.map(({ date, id, details }) => (
               <LessonPlan
                 key={id}
-                title={details?.title ?? ""}
-                areaName={details?.areas?.name ?? ""}
-                repetitionType={details?.repetition_type?.toString()}
+                title={details.title ?? ""}
+                areaName={details.area?.name ?? ""}
+                repetitionType={details.repetitionType}
                 start={dayjs(date)}
                 end={
-                  details?.repetition_end_date
-                    ? dayjs(details.repetition_end_date)
+                  details.repetitionEndDate
+                    ? dayjs(details.repetitionEndDate)
                     : undefined
                 }
                 onClick={() => handleLessonPlanClick(id)}
@@ -68,7 +67,7 @@ const LessonPlan: FC<{
   title: string
   areaName: string
   start: Dayjs
-  repetitionType?: string
+  repetitionType: string | null
   end?: Dayjs
   onClick?: () => void
 }> = ({ start, areaName, end, repetitionType, title, onClick }) => {
@@ -224,7 +223,22 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
   const lessonPlans = await findStudentLessonPlans(studentId)
   return {
     props: {
-      lessonPlans,
+      lessonPlans: lessonPlans.map(
+        ({ date, id, lesson_plan_details: details }) => ({
+          id,
+          date: dayjs(date).format("YYYY-MM-DD"),
+          details: {
+            title: details?.title,
+            description: details?.description,
+            area: {
+              name: details?.areas?.name || null,
+            },
+            repetitionType: details?.repetition_type?.toString() || null,
+            repetitionEndDate:
+              details?.repetition_end_date?.toISOString() || null,
+          },
+        })
+      ),
     },
   }
 })
