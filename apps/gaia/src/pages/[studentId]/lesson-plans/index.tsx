@@ -1,5 +1,8 @@
 import Image from "next/image"
-import { FC, useState } from "react"
+import { useRouter } from "next/router"
+import { ChangeEvent, FC, useEffect, useState } from "react"
+import useDebounce from "$hooks/useDebounce"
+import { useQueryString } from "$hooks/useQueryString"
 import dayjs, { Dayjs } from "$lib/dayjs"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
@@ -140,7 +143,43 @@ const FilterBarMobile: FC = () => {
   )
 }
 
+const useFilterQueries = () => {
+  return {
+    area: useQueryString("area"),
+    from: useQueryString("from"),
+    to: useQueryString("to"),
+    search: useQueryString("search"),
+  }
+}
+
+const useSetQueries = () => {
+  const router = useRouter()
+  return async (query: any) => {
+    await router.push({
+      pathname: router.pathname,
+      query: { ...router.query, ...query },
+    })
+  }
+}
+
 const FilterCardDesktop = () => {
+  const query = useFilterQueries()
+  const setQueries = useSetQueries()
+
+  const [search, setSearch] = useState("")
+
+  const handleSearchChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value)
+  }
+
+  const debouncedSearch = useDebounce(search, 250)
+  useEffect(() => {
+    if (query.search !== debouncedSearch) {
+      // noinspection JSIgnoredPromiseFromCall
+      setQueries({ search: debouncedSearch })
+    }
+  }, [debouncedSearch, query.search, setQueries])
+
   return (
     <div className="hidden lg:block sticky top-20 flex-shrink-0 p-4 mr-4 mb-6 w-full lg:w-1/3 bg-gray-100 rounded-xl">
       <h2 className="flex justify-center items-center mb-3 font-semibold leading-none opacity-50">
@@ -151,8 +190,8 @@ const FilterCardDesktop = () => {
       <TextFieldWithIcon
         label="Text"
         name="search"
-        // value={search}
-        // onChange={handleSearchChange}
+        value={search}
+        onChange={handleSearchChange}
         placeholder={`"Reading ..."`}
         containerClassName="mb-2"
       />
@@ -220,7 +259,13 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
   const to = getQueryString(ctx, "to")
   const from = getQueryString(ctx, "from")
 
-  const lessonPlans = await findStudentLessonPlans(studentId)
+  const lessonPlans = await findStudentLessonPlans(studentId, {
+    search,
+    area,
+    to: to ? dayjs(to) : undefined,
+    from: from ? dayjs(from) : undefined,
+  })
+
   return {
     props: {
       lessonPlans: lessonPlans.map(

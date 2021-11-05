@@ -330,7 +330,15 @@ export const findStudentByStudentId = (id: string) => {
   })
 }
 
-export const findStudentLessonPlans = (studentId: string) => {
+export const findStudentLessonPlans = (
+  studentId: string,
+  where?: {
+    search?: string
+    area?: string | null
+    to?: Dayjs
+    from?: Dayjs
+  }
+) => {
   return prisma.lesson_plans.findMany({
     orderBy: {
       date: "desc",
@@ -348,6 +356,26 @@ export const findStudentLessonPlans = (studentId: string) => {
           student_id: studentId,
         },
       },
+      OR: !where?.search
+        ? undefined
+        : [
+            {
+              lesson_plan_details: {
+                title: {
+                  contains: where.search,
+                  mode: "insensitive",
+                },
+              },
+            },
+            {
+              lesson_plan_details: {
+                description: {
+                  contains: where.search,
+                  mode: "insensitive",
+                },
+              },
+            },
+          ],
     },
   })
 }
