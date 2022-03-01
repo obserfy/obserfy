@@ -37,8 +37,8 @@ packages/*        # Contains various patched or custom libraries that we use
 docker/*          # Contains dockerfile  for every projects. 
 apps/
 |--freyr          # Our landing page powered by gatsby
-|--gaia           # Contains all api and frontend for our parent dashboard, powered by nextjs
-|--vor            # Contains all code for parents dashboard, powered by gatsby and go
+|--gaia           # Contains all api and frontend for our parent's dashboard, powered by nextjs
+|--vor            # Contains all code for teacher's dashboard, powered by gatsby and go
 ```
 
 See each folder's README.md files for more info about them.
