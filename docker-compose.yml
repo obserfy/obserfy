@@ -36,7 +36,7 @@ services:
     image: minio/minio:latest
     container_name: vor-minio
     entrypoint: sh
-    command: -c 'mkdir -p /data/media && /usr/bin/minio server /data'
+    command: -c 'mkdir -p /data/media && minio server /data'
     environment:
       MINIO_HTTP_TRACE: "/dev/stdout"
     ports:

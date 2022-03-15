@@ -124,6 +124,10 @@ export const findOldestObservationDate = (studentId: string) => {
 
 export const findCurriculumAreasByStudentId = (studentId: string) => {
   return prisma.areas.findMany({
+    select: {
+      id: true,
+      name: true,
+    },
     where: {
       curriculums: {
         schools: {
@@ -324,9 +328,9 @@ export const findVideoByStudentIdAndImageId = (
   })
 }
 
-export const findStudentByStudentId = (id: string) => {
+export const findStudentByStudentId = (studentId: string) => {
   return prisma.students.findUnique({
-    where: { id },
+    where: { id: studentId },
   })
 }
 
@@ -380,9 +384,9 @@ export const findStudentLessonPlans = (
   })
 }
 
-export const findLessonPlanById = (id: string) => {
+export const findLessonPlanById = (lessonPlanId: string) => {
   return prisma.lesson_plans.findUnique({
-    where: { id },
+    where: { id: lessonPlanId },
     include: {
       observations: {
         include: {
@@ -398,6 +402,24 @@ export const findLessonPlanById = (id: string) => {
           lesson_plan_links: true,
           file_to_lesson_plans: true,
           areas: true,
+        },
+      },
+    },
+  })
+}
+
+export const findOldestLessonPlanDateByStudentId = (studentId: string) => {
+  return prisma.lesson_plans.findFirst({
+    select: {
+      date: true,
+    },
+    orderBy: {
+      date: "asc",
+    },
+    where: {
+      lesson_plan_to_students: {
+        some: {
+          student_id: studentId,
         },
       },
     },

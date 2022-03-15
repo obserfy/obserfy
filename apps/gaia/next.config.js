@@ -23,6 +23,7 @@ const config = {
     domains: [
       process.env.NEXT_OPTIMIZED_IMG_DOMAIN || "media.obserfy.com",
       "image.mux.com",
+      "roci",
     ],
   },
   eslint: {

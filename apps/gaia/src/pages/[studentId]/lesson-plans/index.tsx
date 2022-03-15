@@ -1,21 +1,28 @@
 import Image from "next/image"
-import { useRouter } from "next/router"
-import { ChangeEvent, FC, useEffect, useState } from "react"
-import useDebounce from "$hooks/useDebounce"
-import { useQueryString } from "$hooks/useQueryString"
-import dayjs, { Dayjs } from "$lib/dayjs"
+import { FC, useState } from "react"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
 import LessonPlanDetailsSlideOver from "$components/LessonPlanDetailSlideOver"
+import Select from "$components/Select"
 import TextFieldWithIcon from "$components/TextFieldWithIcon"
+import useTextQuery from "$hooks/useTextQuery"
 import useToggle from "$hooks/useToggle"
 import BaseLayout from "$layouts/BaseLayout"
 import { withAuthorization } from "$lib/auth"
-import { findStudentLessonPlans } from "$lib/db"
+import dayjs, { Dayjs } from "$lib/dayjs"
+import {
+  findCurriculumAreasByStudentId,
+  findOldestLessonPlanDateByStudentId,
+  findStudentLessonPlans,
+} from "$lib/db"
 import { getQueryString, getStudentId, SSR } from "$lib/next"
 import RecordsHeroImage from "$public/hero/records-hero.svg"
 
-const LessonPlansPage: SSR<typeof getServerSideProps> = ({ lessonPlans }) => {
+const LessonPlansPage: SSR<typeof getServerSideProps> = ({
+  lessonPlans,
+  areas,
+  oldestDate,
+}) => {
   const detailsSlideOver = useToggle()
   const [lessonPlanId, setLessonPlanId] = useState("")
 
@@ -30,7 +37,7 @@ const LessonPlansPage: SSR<typeof getServerSideProps> = ({ lessonPlans }) => {
       <FilterBarMobile />
 
       <div className="lg:flex items-start mx-4 lg:mt-4">
-        <FilterCardDesktop />
+        <FilterCardDesktop areas={areas} />
 
         <div className="overflow-hidden w-full bg-surface rounded-xl border shadow-sm">
           <p className="py-2 font-semibold text-center text-gray-600 bg-gray-100 border-b">
@@ -114,7 +121,8 @@ const Header = () => (
 )
 
 const FilterBarMobile: FC = () => {
-  const [search, setSearch] = useState("")
+  const filterSlideOver = useToggle()
+  const [search, setSearch] = useTextQuery("search", "")
 
   return (
     <div className="lg:hidden sticky top-0 z-10 py-4 mx-4 bg-gradient-to-b from-white via-white">
@@ -123,7 +131,7 @@ const FilterBarMobile: FC = () => {
           label="Text"
           name="search"
           value={search}
-          // onChange={handleSearchChange}
+          onChange={(e) => setSearch(e.target.value)}
           placeholder={`"Reading ..."`}
           containerClassName="rounded-lg w-full"
           inputClassName="!rounded-xl"
@@ -133,7 +141,7 @@ const FilterBarMobile: FC = () => {
         <Button
           variant="outline"
           className="ml-2 sm:text-sm rounded-xl"
-          // onClick={filterSlideOver.toggle}
+          onClick={filterSlideOver.toggle}
         >
           <Icon src="/icons/filter.svg" className="mr-2" color="bg-gray-800" />
           Filters
@@ -143,42 +151,10 @@ const FilterBarMobile: FC = () => {
   )
 }
 
-const useFilterQueries = () => {
-  return {
-    area: useQueryString("area"),
-    from: useQueryString("from"),
-    to: useQueryString("to"),
-    search: useQueryString("search"),
-  }
-}
-
-const useSetQueries = () => {
-  const router = useRouter()
-  return async (query: any) => {
-    await router.push({
-      pathname: router.pathname,
-      query: { ...router.query, ...query },
-    })
-  }
-}
-
-const FilterCardDesktop = () => {
-  const query = useFilterQueries()
-  const setQueries = useSetQueries()
-
-  const [search, setSearch] = useState("")
-
-  const handleSearchChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value)
-  }
-
-  const debouncedSearch = useDebounce(search, 250)
-  useEffect(() => {
-    if (query.search !== debouncedSearch) {
-      // noinspection JSIgnoredPromiseFromCall
-      setQueries({ search: debouncedSearch })
-    }
-  }, [debouncedSearch, query.search, setQueries])
+const FilterCardDesktop: FC<{
+  areas: Array<{ id: string; name: string | null }>
+}> = ({ areas }) => {
+  const [search, setSearch] = useTextQuery("search", "")
 
   return (
     <div className="hidden lg:block sticky top-20 flex-shrink-0 p-4 mr-4 mb-6 w-full lg:w-1/3 bg-gray-100 rounded-xl">
@@ -191,26 +167,26 @@ const FilterCardDesktop = () => {
         label="Text"
         name="search"
         value={search}
-        onChange={handleSearchChange}
+        onChange={(e) => setSearch(e.target.value)}
         placeholder={`"Reading ..."`}
         containerClassName="mb-2"
       />
 
-      {/* <Select */}
-      {/*  // defaultValue={area} */}
-      {/*  // value={area} */}
-      {/*  // onChange={handleAreaChange} */}
-      {/*  label="Area" */}
-      {/*  name="area" */}
-      {/* > */}
-      {/*  <option value="all">All</option> */}
-      {/*  {areas.map(({ id, name }) => ( */}
-      {/*    <option key={id} value={id}> */}
-      {/*      {name} */}
-      {/*    </option> */}
-      {/*  ))} */}
-      {/*  <option value="others">Others</option> */}
-      {/* </Select> */}
+      <Select
+        // defaultValue={area}
+        // value={area}
+        // onChange={handleAreaChange}
+        label="Area"
+        name="area"
+      >
+        <option value="all">All</option>
+        {areas.map(({ id, name }) => (
+          <option key={id} value={id}>
+            {name}
+          </option>
+        ))}
+        <option value="others">Others</option>
+      </Select>
 
       <div className="isolate mt-4 -space-y-px bg-white rounded-md shadow-sm">
         <label
@@ -259,6 +235,7 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
   const to = getQueryString(ctx, "to")
   const from = getQueryString(ctx, "from")
 
+  const areas = await findCurriculumAreasByStudentId(studentId)
   const lessonPlans = await findStudentLessonPlans(studentId, {
     search,
     area,
@@ -266,8 +243,12 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
     from: from ? dayjs(from) : undefined,
   })
 
+  const oldestDate = await findOldestLessonPlanDateByStudentId(studentId)
+
   return {
     props: {
+      oldestDate: oldestDate?.date?.toISOString() ?? dayjs().toISOString(),
+      areas: areas ?? [],
       lessonPlans: lessonPlans.map(
         ({ date, id, lesson_plan_details: details }) => ({
           id,

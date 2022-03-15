@@ -434,17 +434,17 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
   const to = getQueryString(ctx, "to")
   const from = getQueryString(ctx, "from")
 
-  let transformedArea: string | null | undefined = area
+  let areaQuery: string | null | undefined = area
   if (area === "all") {
-    transformedArea = undefined
+    areaQuery = undefined
   } else if (area === "others") {
-    transformedArea = null
+    areaQuery = null
   }
 
   const oldestDate = await findOldestObservationDate(studentId)
   const observations = await findStudentObservations(studentId, {
     search,
-    area: transformedArea,
+    area: areaQuery,
     to: to ? dayjs(to) : undefined,
     from: from ? dayjs(from) : undefined,
   })

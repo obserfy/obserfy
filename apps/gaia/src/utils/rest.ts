@@ -20,13 +20,10 @@ export function apiRoute(handler: NextApiHandler) {
     try {
       await handler(req, res)
     } catch (error) {
-      logger.error(error)
-      Sentry.captureException(error)
-
-      if (error.status > 500 || error.status === undefined) {
+      if (error instanceof Error) {
+        logger.error(error)
+        Sentry.captureException(error)
         res.status(500).end(error.message)
-      } else {
-        res.status(error.status).end(error.message)
       }
     }
   }
@@ -38,13 +35,10 @@ export function protectedApiRoute(handler: NextApiHandler) {
       try {
         await handler(req, res)
       } catch (error) {
-        logger.error(error)
-        Sentry.captureException(error)
-
-        if (error.status > 500 || error.status === undefined) {
-          res.status(500).end()
-        } else {
-          res.status(error.status).end(error.message)
+        if (error instanceof Error) {
+          logger.error(error)
+          Sentry.captureException(error)
+          res.status(500).end(error.message)
         }
       }
     }

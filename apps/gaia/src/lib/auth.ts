@@ -1,25 +1,6 @@
-import {
-  getSession,
-  withPageAuthRequired as withPageAuthRequiredOriginal,
-} from "@auth0/nextjs-auth0"
+import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0"
 import { GetServerSideProps } from "next"
 import { findStudentAndGuardianById } from "$lib/db"
-
-export interface Claims {
-  [key: string]: any
-}
-
-interface Options<P> {
-  getServerSideProps: GetServerSideProps<P>
-  returnTo?: string
-}
-
-/** fix withPageAuthRequired type inference */
-export function withPageAuthRequired<P>(opts?: Options<P>) {
-  return withPageAuthRequiredOriginal(opts) as GetServerSideProps<
-    { user?: Claims | null } & P
-  >
-}
 
 export const withAuthorization = <P>(
   getServerSideProps: GetServerSideProps<P>,

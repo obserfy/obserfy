@@ -2,7 +2,7 @@ import Head from "next/head"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
-import { withPageAuthRequired } from "$lib/auth"
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import useGetChildren from "../hooks/api/useGetChildren"
 import useGetUser from "../hooks/api/useGetUser"
 
