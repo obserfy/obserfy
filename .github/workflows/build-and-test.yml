@@ -83,7 +83,7 @@ jobs:
         env:
           SENTRY_ORG: obserfy
           SENTRY_PROJECT: gaia
-          SENTRY_AUTH_TOKEN: 85b971cadbb94ffe9954443099eab792904234ae99b745ef8b3baa06e63012eb
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       - uses: actions/upload-artifact@v2
         with:
           name: gaia
