@@ -2715,16 +2715,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@istanbuljs/nyc-config-typescript@npm:1.0.1":
-  version: 1.0.1
-  resolution: "@istanbuljs/nyc-config-typescript@npm:1.0.1"
+"@istanbuljs/nyc-config-typescript@npm:1.0.2":
+  version: 1.0.2
+  resolution: "@istanbuljs/nyc-config-typescript@npm:1.0.2"
   dependencies:
     "@istanbuljs/schema": ^0.1.2
   peerDependencies:
     nyc: ">=15"
-    source-map-support: "*"
-    ts-node: "*"
-  checksum: b4106446f88a637a0b168d1fcee73510de0c403584dc2722e507c5fd874b2cb1e513349d63f2cfc6d58aa59f153cd66e910bb3c80c65a37ca01f8aafc484dffd
+  checksum: df6f9c9b17df8f1d8813f768c11ca31ec125d60bcd82d8273a467022e414d2d686ee80abb7b0f0e3c512b7ed686771fadb7fb5be8881619b9f6cb1f31b86e9f3
   languageName: node
   linkType: hard
 
@@ -28160,7 +28158,7 @@ typescript@4.6.4:
     "@emotion/jest": 11.3.0
     "@emotion/react": 11.4.1
     "@fontsource/lora": 4.5.0
-    "@istanbuljs/nyc-config-typescript": 1.0.1
+    "@istanbuljs/nyc-config-typescript": 1.0.2
     "@lingui/cli": 3.13.3
     "@lingui/core": 3.13.3
     "@lingui/macro": 3.13.3
