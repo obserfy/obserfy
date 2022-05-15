@@ -16231,12 +16231,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"idb-keyval@npm:5.1.5":
-  version: 5.1.5
-  resolution: "idb-keyval@npm:5.1.5"
+"idb-keyval@npm:6.1.0":
+  version: 6.1.0
+  resolution: "idb-keyval@npm:6.1.0"
   dependencies:
-    safari-14-idb-fix: ^1.0.6
-  checksum: 6d71d975c5392ddce934a3617b169c25d3b3204f5203d2ffa182c253515922c787292d61eb738aa25ab80fa390e541a416376a6d62a0a2fe7cf112a758f2d8d9
+    safari-14-idb-fix: ^3.0.0
+  checksum: 431a7467739f0279e6af5f36c408f4c83e71ad0a892296d11360e5f2eaac8948da274783946b51c46847d8286570cc9d95d2e54b3cde351749d47bba419c25fc
   languageName: node
   linkType: hard
 
@@ -24768,10 +24768,10 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"safari-14-idb-fix@npm:^1.0.6":
-  version: 1.0.6
-  resolution: "safari-14-idb-fix@npm:1.0.6"
-  checksum: 588cd632606ff0e47d64d0b71d88f9626f6187177a3187cb063a272ecb0412f7453f4e9321a9e731a1439b7830aa24f907e2338b402e1ef24e8d6a42f7ce8532
+"safari-14-idb-fix@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "safari-14-idb-fix@npm:3.0.0"
+  checksum: 30d5baf3d9a17b52842b2c3fd3f0001fde7095a36191b6140ac78c19e8e1ff4b2607b9beb3b066c6bec107ccb5399c96e29748a6f5fcd592425f806f5e36f759
   languageName: node
   linkType: hard
 
@@ -28255,7 +28255,7 @@ typescript@4.6.4:
     hls.js: 1.0.10
     http-proxy-middleware: 2.0.1
     hygen: 6.1.0
-    idb-keyval: 5.1.5
+    idb-keyval: 6.1.0
     immer: 9.0.6
     jest: 27.3.1
     jest-date-mock: 1.0.8
