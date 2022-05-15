@@ -14109,7 +14109,7 @@ __metadata:
     prettier: 2.6.2
     react: "npm:@preact/compat@17.0.2"
     react-dom: "npm:@preact/compat@17.0.2"
-    react-query: 3.21.1
+    react-query: 3.39.0
     react-ssr-prepass: "npm:preact-ssr-prepass@1.2.0"
     snarkdown: 2.0.0
     stylelint: 13.13.1
@@ -23701,21 +23701,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-query@npm:3.21.1":
-  version: 3.21.1
-  resolution: "react-query@npm:3.21.1"
+"react-query@npm:3.39.0":
+  version: 3.39.0
+  resolution: "react-query@npm:3.39.0"
   dependencies:
     "@babel/runtime": ^7.5.5
     broadcast-channel: ^3.4.1
     match-sorter: ^6.0.2
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
     react-dom:
       optional: true
     react-native:
       optional: true
-  checksum: ea8a42d645e48671d102e74001b25ded9f10499f3e8bcaf62ecc071a5a39ca0bd8b37480ddd7bb7dc731d2165b99e5f789bb480040ef179f8d258f71055a4844
+  checksum: 18fd745ef86375c73496d6bcffdd4a6d02b48feb1e63c05bcb1881406a91ecf776543d0751b776a6ff6ffddd3d7bf31973a37df8e4eb72d1626c41b815396aef
   languageName: node
   linkType: hard
 
@@ -28251,7 +28251,7 @@ typescript@4.6.4:
     react-adaptive-hooks: 0.0.8
     react-dom: 17.0.2
     react-helmet: 6.1.0
-    react-query: 3.21.1
+    react-query: 3.39.0
     react-refresh: 0.10.0
     react-test-renderer: 17.0.2
     regenerator-runtime: 0.13.9
