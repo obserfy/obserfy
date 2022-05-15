@@ -14109,7 +14109,7 @@ __metadata:
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 22.0.0
     tailwindcss: 2.2.19
-    ts-is-present: 1.2.1
+    ts-is-present: 1.2.2
     typescript: 4.6.4
     uuid: 8.3.2
   languageName: unknown
@@ -27069,10 +27069,10 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"ts-is-present@npm:1.2.1":
-  version: 1.2.1
-  resolution: "ts-is-present@npm:1.2.1"
-  checksum: 6b5c042247e8099f7d2b90c93176901f1ff12f5fc7b76dd6735caa965d46ff88c22d15a37675e863fe4366b200741d2c2b3080148642de40cec1d6439ffa759d
+"ts-is-present@npm:1.2.2":
+  version: 1.2.2
+  resolution: "ts-is-present@npm:1.2.2"
+  checksum: 3620ecf48219d0dd108e493260a207f4733d8e39a18dffec23c7ed2b1ef2aba7158d0dfafe36f3f27d0092472535a5e474ce04ade54e972e64b2b6329d20ab0b
   languageName: node
   linkType: hard
 
