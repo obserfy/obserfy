@@ -50,7 +50,7 @@
     "gatsby-theme-i18n-lingui": "2.0.0",
     "gatsby-transformer-sharp": "3.13.0",
     "hls.js": "1.0.10",
-    "idb-keyval": "5.1.5",
+    "idb-keyval": "6.1.0",
     "immer": "9.0.6",
     "make-plural": "7.0.0",
     "mux-embed": "4.1.1",
