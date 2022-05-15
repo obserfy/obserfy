@@ -6358,10 +6358,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/faker@npm:5.5.8":
-  version: 5.5.8
-  resolution: "@types/faker@npm:5.5.8"
-  checksum: eb642cac279cbaca46001d301284d51f4b9ca90f48b4b8edb9bbf4335edf70e0216ad921690edb2feec6502eb1bc9ed1fe3e3a27efc49f168ece88acfe2e68ac
+"@types/faker@npm:5.5.9":
+  version: 5.5.9
+  resolution: "@types/faker@npm:5.5.9"
+  checksum: c2cbd082abe29047c89cf29b86257e582d2a177a9d1ed3abf99aa1cc025d5e8a3d201dfaddf8441bfcc57ed43e4da80e666951e1c23a5b759ac441a5855b5c36
   languageName: node
   linkType: hard
 
@@ -28988,7 +28988,7 @@ typescript@4.3.5:
     "@types/body-scroll-lock": 3.1.0
     "@types/date-fns": 2.6.0
     "@types/dompurify": 2.2.3
-    "@types/faker": 5.5.8
+    "@types/faker": 5.5.9
     "@types/jest": 27.0.2
     "@types/node": 15.0.2
     "@types/query-string": 6.3.0
