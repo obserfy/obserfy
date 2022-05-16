@@ -2110,10 +2110,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/lora@npm:4.5.0":
-  version: 4.5.0
-  resolution: "@fontsource/lora@npm:4.5.0"
-  checksum: d7e916c833831579129aa7dad2cfbb1f66b76f16bb12f545946195be4484a88e8d3506740f7053ba4ae71960b705a15632e5ff49c57fa019b57c55d42c34e648
+"@fontsource/lora@npm:4.5.9":
+  version: 4.5.9
+  resolution: "@fontsource/lora@npm:4.5.9"
+  checksum: 597866242aeb4aa99dba24a06875bfc7f67e243e4d2171179ce9f9c0f7d9680ed5c9e971900733f6d87a3715bb8ae96b6adbf25d1591da98019da2fe106245b7
   languageName: node
   linkType: hard
 
@@ -28206,7 +28206,7 @@ typescript@4.6.4:
     "@bahmutov/cypress-esbuild-preprocessor": 2.1.3
     "@emotion/jest": 11.3.0
     "@emotion/react": 11.4.1
-    "@fontsource/lora": 4.5.0
+    "@fontsource/lora": 4.5.9
     "@istanbuljs/nyc-config-typescript": 1.0.2
     "@lingui/cli": 3.13.3
     "@lingui/core": 3.13.3
