@@ -11,13 +11,7 @@ import "@fontsource/source-sans-pro/400.css"
 import "@fontsource/source-sans-pro/600.css"
 import "@fontsource/source-sans-pro/700.css"
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      notifyOnChangeProps: "tracked",
-    },
-  },
-})
+const queryClient = new QueryClient({})
 
 const App: NextPage<AppProps> = ({ Component, pageProps }) => (
   <ErrorBoundary>
