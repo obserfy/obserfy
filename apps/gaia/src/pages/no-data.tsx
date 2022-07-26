@@ -1,8 +1,7 @@
-import Head from "next/head"
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
-import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import useGetChildren from "../hooks/api/useGetChildren"
 import useGetUser from "../hooks/api/useGetUser"
 
@@ -22,12 +21,8 @@ const NoData = () => {
 
   return (
     <>
-      <Head>
-        <title>We can&apos;t find your data | Obserfy for Parents</title>
-      </Head>
-
       <div className="mx-auto max-w-3xl">
-        <div className="p-3 pt-8 max-w-lg h-full prose prose-sm">
+        <div className="p-3 pt-8 max-w-lg h-full prose">
           <Image src="/undraw_void_3ggu.svg" width={180} height={180} />
           <h1>We can&apos;t seem to find your data yet</h1>
           <p>
@@ -35,13 +30,14 @@ const NoData = () => {
             your school.
           </p>
           <p>
-            If your email is correct, try verifying with your school and see
-            whether you and your email has been set as one of the guardian for
-            your child.
+            If your email is correct, try asking your school and see whether
+            your email has been set as one of the guardian for your child.
           </p>
           <p>
             Email you are using now is: <b>{user?.email}</b>
           </p>
+
+          <a href="/api/auth/logout">Sign Out</a>
         </div>
       </div>
     </>

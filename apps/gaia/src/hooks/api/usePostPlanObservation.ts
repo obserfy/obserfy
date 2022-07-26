@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { track } from "$lib/mixpanel"
 import { PostPlanObservationRequest } from "../../pages/api/plans/[planId]/observations"
 import { postApi } from "./apiHelpers"

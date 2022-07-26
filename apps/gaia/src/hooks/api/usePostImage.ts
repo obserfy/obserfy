@@ -1,4 +1,4 @@
-import { useMutation } from "react-query"
+import { useMutation } from "@tanstack/react-query"
 import dayjs from "$lib/dayjs"
 import { postFile } from "./apiHelpers"
 import { useChildImagesCache } from "./useGetChildImages"

@@ -4233,7 +4233,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/babel-plugin@npm:0.4.1, @prefresh/babel-plugin@npm:^0.4.1":
+"@prefresh/babel-plugin@npm:^0.4.1":
   version: 0.4.1
   resolution: "@prefresh/babel-plugin@npm:0.4.1"
   checksum: bfa2389caec39a9996c12afc2c789fff313716dbee525dc3d10153a055581f648543ea1167cac909aeb16682ab4cb99147c715ba0fef3393cfd89be58fb43f5e
@@ -4249,30 +4249,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/next@npm:^1.4.6":
-  version: 1.4.7
-  resolution: "@prefresh/next@npm:1.4.7"
-  dependencies:
-    "@prefresh/babel-plugin": 0.4.1
-    "@prefresh/core": ^1.3.1
-    "@prefresh/utils": ^1.0.0
-    "@prefresh/webpack": ^3.2.0
-  peerDependencies:
-    next: ^9.4.0 || ^10.0.0 || ^11.0.0
-    preact: ^10.4.0
-    webpack: ^4.0.0 || ^5.0.0
-  checksum: 71c25b5a8d1a5e0380e85966a5e0b4806055945da77a17bbdf6138cc2bb076017afdfedf2879c51eb93fdaa56c7750fc31b98ebd68c9de1fbc2f0f950b77eb06
-  languageName: node
-  linkType: hard
-
-"@prefresh/utils@npm:^1.0.0, @prefresh/utils@npm:^1.1.0":
+"@prefresh/utils@npm:^1.1.0":
   version: 1.1.1
   resolution: "@prefresh/utils@npm:1.1.1"
   checksum: ec1c83a2983d37c9ce96b1c481912c3ae411e4722dc38997131342baecfe9d6c59233f1a5ff0003e3592d29328c22202742b3768062242c055d4f58f4af14704
   languageName: node
   linkType: hard
 
-"@prefresh/webpack@npm:^3.2.0, @prefresh/webpack@npm:^3.3.0, @prefresh/webpack@npm:^3.3.2":
+"@prefresh/webpack@npm:^3.3.2":
   version: 3.3.2
   resolution: "@prefresh/webpack@npm:3.3.2"
   dependencies:
@@ -6305,6 +6289,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:^4.0.0-beta.1":
+  version: 4.0.10
+  resolution: "@tanstack/query-core@npm:4.0.10"
+  checksum: 581d4506c5edbe91cdb35a2c4fe273aadb51a64ddaf73be63f92088202bda8495a909e286370357740291962149dabb5dd24fe7c048d71c29e702a1c61df5fc4
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^4.0.10":
+  version: 4.0.10
+  resolution: "@tanstack/react-query@npm:4.0.10"
+  dependencies:
+    "@tanstack/query-core": ^4.0.0-beta.1
+    "@types/use-sync-external-store": ^0.0.3
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-native: "*"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: b5f7501f977f4262fe80e510f5d58f3b49163ff7232603a839b7184431db7309c38ab55c5856a9d31a3c5219dd5031f9174e9dfcc78408300d0424b3000b9034
+  languageName: node
+  linkType: hard
+
 "@testing-library/dom@npm:^8.0.0":
   version: 8.6.0
   resolution: "@testing-library/dom@npm:8.6.0"
@@ -7141,6 +7152,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-dom@npm:^18":
+  version: 18.0.6
+  resolution: "@types/react-dom@npm:18.0.6"
+  dependencies:
+    "@types/react": "*"
+  checksum: db571047af1a567631758700b9f7d143e566df939cfe5fbf7535347cc0c726a1cdbb5e3f8566d076e54cf708b6c1166689de194a9ba09ee35efc9e1d45911685
+  languageName: node
+  linkType: hard
+
 "@types/react-helmet@npm:6.1.2":
   version: 6.1.2
   resolution: "@types/react-helmet@npm:6.1.2"
@@ -7305,6 +7325,13 @@ __metadata:
   version: 2.0.6
   resolution: "@types/unist@npm:2.0.6"
   checksum: 25cb860ff10dde48b54622d58b23e66214211a61c84c0f15f88d38b61aa1b53d4d46e42b557924a93178c501c166aa37e28d7f6d994aba13d24685326272d5db
+  languageName: node
+  linkType: hard
+
+"@types/use-sync-external-store@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "@types/use-sync-external-store@npm:0.0.3"
+  checksum: 161ddb8eec5dbe7279ac971531217e9af6b99f7783213566d2b502e2e2378ea19cf5e5ea4595039d730aa79d3d35c6567d48599f69773a02ffcff1776ec2a44e
   languageName: node
   linkType: hard
 
@@ -14700,6 +14727,7 @@ __metadata:
     "@tailwindcss/forms": ^0.5.2
     "@tailwindcss/line-clamp": ^0.4.0
     "@tailwindcss/typography": ^0.5.4
+    "@tanstack/react-query": ^4.0.10
     "@types/body-scroll-lock": 3.1.0
     "@types/dompurify": 2.2.3
     "@types/formidable": 1.2.3
@@ -14748,21 +14776,16 @@ __metadata:
     newtype-ts: 0.3.4
     next: 12.2.3
     next-compose-plugins: ^2.2.1
-    next-plugin-preact: ^3.0.7
     next-pwa: 5.5.4
     node-mocks-http: 1.10.1
     pg: 8.7.1
     pino: 6.13.2
     pino-pretty: 6.0.0
     postcss: 8.3.6
-    preact: ^10.10.0
-    preact-render-to-string: ^5.2.1
     prettier: 2.5.1
     prisma: ^3.10.0
-    react: "npm:@preact/compat@17.1.1"
-    react-dom: "npm:@preact/compat@17.1.1"
-    react-query: 3.21.1
-    react-ssr-prepass: "npm:preact-ssr-prepass@1.2.0"
+    react: ^18.2.0
+    react-dom: ^18.2.0
     sharp: ^0.30.3
     snarkdown: 2.0.0
     stylelint: 13.13.1
@@ -20926,13 +20949,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"module-alias@npm:^2.0.0":
-  version: 2.2.2
-  resolution: "module-alias@npm:2.2.2"
-  checksum: 4b5543f834b484033e5bd184096ca8276b9195e32e88883ee6ea8d3a4789d97c470d26f5fa7271bd7a26588bf67e4d27dbdb594ee327aef1c9619d855dc78342
-  languageName: node
-  linkType: hard
-
 "moment@npm:^2.18.1, moment@npm:^2.27.0":
   version: 2.29.1
   resolution: "moment@npm:2.29.1"
@@ -21154,21 +21170,6 @@ __metadata:
   version: 2.2.1
   resolution: "next-compose-plugins@npm:2.2.1"
   checksum: 771762fda2b12b81daf10431cbb494816cff96be02b44009692c6c0eefbacd62cbf51ddb93af8d3380ec00254c6a95d64d10f744d4b9ddadefc21efee7dc69fc
-  languageName: node
-  linkType: hard
-
-"next-plugin-preact@npm:^3.0.7":
-  version: 3.0.7
-  resolution: "next-plugin-preact@npm:3.0.7"
-  dependencies:
-    "@prefresh/next": ^1.4.6
-    "@prefresh/webpack": ^3.3.0
-    module-alias: ^2.0.0
-  peerDependencies:
-    preact: ">=10"
-    preact-render-to-string: ">=5"
-    preact-ssr-prepass: ">=1"
-  checksum: f272e851483794b92ec6b757a19e17dd13df7eb6156b562fd7071f7f1e9a59127e0f78b07245d91ab580ce36cc3c7a695f81cb383a52345d98bb995f7ae1d9f8
   languageName: node
   linkType: hard
 
@@ -23690,28 +23691,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact-render-to-string@npm:^5.2.1":
-  version: 5.2.1
-  resolution: "preact-render-to-string@npm:5.2.1"
-  dependencies:
-    pretty-format: ^3.8.0
-  peerDependencies:
-    preact: ">=10"
-  checksum: 5702638656a5a471a3698e8535e08ff0fca98317a578b2527158026fda28a681c008cebcabdbacd76209dabd2728a90da9793bef778549d28f5d060854cc7f7a
-  languageName: node
-  linkType: hard
-
 "preact@npm:10.6.6":
   version: 10.6.6
   resolution: "preact@npm:10.6.6"
   checksum: d6a9581b222c60595f987be28738b68dabb3045f72043e2619af81e9ca00b2b0942717642bcfcaab77a0afa50a97cd35039139c7f425a62a4f02ceb793d8ef83
-  languageName: node
-  linkType: hard
-
-"preact@npm:^10.10.0":
-  version: 10.10.0
-  resolution: "preact@npm:10.10.0"
-  checksum: ec34f0e7a8677080debb5e7035a749d30a23694a68389e6f577e051e91a1e1014913c56845a615d1f9a4f2cd0321c46faaded4d4a0457c755d637a3a811fd69e
   languageName: node
   linkType: hard
 
@@ -24437,25 +24420,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:17.0.2":
-  version: 17.0.2
-  resolution: "react-dom@npm:17.0.2"
+"react-dom@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react-dom@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    scheduler: ^0.20.2
+    scheduler: ^0.23.0
   peerDependencies:
-    react: 17.0.2
-  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
-  languageName: node
-  linkType: hard
-
-"react-dom@npm:@preact/compat@17.1.1, react@npm:@preact/compat@17.1.1":
-  version: 17.1.1
-  resolution: "@preact/compat@npm:17.1.1"
-  peerDependencies:
-    preact: "*"
-  checksum: 4171731dee6f25bdb8a200117c7d5b75527d79080aa864482e6b50a74e08b0fd24329aa7d97feb1c3e1b4aa9cbcc8a8b5e25ac01bab0fdf4d67843a53bda0eab
+    react: ^18.2.0
+  checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
   languageName: node
   linkType: hard
 
@@ -24691,15 +24664,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-ssr-prepass@npm:preact-ssr-prepass@1.2.0":
-  version: 1.2.0
-  resolution: "preact-ssr-prepass@npm:1.2.0"
-  peerDependencies:
-    preact: ">=10 || ^10.0.0-beta.0 || ^10.0.0-alpha.0"
-  checksum: 5c27122cb5e0838d25ffc8be4e63641c9ce7637a9e210d32852be609bee74cb68f79601089270b08812e45f779f81a316fb8a7e6ebb27a3b1493b17c36df41f6
-  languageName: node
-  linkType: hard
-
 "react-syntax-highlighter@npm:^13.5.3":
   version: 13.5.3
   resolution: "react-syntax-highlighter@npm:13.5.3"
@@ -24742,13 +24706,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
+"react@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
+  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
   languageName: node
   linkType: hard
 
@@ -25654,6 +25617,7 @@ resolve@^2.0.0-next.3:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
+    "@types/react-dom": ^18
     eslint: 7.30.0
     husky: 7.0.2
     lint-staged: 11.1.2
@@ -25788,6 +25752,15 @@ resolve@^2.0.0-next.3:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "scheduler@npm:0.23.0"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: d79192eeaa12abef860c195ea45d37cbf2bbf5f66e3c4dcd16f54a7da53b17788a70d109ee3d3dde1a0fd50e6a8fc171f4300356c5aee4fc0171de526bf35f8a
   languageName: node
   linkType: hard
 
@@ -28972,7 +28945,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:1.2.0":
+"use-sync-external-store@npm:1.2.0, use-sync-external-store@npm:^1.2.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:
@@ -29310,9 +29283,9 @@ resolve@^2.0.0-next.3:
     preact-render-to-string: 5.1.20
     prettier: 2.5.1
     query-string: 7.0.1
-    react: 17.0.2
+    react: ^18.2.0
     react-adaptive-hooks: 0.0.8
-    react-dom: 17.0.2
+    react-dom: ^18.2.0
     react-helmet: 6.1.0
     react-query: 3.21.1
     react-refresh: 0.10.0

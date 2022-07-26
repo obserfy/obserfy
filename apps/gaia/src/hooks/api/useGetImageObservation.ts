@@ -1,4 +1,4 @@
-import { useQuery } from "react-query"
+import { useQuery } from "@tanstack/react-query"
 import { GetChildObservationByImages } from "../../pages/api/image/[imageId]"
 import { getApi } from "./apiHelpers"
 

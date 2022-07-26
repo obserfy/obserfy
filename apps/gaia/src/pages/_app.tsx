@@ -2,7 +2,7 @@
 import { NextPage } from "next"
 import { AppProps } from "next/app"
 import Head from "next/head"
-import { QueryClient, QueryClientProvider } from "react-query"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import ErrorBoundary from "$components/ErrorBoundary"
 import LoadMixpanel from "$components/LoadMixpanel"
 import LoadSentry from "$components/LoadSentry"
