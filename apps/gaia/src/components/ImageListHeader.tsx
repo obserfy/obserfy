@@ -11,7 +11,7 @@ const ImageListHeader: FC<{
     )}
   >
     {children}
-    <div className="mt-1 h-1 w-6 rounded-full bg-primary-500" />
+    <span className="mt-1 h-1 w-6 rounded-full bg-primary-500" />
   </p>
 )
 
