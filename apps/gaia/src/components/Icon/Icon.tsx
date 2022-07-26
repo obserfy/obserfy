@@ -13,13 +13,13 @@ const Icon: FC<{
       maskImage: `url(${src})`,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      "-webkit-mask-image": `url(${src})`,
+      WebkitMaskImage: `url(${src})`,
 
       maskSize: "100%",
-      "-webkit-mask-size": "100%",
+      WebkitMaskSize: "100%",
 
       maskRepeat: "no-repeat",
-      "-webkit-mask-repeat": "no-repeat",
+      WebkitMaskRepeat: "no-repeat",
     }}
   />
 )

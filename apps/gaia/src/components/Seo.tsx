@@ -3,10 +3,13 @@ import { FC } from "react"
 
 const SEO: FC<{
   title: string
-}> = ({ title }) => (
-  <Head>
-    <title>{title} | Obserfy for Parents</title>
-  </Head>
-)
+}> = ({ title }) => {
+  const fullTitle = `${title} | Obserfy for Parents`
+  return (
+    <Head>
+      <title>{fullTitle}</title>
+    </Head>
+  )
+}
 
 export default SEO
