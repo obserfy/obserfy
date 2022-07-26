@@ -105,7 +105,6 @@ exports[`ObservationListItem should render correctly 1`] = `
             data-cy="observation-short-desc"
           />
         </div>
-        
         <div
           class="emotion-4"
         />
