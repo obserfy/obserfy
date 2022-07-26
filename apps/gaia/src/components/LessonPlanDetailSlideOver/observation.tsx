@@ -21,7 +21,7 @@ export const ObservationsList: FC<{
     users: Users | null
   })[]
 }> = ({ observations, lessonPlanId, studentId }) => (
-  <div className="p-4 lg:p-6 bg-gray-50 border-b">
+  <div className="border-b bg-gray-50 p-4 lg:p-6">
     <h4 className="mb-2 text-gray-600">Observations</h4>
     {observations.length > 0 && (
       <ul className="pb-4">
@@ -51,11 +51,11 @@ const Observation: FC<{
   const editForm = useToggle()
 
   return (
-    <li className="p-4 mb-2 bg-white rounded-xl border border-gray-200">
+    <li className="mb-2 rounded-xl border border-gray-200 bg-white p-4">
       <div className="flex items-start">
         {long_desc && (
           <div
-            className="mr-2 mb-2 max-w-none text-gray-700 prose"
+            className="prose mr-2 mb-2 max-w-none text-gray-700"
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: long_desc }}
           />
@@ -68,7 +68,7 @@ const Observation: FC<{
         <p className="text-sm text-gray-500">{userName || guardianName}</p>
         <time
           dateTime={event_time.toISOString()}
-          className="flex flex-shrink-0 ml-2 text-sm text-gray-500 whitespace-nowrap"
+          className="ml-2 flex shrink-0 whitespace-nowrap text-sm text-gray-500"
         >
           {event_time.format("DD MMM YYYY")}
         </time>
@@ -87,16 +87,16 @@ const DeleteObservationDialog: FC<{
     title="Delete Observation"
     icon={
       <a>
-        <Button className="sm:ml-3 w-full sm:w-auto text-base sm:text-sm hover:!bg-red-700 focus:!ring-red-500 !bg-red-600">
+        <Button className="w-full !bg-red-600 text-base hover:!bg-red-700 focus:!ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
           Sign Out
         </Button>
       </a>
     }
     actionButton={
-      <div className="flex flex-shrink-0 justify-center items-center mx-auto sm:mx-0 w-12 sm:w-10 h-12 sm:h-10 bg-red-100 rounded-full">
+      <div className="mx-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
         <Icon
           src="/icons/log-out.svg"
-          className="w-6 h-6"
+          className="h-6 w-6"
           color="bg-red-600"
           aria-hidden="true"
         />
@@ -109,10 +109,10 @@ const ObservationDropdown: FC<{
   onEditClick: () => void
   onDeleteClick: () => void
 }> = () => (
-  <Menu as="div" className="inline-block relative ml-auto text-left">
+  <Menu as="div" className="relative ml-auto inline-block text-left">
     <div>
-      <Menu.Button className="inline-flex justify-center p-1 w-full text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 rounded-md border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-100 shadow-sm focus:outline-none">
-        <Icon src="/icons/dots-horizontal.svg" className="!w-6 !h-6" />
+      <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white p-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+        <Icon src="/icons/dots-horizontal.svg" className="!h-6 !w-6" />
       </Menu.Button>
     </div>
 
@@ -125,14 +125,14 @@ const ObservationDropdown: FC<{
       leaveFrom="transform opacity-100 scale-100"
       leaveTo="transform opacity-0 scale-95"
     >
-      <Menu.Items className="absolute right-0 z-20 mt-2 w-56 bg-white rounded-md ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right focus:outline-none">
+      <Menu.Items className="absolute right-0 z-20 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
         <div className="py-1">
           <Menu.Item>
             {({ active }) => (
               <a
                 href="#"
                 className={clsx(
-                  active ? "text-gray-900 bg-gray-100" : "text-gray-700",
+                  active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                   "flex items-center py-2 px-4 text-sm"
                 )}
               >
@@ -150,13 +150,13 @@ const ObservationDropdown: FC<{
               <a
                 href="#"
                 className={clsx(
-                  active ? "text-gray-900 bg-gray-100" : "text-gray-700",
+                  active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                   "flex items-center py-2 px-4 text-sm"
                 )}
               >
                 <Icon
                   src="/icons/trash.svg"
-                  className="mr-4 !w-4 !h-4"
+                  className="mr-4 !h-4 !w-4"
                   color="bg-gray-500"
                 />
                 Delete
@@ -178,16 +178,16 @@ export const PostObservationForm: FC<{
   const { mutateAsync, isLoading } = usePostPlanObservation(lessonPlanId)
 
   return (
-    <div className="flex overflow-hidden flex-col h-80 bg-white rounded-xl border border-gray-200 focus-within:ring-2 ring-primary-500">
+    <div className="flex h-80 flex-col overflow-hidden rounded-xl border border-gray-200 bg-white ring-primary-500 focus-within:ring-2">
       <label
         htmlFor="new-observation"
-        className="w-full h-full outline-none focus:outline-none"
+        className="h-full w-full outline-none focus:outline-none"
       >
         <span className="sr-only">Observation</span>
         <textarea
           id="new-observation"
           placeholder="Post an observation..."
-          className="p-4 w-full h-full placeholder-gray-400 border-none resize-none focus:!outline-none"
+          className="h-full w-full resize-none border-none p-4 placeholder:text-gray-400 focus:!outline-none"
           value={observation}
           onChange={(e) => {
             setObservation(e.target.value)
@@ -211,7 +211,7 @@ export const PostObservationForm: FC<{
           <Icon
             src="/icons/spinner.svg"
             color="bg-white"
-            className="animate-spin !w-4 !h-4"
+            className="!h-4 !w-4 animate-spin"
           />
         )}
         Submit

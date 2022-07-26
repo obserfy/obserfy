@@ -29,7 +29,7 @@ const AddObservationForm: FC<{
 
   return (
     <>
-      <div className="px-3 w-full">
+      <div className="w-full px-3">
         <Textarea
           className="mt-3 w-full"
           label="Observation"
@@ -38,7 +38,7 @@ const AddObservationForm: FC<{
           disabled={loading}
         />
       </div>
-      <div className="flex ml-auto">
+      <div className="ml-auto flex">
         <Button
           variant="outline"
           className="mt-3 mr-3 ml-auto"

@@ -34,7 +34,7 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({
 
   return (
     <MediaLayout title="MediaPage" currentPage="Images">
-      <div className="flex relative z-10 -mt-6 lg:-mt-8 mb-4">
+      <div className="relative z-10 -mt-6 mb-4 flex lg:-mt-8">
         <UploadImageButton
           onChange={handleImageUpload}
           isLoading={postImage.isLoading}
@@ -42,10 +42,10 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({
       </div>
 
       {Object.keys(imagesByMonth).map((month) => (
-        <section className="mb-16">
+        <section key={month} className="mb-16">
           <ImageListHeader>{month}</ImageListHeader>
 
-          <ul className="grid grid-cols-2 md:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-4 lg:gap-y-8 px-4 mt-2">
+          <ul className="mt-2 grid grid-cols-2 gap-4 px-4 md:grid-cols-3 lg:gap-8">
             {imagesByMonth[month].map(({ id, src }) => (
               <li key={id}>
                 <Link href={`/${studentId}/media/images/${id}`}>
@@ -75,7 +75,7 @@ const UploadImageButton: FC<{
   <label
     htmlFor="upload-image"
     className={clsx(
-      "group flex items-center mr-9 lg:mr-12 ml-auto text-base font-semibold text-primary-900 hover:text-black bg-primary-300 hover:bg-primary-300 focus:bg-primary-200 rounded-full ring ring-white focus:ring-primary-500 shadow hover:shadow-lg transition cursor-pointer lg:!px-6 !p-4",
+      "group mr-9 ml-auto flex cursor-pointer items-center rounded-full bg-primary-300 !p-4 text-base font-semibold text-primary-900 shadow ring ring-white transition hover:bg-primary-300 hover:text-black hover:shadow-lg focus:bg-primary-200 focus:ring-primary-500 lg:mr-12 lg:!px-6",
       isLoading && "!bg-primary-500"
     )}
   >
@@ -83,7 +83,7 @@ const UploadImageButton: FC<{
       <Icon
         src="/icons/spinner.svg"
         color="bg-primary-900 group-hover:bg-black"
-        className="animate-spin !w-6 !h-6"
+        className="!h-6 !w-6 animate-spin"
       />
     ) : (
       <Icon
@@ -92,7 +92,7 @@ const UploadImageButton: FC<{
       />
     )}
 
-    <span className="hidden lg:block ml-2">
+    <span className="ml-2 hidden lg:block">
       {isLoading ? "Uploading" : "Upload Image"}
     </span>
     <input

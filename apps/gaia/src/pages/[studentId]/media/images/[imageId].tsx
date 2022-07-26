@@ -24,21 +24,21 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
   return (
     <BaseLayout title="Image Details">
       <div className="mx-auto w-full">
-        <div className="relative w-full bg-black h-[70vh]">
+        <div className="relative h-[70vh] w-full bg-black">
           <Image src={image.src} layout="fill" objectFit="scale-down" />
         </div>
       </div>
 
-      <div className="lg:flex flex-row-reverse mx-auto max-w-7xl">
+      <div className="mx-auto max-w-7xl flex-row-reverse lg:flex">
         <div className="w-full lg:max-w-sm">
-          <div className="p-4 w-full">
+          <div className="w-full p-4">
             <Breadcrumb />
           </div>
 
           <div className="mx-4 rounded-xl border shadow-sm">
             <h3 className="p-4 font-semibold text-gray-900">Information</h3>
 
-            <dl className="px-4 border-t border-gray-200 divide-y divide-gray-200">
+            <dl className="divide-y divide-gray-200 border-t border-gray-200 px-4">
               <div className="flex justify-between py-3 font-medium">
                 <dt className="text-gray-500">Created</dt>
                 <dd className="text-gray-900">
@@ -52,8 +52,8 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
               </div>
             </dl>
 
-            <h3 className="py-4 px-4 font-semibold text-gray-900">Students</h3>
-            <ul className="px-4 border-t border-gray-200 divide-y divide-gray-200">
+            <h3 className="p-4 font-semibold text-gray-900">Students</h3>
+            <ul className="divide-y divide-gray-200 border-t border-gray-200 px-4">
               {image.students?.map(({ id, profile_pic, name }) => (
                 <li className="flex items-center py-3 font-medium" key={id}>
                   <StudentProfile
@@ -68,9 +68,9 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
             </ul>
           </div>
           {(image.observations?.length ?? 0) > 0 && (
-            <div className="overflow-hidden mx-4 mt-4 rounded-xl border shadow-sm">
+            <div className="mx-4 mt-4 overflow-hidden rounded-xl border shadow-sm">
               <h3 className="p-4 font-semibold text-gray-900">Observations</h3>
-              <ul className="border-t border-gray-200 divide-y divide-gray-200">
+              <ul className="divide-y divide-gray-200 border-t border-gray-200">
                 {image.observations?.map((o) => (
                   <Observation key={o.id} {...o} />
                 ))}
@@ -81,10 +81,10 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
 
         {relatedImage.length > 0 && (
           <div className="mt-8 sm:mt-0">
-            <ImageListHeader className="md:text-lg !my-4 lg:!my-3">
+            <ImageListHeader className="!my-4 md:text-lg lg:!my-3">
               Related Photos
             </ImageListHeader>
-            <ul className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 xl:gap-x-8 gap-y-4 xl:gap-y-8 px-4 xl:pr-4 mt-4">
+            <ul className="mt-4 grid grid-cols-2 gap-4 px-4 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8 xl:pr-4">
               {relatedImage.map(({ id, src }) => (
                 <li key={id}>
                   <Link href={`/${studentId}/media/images/${id}`}>
@@ -114,19 +114,19 @@ const Observation: FC<{
   long_desc: string | null
   areas: { name: string | null } | null
 }> = ({ short_desc, areas, event_time, long_desc }) => (
-  <li className="relative p-4 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600">
+  <li className="relative bg-white p-4 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600">
     <div className="flex justify-between space-x-3">
-      <div className="block text-left truncate focus:outline-none">
+      <div className="block truncate text-left focus:outline-none">
         <span className="absolute inset-0" aria-hidden="true" />
-        <p className="font-semibold text-gray-900 truncate">{short_desc}</p>
-        <p className="font-semibold text-primary-600 truncate">
+        <p className="truncate font-semibold text-gray-900">{short_desc}</p>
+        <p className="truncate font-semibold text-primary-600">
           {areas?.name ?? "Others"}
         </p>
       </div>
 
       <time
         dateTime={event_time}
-        className="flex flex-shrink-0 text-gray-500 whitespace-nowrap"
+        className="flex shrink-0 whitespace-nowrap text-gray-500"
       >
         {dayjs(event_time).format("DD MMM YYYY")}
       </time>
@@ -134,7 +134,7 @@ const Observation: FC<{
     <div className="mt-1">
       {long_desc && (
         <div
-          className="max-w-none text-gray-700 prose"
+          className="prose max-w-none text-gray-700"
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: long_desc }}
         />
@@ -152,14 +152,14 @@ const Breadcrumb = () => {
 
   return (
     <nav className="flex" aria-label="Breadcrumb">
-      <ol className="flex justify-center items-center p-3 space-x-4 w-full bg-gray-100 rounded-xl border">
+      <ol className="flex w-full items-center justify-center space-x-4 rounded-xl border bg-gray-100 p-3">
         <li>
           <div>
             <Link href={`/${studentId}/media`}>
               <a className="text-gray-400 hover:text-gray-500">
                 <Icon
                   src="/icons/camera.svg"
-                  className="flex-shrink-0 !w-6 !h-6"
+                  className="!h-6 !w-6 shrink-0"
                   color="bg-gray-500"
                   aria-hidden="true"
                 />
@@ -173,7 +173,7 @@ const Breadcrumb = () => {
           <li key={page.name}>
             <div className="flex items-center">
               <svg
-                className="flex-shrink-0 w-5 h-5 text-gray-300"
+                className="h-5 w-5 shrink-0 text-gray-300"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
                 viewBox="0 0 20 20"

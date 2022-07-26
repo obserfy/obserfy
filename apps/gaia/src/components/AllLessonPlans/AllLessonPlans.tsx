@@ -17,11 +17,11 @@ const AllLessonPlans: FC = () => {
   )
 
   return (
-    <div className="mx-auto mb-5 w-full max-w-3xl bg-surface md:rounded border">
-      <div className="flex items-center m-3 bg-gray-100 rounded border focus-within:border-primary">
-        <Icon src="/icons/search.svg" className="m-2 w-4 h-4 opacity-70" />
+    <div className="mx-auto mb-5 w-full max-w-3xl border bg-surface md:rounded">
+      <div className="focus-within:border-primary m-3 flex items-center rounded border bg-gray-100">
+        <Icon src="/icons/search.svg" className="m-2 h-4 w-4 opacity-70" />
         <input
-          className="py-2 mr-1 w-full bg-gray-100 outline-none"
+          className="mr-1 w-full bg-gray-100 py-2 outline-none"
           placeholder="Search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -44,7 +44,7 @@ const Plan: FC<{
   studentId: string
 }> = ({ plan, studentId }) => (
   <Link href={`/${studentId}/lesson-plan/details?planId=${plan.id}`}>
-    <div className="p-3 hover:bg-gray-100 border-t">
+    <div className="border-t p-3 hover:bg-gray-100">
       <div className="flex-1 font-bold text-gray-700">{plan.title}</div>
       <div className="flex pt-2 text-xs">
         <div className="text-green-700">{plan.area?.name}</div>

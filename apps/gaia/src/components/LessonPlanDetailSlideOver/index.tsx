@@ -1,4 +1,4 @@
-import dayjs from "dayjs"
+import dayjs from "$lib/dayjs"
 import { FC } from "react"
 import Icon from "$components/Icon/Icon"
 import { ObservationsList } from "$components/LessonPlanDetailSlideOver/observation"
@@ -21,14 +21,14 @@ const LessonPlanDetailsSlideOver: FC<{
   return (
     <SlideOver show={show} onClose={onClose} title="Details">
       <div>
-        <div className="px-4 lg:px-6 pt-4 mb-4 border-t">
+        <div className="mb-4 border-t px-4 pt-4 lg:px-6">
           <p className="text-sm text-gray-500">Lesson</p>
           <h4 className="mb-2 leading-tight text-gray-900">{lp?.title}</h4>
         </div>
 
-        <div className="px-4 lg:px-6 pb-4">
+        <div className="px-4 pb-4 lg:px-6">
           <p className="text-sm text-gray-500">Date</p>
-          <p className="flex mb-1 text-gray-900">
+          <p className="mb-1 flex text-gray-900">
             {start.format("D MMM YYYY")}
             {isRepeating && (
               <span className="ml-1">{` - ${end?.format("D MMM YYYY")}`}</span>
@@ -36,7 +36,7 @@ const LessonPlanDetailsSlideOver: FC<{
           </p>
         </div>
 
-        <div className="px-4 lg:px-6 pb-4 border-b">
+        <div className="border-b px-4 pb-4 lg:px-6">
           <p className="text-sm text-gray-500">Area</p>
           <h5 className="mb-2 font-semibold leading-tight text-primary-700">
             {lp?.areaName || "Other"}
@@ -44,7 +44,7 @@ const LessonPlanDetailsSlideOver: FC<{
         </div>
 
         {lp?.description && (
-          <div className="p-4 lg:p-6 py-8 border-b">
+          <div className="border-b p-4 py-8 lg:p-6">
             <div
               className="prose"
               dangerouslySetInnerHTML={{ __html: lp.description }}
@@ -71,7 +71,7 @@ const LessonPlanDetailsSlideOver: FC<{
 const LessonPlanLinkLists: FC<{
   links: Array<{ id?: string | null; url?: string | null }>
 }> = ({ links }) => (
-  <div className="right-0 left-0 p-4 lg:p-6 sm:max-w-none bg-gray-50 border-b">
+  <div className="inset-x-0 border-b bg-gray-50 p-4 sm:max-w-none lg:p-6">
     <h4 className="mb-2 text-gray-600">Links</h4>
     <ul>
       {links.map(({ id, url }) => (
@@ -84,7 +84,7 @@ const LessonPlanLinkLists: FC<{
 const LessonPlanLinks: FC<{
   url?: string | null
 }> = ({ url }) => (
-  <li className="relative right-0 left-0 mb-4 bg-surface rounded-lg border ring-0 hover:ring-2 hover:ring-primary-500 shadow-sm">
+  <li className="relative inset-x-0 mb-4 rounded-lg border bg-surface shadow-sm ring-0 hover:ring-2 hover:ring-primary-500">
     <a
       href={url ?? "#"}
       rel="noopener noreferrer"
@@ -93,10 +93,10 @@ const LessonPlanLinks: FC<{
     >
       <Icon
         src="/icons/link.svg"
-        className="flex-shrink-0 mr-3"
+        className="mr-3 shrink-0"
         color="bg-gray-600"
       />
-      <span className="flex-grow-0 text-sm break-all">{url}</span>
+      <span className="grow-0 break-all text-sm">{url}</span>
     </a>
   </li>
 )

@@ -27,7 +27,7 @@ const StudentSelector: FC<{
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <Listbox.Options className="overflow-auto absolute z-10 py-1 mt-1 w-full max-h-56 text-base sm:text-sm bg-white rounded-md ring-1 ring-black ring-opacity-5 shadow-lg focus:outline-none">
+        <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
           {students.map((student) => (
             <Option key={student.id} {...student} />
           ))}
@@ -38,7 +38,7 @@ const StudentSelector: FC<{
 )
 
 const SelectedStudent: FC<{ student?: Student }> = ({ student }) => (
-  <Listbox.Button className="flex items-center p-0.5 mr-4 sm:text-sm text-left rounded-full focus:border-primary-500 focus:ring-1 focus:ring-primary-500 cursor-pointer focus:outline-none">
+  <Listbox.Button className="mr-4 flex cursor-pointer items-center rounded-full p-0.5 text-left focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 sm:text-sm">
     <StudentProfile
       src={student?.profilePic}
       width={32}
@@ -46,16 +46,16 @@ const SelectedStudent: FC<{ student?: Student }> = ({ student }) => (
       className="rounded-full"
     />
     <div>
-      <p className="ml-3 text-sm font-semibold leading-tight text-gray-900 truncate max-w-[140px] md:max-w-[200px]">
+      <p className="ml-3 max-w-[140px] truncate text-sm font-semibold leading-tight text-gray-900 md:max-w-[200px]">
         {student?.name}
       </p>
-      <p className="sm:hidden ml-3 text-xs leading-tight text-gray-600 truncate max-w-[140px] md:max-w-[200px]">
+      <p className="ml-3 max-w-[140px] truncate text-xs leading-tight text-gray-600 sm:hidden md:max-w-[200px]">
         {student?.schoolName}
       </p>
     </div>
     <Icon
       src="/icons/chevron-down.svg"
-      className="flex-shrink-0 ml-2 opacity-70 !w-6 !h-6"
+      className="ml-2 !h-6 !w-6 shrink-0 opacity-70"
     />
   </Listbox.Button>
 )
@@ -64,8 +64,8 @@ const Option: FC<Student> = (student) => (
   <Listbox.Option
     className={({ active }) =>
       clsx(
-        active ? "text-white bg-primary-600" : "text-gray-900",
-        "relative py-2 pr-9 pl-3 cursor-pointer select-none"
+        active ? "bg-primary-600 text-white" : "text-gray-900",
+        "relative cursor-pointer select-none py-2 pr-9 pl-3"
       )
     }
     value={student}
@@ -82,7 +82,7 @@ const Option: FC<Student> = (student) => (
           <span
             className={clsx(
               selected ? "font-semibold" : "font-normal",
-              "block ml-3 text-sm truncate"
+              "ml-3 block truncate text-sm"
             )}
           >
             {student.name}
@@ -93,7 +93,7 @@ const Option: FC<Student> = (student) => (
           <span
             className={clsx(
               active ? "text-white" : "text-primary-600",
-              "flex absolute inset-y-0 right-0 items-center pr-4"
+              "absolute inset-y-0 right-0 flex items-center pr-4"
             )}
           >
             <Icon src="/icons/check.svg" aria-hidden="true" />

@@ -10,8 +10,8 @@ const SideBar = () => {
   const studentId = useQueryString("studentId")
 
   return (
-    <nav className="hidden sm:block fixed top-0 bottom-0 left-0 pt-16 w-sidebar h-screen bg-background border-r">
-      <ul className="py-3 mr-[-1px]">
+    <nav className="fixed inset-y-0 left-0 hidden h-screen w-sidebar border-r bg-background pt-16 sm:block">
+      <ul className="mr-[-1px] py-3">
         {navigationItems(studentId).map((item) => (
           <Item key={item.href} {...item} />
         ))}
@@ -34,14 +34,14 @@ const Item: FC<{
   return (
     <li
       className={clsx(
-        "flex flex-col flex-grow-0 justify-center mb-2",
+        "mb-2 flex grow-0 flex-col justify-center",
         isActive && "border-r-2 border-primary-500"
       )}
     >
       <Link href={href}>
         <a
           className={clsx(
-            "flex items-center px-3 rounded-lg",
+            "flex items-center rounded-lg px-3",
             isActive
               ? "font-semibold text-primary-600"
               : "text-gray-800 hover:text-green-800"
@@ -49,13 +49,13 @@ const Item: FC<{
         >
           <div
             className={clsx(
-              "p-1 mr-3 rounded-lg",
+              "mr-3 rounded-lg p-1",
               isActive && "bg-primary-200"
             )}
           >
             <Icon
               src={iconSrc}
-              className="!w-5 !h-5"
+              className="!h-5 !w-5"
               color={isActive ? "bg-black opacity-80" : "bg-gray-800"}
             />
           </div>

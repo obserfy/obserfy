@@ -10,8 +10,8 @@ const BottomNavigationBar = () => {
   const studentId = useQueryString("studentId")
 
   return (
-    <nav className="z-20 flex sm:hidden fixed right-0 bottom-0 left-0 flex-col justify-end h-bottom-navigation bg-gradient-to-t from-white pointer-events-none via-[rgba(255,255,255,0.95)]">
-      <ul className="flex justify-around items-center h-16 pointer-events-auto">
+    <nav className="pointer-events-none fixed inset-x-0 bottom-0 z-20 flex h-bottom-navigation flex-col justify-end bg-gradient-to-t from-white via-[rgba(255,255,255,0.95)] sm:hidden">
+      <ul className="pointer-events-auto flex h-16 items-center justify-around">
         {navigationItems(studentId).map((item) => (
           <Item key={item.href} {...item} />
         ))}
@@ -32,17 +32,17 @@ const Item: FC<{
     : router.asPath.startsWith(href)
 
   return (
-    <li className="flex flex-col flex-grow-0 justify-center w-16 h-16">
+    <li className="flex h-16 w-16 grow-0 flex-col justify-center">
       <Link href={href}>
         <a
           className={clsx(
-            "flex flex-col items-center font-semibold text-[11px]",
+            "flex flex-col items-center text-[11px] font-semibold",
             isActive ? "text-green-700" : "opacity-50"
           )}
         >
           <Icon
             src={iconSrc}
-            className="!w-6 !h-6"
+            className="!h-6 !w-6"
             color={isActive ? "bg-green-600" : "bg-black"}
           />
           {text}

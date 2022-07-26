@@ -20,15 +20,15 @@ const ImagePreview: FC<{
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
     <div
       ref={ref}
-      className="flex overflow-y-auto fixed top-0 right-0 bottom-0 left-0 z-50 justify-center md:items-center w-screen h-screen bg-overlay scrolling-touch"
+      className="scrolling-touch fixed inset-0 z-50 flex h-screen w-screen justify-center overflow-y-auto bg-overlay md:items-center"
       onClick={onDismiss}
     >
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
       <div
         className="
+          max-h-screen
           w-full
           max-w-2xl
-          max-h-screen
           bg-white
         "
         onClick={(e) => e.stopPropagation()}
@@ -55,10 +55,10 @@ const ImagePreview: FC<{
         <img
           src={img.originalImageUrl}
           alt="preview"
-          className="object-cover w-full"
+          className="w-full object-cover"
         />
         {observations.data?.map((obv) => (
-          <div className="p-4 bg-white">
+          <div key={obv.id} className="bg-white p-4">
             <div className="font-bold">{obv.shortDesc}</div>
             <div className="font-normal">{obv.longDesc}</div>
           </div>

@@ -107,8 +107,8 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
 
   return (
     <RecordsLayout title="Observations" currentPage="Observations">
-      <div className="lg:flex items-start mx-4 lg:mt-4">
-        <div className="lg:hidden sticky top-0 z-10 py-4 bg-gradient-to-b from-white via-white">
+      <div className="mx-4 items-start lg:mt-4 lg:flex">
+        <div className="sticky top-0 z-10 bg-gradient-to-b from-white via-white py-4 lg:hidden">
           <div className="flex">
             <TextFieldWithIcon
               label="Text"
@@ -123,7 +123,7 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
 
             <Button
               variant="outline"
-              className="ml-2 sm:text-sm rounded-xl"
+              className="ml-2 rounded-xl sm:text-sm"
               onClick={filterSlideOver.toggle}
             >
               <Icon
@@ -136,8 +136,8 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
           </div>
         </div>
 
-        <div className="hidden lg:block sticky top-20 flex-shrink-0 p-4 mr-4 mb-6 w-full lg:w-1/3 bg-gray-100 rounded-xl">
-          <h2 className="flex justify-center items-center mb-3 font-semibold leading-none opacity-50">
+        <div className="sticky top-20 mr-4 mb-6 hidden w-full shrink-0 rounded-xl bg-gray-100 p-4 lg:block lg:w-1/3">
+          <h2 className="mb-3 flex items-center justify-center font-semibold leading-none opacity-50">
             <Icon
               src="/icons/filter.svg"
               className="mr-1"
@@ -171,10 +171,10 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
             <option value="others">Others</option>
           </Select>
 
-          <div className="isolate mt-4 -space-y-px bg-white rounded-md shadow-sm">
+          <div className="isolate mt-4 -space-y-px rounded-md bg-white shadow-sm">
             <label
               htmlFor="date-from"
-              className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-b-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+              className="relative block rounded-md rounded-b-none border py-2 px-3 focus-within:z-10 focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
             >
               <span className="block text-sm font-medium text-gray-700">
                 From
@@ -183,7 +183,7 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
                 type="date"
                 name="date-from"
                 id="date-from"
-                className="block p-0 w-full placeholder-gray-500 text-gray-900 border-0 focus:ring-0"
+                className="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-500 focus:ring-0"
                 value={from.format("YYYY-MM-DD")}
                 min={dayjs(oldestDate).format("YYYY-MM-DD")}
                 max={to.format("YYYY-MM-DD")}
@@ -192,7 +192,7 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
             </label>
             <label
               htmlFor="date-from"
-              className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-t-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+              className="relative block rounded-md rounded-t-none border py-2 px-3 focus-within:z-10 focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
             >
               <span className="block w-full text-sm font-medium text-gray-700">
                 To
@@ -201,7 +201,7 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
                 type="date"
                 name="date-to"
                 id="date-to"
-                className="p-0 w-full placeholder-gray-500 text-gray-900 border-0 focus:ring-0"
+                className="w-full border-0 p-0 text-gray-900 placeholder:text-gray-500 focus:ring-0"
                 value={to.format("YYYY-MM-DD")}
                 min={from.format("YYYY-MM-DD")}
                 max={today.format("YYYY-MM-DD")}
@@ -221,8 +221,8 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
           )}
         </div>
 
-        <div className="overflow-hidden w-full rounded-xl border shadow-sm">
-          <p className="py-2 font-semibold text-center text-gray-600 bg-gray-100 border-b">
+        <div className="w-full overflow-hidden rounded-xl border shadow-sm">
+          <p className="border-b bg-gray-100 py-2 text-center font-semibold text-gray-600">
             Observations
           </p>
 
@@ -232,10 +232,10 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
             ))}
 
             {observations.length === 0 && (
-              <div className="px-8 mt-8 mb-12 text-center">
+              <div className="mt-8 mb-12 px-8 text-center">
                 <Icon
                   src="/icons/search.svg"
-                  className="mx-auto !w-10 !h-10"
+                  className="mx-auto !h-10 !w-10"
                   color="bg-gray-400"
                 />
                 <h3 className="mt-2 font-medium text-gray-900">
@@ -291,7 +291,7 @@ const ObservationFilterSlideOver: FC<{
       title="Filters"
       className="sm:hidden "
     >
-      <div className="relative flex-1 px-4 sm:px-6 pt-3 bg-gray-50 border-t">
+      <div className="relative flex-1 border-t bg-gray-50 px-4 pt-3 sm:px-6">
         <Select
           defaultValue={area}
           value={area}
@@ -308,10 +308,10 @@ const ObservationFilterSlideOver: FC<{
           <option value="others">Others</option>
         </Select>
 
-        <div className="isolate mt-4 -space-y-px bg-white rounded-md shadow-sm">
+        <div className="isolate mt-4 -space-y-px rounded-md bg-white shadow-sm">
           <label
             htmlFor="date-from"
-            className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-b-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+            className="relative block rounded-md rounded-b-none border py-2 px-3 focus-within:z-10 focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
           >
             <span className="block text-sm font-medium text-gray-700">
               From
@@ -320,7 +320,7 @@ const ObservationFilterSlideOver: FC<{
               type="date"
               name="date-from"
               id="date-from"
-              className="block p-0 w-full placeholder-gray-500 text-gray-900 border-0 focus:ring-0"
+              className="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-500 focus:ring-0"
               value={from.format("YYYY-MM-DD")}
               min={dayjs(oldestDate).format("YYYY-MM-DD")}
               max={to.format("YYYY-MM-DD")}
@@ -329,7 +329,7 @@ const ObservationFilterSlideOver: FC<{
           </label>
           <label
             htmlFor="date-from"
-            className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-t-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+            className="relative block rounded-md rounded-t-none border py-2 px-3 focus-within:z-10 focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
           >
             <span className="block w-full text-sm font-medium text-gray-700">
               To
@@ -338,7 +338,7 @@ const ObservationFilterSlideOver: FC<{
               type="date"
               name="date-to"
               id="date-to"
-              className="p-0 w-full placeholder-gray-500 text-gray-900 border-0 focus:ring-0"
+              className="w-full border-0 p-0 text-gray-900 placeholder:text-gray-500 focus:ring-0"
               value={to.format("YYYY-MM-DD")}
               min={from.format("YYYY-MM-DD")}
               max={today.format("YYYY-MM-DD")}
@@ -348,7 +348,7 @@ const ObservationFilterSlideOver: FC<{
         </div>
       </div>
 
-      <div className="flex flex-shrink-0 justify-end py-4 px-4 border-t">
+      <div className="flex shrink-0 justify-end border-t p-4">
         <Button
           variant="outline"
           onClick={() => {
@@ -375,19 +375,19 @@ const Observation: FC<{
   areas: { name: string | null } | null
   observation_to_images: Array<{ src: string | null }>
 }> = ({ short_desc, areas, event_time, long_desc, observation_to_images }) => (
-  <li className="relative py-5 px-4 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600">
+  <li className="relative bg-white py-5 px-4 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600">
     <div className="flex justify-between space-x-3">
-      <div className="block text-left truncate focus:outline-none">
+      <div className="block truncate text-left focus:outline-none">
         <span className="absolute inset-0" aria-hidden="true" />
-        <p className="font-semibold text-gray-900 truncate">{short_desc}</p>
-        <p className="font-semibold text-primary-600 truncate">
+        <p className="truncate font-semibold text-gray-900">{short_desc}</p>
+        <p className="truncate font-semibold text-primary-600">
           {areas?.name ?? "Others"}
         </p>
       </div>
 
       <time
         dateTime={event_time}
-        className="flex flex-shrink-0 text-gray-500 whitespace-nowrap"
+        className="flex shrink-0 whitespace-nowrap text-gray-500"
       >
         {dayjs(event_time).format("DD MMM YYYY")}
       </time>
@@ -395,7 +395,7 @@ const Observation: FC<{
     <div className="mt-1">
       {long_desc && (
         <div
-          className="max-w-none text-gray-700 prose"
+          className="prose max-w-none text-gray-700"
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: long_desc }}
         />
@@ -403,13 +403,13 @@ const Observation: FC<{
     </div>
 
     {observation_to_images.length > 0 && (
-      <h3 className="mt-2 mb-2 font-semibold text-gray-500">Images</h3>
+      <h3 className="my-2 font-semibold text-gray-500">Images</h3>
     )}
     <div className="flex space-x-2">
       {observation_to_images.map(({ src }) => {
         if (src) {
           return (
-            <div className="flex w-12 h-12">
+            <div className="flex h-12 w-12" key={src}>
               <Image
                 src={src}
                 width={100}
@@ -421,7 +421,7 @@ const Observation: FC<{
           )
         }
 
-        return <div />
+        return <div key={src} />
       })}
     </div>
   </li>

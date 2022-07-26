@@ -33,18 +33,18 @@ const MediaLayout: FC<{
       title={`${title} | Records`}
       className={clsx("max-w-7xl", className)}
     >
-      <div className="overflow-hidden relative mx-4 mt-2 sm:mt-4 rounded-2xl shadow-md">
+      <div className="relative mx-4 mt-2 overflow-hidden rounded-2xl shadow-md sm:mt-4">
         <div className="absolute inset-0">
           <Image
             src={MediaHeroImage}
             objectFit="cover"
-            className="w-full h-full"
+            className="h-full w-full"
             layout="fill"
           />
         </div>
 
-        <div className="relative p-4 pt-12 lg:pt-24 pb-12 lg:pb-12 bg-gradient-to-t from-[rgba(0,0,0,0.6)]">
-          <h1 className="mb-4 text-4xl lg:text-5xl font-bold text-center text-white">
+        <div className="relative bg-gradient-to-t from-[rgba(0,0,0,0.6)] p-4 py-12 lg:pt-24 lg:pb-12">
+          <h1 className="mb-4 text-center text-4xl font-bold text-white lg:text-5xl">
             Media
           </h1>
 
@@ -54,9 +54,9 @@ const MediaLayout: FC<{
                 <a
                   className={clsx(
                     tab.name === currentPage
-                      ? "text-white bg-white bg-opacity-20"
-                      : "text-white bg-white bg-opacity-0 hover:bg-opacity-10 opacity-90 transition",
-                    "flex items-center py-2 px-3 text-sm font-medium rounded-lg border border-white border-opacity-20 backdrop-filter backdrop-blur-sm "
+                      ? "bg-white bg-opacity-20 text-white"
+                      : "bg-white bg-opacity-0 text-white opacity-90 transition hover:bg-opacity-10",
+                    "flex items-center rounded-lg border border-white border-opacity-20 py-2 px-3 text-sm font-medium backdrop-blur-sm"
                   )}
                   aria-current={tab.name === currentPage ? "page" : undefined}
                 >

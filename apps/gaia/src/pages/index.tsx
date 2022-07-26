@@ -24,4 +24,5 @@ export const getServerSideProps = withPageAuthRequired({
   },
 })
 
-export default () => <></>
+const EmptyComponent = () => null
+export default EmptyComponent

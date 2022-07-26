@@ -8,6 +8,7 @@ interface Props
   > {
   variant?: "primary" | "secondary" | "outline" | "icon"
 }
+
 const Button = forwardRef<HTMLButtonElement, Props>(
   ({ className, variant = "primary", type = "button", ...props }, ref) => {
     const base =
@@ -39,5 +40,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
     )
   }
 )
+
+Button.displayName = "Button"
 
 export default Button

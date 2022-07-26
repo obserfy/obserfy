@@ -24,12 +24,12 @@ export const EditObservationForm: FC<{
         value={observation}
         onChange={(e) => setObservation(e.target.value)}
       />
-      <div className="flex mt-2">
+      <div className="mt-2 flex">
         <Button
           data-cy="delete-observation"
           // iconOnly TODO: create icon button component
           variant="outline"
-          className="px-2 mr-2 text-red-700"
+          className="mr-2 px-2 text-red-700"
           onClick={() => setShowDeleteDialog(true)}
           disabled={patchObservation.isLoading}
         >
@@ -69,7 +69,7 @@ export const EditObservationForm: FC<{
               Cancel
             </Button>
             <Button
-              className="ml-2 w-full text-white bg-red-700"
+              className="ml-2 w-full bg-red-700 text-white"
               onClick={async () => {
                 try {
                   await deleteObservation.mutateAsync()

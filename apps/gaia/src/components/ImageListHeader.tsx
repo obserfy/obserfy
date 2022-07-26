@@ -7,11 +7,11 @@ const ImageListHeader: FC<{
   <p
     className={clsx(
       className,
-      "flex sticky top-4 sm:top-20 z-10 flex-col items-center py-2 lg:py-3 px-4 mx-8 sm:mx-auto mb-2 sm:max-w-md font-semibold leading-none text-center text-gray-900 bg-white bg-opacity-80 rounded-full backdrop-filter backdrop-blur"
+      "sticky top-4 z-10 mx-8 mb-2 flex flex-col items-center rounded-full bg-white bg-opacity-80 py-2 px-4 text-center font-semibold leading-none text-gray-900 backdrop-blur sm:top-20 sm:mx-auto sm:max-w-md lg:py-3"
     )}
   >
     {children}
-    <div className="mt-1 w-6 h-1 bg-primary-500 rounded-full" />
+    <div className="mt-1 h-1 w-6 rounded-full bg-primary-500" />
   </p>
 )
 

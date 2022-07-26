@@ -11,8 +11,8 @@ const LessonPlanObservation: FC<{
 }> = ({ id, observation, createdAt }) => {
   const [isEditing, setIsEditing] = useState(false)
   return (
-    <div className="flex px-3 mt-2 w-full text-gray-700">
-      <div className="flex-shrink-0 mr-3 w-1 bg-black rounded-full" />
+    <div className="mt-2 flex w-full px-3 text-gray-700">
+      <div className="mr-3 w-1 shrink-0 rounded-full bg-black" />
 
       <div className="w-full">
         {isEditing && (
@@ -26,11 +26,11 @@ const LessonPlanObservation: FC<{
         {!isEditing && (
           <>
             <Markdown markdown={observation} />
-            <div className="flex mt-2 w-full item-center">
+            <div className="item-center mt-2 flex w-full">
               <div className="text-sm">{createdAt.format("HH:mm")}</div>
               <Button
                 variant="outline"
-                className="p-0 mr-3 ml-auto text-sm underline border-none cursor-pointer"
+                className="mr-3 ml-auto cursor-pointer border-none p-0 text-sm underline"
                 onClick={() => setIsEditing(true)}
               >
                 Edit

@@ -35,7 +35,7 @@ const Select: FC<{
       name={name}
       className={clsx(
         selectClassName,
-        "block py-2 pr-10 pl-3 mt-1 w-full text-base sm:text-sm rounded-md border-gray-200 focus:border-primary-500 focus:ring-primary-500 shadow-sm focus:outline-none"
+        "mt-1 block w-full rounded-md border-gray-200 py-2 pr-10 pl-3 text-base shadow-sm focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm"
       )}
       defaultValue={defaultValue}
       value={value}

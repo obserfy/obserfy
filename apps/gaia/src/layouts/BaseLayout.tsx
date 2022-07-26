@@ -14,12 +14,12 @@ const BaseLayout: FC<{
 
     <TopBar />
 
-    <div className="sm:flex w-full">
+    <div className="w-full sm:flex">
       <SideBar />
       <main
         className={clsx(
           className,
-          "pb-bottom-navigation sm:pl-sidebar mx-auto w-full"
+          "mx-auto w-full pb-bottom-navigation sm:pl-sidebar"
         )}
       >
         {children}

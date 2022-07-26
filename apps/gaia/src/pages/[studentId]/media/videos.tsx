@@ -15,10 +15,10 @@ const VideosPage: SSR<typeof getServerSideProps> = ({ videosByMonth }) => {
   return (
     <MediaLayout title="MediaPage" currentPage="Videos">
       {Object.keys(videosByMonth).map((month) => (
-        <section className="mt-8">
+        <section key={month} className="mt-8">
           <ImageListHeader>{month}</ImageListHeader>
 
-          <ul className="grid grid-cols-2 md:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-4 lg:gap-y-8 px-4 mt-2">
+          <ul className="mt-2 grid grid-cols-2 gap-4 px-4 md:grid-cols-3 lg:gap-8">
             {videosByMonth[month].map(({ id, src }) => (
               <li key={id}>
                 <Link href={`/${studentId}/media/videos/${id}`}>

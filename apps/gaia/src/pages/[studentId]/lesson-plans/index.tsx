@@ -36,11 +36,11 @@ const LessonPlansPage: SSR<typeof getServerSideProps> = ({
       <Header />
       <FilterBarMobile />
 
-      <div className="lg:flex items-start mx-4 lg:mt-4">
+      <div className="mx-4 items-start lg:mt-4 lg:flex">
         <FilterCardDesktop areas={areas} />
 
-        <div className="overflow-hidden w-full bg-surface rounded-xl border shadow-sm">
-          <p className="py-2 font-semibold text-center text-gray-600 bg-gray-100 border-b">
+        <div className="w-full overflow-hidden rounded-xl border bg-surface shadow-sm">
+          <p className="border-b bg-gray-100 py-2 text-center font-semibold text-gray-600">
             Lesson Plans
           </p>
 
@@ -86,10 +86,10 @@ const LessonPlan: FC<{
     <li className="border-t first:border-none">
       <button
         onClick={onClick}
-        className="p-4 w-full text-left hover:bg-gray-50"
+        className="w-full p-4 text-left hover:bg-gray-50"
       >
-        <h3 className="flex-1 mb-1 font-semibold text-gray-700">{title}</h3>
-        <p className="flex mb-1 text-gray-500">
+        <h3 className="mb-1 flex-1 font-semibold text-gray-700">{title}</h3>
+        <p className="mb-1 flex text-gray-500">
           {start.format("D MMM YYYY")}
           {isRepeating && (
             <span className="ml-1">{` - ${end?.format("D MMM YYYY")}`}</span>
@@ -102,18 +102,18 @@ const LessonPlan: FC<{
 }
 
 const Header = () => (
-  <div className="overflow-hidden relative mx-4 mt-2 sm:mt-4 rounded-2xl shadow-md">
+  <div className="relative mx-4 mt-2 overflow-hidden rounded-2xl shadow-md sm:mt-4">
     <div className="absolute inset-0">
       <Image
         src={RecordsHeroImage}
         objectFit="cover"
-        className="w-full h-full"
+        className="h-full w-full"
         layout="fill"
       />
     </div>
 
-    <div className="relative p-4 pt-20 lg:pt-24 pb-8 lg:pb-12 bg-gradient-to-t from-[rgba(0,0,0,0.6)]">
-      <h1 className="mb-4 text-3xl lg:text-4xl font-bold text-center text-white">
+    <div className="relative bg-gradient-to-t from-[rgba(0,0,0,0.6)] p-4 pt-20 pb-8 lg:pt-24 lg:pb-12">
+      <h1 className="mb-4 text-center text-3xl font-bold text-white lg:text-4xl">
         Lesson Plans
       </h1>
     </div>
@@ -125,7 +125,7 @@ const FilterBarMobile: FC = () => {
   const [search, setSearch] = useTextQuery("search", "")
 
   return (
-    <div className="lg:hidden sticky top-0 z-10 py-4 mx-4 bg-gradient-to-b from-white via-white">
+    <div className="sticky top-0 z-10 mx-4 bg-gradient-to-b from-white via-white py-4 lg:hidden">
       <div className="flex">
         <TextFieldWithIcon
           label="Text"
@@ -140,7 +140,7 @@ const FilterBarMobile: FC = () => {
 
         <Button
           variant="outline"
-          className="ml-2 sm:text-sm rounded-xl"
+          className="ml-2 rounded-xl sm:text-sm"
           onClick={filterSlideOver.toggle}
         >
           <Icon src="/icons/filter.svg" className="mr-2" color="bg-gray-800" />
@@ -157,8 +157,8 @@ const FilterCardDesktop: FC<{
   const [search, setSearch] = useTextQuery("search", "")
 
   return (
-    <div className="hidden lg:block sticky top-20 flex-shrink-0 p-4 mr-4 mb-6 w-full lg:w-1/3 bg-gray-100 rounded-xl">
-      <h2 className="flex justify-center items-center mb-3 font-semibold leading-none opacity-50">
+    <div className="sticky top-20 mr-4 mb-6 hidden w-full shrink-0 rounded-xl bg-gray-100 p-4 lg:block lg:w-1/3">
+      <h2 className="mb-3 flex items-center justify-center font-semibold leading-none opacity-50">
         <Icon src="/icons/filter.svg" className="mr-1" color="bg-gray-800" />
         Filters
       </h2>
@@ -188,17 +188,17 @@ const FilterCardDesktop: FC<{
         <option value="others">Others</option>
       </Select>
 
-      <div className="isolate mt-4 -space-y-px bg-white rounded-md shadow-sm">
+      <div className="isolate mt-4 -space-y-px rounded-md bg-white shadow-sm">
         <label
           htmlFor="date-from"
-          className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-b-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+          className="relative block rounded-md rounded-b-none border py-2 px-3 focus-within:z-10 focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
         >
           <span className="block text-sm font-medium text-gray-700">From</span>
           <input
             type="date"
             name="date-from"
             id="date-from"
-            className="block p-0 w-full placeholder-gray-500 text-gray-900 border-0 focus:ring-0"
+            className="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-500 focus:ring-0"
             // value={from.format("YYYY-MM-DD")}
             // min={dayjs(oldestDate).format("YYYY-MM-DD")}
             // max={to.format("YYYY-MM-DD")}
@@ -207,7 +207,7 @@ const FilterCardDesktop: FC<{
         </label>
         <label
           htmlFor="date-from"
-          className="block relative focus-within:z-10 py-2 px-3 rounded-md rounded-t-none border focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+          className="relative block rounded-md rounded-t-none border py-2 px-3 focus-within:z-10 focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
         >
           <span className="block w-full text-sm font-medium text-gray-700">
             To
@@ -216,7 +216,7 @@ const FilterCardDesktop: FC<{
             type="date"
             name="date-to"
             id="date-to"
-            className="p-0 w-full placeholder-gray-500 text-gray-900 border-0 focus:ring-0"
+            className="w-full border-0 p-0 text-gray-900 placeholder:text-gray-500 focus:ring-0"
             // value={to.format("YYYY-MM-DD")}
             // min={from.format("YYYY-MM-DD")}
             // max={today.format("YYYY-MM-DD")}

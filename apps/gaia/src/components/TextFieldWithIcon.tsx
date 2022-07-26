@@ -38,10 +38,10 @@ const TextFieldWithIcon: FC<{
         hideLabel || "mt-1 "
       )}
     >
-      <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
         <Icon
           src="/icons/search.svg"
-          className="w-5 h-5 text-gray-400"
+          className="h-5 w-5 text-gray-400"
           aria-hidden="true"
         />
       </div>
@@ -50,7 +50,7 @@ const TextFieldWithIcon: FC<{
         name={name}
         id={name}
         className={clsx(
-          "block pl-10 w-full sm:text-sm rounded-md border-gray-200 focus:border-primary-500 focus:ring-primary-500",
+          "block w-full rounded-md border-gray-200 pl-10 focus:border-primary-500 focus:ring-primary-500 sm:text-sm",
           inputClassName
         )}
         placeholder={placeholder}

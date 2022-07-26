@@ -10,7 +10,7 @@ const StudentProfile: FC<{
 }> = ({ src, className, width, height }) => {
   if (src) {
     return (
-      <div className="flex flex-shrink-0">
+      <div className="flex shrink-0">
         <Image
           src={src}
           className={className}
@@ -24,7 +24,7 @@ const StudentProfile: FC<{
   }
 
   return (
-    <div className="flex flex-shrink-0">
+    <div className="flex shrink-0">
       <Image
         src={Placeholder}
         objectFit="cover"

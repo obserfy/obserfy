@@ -20,9 +20,9 @@ const TopBar = () => {
   const { data: students } = useGetChildren()
 
   return (
-    <div className="relative sm:sticky sm:top-0 z-20 h-16 bg-surface bg-opacity-90 sm:border-b backdrop-filter backdrop-blur-lg">
-      <div className="flex items-center px-4 sm:pl-0 h-16">
-        <div className="hidden sm:block flex-shrink-0 px-4 mr-4 w-sidebar font-bold text-gray-600 border-r">
+    <div className="relative z-20 h-16 bg-surface bg-opacity-90 backdrop-blur-lg sm:sticky sm:top-0 sm:border-b">
+      <div className="flex h-16 items-center px-4 sm:pl-0">
+        <div className="mr-4 hidden w-sidebar shrink-0 border-r px-4 font-bold text-gray-600 sm:block">
           {student?.schoolName}
         </div>
 
@@ -51,18 +51,18 @@ const UserOptions: FC<{
   return (
     <>
       <LogoutAlertDialog isOpen={logout.isOn} close={logout.toggle} />
-      <Menu as="div" className="inline-block relative ml-auto text-left">
-        <Menu.Button className="group flex flex-shrink-0 items-center rounded-full">
+      <Menu as="div" className="relative ml-auto inline-block text-left">
+        <Menu.Button className="group flex shrink-0 items-center rounded-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={picture} className="w-8 h-8 rounded-full" alt="" />
+          <img src={picture} className="h-8 w-8 rounded-full" alt="" />
 
-          <p className="hidden md:block ml-2 text-sm font-semibold text-gray-700 group-hover:text-primary-800">
+          <p className="ml-2 hidden text-sm font-semibold text-gray-700 group-hover:text-primary-800 md:block">
             {name}
           </p>
 
           <Icon
             src="/icons/chevron-down.svg"
-            className="hidden sm:block !w-6 !h-6"
+            className="hidden !h-6 !w-6 sm:block"
             color="bg-gray-800 group-hover:bg-primary-800"
           />
         </Menu.Button>
@@ -76,20 +76,20 @@ const UserOptions: FC<{
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 mt-2 w-40 bg-white rounded-md ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right focus:outline-none">
+          <Menu.Items className="absolute right-0 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="py-1">
               <Menu.Item>
                 {({ active }) => (
                   <button
                     onClick={logout.toggle}
                     className={clsx(
-                      active ? "text-gray-900 bg-gray-100" : "text-gray-700",
-                      "group flex items-center py-2 px-4 w-full text-sm text-left"
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "group flex w-full items-center py-2 px-4 text-left text-sm"
                     )}
                   >
                     <Icon
                       src="/icons/log-out.svg"
-                      className="mr-3 !w-4 !h-4"
+                      className="mr-3 !h-4 !w-4"
                       color="bg-gray-700 group-hover:text-primary-700"
                     />
                     Sign out
@@ -116,16 +116,16 @@ const LogoutAlertDialog: FC<{
     actionButton={
       // eslint-disable-next-line @next/next/no-html-link-for-pages
       <a href="/api/auth/logout">
-        <Button className="sm:ml-3 w-full sm:w-auto text-base sm:text-sm hover:!bg-red-700 focus:!ring-red-500 !bg-red-600">
+        <Button className="w-full !bg-red-600 text-base hover:!bg-red-700 focus:!ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
           Sign Out
         </Button>
       </a>
     }
     icon={
-      <div className="flex flex-shrink-0 justify-center items-center mx-auto sm:mx-0 w-12 sm:w-10 h-12 sm:h-10 bg-red-100 rounded-full">
+      <div className="mx-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
         <Icon
           src="/icons/log-out.svg"
-          className="w-6 h-6"
+          className="h-6 w-6"
           color="bg-red-600"
           aria-hidden="true"
         />

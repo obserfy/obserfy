@@ -28,7 +28,7 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
   return (
     <BaseLayout title="Image Details">
       <div className="mx-auto w-full">
-        <div className="relative w-full bg-black aspect-w-10 md:aspect-w-16 aspect-h-9 md:aspect-h-8">
+        <div className="aspect-w-10 aspect-h-9 relative w-full bg-black md:aspect-w-16 md:aspect-h-8">
           {!player.isOn && video.thumbnail_url && (
             <>
               <Image
@@ -37,10 +37,10 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
                 objectFit="contain"
               />
               <button onClick={player.toggle}>
-                <div className="flex absolute inset-0 z-10 justify-center items-center bg-black bg-opacity-30">
+                <div className="absolute inset-0 z-10 flex items-center justify-center bg-black bg-opacity-30">
                   <Icon
                     src="/icons/play.svg"
-                    className="!w-16 !h-16"
+                    className="!h-16 !w-16"
                     color="bg-white"
                   />
                 </div>
@@ -61,16 +61,16 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
         </div>
       </div>
 
-      <div className="lg:flex flex-row-reverse mx-auto max-w-7xl">
+      <div className="mx-auto max-w-7xl flex-row-reverse lg:flex">
         <div className="w-full lg:max-w-sm">
-          <div className="p-4 w-full">
+          <div className="w-full p-4">
             <Breadcrumb />
           </div>
 
           <div className="mx-4 rounded-xl border shadow-sm">
             <h3 className="p-4 font-semibold text-gray-900">Information</h3>
 
-            <dl className="px-4 border-t border-gray-200 divide-y divide-gray-200">
+            <dl className="divide-y divide-gray-200 border-t border-gray-200 px-4">
               <div className="flex justify-between py-3 font-medium">
                 <dt className="text-gray-500">Created</dt>
                 <dd className="text-gray-900">
@@ -84,8 +84,8 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
               </div>
             </dl>
 
-            <h3 className="py-4 px-4 font-semibold text-gray-900">Students</h3>
-            <ul className="px-4 border-t border-gray-200 divide-y divide-gray-200">
+            <h3 className="p-4 font-semibold text-gray-900">Students</h3>
+            <ul className="divide-y divide-gray-200 border-t border-gray-200 px-4">
               {students?.map(({ id, name, profile_pic }) => (
                 <li className="flex items-center py-3 font-medium" key={id}>
                   <StudentProfile
@@ -103,10 +103,10 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
 
         {relatedVideos.length > 0 && (
           <div className="mt-8 sm:mt-0">
-            <ImageListHeader className="md:text-lg !my-4 lg:!my-3">
+            <ImageListHeader className="!my-4 md:text-lg lg:!my-3">
               Related Videos
             </ImageListHeader>
-            <ul className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 xl:gap-x-8 gap-y-4 xl:gap-y-8 px-4 xl:pr-4 mt-4">
+            <ul className="mt-4 grid grid-cols-2 gap-4 px-4 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8 xl:pr-4">
               {relatedVideos.map(({ id, thumbnail_url }) => (
                 <li key={id}>
                   <Link href={`/${studentId}/media/videos/${id}`}>
@@ -141,14 +141,14 @@ const Breadcrumb = () => {
 
   return (
     <nav className="flex" aria-label="Breadcrumb">
-      <ol className="flex justify-center items-center p-3 space-x-4 w-full bg-gray-100 rounded-xl border">
+      <ol className="flex w-full items-center justify-center space-x-4 rounded-xl border bg-gray-100 p-3">
         <li>
           <div>
             <Link href={`/${studentId}/media`}>
               <a className="text-gray-400 hover:text-gray-500">
                 <Icon
                   src="/icons/video.svg"
-                  className="flex-shrink-0 !w-6 !h-6"
+                  className="!h-6 !w-6 shrink-0"
                   color="bg-gray-500"
                   aria-hidden="true"
                 />
@@ -161,7 +161,7 @@ const Breadcrumb = () => {
         {pages.map((page) => (
           <li key={page.name} className="flex items-center">
             <svg
-              className="flex-shrink-0 w-5 h-5 text-gray-300"
+              className="h-5 w-5 shrink-0 text-gray-300"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 20 20"

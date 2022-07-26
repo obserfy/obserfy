@@ -25,7 +25,7 @@ const IndexPage: SSR<typeof getServerSideProps> = ({ timeline }) => {
       {/* </div> */}
 
       <div className="mx-auto max-w-3xl">
-        <div className="pt-3 ml-8 border-l">
+        <div className="ml-8 border-l pt-3">
           {timeline?.map(({ date, observations }) => (
             <ObservationList
               key={date}
@@ -35,8 +35,8 @@ const IndexPage: SSR<typeof getServerSideProps> = ({ timeline }) => {
             />
           ))}
 
-          <div className="flex items-center -ml-3 font-bold">
-            <div className="mx-1 w-4 h-4 bg-white rounded-full border" />
+          <div className="-ml-3 flex items-center font-bold">
+            <div className="mx-1 h-4 w-4 rounded-full border bg-white" />
           </div>
         </div>
 
@@ -58,8 +58,8 @@ const ObservationList: FC<{
   setImagePreview: Function
 }> = ({ date, observations, setImagePreview }) => (
   <div className="mb-12">
-    <div className="flex items-center mb-3 -ml-5 font-bold">
-      <div className="flex justify-center items-center mx-1 w-8 h-8 bg-white rounded-full border">
+    <div className="mb-3 -ml-5 flex items-center font-bold">
+      <div className="mx-1 flex h-8 w-8 items-center justify-center rounded-full border bg-white">
         <Icon src="/icons/calendar.svg" />
       </div>
       <div className="ml-3 text-xs text-gray-700">
@@ -68,8 +68,8 @@ const ObservationList: FC<{
     </div>
 
     {observations.map(({ id, shortDesc, longDesc, images, areaName }) => (
-      <div className="flex mb-6 -ml-5" key={id}>
-        <div className="flex flex-shrink-0 justify-center items-center mx-1 w-8 h-8 bg-white rounded-full border">
+      <div className="mb-6 -ml-5 flex" key={id}>
+        <div className="mx-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border bg-white">
           <Icon src="/icons/edit.svg" />
         </div>
         <div className="pt-1">
@@ -79,7 +79,7 @@ const ObservationList: FC<{
             markdown={longDesc}
           />
           <div className="mx-3 mb-3 max-w-md text-green-900">{areaName}</div>
-          <div className="flex flex-wrap ml-3">
+          <div className="ml-3 flex flex-wrap">
             {images.map((img) => (
               <div className="mr-3 mb-3" key={img.id}>
                 <button
@@ -90,7 +90,7 @@ const ObservationList: FC<{
                     src={img.originalImageUrl}
                     height={60}
                     width={60}
-                    className="object-cover rounded border"
+                    className="rounded border object-cover"
                   />
                 </button>
               </div>

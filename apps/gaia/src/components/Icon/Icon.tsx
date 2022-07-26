@@ -8,11 +8,9 @@ const Icon: FC<{
   <div
     role="img"
     aria-hidden="true"
-    className={`w-5 h-5 ${color} ${className}`}
+    className={`h-5 w-5 ${color} ${className}`}
     style={{
       maskImage: `url(${src})`,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       WebkitMaskImage: `url(${src})`,
 
       maskSize: "100%",

@@ -22,7 +22,7 @@ const NoData = () => {
   return (
     <>
       <div className="mx-auto max-w-3xl">
-        <div className="p-3 pt-8 max-w-lg h-full prose">
+        <div className="prose h-full max-w-lg p-3 pt-8">
           <Image src="/undraw_void_3ggu.svg" width={180} height={180} />
           <h1>We can&apos;t seem to find your data yet</h1>
           <p>
@@ -37,6 +37,7 @@ const NoData = () => {
             Email you are using now is: <b>{user?.email}</b>
           </p>
 
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/api/auth/logout">Sign Out</a>
         </div>
       </div>
