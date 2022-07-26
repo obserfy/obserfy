@@ -12,7 +12,7 @@ export const getFirstQueryValue = (
   if (Array.isArray(value)) {
     return value[0]
   }
-  return value
+  return value ?? ""
 }
 
 export function apiRoute(handler: NextApiHandler) {
