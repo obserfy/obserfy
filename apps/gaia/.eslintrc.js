@@ -56,6 +56,7 @@ module.exports = {
         ],
       },
     ],
+    "react/destructuring-assignment": 0,
     "import/no-named-as-default": "off",
     "import/no-cycle": "off",
     "import/extensions": "off",
