@@ -1,3 +1,4 @@
+import StudentProfile from "$components/StudentProfile"
 import Image from "next/image"
 import { FC } from "react"
 import useGetChild from "../../hooks/api/useGetChild"
@@ -24,6 +25,7 @@ const ImagePreview: FC<{
       onClick={onDismiss}
     >
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
+
       <div
         className="
           max-h-screen
@@ -35,11 +37,10 @@ const ImagePreview: FC<{
         style={{ minHeight: 300 }}
       >
         <div className="flex items-center p-3">
-          <Image
-            alt="profile"
-            src="/images/student_pic_placeholder.jpg"
-            width={40}
-            height={40}
+          <StudentProfile
+            src={child.data?.profilePic}
+            width={32}
+            height={32}
             className="rounded-full"
           />
           <div>
@@ -49,7 +50,7 @@ const ImagePreview: FC<{
             </div>
           </div>
           <button data-cy="close" className="ml-auto" onClick={onDismiss}>
-            <Icon src="/icons/close.svg" />
+            <Icon src="/icons/close.svg" className={"h-8 w-8"} />
           </button>
         </div>
         <img
