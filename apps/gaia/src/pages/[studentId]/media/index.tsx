@@ -8,7 +8,7 @@ import { monthNames } from "$lib/dayjs"
 import { findImagesByStudentId, findStudentByStudentId } from "$lib/db"
 import { getStudentId, SSR } from "$lib/next"
 import clsx from "clsx"
-import Image from "next/image"
+import Image from "next/future/image"
 import Link from "next/link"
 import { ChangeEventHandler, FC } from "react"
 import { v4 as uuidv4 } from "uuid"
@@ -48,14 +48,14 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({
             {imagesByMonth[month].map(({ id, src }) => (
               <li key={id}>
                 <Link href={`/${studentId}/media/images/${id}`}>
-                  <a className="flex rounded-xl shadow">
+                  <a className="aspect-w-4 aspect-h-3 flex rounded-xl shadow">
                     <Image
                       src={src}
                       width={400}
                       height={300}
-                      objectFit="cover"
-                      className="rounded-xl bg-gray-100"
+                      className="rounded-xl bg-gray-100 object-cover "
                       alt=""
+                      sizes={"33vw"}
                     />
                   </a>
                 </Link>

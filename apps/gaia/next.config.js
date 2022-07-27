@@ -12,7 +12,12 @@ if (process.env.NODE_ENV === "production") {
   plugins.push(withSentryConfig)
 }
 
-const config = {
+module.exports = withPlugins(plugins, {
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
   reactStrictMode: true,
   env: {
     NEXT_PUBLIC_RELEASE: version,
@@ -31,6 +36,4 @@ const config = {
   typescript: {
     ignoreBuildErrors: true,
   },
-}
-
-module.exports = withPlugins(plugins, config)
+})

@@ -25,7 +25,12 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
     <BaseLayout title="Image Details">
       <div className="mx-auto w-full">
         <div className="relative h-[70vh] w-full bg-black">
-          <Image src={image.src} layout="fill" objectFit="scale-down" />
+          <Image
+            key={image.id}
+            src={image.src}
+            layout="fill"
+            objectFit="scale-down"
+          />
         </div>
       </div>
 
