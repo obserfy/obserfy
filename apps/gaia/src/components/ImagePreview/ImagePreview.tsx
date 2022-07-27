@@ -56,12 +56,12 @@ const ImagePreview: FC<{
         <img
           src={img.originalImageUrl}
           alt="preview"
-          className="w-full object-cover"
+          className="min-h-[400px] w-full bg-black object-cover"
         />
         {observations.data?.map((obv) => (
           <div key={obv.id} className="bg-white p-4">
-            <div className="font-bold">{obv.shortDesc}</div>
-            <div className="font-normal">{obv.longDesc}</div>
+            <p className="mb-2 font-bold">{obv.shortDesc}</p>
+            <p className="font-normal">{obv.longDesc}</p>
           </div>
         ))}
       </div>
