@@ -18,6 +18,7 @@ const config = {
     NEXT_PUBLIC_RELEASE: version,
   },
   images: {
+    formats: ["image/avif", "image/webp"],
     domains: [
       process.env.NEXT_OPTIMIZED_IMG_DOMAIN || "media.obserfy.com",
       "image.mux.com",

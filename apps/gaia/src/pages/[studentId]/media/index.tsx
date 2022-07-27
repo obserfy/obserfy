@@ -1,9 +1,3 @@
-import { images as Images } from "@prisma/client"
-import clsx from "clsx"
-import Image from "next/image"
-import Link from "next/link"
-import { ChangeEventHandler, FC } from "react"
-import { v4 as uuidv4 } from "uuid"
 import Icon from "$components/Icon/Icon"
 import ImageListHeader from "$components/ImageListHeader"
 import usePostImage from "$hooks/api/usePostImage"
@@ -13,6 +7,11 @@ import { withAuthorization } from "$lib/auth"
 import { monthNames } from "$lib/dayjs"
 import { findImagesByStudentId, findStudentByStudentId } from "$lib/db"
 import { getStudentId, SSR } from "$lib/next"
+import clsx from "clsx"
+import Image from "next/image"
+import Link from "next/link"
+import { ChangeEventHandler, FC } from "react"
+import { v4 as uuidv4 } from "uuid"
 import { generateOriginalUrl } from "../../../utils/imgproxy"
 
 const ImagesPage: SSR<typeof getServerSideProps> = ({
@@ -55,7 +54,8 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({
                       width={400}
                       height={300}
                       objectFit="cover"
-                      className="rounded-xl"
+                      className="rounded-xl bg-gray-100"
+                      alt=""
                     />
                   </a>
                 </Link>
