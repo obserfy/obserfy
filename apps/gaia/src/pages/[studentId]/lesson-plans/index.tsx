@@ -2,7 +2,7 @@ import SlideOver from "$components/SlideOver"
 import { useQueryString } from "$hooks/useQueryString"
 import useSetQueries from "$hooks/useSetQueries"
 import Image from "next/image"
-import { FC, useState } from "react"
+import { ChangeEvent, FC, useState } from "react"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
 import LessonPlanDetailsSlideOver from "$components/LessonPlanDetailSlideOver"
@@ -43,7 +43,7 @@ const LessonPlansPage: SSR<typeof getServerSideProps> = ({
       <FilterBarMobile areas={areas} oldestDate={oldestDate} />
 
       <div className="mx-4 items-start lg:mt-4 lg:flex">
-        <FilterCardDesktop areas={areas} />
+        <FilterCardDesktop oldestDate={oldestDate} areas={areas} />
 
         <div className="w-full overflow-hidden rounded-xl border bg-surface shadow-sm">
           <p className="border-b bg-gray-100 py-2 text-center font-semibold text-gray-600">
@@ -216,8 +216,32 @@ const FilterBarMobile: FC<{
 
 const FilterCardDesktop: FC<{
   areas: Array<{ id: string; name: string | null }>
-}> = ({ areas }) => {
+  oldestDate: string
+}> = ({ areas, oldestDate }) => {
+  const query = useFilterQueries()
+  const setQueries = useSetQueries()
+
   const [search, setSearch] = useTextQuery("search", "")
+  const [area, setArea] = useState(query.area || "all")
+  const [from, setFrom] = useState(dayjs(query.from || oldestDate))
+  const [to, setTo] = useState(query.to ? dayjs(query.to) : today)
+
+  const handleFromChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const value = dayjs(e.target.value || oldestDate)
+    await setQueries({ from: value.format("YYYY-MM-DD") })
+    setFrom(value)
+  }
+
+  const handleToChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const value = dayjs(e.target.value || today)
+    await setQueries({ to: value.format("YYYY-MM-DD") })
+    setTo(value)
+  }
+
+  const handleAreaChange = async (e: ChangeEvent<HTMLSelectElement>) => {
+    await setQueries({ area: e.target.value })
+    setArea(e.target.value)
+  }
 
   return (
     <div className="sticky top-20 mr-4 mb-6 hidden w-full shrink-0 rounded-xl bg-gray-100 p-4 lg:block lg:w-1/3">
@@ -236,9 +260,9 @@ const FilterCardDesktop: FC<{
       />
 
       <Select
-        // defaultValue={area}
-        // value={area}
-        // onChange={handleAreaChange}
+        defaultValue={area}
+        value={area}
+        onChange={handleAreaChange}
         label="Area"
         name="area"
       >
@@ -262,10 +286,10 @@ const FilterCardDesktop: FC<{
             name="date-from"
             id="date-from"
             className="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-500 focus:ring-0"
-            // value={from.format("YYYY-MM-DD")}
-            // min={dayjs(oldestDate).format("YYYY-MM-DD")}
-            // max={to.format("YYYY-MM-DD")}
-            // onChange={handleFromChange}
+            value={from.format("YYYY-MM-DD")}
+            min={dayjs(oldestDate).format("YYYY-MM-DD")}
+            max={to.format("YYYY-MM-DD")}
+            onChange={handleFromChange}
           />
         </label>
         <label
@@ -280,10 +304,10 @@ const FilterCardDesktop: FC<{
             name="date-to"
             id="date-to"
             className="w-full border-0 p-0 text-gray-900 placeholder:text-gray-500 focus:ring-0"
-            // value={to.format("YYYY-MM-DD")}
-            // min={from.format("YYYY-MM-DD")}
-            // max={today.format("YYYY-MM-DD")}
-            // onChange={handleToChange}
+            value={to.format("YYYY-MM-DD")}
+            min={from.format("YYYY-MM-DD")}
+            max={today.format("YYYY-MM-DD")}
+            onChange={handleToChange}
           />
         </label>
       </div>

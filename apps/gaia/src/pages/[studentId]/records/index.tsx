@@ -1,3 +1,4 @@
+import useSetQueries from "$hooks/useSetQueries"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { ChangeEvent, FC, useEffect, useState } from "react"
@@ -469,16 +470,6 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
     },
   }
 })
-
-const useSetQueries = () => {
-  const router = useRouter()
-  return async (query: any) => {
-    await router.push({
-      pathname: router.pathname,
-      query: { ...router.query, ...query },
-    })
-  }
-}
 
 const useFilterQueries = () => {
   return {
