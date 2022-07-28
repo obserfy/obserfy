@@ -1,3 +1,6 @@
+import SlideOver from "$components/SlideOver"
+import { useQueryString } from "$hooks/useQueryString"
+import useSetQueries from "$hooks/useSetQueries"
 import Image from "next/image"
 import { FC, useState } from "react"
 import Button from "$components/Button/Button"
@@ -18,12 +21,15 @@ import {
 import { getQueryString, getStudentId, SSR } from "$lib/next"
 import RecordsHeroImage from "$public/hero/records-hero.svg"
 
+const today = dayjs()
+
 const LessonPlansPage: SSR<typeof getServerSideProps> = ({
   lessonPlans,
   areas,
   oldestDate,
 }) => {
   const detailsSlideOver = useToggle()
+
   const [lessonPlanId, setLessonPlanId] = useState("")
 
   const handleLessonPlanClick = (id: string) => {
@@ -34,7 +40,7 @@ const LessonPlansPage: SSR<typeof getServerSideProps> = ({
   return (
     <BaseLayout title="Lesson Plans" className="max-w-7xl">
       <Header />
-      <FilterBarMobile />
+      <FilterBarMobile areas={areas} oldestDate={oldestDate} />
 
       <div className="mx-4 items-start lg:mt-4 lg:flex">
         <FilterCardDesktop areas={areas} />
@@ -120,9 +126,51 @@ const Header = () => (
   </div>
 )
 
-const FilterBarMobile: FC = () => {
+const FilterBarMobile: FC<{
+  oldestDate: string
+  areas: { id: string; name: string | null }[]
+}> = ({ areas, oldestDate }) => {
   const filterSlideOver = useToggle()
+
+  const query = useFilterQueries()
+  const setQueries = useSetQueries()
+
   const [search, setSearch] = useTextQuery("search", "")
+  const [area, setArea] = useState(query.area || "all")
+  const [from, setFrom] = useState(dayjs(query.from || oldestDate))
+  const [to, setTo] = useState(query.to ? dayjs(query.to) : today)
+
+  const handleBulkChange = async (val: {
+    search: string
+    area: string
+    from: Dayjs
+    to: Dayjs
+  }) => {
+    if (!val.to.isSame(to)) {
+      await setQueries({ to: val.to.format("YYYY-MM-DD") })
+      setTo(val.to)
+    }
+    if (!val.from.isSame(from)) {
+      await setQueries({ from: val.from.format("YYYY-MM-DD") })
+      setFrom(val.from)
+    }
+    if (val.area !== area) {
+      await setQueries({ area: val.area })
+      setArea(val.area)
+    }
+    if (val.search !== search) {
+      setSearch(val.search)
+    }
+  }
+
+  const handleReset = async () => {
+    await handleBulkChange({
+      to: today,
+      from: dayjs(oldestDate),
+      search: "",
+      area: "all",
+    })
+  }
 
   return (
     <div className="sticky top-0 z-10 mx-4 bg-gradient-to-b from-white via-white py-4 lg:hidden">
@@ -147,6 +195,21 @@ const FilterBarMobile: FC = () => {
           Filters
         </Button>
       </div>
+
+      <LessonPlanFilterSlideOver
+        isOpen={filterSlideOver.isOn}
+        oldestDate={oldestDate}
+        areas={areas}
+        onClose={filterSlideOver.toggle}
+        onSet={async (values) => {
+          await handleBulkChange({ ...values, search })
+          filterSlideOver.toggle()
+        }}
+        onReset={async () => {
+          await handleReset()
+          filterSlideOver.toggle()
+        }}
+      />
     </div>
   )
 }
@@ -228,6 +291,104 @@ const FilterCardDesktop: FC<{
   )
 }
 
+const LessonPlanFilterSlideOver: FC<{
+  isOpen: boolean
+  oldestDate: string
+  areas: Array<{ id: string; name: string | null }>
+  onClose: () => void
+  onSet: (value: { area: string; from: Dayjs; to: Dayjs }) => void
+  onReset: () => void
+}> = ({ onClose, isOpen, oldestDate, areas, onSet, onReset }) => {
+  const query = useFilterQueries()
+
+  const [area, setArea] = useState(query.area ?? "all")
+  const [from, setFrom] = useState(dayjs(query.from || oldestDate))
+  const [to, setTo] = useState(query.to ? dayjs(query.to) : today)
+
+  return (
+    <SlideOver
+      show={isOpen}
+      onClose={onClose}
+      title="Filters"
+      className="lg:hidden"
+    >
+      <div className="relative flex-1 border-t bg-gray-50 px-4 pt-3 sm:px-6">
+        <Select
+          defaultValue={area}
+          value={area}
+          onChange={(e) => setArea(e.target.value)}
+          label="Area"
+          name="area"
+        >
+          <option value="all">All</option>
+          {areas.map(({ id, name }) => (
+            <option key={id} value={id}>
+              {name}
+            </option>
+          ))}
+          <option value="others">Others</option>
+        </Select>
+
+        <div className="isolate mt-4 -space-y-px rounded-md bg-white shadow-sm">
+          <label
+            htmlFor="date-from"
+            className="relative block rounded-md rounded-b-none border py-2 px-3 focus-within:z-10 focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+          >
+            <span className="block text-sm font-medium text-gray-700">
+              From
+            </span>
+            <input
+              type="date"
+              name="date-from"
+              id="date-from"
+              className="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-500 focus:ring-0"
+              value={from.format("YYYY-MM-DD")}
+              min={dayjs(oldestDate).format("YYYY-MM-DD")}
+              max={to.format("YYYY-MM-DD")}
+              onChange={(e) => setFrom(dayjs(e.target.value || oldestDate))}
+            />
+          </label>
+          <label
+            htmlFor="date-from"
+            className="relative block rounded-md rounded-t-none border py-2 px-3 focus-within:z-10 focus-within:border-primary-600 focus-within:ring-1 focus-within:ring-primary-600"
+          >
+            <span className="block w-full text-sm font-medium text-gray-700">
+              To
+            </span>
+            <input
+              type="date"
+              name="date-to"
+              id="date-to"
+              className="w-full border-0 p-0 text-gray-900 placeholder:text-gray-500 focus:ring-0"
+              value={to.format("YYYY-MM-DD")}
+              min={from.format("YYYY-MM-DD")}
+              max={today.format("YYYY-MM-DD")}
+              onChange={(e) => setTo(dayjs(e.target.value || today))}
+            />
+          </label>
+        </div>
+      </div>
+
+      <div className="flex shrink-0 justify-end border-t p-4">
+        <Button
+          variant="outline"
+          onClick={() => {
+            setArea("all")
+            setFrom(dayjs(oldestDate))
+            setTo(today)
+            onReset()
+          }}
+        >
+          Reset
+        </Button>
+        <Button className="ml-4" onClick={() => onSet({ area, from, to })}>
+          Set
+        </Button>
+      </div>
+    </SlideOver>
+  )
+}
+
 export const getServerSideProps = withAuthorization(async (ctx) => {
   const studentId = getStudentId(ctx)
   const search = getQueryString(ctx, "search")
@@ -238,7 +399,7 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
   const areas = await findCurriculumAreasByStudentId(studentId)
   const lessonPlans = await findStudentLessonPlans(studentId, {
     search,
-    area,
+    area: area === "all" ? undefined : area,
     to: to ? dayjs(to) : undefined,
     from: from ? dayjs(from) : undefined,
   })
@@ -268,5 +429,14 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
     },
   }
 })
+
+const useFilterQueries = () => {
+  return {
+    area: useQueryString("area"),
+    from: useQueryString("from"),
+    to: useQueryString("to"),
+    search: useQueryString("search"),
+  }
+}
 
 export default LessonPlansPage

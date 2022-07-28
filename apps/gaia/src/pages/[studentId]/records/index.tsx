@@ -79,7 +79,7 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
     }
     if (!val.from.isSame(from)) {
       await setQueries({ from: val.from.format("YYYY-MM-DD") })
-      setTo(val.from)
+      setFrom(val.from)
     }
     if (val.area !== area) {
       await setQueries({ area: val.area })

@@ -338,7 +338,7 @@ export const findStudentLessonPlans = (
   studentId: string,
   where?: {
     search?: string
-    area?: string | null
+    area?: string
     to?: Dayjs
     from?: Dayjs
   }
@@ -355,6 +355,15 @@ export const findStudentLessonPlans = (
       },
     },
     where: {
+      date: {
+        gte: where?.from?.startOf("day").toDate(),
+        lte: where?.to?.endOf("day").toDate(),
+      },
+      lesson_plan_details: {
+        areas: {
+          id: where?.area,
+        },
+      },
       lesson_plan_to_students: {
         some: {
           student_id: studentId,
