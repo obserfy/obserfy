@@ -289,7 +289,7 @@ const ObservationFilterSlideOver: FC<{
       show={isOpen}
       onClose={onClose}
       title="Filters"
-      className="sm:hidden "
+      className="lg:hidden"
     >
       <div className="relative flex-1 border-t bg-gray-50 px-4 pt-3 sm:px-6">
         <Select
