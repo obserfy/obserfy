@@ -10,11 +10,11 @@ export const navigationItems = (studentId: string) => [
     text: "Lessons",
     iconSrc: "/icons/book.svg",
   },
-  {
-    href: `/${studentId}/reports`,
-    text: "Reports",
-    iconSrc: "/icons/folder.svg",
-  },
+  // {
+  //   href: `/${studentId}/reports`,
+  //   text: "Reports",
+  //   iconSrc: "/icons/folder.svg",
+  // },
   {
     href: `/${studentId}/records`,
     text: "Records",
