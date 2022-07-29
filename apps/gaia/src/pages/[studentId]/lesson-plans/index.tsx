@@ -28,6 +28,8 @@ const LessonPlansPage: SSR<typeof getServerSideProps> = ({
   areas,
   oldestDate,
 }) => {
+  const query = useFilterQueries()
+
   const detailsSlideOver = useToggle()
 
   const [lessonPlanId, setLessonPlanId] = useState("")
@@ -36,6 +38,12 @@ const LessonPlansPage: SSR<typeof getServerSideProps> = ({
     setLessonPlanId(id)
     detailsSlideOver.toggle()
   }
+
+  const isFiltered =
+    !dayjs(query.to).isSame(today) ||
+    !dayjs(query.from).isSame(dayjs(oldestDate)) ||
+    query.search !== "" ||
+    query.area !== "all"
 
   return (
     <BaseLayout title="Lesson Plans" className="max-w-7xl">
@@ -50,23 +58,43 @@ const LessonPlansPage: SSR<typeof getServerSideProps> = ({
             Lesson Plans
           </p>
 
-          <ul>
-            {lessonPlans.map(({ date, id, details }) => (
-              <LessonPlan
-                key={id}
-                title={details.title ?? ""}
-                areaName={details.area?.name ?? ""}
-                repetitionType={details.repetitionType}
-                start={dayjs(date)}
-                end={
-                  details.repetitionEndDate
-                    ? dayjs(details.repetitionEndDate)
-                    : undefined
-                }
-                onClick={() => handleLessonPlanClick(id)}
+          {lessonPlans.length > 0 && (
+            <ul>
+              {lessonPlans.map(({ date, id, details }) => (
+                <LessonPlan
+                  key={id}
+                  title={details.title ?? ""}
+                  areaName={details.area?.name ?? ""}
+                  repetitionType={details.repetitionType}
+                  start={dayjs(date)}
+                  end={
+                    details.repetitionEndDate
+                      ? dayjs(details.repetitionEndDate)
+                      : undefined
+                  }
+                  onClick={() => handleLessonPlanClick(id)}
+                />
+              ))}
+            </ul>
+          )}
+
+          {lessonPlans.length === 0 && (
+            <div className="mt-8 mb-12 px-8 text-center">
+              <Icon
+                src="/icons/search.svg"
+                className="mx-auto !h-10 !w-10"
+                color="bg-gray-400"
               />
-            ))}
-          </ul>
+              <h3 className="mt-2 font-medium text-gray-900">
+                No lesson plan found
+              </h3>
+              <p className="mt-1 text-gray-500">
+                {isFiltered
+                  ? `No lesson plan meets the given filter.`
+                  : `No lesson plan have been added.`}
+              </p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -94,14 +122,16 @@ const LessonPlan: FC<{
         onClick={onClick}
         className="w-full p-4 text-left hover:bg-gray-50"
       >
-        <h3 className="mb-1 flex-1 font-semibold text-gray-700">{title}</h3>
+        <div className={"flex"}>
+          <h3 className="mb-1 flex-1 font-semibold text-gray-700">{title}</h3>
+          <p className="ml-auto font-semibold text-primary-600">{areaName}</p>
+        </div>
         <p className="mb-1 flex text-gray-500">
           {start.format("D MMM YYYY")}
           {isRepeating && (
             <span className="ml-1">{` - ${end?.format("D MMM YYYY")}`}</span>
           )}
         </p>
-        <p className="font-semibold text-primary-600">{areaName}</p>
       </button>
     </li>
   )
