@@ -1,6 +1,8 @@
 import planId from "$api/plans/[planId]"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
+import useDeleteObservation from "$hooks/api/useDeleteObservation"
+import useDeletePlanObservation from "$hooks/api/useDeletePlanObservation"
 import usePatchPlanObservation from "$hooks/api/usePatchPlanObservation"
 import usePostPlanObservation from "$hooks/api/usePostPlanObservation"
 import useToggle from "$hooks/useToggle"
@@ -59,6 +61,11 @@ const Observation: FC<{
   userName,
   observationId,
 }) => {
+  const { mutate, isLoading } = useDeletePlanObservation(
+    lessonPlanId,
+    observationId
+  )
+
   const deleteDialog = useToggle()
   const editForm = useToggle()
 
@@ -75,7 +82,7 @@ const Observation: FC<{
 
   return (
     <li className="mb-2 rounded-xl border border-gray-200 bg-white p-4">
-      <div className="flex items-start">
+      <div className="relative flex items-start">
         {long_desc && (
           <div
             className="prose mr-2 mb-2 max-w-none text-gray-700"
@@ -84,10 +91,41 @@ const Observation: FC<{
           />
         )}
 
-        <ObservationDropdown
-          onDeleteClick={deleteDialog.toggle}
-          onEditClick={editForm.toggle}
-        />
+        {deleteDialog.isOn ? (
+          <>
+            <Button
+              variant="outline"
+              className="absolute right-8 ml-auto mr-2 !p-2"
+              onClick={deleteDialog.toggle}
+              disabled={isLoading}
+            >
+              <Icon src="/icons/close.svg" className="!h-4 !w-4 " />
+            </Button>
+
+            <Button
+              variant={"outline"}
+              className="ml-auto border-red-200/50 bg-red-50 !p-2 hover:bg-red-300"
+              onClick={async () => {
+                await mutate()
+              }}
+              disabled={isLoading}
+            >
+              {isLoading && (
+                <Icon
+                  src="/icons/spinner.svg"
+                  color="bg-white"
+                  className="!h-4 !w-4 animate-spin"
+                />
+              )}
+              <Icon src="/icons/trash.svg" className="!h-4 !w-4 !bg-red-900 " />
+            </Button>
+          </>
+        ) : (
+          <ObservationDropdown
+            onDeleteClick={deleteDialog.toggle}
+            onEditClick={editForm.toggle}
+          />
+        )}
       </div>
 
       <div className="flex">
@@ -193,7 +231,7 @@ const ObservationDropdown: FC<{
               <button
                 className={clsx(
                   active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                  "flex items-center py-2 px-4 text-sm w-full"
+                  "flex w-full items-center py-2 px-4 text-sm"
                 )}
                 onClick={onEditClick}
               >
@@ -211,7 +249,7 @@ const ObservationDropdown: FC<{
               <button
                 className={clsx(
                   active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                  "flex items-center py-2 px-4 text-sm w-full"
+                  "flex w-full items-center py-2 px-4 text-sm"
                 )}
                 onClick={onDeleteClick}
               >
