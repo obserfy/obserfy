@@ -61,12 +61,7 @@ const Observation: FC<{
   userName,
   observationId,
 }) => {
-  const { mutate, isLoading } = useDeletePlanObservation(
-    lessonPlanId,
-    observationId
-  )
-
-  const deleteDialog = useToggle()
+  const deleteButton = useToggle()
   const editForm = useToggle()
 
   if (editForm.isOn) {
@@ -91,38 +86,17 @@ const Observation: FC<{
           />
         )}
 
-        {deleteDialog.isOn ? (
-          <>
-            <Button
-              variant="outline"
-              className="absolute right-8 ml-auto mr-2 !p-2"
-              onClick={deleteDialog.toggle}
-              disabled={isLoading}
-            >
-              <Icon src="/icons/close.svg" className="!h-4 !w-4 " />
-            </Button>
+        {deleteButton.isOn && (
+          <DeleteObservationButton
+            lessonPlanId={lessonPlanId}
+            observationId={observationId}
+            onDismiss={deleteButton.toggle}
+          />
+        )}
 
-            <Button
-              variant={"outline"}
-              className="ml-auto border-red-200/50 bg-red-50 !p-2 hover:bg-red-300"
-              onClick={async () => {
-                await mutate()
-              }}
-              disabled={isLoading}
-            >
-              {isLoading && (
-                <Icon
-                  src="/icons/spinner.svg"
-                  color="bg-white"
-                  className="!h-4 !w-4 animate-spin"
-                />
-              )}
-              <Icon src="/icons/trash.svg" className="!h-4 !w-4 !bg-red-900 " />
-            </Button>
-          </>
-        ) : (
+        {guardianName && !deleteButton.isOn && (
           <ObservationDropdown
-            onDeleteClick={deleteDialog.toggle}
+            onDeleteClick={deleteButton.toggle}
             onEditClick={editForm.toggle}
           />
         )}
@@ -138,6 +112,48 @@ const Observation: FC<{
         </time>
       </div>
     </li>
+  )
+}
+
+const DeleteObservationButton: FC<{
+  lessonPlanId: string
+  observationId: string
+  onDismiss: () => void
+}> = ({ observationId, lessonPlanId, onDismiss }) => {
+  const { mutate, isLoading } = useDeletePlanObservation(
+    lessonPlanId,
+    observationId
+  )
+
+  return (
+    <>
+      <Button
+        variant="outline"
+        className="absolute right-8 ml-auto mr-2 !p-2"
+        onClick={onDismiss}
+        disabled={isLoading}
+      >
+        <Icon src="/icons/close.svg" className="!h-4 !w-4 " />
+      </Button>
+
+      <Button
+        variant={"outline"}
+        className="ml-auto border-red-200/50 bg-red-50 !p-2 hover:bg-red-300"
+        onClick={async () => {
+          await mutate()
+        }}
+        disabled={isLoading}
+      >
+        {isLoading && (
+          <Icon
+            src="/icons/spinner.svg"
+            color="bg-white"
+            className="!h-4 !w-4 animate-spin"
+          />
+        )}
+        <Icon src="/icons/trash.svg" className="!h-4 !w-4 !bg-red-900 " />
+      </Button>
+    </>
   )
 }
 
