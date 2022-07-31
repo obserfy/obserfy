@@ -16,13 +16,12 @@ require (
 	github.com/klauspost/cpuid v1.3.1 // indirect
 	github.com/mailgun/mailgun-go/v4 v4.5.3
 	github.com/minio/minio-go/v6 v6.0.57
-	github.com/muxinc/mux-go v0.14.0
+	github.com/muxinc/mux-go v0.15.1
 	github.com/pkg/errors v0.9.1
-	github.com/signintech/gopdf v0.9.21
+	github.com/signintech/gopdf v0.12.0
 	github.com/stretchr/testify v1.7.0
 	github.com/tkrajina/typescriptify-golang-structs v0.1.6
-	go.uber.org/zap v1.19.0
+	go.uber.org/zap v1.21.0
 	golang.org/x/crypto v0.0.0-20210817164053-32db794688a5
-	golang.org/x/tools v0.0.0-20210115202250-e0d201561e39 // indirect
 	gopkg.in/ini.v1 v1.57.0 // indirect
 )
