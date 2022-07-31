@@ -1,4 +1,4 @@
-import { t } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import { useLocation } from "@reach/router"
 import { StaticImage } from "gatsby-plugin-image"
 import { FC, FunctionComponent, useEffect, useState } from "react"
@@ -12,6 +12,7 @@ import Chatwoot from "../Chatwoot/Chatwoot"
 import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import Typography from "../Typography/Typography"
 
 const Navbar: FC = () => {
   const keyboardShown = useDetectVirtualKeyboard()
@@ -62,7 +63,7 @@ const Navbar: FC = () => {
         {/* /> */}
 
         <Box mt="auto" sx={{ display: ["none", "block"] }} />
-        <NavBarItem title={t`Admin`} icon={SettingsIcon} to={ADMIN_URL} />
+        <NavBarItem title={t`Settings`} icon={SettingsIcon} to={ADMIN_URL} />
         {/* <NavBarItem */}
         {/*  title={t`Support`} */}
         {/*  icon={QuestionMarkIcon} */}
@@ -100,7 +101,7 @@ const NavBarItem: FC<{
           height: [56, 48],
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "space-around",
+          justifyContent: "center",
           position: "relative",
           "&:after": {
             top: [-0.5, "inherit"],
@@ -121,7 +122,14 @@ const NavBarItem: FC<{
           fill={match && iconFill ? "textPrimary" : iconFill || "transparent"}
           size={26}
           sx={{ color: match ? "textPrimary" : "textMediumEmphasis" }}
+          mb={1}
         />
+        <Typography.Body
+          sx={{ lineHeight: 1, fontSize: ["10px", "11px"] }}
+          color={match ? "textPrimary" : "text"}
+        >
+          <Trans id={title} />
+        </Typography.Body>
       </Flex>
     </Link>
   )
