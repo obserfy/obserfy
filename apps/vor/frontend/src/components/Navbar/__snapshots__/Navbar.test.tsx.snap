@@ -162,7 +162,7 @@ exports[`Navbar should render correctly 1`] = `
   color: var(--theme-ui-colors-textMediumEmphasis);
 }
 
-.emotion-8 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -171,12 +171,12 @@ exports[`Navbar should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-8 {
+  .emotion-6 {
     display: block;
   }
 }
 
-.emotion-11 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -252,25 +252,25 @@ exports[`Navbar should render correctly 1`] = `
   border-radius: 99999px;
 }
 
-.emotion-11:disabled {
+.emotion-9:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-11:hover,
-.emotion-11:focus {
+.emotion-9:hover,
+.emotion-9:focus {
   background-color: var(--theme-ui-colors-primaryLighter);
   border-color: var(--theme-ui-colors-primary);
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-11 {
+  .emotion-9 {
     width: 48px;
     height: 48px;
   }
 }
 
-.emotion-12 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -311,21 +311,8 @@ exports[`Navbar should render correctly 1`] = `
             />
           </div>
         </a>
-        <a
-          data-cy="navbar-progress report"
-          href="/dashboard/reports"
-        >
-          <div
-            class="emotion-4"
-          >
-            <div
-              alt="Progress Report"
-              class="emotion-5"
-            />
-          </div>
-        </a>
         <div
-          class="emotion-8"
+          class="emotion-6"
         />
         <a
           data-cy="navbar-admin"
@@ -341,10 +328,10 @@ exports[`Navbar should render correctly 1`] = `
           </div>
         </a>
         <button
-          class="emotion-11"
+          class="emotion-9"
         >
           <div
-            class="emotion-12"
+            class="emotion-10"
           />
         </button>
       </div>
