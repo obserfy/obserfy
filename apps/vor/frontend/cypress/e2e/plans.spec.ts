@@ -26,7 +26,7 @@ describe("Test lesson plan features", function () {
       link: "https://duckduckgo.com",
     }
 
-    // cy.get('[aria-label="next-date"]').click()
+    cy.get('[aria-label="next-date"]').click()
 
     // test create
     cy.contains("Add").click()
