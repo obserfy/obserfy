@@ -10,8 +10,9 @@ describe("Test lesson plan features", function () {
   })
 
   it("should be able to edit, create, and delete plans.", function () {
-    cy.wait(1000)
-    cy.visit(`/dashboard/students/plans?studentId=${this.student.id}`)
+    cy.createStudent().then(() => {
+      cy.visit(`/dashboard/students/plans?studentId=${this.student.id}`)
+    })
 
     const lessonPlan1 = {
       title: "A Bold New Plan",
