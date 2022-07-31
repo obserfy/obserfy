@@ -30,15 +30,15 @@ describe("Test lesson plan features", function () {
     cy.contains("Add").click()
     cy.contains("Save").should("be.disabled")
     cy.contains("Title").type(lessonPlan1.title)
-    cy.get("[data-cy=markdown-editor]").type(lessonPlan1.description)
-    cy.get('[aria-label="URL"]').type(lessonPlan1.link)
-    cy.get("[data-cy=add-link]").click()
-    cy.contains(lessonPlan1.link).should("be.visible")
-    cy.get("[data-cy=delete-link]").click()
-    cy.contains(lessonPlan1.link).should("not.exist")
-    cy.get('[aria-label="URL"]').type(lessonPlan1.link)
-    cy.get("[data-cy=add-link]").click()
-
+    // cy.get("[data-cy=markdown-editor]").type(lessonPlan1.description)
+    // cy.get('[aria-label="URL"]').type(lessonPlan1.link)
+    // cy.get("[data-cy=add-link]").click()
+    // cy.contains(lessonPlan1.link).should("be.visible")
+    // cy.get("[data-cy=delete-link]").click()
+    // cy.contains(lessonPlan1.link).should("not.exist")
+    // cy.get('[aria-label="URL"]').type(lessonPlan1.link)
+    // cy.get("[data-cy=add-link]").click()
+    //
     // cy.createStudent().then(() => {
     //   cy.get("[data-cy=add-student]").click()
     //   cy.contains(this.student.name).click()
@@ -57,8 +57,8 @@ describe("Test lesson plan features", function () {
 
     // Test edit
     cy.contains(lessonPlan1.title).should("be.visible")
-    cy.contains(lessonPlan1.description).should("be.visible")
-    cy.contains(lessonPlan1.link).should("be.visible")
+    // cy.contains(lessonPlan1.description).should("be.visible")
+    // cy.contains(lessonPlan1.link).should("be.visible")
     cy.contains(this.student.name.split(" ")[0]).should("be.visible")
 
     cy.get('[aria-label="edit-title"]').click()
@@ -76,19 +76,19 @@ describe("Test lesson plan features", function () {
     cy.contains(lessonPlan2.description).should("be.visible")
 
     // cy.get("[data-cy=delete-student]").click()
-    cy.createStudent().then(() => {
-      cy.contains("Add More").click()
-      cy.contains(this.student.name).click()
-      cy.get("[data-cy=confirm]").click()
-      cy.get("[data-cy=back-button]").click()
-      cy.contains(lessonPlan2.title).click()
-      cy.contains(this.student.name).should("be.visible")
-      cy.get("[data-cy=delete-student]").click()
-
-      cy.get("[data-cy=back-button]").click()
-      cy.contains(lessonPlan2.title).click()
-      cy.contains(this.student.name).should("not.exist")
-    })
+    // cy.createStudent().then(() => {
+    //   cy.contains("Add More").click()
+    //   cy.contains(this.student.name).click()
+    //   cy.get("[data-cy=confirm]").click()
+    //   cy.get("[data-cy=back-button]").click()
+    //   cy.contains(lessonPlan2.title).click()
+    //   cy.contains(this.student.name).should("be.visible")
+    //   cy.get("[data-cy=delete-student]").click()
+    //
+    //   cy.get("[data-cy=back-button]").click()
+    //   cy.contains(lessonPlan2.title).click()
+    //   cy.contains(this.student.name).should("not.exist")
+    // })
 
     cy.get("[data-cy=back-button]").click()
     cy.contains(lessonPlan2.title).click()
