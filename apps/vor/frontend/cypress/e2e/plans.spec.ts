@@ -39,19 +39,19 @@ describe("Test lesson plan features", function () {
     cy.get('[aria-label="URL"]').type(lessonPlan1.link)
     cy.get("[data-cy=add-link]").click()
 
-    cy.createStudent().then(() => {
-      cy.get("[data-cy=add-student]").click()
-      cy.contains(this.student.name).click()
-      cy.get("[data-cy=confirm]").click()
-      cy.contains(this.student.name).should("be.visible")
-      cy.get("[data-cy=delete-student]").click()
-      cy.contains(this.student.name).should("not.exist")
-
-      cy.get("[data-cy=add-student]").click()
-      cy.contains(this.student.name).click()
-      cy.get("[data-cy=confirm]").click()
-      cy.contains(this.student.name).should("be.visible")
-    })
+    // cy.createStudent().then(() => {
+    //   cy.get("[data-cy=add-student]").click()
+    //   cy.contains(this.student.name).click()
+    //   cy.get("[data-cy=confirm]").click()
+    //   cy.contains(this.student.name).should("be.visible")
+    //   cy.get("[data-cy=delete-student]").click()
+    //   cy.contains(this.student.name).should("not.exist")
+    //
+    //   cy.get("[data-cy=add-student]").click()
+    //   cy.contains(this.student.name).click()
+    //   cy.get("[data-cy=confirm]").click()
+    //   cy.contains(this.student.name).should("be.visible")
+    // })
     cy.contains("Save").click()
     cy.contains(lessonPlan1.title).click()
 
