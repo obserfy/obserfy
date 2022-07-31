@@ -135,11 +135,13 @@ exports[`Chatwoot should render correctly 1`] = `
   color: var(--theme-ui-colors-text);
   line-height: 1;
   font-size: 10px;
+  display: block;
 }
 
 @media screen and (min-width: 40em) {
   .emotion-3 {
     font-size: 11px;
+    display: none;
   }
 }
 

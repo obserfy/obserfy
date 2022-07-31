@@ -63,7 +63,7 @@ const Navbar: FC = () => {
         {/* /> */}
 
         <Box mt="auto" sx={{ display: ["none", "block"] }} />
-        <NavBarItem title={t`Settings`} icon={SettingsIcon} to={ADMIN_URL} />
+        <NavBarItem title={t`Admin`} icon={SettingsIcon} to={ADMIN_URL} />
         {/* <NavBarItem */}
         {/*  title={t`Support`} */}
         {/*  icon={QuestionMarkIcon} */}

@@ -174,11 +174,13 @@ exports[`Navbar should render correctly 1`] = `
   color: var(--theme-ui-colors-text);
   line-height: 1;
   font-size: 10px;
+  display: block;
 }
 
 @media screen and (min-width: 40em) {
   .emotion-6 {
     font-size: 11px;
+    display: none;
   }
 }
 
@@ -317,11 +319,13 @@ exports[`Navbar should render correctly 1`] = `
   color: var(--theme-ui-colors-text);
   line-height: 1;
   font-size: 10px;
+  display: block;
 }
 
 @media screen and (min-width: 40em) {
   .emotion-13 {
     font-size: 11px;
+    display: none;
   }
 }
 
@@ -360,20 +364,20 @@ exports[`Navbar should render correctly 1`] = `
           class="emotion-7"
         />
         <a
-          data-cy="navbar-settings"
+          data-cy="navbar-admin"
           href="/dashboard/admin"
         >
           <div
             class="emotion-4"
           >
             <div
-              alt="Settings"
+              alt="Admin"
               class="emotion-5"
             />
             <p
               class="emotion-6"
             >
-              Settings
+              Admin
             </p>
           </div>
         </a>

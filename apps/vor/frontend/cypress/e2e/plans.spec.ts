@@ -110,7 +110,7 @@ describe("Test lesson plan features", function () {
     cy.get(`[data-cy="Repeat Until"]`).click()
     cy.get(`[data-cy="next-month"]`).click()
     cy.contains(dayjs().add(3, "day").daysInMonth()).click()
-    cy.contains("Set").click()
+    cy.contains("button", "Set").click()
 
     cy.contains("Save").click()
     cy.contains(repeatingPlan.title).should("be.visible")
