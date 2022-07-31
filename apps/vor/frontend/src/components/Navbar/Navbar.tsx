@@ -125,7 +125,11 @@ const NavBarItem: FC<{
           mb={1}
         />
         <Typography.Body
-          sx={{ lineHeight: 1, fontSize: ["10px", "11px"] }}
+          sx={{
+            lineHeight: 1,
+            fontSize: ["10px", "11px"],
+            display: ["block", "none"],
+          }}
           color={match ? "textPrimary" : "text"}
         >
           <Trans id={title} />

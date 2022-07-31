@@ -106,7 +106,11 @@ const Chatwoot: FC<ChatwootProps> = () => {
       )}
       <Typography.Body
         mt={1}
-        sx={{ lineHeight: 1, fontSize: ["10px", "11px"] }}
+        sx={{
+          lineHeight: 1,
+          fontSize: ["10px", "11px"],
+          display: ["block", "none"],
+        }}
         color="text"
       >
         <Trans id="Support" />
