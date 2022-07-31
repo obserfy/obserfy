@@ -8,8 +8,9 @@ import (
 
 func initSentry() (*sentryhttp.Handler, error) {
 	options := sentry.ClientOptions{
-		Dsn:              os.Getenv("SENTRY_DSN"),
 		TracesSampleRate: 0.1,
+		Dsn:              os.Getenv("SENTRY_DSN"),
+		Environment:      os.Getenv("SENTRY_ENV"),
 	}
 	if err := sentry.Init(options); err != nil {
 		return nil, err

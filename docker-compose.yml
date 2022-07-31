@@ -8,6 +8,8 @@ services:
     environment:
       # go-devtools docker specific env
       SRC_ENTRYPOINT: /src/vor/pkg/*.go
+      SENTRY_DSN: "https://75f41fa2e343439f8e31f145311b4db3@o330610.ingest.sentry.io/1850836"
+      SENTRY_ENV: "development"
     volumes:
       - ./apps/vor:/src/vor
     ports:
@@ -76,7 +78,7 @@ services:
     environment:
       POSTGRES_MULTIPLE_DATABASES: defaultdb,defaultdb_test
       POSTGRES_PASSWORD: postgres
-    command: ["postgres", "-c", "log_statement=all"]
+    command: [ "postgres", "-c", "log_statement=all" ]
     ports:
       - "5432:5432"
     volumes:
