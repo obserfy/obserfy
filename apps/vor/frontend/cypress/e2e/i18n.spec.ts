@@ -6,7 +6,7 @@ describe("test i18n", function () {
 
   it("should be able to switch language", function () {
     cy.visit("/dashboard/admin")
-    cy.wait(250) // wait for event handler to register
+    cy.wait(500) // wait for event handler to register
     cy.get("[data-cy=switch-indonesian]").click()
     cy.contains("Indonesian").should("be.visible")
 
