@@ -1,14 +1,25 @@
-import Image from "next/image"
 import { FC } from "react"
 
-interface Props {
+const Icon: FC<{
   src: string
   className?: string
-  alt?: string
-  size?: number
-}
-const Icon: FC<Props> = ({ alt, src, className, size = 14 }) => (
-  <Image alt={alt} src={src} width={size} height={size} className={className} />
+  color?: string
+}> = ({ src, className, color = "bg-black" }) => (
+  <div
+    role="img"
+    aria-hidden="true"
+    className={`h-5 w-5 ${color} ${className}`}
+    style={{
+      maskImage: `url(${src})`,
+      WebkitMaskImage: `url(${src})`,
+
+      maskSize: "100%",
+      WebkitMaskSize: "100%",
+
+      maskRepeat: "no-repeat",
+      WebkitMaskRepeat: "no-repeat",
+    }}
+  />
 )
 
 export default Icon

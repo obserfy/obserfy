@@ -1,9 +1,9 @@
-import * as Sentry from "@sentry/node"
-import { Component, ReactNode } from "react"
+import { Component, ErrorInfo, ReactNode } from "react"
 
 interface State {
   hasError: boolean
 }
+
 export class ErrorBoundary extends Component<{}, State> {
   constructor(props: {}) {
     super(props)
@@ -14,8 +14,7 @@ export class ErrorBoundary extends Component<{}, State> {
     return { hasError: true }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     if (process.env.NODE_ENV !== "production") {
       // eslint-disable-next-line no-console
       console.error(error)

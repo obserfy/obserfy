@@ -7,11 +7,12 @@ declare module "formidable-serverless" {
   export default formidable
 }
 
-declare module "*.svg" {
-  import { FC, ReactSVGElement, SVGProps } from "react"
-
-  const ReactComponent: FC<SVGProps<ReactSVGElement>>
-  export default ReactComponent
+declare module NodeJS {
+  interface Global {
+    prisma: any
+  }
 }
 
-declare const Canny: (method: string, data: any) => void
+declare module "mux-embed" {
+  const monitor: any
+}

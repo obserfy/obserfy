@@ -3,7 +3,7 @@ import { insertObservationToPlan } from "../../../../db/queries"
 import { protectedApiRoute } from "../../../../utils/rest"
 
 export interface PostPlanObservationRequest {
-  childId: string
+  studentId: string
   observation: string
 }
 
@@ -19,7 +19,7 @@ const observation = protectedApiRoute(async (req, res) => {
     await insertObservationToPlan(
       planId as string,
       session.user.email,
-      body.childId,
+      body.studentId,
       body.observation
     )
     res.status(201).end()

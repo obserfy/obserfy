@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/macro"
 import { FC, useEffect, useState } from "react"
 import { Button } from "theme-ui"
 import { getSchoolId } from "../../hooks/schoolIdState"
@@ -5,6 +6,7 @@ import { getPreferredLang } from "../../i18n"
 import { ReactComponent as ChatIcon } from "../../icons/message-circle.svg"
 import Icon from "../Icon/Icon"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import Typography from "../Typography/Typography"
 
 const loadChatwoot = () => {
   window.chatwootSettings = {
@@ -34,6 +36,7 @@ const loadChatwoot = () => {
 }
 
 export interface ChatwootProps {}
+
 const Chatwoot: FC<ChatwootProps> = () => {
   // const [isLoaded, setIsLoaded] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -101,6 +104,17 @@ const Chatwoot: FC<ChatwootProps> = () => {
           color="textMediumEmphasis"
         />
       )}
+      <Typography.Body
+        mt={1}
+        sx={{
+          lineHeight: 1,
+          fontSize: ["10px", "11px"],
+          display: ["block", "none"],
+        }}
+        color="text"
+      >
+        <Trans id="Support" />
+      </Typography.Body>
     </Button>
   )
 }

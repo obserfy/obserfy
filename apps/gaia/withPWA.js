@@ -5,13 +5,8 @@ const pwaConfig = {
   pwa: {
     disable: process.env.NODE_ENV !== "production",
     dest: "public",
-    publicExcludes: [
-      "!icons/**/*",
-      "!images/**/*",
-      "!google-fonts/**/*",
-      "!shortcuts/**/*",
-    ],
-    buildExcludes: [/.*\.map$/],
+    buildExcludes: [/.*/],
+    publicExcludes: ["!**/*"],
     runtimeCaching,
   },
 }

@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient } from "react-query"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { getApi } from "./apiHelpers"
 import { GetChildImagesResponse } from "../../pages/api/children/[childId]/images"
 

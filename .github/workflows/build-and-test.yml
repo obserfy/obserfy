@@ -78,7 +78,12 @@ jobs:
           node-version: 15
       - name: Install Dependencies
         run: yarn install
+      - run: yarn workspace gaia prisma generate
       - run: yarn workspace gaia run build
+        env:
+          SENTRY_ORG: obserfy
+          SENTRY_PROJECT: gaia
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       - uses: actions/upload-artifact@v2
         with:
           name: gaia
@@ -175,7 +180,7 @@ jobs:
       - run: yarn workspace vor run test
 
   e2e-parallel:
-    if:  ${{ !contains(github.ref, 'renovate') &&  github.ref != 'refs/heads/develop' &&  github.ref != 'refs/heads/feat/i10n' }}
+    if: ${{ !contains(github.ref, 'renovate') &&  github.ref != 'refs/heads/develop' &&  github.ref != 'refs/heads/feat/i10n' }}
     needs:
       - test-vor-backend
       - build-gaia
@@ -240,13 +245,13 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # secret envs
-#          CYPRESS_AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
-#          CYPRESS_AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
-#          CYPRESS_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-#          CYPRESS_GAIA_USERNAME: ${{ secrets.CYPRESS_GAIA_USERNAME }}
-#          CYPRESS_GAIA_PASSWORD: ${{ secrets.CYPRESS_GAIA_PASSWORD }}
-#          CYPRESS_VOR_HOST: 'https://localhost:8000'
-#          CYPRESS_GAIA_HOST: 'http://localhost:3000'
+      #          CYPRESS_AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+      #          CYPRESS_AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+      #          CYPRESS_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+      #          CYPRESS_GAIA_USERNAME: ${{ secrets.CYPRESS_GAIA_USERNAME }}
+      #          CYPRESS_GAIA_PASSWORD: ${{ secrets.CYPRESS_GAIA_PASSWORD }}
+      #          CYPRESS_VOR_HOST: 'https://localhost:8000'
+      #          CYPRESS_GAIA_HOST: 'http://localhost:3000'
       - uses: actions/upload-artifact@v2
         if: always()
         with:
@@ -260,7 +265,7 @@ jobs:
 
   # runs on renovate build to conserve cypress quota.
   e2e-sequential:
-    if:  ${{ contains(github.ref, 'renovate') || github.ref == 'refs/heads/develop'  || github.ref == 'refs/heads/feat/i10n'}}
+    if: ${{ contains(github.ref, 'renovate') || github.ref == 'refs/heads/develop'  || github.ref == 'refs/heads/feat/i10n'}}
     needs:
       - test-vor-backend
       - build-gaia
@@ -314,13 +319,13 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # secret envs
-#          CYPRESS_AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
-#          CYPRESS_AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
-#          CYPRESS_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-#          CYPRESS_GAIA_USERNAME: ${{ secrets.CYPRESS_GAIA_USERNAME }}
-#          CYPRESS_GAIA_PASSWORD: ${{ secrets.CYPRESS_GAIA_PASSWORD }}
-#          CYPRESS_VOR_HOST: 'https://localhost:8000'
-#          CYPRESS_GAIA_HOST: 'http://localhost:3000'
+      #          CYPRESS_AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+      #          CYPRESS_AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+      #          CYPRESS_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+      #          CYPRESS_GAIA_USERNAME: ${{ secrets.CYPRESS_GAIA_USERNAME }}
+      #          CYPRESS_GAIA_PASSWORD: ${{ secrets.CYPRESS_GAIA_PASSWORD }}
+      #          CYPRESS_VOR_HOST: 'https://localhost:8000'
+      #          CYPRESS_GAIA_HOST: 'http://localhost:3000'
       - uses: actions/upload-artifact@v2
         if: always()
         with:

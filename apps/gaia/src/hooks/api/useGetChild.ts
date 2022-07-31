@@ -1,4 +1,4 @@
-import { useQuery } from "react-query"
+import { useQuery } from "@tanstack/react-query"
 import { GetChildResponse } from "../../pages/api/children/[childId]"
 import { getApi } from "./apiHelpers"
 

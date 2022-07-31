@@ -37,6 +37,7 @@ jobs:
           node-version: 14
       - name: Install Dependencies
         run: yarn
+      - run: yarn workspace gaia prisma generate
       - run: yarn workspaces foreach -p run typecheck
 
   eslint:

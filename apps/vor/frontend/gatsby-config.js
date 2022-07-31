@@ -113,6 +113,13 @@ const developMiddleware = (app) => {
     })
   )
   app.use(
+    "/webhooks",
+    require("http-proxy-middleware").createProxyMiddleware({
+      secure: false,
+      target: "https://localhost:8000",
+    })
+  )
+  app.use(
     "/auth",
     require("http-proxy-middleware").createProxyMiddleware({
       secure: false,
@@ -122,11 +129,6 @@ const developMiddleware = (app) => {
 }
 
 module.exports = {
-  flags: {
-    FAST_DEV: true,
-    DEV_WEBPACK_CACHE: true,
-    PARALLEL_SOURCING: true,
-  },
   siteMetadata: {
     title: `Obserfy for Teachers`,
     description: `Record keeping tool for montessori schools.`,

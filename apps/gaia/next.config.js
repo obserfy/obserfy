@@ -1,24 +1,39 @@
+const { withSentryConfig } = require("@sentry/nextjs")
 const withPlugins = require("next-compose-plugins")
-const withPreact = require("next-plugin-preact")
 const withPWA = require("./withPWA")
-const withSentry = require("./withSentry")
 const version = require("./version")
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 })
 
-const plugins = [withPWA, withPreact, withSentry, withBundleAnalyzer]
+const plugins = [withBundleAnalyzer]
+if (process.env.NODE_ENV === "production") {
+  plugins.push(withPWA)
+  plugins.push(withSentryConfig)
+}
 
-const config = {
+module.exports = withPlugins(plugins, {
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
+  reactStrictMode: true,
   env: {
     NEXT_PUBLIC_RELEASE: version,
   },
   images: {
+    formats: ["image/avif", "image/webp"],
     domains: [
       process.env.NEXT_OPTIMIZED_IMG_DOMAIN || "media.obserfy.com",
       "image.mux.com",
+      "roci",
     ],
   },
-}
-
-module.exports = withPlugins(plugins, config)
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+})

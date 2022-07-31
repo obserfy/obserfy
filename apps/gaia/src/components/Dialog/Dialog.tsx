@@ -2,8 +2,8 @@ import { FC } from "react"
 
 const Dialog: FC = ({ children }) => {
   return (
-    <div className="fixed h-screen w-screen bg-overlay z-50 top-0 left-0 flex items-center justify-center z-50">
-      <div className="bg-white rounded shadow-md p-3 flex flex-col items-center">
+    <div className="fixed top-0 left-0 z-50 flex h-screen w-screen items-center justify-center bg-overlay">
+      <div className="flex flex-col items-center rounded bg-white p-3 shadow-md">
         {children}
       </div>
     </div>

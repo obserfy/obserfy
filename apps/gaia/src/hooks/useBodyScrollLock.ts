@@ -12,6 +12,7 @@ const useBodyScrollLock = () => {
       })
     }
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       if (ref.current) enableBodyScroll(ref.current)
     }
   }, [])

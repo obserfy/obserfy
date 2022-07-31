@@ -1,18 +1,18 @@
-import { t } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import { useLocation } from "@reach/router"
 import { StaticImage } from "gatsby-plugin-image"
 import { FC, FunctionComponent, useEffect, useState } from "react"
 import { Box, Flex } from "theme-ui"
 import useDetectVirtualKeyboard from "../../hooks/useDetectVirtualKeyboard"
 import useLocalizedMatch from "../../hooks/useLocalizedMatch"
-import { ReactComponent as FileIcon } from "../../icons/file-text.svg"
 import { ReactComponent as StudentsIcon } from "../../icons/home.svg"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
-import { ADMIN_URL, ALL_REPORT_URL, STUDENTS_URL } from "../../routes"
+import { ADMIN_URL, STUDENTS_URL } from "../../routes"
 import Chatwoot from "../Chatwoot/Chatwoot"
 import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import Typography from "../Typography/Typography"
 
 const Navbar: FC = () => {
   const keyboardShown = useDetectVirtualKeyboard()
@@ -56,11 +56,11 @@ const Navbar: FC = () => {
         </Box>
 
         <NavBarItem title={t`Students`} icon={StudentsIcon} to={STUDENTS_URL} />
-        <NavBarItem
-          title={t`Progress Report`}
-          icon={FileIcon}
-          to={ALL_REPORT_URL}
-        />
+        {/* <NavBarItem */}
+        {/*  title={t`Progress Report`} */}
+        {/*  icon={FileIcon} */}
+        {/*  to={ALL_REPORT_URL} */}
+        {/* /> */}
 
         <Box mt="auto" sx={{ display: ["none", "block"] }} />
         <NavBarItem title={t`Admin`} icon={SettingsIcon} to={ADMIN_URL} />
@@ -101,7 +101,7 @@ const NavBarItem: FC<{
           height: [56, 48],
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "space-around",
+          justifyContent: "center",
           position: "relative",
           "&:after": {
             top: [-0.5, "inherit"],
@@ -122,7 +122,18 @@ const NavBarItem: FC<{
           fill={match && iconFill ? "textPrimary" : iconFill || "transparent"}
           size={26}
           sx={{ color: match ? "textPrimary" : "textMediumEmphasis" }}
+          mb={1}
         />
+        <Typography.Body
+          sx={{
+            lineHeight: 1,
+            fontSize: ["10px", "11px"],
+            display: ["block", "none"],
+          }}
+          color={match ? "textPrimary" : "text"}
+        >
+          <Trans id={title} />
+        </Typography.Body>
       </Flex>
     </Link>
   )

@@ -43,9 +43,9 @@ func (s SchoolStore) NewProgressReport(
 		PeriodEnd:   end,
 	}
 
-	studentReports := make([]StudentReport, len(students))
+	studentReports := make([]StudentProgressReport, len(students))
 	for i, student := range students {
-		studentReports[i] = StudentReport{
+		studentReports[i] = StudentProgressReport{
 			StudentId:        uuid.MustParse(student.Id),
 			ProgressReportId: report.Id,
 		}
