@@ -75,7 +75,7 @@ describe("Test lesson plan features", function () {
     cy.contains("Save").click()
     cy.contains(lessonPlan2.description).should("be.visible")
 
-    cy.get("[data-cy=delete-student]").click()
+    // cy.get("[data-cy=delete-student]").click()
     cy.createStudent().then(() => {
       cy.contains("Add More").click()
       cy.contains(this.student.name).click()
