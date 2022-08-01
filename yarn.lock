@@ -16907,10 +16907,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immer@npm:9.0.6":
-  version: 9.0.6
-  resolution: "immer@npm:9.0.6"
-  checksum: 75da22f3b32f3f14604eb389b4f50e84a14f2e42f306f0cbe4d2969aed54ec7fda9a7e9ca42ebae2ba73ec9bb6ec1001fafbac535accaf03860054ab0f7e8388
+"immer@npm:9.0.15":
+  version: 9.0.15
+  resolution: "immer@npm:9.0.15"
+  checksum: 92e3d63e810e3c3c2bb61b70c45443e37ef983ad12924e3edaf03725ae5979618f5b473439bb3bb4a8c4769f25132f18dec10ea15c40f0b20da5691ff96ff611
   languageName: node
   linkType: hard
 
@@ -28927,7 +28927,7 @@ resolve@^2.0.0-next.3:
     http-proxy-middleware: 2.0.1
     hygen: 6.1.0
     idb-keyval: 5.1.5
-    immer: 9.0.6
+    immer: 9.0.15
     jest: 27.3.1
     jest-date-mock: 1.0.8
     jest-fetch-mock: 3.0.3
