@@ -14723,7 +14723,7 @@ __metadata:
     io-ts-types: 0.5.16
     jest: 27.3.1
     minio: 7.0.19
-    monocle-ts: 2.3.11
+    monocle-ts: 2.3.13
     mux-embed: 4.1.1
     nanoid: 3.1.25
     newtype-ts: 0.3.4
@@ -20829,12 +20829,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"monocle-ts@npm:2.3.11":
-  version: 2.3.11
-  resolution: "monocle-ts@npm:2.3.11"
+"monocle-ts@npm:2.3.13":
+  version: 2.3.13
+  resolution: "monocle-ts@npm:2.3.13"
   peerDependencies:
     fp-ts: ^2.5.0
-  checksum: b982760f42c40f548fc6fae094c32a82666752cb4463ea7b2af506e8550d9431b625b737bdf008c815a0ce01798b9f0b4bbd1dfa2a06522890f5eebf8e130fcd
+  checksum: dddfa5706fe1fdb068606f5ac5215a00e723d155407de491bb53591264e281ec0ea1735759db93686d9daf676b105660bf2c656ebcd51626a4bfbb8de9accb3c
   languageName: node
   linkType: hard
 
