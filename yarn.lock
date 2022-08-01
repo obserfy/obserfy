@@ -7205,14 +7205,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:17.0.20":
-  version: 17.0.20
-  resolution: "@types/react@npm:17.0.20"
+"@types/react@npm:17.0.48":
+  version: 17.0.48
+  resolution: "@types/react@npm:17.0.48"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: e342bfaa4fe052fc3a445ea49f746f3fd82cfc9c8028eae139a3e0763ead1871f353bd40da2a472f23d2b52544d2781d40e3159c0703e7e2ff08c13f067a3b9c
+  checksum: b683fa33f751ced0b8c8715df9f40de15513c1d7ce66064a75cdfb8805cc913b0b214a2e7022ef0b724bd62a1e8651d040cd265dd0452bde03cca9b8e495742d
   languageName: node
   linkType: hard
 
@@ -14708,7 +14708,7 @@ __metadata:
     "@types/node": 14.17.15
     "@types/pg": 8.6.1
     "@types/pino": 6.3.11
-    "@types/react": 17.0.20
+    "@types/react": 17.0.48
     "@types/react-query": 1.2.9
     "@types/uuid": 8.3.4
     "@typescript-eslint/eslint-plugin": 4.28.3
@@ -28866,7 +28866,7 @@ resolve@^2.0.0-next.3:
     "@types/node": 15.0.2
     "@types/query-string": 6.3.0
     "@types/reach__router": 1.3.10
-    "@types/react": 17.0.20
+    "@types/react": 17.0.48
     "@types/react-adaptive-hooks": 0.0.1
     "@types/react-dom": 17.0.9
     "@types/react-helmet": 6.1.2
