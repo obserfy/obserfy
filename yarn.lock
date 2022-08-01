@@ -15002,7 +15002,7 @@ __metadata:
     monocle-ts: 2.3.13
     mux-embed: 4.1.1
     nanoid: 3.1.25
-    newtype-ts: 0.3.4
+    newtype-ts: 0.3.5
     next: 12.2.3
     next-compose-plugins: ^2.2.1
     next-pwa: 5.5.4
@@ -21390,13 +21390,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"newtype-ts@npm:0.3.4":
-  version: 0.3.4
-  resolution: "newtype-ts@npm:0.3.4"
+"newtype-ts@npm:0.3.5":
+  version: 0.3.5
+  resolution: "newtype-ts@npm:0.3.5"
   peerDependencies:
     fp-ts: ^2.0.0
     monocle-ts: ^2.0.0
-  checksum: 0863ff0bf5ccf495753eecac513a460a60cb99c3be9afe18e515cb460c4e2b8c2157f6aeb4a6aef04acaeaa534b40a8d89d6d3db6214b386b738200ad925f37f
+  checksum: 3168c0386313156f4ecf9160eec48d5506aa372d3406f6a05fde9f75b8f9549b149dea53574e9b2f201190c01fe49af8c9554481b319f0b616a4413f89af3d16
   languageName: node
   linkType: hard
 
