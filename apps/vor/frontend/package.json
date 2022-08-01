@@ -90,7 +90,7 @@
     "@types/reach__router": "1.3.10",
     "@types/react": "17.0.48",
     "@types/react-adaptive-hooks": "0.0.1",
-    "@types/react-dom": "17.0.9",
+    "@types/react-dom": "17.0.17",
     "@types/react-helmet": "6.1.2",
     "@typescript-eslint/eslint-plugin": "4.28.3",
     "@typescript-eslint/parser": "4.28.3",

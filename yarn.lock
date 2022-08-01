@@ -7140,7 +7140,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:17.0.9, @types/react-dom@npm:>=16.9.0":
+"@types/react-dom@npm:17.0.17":
+  version: 17.0.17
+  resolution: "@types/react-dom@npm:17.0.17"
+  dependencies:
+    "@types/react": ^17
+  checksum: 23caf98aa03e968811560f92a2c8f451694253ebe16b670929b24eaf0e7fa62ba549abe9db0ac028a9d8a9086acd6ab9c6c773f163fa21224845edbc00ba6232
+  languageName: node
+  linkType: hard
+
+"@types/react-dom@npm:>=16.9.0":
   version: 17.0.9
   resolution: "@types/react-dom@npm:17.0.9"
   dependencies:
@@ -7205,7 +7214,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:17.0.48":
+"@types/react@npm:17.0.48, @types/react@npm:^17":
   version: 17.0.48
   resolution: "@types/react@npm:17.0.48"
   dependencies:
@@ -28868,7 +28877,7 @@ resolve@^2.0.0-next.3:
     "@types/reach__router": 1.3.10
     "@types/react": 17.0.48
     "@types/react-adaptive-hooks": 0.0.1
-    "@types/react-dom": 17.0.9
+    "@types/react-dom": 17.0.17
     "@types/react-helmet": 6.1.2
     "@typescript-eslint/eslint-plugin": 4.28.3
     "@typescript-eslint/parser": 4.28.3
