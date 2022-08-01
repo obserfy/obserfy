@@ -6643,12 +6643,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/dompurify@npm:2.2.3":
-  version: 2.2.3
-  resolution: "@types/dompurify@npm:2.2.3"
+"@types/dompurify@npm:2.3.3":
+  version: 2.3.3
+  resolution: "@types/dompurify@npm:2.3.3"
   dependencies:
     "@types/trusted-types": "*"
-  checksum: ea4fb21243b4495efc382834e911d03f77f39d27390d79ccb51f8a96fe1c22d125147bb2948816f7afaacf2c995603e52b21075528cbefd708af62cce962e050
+  checksum: 427e2dc60d94d13d7860a293b926b376727cb2f545a3334a3f2e7de695a2bb23058dd15108e49e0651378229b443ee8ae0028034b6f2df9a9008c04fb7ad6f8f
   languageName: node
   linkType: hard
 
@@ -12099,10 +12099,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:2.3.1":
-  version: 2.3.1
-  resolution: "dompurify@npm:2.3.1"
-  checksum: 9c93cfaa9d1d0b31aa2e926ebfa0621287a63ebb16277c94ad4aad2bcf3ad12e609e699fc10f2eaf69e4698e29a31dec87a69f3c6725ce3f4c7a69ee93123d0c
+"dompurify@npm:2.3.10":
+  version: 2.3.10
+  resolution: "dompurify@npm:2.3.10"
+  checksum: ee343876b4c065e82d194818c66af76a6d2290264c7db583ad71761c11781fd626f0245f9f4670175d5707c4b8fcfb89adae80bed0418a9426a47ee7f36b0ffc
   languageName: node
   linkType: hard
 
@@ -14689,7 +14689,7 @@ __metadata:
     "@tailwindcss/typography": ^0.5.4
     "@tanstack/react-query": ^4.0.10
     "@types/body-scroll-lock": 3.1.0
-    "@types/dompurify": 2.2.3
+    "@types/dompurify": 2.3.3
     "@types/formidable": 1.2.3
     "@types/hls.js": 1.0.0
     "@types/jest": 27.0.2
@@ -14708,7 +14708,7 @@ __metadata:
     body-scroll-lock: 3.1.5
     clsx: ^1.1.1
     dayjs: 1.10.6
-    dompurify: 2.3.1
+    dompurify: 2.3.10
     dotenv: 10.0.0
     eslint: 7.30.0
     eslint-config-airbnb-typescript: 12.3.1
@@ -28851,7 +28851,7 @@ resolve@^2.0.0-next.3:
     "@theme-ui/match-media": 0.10.1
     "@types/body-scroll-lock": 3.1.0
     "@types/date-fns": 2.6.0
-    "@types/dompurify": 2.2.3
+    "@types/dompurify": 2.3.3
     "@types/faker": 5.5.8
     "@types/jest": 27.0.2
     "@types/node": 15.0.2
@@ -28878,7 +28878,7 @@ resolve@^2.0.0-next.3:
     cross-env: 7.0.3
     cypress: ^10.3.1
     dayjs: 1.10.6
-    dompurify: 2.3.1
+    dompurify: 2.3.10
     dotenv: 10.0.0
     esbuild: 0.13.8
     eslint: 7.30.0
