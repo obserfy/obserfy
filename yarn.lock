@@ -16496,7 +16496,7 @@ __metadata:
     ts-is-present: 1.2.1
     typescript: 4.7.4
     uuid: 8.3.2
-    xss: ^1.0.10
+    xss: 1.0.13
   languageName: unknown
   linkType: soft
 
@@ -31846,15 +31846,15 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"xss@npm:^1.0.10":
-  version: 1.0.10
-  resolution: "xss@npm:1.0.10"
+"xss@npm:1.0.13":
+  version: 1.0.13
+  resolution: "xss@npm:1.0.13"
   dependencies:
     commander: ^2.20.3
     cssfilter: 0.0.10
   bin:
     xss: bin/xss
-  checksum: 0dbc70a716020d854569610d5bc949ba9d3b7f530b7af5508ffe84edaea228c34a4e1227f71cb3a4741373b1c49c3cb691f69dddefda45a594a31f112ae6a738
+  checksum: 21909bdf60a32a703e2208cf3a942c1f82d281651bacff56d72deaba9ce553295f45540cde94f2f3e215c90efeeff6fbca70f514ea7477c805e6116915cc7c08
   languageName: node
   linkType: hard
 
