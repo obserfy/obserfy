@@ -1022,8 +1022,8 @@ msgid "Profile"
 msgstr "Profile"
 
 #: src/components/Navbar/Navbar.tsx:60
-msgid "Progress Report"
-msgstr "Progress Report"
+#~ msgid "Progress Report"
+#~ msgstr "Progress Report"
 
 #: src/pages/dashboard/reports/manage/index.tsx:43
 #: src/pages/dashboard/reports/manage/student/index.tsx:64
@@ -1321,9 +1321,9 @@ msgstr "Subscribed"
 msgid "Sunday"
 msgstr "Sunday"
 
-#: src/components/Navbar/Navbar.tsx:49
-#~ msgid "Support"
-#~ msgstr "Support"
+#: src/components/Chatwoot/Chatwoot.tsx:116
+msgid "Support"
+msgstr "Support"
 
 #: src/components/PageAdmin/PageAdmin.tsx:103
 msgid "Switch school"

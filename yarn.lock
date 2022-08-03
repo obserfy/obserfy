@@ -10363,7 +10363,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-gatsby@npm:2.19.0, babel-preset-gatsby@npm:^2.19.0":
+"babel-preset-gatsby@npm:^2.19.0":
   version: 2.19.0
   resolution: "babel-preset-gatsby@npm:2.19.0"
   dependencies:
@@ -25362,21 +25362,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact-render-to-string@npm:5.1.20":
-  version: 5.1.20
-  resolution: "preact-render-to-string@npm:5.1.20"
+"preact-render-to-string@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "preact-render-to-string@npm:5.2.1"
   dependencies:
     pretty-format: ^3.8.0
   peerDependencies:
     preact: ">=10"
-  checksum: 69e36751415cd81b68ac23811122e674f761efca0f5365b5ac90e62498ee1f4d25abe718b6c21f52faa8764582a667378fe1817dadba69ad24259033fddd6d21
+  checksum: 5702638656a5a471a3698e8535e08ff0fca98317a578b2527158026fda28a681c008cebcabdbacd76209dabd2728a90da9793bef778549d28f5d060854cc7f7a
   languageName: node
   linkType: hard
 
-"preact@npm:10.6.6":
-  version: 10.6.6
-  resolution: "preact@npm:10.6.6"
-  checksum: d6a9581b222c60595f987be28738b68dabb3045f72043e2619af81e9ca00b2b0942717642bcfcaab77a0afa50a97cd35039139c7f425a62a4f02ceb793d8ef83
+"preact@npm:^10.10.0":
+  version: 10.10.0
+  resolution: "preact@npm:10.10.0"
+  checksum: ec34f0e7a8677080debb5e7035a749d30a23694a68389e6f577e051e91a1e1014913c56845a615d1f9a4f2cd0321c46faaded4d4a0457c755d637a3a811fd69e
   languageName: node
   linkType: hard
 
@@ -30766,7 +30766,6 @@ resolve@^2.0.0-next.3:
     babel-plugin-macros: 3.1.0
     babel-plugin-remove-graphql-queries: 4.19.0
     babel-plugin-transform-default-import: 1.0.0
-    babel-preset-gatsby: 2.19.0
     body-scroll-lock: 3.1.5
     browser-lang: 0.1.0
     chromatic: 5.9.2
@@ -30822,8 +30821,8 @@ resolve@^2.0.0-next.3:
     mux-embed: 4.1.1
     nanoid: 3.1.25
     npm-run-all: 4.1.5
-    preact: 10.6.6
-    preact-render-to-string: 5.1.20
+    preact: ^10.10.0
+    preact-render-to-string: ^5.2.1
     prettier: 2.5.1
     query-string: 7.0.1
     react: ^18.2.0

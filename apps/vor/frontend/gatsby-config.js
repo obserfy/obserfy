@@ -12,7 +12,6 @@ const plugins = [
   `gatsby-plugin-image`,
   `gatsby-transformer-sharp`,
   `gatsby-plugin-sharp`,
-  `gatsby-plugin-remove-trailing-slashes`,
   {
     resolve: `gatsby-plugin-manifest`,
     options: {
@@ -102,7 +101,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 /**
- * Proxy all network calls to /api and /auth routes to our golang backend.
+ * Proxy all networks call to /api and /auth routes to our golang backend.
  * */
 const developMiddleware = (app) => {
   app.use(
@@ -137,4 +136,7 @@ module.exports = {
   },
   plugins,
   developMiddleware,
+  trailingSlash: "never",
+  jsxRuntime: "automatic",
+  jsxImportSource: "theme-ui",
 }

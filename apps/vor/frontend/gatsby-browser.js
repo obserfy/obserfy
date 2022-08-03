@@ -2,7 +2,6 @@ import { redirectToPreferredLang } from "./src/i18n"
 import { track } from "./src/analytics"
 import { i18n } from "@lingui/core"
 import { en, id } from "make-plural/plurals"
-import { Severity } from "@sentry/gatsby"
 import "@fontsource/lora/700.css"
 import "./src/global.css"
 import "./src/tailwind.css"
@@ -22,7 +21,7 @@ export const onRouteUpdate = ({ location }) => {
   if (typeof Sentry !== "undefined") {
     const breadcrumb = {
       category: "page",
-      level: Severity.Info,
+      level: "info",
       data: {
         title: document.title,
         location: location.pathname,
