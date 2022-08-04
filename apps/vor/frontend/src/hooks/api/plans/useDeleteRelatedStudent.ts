@@ -13,10 +13,12 @@ const useDeleteRelatedStudent = (planId: string, studentId: string) => {
       const plan = cache.getData()
 
       if (plan) {
-        plan.relatedStudents = plan.relatedStudents.filter(
-          ({ id }) => id !== studentId
-        )
-        cache.setData(plan)
+        cache.setData({
+          ...plan,
+          relatedStudents: plan.relatedStudents.filter(
+            ({ id }) => id !== studentId
+          ),
+        })
       }
     },
   })

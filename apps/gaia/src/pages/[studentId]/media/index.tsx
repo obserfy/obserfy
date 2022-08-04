@@ -1,18 +1,18 @@
 import Icon from "$components/Icon/Icon"
 import ImageListHeader from "$components/ImageListHeader"
+import useGetChildImages from "$hooks/api/useGetChildImages"
 import usePostImage from "$hooks/api/usePostImage"
 import { useQueryString } from "$hooks/useQueryString"
 import MediaLayout from "$layouts/MediaLayout"
 import { withAuthorization } from "$lib/auth"
-import { monthNames } from "$lib/dayjs"
-import { findImagesByStudentId, findStudentByStudentId } from "$lib/db"
+import { findStudentByStudentId } from "$lib/db"
+import { findStudentImagesGroupedByMonths } from "$lib/images"
 import { getStudentId, SSR } from "$lib/next"
 import clsx from "clsx"
 import Image from "next/future/image"
 import Link from "next/link"
 import { ChangeEventHandler, FC } from "react"
 import { v4 as uuidv4 } from "uuid"
-import { generateOriginalUrl } from "../../../utils/imgproxy"
 
 const ImagesPage: SSR<typeof getServerSideProps> = ({
   imagesByMonth,
@@ -20,6 +20,8 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({
 }) => {
   const studentId = useQueryString("studentId")
   const postImage = usePostImage(studentId, student?.school_id ?? "")
+
+  const { data: images } = useGetChildImages(studentId, imagesByMonth)
 
   const handleImageUpload: ChangeEventHandler<HTMLInputElement> = async ({
     target,
@@ -40,31 +42,46 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({
         />
       </div>
 
-      {Object.keys(imagesByMonth).map((month) => (
-        <section key={month} className="mb-16">
-          <ImageListHeader>{month}</ImageListHeader>
-
-          <ul className="mt-2 grid grid-cols-2 gap-4 px-4 md:grid-cols-3 lg:gap-8">
-            {imagesByMonth[month].map(({ id, src }) => (
-              <li key={id}>
-                <Link href={`/${studentId}/media/images/${id}`}>
-                  <a className="aspect-w-4 aspect-h-3 flex rounded-xl shadow">
-                    <Image
-                      src={src}
-                      width={400}
-                      height={300}
-                      className="rounded-xl bg-gray-100 object-cover "
-                      alt=""
-                      sizes={"33vw"}
-                    />
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+      {images.months.map((month) => (
+        <ImageMonthlySection
+          key={month}
+          month={month}
+          images={images.imagesByMonth[month]}
+        />
       ))}
     </MediaLayout>
+  )
+}
+
+const ImageMonthlySection: FC<{
+  month: string
+  images: { id: string; src: string }[]
+}> = ({ month, images }) => {
+  const studentId = useQueryString("studentId")
+
+  return (
+    <section className="mb-16">
+      <ImageListHeader>{month}</ImageListHeader>
+
+      <ul className="mt-2 grid grid-cols-2 gap-4 px-4 md:grid-cols-3 lg:gap-8">
+        {images.map(({ id, src }) => (
+          <li key={id}>
+            <Link href={`/${studentId}/media/images/${id}`}>
+              <a className="aspect-w-4 aspect-h-3 flex rounded-xl shadow">
+                <Image
+                  src={src}
+                  width={400}
+                  height={300}
+                  className="rounded-xl bg-gray-100 object-cover "
+                  alt=""
+                  sizes={"33vw"}
+                />
+              </a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }
 
@@ -108,27 +125,7 @@ const UploadImageButton: FC<{
 
 export const getServerSideProps = withAuthorization(async (ctx) => {
   const studentId = getStudentId(ctx)
-
-  const images = await findImagesByStudentId(studentId)
   const student = await findStudentByStudentId(studentId)
-
-  const imagesByMonth: {
-    [key: string]: Array<{ src: string; created_at?: string; id: string }>
-  } = {}
-  images.forEach((image) => {
-    const month = image.created_at
-      ? monthNames[image.created_at.getMonth()]
-      : "-"
-    const year = image.created_at?.getFullYear() ?? 0
-
-    const key = `${month} ${year}`
-    imagesByMonth[key] ??= []
-    imagesByMonth[key].push({
-      id: image.id,
-      src: image.object_key ? generateOriginalUrl(image.object_key) : "",
-      created_at: image.created_at?.toISOString(),
-    })
-  })
 
   return {
     props: {
@@ -136,7 +133,7 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
         id: student?.id,
         school_id: student?.school_id,
       },
-      imagesByMonth,
+      imagesByMonth: await findStudentImagesGroupedByMonths(studentId),
     },
   }
 })

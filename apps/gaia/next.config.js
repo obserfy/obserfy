@@ -12,7 +12,8 @@ if (process.env.NODE_ENV === "production") {
   plugins.push(withSentryConfig)
 }
 
-module.exports = withPlugins(plugins, {
+/** @type {import("next").NextConfig}*/
+const config = {
   experimental: {
     images: {
       allowFutureImage: true,
@@ -33,7 +34,6 @@ module.exports = withPlugins(plugins, {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-})
+}
+
+module.exports = withPlugins(plugins, config)

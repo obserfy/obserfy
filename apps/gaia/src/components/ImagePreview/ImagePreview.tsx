@@ -1,15 +1,14 @@
+import { Timeline } from "$api/children/[childId]/timeline"
 import StudentProfile from "$components/StudentProfile"
-import dayjs from "$lib/dayjs"
 import { FC } from "react"
 import useGetChild from "../../hooks/api/useGetChild"
-import { ChildImage } from "../../hooks/api/useGetChildImages"
 import useGetObservationsByImage from "../../hooks/api/useGetImageObservation"
 import useBodyScrollLock from "../../hooks/useBodyScrollLock"
 import Icon from "../Icon/Icon"
 
 const ImagePreview: FC<{
   childId: string
-  img: ChildImage
+  img: Timeline["observations"][0]["images"][0]
   onDismiss: () => void
 }> = ({ img, onDismiss, childId }) => {
   const ref = useBodyScrollLock()
@@ -44,9 +43,6 @@ const ImagePreview: FC<{
           />
           <div>
             <div className="ml-3 font-bold">{child.data?.name}</div>
-            <div className="ml-3 text-xs opacity-75">
-              {dayjs(img.createdAt).format("dddd, DD MMM YYYY")}
-            </div>
           </div>
           <button data-cy="close" className="ml-auto" onClick={onDismiss}>
             <Icon src="/icons/close.svg" className={"h-8 w-8"} />

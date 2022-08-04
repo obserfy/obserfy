@@ -12,7 +12,6 @@ const plugins = [
   `gatsby-plugin-image`,
   `gatsby-transformer-sharp`,
   `gatsby-plugin-sharp`,
-  `gatsby-plugin-remove-trailing-slashes`,
   {
     resolve: `gatsby-plugin-manifest`,
     options: {
@@ -44,12 +43,6 @@ const plugins = [
     },
   },
   {
-    resolve: `gatsby-plugin-canonical-urls`,
-    options: {
-      siteUrl: `https://app.obserfy.com`,
-    },
-  },
-  {
     resolve: `gatsby-plugin-nprogress`,
     options: {
       // Setting a color is optional.
@@ -77,20 +70,13 @@ const plugins = [
   //   options: {
   //     analyzerPort: 3300,
   //   },
-  // },
-  // {
-  //   resolve: `gatsby-plugin-typegen`,
-  //   options: {
-  //     emitSchema: {
-  //       "src/__generated__/gatsby-schema.graphql": true,
-  //     },
-  //   },
-  // },
+  // }
 ]
 
 // this disables plugins for dev.
 if (process.env.NODE_ENV === "production") {
-  plugins.push(`gatsby-plugin-preact`)
+  // TODO: Enable when preact has feature parity with react 18
+  // plugins.push(`gatsby-plugin-preact`)
   plugins.push({
     resolve: "@sentry/gatsby",
     options: {
@@ -102,7 +88,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 /**
- * Proxy all network calls to /api and /auth routes to our golang backend.
+ * Proxy all networks call to /api and /auth routes to our golang backend.
  * */
 const developMiddleware = (app) => {
   app.use(
@@ -137,4 +123,7 @@ module.exports = {
   },
   plugins,
   developMiddleware,
+  trailingSlash: "never",
+  jsxRuntime: "automatic",
+  jsxImportSource: "theme-ui",
 }

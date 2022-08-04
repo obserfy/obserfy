@@ -1023,8 +1023,8 @@ msgid "Profile"
 msgstr "Profil"
 
 #: src/components/Navbar/Navbar.tsx:60
-msgid "Progress Report"
-msgstr ""
+#~ msgid "Progress Report"
+#~ msgstr ""
 
 #: src/pages/dashboard/reports/manage/index.tsx:43
 #: src/pages/dashboard/reports/manage/student/index.tsx:64
@@ -1318,9 +1318,9 @@ msgstr "Mulai Langganan"
 msgid "Sunday"
 msgstr "Minggu"
 
-#: src/components/Navbar/Navbar.tsx:49
-#~ msgid "Support"
-#~ msgstr "Bantuan"
+#: src/components/Chatwoot/Chatwoot.tsx:116
+msgid "Support"
+msgstr "Bantuan"
 
 #: src/components/PageAdmin/PageAdmin.tsx:103
 msgid "Switch school"

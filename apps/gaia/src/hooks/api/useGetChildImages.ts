@@ -1,16 +1,18 @@
+import { GetChildImagesResponse } from "$api/children/[childId]/images"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { getApi } from "./apiHelpers"
-import { GetChildImagesResponse } from "../../pages/api/children/[childId]/images"
 
-export interface ChildImage extends GetChildImagesResponse {
-  isUploading?: boolean
-}
-const useGetChildImages = (childId: string = "") => {
-  const getChildImages = getApi<ChildImage[]>(`/children/${childId}/images`)
+const useGetChildImages = (
+  childId: string = "",
+  imagesByMonth: GetChildImagesResponse
+) => {
+  const getChildImages = getApi<GetChildImagesResponse>(
+    `/children/${childId}/images`
+  )
 
   return useQuery(["child", childId, "images"], getChildImages, {
     enabled: childId !== "",
-    refetchOnWindowFocus: false,
+    initialData: imagesByMonth,
   })
 }
 
@@ -19,9 +21,9 @@ export const useChildImagesCache = (childId: string) => {
   const key = ["child", childId, "images"]
 
   return {
-    getData: () => client.getQueryData<ChildImage[]>(key),
-    setData: (data: ChildImage[]) =>
-      client.setQueryData<ChildImage[]>(key, data),
+    getData: () => client.getQueryData<GetChildImagesResponse>(key),
+    setData: (data: GetChildImagesResponse) =>
+      client.setQueryData<GetChildImagesResponse>(key, data),
     cancelQueries: () => client.cancelQueries(key),
     invalidate: () => client.invalidateQueries(key),
   }

@@ -15,6 +15,7 @@ interface Student {
   name: string
   profileImageUrl?: string
 }
+
 const RelatedStudentsCard: FC<{
   planId: string
   studentId: string

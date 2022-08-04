@@ -41,8 +41,8 @@ const AssessmentRecordsPage: SSR<typeof getServerSideProps> = ({
   }, [debouncedSearch, queries.search, setQueries])
 
   const handleAreaChange = async (e: ChangeEvent<HTMLSelectElement>) => {
-    await setQueries({ area: e.target.value })
     setArea(e.target.value)
+    await setQueries({ area: e.target.value })
   }
 
   const handleBulkChange = async (val: { search: string; area: string }) => {

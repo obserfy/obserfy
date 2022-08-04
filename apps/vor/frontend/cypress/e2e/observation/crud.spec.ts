@@ -18,7 +18,7 @@ describe("observation crud", function () {
     // cy.contains("Go to curriculum").click() // should show empty curriculum info when curriculum is empty
     cy.contains("Event Time").click()
     cy.contains("25").click()
-    cy.contains("Set").click()
+    cy.contains("button", "Set").click()
     cy.get("[data-cy=image]").should("have.lengthOf", 0) // ensure no images uploaded
 
     cy.fixture("icon.png").as("logo")
@@ -52,9 +52,9 @@ describe("observation crud", function () {
 
     // edit time
     cy.get("[aria-label=edit-event-time]").click()
-    cy.contains("18").click()
-    cy.contains("Set").click()
-    cy.contains("18").should("be.visible")
+    cy.contains("button", "18").click()
+    cy.contains("button", "Set").click()
+    cy.contains("p", "18").should("be.visible")
 
     // edit area (should show how to create curriculum)
     cy.get("[aria-label=edit-details]").click()
