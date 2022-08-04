@@ -43,12 +43,6 @@ const plugins = [
     },
   },
   {
-    resolve: `gatsby-plugin-canonical-urls`,
-    options: {
-      siteUrl: `https://app.obserfy.com`,
-    },
-  },
-  {
     resolve: `gatsby-plugin-nprogress`,
     options: {
       // Setting a color is optional.

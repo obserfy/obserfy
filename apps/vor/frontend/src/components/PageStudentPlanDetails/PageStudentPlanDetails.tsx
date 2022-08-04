@@ -60,6 +60,8 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
     )
   }
 
+  console.log(plan)
+
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">
       <TopBar breadcrumbs={breadcrumbs} />

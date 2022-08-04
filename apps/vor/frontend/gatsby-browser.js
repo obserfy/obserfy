@@ -6,6 +6,9 @@ import "@fontsource/lora/700.css"
 import "./src/global.css"
 import "./src/tailwind.css"
 
+i18n.loadLocaleData("en", { plurals: en })
+i18n.loadLocaleData("id", { plurals: id })
+
 export const onServiceWorkerUpdateReady = () => {
   if (window.updateAvailable) {
     window.updateAvailable()
@@ -33,9 +36,6 @@ export const onRouteUpdate = ({ location }) => {
 
 // For redirecting user to preferred language
 export const wrapPageElement = (params) => {
-  i18n.loadLocaleData("en", { plurals: en })
-  i18n.loadLocaleData("id", { plurals: id })
-
   redirectToPreferredLang(
     params.props.location,
     params.props.pageContext.originalPath

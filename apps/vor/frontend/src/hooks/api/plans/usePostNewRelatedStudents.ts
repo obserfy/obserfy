@@ -7,9 +7,11 @@ type PostNewRelatedStudentsResponseBody = Array<{
   name: string
   profileImageUrl: string
 }>
+
 interface PostNewRelatedStudentsRequestBody {
   studentIds: string[]
 }
+
 const usePostNewRelatedStudents = (planId: string) => {
   const cache = useGetPlanCache(planId)
   const postNewRelatedStudents = postApi<PostNewRelatedStudentsRequestBody>(
@@ -22,8 +24,10 @@ const usePostNewRelatedStudents = (planId: string) => {
       const response: PostNewRelatedStudentsResponseBody = await data.json()
       const plan = cache.getData()
       if (plan) {
-        plan.relatedStudents = response
-        cache.setData(plan)
+        cache.setData({
+          ...plan,
+          relatedStudents: response,
+        })
       }
     },
   })

@@ -47,11 +47,11 @@ const GlobalStyle: FC = () => {
 
           "::-webkit-scrollbar": isDarkMode
             ? { width: 8, height: 8, backgroundColor: "#1c1c1c" }
-            : "inherit",
+            : undefined,
 
           "::-webkit-scrollbar-thumb": isDarkMode
             ? { backgroundColor: "#3e3e3e", borderRadius: 9999 }
-            : "inherit",
+            : undefined,
         },
       })}
     />
