@@ -40,20 +40,20 @@ const ObservationRecordsPage: SSR<typeof getServerSideProps> = ({
   const [search, setSearch] = useState(query.search || "")
 
   const handleAreaChange = async (e: ChangeEvent<HTMLSelectElement>) => {
-    await setQueries({ area: e.target.value })
     setArea(e.target.value)
+    await setQueries({ area: e.target.value })
   }
 
   const handleFromChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const value = dayjs(e.target.value || oldestDate)
-    await setQueries({ from: value.format("YYYY-MM-DD") })
     setFrom(value)
+    await setQueries({ from: value.format("YYYY-MM-DD") })
   }
 
   const handleToChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const value = dayjs(e.target.value || today)
-    await setQueries({ to: value.format("YYYY-MM-DD") })
     setTo(value)
+    await setQueries({ to: value.format("YYYY-MM-DD") })
   }
 
   const handleSearchChange = async (e: ChangeEvent<HTMLInputElement>) => {

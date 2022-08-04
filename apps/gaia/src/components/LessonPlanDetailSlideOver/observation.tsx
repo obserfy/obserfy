@@ -1,7 +1,5 @@
-import planId from "$api/plans/[planId]"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
-import useDeleteObservation from "$hooks/api/useDeleteObservation"
 import useDeletePlanObservation from "$hooks/api/useDeletePlanObservation"
 import usePatchPlanObservation from "$hooks/api/usePatchPlanObservation"
 import usePostPlanObservation from "$hooks/api/usePostPlanObservation"
