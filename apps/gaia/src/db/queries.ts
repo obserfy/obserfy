@@ -150,22 +150,6 @@ export const findChildLessonPlans = async (childId: string) => {
 }
 
 /** @DEPRECATED replaced by @lib/db */
-export const getChildImages = async (childId: string) => {
-  // language=PostgreSQL
-  const result = await query(
-    `
-        select i.student_id, image.object_key, i.image_id, image.created_at as created_at
-        from image_to_students i
-                 join images image on image.id = i.image_id
-        where i.student_id = $1
-        order by image.created_at desc
-    `,
-    [childId]
-  )
-  return result.rows
-}
-
-/** @DEPRECATED replaced by @lib/db */
 export const getChildObservationByImage = async (imageId: string) => {
   // language=PostgreSQL
   const result = await query(
