@@ -77,12 +77,12 @@ const plugins = [
   //     analyzerPort: 3300,
   //   },
   // }
-  "gatsby-plugin-preact",
 ]
 
 // this disables plugins for dev.
 if (process.env.NODE_ENV === "production") {
-  plugins.push(`gatsby-plugin-preact`)
+  // TODO: Enable when preact has feature parity with react 18
+  // plugins.push(`gatsby-plugin-preact`)
   plugins.push({
     resolve: "@sentry/gatsby",
     options: {
