@@ -59,6 +59,23 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
             mb={3}
             pb={2}
           >
+            <Box
+              as={"span"}
+              sx={{
+                fontSize: 0,
+                fontFamily: "body",
+                fontWeight: "normal",
+                opacity: 0.8,
+                bg: "white",
+                borderRadius: 99,
+                color: "text",
+                px: 2,
+                mb: 2,
+              }}
+            >
+              alpha
+            </Box>{" "}
+            <br />
             Progress Reports
           </Text>
 
