@@ -20,7 +20,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/signintech/gopdf v0.12.0
 	github.com/stretchr/testify v1.7.0
-	github.com/tkrajina/typescriptify-golang-structs v0.1.6
+	github.com/tkrajina/typescriptify-golang-structs v0.1.7
 	go.uber.org/zap v1.21.0
 	golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa
 	gopkg.in/ini.v1 v1.57.0 // indirect
