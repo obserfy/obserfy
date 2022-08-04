@@ -1,11 +1,13 @@
 import Image from "next/image"
 import { FC, useState } from "react"
 import { isFilled } from "ts-is-present"
-import { GetChildTimelineResponse } from "$api/children/[childId]/timeline"
+import {
+  GetChildTimelineResponse,
+  Timeline,
+} from "$api/children/[childId]/timeline"
 import Icon from "$components/Icon/Icon"
 import ImagePreview from "$components/ImagePreview/ImagePreview"
 import Markdown from "$components/Markdown/Markdown"
-import { ChildImage } from "$hooks/api/useGetChildImages"
 import { useQueryString } from "$hooks/useQueryString"
 import BaseLayout from "$layouts/BaseLayout"
 import { withAuthorization } from "$lib/auth"
@@ -16,7 +18,8 @@ import { generateOriginalUrl, generateUrl } from "../../utils/imgproxy"
 
 const IndexPage: SSR<typeof getServerSideProps> = ({ timeline }) => {
   const studentId = useQueryString("studentId")
-  const [imagePreview, setImagePreview] = useState<ChildImage>()
+  const [imagePreview, setImagePreview] =
+    useState<Timeline["observations"][0]["images"][0]>()
 
   return (
     <BaseLayout title="Timeline">
