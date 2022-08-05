@@ -486,14 +486,15 @@ type (
 // 4. other values will be passed to go-pg
 //
 // Usage example:
-//	planDetails := make(PartialUpdateModel)
-//	planDetails.AddStringColumn("description", planInput.Description)
-//	planDetails.AddStringColumn("title", planInput.Title)
-//  planDetails.AddIdColumn("material_id", planInput.MaterialId)
-//	db.Model(planDetails.GetModel()).
-//		TableExpr("lesson_plan_details").
-//		Where("id = ?", planInput.Id).
-//		Update()
+//
+//		planDetails := make(PartialUpdateModel)
+//		planDetails.AddStringColumn("description", planInput.Description)
+//		planDetails.AddStringColumn("title", planInput.Title)
+//	 planDetails.AddIdColumn("material_id", planInput.MaterialId)
+//		db.Model(planDetails.GetModel()).
+//			TableExpr("lesson_plan_details").
+//			Where("id = ?", planInput.Id).
+//			Update()
 //
 // In this example, if planInput.Description contains nil and title contains a valid name, then go-pg would only update
 // the title, ignoring description column completely. PartialUpdateModel also doesn't contains any information about the

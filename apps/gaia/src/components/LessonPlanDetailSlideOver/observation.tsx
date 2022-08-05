@@ -1,10 +1,12 @@
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
+import Markdown from "$components/Markdown/Markdown"
 import useDeletePlanObservation from "$hooks/api/useDeletePlanObservation"
 import usePatchPlanObservation from "$hooks/api/usePatchPlanObservation"
 import usePostPlanObservation from "$hooks/api/usePostPlanObservation"
 import useToggle from "$hooks/useToggle"
 import dayjs, { Dayjs } from "$lib/dayjs"
+import { SanitizedHTML } from "$lib/markdown"
 import { Menu, Transition } from "@headlessui/react"
 import {
   guardians as Guardians,
@@ -20,6 +22,7 @@ export const ObservationsList: FC<{
   observations: (Observations & {
     guardians: Guardians | null
     users: Users | null
+    long_desc_html: SanitizedHTML
   })[]
 }> = ({ observations, lessonPlanId, studentId }) => (
   <div className="border-b bg-gray-50 p-4 lg:p-6">
@@ -35,6 +38,7 @@ export const ObservationsList: FC<{
             userName={o.users?.name}
             guardianName={o.guardians?.name}
             lessonPlanId={lessonPlanId}
+            long_desc_html={o.long_desc_html}
           />
         ))}
       </ul>
@@ -48,6 +52,7 @@ const Observation: FC<{
   observationId: string
   event_time: Dayjs
   long_desc: string | null
+  long_desc_html: SanitizedHTML
   userName?: string | null
   guardianName?: string | null
   lessonPlanId: string
@@ -58,6 +63,7 @@ const Observation: FC<{
   guardianName,
   userName,
   observationId,
+  long_desc_html,
 }) => {
   const deleteButton = useToggle()
   const editForm = useToggle()
@@ -76,13 +82,7 @@ const Observation: FC<{
   return (
     <li className="mb-2 rounded-xl border border-gray-200 bg-white p-4">
       <div className="relative flex items-start">
-        {long_desc && (
-          <div
-            className="prose mr-2 mb-2 max-w-none text-gray-700"
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: long_desc }}
-          />
-        )}
+        {long_desc && <Markdown markdown={long_desc_html} />}
 
         {deleteButton.isOn && (
           <DeleteObservationButton
