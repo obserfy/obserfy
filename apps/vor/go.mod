@@ -1,6 +1,6 @@
 module github.com/chrsep/vor
 
-go 1.15
+go 1.19
 
 require (
 	github.com/benbjohnson/clock v1.1.0
