@@ -8832,10 +8832,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mixpanel-browser@npm:2.35.7":
-  version: 2.35.7
-  resolution: "@types/mixpanel-browser@npm:2.35.7"
-  checksum: 9b4b247859428a62b282cec266d334ede4bd0061de03c6fc9894313614d2af59265618dce4d0ad4177078d261a18d6ed5e6ff34bf662c5fe8c99400d29afad21
+"@types/mixpanel-browser@npm:2.38.0":
+  version: 2.38.0
+  resolution: "@types/mixpanel-browser@npm:2.38.0"
+  checksum: 1ade271188446005644cf10b65af554a9a75bd2008b827db4cdcfb2eedf858e2426a4d3d21ccf5b0a25a8590f8c3095da25549cfb7765077002e03e64afa9f0a
   languageName: node
   linkType: hard
 
@@ -17747,7 +17747,7 @@ __metadata:
     "@types/hls.js": 1.0.0
     "@types/jest": 27.5.2
     "@types/minio": 7.0.13
-    "@types/mixpanel-browser": 2.35.7
+    "@types/mixpanel-browser": 2.38.0
     "@types/nanoid": 3.0.0
     "@types/node": 14.17.15
     "@types/pg": 8.6.5
