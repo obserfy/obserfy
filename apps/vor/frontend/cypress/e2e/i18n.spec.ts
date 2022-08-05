@@ -13,7 +13,7 @@ describe("test i18n", function () {
     cy.visit("/")
     cy.location("pathname").should("equal", `/id/dashboard/students`)
     cy.wait(100)
-    cy.get("[data-cy=navbar-admin]").click()
+    cy.get("[data-cy=navbar-admin]").click({ force: true })
 
     cy.contains("Indonesian").should("be.visible")
     cy.get("[data-cy=switch-english]").click()
