@@ -1,4 +1,5 @@
-/**
+/*
+*
 Generates typescripts interfaces from golang structs that we use on our APIs
 
 Run with `yarn run gen:models`

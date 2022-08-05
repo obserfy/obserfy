@@ -1,3 +1,4 @@
+import Markdown from "$components/Markdown/Markdown"
 import dayjs from "$lib/dayjs"
 import { FC } from "react"
 import Icon from "$components/Icon/Icon"
@@ -45,10 +46,7 @@ const LessonPlanDetailsSlideOver: FC<{
 
         {lp?.description && (
           <div className="border-b p-4 py-8 lg:p-6">
-            <div
-              className="prose"
-              dangerouslySetInnerHTML={{ __html: lp.description }}
-            />
+            <Markdown markdown={lp?.descriptionHTML} />
           </div>
         )}
 

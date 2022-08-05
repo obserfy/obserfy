@@ -1,14 +1,12 @@
-import useSetQueries from "$hooks/useSetQueries"
-import Image from "next/image"
-import { useRouter } from "next/router"
-import { ChangeEvent, FC, useEffect, useState } from "react"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
+import Markdown from "$components/Markdown/Markdown"
 import Select from "$components/Select"
 import SlideOver from "$components/SlideOver"
 import TextFieldWithIcon from "$components/TextFieldWithIcon"
 import useDebounce from "$hooks/useDebounce"
 import { useQueryString } from "$hooks/useQueryString"
+import useSetQueries from "$hooks/useSetQueries"
 import useToggle from "$hooks/useToggle"
 import RecordsLayout from "$layouts/RecordsLayout"
 import { withAuthorization } from "$lib/auth"
@@ -18,9 +16,11 @@ import {
   findOldestObservationDate,
   findStudentObservations,
 } from "$lib/db"
+import { convertMarkdownToHTML, SanitizedHTML } from "$lib/markdown"
 import { getQueryString, getStudentId, SSR } from "$lib/next"
+import Image from "next/image"
+import { ChangeEvent, FC, useEffect, useState } from "react"
 import { generateOriginalUrl } from "../../../utils/imgproxy"
-import { markdownToHtml } from "../../../utils/markdown"
 
 const today = dayjs()
 
@@ -372,10 +372,16 @@ const ObservationFilterSlideOver: FC<{
 const Observation: FC<{
   event_time: string
   short_desc: string | null
-  long_desc: string | null
+  long_desc_html: SanitizedHTML
   areas: { name: string | null } | null
   observation_to_images: Array<{ src: string | null }>
-}> = ({ short_desc, areas, event_time, long_desc, observation_to_images }) => (
+}> = ({
+  short_desc,
+  areas,
+  event_time,
+  long_desc_html,
+  observation_to_images,
+}) => (
   <li className="relative bg-white py-5 px-4 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-600">
     <div className="flex justify-between space-x-3">
       <div className="block truncate text-left focus:outline-none">
@@ -394,13 +400,7 @@ const Observation: FC<{
       </time>
     </div>
     <div className="mt-1">
-      {long_desc && (
-        <div
-          className="prose max-w-none text-gray-700"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: long_desc }}
-        />
-      )}
+      {long_desc_html && <Markdown markdown={long_desc_html} />}
     </div>
 
     {observation_to_images.length > 0 && (
@@ -458,7 +458,7 @@ export const getServerSideProps = withAuthorization(async (ctx) => {
       areas: areas ?? [],
       observations: observations.map((o) => ({
         ...o,
-        long_desc: o.long_desc ? markdownToHtml(o.long_desc) : o.long_desc,
+        long_desc_html: convertMarkdownToHTML(o.long_desc),
         created_date: o.created_date?.toISOString() ?? "",
         event_time: o.event_time?.toISOString() ?? "",
         observation_to_images: o.observation_to_images?.map((image) => ({

@@ -1,3 +1,4 @@
+import { SanitizedHTML } from "$lib/markdown"
 import { FC, useState } from "react"
 import { Dayjs } from "$lib/dayjs"
 import Button from "./Button/Button"
@@ -7,8 +8,9 @@ import Markdown from "./Markdown/Markdown"
 const LessonPlanObservation: FC<{
   id: string
   observation: string
+  observationHTML: SanitizedHTML
   createdAt: Dayjs
-}> = ({ id, observation, createdAt }) => {
+}> = ({ id, observation, createdAt, observationHTML }) => {
   const [isEditing, setIsEditing] = useState(false)
   return (
     <div className="mt-2 flex w-full px-3 text-gray-700">
@@ -25,7 +27,7 @@ const LessonPlanObservation: FC<{
 
         {!isEditing && (
           <>
-            <Markdown markdown={observation} />
+            <Markdown markdown={observationHTML} />
             <div className="item-center mt-2 flex w-full">
               <div className="text-sm">{createdAt.format("HH:mm")}</div>
               <Button

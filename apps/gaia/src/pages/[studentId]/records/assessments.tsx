@@ -242,11 +242,11 @@ const AssessmentsSlideOver: FC<{
           )}
         </div>
 
-        {details?.description && (
+        {details?.descriptionHTML && (
           <div className="mt-4 border-t bg-gray-50 p-4 pt-8 sm:px-6">
             <p className="text-gray-600">About this Material</p>
             <Markdown
-              markdown={details?.description}
+              markdown={details?.descriptionHTML}
               className="mt-3 text-gray-800"
             />
           </div>

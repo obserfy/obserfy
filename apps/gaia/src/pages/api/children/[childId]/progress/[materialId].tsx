@@ -1,3 +1,4 @@
+import { convertMarkdownToHTML, SanitizedHTML } from "$lib/markdown"
 import { findMaterialDetailsByChildId } from "../../../../../db/queries"
 import {
   getFirstQueryValue,
@@ -8,6 +9,7 @@ export interface GetMaterialProgressDetailResponse {
   id: string
   name: string
   description: string | null
+  descriptionHTML: SanitizedHTML
   stage: string
 }
 
@@ -21,7 +23,10 @@ const progress = protectedApiRoute(async (req, res) => {
     return
   }
 
-  const response: GetMaterialProgressDetailResponse = result[0]
+  const response: GetMaterialProgressDetailResponse = {
+    ...result[0],
+    descriptionHTML: convertMarkdownToHTML(result[0].description),
+  }
   res.json(response)
 })
 

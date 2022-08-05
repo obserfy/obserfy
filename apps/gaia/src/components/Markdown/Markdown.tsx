@@ -1,36 +1,17 @@
-import DOMPurify from "dompurify"
+import { SanitizedHTML } from "$lib/markdown"
 import { FC } from "react"
-import snarkdown from "snarkdown"
-
-const snarkdownEnhanced = (md: string) => {
-  const htmls = md.split(/(?:\r?\n){2,}/).map((l) => {
-    return [" ", "\t", "#", "-", "*"].some((ch) => l.startsWith(ch))
-      ? snarkdown(l)
-      : `<p>${snarkdown(l)}</p>`
-  })
-
-  return htmls.join("\n\n")
-}
 
 export interface MarkdownProps {
-  markdown: string
+  markdown: SanitizedHTML
   className?: string
 }
 
-const Markdown: FC<MarkdownProps> = ({ markdown, className, ...props }) => {
-  const html = snarkdownEnhanced(markdown)
-  let sanitizedHtml = ""
-  if (typeof window !== "undefined") {
-    sanitizedHtml = DOMPurify.sanitize(html)
-  }
-
-  return (
-    <div
-      className={`prose max-w-none text-gray-700 ${className}`}
-      dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
-      {...props}
-    />
-  )
-}
+const Markdown: FC<MarkdownProps> = ({ markdown, className, ...props }) => (
+  <div
+    className={`prose max-w-none text-gray-700 ${className}`}
+    dangerouslySetInnerHTML={markdown}
+    {...props}
+  />
+)
 
 export default Markdown

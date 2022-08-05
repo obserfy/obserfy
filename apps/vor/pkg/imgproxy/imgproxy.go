@@ -7,7 +7,7 @@ import (
 	"fmt"
 )
 
-//GenerateUrlFromS3 generates a URL for an imgproxy optimized image use S3 as source
+// GenerateUrlFromS3 generates a URL for an imgproxy optimized image use S3 as source
 func GenerateUrlFromS3(imageObjectKey string, width int, height int) string {
 	// Create sane default transformation
 	gravity := "no"
@@ -26,14 +26,14 @@ func GenerateUrlFromS3(imageObjectKey string, width int, height int) string {
 	return signUrl(imgproxyUrl)
 }
 
-//GenerateOriginalUrlFromS3 generates the URL for an optimized image from imgproxy at maximum quality, using an S3 object as source
+// GenerateOriginalUrlFromS3 generates the URL for an optimized image from imgproxy at maximum quality, using an S3 object as source
 func GenerateOriginalUrlFromS3(imageObjectKey string) string {
 	S3Url := generateFullS3Url(imageObjectKey)
 	imgproxyUrl := fmt.Sprintf("/%s", S3Url)
 	return signUrl(imgproxyUrl)
 }
 
-//generateFullS3Url generates a full S3 url from an object key
+// generateFullS3Url generates a full S3 url from an object key
 func generateFullS3Url(objectKey string) string {
 	config := mustGetConfig()
 	return base64.RawURLEncoding.EncodeToString(
@@ -41,7 +41,7 @@ func generateFullS3Url(objectKey string) string {
 	)
 }
 
-//signUrl sign the imgproxy URL
+// signUrl sign the imgproxy URL
 func signUrl(url string) string {
 	config := mustGetConfig()
 
@@ -55,7 +55,7 @@ func signUrl(url string) string {
 	return config.baseUrl + "/" + signature + url
 }
 
-//GenerateUrlFromHttp
+// GenerateUrlFromHttp
 func GenerateUrlFromHttp(url string, width int, height int) string {
 	// Create sane default transformation
 	gravity := "no"

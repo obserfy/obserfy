@@ -24,7 +24,7 @@ type Handler2 struct {
 	Handler Handler2Func
 }
 
-//Handler2Func handles the incoming requests
+// Handler2Func handles the incoming requests
 type Handler2Func func(*Request) ServerResponse
 
 func (h Handler2) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -60,7 +60,7 @@ func writeBody(w http.ResponseWriter, body interface{}, l *zap.Logger) {
 	}
 }
 
-//InternalServerError returns a new ServerResponse with 500 status and handles logging the error.
+// InternalServerError returns a new ServerResponse with 500 status and handles logging the error.
 func (s *Server) InternalServerError(err error) ServerResponse {
 	s.Log.Error(err.Error(), zap.Error(err))
 	sentry.WithScope(func(scope *sentry.Scope) {
@@ -74,7 +74,7 @@ func (s *Server) InternalServerError(err error) ServerResponse {
 	}
 }
 
-//BadRequest returns a new ServerResponse with 400 status and handles logging a warning.
+// BadRequest returns a new ServerResponse with 400 status and handles logging a warning.
 func (s *Server) BadRequest(err error) ServerResponse {
 	s.Log.Warn(err.Error(), zap.Error(err))
 

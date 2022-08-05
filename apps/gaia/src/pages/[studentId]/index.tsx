@@ -1,3 +1,4 @@
+import { convertMarkdownToHTML, SanitizedHTML } from "$lib/markdown"
 import Image from "next/image"
 import { FC, useState } from "react"
 import { isFilled } from "ts-is-present"
@@ -57,8 +58,17 @@ const IndexPage: SSR<typeof getServerSideProps> = ({ timeline }) => {
 
 const ObservationList: FC<{
   date: string
-  observations: GetChildTimelineResponse[0]["observations"]
   setImagePreview: Function
+  observations: Array<{
+    id: string
+    shortDesc: string
+    longDesc: SanitizedHTML
+    images: Array<{
+      id: string
+      originalImageUrl: string
+    }>
+    areaName: string
+  }>
 }> = ({ date, observations, setImagePreview }) => (
   <div className="mb-12">
     <div className="mb-3 -ml-5 flex items-center font-bold">
@@ -116,7 +126,7 @@ export const getServerSideProps = withAuthorization(async ({ params }) => {
       ({ id, long_desc, short_desc, images, area_name }) => ({
         id,
         shortDesc: short_desc,
-        longDesc: long_desc ?? "",
+        longDesc: convertMarkdownToHTML(long_desc ?? ""),
         areaName: area_name ?? "",
         images: images.filter(isFilled).map(({ id: imageId, object_key }) => ({
           id: imageId,

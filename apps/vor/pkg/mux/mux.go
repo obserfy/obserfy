@@ -101,7 +101,7 @@ func VerifySignature(body string, header string) error {
 	return nil
 }
 
-//validateSignature makes sure that signature is correct
+// validateSignature makes sure that signature is correct
 func validateSignature(payload string, secret string, signature string) error {
 	expectedSignature := calculateHmacSha256(payload, secret)
 	isValid := hmac.Equal([]byte(signature), []byte(expectedSignature))
@@ -111,7 +111,7 @@ func validateSignature(payload string, secret string, signature string) error {
 	return nil
 }
 
-//validateTiming prevents reuse of signature older than 5 minutes
+// validateTiming prevents reuse of signature older than 5 minutes
 func validateTiming(requestTime string) error {
 	unixTime, _ := strconv.ParseInt(requestTime, 10, 64)
 	timestamp := time.Unix(unixTime, 0)
@@ -123,7 +123,7 @@ func validateTiming(requestTime string) error {
 	return nil
 }
 
-//parseHeader extract required values from passed in header
+// parseHeader extract required values from passed in header
 func parseHeader(body string, signature string) (string, string, string) {
 	values := strings.Split(signature, ",")
 	t := strings.Replace(values[0], "t=", "", 1)
