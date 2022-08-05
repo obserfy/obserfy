@@ -114,28 +114,23 @@ const LessonPlan: FC<{
   repetitionType: string | null
   end?: Dayjs
   onClick?: () => void
-}> = ({ start, areaName, end, repetitionType, title, onClick }) => {
-  const isRepeating = repetitionType !== "0" && end && start.isBefore(end)
-  return (
-    <li className="border-t first:border-none">
-      <button
-        onClick={onClick}
-        className="w-full p-4 text-left hover:bg-gray-50"
-      >
-        <div className={"flex"}>
-          <h3 className="mb-1 flex-1 font-semibold text-gray-700">{title}</h3>
+}> = ({ start, areaName, end, title, onClick }) => (
+  <li className="border-t first:border-none">
+    <button onClick={onClick} className="w-full p-4 text-left hover:bg-gray-50">
+      <div className={"flex"}>
+        <h3 className="mb-1 flex-1 font-semibold text-gray-700">{title}</h3>
+        {areaName && (
           <p className="ml-auto font-semibold text-primary-600">{areaName}</p>
-        </div>
-        <p className="mb-1 flex text-gray-500">
-          {start.format("D MMM YYYY")}
-          {isRepeating && (
-            <span className="ml-1">{` - ${end?.format("D MMM YYYY")}`}</span>
-          )}
-        </p>
-      </button>
-    </li>
-  )
-}
+        )}
+
+        {!areaName && (
+          <p className="ml-auto font-medium text-gray-500">Other</p>
+        )}
+      </div>
+      <p className="mb-1 flex text-gray-500">{start.format("D MMM YYYY")}</p>
+    </button>
+  </li>
+)
 
 const Header = () => (
   <div className="relative mx-4 mt-2 overflow-hidden rounded-2xl shadow-md sm:mt-4">
