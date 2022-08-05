@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.16.9](https://github.com/obserfy/obserfy/compare/v1.16.8...v1.16.9) (2022-08-05)
+
+
+### Bug Fixes
+
+* failed deployment due to sentry. ([9c75b46](https://github.com/obserfy/obserfy/commit/9c75b468acd1d3ed5e2ab368dec9d9c48f949686))
+
 ### [1.16.8](https://github.com/obserfy/obserfy/compare/v1.16.7...v1.16.8) (2022-08-05)
 
 
