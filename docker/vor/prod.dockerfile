@@ -3,7 +3,7 @@
 ####################################
 # Build the gatsby powered frontend
 ####################################
-FROM node:14 AS frontend-builder
+FROM node:18 AS frontend-builder
 WORKDIR /usr/src
 COPY . /usr/src
 # Build the project
@@ -18,7 +18,7 @@ RUN cp -r ./apps/vor/frontend/public /frontend/public
 ####################################
 # Build the API server
 ####################################
-FROM golang:1.15 AS api-builder
+FROM golang:1.19 AS api-builder
 WORKDIR /usr/src/apps/vor
 COPY . /usr/src
 # Build the project
