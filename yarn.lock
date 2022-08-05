@@ -8888,10 +8888,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.0.10, @types/node@npm:^14.14.31, @types/node@npm:^14.14.41":
+"@types/node@npm:^14.0.10, @types/node@npm:^14.14.31":
   version: 14.17.18
   resolution: "@types/node@npm:14.17.18"
   checksum: 386f1ce851f5efb9c51ab7b4f6c7110a7c85f7a06ea5456ddf262bae0f0132a9b8b7d9e7b78228989bb50c44f1c55b7b5afc56915f0bdce25925d10fa18d2d90
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^17.0.19":
+  version: 17.0.45
+  resolution: "@types/node@npm:17.0.45"
+  checksum: aa04366b9103b7d6cfd6b2ef64182e0eaa7d4462c3f817618486ea0422984c51fc69fd0d436eae6c9e696ddfdbec9ccaa27a917f7c2e8c75c5d57827fe3d95e8
   languageName: node
   linkType: hard
 
@@ -14249,7 +14256,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:^4.3.4":
+"debug@npm:^4.3.3, debug@npm:^4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
   dependencies:
@@ -14426,6 +14433,15 @@ __metadata:
   version: 1.0.0
   resolution: "defined@npm:1.0.0"
   checksum: 77672997c5001773371c4dbcce98da0b3dc43089d6da2ad87c4b800adb727633cea8723ea3889fe0c2112a2404e2fd07e3bfd0e55f7426aa6441d8992045dbd5
+  languageName: node
+  linkType: hard
+
+"degit@npm:^2.8.4":
+  version: 2.8.4
+  resolution: "degit@npm:2.8.4"
+  bin:
+    degit: degit
+  checksum: bb58c48ff1ae3828825d7e614db703afd69905abc2d666009bb4affecb8d87be993511556395889dffc99a5eba7a058117402050c509a6e2c3dd56a579120236
   languageName: node
   linkType: hard
 
@@ -15045,7 +15061,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ejs@npm:^3.1.3, ejs@npm:^3.1.6":
+"ejs@npm:^3.1.6":
   version: 3.1.6
   resolution: "ejs@npm:3.1.6"
   dependencies:
@@ -19822,24 +19838,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hygen@npm:6.1.0":
-  version: 6.1.0
-  resolution: "hygen@npm:6.1.0"
+"hygen@npm:6.2.8":
+  version: 6.2.8
+  resolution: "hygen@npm:6.2.8"
   dependencies:
-    "@types/node": ^14.14.41
-    chalk: ^4.1.1
+    "@types/node": ^17.0.19
+    chalk: ^4.1.2
     change-case: ^3.1.0
-    ejs: ^3.1.3
+    debug: ^4.3.3
+    degit: ^2.8.4
+    ejs: ^3.1.6
     enquirer: ^2.3.6
     execa: ^5.0.0
     front-matter: ^4.0.2
-    fs-extra: ^9.1.0
-    ignore-walk: ^3.0.3
+    fs-extra: ^10.0.0
+    ignore-walk: ^4.0.1
     inflection: ^1.12.0
-    yargs-parser: ^20.2.7
+    ora: ^5.0.0
+    yargs-parser: ^21.0.0
   bin:
     hygen: dist/bin.js
-  checksum: 3bfebcc40b415a162b44a0d4ccf889983465d1dc16fcb2e222f9176173dc3f9c9b6ea7edc1cdac035c2d2bcd9ba076c3a5af455c8973a5cc6065401851e4b3d5
+  checksum: 3b2c26e52f8db57b7c3edb9dfa6b10b9fe5840cbf012c38c26d8c470a9f951fc51e675361bf98b108ad87688d27c2457111a0f62939a61e46d29c79af3161537
   languageName: node
   linkType: hard
 
@@ -19916,12 +19935,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ignore-walk@npm:^3.0.3":
-  version: 3.0.4
-  resolution: "ignore-walk@npm:3.0.4"
+"ignore-walk@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "ignore-walk@npm:4.0.1"
   dependencies:
     minimatch: ^3.0.4
-  checksum: 9e9c5ef6c3e0ed7ef5d797991abb554dbb7e60d5fedf6cf05c7129819689eba2b462f625c6e3561e0fc79841904eb829565513eeeab1b44f4fbec4d3146b1a8d
+  checksum: 903cd5cb68d57b2e70fddb83d885aea55f137a44636254a29b08037797376d8d3e09d1c58935778f3a271bf6a2b41ecc54fc22260ac07190e09e1ec7253b49f3
   languageName: node
   linkType: hard
 
@@ -25159,7 +25178,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ora@npm:^5.1.0":
+"ora@npm:^5.0.0, ora@npm:^5.1.0":
   version: 5.4.1
   resolution: "ora@npm:5.4.1"
   dependencies:
@@ -32494,7 +32513,7 @@ resolve@^2.0.0-next.3:
     gatsby-transformer-sharp: 4.20.0
     hls.js: 1.0.10
     http-proxy-middleware: 2.0.6
-    hygen: 6.1.0
+    hygen: 6.2.8
     idb-keyval: 5.1.5
     immer: 9.0.15
     jest: 27.3.1
@@ -33719,6 +33738,13 @@ resolve@^2.0.0-next.3:
   version: 20.2.9
   resolution: "yargs-parser@npm:20.2.9"
   checksum: 8bb69015f2b0ff9e17b2c8e6bfe224ab463dd00ca211eece72a4cd8a906224d2703fb8a326d36fdd0e68701e201b2a60ed7cf81ce0fd9b3799f9fe7745977ae3
+  languageName: node
+  linkType: hard
+
+"yargs-parser@npm:^21.0.0":
+  version: 21.1.1
+  resolution: "yargs-parser@npm:21.1.1"
+  checksum: ed2d96a616a9e3e1cc7d204c62ecc61f7aaab633dcbfab2c6df50f7f87b393993fe6640d017759fe112d0cb1e0119f2b4150a87305cc873fd90831c6a58ccf1c
   languageName: node
   linkType: hard
 

@@ -111,7 +111,7 @@
     "fake-indexeddb": "3.1.8",
     "faker": "5.5.3",
     "http-proxy-middleware": "2.0.6",
-    "hygen": "6.1.0",
+    "hygen": "6.2.8",
     "jest": "27.3.1",
     "jest-date-mock": "1.0.8",
     "jest-fetch-mock": "3.0.3",
