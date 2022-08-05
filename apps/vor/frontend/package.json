@@ -51,7 +51,7 @@
     "immer": "9.0.15",
     "make-plural": "7.0.0",
     "mux-embed": "4.1.1",
-    "nanoid": "3.1.25",
+    "nanoid": "3.1.31",
     "preact": "10.10.0",
     "preact-render-to-string": "5.2.1",
     "query-string": "7.0.1",
