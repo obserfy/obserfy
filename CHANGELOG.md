@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.16.10](https://github.com/obserfy/obserfy/compare/v1.16.9...v1.16.10) (2022-08-05)
+
+
+### Bug Fixes
+
+* vor docker build fails. ([9c38c43](https://github.com/obserfy/obserfy/commit/9c38c4377bcc742f9c62854ae9906bd54107f3cb))
+
 ### [1.16.9](https://github.com/obserfy/obserfy/compare/v1.16.8...v1.16.9) (2022-08-05)
 
 
