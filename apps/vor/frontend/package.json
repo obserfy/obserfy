@@ -100,7 +100,7 @@
     "chromatic": "5.10.2",
     "core-js": "3.24.1",
     "cross-env": "7.0.3",
-    "cypress": "^10.3.1",
+    "cypress": "10.4.0",
     "esbuild": "0.13.8",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.5.0",
