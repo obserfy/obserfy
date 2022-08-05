@@ -38,7 +38,7 @@ msgstr "<0>\"{name}\"</0> curriculum and student data related to it will be perm
 #: src/components/PageNewStudent/NewStudentForm.tsx:176
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:240
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:135
-#: src/components/StudentPickerDialog/StudentPickerDialog.tsx:52
+#: src/components/StudentPickerDialog/StudentPickerDialog.tsx:53
 #: src/components/TopBarWithAction/TopBarWithAction.tsx:21
 msgid "Add"
 msgstr "Add"
@@ -50,7 +50,7 @@ msgstr "Add"
 msgid "Add Guardian"
 msgstr "Add Guardian"
 
-#: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:51
+#: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:52
 msgid "Add More"
 msgstr "Add More"
 
@@ -92,7 +92,7 @@ msgstr "Add new subject"
 msgid "Address"
 msgstr "Address"
 
-#: src/components/Navbar/Navbar.tsx:66
+#: src/components/Navbar/Navbar.tsx:67
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:29
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:20
 #: src/components/PageSubscription/PageSubscription.tsx:35
@@ -142,7 +142,7 @@ msgstr "Are you sure you want to delete this guardian completely?"
 msgid "Are you sure you want to delete this image?"
 msgstr "Are you sure you want to delete this image?"
 
-#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:127
+#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:129
 msgid "Are you sure you want to delete {title}?"
 msgstr "Are you sure you want to delete {title}?"
 
@@ -329,8 +329,8 @@ msgstr "Date of Entry"
 #: src/components/PageEditClass/PageEditClass.tsx:132
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:57
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:66
-#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:121
-#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:126
+#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:123
+#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:128
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:245
 #: src/pages/dashboard/admin/guardians/profile.tsx:44
 #: src/pages/dashboard/students/profile/guardians/profile.tsx:51
@@ -370,7 +370,7 @@ msgstr "Delete image?"
 msgid "Delete material"
 msgstr "Delete material"
 
-#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:125
+#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:127
 msgid "Delete plan?"
 msgstr "Delete plan?"
 
@@ -836,7 +836,7 @@ msgstr "No links attached yet"
 msgid "No materials in progress."
 msgstr "No materials in progress."
 
-#: src/components/StudentPickerDialog/StudentPickerDialog.tsx:80
+#: src/components/StudentPickerDialog/StudentPickerDialog.tsx:81
 msgid "No more students to add"
 msgstr "No more students to add"
 
@@ -853,7 +853,7 @@ msgid "No observations found"
 msgstr "No observations found"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:281
-#: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:65
+#: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:66
 msgid "No other students added yet."
 msgstr "No other students added yet."
 
@@ -924,7 +924,7 @@ msgid "Other"
 msgstr "Other"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:232
-#: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:43
+#: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:44
 msgid "Other Related Students"
 msgstr "Other Related Students"
 
@@ -1093,6 +1093,7 @@ msgstr "Report Title"
 #~ msgid "Reporting"
 #~ msgstr "Reporting"
 
+#: src/components/Navbar/Navbar.tsx:63
 #: src/components/PageNewReport/PageNewReport.tsx:49
 msgid "Reports"
 msgstr "Reports"
@@ -1155,7 +1156,7 @@ msgstr "See All"
 msgid "See All {0} Progress"
 msgstr "See All {0} Progress"
 
-#: src/components/StudentPickerDialog/StudentPickerDialog.tsx:53
+#: src/components/StudentPickerDialog/StudentPickerDialog.tsx:54
 msgid "Select Students"
 msgstr "Select Students"
 
@@ -1269,7 +1270,7 @@ msgstr "Status"
 msgid "Student ID"
 msgstr "Student ID"
 
-#: src/components/Navbar/Navbar.tsx:58
+#: src/components/Navbar/Navbar.tsx:61
 #: src/components/PageAddGuardian/PageAddGuardian.tsx:81
 #: src/components/PageAllObservations/PageAllObservations.tsx:20
 #: src/components/PageNewObservation/PageNewObservation.tsx:74

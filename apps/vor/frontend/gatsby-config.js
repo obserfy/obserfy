@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env`,
+})
+
 const plugins = [
   `gatsby-plugin-layout`,
   "gatsby-plugin-theme-ui",
