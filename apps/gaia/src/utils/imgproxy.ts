@@ -1,11 +1,9 @@
 import { createHmac } from "crypto"
 
-const KEY = process.env.IMGPROXY_KEY
-const SALT = process.env.IMGPROXY_SALT
-const URL = process.env.IMGPROXY_URL
-const BUCKET = process.env.IMGPROXY_BUCKET
-
-if (!KEY || !SALT || !URL || !BUCKET) throw new Error("Incomplete imgproxy env")
+const KEY = process.env.IMGPROXY_KEY ?? ""
+const SALT = process.env.IMGPROXY_SALT ?? ""
+const URL = process.env.IMGPROXY_URL ?? ""
+const BUCKET = process.env.IMGPROXY_BUCKET ?? ""
 
 const hexDecode = (hex: string) => Buffer.from(hex, "hex")
 
