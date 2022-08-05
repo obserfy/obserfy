@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.16.11](https://github.com/obserfy/obserfy/compare/v1.16.10...v1.16.11) (2022-08-05)
+
+
+### Bug Fixes
+
+* observation not being rendered properly. ([aac77f5](https://github.com/obserfy/obserfy/commit/aac77f5b2d8f8170536a47623592966bf74943f4))
+
 ### [1.16.10](https://github.com/obserfy/obserfy/compare/v1.16.9...v1.16.10) (2022-08-05)
 
 
