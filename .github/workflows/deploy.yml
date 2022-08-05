@@ -28,6 +28,9 @@ jobs:
       - name: Push image
         run: docker push obserfy/vor:${{ steps.get_version.outputs.VERSION  }}
       - name: Sentry Release
+        env:
+          SENTRY_ORG: obserfy
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
           yarn dlx @sentry/cli releases -p vor-frontend new ${{ steps.get_version.outputs.VERSION  }}
           yarn dlx @sentry/cli releases -p vor-frontend set-commits --auto ${{ steps.get_version.outputs.VERSION  }}
@@ -71,6 +74,10 @@ jobs:
       - name: Push image
         run: docker push obserfy/gaia:${{ steps.get_version.outputs.VERSION  }}
       - name: Sentry Release
+        env:
+          SENTRY_ORG: obserfy
+          SENTRY_PROJECT: gaia
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
           yarn dlx @sentry/cli releases -p gaia new ${{ steps.get_version.outputs.VERSION  }}
           yarn dlx @sentry/cli releases -p gaia set-commits --auto ${{ steps.get_version.outputs.VERSION  }}
