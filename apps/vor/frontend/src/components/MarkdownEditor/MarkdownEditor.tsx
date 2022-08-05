@@ -1,101 +1,30 @@
-/** @jsx jsx */
 import { Trans } from "@lingui/macro"
 import { FC, useState } from "react"
-import { jsx, Box, Flex } from "theme-ui"
-import { borderBottom } from "../../border"
+import { Box, Button, Flex } from "theme-ui"
+import { borderFull } from "../../border"
 import { ReactComponent as MarkdownIcon } from "../../icons/markdown.svg"
 import Icon from "../Icon/Icon"
 import Markdown from "../Markdown/Markdown"
-import { Typography } from "../Typography/Typography"
 
 export interface MarkdownEditorProps {
   value?: string
   onChange: (value: string) => void
+  placeholder?: string
 }
-const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
+
+const MarkdownEditor: FC<MarkdownEditorProps> = ({
+  onChange,
+  placeholder = "Write something",
+  value = "",
+}) => {
   const [showPreview, setShowPreview] = useState(false)
 
   return (
     <Box>
-      <Flex px={2} sx={{ alignItems: "center", ...borderBottom }}>
-        <Typography.Body
-          as="button"
-          px={3}
-          pt={2}
-          pb={2}
-          onClick={() => setShowPreview(false)}
-          sx={{
-            ...borderBottom,
-            borderColor: "primary",
-            borderBottomWidth: 2,
-            borderStyle: !showPreview ? "solid" : "none",
-            color: !showPreview ? "textPrimary" : "textMediumEmphasis",
-            fontWeight: "bold",
-            outline: "none",
-            "&:hover": { backgroundColor: "primaryLightest" },
-          }}
-        >
-          <Trans>Write</Trans>
-        </Typography.Body>
-        <Typography.Body
-          as="button"
-          px={3}
-          pt={2}
-          pb={2}
-          sx={{
-            ...borderBottom,
-            borderColor: "primary",
-            borderBottomWidth: 2,
-            borderStyle: showPreview ? "solid" : "none",
-            color: showPreview ? "textPrimary" : "textMediumEmphasis",
-            outline: "none",
-            "&:hover": { backgroundColor: "primaryLightest" },
-          }}
-          onClick={() => setShowPreview(true)}
-        >
-          <Trans>Preview</Trans>
-        </Typography.Body>
-
-        <a
-          href="https://obserfy.com/docs/markdown-support"
-          target="_blank"
-          rel="noreferrer"
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            ml: "auto",
-            transition: "color ease-in 0.1s",
-            color: "textMediumEmphasis",
-            whiteSpace: "nowrap",
-            "&:hover": {
-              color: "textPrimary",
-            },
-          }}
-        >
-          <Icon
-            as={MarkdownIcon}
-            mr={2}
-            mt={2}
-            mb={2}
-            sx={{ color: "inherit" }}
-          />
-
-          <Typography.Body
-            pr={2}
-            mt={2}
-            mb={2}
-            sx={{ fontSize: 0, color: "inherit", lineHeight: 1 }}
-          >
-            <Trans>Markdown Supported</Trans>
-          </Typography.Body>
-        </a>
-      </Flex>
-
       {showPreview ? (
         <Box
           p={3}
           sx={{
-            backgroundColor: "darkSurface",
             borderBottomLeftRadius: "default",
             borderBottomRightRadius: "default",
             minHeight: 408,
@@ -107,7 +36,6 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
         <Box
           px={2}
           sx={{
-            backgroundColor: "darkSurface",
             borderBottomLeftRadius: "default",
             borderBottomRightRadius: "default",
           }}
@@ -116,7 +44,7 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
             data-cy="markdown-editor"
             value={value}
             onChange={(e) => onChange(e.target.value)}
-            placeholder="Write something"
+            placeholder={placeholder}
             sx={{
               lineHeight: "1.7142857",
               outline: "none",
@@ -124,12 +52,78 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
               px: 2,
               py: 3,
               border: "none",
-              backgroundColor: "darkSurface",
               minHeight: 400,
+              backgroundColor: "transparent",
             }}
           />
         </Box>
       )}
+
+      <Flex px={2} pb={3} sx={{ alignItems: "center" }}>
+        <Button
+          variant="text"
+          as="button"
+          ml={2}
+          mr={0}
+          px={3}
+          py={12}
+          onClick={() => setShowPreview(false)}
+          sx={{
+            ...borderFull,
+            fontWeight: "bold",
+            backgroundColor: !showPreview ? "primaryLightest" : "none",
+            color: !showPreview ? "textPrimary" : "textMediumEmphasis",
+            borderColor: !showPreview ? "primary" : "border",
+            fontSize: 0,
+          }}
+        >
+          <Trans>Write</Trans>
+        </Button>
+        <Button
+          variant="text"
+          as="button"
+          ml={2}
+          mr={0}
+          px={3}
+          py={12}
+          onClick={() => setShowPreview(true)}
+          sx={{
+            ...borderFull,
+            fontWeight: "bold",
+            color: showPreview ? "warning" : "textMediumEmphasis",
+            borderColor: showPreview ? "warning" : "border",
+            fontSize: 0,
+            "&:hover, &:focus": {
+              backgroundColor: "tintWarning",
+              color: "warning",
+              borderColor: "warning",
+            },
+          }}
+        >
+          <Trans>Preview</Trans>
+        </Button>
+
+        <a
+          href="https://obserfy.com/docs/markdown-support"
+          target="_blank"
+          rel="noreferrer"
+          sx={{
+            display: "flex",
+            alignItems: "end",
+            ml: "auto",
+            transition: "color ease-in 0.1s",
+            color: "textMediumEmphasis",
+            whiteSpace: "nowrap",
+            mt: 3,
+            mr: 3,
+            "&:hover": {
+              color: "textPrimary",
+            },
+          }}
+        >
+          <Icon as={MarkdownIcon} mr={2} mt={2} sx={{ color: "inherit" }} />
+        </a>
+      </Flex>
     </Box>
   )
 }

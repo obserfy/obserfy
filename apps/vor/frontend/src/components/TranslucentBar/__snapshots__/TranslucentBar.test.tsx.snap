@@ -24,7 +24,7 @@ exports[`TranslucentBar should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent, rgba(255,255,255));
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent);
   z-index: 100;
   position: fixed;
   top: 0;
@@ -36,14 +36,14 @@ exports[`TranslucentBar should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-box-pack: space-around;
-  -ms-flex-pack: space-around;
-  -webkit-justify-content: space-around;
-  justify-content: space-around;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: space-around;
+  -ms-flex-pack: space-around;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
 }
 
 .emotion-4 {

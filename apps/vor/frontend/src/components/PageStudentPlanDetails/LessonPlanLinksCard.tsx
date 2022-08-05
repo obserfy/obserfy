@@ -1,6 +1,6 @@
 import { Link, Button, Card, Flex } from "theme-ui"
 import { Trans } from "@lingui/macro"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Typography } from "../Typography/Typography"
 import { GetPlanResponseBody } from "../../hooks/api/plans/useGetPlan"
 import useDeleteLessonPlanLink from "../../hooks/api/plans/useDeleteLessonPlanLink"

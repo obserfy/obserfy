@@ -31,7 +31,7 @@ func TestImagesApi(t *testing.T) {
 
 func (s *ImagesTestSuite) TestGetImages() {
 	t := s.T()
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 	image := s.GenerateImage(school)
 
 	tests := []struct {

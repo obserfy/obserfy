@@ -11,10 +11,6 @@
 </p>
 
 <p align="center">
-  <a href="https://codeclimate.com/github/obserfy/obserfy/maintainability">
-    <img src="https://api.codeclimate.com/v1/badges/2457c2aa1fea9cb172fb/maintainability" />
-  </a>
-
   <a href="https://codecov.io/gh/obserfy/obserfy">
     <img src="https://codecov.io/gh/obserfy/obserfy/branch/develop/graph/badge.svg" alt="Code Coverage" />
   </a>
@@ -37,9 +33,8 @@ packages/*        # Contains various patched or custom libraries that we use
 docker/*          # Contains dockerfile  for every projects. 
 apps/
 |--freyr          # Our landing page powered by gatsby
-|--gaia           # Contains all api and frontend for our parent dashboard, powered by nextjs
-|--vor            # Contains all code for parents dashboard, powered by gatsby and go
-|--e2e            # Our e2e tests
+|--gaia           # Contains all api and frontend for our parent's dashboard, powered by nextjs
+|--vor            # Contains all code for teacher's dashboard, powered by gatsby and go
 ```
 
 See each folder's README.md files for more info about them.

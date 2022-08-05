@@ -1,5 +1,5 @@
 import { PageProps } from "gatsby"
-import React, { FC } from "react"
+import { FC } from "react"
 import PageNewStudent from "../../../../components/PageNewStudent/PageNewStudent"
 import SEO from "../../../../components/seo"
 

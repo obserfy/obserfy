@@ -9,7 +9,7 @@ import (
 
 func (s *StudentTestSuite) TestExportCurriculumPdf() {
 	t := s.T()
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 
 	curriculum := school.Curriculum
 	area := s.generateCompleteArea(school)

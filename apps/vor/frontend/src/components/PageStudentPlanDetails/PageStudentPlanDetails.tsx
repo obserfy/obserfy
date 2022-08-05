@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box, Button } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import useGetPlan from "../../hooks/api/plans/useGetPlan"
@@ -59,6 +59,8 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
       </Box>
     )
   }
+
+  console.log(plan)
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">

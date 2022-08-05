@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { useImmer } from "use-immer"
 import { t, Trans } from "@lingui/macro"
 import { Box, Flex } from "theme-ui"
@@ -20,6 +20,7 @@ export interface StudentPickerDialogProps {
   onDismiss: () => void
   onAccept: (student: Student[]) => void
 }
+
 const StudentPickerDialog: FC<StudentPickerDialogProps> = ({
   filteredIds,
   onDismiss,
@@ -58,7 +59,7 @@ const StudentPickerDialog: FC<StudentPickerDialogProps> = ({
         }}
         disableAccept={result.length === 0}
       />
-      <div body-scroll-lock-ignore>
+      <div body-scroll-lock-ignore="true">
         <Box
           pt={3}
           sx={{

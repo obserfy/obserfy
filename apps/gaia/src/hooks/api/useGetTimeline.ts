@@ -1,4 +1,4 @@
-import { useQuery } from "react-query"
+import { useQuery } from "@tanstack/react-query"
 import { getApi } from "./apiHelpers"
 import { GetChildTimelineResponse } from "../../pages/api/children/[childId]/timeline"
 

@@ -49,7 +49,7 @@ func (s *ImagesTestSuite) TestObservationExport() {
 func (s *ImagesTestSuite) TestUnauthorizedObservationExport() {
 	t := s.T()
 	observation := s.GenerateObservation()
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 
 	result := s.CreateRequest("GET", "/"+school.Id+"/observations?studentId="+observation.StudentId+"&", nil, &school.Users[0].Id)
 	assert.Equal(t, result.Code, http.StatusOK)

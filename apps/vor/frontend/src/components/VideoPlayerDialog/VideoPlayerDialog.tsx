@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/macro"
-import React, { FC, Suspense, useState } from "react"
+import { FC, Suspense, useState } from "react"
 import { Box, Button, Flex } from "theme-ui"
 import dayjs from "../../dayjs"
 import { useGetStudent } from "../../hooks/api/useGetStudent"
@@ -59,7 +59,7 @@ const VideoPlayerDialog: FC<VideoPlayerDialogProps> = ({
         <Typography.Body p={3} sx={{ fontWeight: "bold" }}>
           {student.data?.name || ""}
         </Typography.Body>
-        <Button variant="secondary" ml="auto" px={2} mr={3} onClick={onClose}>
+        <Button variant="text" ml="auto" px={2} mr={3} onClick={onClose}>
           <Icon as={CloseIcon} />
         </Button>
       </Flex>
@@ -90,13 +90,7 @@ const VideoPlayerDialog: FC<VideoPlayerDialogProps> = ({
               </Typography.Body>
             </Box>
 
-            <Button
-              variant="secondary"
-              ml="auto"
-              px={2}
-              mr={3}
-              onClick={onClose}
-            >
+            <Button variant="text" ml="auto" px={2} mr={3} onClick={onClose}>
               <Icon as={CloseIcon} />
             </Button>
           </Flex>

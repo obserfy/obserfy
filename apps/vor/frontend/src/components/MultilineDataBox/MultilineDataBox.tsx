@@ -1,12 +1,12 @@
-import React, { FC } from "react"
-import { Box, Button, Flex } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
+import { FC } from "react"
+import { Box, Button, Flex } from "theme-ui"
 import { borderBottom } from "../../border"
-import { Typography } from "../Typography/Typography"
-import Icon from "../Icon/Icon"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
+import Icon from "../Icon/Icon"
 import Markdown from "../Markdown/Markdown"
+import { Typography } from "../Typography/Typography"
 
 export interface MultilineDataBoxProps {
   label: string
@@ -29,7 +29,7 @@ export const MultilineDataBox: FC<MultilineDataBoxProps> = ({
           <Trans id={label} />
         </Typography.Body>
         <Button
-          variant="secondary"
+          variant="text"
           ml="auto"
           mr={3}
           p={2}

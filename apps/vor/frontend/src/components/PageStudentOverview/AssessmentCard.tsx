@@ -1,16 +1,15 @@
-/** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
 import { FC, Fragment, useState } from "react"
-import { jsx, Box, Button, Card, Flex } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
 import { borderBottom } from "../../border"
 import { isEmpty } from "../../domain/array"
-import { exportMaaterialProgressCsv } from "../../export"
+import { exportMaterialProgressCsv } from "../../export"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import {
   Assessment,
   MaterialProgress,
-  useGetStudentMaterialProgress,
-} from "../../hooks/api/useGetStudentMaterialProgress"
+  useGetStudentAssessments,
+} from "../../hooks/api/useGetStudentAssessments"
 import { ADMIN_CURRICULUM_URL, STUDENT_PROGRESS_URL } from "../../routes"
 import InformationalCard from "../InformationalCard/InformationalCard"
 import { Link } from "../Link/Link"
@@ -30,8 +29,9 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [selected, setSelected] = useState<MaterialProgress>()
   const areas = useGetCurriculumAreas()
-  const progress = useGetStudentMaterialProgress(studentId)
-  const isLoading = areas.isLoading || progress.isLoading
+  const { data: assessments, isLoading: isAssessmentsLoading } =
+    useGetStudentAssessments(studentId)
+  const isLoading = areas.isLoading || isAssessmentsLoading
   // const exportDialog = useVisibilityState()
 
   const handleItemClick = (item: MaterialProgress) => {
@@ -40,12 +40,12 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
   }
 
   const handleExport = async () => {
-    await exportMaaterialProgressCsv(studentId, studentName)
+    await exportMaterialProgressCsv(studentId, studentName)
   }
 
   // Derived state
   const areaId = areas.data?.[tab]?.id
-  const inSelectedArea = progress.data?.filter((p) => p.areaId === areaId)
+  const inSelectedArea = assessments?.filter((p) => p.areaId === areaId)
   const inProgress = inSelectedArea?.filter(
     ({ stage }) => stage >= Assessment.PRESENTED && stage < Assessment.MASTERED
   )
@@ -63,10 +63,10 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
       <Card variant="responsive" sx={{ overflow: "inherit" }} mt={3}>
         <Flex sx={{ alignItems: "center" }} p={3} pb={2}>
           <Typography.H6>
-            <Trans>Curriculum Progress</Trans>
+            <Trans>Assessments</Trans>
           </Typography.H6>
 
-          <Button variant="secondary" ml="auto" onClick={handleExport}>
+          <Button variant="text" ml="auto" onClick={handleExport}>
             Export
           </Button>
         </Flex>
@@ -105,7 +105,7 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
             to={STUDENT_PROGRESS_URL(studentId, areaId ?? "")}
             sx={{ ml: "auto" }}
           >
-            <Button variant="secondary">
+            <Button variant="text">
               <Trans>See All {areas.data?.[tab]?.name} Progress</Trans>
             </Button>
           </Link>

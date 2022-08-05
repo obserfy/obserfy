@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FC } from "react"
+import { ChangeEventHandler, FC } from "react"
 import { Box, BoxProps, Card, Flex, Image, Input, Label } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"

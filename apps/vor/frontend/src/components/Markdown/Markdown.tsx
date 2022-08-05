@@ -1,5 +1,5 @@
 import DOMPurify from "dompurify"
-import React, { FC } from "react"
+import { FC } from "react"
 import snarkdown from "snarkdown"
 import { Box, BoxProps } from "theme-ui"
 
@@ -28,7 +28,7 @@ const Markdown: FC<MarkdownProps> = ({ markdown, className, ...props }) => {
 
   return (
     <Box
-      className={`prose prose-sm max-w-none ${className}`}
+      className={`prose-sm prose max-w-none ${className}`}
       dangerouslySetInnerHTML={innerHtml}
       {...props}
     />

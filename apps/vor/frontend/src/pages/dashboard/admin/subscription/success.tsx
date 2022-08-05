@@ -1,4 +1,3 @@
-import React from "react"
 import PagePaymentSuccess from "../../../../components/PagePaymentSuccess/PagePaymentSuccess"
 import SEO from "../../../../components/seo"
 

@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { FC, Fragment, useState } from "react"
-import { Box, Button, Card, Flex, Image, jsx } from "theme-ui"
+import { Box, Button, Card, Flex, Image } from "theme-ui"
 import { useLingui } from "@lingui/react"
 import { t, Trans } from "@lingui/macro"
 import { useGetAllStudents } from "../../hooks/api/students/useGetAllStudents"

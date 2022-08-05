@@ -9,5 +9,6 @@ export const useQueryString = (key: string): string => {
   } else {
     result = (router.query?.[key] as string) ?? ""
   }
+
   return result
 }

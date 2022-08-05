@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro"
-import React from "react"
+
 import { Helmet } from "react-helmet"
 import PageSubscription from "../../../../components/PageSubscription/PageSubscription"
 import SEO from "../../../../components/seo"

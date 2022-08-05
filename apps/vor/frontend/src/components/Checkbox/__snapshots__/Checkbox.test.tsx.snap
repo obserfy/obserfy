@@ -23,7 +23,7 @@ exports[`Checkbox should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
@@ -71,7 +71,7 @@ exports[`Checkbox should render correctly 1`] = `
   min-width: 0;
   margin-right: 8px;
   border-radius: 4px;
-  color: var(--theme-ui-colors-gray, #dddddf);
+  color: var(--theme-ui-colors-gray);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -82,12 +82,12 @@ input:checked~.emotion-4 {
 }
 
 input:checked~.emotion-4 {
-  color: var(--theme-ui-colors-primary, #00e399);
+  color: var(--theme-ui-colors-primary);
 }
 
 input:focus~.emotion-4 {
-  color: var(--theme-ui-colors-primary, #00e399);
-  background-color: var(--theme-ui-colors-highlight, hsla(205, 100%, 40%, 0.125));
+  color: var(--theme-ui-colors-primary);
+  background-color: var(--theme-ui-colors-highlight);
 }
 
 .emotion-5 {
@@ -100,7 +100,7 @@ input:focus~.emotion-4 {
   min-width: 0;
   margin-right: 8px;
   border-radius: 4px;
-  color: var(--theme-ui-colors-gray, #dddddf);
+  color: var(--theme-ui-colors-gray);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -111,12 +111,12 @@ input:checked~.emotion-5 {
 }
 
 input:checked~.emotion-5 {
-  color: var(--theme-ui-colors-primary, #00e399);
+  color: var(--theme-ui-colors-primary);
 }
 
 input:focus~.emotion-5 {
-  color: var(--theme-ui-colors-primary, #00e399);
-  background-color: var(--theme-ui-colors-highlight, hsla(205, 100%, 40%, 0.125));
+  color: var(--theme-ui-colors-primary);
+  background-color: var(--theme-ui-colors-highlight);
 }
 
 <div>

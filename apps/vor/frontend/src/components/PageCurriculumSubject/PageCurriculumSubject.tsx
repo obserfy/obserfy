@@ -1,7 +1,6 @@
-/** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
-import { Fragment, FC, memo, useState, useEffect } from "react"
-import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
+import { FC, Fragment, memo, useEffect, useState } from "react"
+import { Box, Button, Flex } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
 import usePatchMaterial from "../../hooks/api/curriculum/usePatchMaterial"
 import usePostNewMaterial from "../../hooks/api/curriculum/usePostNewMaterial"
@@ -43,12 +42,13 @@ import EditSubjectDialog from "./EditSubjectDialog"
 export interface PageCurriculumSubjectProps {
   subjectId: string
   areaId: string
-  sx?: ThemeUIStyleObject
+  className?: string
 }
+
 const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
   areaId,
   subjectId,
-  sx,
+  className,
 }) => {
   const materialId = useQueryString("materialId")
 
@@ -61,7 +61,10 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
   const editSubject = useVisibilityState()
 
   return (
-    <Box sx={{ position: "relative", width: "100%", pb: 5, ...sx }}>
+    <Box
+      className={className}
+      sx={{ position: "relative", width: "100%", pb: 5 }}
+    >
       <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
           containerSx={{ display: ["flex", "flex", "none"] }}
@@ -170,9 +173,8 @@ const MaterialList: FC<{
   currMaterialId: string
 }> = ({ materials, subjectId, areaId, currMaterialId }) => {
   const [isLoading, setIsLoading] = useState(false)
-  const [cachedMaterials, moveItem, setMaterials] = useMoveDraggableItem(
-    materials
-  )
+  const [cachedMaterials, moveItem, setMaterials] =
+    useMoveDraggableItem(materials)
 
   const debouncedIsLoading = useDebounce(isLoading)
 

@@ -1,5 +1,5 @@
 import { t, Trans } from "@lingui/macro"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box, Button, Card, ThemeUIStyleObject } from "theme-ui"
 import useDeleteMaterial from "../../hooks/api/curriculum/useDeleteMaterial"
 import useGetMaterial from "../../hooks/api/curriculum/useGetMaterial"

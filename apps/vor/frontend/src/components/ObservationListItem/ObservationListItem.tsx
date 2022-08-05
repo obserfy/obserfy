@@ -1,24 +1,26 @@
-import React, { FC } from "react"
-import { Box, Flex } from "theme-ui"
 import { Trans } from "@lingui/macro"
+import { FC } from "react"
+import { Box, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom } from "../../border"
 import { Observation } from "../../hooks/api/useGetStudentObservations"
+import { ReactComponent as EyeIcon } from "../../icons/eye.svg"
 import Icon from "../Icon/Icon"
 import ImagePreview from "../ImagePreview/ImagePreview"
 import { Link } from "../Link/Link"
 import Markdown from "../Markdown/Markdown"
 import Typography from "../Typography/Typography"
-import { ReactComponent as EyeIcon } from "../../icons/eye.svg"
 
 export interface ObservationListItemProps {
   observation: Observation
   detailsUrl: string
   studentId: string
+  containerSx?: ThemeUIStyleObject
 }
 const ObservationListItem: FC<ObservationListItemProps> = ({
   studentId,
   observation,
   detailsUrl,
+  containerSx,
 }) => {
   return (
     <Link to={detailsUrl}>
@@ -26,6 +28,7 @@ const ObservationListItem: FC<ObservationListItemProps> = ({
         pt={3}
         sx={{
           ...borderBottom,
+          ...containerSx,
           "&:hover": { backgroundColor: "primaryLighter" },
         }}
       >

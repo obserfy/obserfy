@@ -11,6 +11,8 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
+	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"strconv"
@@ -40,6 +42,8 @@ func NewRouter(
 		r.Method("DELETE", "/curriculums", deleteCurriculum(server, store))
 		r.Method("GET", "/curriculums", getCurriculum(server, store))
 		r.Method("GET", "/curriculums/areas", getCurriculumAreas(server, store))
+		// TODO: bulk import curriculum is unfinished
+		//r.Method("POST", "/curriculums/import", importBulkCurriculum(server, store))
 
 		r.Method("POST", "/classes", postNewClass(server, store))
 		r.Method("GET", "/classes", getClasses(server, store))
@@ -63,7 +67,11 @@ func NewRouter(
 		r.Method("POST", "/images", postNewImage(server, store))
 
 		r.Method("POST", "/videos/upload", postCreateVideoUploadLink(server, store, videos))
+
+		r.Method("POST", "/progress-reports", postNewProgressReport(server, store))
+		r.Method("GET", "/progress-reports", getProgressReports(server, store))
 	})
+
 	return r
 }
 
@@ -175,6 +183,7 @@ func getClasses(server rest.Server, store Store) http.Handler {
 		return nil
 	})
 }
+
 func getClassAttendance(server rest.Server, store Store) http.Handler {
 	type attendanceData struct {
 		StudentId string `json:"studentId"`
@@ -562,7 +571,6 @@ func refreshInviteCode(s rest.Server, store Store) http.Handler {
 		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed getting school info", err}
 		}
-
 		if err := rest.WriteJson(w, school); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
@@ -1205,6 +1213,36 @@ func postNewImage(server rest.Server, store Store) http.Handler {
 	})
 }
 
+func importBulkCurriculum(s rest.Server, store Store) rest.Handler {
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		if err := r.ParseMultipartForm(10 << 20); err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "failed to parse payload",
+				Error:   richErrors.Wrap(err, "failed to parse response body"),
+			}
+		}
+
+		file, fileHeader, err := r.FormFile("csvFile")
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "invalid payload",
+				Error:   richErrors.Wrap(err, "invalid payload"),
+			}
+		}
+		log.Println("FILE:", file)
+		log.Println("FILE HEADER:", fileHeader)
+		fileBytes, _ := ioutil.ReadAll(file)
+		log.Println("BYTES:", fileBytes)
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, "test"); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
 func postCreateVideoUploadLink(server rest.Server, store Store, videos domain.VideoService) http.Handler {
 	type requestBody struct {
 		StudentId string `json:"studentId"`
@@ -1212,37 +1250,105 @@ func postCreateVideoUploadLink(server rest.Server, store Store, videos domain.Vi
 	type responseBody struct {
 		Url string `json:"url"`
 	}
-	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		schoolId := chi.URLParam(r, "schoolId")
-		session, ok := auth.GetSessionFromCtx(r.Context())
-		if !ok {
-			return &rest.Error{
-				Code:    http.StatusUnauthorized,
-				Message: "invalid session",
-				Error:   richErrors.New("invalid session"),
-			}
-		}
+	return server.NewHandler2(func(r *rest.Request) rest.ServerResponse {
+		schoolId := r.GetParam("schoolId")
+		session, _ := auth.GetSessionFromCtx(r.Context())
 
 		var body requestBody
-		if err := rest.ParseJson(r.Body, &body); err != nil {
-			return rest.NewParseJsonError(err)
+		if err := r.ParseBody(&body); err != nil {
+			return server.BadRequest(err)
 		}
 
 		video, err := videos.CreateUploadLink()
 		if err != nil {
-			return rest.NewInternalServerError(err, "failed to create upload link")
+			return server.InternalServerError(err)
 		}
+
 		video.SchoolId = schoolId
 		video.UserId = session.UserId
-
 		if err := store.CreateStudentVideo(schoolId, body.StudentId, video); err != nil {
-			return rest.NewInternalServerError(err, "failed to save video to db")
+			return server.InternalServerError(err)
 		}
 
-		w.WriteHeader(http.StatusCreated)
-		if err := rest.WriteJson(w, &responseBody{video.UploadUrl}); err != nil {
-			return rest.NewWriteJsonError(err)
+		return rest.ServerResponse{
+			Status: http.StatusCreated,
+			Body:   responseBody{video.UploadUrl},
 		}
-		return nil
+	})
+}
+
+func postNewProgressReport(s rest.Server, store Store) http.Handler {
+	type requestBody struct {
+		Title             string    `json:"title"`
+		PeriodStart       time.Time `json:"periodStart"`
+		PeriodEnd         time.Time `json:"periodEnd"`
+		CustomizeStudents bool      `json:"customizeStudents"`
+		Students          []string  `json:"students"`
+	}
+	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
+		schoolId := r.GetParam("schoolId")
+
+		var report requestBody
+		if err := r.ParseBody(&report); err != nil {
+			return s.BadRequest(err)
+		}
+
+		if report.CustomizeStudents {
+			if err := store.NewProgressReport(
+				schoolId,
+				report.Title,
+				report.PeriodStart,
+				report.PeriodEnd,
+				report.Students,
+			); err != nil {
+				return s.InternalServerError(err)
+			}
+		} else {
+			if err := store.NewProgressReport(
+				schoolId,
+				report.Title,
+				report.PeriodStart,
+				report.PeriodEnd, nil,
+			); err != nil {
+				return s.InternalServerError(err)
+			}
+		}
+
+		return rest.ServerResponse{
+			Status: http.StatusCreated,
+		}
+	})
+}
+
+func getProgressReports(s rest.Server, store Store) http.Handler {
+	type responseBody struct {
+		Id          uuid.UUID `json:"id"`
+		Title       string    `json:"title,omitempty"`
+		PeriodStart time.Time `json:"periodStart,omitempty"`
+		PeriodEnd   time.Time `json:"periodEnd,omitempty"`
+		Published   bool      `json:"published,omitempty"`
+	}
+	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
+		schoolId := r.GetParam("schoolId")
+
+		reports, err := store.GetReports(schoolId)
+		if err != nil {
+			return s.InternalServerError(err)
+		}
+
+		result := make([]responseBody, len(reports))
+		for i, report := range reports {
+			result[i] = responseBody{
+				Id:          report.Id,
+				Title:       report.Title,
+				PeriodStart: report.PeriodStart,
+				PeriodEnd:   report.PeriodEnd,
+				Published:   report.Published,
+			}
+		}
+
+		return rest.ServerResponse{
+			Body: result,
+		}
 	})
 }

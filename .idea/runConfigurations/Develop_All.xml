@@ -1,9 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Develop All" type="CompoundRunConfigurationType">
-    <toRun name="vor develop" type="js.build_tools.npm" />
-    <toRun name="freyr develop" type="js.build_tools.npm" />
     <toRun name="docker develop" type="docker-deploy" />
     <toRun name="gaia develop" type="js.build_tools.npm" />
+    <toRun name="vor develop" type="js.build_tools.npm" />
     <method v="2" />
   </configuration>
 </component>

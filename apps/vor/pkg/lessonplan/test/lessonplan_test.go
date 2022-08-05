@@ -152,7 +152,7 @@ func (s *LessonPlansTestSuite) TestPostNewLinks() {
 
 func (s *LessonPlansTestSuite) TestPostNewLessonPlanRelatedStudent() {
 	t := s.T()
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 	lessonPlan, userId := s.GenerateLessonPlan(school)
 	students := []*postgres.Student{
 		s.GenerateStudent(school),
@@ -184,7 +184,7 @@ func (s *LessonPlansTestSuite) TestPostNewLessonPlanRelatedStudent() {
 
 func (s *LessonPlansTestSuite) TestDeleteLessonPlanRelatedStudent() {
 	t := s.T()
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 	lessonPlan, userId := s.GenerateLessonPlan(school)
 	gofakeit.Seed(time.Now().UnixNano())
 

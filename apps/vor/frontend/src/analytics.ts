@@ -6,12 +6,11 @@ export const track = (event: string, properties?: Object) => {
   }
 
   if (typeof Sentry !== "undefined") {
-    const breadcrumb = {
+    Sentry.addBreadcrumb({
       category: "track",
       level: "info",
       data: properties,
-    }
-    Sentry.addBreadcrumb(breadcrumb)
+    })
   }
 }
 

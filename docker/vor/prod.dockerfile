@@ -3,12 +3,12 @@
 ####################################
 # Build the gatsby powered frontend
 ####################################
-FROM node:14 AS frontend-builder
+FROM node:18 AS frontend-builder
 WORKDIR /usr/src
 COPY . /usr/src
 # Build the project
 #RUN --mount=type=secret,id=env,dst=/usr/src/apps/vor/frontend/.env yarn workspace vor run build
-RUN yarn workspaces focus vor
+RUN yarn install
 RUN yarn workspace vor run build
 # Move the build artifact so its easier to be copied
 # on the final build
@@ -18,7 +18,7 @@ RUN cp -r ./apps/vor/frontend/public /frontend/public
 ####################################
 # Build the API server
 ####################################
-FROM golang:1.15 AS api-builder
+FROM golang:1.19 AS api-builder
 WORKDIR /usr/src/apps/vor
 COPY . /usr/src
 # Build the project

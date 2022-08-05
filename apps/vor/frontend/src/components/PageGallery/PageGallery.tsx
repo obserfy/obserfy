@@ -1,8 +1,7 @@
-/** @jsx jsx * */
 import { keyframes } from "@emotion/react"
 import { Trans } from "@lingui/macro"
 import { ChangeEvent, FC, Fragment, useEffect, useState } from "react"
-import { Box, Button, Flex, Image, Label, jsx } from "theme-ui"
+import { Box, Button, Flex, Image, Label } from "theme-ui"
 import { getFirstName } from "../../domain/person"
 import { VideoStatus } from "../../domain/video"
 import { useUploadStudentVideo } from "../../hooks/api/schools/useUploadStudentVideo"

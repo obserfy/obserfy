@@ -1,32 +1,41 @@
+import { guardians, observations as Observations, users } from "@prisma/client"
 import { isPresent } from "ts-is-present"
-import { findLessonPlanById } from "../../../../db/queries"
+import { findLessonPlanById } from "$lib/db"
+import { markdownToHtml } from "../../../../utils/markdown"
 import { protectedApiRoute } from "../../../../utils/rest"
 
 export interface GetLessonPlanResponse {
   id: string
-  title: string
+  title?: string | null
   areaName: string
   description: string
-  endDate: string
-  links: Array<{ id: string; url: string }>
-  repetitionType: string
+  endDate?: string
+  links: Array<{ id?: string | null; url?: string | null }>
+  repetitionType?: string
   startDate: string
+  observations: (Observations & {
+    guardians: guardians | null
+    users: users | null
+  })[]
 }
 const handleLessonPlan = protectedApiRoute(async (req, res) => {
   const { planId } = req.query
 
   if (req.method === "GET") {
-    const plan = await findLessonPlanById(planId as string)
-    if (plan) {
+    const lp = await findLessonPlanById(planId as string)
+
+    if (lp) {
+      const { lesson_plan_details: details } = lp
       const response: GetLessonPlanResponse = {
-        id: plan.id,
-        title: plan.title,
-        description: plan.description ?? "",
-        links: plan.links.filter(isPresent),
-        areaName: plan.area_name ?? "",
-        endDate: plan.end_date.toISOString(),
-        startDate: plan.start_date.toISOString(),
-        repetitionType: plan.repetition_type,
+        id: lp.id,
+        title: details?.title,
+        description: markdownToHtml(details?.description ?? ""),
+        links: details?.lesson_plan_links?.filter(isPresent) ?? [],
+        areaName: details?.areas?.name ?? "",
+        endDate: details?.repetition_end_date?.toISOString(),
+        startDate: lp.date.toISOString(),
+        repetitionType: details?.repetition_type?.toString(),
+        observations: lp.observations,
       }
       return res.json(response)
     }

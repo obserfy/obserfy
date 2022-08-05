@@ -1,58 +1,58 @@
-import React, { FC, useState } from "react"
 import Link from "next/link"
-import dayjs from "../../utils/dayjs"
+import { FC, useState } from "react"
+import Icon from "$components/Icon/Icon"
 import useGetAllLessonPlans from "../../hooks/api/useGetAllLessonPlans"
 import { useQueryString } from "../../hooks/useQueryString"
-import SearchIcon from "../../icons/search.svg"
 import { GetChildPlansResponse } from "../../pages/api/children/[childId]/plans/all"
 import { isEmpty } from "../../utils/array"
+import dayjs from "$lib/dayjs"
 
 const AllLessonPlans: FC = () => {
   const [search, setSearch] = useState("")
-  const childId = useQueryString("childId")
-  const childPlans = useGetAllLessonPlans(childId)
+  const studentId = useQueryString("studentId")
+  const studentLessonPlans = useGetAllLessonPlans(studentId)
 
-  const plans = childPlans.data?.filter(({ title }) =>
+  const plans = studentLessonPlans.data?.filter(({ title }) =>
     title.match(new RegExp(search, "i"))
   )
 
   return (
-    <div className="max-w-3xl mx-auto border w-full mb-5 md:rounded bg-surface">
-      <div className="flex items-center border rounded focus-within:border-primary bg-gray-100 m-3">
-        <SearchIcon className="w-4 h-4 m-2 opacity-70" />
+    <div className="mx-auto mb-5 w-full max-w-3xl border bg-surface md:rounded">
+      <div className="focus-within:border-primary m-3 flex items-center rounded border bg-gray-100">
+        <Icon src="/icons/search.svg" className="m-2 h-4 w-4 opacity-70" />
         <input
-          className="w-full py-2 outline-none mr-1 bg-gray-100"
+          className="mr-1 w-full bg-gray-100 py-2 outline-none"
           placeholder="Search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
 
-      {isEmpty(plans) && childPlans.isSuccess && (
+      {isEmpty(plans) && studentLessonPlans.isSuccess && (
         <div className="p-3">No lesson plan found</div>
       )}
 
       {plans?.map((plan) => (
-        <Plan key={plan.id} plan={plan} childId={childId} />
+        <Plan key={plan.id} plan={plan} studentId={studentId} />
       ))}
     </div>
   )
 }
 
-const Plan: FC<{ plan: GetChildPlansResponse; childId: string }> = ({
-  plan,
-  childId,
-}) => (
-  <Link href={`/lesson-plan/details?childId=${childId}&planId=${plan.id}`}>
-    <div className="p-3 border-t hover:bg-gray-100">
+const Plan: FC<{
+  plan: GetChildPlansResponse
+  studentId: string
+}> = ({ plan, studentId }) => (
+  <Link href={`/${studentId}/lesson-plan/details?planId=${plan.id}`}>
+    <div className="border-t p-3 hover:bg-gray-100">
       <div className="flex-1 font-bold text-gray-700">{plan.title}</div>
-      <div className="flex text-xs pt-2">
+      <div className="flex pt-2 text-xs">
         <div className="text-green-700">{plan.area?.name}</div>
-        <div className="ml-auto opacity-70 ">
+        <div className="ml-auto opacity-70">
           {dayjs(plan.startDate).format("D MMM YYYY")}
         </div>
         {plan.repetitionType !== "0" && (
-          <div className="ml-1 opacity-70 ">
+          <div className="ml-1 opacity-70">
             {" - "}
             {dayjs(plan.endDate).format("D MMM YYYY")}
           </div>

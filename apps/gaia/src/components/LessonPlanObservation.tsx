@@ -1,5 +1,5 @@
-import React, { FC, useState } from "react"
-import { Dayjs } from "../utils/dayjs"
+import { FC, useState } from "react"
+import { Dayjs } from "$lib/dayjs"
 import Button from "./Button/Button"
 import { EditObservationForm } from "./EditObservationForm"
 import Markdown from "./Markdown/Markdown"
@@ -11,8 +11,8 @@ const LessonPlanObservation: FC<{
 }> = ({ id, observation, createdAt }) => {
   const [isEditing, setIsEditing] = useState(false)
   return (
-    <div className="px-3 mt-2 text-gray-700 flex w-full">
-      <div className="rounded-full bg-black w-1 flex-shrink-0 mr-3" />
+    <div className="mt-2 flex w-full px-3 text-gray-700">
+      <div className="mr-3 w-1 shrink-0 rounded-full bg-black" />
 
       <div className="w-full">
         {isEditing && (
@@ -26,11 +26,11 @@ const LessonPlanObservation: FC<{
         {!isEditing && (
           <>
             <Markdown markdown={observation} />
-            <div className="flex mt-2 item-center w-full">
+            <div className="item-center mt-2 flex w-full">
               <div className="text-sm">{createdAt.format("HH:mm")}</div>
               <Button
-                outline
-                className="ml-auto mr-3 text-sm underline cursor-pointer border-none p-0"
+                variant="outline"
+                className="mr-3 ml-auto cursor-pointer border-none p-0 text-sm underline"
                 onClick={() => setIsEditing(true)}
               >
                 Edit

@@ -1,5 +1,5 @@
 import { t, Trans } from "@lingui/macro"
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box, Button, Card, Flex, Image } from "theme-ui"
 import { useGetSchool } from "../../hooks/api/schools/useGetSchool"
 import { ReactComponent as SuccessIllustration } from "../../images/success.svg"

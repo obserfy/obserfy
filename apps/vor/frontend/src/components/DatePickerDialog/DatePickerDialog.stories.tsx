@@ -1,4 +1,3 @@
-import React from "react"
 import { action } from "@storybook/addon-actions"
 import { Meta, Story } from "@storybook/react"
 import DatePickerDialog, { DatePickerDialogProps } from "./DatePickerDialog"

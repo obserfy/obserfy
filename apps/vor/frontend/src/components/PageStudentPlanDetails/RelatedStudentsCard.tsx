@@ -1,20 +1,21 @@
 import { Trans } from "@lingui/macro"
-import React, { FC } from "react"
+import { FC } from "react"
 import { Button, Card, Flex, Image } from "theme-ui"
-import { Typography } from "../Typography/Typography"
-import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
-import Icon from "../Icon/Icon"
-import StudentPickerDialog from "../StudentPickerDialog/StudentPickerDialog"
-import useVisibilityState from "../../hooks/useVisibilityState"
 import useDeleteRelatedStudent from "../../hooks/api/plans/useDeleteRelatedStudent"
 import usePostNewRelatedStudents from "../../hooks/api/plans/usePostNewRelatedStudents"
+import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
+import Icon from "../Icon/Icon"
+import StudentPickerDialog from "../StudentPickerDialog/StudentPickerDialog"
+import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
+import { Typography } from "../Typography/Typography"
 
 interface Student {
   id: string
   name: string
   profileImageUrl?: string
 }
+
 const RelatedStudentsCard: FC<{
   planId: string
   studentId: string
@@ -103,7 +104,7 @@ const StudentListItem: FC<{
       <Typography.Body ml={3}>{name}</Typography.Body>
       <Button
         data-cy="delete-student"
-        variant="secondary"
+        variant="text"
         ml="auto"
         onClick={handleDeleteRelatedStudent}
       >

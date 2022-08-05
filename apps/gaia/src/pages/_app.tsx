@@ -1,69 +1,33 @@
 /* eslint-disable react/no-danger */
-import { AppComponent } from "next/dist/next-server/lib/router/router"
-import React from "react"
-import { QueryClient, QueryClientProvider } from "react-query"
-import { ReactQueryDevtools } from "react-query/devtools"
-import ErrorBoundary from "../components/ErrorBoundary"
-import Layout from "../components/layout"
-import "../global.css"
-import useInitAnalytics from "../hooks/useInitAnalytics"
-import { initSentry } from "../utils/sentry"
+import { NextPage } from "next"
+import { AppProps } from "next/app"
+import Head from "next/head"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import ErrorBoundary from "$components/ErrorBoundary"
+import LoadMixpanel from "$components/LoadMixpanel"
+import LoadSentry from "$components/LoadSentry"
+import "$styles/global.css"
+import "@fontsource/source-sans-pro/400.css"
+import "@fontsource/source-sans-pro/600.css"
+import "@fontsource/source-sans-pro/700.css"
 
-initSentry()
 const queryClient = new QueryClient()
 
-const App: AppComponent = ({ Component, pageProps }) => {
-  useInitAnalytics()
+const App: NextPage<AppProps> = ({ Component, pageProps }) => (
+  <ErrorBoundary>
+    <Head>
+      <title>Obserfy for Parents</title>
+      <meta name="theme-color" content="#ffffff" />
+      <link rel="apple-touch-icon" href="/icons/apple-icon-192.png" />
+      <link rel="manifest" href="/manifest.webmanifest" />
+    </Head>
 
-  return (
-    <ErrorBoundary>
-      <QueryClientProvider client={queryClient}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-        <ReactQueryDevtools initialIsOpen={false} />
-        <LoadFonts />
-      </QueryClientProvider>
-    </ErrorBoundary>
-  )
-}
-
-const LoadFonts = () => (
-  <style
-    dangerouslySetInnerHTML={{
-      __html: `
-          @font-face {
-            font-family: "Open Sans";
-            font-style: normal;
-            font-weight: 400;
-            src: local("Open Sans Regular"), local("OpenSans-Regular"),
-              url(/google-fonts/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0b.woff2)
-                format("woff2"),
-              url(/google-fonts/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0d.woff)
-                format("woff");
-            font-display: swap;
-          }
-          
-          @font-face {
-            font-family: "Open Sans";
-            font-style: normal;
-            font-weight: 700;
-            src: local("Open Sans Bold"), local("OpenSans-Bold"),
-              url(/google-fonts/s/opensans/v17/mem5YaGs126MiZpBA-UN7rgOUuhp.woff2)
-                format("woff2"),
-              url(/google-fonts/s/opensans/v17/mem5YaGs126MiZpBA-UN7rgOUuhv.woff)
-                format("woff");
-            font-display: swap;
-          }
-          
-          html {
-            font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
-              Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Helvetica Neue",
-              Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-              "Noto Color Emoji";
-          } `,
-    }}
-  />
+    <LoadMixpanel />
+    <LoadSentry />
+    <QueryClientProvider client={queryClient}>
+      <Component {...pageProps} />
+    </QueryClientProvider>
+  </ErrorBoundary>
 )
 
 export default App

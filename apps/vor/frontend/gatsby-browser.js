@@ -1,5 +1,13 @@
 import { redirectToPreferredLang } from "./src/i18n"
 import { track } from "./src/analytics"
+import { i18n } from "@lingui/core"
+import { en, id } from "make-plural/plurals"
+import "@fontsource/lora/700.css"
+import "./src/global.css"
+import "./src/tailwind.css"
+
+i18n.loadLocaleData("en", { plurals: en })
+i18n.loadLocaleData("id", { plurals: id })
 
 export const onServiceWorkerUpdateReady = () => {
   if (window.updateAvailable) {

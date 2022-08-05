@@ -23,10 +23,10 @@ exports[`DraggableListItem should render correctly 1`] = `
   height: 54px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-bottom-color: var(--theme-ui-colors-border);
   border-right-width: 2px;
   border-right-style: solid;
-  border-right-color: var(--theme-ui-colors-textPrimary, #027c5b);
+  border-right-color: var(--theme-ui-colors-textPrimary);
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -34,7 +34,7 @@ exports[`DraggableListItem should render correctly 1`] = `
 }
 
 .emotion-1:hover {
-  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest);
 }
 
 .emotion-2 {
@@ -42,6 +42,10 @@ exports[`DraggableListItem should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   background-color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: 54px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -59,10 +63,6 @@ exports[`DraggableListItem should render correctly 1`] = `
   z-index: 1;
   border-radius: 0;
   top: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {

@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "jsx": "react-jsx",
+    "jsxImportSource": "theme-ui",
+    "baseUrl": ".",
     "module": "esnext",
     "target": "es5",
     "lib": ["es6", "dom"],
     "sourceMap": true,
-    "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "src",
     "esModuleInterop": true,
@@ -19,13 +20,10 @@
     "downlevelIteration": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "allowJs": true
+    "allowJs": true,
+    "paths": {
+      "@components/*": ["components/*"]
+    }
   },
-  "include": [
-    "src",
-    "i18n",
-    "graphql-types.ts",
-    "loadershim.ts",
-    "tailwind.config.js"
-  ]
+  "include": [ "src" ]
 }

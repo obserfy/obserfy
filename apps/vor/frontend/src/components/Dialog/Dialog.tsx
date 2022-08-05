@@ -1,4 +1,4 @@
-import React, { FC, PropsWithoutRef, useLayoutEffect, useRef } from "react"
+import { FC, PropsWithoutRef, useLayoutEffect, useRef } from "react"
 import { keyframes } from "@emotion/react"
 import { Box, BoxProps, Card, Flex } from "theme-ui"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"

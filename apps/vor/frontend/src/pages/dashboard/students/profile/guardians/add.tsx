@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import PageAddGuardian from "../../../../../components/PageAddGuardian/PageAddGuardian"
 import { useQueryString } from "../../../../../hooks/useQueryString"
 

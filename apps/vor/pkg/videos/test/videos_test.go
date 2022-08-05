@@ -29,7 +29,7 @@ func (s *VideoTestSuite) SetupTest() {
 
 func (s *VideoTestSuite) TestDeleteVideo() {
 	t := s.T()
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 	video := s.GenerateVideo(school, nil)
 
 	result := s.CreateRequest("DELETE", "/"+video.Id.String(), nil, &school.Users[0].Id)
@@ -43,8 +43,8 @@ func (s *VideoTestSuite) TestDeleteVideo() {
 
 func (s *VideoTestSuite) TestUnauthorizedDeleteVideo() {
 	t := s.T()
-	school := s.GenerateSchool()
-	otherSchool := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
+	otherSchool, _ := s.GenerateSchool()
 	video := s.GenerateVideo(school, nil)
 
 	result := s.CreateRequest("DELETE", "/"+video.Id.String(), nil, &otherSchool.Users[0].Id)

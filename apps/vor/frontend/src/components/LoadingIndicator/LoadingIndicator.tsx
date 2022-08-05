@@ -1,6 +1,6 @@
 // @ts-nocheck
-import React, { FC } from "react"
 import { keyframes } from "@emotion/react"
+import { FC } from "react"
 import { Box, BoxProps } from "theme-ui"
 
 const ellipsis1 = keyframes(`

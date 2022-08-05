@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import Chip from "./Chip"
 
 export default {

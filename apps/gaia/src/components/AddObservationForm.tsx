@@ -1,5 +1,4 @@
-import * as Sentry from "@sentry/node"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import usePostPlanObservation from "../hooks/api/usePostPlanObservation"
 import Button from "./Button/Button"
 import Textarea from "./Textarea/Textarea"
@@ -18,7 +17,7 @@ const AddObservationForm: FC<{
       setLoading(true)
       await postObservation.mutateAsync({
         observation,
-        childId,
+        studentId: childId,
       })
       onDismiss()
     } catch (e) {
@@ -30,26 +29,26 @@ const AddObservationForm: FC<{
 
   return (
     <>
-      <div className="px-3 w-full">
+      <div className="w-full px-3">
         <Textarea
-          className="w-full mt-3"
+          className="mt-3 w-full"
           label="Observation"
           value={observation}
           onChange={(e) => setObservation(e.target.value)}
           disabled={loading}
         />
       </div>
-      <div className="flex ml-auto">
+      <div className="ml-auto flex">
         <Button
-          outline
-          className="ml-auto mr-3 mt-3"
+          variant="outline"
+          className="mt-3 mr-3 ml-auto"
           onClick={onDismiss}
           disabled={loading}
         >
           Cancel
         </Button>
         <Button
-          className="ml-auto mr-3 mt-3"
+          className="mt-3 mr-3 ml-auto"
           disabled={loading}
           onClick={handleSubmit}
         >

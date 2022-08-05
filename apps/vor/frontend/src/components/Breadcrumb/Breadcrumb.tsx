@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { Flex, ThemeUIStyleObject } from "theme-ui"
 
 export interface BreadcrumbProps {

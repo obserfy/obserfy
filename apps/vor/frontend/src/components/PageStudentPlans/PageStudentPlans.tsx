@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { FC, useState } from "react"
-import { Box, Button, Card, Flex, jsx } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { getFirstName } from "../../domain/person"
 import {

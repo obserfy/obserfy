@@ -6,3 +6,4 @@
 **/*.public
 **/*.idea
 sentrysecret
+**/node_modules

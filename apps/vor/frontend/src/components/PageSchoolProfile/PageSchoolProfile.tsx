@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box, Card } from "theme-ui"
 import { useGetSchool } from "../../hooks/api/schools/useGetSchool"
 import usePatchSchool from "../../hooks/api/schools/usePatchSchool"

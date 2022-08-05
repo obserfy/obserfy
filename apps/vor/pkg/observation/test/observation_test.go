@@ -67,7 +67,7 @@ func (s *ObservationTestSuite) TestGetObservation() {
 }
 
 func (s *ObservationTestSuite) TestInvalidGetObservation() {
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 	tests := []struct {
 		name          string
 		observationId string

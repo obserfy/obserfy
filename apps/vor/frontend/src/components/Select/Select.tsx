@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FC, PropsWithoutRef } from "react"
+import { ChangeEventHandler, FC, PropsWithoutRef } from "react"
 import {
   Box,
   Label,

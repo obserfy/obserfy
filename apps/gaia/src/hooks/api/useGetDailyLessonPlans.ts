@@ -1,5 +1,5 @@
-import { useQuery, useQueryClient } from "react-query"
-import { Dayjs } from "../../utils/dayjs"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { Dayjs } from "$lib/dayjs"
 import { getApi } from "./apiHelpers"
 import { GetChildPlansResponse } from "../../pages/api/children/[childId]/plans/daily"
 

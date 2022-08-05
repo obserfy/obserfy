@@ -1,7 +1,7 @@
 import { useQuery } from "react-query"
+import { getSchoolId } from "../../schoolIdState"
 import { useQueryCache } from "../../useQueryCache"
 import { getApi } from "../fetchApi"
-import { getSchoolId } from "../../schoolIdState"
 
 export interface GetSchoolResponse {
   name: string

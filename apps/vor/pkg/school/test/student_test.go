@@ -3,87 +3,87 @@ package school_test
 import (
 	"github.com/brianvoe/gofakeit/v4"
 	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
+	"github.com/chrsep/vor/pkg/testutils"
 	"github.com/google/uuid"
 	"net/http"
 	"strconv"
-	"testing"
 	"time"
-
-	"github.com/stretchr/testify/assert"
 )
 
+type student struct {
+	Id            string    `json:"id"`
+	Name          string    `json:"name"`
+	ProfilePicUrl string    `json:"profilePicUrl,omitempty"`
+	Active        bool      `json:"active"`
+	DateOfBirth   time.Time `json:"dateOfBirth,omitempty"`
+}
+
 func (s *SchoolTestSuite) TestSaveNewStudentWithPic() {
-	t := s.T()
-	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.GenerateSchool()
+	newSchool, userId := s.GenerateSchool()
 
-	payload := struct {
-		Name        string    `json:"name"`
-		DateOfBirth time.Time `json:"dateOfBirth"`
-	}{Name: gofakeit.Name(), DateOfBirth: time.Now()}
+	body := student{
+		Name:        gofakeit.Name(),
+		DateOfBirth: time.Now(),
+	}
 
-	result := s.CreateRequest("POST", "/"+newSchool.Id+"/students", payload, &newSchool.Users[0].Id)
-	assert.Equal(t, result.Code, http.StatusCreated)
+	result := s.ApiTest(testutils.ApiMetadata{
+		Method: "POST",
+		Path:   "/" + newSchool.Id + "/students",
+		UserId: userId,
+		Body:   body,
+	})
 
-	var student postgres.Student
-	err := s.DB.Model(&student).Where("name = ?", payload.Name).Select()
-	assert.NoError(t, err)
+	s.Equal(result.Code, http.StatusCreated)
+
+	err := s.DB.Model(&postgres.Student{}).
+		Where("name = ?", body.Name).
+		Select()
+	s.NoError(err)
 }
 
 func (s *SchoolTestSuite) TestGetStudents() {
-	t := s.T()
-	school := s.GenerateSchool()
-	students := []postgres.Student{
-		*s.GenerateStudent(school),
-		*s.GenerateStudent(school),
-		*s.GenerateStudent(school),
-		*s.GenerateStudent(school),
-		*s.GenerateStudent(school),
-		*s.GenerateStudent(school),
+	school, userId := s.GenerateSchool()
+	students := []*postgres.Student{
+		s.GenerateStudent(school),
+		s.GenerateStudent(school),
+		s.GenerateStudent(school),
+		s.GenerateStudent(school),
+		s.GenerateStudent(school),
+		s.GenerateStudent(school),
 	}
 
-	var responseBody []struct {
-		Id            string     `json:"id"`
-		Name          string     `json:"name"`
-		DateOfBirth   *time.Time `json:"dateOfBirth,omitempty"`
-		ProfilePicUrl string     `json:"profilePicUrl,omitempty"`
-		Active        bool       `json:"active"`
-	}
-	result := s.CreateRequest("GET", "/"+school.Id+"/students", nil, &school.Users[0].Id)
-	assert.Equal(t, result.Code, http.StatusOK)
+	var response []student
+	result := s.ApiTest(testutils.ApiMetadata{
+		Method:   "GET",
+		Path:     "/" + school.Id + "/students",
+		UserId:   userId,
+		Response: &response,
+	})
 
-	err := rest.ParseJson(result.Result().Body, &responseBody)
-	assert.NoError(t, err)
-
-	assert.Equal(t, len(students), len(responseBody))
+	s.Equal(result.Code, http.StatusOK)
+	s.Len(response, len(students))
 }
 
 func (s *SchoolTestSuite) TestGetStudentsByClassId() {
-	t := s.T()
-	school := s.GenerateSchool()
+	school, userId := s.GenerateSchool()
 	s.GenerateStudent(school)
 	s.GenerateStudent(school)
 
-	var responseBody []struct {
-		Id            string     `json:"id"`
-		Name          string     `json:"name"`
-		DateOfBirth   *time.Time `json:"dateOfBirth,omitempty"`
-		ProfilePicUrl string     `json:"profilePicUrl,omitempty"`
-		Active        bool       `json:"active"`
-	}
-	result := s.CreateRequest("GET", "/"+school.Id+"/students?classId="+uuid.New().String(), nil, &school.Users[0].Id)
-	assert.Equal(t, result.Code, http.StatusOK)
+	var response []student
 
-	err := rest.ParseJson(result.Result().Body, &responseBody)
-	assert.NoError(t, err)
+	result := s.ApiTest(testutils.ApiMetadata{
+		Method:   "GET",
+		Path:     "/" + school.Id + "/students?classId=" + uuid.NewString(),
+		UserId:   userId,
+		Response: &response,
+	})
 
-	assert.Equal(t, 0, len(responseBody))
+	s.Equal(result.Code, http.StatusOK)
+	s.Len(response, 0)
 }
 
 func (s *SchoolTestSuite) TestGetStudentsByStatus() {
-	t := s.T()
-	school := s.GenerateSchool()
+	school, userId := s.GenerateSchool()
 	s.GenerateStudent(school)
 	s.GenerateStudent(school)
 
@@ -96,21 +96,18 @@ func (s *SchoolTestSuite) TestGetStudentsByStatus() {
 		{"inactive", false, 0},
 	}
 	for _, test := range tests {
-		t.Run(test.name, func(t *testing.T) {
-			var responseBody []struct {
-				Id            string     `json:"id"`
-				Name          string     `json:"name"`
-				DateOfBirth   *time.Time `json:"dateOfBirth,omitempty"`
-				ProfilePicUrl string     `json:"profilePicUrl,omitempty"`
-				Active        bool       `json:"active"`
-			}
-			result := s.CreateRequest("GET", "/"+school.Id+"/students?active="+strconv.FormatBool(test.active), nil, &school.Users[0].Id)
-			assert.Equal(t, result.Code, http.StatusOK)
+		s.Run(test.name, func() {
+			var response []student
 
-			err := rest.ParseJson(result.Result().Body, &responseBody)
-			assert.NoError(t, err)
+			result := s.ApiTest(testutils.ApiMetadata{
+				Method:   "GET",
+				Path:     "/" + school.Id + "/students?active=" + strconv.FormatBool(test.active),
+				UserId:   userId,
+				Response: &response,
+			})
 
-			assert.Equal(t, test.length, len(responseBody))
+			s.Equal(result.Code, http.StatusOK)
+			s.Len(response, test.length)
 		})
 	}
 }

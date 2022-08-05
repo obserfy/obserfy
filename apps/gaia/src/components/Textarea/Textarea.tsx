@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FC } from "react"
+import { ChangeEventHandler, FC } from "react"
 import styles from "./Textarea.module.css"
 
 interface Props {

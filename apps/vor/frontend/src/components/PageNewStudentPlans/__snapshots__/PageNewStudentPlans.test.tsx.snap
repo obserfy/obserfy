@@ -18,13 +18,13 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent, rgba(255,255,255));
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent);
   z-index: 100;
-  -webkit-position: sticky;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   border-bottom-width: 1px;
-  border-bottom-color: var(--theme-ui-colors-borderSolid, #e5e5e5);
+  border-bottom-color: var(--theme-ui-colors-borderSolid);
   border-bottom-style: solid;
 }
 
@@ -70,7 +70,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -80,7 +80,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -108,7 +108,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -123,9 +123,8 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 
 .emotion-4:hover,
 .emotion-4:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
-  outline: none;
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-5 {
@@ -134,39 +133,39 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  fill: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  fill: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 .emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   overflow-x: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-7 {
   display: inline-block;
-  font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  font-size: 13px;
+  color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
 
 .emotion-7:last-child {
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
 }
 
 .emotion-7:last-child>.splitter {
@@ -188,13 +187,13 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   display: inline-block;
-  font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  font-size: 13px;
+  color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
 
 .emotion-16:last-child {
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
 }
 
 .emotion-16:last-child>.splitter {
@@ -220,7 +219,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -230,8 +229,8 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary, #000);
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  color: var(--theme-ui-colors-onPrimary);
+  background-color: var(--theme-ui-colors-primary);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -258,7 +257,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -276,13 +275,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 
 .emotion-17:hover,
 .emotion-17:focus {
-  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
-  outline: none;
+  background-color: var(--theme-ui-colors-primaryDark);
 }
 
 .emotion-17:hover:disabled,
 .emotion-17:focus:disabled {
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-18 {
@@ -323,14 +321,14 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -351,14 +349,14 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-24 {
@@ -381,19 +379,46 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
+  width: 100%;
   opacity: 1!important;
   width: 100%;
 }
 
+.emotion-24:autofill,
+.emotion-24:autofill:hover,
+.emotion-24:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-24:autofill:first-line,
+.emotion-24:autofill:hover:first-line,
+.emotion-24:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-24:-webkit-autofill,
+.emotion-24:-webkit-autofill:hover,
+.emotion-24:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-24:-webkit-autofill:first-line,
+.emotion-24:-webkit-autofill:hover:first-line,
+.emotion-24:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
+}
+
 .emotion-24:hover,
 .emotion-24:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
-  outline: none;
+  border-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-24::-webkit-input-placeholder {
@@ -414,8 +439,8 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 
 .emotion-24:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-25 {
@@ -437,7 +462,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -447,8 +472,8 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
-  background-color: var(--theme-ui-colors-surface, #fff);
+  color: var(--theme-ui-colors-textPrimary);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -475,7 +500,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -493,15 +518,14 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 
 .emotion-25:hover,
 .emotion-25:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
-  outline: none;
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-25:hover:disabled,
 .emotion-25:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
 }
 
 .emotion-26 {
@@ -510,7 +534,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -538,19 +562,46 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+  width: 100%;
+}
+
+.emotion-30:autofill,
+.emotion-30:autofill:hover,
+.emotion-30:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-30:autofill:first-line,
+.emotion-30:autofill:hover:first-line,
+.emotion-30:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-30:-webkit-autofill,
+.emotion-30:-webkit-autofill:hover,
+.emotion-30:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-30:-webkit-autofill:first-line,
+.emotion-30:-webkit-autofill:hover:first-line,
+.emotion-30:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-30:hover,
 .emotion-30:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
-  outline: none;
+  border-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-30::-webkit-input-placeholder {
@@ -571,34 +622,32 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 
 .emotion-30:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surface, #fff);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin-bottom: 16px;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
 }
 
 .emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  padding-left: 16px;
-  padding-top: 16px;
-  padding-bottom: 8px;
+  padding: 16px;
   font-weight: bold;
 }
 
@@ -614,136 +663,11 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   min-width: 0;
   padding-left: 8px;
   padding-right: 8px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-}
-
-.emotion-35 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
-  font-size: 14px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  border-color: var(--theme-ui-colors-primary, #00e399);
-  border-style: solid;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
-  font-weight: bold;
-  outline: none;
-}
-
-.emotion-35:hover {
-  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
-}
-
-.emotion-36 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
-  font-size: 14px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  border-color: var(--theme-ui-colors-primary, #00e399);
-  border-style: none;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
-  outline: none;
-}
-
-.emotion-36:hover {
-  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
-}
-
-.emotion-37 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-left: auto;
-  -webkit-transition: color ease-in 0.1s;
-  transition: color ease-in 0.1s;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
-  white-space: nowrap;
-}
-
-.emotion-37:hover {
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
-}
-
-.emotion-38 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  margin-right: 8px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  color: inherit;
-}
-
-.emotion-39 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
-  font-size: 14px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  padding-right: 8px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  font-size: 12px;
-  color: inherit;
-  line-height: 1;
-}
-
-.emotion-40 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-left: 8px;
-  padding-right: 8px;
-  background-color: var(--theme-ui-colors-darkSurface, #fafafa);
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 }
 
-.emotion-41 {
+.emotion-35 {
   line-height: 1.7142857;
   outline: none;
   width: 100%;
@@ -752,11 +676,249 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-top: 16px;
   padding-bottom: 16px;
   border: none;
-  background-color: var(--theme-ui-colors-darkSurface, #fafafa);
   min-height: 400px;
+  background-color: transparent;
 }
 
-.emotion-42 {
+.emotion-36 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-37 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textPrimary);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border);
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  border: none;
+  margin-left: 8px;
+  margin-right: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--theme-ui-colors-primary);
+  font-weight: bold;
+  background-color: var(--theme-ui-colors-primaryLightest);
+  color: var(--theme-ui-colors-textPrimary);
+  font-size: 13px;
+}
+
+.emotion-37:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-37:hover,
+.emotion-37:focus {
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
+}
+
+.emotion-38 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textPrimary);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border);
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  border: none;
+  margin-left: 8px;
+  margin-right: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--theme-ui-colors-border);
+  font-weight: bold;
+  color: var(--theme-ui-colors-textMediumEmphasis);
+  font-size: 13px;
+}
+
+.emotion-38:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-38:hover,
+.emotion-38:focus {
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
+}
+
+.emotion-38:hover,
+.emotion-38:focus {
+  background-color: var(--theme-ui-colors-tintWarning);
+  color: var(--theme-ui-colors-warning);
+  border-color: var(--theme-ui-colors-warning);
+}
+
+.emotion-39 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: end;
+  margin-left: auto;
+  -webkit-transition: color ease-in 0.1s;
+  transition: color ease-in 0.1s;
+  color: var(--theme-ui-colors-textMediumEmphasis);
+  white-space: nowrap;
+  margin-top: 16px;
+  margin-right: 16px;
+}
+
+.emotion-39:hover {
+  color: var(--theme-ui-colors-textPrimary);
+}
+
+.emotion-40 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin-right: 8px;
+  margin-top: 8px;
+  fill: var(--theme-ui-colors-icon);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: inherit;
+}
+
+.emotion-41 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -765,20 +927,20 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin-bottom: 32px;
 }
 
-.emotion-43 {
+.emotion-42 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   text-rendering: optimizeLegibility;
   font-size: 20px;
   margin-bottom: 8px;
 }
 
-.emotion-44 {
+.emotion-43 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -788,7 +950,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-47 {
+.emotion-46 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -808,45 +970,72 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   padding: 8px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
+  width: 100%;
   width: 100%;
   padding: 8px;
 }
 
-.emotion-47:hover,
-.emotion-47:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
-  outline: none;
+.emotion-46:autofill,
+.emotion-46:autofill:hover,
+.emotion-46:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
 }
 
-.emotion-47::-webkit-input-placeholder {
+.emotion-46:autofill:first-line,
+.emotion-46:autofill:hover:first-line,
+.emotion-46:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-46:-webkit-autofill,
+.emotion-46:-webkit-autofill:hover,
+.emotion-46:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-46:-webkit-autofill:first-line,
+.emotion-46:-webkit-autofill:hover:first-line,
+.emotion-46:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-46:hover,
+.emotion-46:focus {
+  border-color: var(--theme-ui-colors-primary);
+}
+
+.emotion-46::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-47::-moz-placeholder {
+.emotion-46::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-47:-ms-input-placeholder {
+.emotion-46:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-47::placeholder {
+.emotion-46::placeholder {
   font-style: italic;
 }
 
-.emotion-47:disabled {
+.emotion-46:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
-.emotion-48 {
+.emotion-47 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -865,7 +1054,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -875,8 +1064,8 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
-  background-color: var(--theme-ui-colors-surface, #fff);
+  color: var(--theme-ui-colors-textPrimary);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -903,32 +1092,31 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
   margin-left: 8px;
 }
 
-.emotion-48:disabled {
+.emotion-47:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-48:hover,
-.emotion-48:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
-  outline: none;
+.emotion-47:hover,
+.emotion-47:focus {
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
 }
 
-.emotion-48:hover:disabled,
-.emotion-48:focus:disabled {
+.emotion-47:hover:disabled,
+.emotion-47:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
 }
 
-.emotion-51 {
+.emotion-50 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -943,7 +1131,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   flex-wrap: wrap;
 }
 
-.emotion-55 {
+.emotion-54 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -952,7 +1140,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -960,38 +1148,38 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   user-select: none;
   cursor: pointer;
   border-radius: 6px;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
 }
 
-.emotion-55:hover {
-  background-color: var(--theme-ui-colors-primary, #00e399);
+.emotion-54:hover {
+  background-color: var(--theme-ui-colors-primary);
+}
+
+.emotion-55 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text);
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  color: var(--theme-ui-colors-onPrimary);
+  font-size: 14px;
 }
 
 .emotion-56 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
-  font-size: 14px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  color: var(--theme-ui-colors-onPrimary, #000);
-  font-size: 14px;
-}
-
-.emotion-57 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
   margin-right: 8px;
   padding-left: 8px;
   padding-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
-  background-color: var(--theme-ui-colors-surface, #fff);
+  background-color: var(--theme-ui-colors-surface);
   display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -999,29 +1187,29 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   user-select: none;
   cursor: pointer;
   border-radius: 6px;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
 }
 
-.emotion-57:hover {
-  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
+.emotion-56:hover {
+  background-color: var(--theme-ui-colors-primaryLightest);
 }
 
-.emotion-58 {
+.emotion-57 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
 }
 
-.emotion-62 {
+.emotion-61 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -1036,19 +1224,19 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   align-items: flex-end;
 }
 
-.emotion-63 {
+.emotion-62 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   text-rendering: optimizeLegibility;
   font-size: 20px;
 }
 
-.emotion-64 {
+.emotion-63 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -1067,7 +1255,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -1077,8 +1265,8 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
-  background-color: var(--theme-ui-colors-surface, #fff);
+  color: var(--theme-ui-colors-textPrimary);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -1105,36 +1293,35 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
   margin-left: auto;
 }
 
-.emotion-64:disabled {
+.emotion-63:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-64:hover,
-.emotion-64:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
-  outline: none;
+.emotion-63:hover,
+.emotion-63:focus {
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
 }
 
-.emotion-64:hover:disabled,
-.emotion-64:focus:disabled {
+.emotion-63:hover:disabled,
+.emotion-63:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
 }
 
-.emotion-65 {
+.emotion-64 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -1143,7 +1330,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin-top: 32px;
   margin-bottom: 32px;
   text-align: center;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 <div>
@@ -1302,54 +1489,49 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
             <div
               class="emotion-34"
             >
-              <button
+              <textarea
                 class="emotion-35"
+                data-cy="markdown-editor"
+                placeholder="Write something"
+              />
+            </div>
+            <div
+              class="emotion-36"
+            >
+              <button
+                class="emotion-37"
               >
                 Write
               </button>
               <button
-                class="emotion-36"
+                class="emotion-38"
               >
                 Preview
               </button>
               <a
-                class="emotion-37"
+                class="emotion-39"
                 href="https://obserfy.com/docs/markdown-support"
                 rel="noreferrer"
                 target="_blank"
               >
                 <div
-                  class="emotion-38"
+                  class="emotion-40"
                 />
-                <p
-                  class="emotion-39"
-                >
-                  Markdown Supported
-                </p>
               </a>
-            </div>
-            <div
-              class="emotion-40"
-            >
-              <textarea
-                class="emotion-41"
-                data-cy="markdown-editor"
-                placeholder="Write something"
-              />
             </div>
           </div>
         </div>
       </div>
       <div
-        class="emotion-42"
+        class="emotion-41"
       >
         <h6
-          class="emotion-43"
+          class="emotion-42"
         >
           Links
         </h6>
         <div
-          class="emotion-44"
+          class="emotion-43"
         >
           <label
             class="emotion-21"
@@ -1359,14 +1541,14 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
             >
               <input
                 aria-label="URL"
-                class="emotion-47"
+                class="emotion-46"
                 placeholder="https://...."
                 value=""
               />
             </div>
           </label>
           <button
-            class="emotion-48"
+            class="emotion-47"
             data-cy="add-link"
             disabled=""
           >
@@ -1375,51 +1557,51 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-42"
+        class="emotion-41"
       >
         <h6
-          class="emotion-43"
+          class="emotion-42"
         >
           Related Area
         </h6>
         <div
-          class="emotion-51"
+          class="emotion-50"
         />
       </div>
       <div
-        class="emotion-42"
+        class="emotion-41"
       >
         <h6
-          class="emotion-43"
+          class="emotion-42"
         >
           Repetition
         </h6>
         <div
-          class="emotion-44"
+          class="emotion-43"
         >
           <div
-            class="emotion-55"
+            class="emotion-54"
           >
             <p
-              class="emotion-56"
+              class="emotion-55"
             >
               None
             </p>
           </div>
           <div
-            class="emotion-57"
+            class="emotion-56"
           >
             <p
-              class="emotion-58"
+              class="emotion-57"
             >
               Daily
             </p>
           </div>
           <div
-            class="emotion-57"
+            class="emotion-56"
           >
             <p
-              class="emotion-58"
+              class="emotion-57"
             >
               Weekly
             </p>
@@ -1427,25 +1609,25 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-42"
+        class="emotion-41"
       >
         <div
-          class="emotion-62"
+          class="emotion-61"
         >
           <h6
-            class="emotion-63"
+            class="emotion-62"
           >
             Other Related Students
           </h6>
           <button
-            class="emotion-64"
+            class="emotion-63"
             data-cy="add-student"
           >
             Add
           </button>
         </div>
         <p
-          class="emotion-65"
+          class="emotion-64"
         >
           No other students added yet.
         </p>

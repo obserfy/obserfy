@@ -1,4 +1,4 @@
-import { useMutation } from "react-query"
+import { useMutation } from "@tanstack/react-query"
 import { PatchObservationRequestBody } from "../../pages/api/observations/[observationId]"
 import { patchApi } from "./apiHelpers"
 import { useGetChildPlansCache } from "./useGetDailyLessonPlans"

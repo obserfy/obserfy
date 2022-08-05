@@ -1,7 +1,6 @@
-/** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
 import { FC, useState } from "react"
-import { Box, Button, Card, Flex, useColorMode, jsx } from "theme-ui"
+import { Box, Button, Card, Flex, useColorMode } from "theme-ui"
 import { borderTop } from "../../border"
 import dayjs from "../../dayjs"
 import { useGetSchool } from "../../hooks/api/schools/useGetSchool"

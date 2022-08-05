@@ -1,5 +1,4 @@
-import * as Sentry from "@sentry/node"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import useDeleteObservation from "../hooks/api/useDeleteObservation"
 import usePatchObservation from "../hooks/api/usePatchObservation"
 import Button from "./Button/Button"
@@ -25,20 +24,20 @@ export const EditObservationForm: FC<{
         value={observation}
         onChange={(e) => setObservation(e.target.value)}
       />
-      <div className="flex mt-2">
+      <div className="mt-2 flex">
         <Button
           data-cy="delete-observation"
-          iconOnly
-          outline
-          className="mr-2 text-red-700 px-2"
+          // iconOnly TODO: create icon button component
+          variant="outline"
+          className="mr-2 px-2 text-red-700"
           onClick={() => setShowDeleteDialog(true)}
           disabled={patchObservation.isLoading}
         >
           <Icon src="/icons/trash.svg" />
         </Button>
         <Button
-          outline
-          className="ml-auto mr-2"
+          variant="outline"
+          className="mr-2 ml-auto"
           onClick={onDismiss}
           disabled={patchObservation.isLoading}
         >
@@ -60,17 +59,17 @@ export const EditObservationForm: FC<{
       </div>
       {showDeleteDialog && (
         <Dialog>
-          <div className="text-xl mx-6 mb-6 mt-3">Delete this observation?</div>
+          <div className="mx-6 mt-3 mb-6 text-xl">Delete this observation?</div>
           <div className="flex w-full">
             <Button
-              outline
+              variant="outline"
               onClick={() => setShowDeleteDialog(false)}
               disabled={deleteObservation.isLoading}
             >
               Cancel
             </Button>
             <Button
-              className="w-full bg-red-700 text-white ml-2"
+              className="ml-2 w-full bg-red-700 text-white"
               onClick={async () => {
                 try {
                   await deleteObservation.mutateAsync()

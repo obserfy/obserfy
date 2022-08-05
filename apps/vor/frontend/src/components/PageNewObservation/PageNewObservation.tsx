@@ -1,6 +1,6 @@
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box, Button, Card, Flex, Image } from "theme-ui"
 import { useImmer } from "use-immer"
 import { track } from "../../analytics"
@@ -114,8 +114,8 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           onChange={setVisibleToGuardians}
         />
 
-        <Card sx={{ ...borderFull }} mb={3}>
-          <Typography.Body pl={3} pt={3} pb={2} sx={{ fontWeight: "bold" }}>
+        <Card sx={{ ...borderFull, overflow: "hidden" }} mb={3}>
+          <Typography.Body p={3} sx={{ fontWeight: "bold", ...borderBottom }}>
             <Trans>Observation Details</Trans>
           </Typography.Body>
           <MarkdownEditor onChange={setLongDesc} value={longDesc} />

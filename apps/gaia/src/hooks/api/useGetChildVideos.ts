@@ -1,4 +1,4 @@
-import { useQuery } from "react-query"
+import { useQuery } from "@tanstack/react-query"
 import { GetChildVideosResponse } from "../../pages/api/children/[childId]/videos"
 import { getApi } from "./apiHelpers"
 

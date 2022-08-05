@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/macro"
-import React, { FC } from "react"
+import { FC } from "react"
 import { Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import Input from "../Input/Input"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"

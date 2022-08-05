@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box } from "theme-ui"
 import { useBreakpointIndex } from "@theme-ui/match-media"
 import StudentsList from "../StudentsList/StudentsList"

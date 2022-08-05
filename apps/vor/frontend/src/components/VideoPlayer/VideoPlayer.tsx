@@ -1,7 +1,6 @@
-/** @jsx jsx */
 /* eslint-disable jsx-a11y/media-has-caption */
-import Hls from "hls.js/dist/hls.light"
-import { jsx, ThemeUIStyleObject } from "theme-ui"
+import Hls from "hls.js"
+import { ThemeUIStyleObject } from "theme-ui"
 import { FC, useEffect, useRef } from "react"
 // @ts-ignore
 import mux from "mux-embed"

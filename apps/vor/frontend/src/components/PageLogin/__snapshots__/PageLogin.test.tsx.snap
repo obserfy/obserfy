@@ -53,7 +53,7 @@ exports[`PageLogin should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -99,7 +99,7 @@ exports[`PageLogin should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   text-rendering: optimizeLegibility;
   font-size: 24px;
   margin-top: 16px;
@@ -116,14 +116,14 @@ exports[`PageLogin should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -144,14 +144,14 @@ exports[`PageLogin should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-13 {
@@ -174,19 +174,46 @@ exports[`PageLogin should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   margin-bottom: 8px;
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+  width: 100%;
+}
+
+.emotion-13:autofill,
+.emotion-13:autofill:hover,
+.emotion-13:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-13:autofill:first-line,
+.emotion-13:autofill:hover:first-line,
+.emotion-13:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-13:-webkit-autofill,
+.emotion-13:-webkit-autofill:hover,
+.emotion-13:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-13:-webkit-autofill:first-line,
+.emotion-13:-webkit-autofill:hover:first-line,
+.emotion-13:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-13:hover,
 .emotion-13:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
-  outline: none;
+  border-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-13::-webkit-input-placeholder {
@@ -207,8 +234,8 @@ exports[`PageLogin should render correctly 1`] = `
 
 .emotion-13:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-17 {
@@ -231,18 +258,45 @@ exports[`PageLogin should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
+  --theme-ui-input-autofill-bg: var(--theme-ui-colors-background);
   width: 100%;
+  width: 100%;
+}
+
+.emotion-17:autofill,
+.emotion-17:autofill:hover,
+.emotion-17:autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-17:autofill:first-line,
+.emotion-17:autofill:hover:first-line,
+.emotion-17:autofill:focus:first-line {
+  font-size: 1rem;
+}
+
+.emotion-17:-webkit-autofill,
+.emotion-17:-webkit-autofill:hover,
+.emotion-17:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 1000px var(--theme-ui-input-autofill-bg);
+  font-size: inherit;
+}
+
+.emotion-17:-webkit-autofill:first-line,
+.emotion-17:-webkit-autofill:hover:first-line,
+.emotion-17:-webkit-autofill:focus:first-line {
+  font-size: 1rem;
 }
 
 .emotion-17:hover,
 .emotion-17:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
-  outline: none;
+  border-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-17::-webkit-input-placeholder {
@@ -263,8 +317,8 @@ exports[`PageLogin should render correctly 1`] = `
 
 .emotion-17:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-18 {
@@ -286,7 +340,7 @@ exports[`PageLogin should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -296,8 +350,8 @@ exports[`PageLogin should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary, #000);
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  color: var(--theme-ui-colors-onPrimary);
+  background-color: var(--theme-ui-colors-primary);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -324,7 +378,7 @@ exports[`PageLogin should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -340,26 +394,25 @@ exports[`PageLogin should render correctly 1`] = `
 
 .emotion-18:hover,
 .emotion-18:focus {
-  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
-  outline: none;
+  background-color: var(--theme-ui-colors-primaryDark);
 }
 
 .emotion-18:hover:disabled,
 .emotion-18:focus:disabled {
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-top: 16px;
   margin-bottom: 16px;
-  color: var(--theme-ui-colors-danger, #d50000);
+  color: var(--theme-ui-colors-danger);
   text-align: center;
   font-size: 14px;
   width: 100%;
@@ -370,28 +423,28 @@ exports[`PageLogin should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   text-align: center;
 }
 
 .emotion-21 {
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
 }
 
 .emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-top: 64px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   text-align: center;
 }
 
@@ -410,7 +463,7 @@ exports[`PageLogin should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding: 16px;
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -428,7 +481,7 @@ exports[`PageLogin should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-primaryDark, #00a06d);
+  fill: var(--theme-ui-colors-primaryDark);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -440,7 +493,7 @@ exports[`PageLogin should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -576,7 +629,7 @@ exports[`PageLogin should render correctly 1`] = `
              
             <a
               class="emotion-21"
-              href="https://parent.obserfy.com/api/login"
+              href="https://parent.obserfy.com/api/auth/login"
             >
               Go to parent dashboard
             </a>

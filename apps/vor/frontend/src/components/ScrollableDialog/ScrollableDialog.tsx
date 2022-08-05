@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { Button, Flex, BoxProps, Box } from "theme-ui"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"

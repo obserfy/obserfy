@@ -121,3 +121,12 @@ export const CURRICULUM_MATERIAL_URL = (
 
 export const SCHOOL_PROFILE_URL = `/dashboard/admin/school-profile`
 export const USER_PROFILE_URL = `/dashboard/admin/user-profile`
+
+export const ALL_REPORT_URL = `/dashboard/reports`
+export const NEW_REPORT_URL = `/dashboard/reports/new`
+
+export const MANAGE_REPORT_URL = (reportId: string) =>
+  `/dashboard/reports/manage?reportId=${reportId}`
+
+export const STUDENT_REPORT_URL = (reportId: string, studentId: string) =>
+  `/dashboard/reports/manage/student?reportId=${reportId}&studentId=${studentId}`

@@ -1,4 +1,4 @@
-import React, { FC, PropsWithoutRef } from "react"
+import { FC, PropsWithoutRef } from "react"
 import { Button, Flex, Card, CardProps } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { Typography } from "../Typography/Typography"

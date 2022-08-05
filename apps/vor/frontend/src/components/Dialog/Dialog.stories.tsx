@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 
 import { Button, Flex } from "theme-ui"
 import Dialog from "./Dialog"

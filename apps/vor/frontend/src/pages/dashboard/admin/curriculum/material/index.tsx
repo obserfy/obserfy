@@ -1,6 +1,6 @@
 import { t } from "@lingui/macro"
 import { useBreakpointIndex } from "@theme-ui/match-media"
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box, Flex } from "theme-ui"
 import { borderRight } from "../../../../../border"
 import CurriculumTopBar from "../../../../../components/CurriculumTopBar/CurriculumTopBar"

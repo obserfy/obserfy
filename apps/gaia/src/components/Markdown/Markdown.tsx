@@ -1,5 +1,5 @@
 import DOMPurify from "dompurify"
-import React, { FC } from "react"
+import { FC } from "react"
 import snarkdown from "snarkdown"
 
 const snarkdownEnhanced = (md: string) => {
@@ -26,7 +26,7 @@ const Markdown: FC<MarkdownProps> = ({ markdown, className, ...props }) => {
 
   return (
     <div
-      className={`prose prose-sm max-w-none ${className}`}
+      className={`prose max-w-none text-gray-700 ${className}`}
       dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
       {...props}
     />

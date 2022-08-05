@@ -1,9 +1,9 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { Flex } from "theme-ui"
 import {
   MaterialProgress,
   materialStageToString,
-} from "../../hooks/api/useGetStudentMaterialProgress"
+} from "../../hooks/api/useGetStudentAssessments"
 import Typography from "../Typography/Typography"
 import Pill from "../Pill/Pill"
 import Icon from "../Icon/Icon"

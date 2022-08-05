@@ -1,7 +1,6 @@
-/** @jsx jsx */
 import { Trans } from "@lingui/macro"
 import { FC, useState } from "react"
-import { Box, Button, Card, Flex, jsx } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
 import { borderBottom, borderTop } from "../../border"
 import dayjs from "../../dayjs"
 import {
@@ -56,7 +55,7 @@ const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
             to={ALL_OBSERVATIONS_PAGE_URL(studentId)}
             sx={{ display: "inline-block", ml: "auto", mr: 3 }}
           >
-            <Button variant="secondary">
+            <Button variant="text">
               <Trans>See All</Trans>
             </Button>
           </Link>
@@ -81,13 +80,13 @@ const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
           <Button
             disabled={selectionIdx >= dates.length - 1}
             onClick={() => setSelectionIdx(selectionIdx + 1)}
-            variant="secondary"
+            variant="text"
             p={1}
           >
             <Icon as={PrevIcon} />
           </Button>
           <Button
-            variant="secondary"
+            variant="text"
             color="textMediumEmphasis"
             mx="auto"
             sx={{ fontSize: 0 }}
@@ -100,7 +99,7 @@ const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
           <Button
             disabled={selectionIdx < 1}
             onClick={() => setSelectionIdx(selectionIdx - 1)}
-            variant="secondary"
+            variant="text"
             p={1}
           >
             <Icon as={NextIcon} />

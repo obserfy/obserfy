@@ -1,5 +1,5 @@
 import { t, Trans } from "@lingui/macro"
-import React, { FC, memo, ReactNode, useState } from "react"
+import { FC, memo, ReactNode, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
 import { borderBottom, borderFull } from "../../border"
 import dayjs, { Dayjs } from "../../dayjs"
@@ -11,8 +11,8 @@ import {
 } from "../../hooks/api/useGetStudentObservations"
 import useDebounce from "../../hooks/useDebounce"
 import useVisibilityState from "../../hooks/useVisibilityState"
-import { OBSERVATION_DETAILS_URL } from "../../routes"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
+import { OBSERVATION_DETAILS_URL } from "../../routes"
 import AlertDialog from "../AlertDialog/AlertDialog"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 import Icon from "../Icon/Icon"
@@ -180,7 +180,7 @@ const DateRangeSelector: FC<{
       >
         <Icon as={CalendarIcon} ml={2} sx={{ display: ["none", "block"] }} />
         <Button
-          variant="secondary"
+          variant="text"
           color="textMediumEmphasis"
           px={2}
           m={1}
@@ -190,7 +190,7 @@ const DateRangeSelector: FC<{
         </Button>
         <Box mb={1}>-</Box>
         <Button
-          variant="secondary"
+          variant="text"
           color="textMediumEmphasis"
           px={2}
           m={1}

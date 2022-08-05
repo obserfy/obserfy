@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { FC, Fragment, useState } from "react"
-import { Box, Button, Flex, jsx } from "theme-ui"
+import { Box, Button, Flex } from "theme-ui"
 import { Link } from "../Link/Link"
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
@@ -15,12 +14,8 @@ import usePostResetPasswordEmail from "../../hooks/api/usePostResetPasswordEmail
 
 export const PageForgotPassword: FC = () => {
   const [email, setEmail] = useState("")
-  const {
-    mutateAsync,
-    error,
-    isLoading,
-    isSuccess,
-  } = usePostResetPasswordEmail()
+  const { mutateAsync, error, isLoading, isSuccess } =
+    usePostResetPasswordEmail()
 
   return (
     <Box>

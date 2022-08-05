@@ -51,6 +51,7 @@ func (s *SchoolTestSuite) SetupTest() {
 		ImageStorage: s.StudentImageStorage,
 	}
 	s.Handler = school.NewRouter(s.Server, s.store, &mailServiceMock{}, domain.NoopVideoService{}).ServeHTTP
+	gofakeit.Seed(time.Now().UnixNano())
 }
 
 func TestSchool(t *testing.T) {
@@ -60,7 +61,7 @@ func TestSchool(t *testing.T) {
 func (s *SchoolTestSuite) SaveNewFile() (*postgres.File, string) {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 
 	fileId := uuid.New().String()
 	fileKey := "files/" + newSchool.Id + "/" + fileId
@@ -110,7 +111,7 @@ func (s *SchoolTestSuite) ReadTestFile(name string) (*bytes.Buffer, *multipart.W
 func (s *SchoolTestSuite) TestPatchSchool() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 
 	requestBody := struct {
 		Name string `json:"name"`

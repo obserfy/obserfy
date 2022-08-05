@@ -34,3 +34,6 @@ gaia.iml
 package-lock.json
 public/sw.js*
 public/workbox-*
+
+# Sentry
+.sentryclirc

@@ -1,5 +1,5 @@
 import { StaticImage } from "gatsby-plugin-image"
-import React, { FC, useEffect } from "react"
+import { FC, useEffect } from "react"
 import { Box, Button, Flex } from "theme-ui"
 import { track } from "../../analytics"
 import { STUDENTS_URL } from "../../routes"
@@ -9,7 +9,7 @@ import Typography from "../Typography/Typography"
 
 export const Page404: FC = () => {
   useEffect(() => {
-    if (window.analytics) track("404 visited")
+    if (window.mixpanel) track("404 visited")
   }, [])
 
   return (

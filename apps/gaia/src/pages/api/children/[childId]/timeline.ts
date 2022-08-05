@@ -3,7 +3,7 @@ import { getFirstQueryValue, protectedApiRoute } from "../../../../utils/rest"
 import { findChildObservationsGroupedByDate } from "../../../../db/queries"
 import { generateOriginalUrl, generateUrl } from "../../../../utils/imgproxy"
 
-interface Timeline {
+export interface Timeline {
   date: string
   observations: Array<{
     id: string

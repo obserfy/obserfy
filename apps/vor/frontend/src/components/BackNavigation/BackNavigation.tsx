@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { Flex } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { Link } from "../Link/Link"

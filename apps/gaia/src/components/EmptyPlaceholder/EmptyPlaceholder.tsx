@@ -1,6 +1,6 @@
-import React, { FC } from "react"
 import Image from "next/image"
-import { Dayjs } from "../../utils/dayjs"
+import { FC } from "react"
+import { Dayjs } from "$lib/dayjs"
 
 interface Props {
   loading: boolean
@@ -18,19 +18,19 @@ const EmptyPlaceholder: FC<Props> = ({
   <div
     className={`
       flex flex-col items-center py-16 ${loading && "opacity-50"} 
-      transition-opacity duration-200 max-w-3xl mx-auto
+      mx-auto max-w-3xl transition-opacity duration-200
     `}
   >
     <Image
       src={imageSrc}
-      className="w-64 md:w-1/2 mb-3"
+      className="mb-3 w-64 md:w-1/2"
       width={imageSize}
       height={imageSize}
     />
     <h5
       className={`
-        text-xl mx-4 text-center ${loading && "opacity-0"} 
-        transition-opacity duration-200 font-bold
+        mx-4 text-center text-xl ${loading && "opacity-0"} 
+        font-bold transition-opacity duration-200
       `}
     >
       {text}

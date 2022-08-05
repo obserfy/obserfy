@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { FC, useState } from "react"
-import { Box, Button, Flex, jsx } from "theme-ui"
+import { Box, Button, Flex } from "theme-ui"
 import { captureException } from "../../analytics"
 import Input from "../Input/Input"
 import { Link } from "../Link/Link"
@@ -103,7 +102,7 @@ export const PageLogin: FC = () => {
           <Typography.Body sx={{ fontSize: 1, lineHeight: 1.4 }} ml={2}>
             Are you a parent?{" "}
             <a
-              href="https://parent.obserfy.com/api/login"
+              href="https://parent.obserfy.com/api/auth/login"
               sx={{ color: "textPrimary" }}
             >
               Go to parent dashboard

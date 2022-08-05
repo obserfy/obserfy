@@ -1,11 +1,13 @@
+/** @DEPRECATED replaced by @lib/db */
 import { array, number, string, type } from "io-ts"
 import { date } from "io-ts-types"
 import { nullable } from "io-ts/Type"
 import { LessonPlan } from "../domain"
 import { isEmpty } from "../utils/array"
-import dayjs from "../utils/dayjs"
+import dayjs from "$lib/dayjs"
 import { query, typedQuery } from "./pg"
 
+/** @DEPRECATED replaced by @lib/db */
 export const findChildrenByGuardianEmail = async (guardianEmail: string) => {
   // language=PostgreSQL
   const result = await query(
@@ -22,6 +24,7 @@ export const findChildrenByGuardianEmail = async (guardianEmail: string) => {
   return result.rows
 }
 
+/** @DEPRECATED replaced by @lib/db */
 export const findChildById = async (guardianEmail: string, childId: string) => {
   // language=PostgreSQL
   const result = await query(
@@ -40,6 +43,7 @@ export const findChildById = async (guardianEmail: string, childId: string) => {
   return result.rows[0]
 }
 
+/** @DEPRECATED replaced by @lib/db */
 export const findLessonPlanByChildIdAndDate = async (
   childId: string,
   selectedDate: string
@@ -106,6 +110,7 @@ export const findLessonPlanByChildIdAndDate = async (
   }))
 }
 
+/** @DEPRECATED replaced by @lib/db */
 export const findChildLessonPlans = async (childId: string) => {
   // language=PostgreSQL
   const plans = await query(
@@ -144,21 +149,7 @@ export const findChildLessonPlans = async (childId: string) => {
   }))
 }
 
-export const getChildImages = async (childId: string) => {
-  // language=PostgreSQL
-  const result = await query(
-    `
-        select i.student_id, image.object_key, i.image_id, image.created_at as created_at
-        from image_to_students i
-                 join images image on image.id = i.image_id
-        where i.student_id = $1
-        order by image.created_at desc
-    `,
-    [childId]
-  )
-  return result.rows
-}
-
+/** @DEPRECATED replaced by @lib/db */
 export const getChildObservationByImage = async (imageId: string) => {
   // language=PostgreSQL
   const result = await query(
@@ -175,6 +166,7 @@ export const getChildObservationByImage = async (imageId: string) => {
   return result.rows
 }
 
+/** @DEPRECATED replaced by @lib/db */
 export const insertObservationToPlan = async (
   planId: string,
   parentEmail: string,
@@ -225,6 +217,7 @@ export const insertObservationToPlan = async (
   return result.rowCount
 }
 
+/** @DEPRECATED replaced by @lib/db */
 export const deleteObservation = async (id: string) => {
   // language=PostgreSQL
   const result = await query(
@@ -238,6 +231,7 @@ export const deleteObservation = async (id: string) => {
   return result.rowCount
 }
 
+/** @DEPRECATED replaced by @lib/db */
 export const updateObservation = async (id: string, observation: string) => {
   // language=PostgreSQL
   const result = await query(
@@ -251,6 +245,7 @@ export const updateObservation = async (id: string, observation: string) => {
   return result.rowCount
 }
 
+/** @DEPRECATED replaced by @lib/db */
 export const insertImage = async (
   imageId: string,
   objectKey: string,
@@ -303,6 +298,7 @@ const ChildObservationsGroupedByDate = array(
     ),
   })
 )
+/** @DEPRECATED replaced by @lib/db */
 export const findChildObservationsGroupedByDate = async (childId: string) =>
   // language=PostgreSQL
   typedQuery(
@@ -347,6 +343,7 @@ const ChildCurriculumProgress = array(
     ),
   })
 )
+/** @DEPRECATED replaced by @lib/db */
 export const findChildCurriculumProgress = async (childId: string) => {
   // language=PostgreSQL
   return typedQuery(
@@ -394,6 +391,7 @@ const ChildVideos = array(
     created_at: date,
   })
 )
+/** @DEPRECATED replaced by @lib/db */
 export const findChildVideos = async (childId: string) => {
   // language=PostgreSQL
   return typedQuery(
@@ -426,6 +424,7 @@ const LessonPlanLinks = array(
     url: string,
   })
 )
+/** @DEPRECATED replaced by @lib/db */
 export const findLessonPlanById = async (planId: string) => {
   // language=PostgreSQL
   const lessonPlan = await typedQuery(
@@ -476,6 +475,7 @@ const Material = array(
     stage: string,
   })
 )
+/** @DEPRECATED replaced by @lib/db */
 export const findMaterialDetailsByChildId = async (
   childId: string,
   materialId: string

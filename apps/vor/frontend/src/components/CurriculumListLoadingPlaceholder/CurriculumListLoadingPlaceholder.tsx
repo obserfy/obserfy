@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box } from "theme-ui"
 import { borderBottom } from "../../border"
 import { range } from "../../domain/array"

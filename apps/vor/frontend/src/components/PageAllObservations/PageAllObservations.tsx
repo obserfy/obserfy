@@ -1,5 +1,5 @@
 import { t } from "@lingui/macro"
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box } from "theme-ui"
 import { getFirstName } from "../../domain/person"
 import { useGetStudent } from "../../hooks/api/useGetStudent"

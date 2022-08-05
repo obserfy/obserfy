@@ -1,12 +1,17 @@
 import { Global } from "@emotion/react"
-import React, { FC } from "react"
+import { FC } from "react"
 import { QueryClient, QueryClientProvider } from "react-query"
-import { Box, useColorMode } from "theme-ui"
+import { Box, useColorMode, useThemeUI } from "theme-ui"
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary"
 import Layout from "../components/Layout/Layout"
-import "../global.css"
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      notifyOnChangeProps: "tracked",
+    },
+  },
+})
 
 // Used by gatsby-plugin-layout
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -25,13 +30,14 @@ const LayoutManager: FC<any> = ({ children, pageContext }) => (
 
 const GlobalStyle: FC = () => {
   const [mode] = useColorMode()
+  const { theme } = useThemeUI()
   const isDarkMode = mode === "dark"
 
   return (
     <Global
-      styles={({ colors }) => ({
+      styles={() => ({
         body: {
-          backgroundColor: colors.background,
+          backgroundColor: theme.colors?.background as string,
           minHeight: "100vh",
           top: 0,
         },
@@ -40,12 +46,12 @@ const GlobalStyle: FC = () => {
           // scrollbarColor: isDarkMode ? "dark" : "light",
 
           "::-webkit-scrollbar": isDarkMode
-            ? { width: 8, backgroundColor: "#1c1c1c" }
-            : "inherit",
+            ? { width: 8, height: 8, backgroundColor: "#1c1c1c" }
+            : undefined,
 
           "::-webkit-scrollbar-thumb": isDarkMode
             ? { backgroundColor: "#3e3e3e", borderRadius: 9999 }
-            : "inherit",
+            : undefined,
         },
       })}
     />

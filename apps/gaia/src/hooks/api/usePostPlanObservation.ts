@@ -1,16 +1,17 @@
-import { useMutation, useQueryClient } from "react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { track } from "$lib/mixpanel"
 import { PostPlanObservationRequest } from "../../pages/api/plans/[planId]/observations"
 import { postApi } from "./apiHelpers"
 
-const usePostPlanObservation = (planId: string) => {
+const usePostPlanObservation = (planId?: string) => {
   const queryClient = useQueryClient()
   const postPlanObservation = postApi<PostPlanObservationRequest>(
     `/plans/${planId}/observations`
   )
   return useMutation(postPlanObservation, {
     onSuccess: async () => {
-      mixpanel.track("Observation Created")
-      await queryClient.invalidateQueries(["childPlans"])
+      track("Observation Created")
+      await queryClient.invalidateQueries(["lesson-plan", planId])
     },
   })
 }

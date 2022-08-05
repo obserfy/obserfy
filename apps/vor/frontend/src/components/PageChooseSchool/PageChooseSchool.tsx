@@ -1,16 +1,16 @@
-import React, { FC } from "react"
-import { Button, Box, Card, Flex } from "theme-ui"
 import { Trans } from "@lingui/macro"
+import { FC } from "react"
+import { Box, Button, Card, Flex } from "theme-ui"
 import { useGetSchools } from "../../hooks/api/schools/useGetSchools"
-import { Typography } from "../Typography/Typography"
-import Icon from "../Icon/Icon"
+import { setSchoolIdState } from "../../hooks/schoolIdState"
 import { ReactComponent as ArrowNextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
-import { setSchoolIdState } from "../../hooks/schoolIdState"
 import { STUDENTS_URL } from "../../routes"
 import BrandBanner from "../BrandBanner/BrandBanner"
-import { navigate, Link } from "../Link/Link"
+import Icon from "../Icon/Icon"
+import { Link, navigate } from "../Link/Link"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import { Typography } from "../Typography/Typography"
 
 export const PageChooseSchool: FC = () => {
   const schools = useGetSchools()

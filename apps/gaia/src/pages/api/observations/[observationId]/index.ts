@@ -1,5 +1,5 @@
+import { getSession } from "@auth0/nextjs-auth0"
 import { NextApiRequest, NextApiResponse } from "next"
-import auth0 from "../../../../utils/auth0"
 import { deleteObservation, updateObservation } from "../../../../db/queries"
 import { protectedApiRoute } from "../../../../utils/rest"
 
@@ -36,7 +36,7 @@ const handleDelete = async (
 }
 
 const observationHandler = protectedApiRoute(async (req, res) => {
-  const session = await auth0.getSession(req)
+  const session = await getSession(req, res)
   if (!session) {
     res.status(401).end("unauthorized")
     return

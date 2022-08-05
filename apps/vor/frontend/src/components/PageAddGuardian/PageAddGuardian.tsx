@@ -1,11 +1,11 @@
 import { t, Trans } from "@lingui/macro"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box, Flex } from "theme-ui"
+import { getFirstName } from "../../domain/person"
 import { usePostGuardianRelation } from "../../hooks/api/guardians/usePostGuardianRelation"
 import { usePostNewGuardian } from "../../hooks/api/guardians/usePostNewGuardian"
 import { GuardianRelationship } from "../../hooks/api/students/usePostNewStudent"
 import { useGetStudent } from "../../hooks/api/useGetStudent"
-import { getFirstName } from "../../domain/person"
 import {
   STUDENT_OVERVIEW_URL,
   STUDENT_PROFILE_URL,
@@ -14,7 +14,6 @@ import {
 import Chip from "../Chip/Chip"
 import GuardianRelationshipSelector from "../GuardianRelationshipSelector/GuardianRelationshipSelector"
 import { navigate } from "../Link/Link"
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import NewGuardianForm, {
   useNewGuardianFormState,
 } from "../NewGuardianForm/NewGuardianForm"
@@ -84,14 +83,7 @@ export const PageAddGuardian: FC<Props> = ({ id: studentId }) => {
           breadCrumb(t`Profile`, STUDENT_PROFILE_URL(studentId)),
           breadCrumb(t`Add Guardian`),
         ]}
-        buttonContent={
-          <>
-            {postNewGuardian.isLoading && (
-              <LoadingIndicator color="onPrimary" />
-            )}
-            <Trans>Add</Trans>
-          </>
-        }
+        isLoading={postNewGuardian.isLoading}
       />
 
       <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>

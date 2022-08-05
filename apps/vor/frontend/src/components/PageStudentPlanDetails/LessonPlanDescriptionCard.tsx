@@ -1,5 +1,5 @@
 import { t, Trans } from "@lingui/macro"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Button, Card, Flex } from "theme-ui"
 import usePatchPlan from "../../hooks/api/plans/usePatchPlans"
 import useVisibilityState from "../../hooks/useVisibilityState"
@@ -58,8 +58,8 @@ const DescriptionEditor: FC<{
   }
 
   return (
-    <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
-      <Flex pt={3} pb={2}>
+    <Card mb={3} sx={{ borderRadius: [0, "default"], overflow: "hidden" }}>
+      <Flex py={3} sx={{ alignItems: "center" }}>
         <Typography.Body px={3} sx={{ fontWeight: "bold" }}>
           <Trans>Description</Trans>
         </Typography.Body>

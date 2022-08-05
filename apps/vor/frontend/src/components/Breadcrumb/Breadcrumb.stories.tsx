@@ -1,4 +1,3 @@
-import React from "react"
 import { Meta, Story } from "@storybook/react"
 import Breadcrumb, { BreadcrumbProps } from "./Breadcrumb"
 import BreadcrumbItem from "./BreadcrumbItem"

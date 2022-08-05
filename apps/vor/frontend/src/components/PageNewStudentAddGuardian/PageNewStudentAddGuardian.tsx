@@ -1,5 +1,5 @@
 import { t, Trans } from "@lingui/macro"
-import React, { FC, useState } from "react"
+import { FC, useState } from "react"
 import { Box, Flex } from "theme-ui"
 import { usePostNewGuardian } from "../../hooks/api/guardians/usePostNewGuardian"
 import { GuardianRelationship } from "../../hooks/api/students/usePostNewStudent"
@@ -7,7 +7,6 @@ import { NEW_STUDENT_URL, STUDENTS_URL } from "../../routes"
 import Chip from "../Chip/Chip"
 import GuardianRelationshipSelector from "../GuardianRelationshipSelector/GuardianRelationshipSelector"
 import { navigate } from "../Link/Link"
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import NewGuardianForm, {
   useNewGuardianFormState,
 } from "../NewGuardianForm/NewGuardianForm"
@@ -67,14 +66,7 @@ const PageNewStudentAddGuardian: FC = () => {
           breadCrumb(t`New Student`, NEW_STUDENT_URL),
           breadCrumb(t`Add Guardian`),
         ]}
-        buttonContent={
-          <>
-            {postNewGuardian.isLoading && (
-              <LoadingIndicator color="onPrimary" />
-            )}
-            <Trans>Add</Trans>
-          </>
-        }
+        isLoading={postNewGuardian.isLoading}
       />
 
       <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>

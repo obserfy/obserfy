@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { Box } from "theme-ui"
 import { t } from "@lingui/macro"
 import UserCard from "../UserCard/UserCard"

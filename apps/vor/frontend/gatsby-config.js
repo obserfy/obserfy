@@ -2,7 +2,6 @@ const plugins = [
   `gatsby-plugin-layout`,
   "gatsby-plugin-theme-ui",
   `gatsby-plugin-react-helmet`,
-  `gatsby-plugin-postcss`,
   {
     resolve: `gatsby-source-filesystem`,
     options: {
@@ -13,7 +12,6 @@ const plugins = [
   `gatsby-plugin-image`,
   `gatsby-transformer-sharp`,
   `gatsby-plugin-sharp`,
-  `gatsby-plugin-remove-trailing-slashes`,
   {
     resolve: `gatsby-plugin-manifest`,
     options: {
@@ -45,12 +43,6 @@ const plugins = [
     },
   },
   {
-    resolve: `gatsby-plugin-canonical-urls`,
-    options: {
-      siteUrl: `https://app.obserfy.com`,
-    },
-  },
-  {
     resolve: `gatsby-plugin-nprogress`,
     options: {
       // Setting a color is optional.
@@ -73,29 +65,19 @@ const plugins = [
     },
   },
   // DEVTOOLS ================================================================
-  {
-    resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-    options: {
-      analyzerPort: 3300,
-    },
-  },
-  {
-    resolve: `gatsby-plugin-typegen`,
-    options: {
-      emitSchema: {
-        "src/__generated__/gatsby-schema.graphql": true,
-      },
-    },
-  },
+  // {
+  //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+  //   options: {
+  //     analyzerPort: 3300,
+  //   },
+  // }
 ]
 
 // this disables plugins for dev.
 if (process.env.NODE_ENV === "production") {
-  // TODO: run preact on dev too when prefresh stabilizes. Preact's HMR stops
-  //  working on gatsby v3, so we disable preact in dev. Bug might arise on
-  //  dev related to portals due to the difference between preact's and react's
-  //  event propagation.
-  plugins.push(`gatsby-plugin-preact`, {
+  // TODO: Enable when preact has feature parity with react 18
+  // plugins.push(`gatsby-plugin-preact`)
+  plugins.push({
     resolve: "@sentry/gatsby",
     options: {
       dsn: "https://05a5ecaa1d8c4c01b96d2a7993fa9337@sentry.io/1852524",
@@ -106,11 +88,18 @@ if (process.env.NODE_ENV === "production") {
 }
 
 /**
- * Proxy all network calls to /api and /auth routes to our golang backend.
+ * Proxy all networks call to /api and /auth routes to our golang backend.
  * */
 const developMiddleware = (app) => {
   app.use(
     "/api",
+    require("http-proxy-middleware").createProxyMiddleware({
+      secure: false,
+      target: "https://localhost:8000",
+    })
+  )
+  app.use(
+    "/webhooks",
     require("http-proxy-middleware").createProxyMiddleware({
       secure: false,
       target: "https://localhost:8000",
@@ -126,11 +115,6 @@ const developMiddleware = (app) => {
 }
 
 module.exports = {
-  flags: {
-    PRESERVE_WEBPACK_CACHE: true,
-    DEV_SSR: true,
-    FAST_DEV: true,
-  },
   siteMetadata: {
     title: `Obserfy for Teachers`,
     description: `Record keeping tool for montessori schools.`,
@@ -139,4 +123,7 @@ module.exports = {
   },
   plugins,
   developMiddleware,
+  trailingSlash: "never",
+  jsxRuntime: "automatic",
+  jsxImportSource: "theme-ui",
 }

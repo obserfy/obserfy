@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { BoxProps } from "theme-ui"
 import Pill from "../Pill/Pill"
 import { GuardianRelationship } from "../../hooks/api/students/usePostNewStudent"

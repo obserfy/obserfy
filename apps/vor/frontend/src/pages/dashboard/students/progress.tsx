@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { PageRendererProps } from "gatsby"
 import queryString from "query-string"
 import SEO from "../../../components/seo"
