@@ -177,16 +177,16 @@ const FilterBarMobile: FC<{
     to: Dayjs
   }) => {
     if (!val.to.isSame(to)) {
-      await setQueries({ to: val.to.format("YYYY-MM-DD") })
       setTo(val.to)
+      await setQueries({ to: val.to.format("YYYY-MM-DD") })
     }
     if (!val.from.isSame(from)) {
-      await setQueries({ from: val.from.format("YYYY-MM-DD") })
       setFrom(val.from)
+      await setQueries({ from: val.from.format("YYYY-MM-DD") })
     }
     if (val.area !== area) {
-      await setQueries({ area: val.area })
       setArea(val.area)
+      await setQueries({ area: val.area })
     }
     if (val.search !== search) {
       setSearch(val.search)
@@ -258,19 +258,19 @@ const FilterCardDesktop: FC<{
 
   const handleFromChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const value = dayjs(e.target.value || oldestDate)
-    await setQueries({ from: value.format("YYYY-MM-DD") })
     setFrom(value)
+    await setQueries({ from: value.format("YYYY-MM-DD") })
   }
 
   const handleToChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const value = dayjs(e.target.value || today)
-    await setQueries({ to: value.format("YYYY-MM-DD") })
     setTo(value)
+    await setQueries({ to: value.format("YYYY-MM-DD") })
   }
 
   const handleAreaChange = async (e: ChangeEvent<HTMLSelectElement>) => {
-    await setQueries({ area: e.target.value })
     setArea(e.target.value)
+    await setQueries({ area: e.target.value })
   }
 
   return (

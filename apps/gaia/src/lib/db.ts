@@ -360,9 +360,7 @@ export const findStudentLessonPlans = (
         lte: where?.to?.endOf("day").toDate(),
       },
       lesson_plan_details: {
-        areas: {
-          id: where?.area,
-        },
+        areas: where?.area === "others" ? null : { id: where?.area },
       },
       lesson_plan_to_students: {
         some: {
