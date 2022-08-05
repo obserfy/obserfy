@@ -442,7 +442,7 @@ type (
 	}
 
 	StudentProgressReport struct {
-		StudentId uuid.UUID `pg:"type:uuid,pk"`
+		StudentId uuid.UUID `pg:"type:uuid,pk,on_delete:CASCADE"`
 		Student   Student   `pg:"rel:has-one"`
 
 		ProgressReport   ProgressReport `pg:"rel:has-one"`
@@ -455,8 +455,8 @@ type (
 	}
 
 	StudentProgressReportsAreaComment struct {
-		StudentProgressReportProgressReportId uuid.UUID             `pg:"type:uuid,pk"`
-		StudentProgressReportStudentId        uuid.UUID             `pg:"type:uuid,pk"`
+		StudentProgressReportProgressReportId uuid.UUID             `pg:"type:uuid,pk,on_delete:CASCADE"`
+		StudentProgressReportStudentId        uuid.UUID             `pg:"type:uuid,pk,on_delete:CASCADE"`
 		StudentProgressReport                 StudentProgressReport `pg:"rel:has-one"`
 
 		AreaId uuid.UUID `pg:"type:uuid,pk"`
@@ -466,14 +466,14 @@ type (
 	}
 
 	StudentProgressReportAssessment struct {
-		StudentProgressReportProgressReportId uuid.UUID             `pg:"type:uuid,pk"`
-		StudentProgressReportStudentId        uuid.UUID             `pg:"type:uuid,pk"`
+		StudentProgressReportProgressReportId uuid.UUID             `pg:"type:uuid,pk,on_delete:CASCADE"`
+		StudentProgressReportStudentId        uuid.UUID             `pg:"type:uuid,pk,on_delete:CASCADE"`
 		StudentProgressReport                 StudentProgressReport `pg:"rel:has-one"`
 
 		MaterialId string   `pg:"type:uuid,on_delete:CASCADE,pk"`
 		Material   Material `pg:"rel:has-one"`
 
-		Assessment int `pg:",notnull,use_zero"`
+		Assessment int `pg:",notnull,use_zero,on_delete:CASCADE"`
 		UpdatedAt  time.Time
 	}
 )
