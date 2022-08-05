@@ -17775,7 +17775,7 @@ __metadata:
     minio: 7.0.29
     monocle-ts: 2.3.13
     mux-embed: 4.1.1
-    nanoid: 3.1.25
+    nanoid: 3.1.31
     newtype-ts: 0.3.5
     next: 12.2.3
     next-compose-plugins: ^2.2.1
@@ -24223,12 +24223,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:*, nanoid@npm:3.1.25, nanoid@npm:^3.1.23, nanoid@npm:^3.1.25":
+"nanoid@npm:*, nanoid@npm:^3.1.23, nanoid@npm:^3.1.25":
   version: 3.1.25
   resolution: "nanoid@npm:3.1.25"
   bin:
     nanoid: bin/nanoid.cjs
   checksum: e2353828c7d8fde65265e9c981380102e2021f292038a93fd27288bad390339833286e8cbc7531abe1cb2c6b317e55f38b895dcb775151637bb487388558e0ff
+  languageName: node
+  linkType: hard
+
+"nanoid@npm:3.1.31":
+  version: 3.1.31
+  resolution: "nanoid@npm:3.1.31"
+  bin:
+    nanoid: bin/nanoid.cjs
+  checksum: 3e9fddc1619cc8f787f37fa3d26c072049b7105af4d5365dae32adce13250e29dfab2d2b061f3798b2dd3cc0dee663917a63032979df56ef64c15c287748ab99
   languageName: node
   linkType: hard
 
@@ -32637,7 +32646,7 @@ resolve@^2.0.0-next.3:
     jest-fetch-mock: 3.0.3
     make-plural: 7.0.0
     mux-embed: 4.1.1
-    nanoid: 3.1.25
+    nanoid: 3.1.31
     npm-run-all: 4.1.5
     preact: 10.10.0
     preact-render-to-string: 5.2.1
