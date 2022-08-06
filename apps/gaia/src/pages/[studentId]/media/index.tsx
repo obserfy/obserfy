@@ -69,7 +69,9 @@ const imgproxyLoader: ImageLoader = ({ src, width, quality }) => {
   }
 
   const paramsString = params.join("/")
-  return `${imgproxyUrl}/${nanoid()}/${paramsString}/${normalizeSrc(src)}`
+  return `${imgproxyUrl}/02jnc498jjkfn984jk83rnc20njfh38932/${paramsString}/${normalizeSrc(
+    src
+  )}`
 }
 
 const ImageMonthlySection: FC<{
