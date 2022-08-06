@@ -11290,20 +11290,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-remove-graphql-queries@npm:4.19.0":
-  version: 4.19.0
-  resolution: "babel-plugin-remove-graphql-queries@npm:4.19.0"
-  dependencies:
-    "@babel/runtime": ^7.15.4
-    gatsby-core-utils: ^3.19.0
-  peerDependencies:
-    "@babel/core": ^7.0.0
-    gatsby: ^4.0.0-next
-  checksum: de1c912382ee9484bc0e864aaf28cfea2650f1855903fdd52d5f8c58ff56afebf7b515028c4fba8861966d46a123c8a6c3ec3daaa7c69974b99aa8cd19c7811b
-  languageName: node
-  linkType: hard
-
-"babel-plugin-remove-graphql-queries@npm:^4.20.0":
+"babel-plugin-remove-graphql-queries@npm:4.20.0, babel-plugin-remove-graphql-queries@npm:^4.20.0":
   version: 4.20.0
   resolution: "babel-plugin-remove-graphql-queries@npm:4.20.0"
   dependencies:
@@ -17865,29 +17852,6 @@ __metadata:
   bin:
     gatsby: cli.js
   checksum: 5c714e31c8e4d32ee0c835f43581b9288dc6e9968ada6a68466e3561a8d13b20c8d2bdc8925ec39b5ad7fd2d6708bf1a7f5755488bc066f5f2e72e0879f29e88
-  languageName: node
-  linkType: hard
-
-"gatsby-core-utils@npm:^3.19.0":
-  version: 3.19.0
-  resolution: "gatsby-core-utils@npm:3.19.0"
-  dependencies:
-    "@babel/runtime": ^7.15.4
-    ci-info: 2.0.0
-    configstore: ^5.0.1
-    fastq: ^1.13.0
-    file-type: ^16.5.3
-    fs-extra: ^10.1.0
-    got: ^11.8.5
-    import-from: ^4.0.0
-    lmdb: 2.5.3
-    lock: ^1.1.0
-    node-object-hash: ^2.3.10
-    proper-lockfile: ^4.1.2
-    resolve-from: ^5.0.0
-    tmp: ^0.2.1
-    xdg-basedir: ^4.0.0
-  checksum: 80c1f069d29195636d211fc900e40db8dfb855c6221206cf2b4d401ac137d0c9df790938a9f3830d2ea3049157bca7c661b5b4ab07ac00bc6b71e3beb3c2254d
   languageName: node
   linkType: hard
 
@@ -32612,7 +32576,7 @@ resolve@^2.0.0-next.3:
     babel-loader: 8.2.5
     babel-plugin-istanbul: 6.1.1
     babel-plugin-macros: 3.1.0
-    babel-plugin-remove-graphql-queries: 4.19.0
+    babel-plugin-remove-graphql-queries: 4.20.0
     babel-plugin-transform-default-import: 1.0.0
     babel-preset-gatsby: ^2.20.0
     body-scroll-lock: 3.1.5
