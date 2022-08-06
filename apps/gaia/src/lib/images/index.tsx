@@ -1,6 +1,6 @@
 import { monthNames } from "$lib/dayjs"
 import { findImagesByStudentId } from "$lib/db"
-import { generateOriginalUrl } from "../../utils/imgproxy"
+import { generateOriginalUrl, generateS3URL } from "../../utils/imgproxy"
 
 export const findStudentImagesGroupedByMonths = async (studentId: string) => {
   const images = await findImagesByStudentId(studentId)
@@ -18,7 +18,7 @@ export const findStudentImagesGroupedByMonths = async (studentId: string) => {
     imagesByMonth[key] ??= []
     imagesByMonth[key].push({
       id: image.id,
-      src: image.object_key ? generateOriginalUrl(image.object_key) : "",
+      src: image.object_key ? generateS3URL(image.object_key) : "",
       created_at: image.created_at?.toISOString(),
     })
   })
