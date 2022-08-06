@@ -9022,7 +9022,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pino@npm:*, @types/pino@npm:6.3.11":
+"@types/pino@npm:*":
   version: 6.3.11
   resolution: "@types/pino@npm:6.3.11"
   dependencies:
@@ -9031,6 +9031,18 @@ __metadata:
     "@types/pino-std-serializers": "*"
     sonic-boom: ^2.1.0
   checksum: 170d4a3ae1cffb7361d5a18934c271a1ebc58832d2bf479c8eeeec34954efd16da96b76e68c8d438df227fc6adb3cbc7bbd5c5318f291cb31ae9e9daa3f6873b
+  languageName: node
+  linkType: hard
+
+"@types/pino@npm:6.3.12":
+  version: 6.3.12
+  resolution: "@types/pino@npm:6.3.12"
+  dependencies:
+    "@types/node": "*"
+    "@types/pino-pretty": "*"
+    "@types/pino-std-serializers": "*"
+    sonic-boom: ^2.1.0
+  checksum: 801735146669312d02459781e5180220630eaef643da36dc5a9a97520e7ecc3da7270f31a86fcdcb1dc835073c9143fc628024ba5e3a0ea7cbb86aada4897709
   languageName: node
   linkType: hard
 
@@ -16887,13 +16899,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify-warning@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "fastify-warning@npm:0.2.0"
-  checksum: c19ebccf54a3122877d2248400772ca98bacbabdf97826211ede29246c640d47431a2eebed1f52f9421139ed5e52e42d3bd4aefc46e27b6f34add3507529fd97
-  languageName: node
-  linkType: hard
-
 "fastq@npm:^1.13.0, fastq@npm:^1.6.0":
   version: 1.13.0
   resolution: "fastq@npm:1.13.0"
@@ -17692,7 +17697,7 @@ __metadata:
     "@types/nanoid": 3.0.0
     "@types/node": 14.18.23
     "@types/pg": 8.6.5
-    "@types/pino": 6.3.11
+    "@types/pino": 6.3.12
     "@types/react": 17.0.48
     "@types/react-query": 1.2.9
     "@types/uuid": 8.3.4
@@ -17723,7 +17728,7 @@ __metadata:
     next-pwa: 5.5.5
     node-mocks-http: 1.11.0
     pg: 8.7.3
-    pino: 6.13.2
+    pino: 6.14.0
     pino-pretty: 6.0.0
     postcss: 8.3.6
     prettier: 2.5.1
@@ -26049,20 +26054,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino@npm:6.13.2":
-  version: 6.13.2
-  resolution: "pino@npm:6.13.2"
+"pino@npm:6.14.0":
+  version: 6.14.0
+  resolution: "pino@npm:6.14.0"
   dependencies:
     fast-redact: ^3.0.0
     fast-safe-stringify: ^2.0.8
-    fastify-warning: ^0.2.0
     flatstr: ^1.0.12
     pino-std-serializers: ^3.1.0
+    process-warning: ^1.0.0
     quick-format-unescaped: ^4.0.3
     sonic-boom: ^1.0.2
   bin:
     pino: bin.js
-  checksum: daed08099630e8fd8970ed95e9145f8cc40e36671b3acd1324a459c1758b93e3dbe8eea7573ccff00e48ebf1afc1dcc612732e92a5e40e47ab8f91ac0a81ad4b
+  checksum: eb13e12e3a3d682abe4a4da426455a9f4e041e55e4fa57d72d9677ee8d188a9c952f69347e728a3761c8262cdce76ef24bee29e1a53ab15aa9c5e851099163d0
   languageName: node
   linkType: hard
 
@@ -27049,6 +27054,13 @@ __metadata:
   version: 2.0.1
   resolution: "process-nextick-args@npm:2.0.1"
   checksum: 1d38588e520dab7cea67cbbe2efdd86a10cc7a074c09657635e34f035277b59fbb57d09d8638346bf7090f8e8ebc070c96fa5fd183b777fff4f5edff5e9466cf
+  languageName: node
+  linkType: hard
+
+"process-warning@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "process-warning@npm:1.0.0"
+  checksum: c708a03241deec3cabaeee39c4f9ee8c4d71f1c5ef9b746c8252cdb952a6059068cfcdaf348399775244cbc441b6ae5e26a9c87ed371f88335d84f26d19180f9
   languageName: node
   linkType: hard
 
