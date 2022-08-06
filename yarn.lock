@@ -17716,7 +17716,7 @@ __metadata:
     minio: 7.0.29
     monocle-ts: 2.3.13
     mux-embed: 4.12.0
-    nanoid: 3.1.31
+    nanoid: 3.3.4
     newtype-ts: 0.3.5
     next: 12.2.3
     next-compose-plugins: ^2.2.1
@@ -24175,12 +24175,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:3.1.31":
-  version: 3.1.31
-  resolution: "nanoid@npm:3.1.31"
+"nanoid@npm:3.3.4, nanoid@npm:^3.3.4":
+  version: 3.3.4
+  resolution: "nanoid@npm:3.3.4"
   bin:
     nanoid: bin/nanoid.cjs
-  checksum: 3e9fddc1619cc8f787f37fa3d26c072049b7105af4d5365dae32adce13250e29dfab2d2b061f3798b2dd3cc0dee663917a63032979df56ef64c15c287748ab99
+  checksum: 2fddd6dee994b7676f008d3ffa4ab16035a754f4bb586c61df5a22cf8c8c94017aadd360368f47d653829e0569a92b129979152ff97af23a558331e47e37cd9c
   languageName: node
   linkType: hard
 
@@ -24190,15 +24190,6 @@ __metadata:
   bin:
     nanoid: bin/nanoid.cjs
   checksum: 4ef0969e1bbe866fc223eb32276cbccb0961900bfe79104fa5abe34361979dead8d0e061410a5c03bc3d47455685adf32c09d6f27790f4a6898fb51f7df7ec86
-  languageName: node
-  linkType: hard
-
-"nanoid@npm:^3.3.4":
-  version: 3.3.4
-  resolution: "nanoid@npm:3.3.4"
-  bin:
-    nanoid: bin/nanoid.cjs
-  checksum: 2fddd6dee994b7676f008d3ffa4ab16035a754f4bb586c61df5a22cf8c8c94017aadd360368f47d653829e0569a92b129979152ff97af23a558331e47e37cd9c
   languageName: node
   linkType: hard
 
@@ -32539,7 +32530,7 @@ resolve@^2.0.0-next.3:
     jest-fetch-mock: 3.0.3
     make-plural: 7.1.0
     mux-embed: 4.12.0
-    nanoid: 3.1.31
+    nanoid: 3.3.4
     npm-run-all: 4.1.5
     preact: 10.10.0
     preact-render-to-string: 5.2.1
