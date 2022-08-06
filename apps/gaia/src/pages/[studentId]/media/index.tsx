@@ -9,10 +9,12 @@ import { findStudentByStudentId } from "$lib/db"
 import { findStudentImagesGroupedByMonths } from "$lib/images"
 import { getStudentId, SSR } from "$lib/next"
 import clsx from "clsx"
-import Image from "next/future/image"
+import { nanoid } from "nanoid"
+import Image, { ImageLoader } from "next/future/image"
 import Link from "next/link"
 import { ChangeEventHandler, FC } from "react"
 import { v4 as uuidv4 } from "uuid"
+import getConfig from "next/config"
 
 const ImagesPage: SSR<typeof getServerSideProps> = ({
   imagesByMonth,
@@ -53,6 +55,23 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({
   )
 }
 
+const normalizeSrc = (src: string) => {
+  return src.startsWith("/") ? src.slice(1) : src
+}
+
+const imgproxyLoader: ImageLoader = ({ src, width, quality }) => {
+  const { publicRuntimeConfig } = getConfig()
+  const imgproxyUrl = publicRuntimeConfig.imgproxyUrl
+
+  const params = [`w:${width}`]
+  if (quality) {
+    params.push(`q:${quality}`)
+  }
+
+  const paramsString = params.join("/")
+  return `${imgproxyUrl}/${nanoid()}/${paramsString}/${normalizeSrc(src)}`
+}
+
 const ImageMonthlySection: FC<{
   month: string
   images: { id: string; src: string }[]
@@ -75,6 +94,7 @@ const ImageMonthlySection: FC<{
                   className="rounded-xl bg-gray-100 object-cover "
                   alt=""
                   sizes={"33vw"}
+                  loader={imgproxyLoader}
                 />
               </a>
             </Link>

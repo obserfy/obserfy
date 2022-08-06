@@ -45,3 +45,7 @@ export const generateOriginalUrl = (objectKey: string) => {
 
   return `${URL}/${signature}${path}`
 }
+
+export const generateS3URL = (objectKey: string) => {
+  return `/${urlSafeBase64(`s3://${BUCKET}/${objectKey}`)}.jpg`
+}

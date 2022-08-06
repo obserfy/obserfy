@@ -17708,7 +17708,7 @@ __metadata:
     eslint-plugin-tailwindcss: 3.6.0
     formidable-serverless: 1.1.1
     fp-ts: 2.12.2
-    hls.js: 1.0.10
+    hls.js: 1.2.0
     io-ts: 2.2.17
     io-ts-types: 0.5.16
     isomorphic-dompurify: ^0.20.0
@@ -19406,10 +19406,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hls.js@npm:*, hls.js@npm:1.0.10":
+"hls.js@npm:*":
   version: 1.0.10
   resolution: "hls.js@npm:1.0.10"
   checksum: 56fb2729a55a68a384e3fbba4a6146702533896ac467d556afeefa12c315d64d68c2a21673d345ebacf392172ad7e8429f597a12ed90d2506b77a3093d05e596
+  languageName: node
+  linkType: hard
+
+"hls.js@npm:1.2.0":
+  version: 1.2.0
+  resolution: "hls.js@npm:1.2.0"
+  checksum: 8c8b76533c90cefbf503875299ecb1193fa02124c1ec50966061fc5500d727bd85cce78666fc8a909ea31ce0e2dfc37062a802163a01ac83c0f5ac1d9fd5475f
   languageName: node
   linkType: hard
 
@@ -23208,10 +23215,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"make-plural@npm:7.0.0":
-  version: 7.0.0
-  resolution: "make-plural@npm:7.0.0"
-  checksum: 6dc2069675c61ed960eeffd81bf22363bcaf2775ae2f5cb3f25f4be58e98208da8534354dec605787928a2dfbd61492dafd7310e2c5c03c0952e797b8ac86549
+"make-plural@npm:7.1.0":
+  version: 7.1.0
+  resolution: "make-plural@npm:7.1.0"
+  checksum: d0ef253e508c8cdbddcc37288d25e0944eb2bf800008bf178a1c37b101c3202d89609ddb577a10515bd2499c7665159594704682cc9c159cc20491da6b7ac09e
   languageName: node
   linkType: hard
 
@@ -32522,7 +32529,7 @@ resolve@^2.0.0-next.3:
     gatsby-theme-i18n: 3.0.0
     gatsby-theme-i18n-lingui: 3.0.0
     gatsby-transformer-sharp: 4.20.0
-    hls.js: 1.0.10
+    hls.js: 1.2.0
     http-proxy-middleware: 2.0.6
     hygen: 6.2.8
     idb-keyval: 5.1.5
@@ -32530,7 +32537,7 @@ resolve@^2.0.0-next.3:
     jest: 27.5.1
     jest-date-mock: 1.0.8
     jest-fetch-mock: 3.0.3
-    make-plural: 7.0.0
+    make-plural: 7.1.0
     mux-embed: 4.1.1
     nanoid: 3.1.31
     npm-run-all: 4.1.5

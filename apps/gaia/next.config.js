@@ -35,6 +35,9 @@ const config = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  publicRuntimeConfig: {
+    imgproxyUrl: process.env.IMGPROXY_URL,
+  },
 }
 
 module.exports = withPlugins(plugins, config)
