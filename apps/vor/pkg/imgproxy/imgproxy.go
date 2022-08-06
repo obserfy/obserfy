@@ -10,7 +10,6 @@ import (
 // GenerateUrlFromS3 generates a URL for an imgproxy optimized image use S3 as source
 func GenerateUrlFromS3(imageObjectKey string, width int, height int) string {
 	// Create sane default transformation
-	gravity := "no"
 	enlarge := 1
 	resize := "fill"
 	if width == 0 {
@@ -22,7 +21,7 @@ func GenerateUrlFromS3(imageObjectKey string, width int, height int) string {
 
 	// Create image's S3 URL
 	S3Url := generateFullS3Url(imageObjectKey)
-	imgproxyUrl := fmt.Sprintf("/%s/%d/%d/%s/%d/%s", resize, width, height, gravity, enlarge, S3Url)
+	imgproxyUrl := fmt.Sprintf("/rs:%s/w:%d/h:%d/el:%d/%s.jpg", resize, width, height, enlarge, S3Url)
 	return signUrl(imgproxyUrl)
 }
 

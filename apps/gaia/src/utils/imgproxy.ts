@@ -29,10 +29,9 @@ export const generateUrl = (
 ) => {
   const url = `s3://${BUCKET}/${objectKey}`
   const resizingType = "fill"
-  const gravity = "no"
   const enlarge = 1
   const encodedUrl = urlSafeBase64(url)
-  const path = `/${resizingType}/${width}/${height}/${gravity}/${enlarge}/${encodedUrl}`
+  const path = `/rs:${resizingType}/w:${width}/h:${height}/el:${enlarge}/${encodedUrl}.jpg`
 
   const signature = sign(SALT, path, KEY)
   return `${URL}/${signature}${path}`
