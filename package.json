@@ -21,7 +21,7 @@
     "postinstall": "husky install"
   },
   "dependencies": {
-    "prettier": "2.5.1"
+    "prettier": "2.7.1"
   },
   "packageManager": "yarn@3.2.2"
 }
