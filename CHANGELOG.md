@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.17.1](https://github.com/obserfy/obserfy/compare/v1.17.0...v1.17.1) (2022-08-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency hls.js to v1.2.0 ([b36443a](https://github.com/obserfy/obserfy/commit/b36443a27aba316c835745459605693e84612e66))
+* **deps:** update dependency make-plural to v7.1.0 ([9af058d](https://github.com/obserfy/obserfy/commit/9af058d4ef69b6a84db59841b745eed2c456cab7))
+
+## [1.17.0](https://github.com/obserfy/obserfy/compare/v1.16.11...v1.17.0) (2022-08-06)
+
+
+### Features
+
+* upgrade imgproxy support to 3.7 to get AVIF. ([e89565c](https://github.com/obserfy/obserfy/commit/e89565cabe580cd49e2108718fee8b5a0c112464))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @mux/upchunk to v2.4.0 ([ff3de47](https://github.com/obserfy/obserfy/commit/ff3de47957f8c957a66bfaf196f42f4afbecae1b))
+* **deps:** update dependency @types/mixpanel-browser to v2.38.0 ([e5fc666](https://github.com/obserfy/obserfy/commit/e5fc666a44ca43eff879f5caef6ed84366b52a06))
+* **deps:** update dependency @types/node to v14.18.23 ([ae69c49](https://github.com/obserfy/obserfy/commit/ae69c49ce4e31ab7a1ad7b5e6c7b9b35e5d81330))
+* **deps:** update dependency autoprefixer to v10.4.8 ([1308602](https://github.com/obserfy/obserfy/commit/1308602db1503aca56d8e2f1926623750b6f32fe))
+* **deps:** update dependency babel-plugin-remove-graphql-queries to v4.20.0 ([d986d7f](https://github.com/obserfy/obserfy/commit/d986d7fb708ad27f9287974b0df28a5be88cd81d))
+* **deps:** update dependency clsx to v1.2.1 ([72c8fa9](https://github.com/obserfy/obserfy/commit/72c8fa9c0d34a5b2e935ced3c04512d58949bc79))
+* **deps:** update dependency dayjs to v1.11.4 ([d37f845](https://github.com/obserfy/obserfy/commit/d37f8459b301c7ef03261eb28a638a44b3316bda))
+* **deps:** update dependency fp-ts to v2.12.2 ([ea69987](https://github.com/obserfy/obserfy/commit/ea69987cd72c560bb4f8b1f5965e6644ef4e04fe))
+* **deps:** update dependency nanoid to v3.1.31 [security] ([fe16649](https://github.com/obserfy/obserfy/commit/fe16649137b933cfb6251ffa5a6807f2a329f99e))
+
+### [1.16.11](https://github.com/obserfy/obserfy/compare/v1.16.10...v1.16.11) (2022-08-05)
+
+
+### Bug Fixes
+
+* observation not being rendered properly. ([aac77f5](https://github.com/obserfy/obserfy/commit/aac77f5b2d8f8170536a47623592966bf74943f4))
+
 ### [1.16.10](https://github.com/obserfy/obserfy/compare/v1.16.9...v1.16.10) (2022-08-05)
 
 
