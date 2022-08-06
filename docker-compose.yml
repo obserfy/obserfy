@@ -55,9 +55,14 @@ services:
       - minio
     environment:
       IMGPROXY_USE_S3: "true"
-      IMGPROXY_ENABLE_WEBP_DETECTION: "true"
       IMGPROXY_TTL: "1209600"
       IMGPROXY_MAX_SRC_RESOLUTION: 26
+      IMGPROXY_ENABLE_WEBP_DETECTION: "true"
+      IMGPROXY_ENFORCE_WEBP: "true"
+      IMGPROXY_ENABLE_AVIF_DETECTION: "true"
+      IMGPROXY_ENFORCE_AVIF: "true"
+      IMGPROXY_USE_ETAG: "true"
+      # IMGPROXY_LOG_FORMAT: "structured" use for logging in prod
     env_file:
       - .env
       - .env.local
