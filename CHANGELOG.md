@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.17.1](https://github.com/obserfy/obserfy/compare/v1.17.0...v1.17.1) (2022-08-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency hls.js to v1.2.0 ([b36443a](https://github.com/obserfy/obserfy/commit/b36443a27aba316c835745459605693e84612e66))
+* **deps:** update dependency make-plural to v7.1.0 ([9af058d](https://github.com/obserfy/obserfy/commit/9af058d4ef69b6a84db59841b745eed2c456cab7))
+
 ## [1.17.0](https://github.com/obserfy/obserfy/compare/v1.16.11...v1.17.0) (2022-08-06)
 
 
