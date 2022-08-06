@@ -27846,21 +27846,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-query@npm:3.21.1":
-  version: 3.21.1
-  resolution: "react-query@npm:3.21.1"
+"react-query@npm:3.39.2":
+  version: 3.39.2
+  resolution: "react-query@npm:3.39.2"
   dependencies:
     "@babel/runtime": ^7.5.5
     broadcast-channel: ^3.4.1
     match-sorter: ^6.0.2
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
     react-dom:
       optional: true
     react-native:
       optional: true
-  checksum: ea8a42d645e48671d102e74001b25ded9f10499f3e8bcaf62ecc071a5a39ca0bd8b37480ddd7bb7dc731d2165b99e5f789bb480040ef179f8d258f71055a4844
+  checksum: 83b199e66af28ab67ec4d22e51da42f02447186623db926b75d27a1c09a3383da6ddc9e5b83d82578fac7abdba7e6f265aecbffdb91db61981950d3d59409346
   languageName: node
   linkType: hard
 
@@ -32541,7 +32541,7 @@ resolve@^2.0.0-next.3:
     react-adaptive-hooks: 0.0.8
     react-dom: ^18.2.0
     react-helmet: 6.1.0
-    react-query: 3.21.1
+    react-query: 3.39.2
     react-refresh: 0.14.0
     react-test-renderer: 17.0.2
     regenerator-runtime: 0.13.9
