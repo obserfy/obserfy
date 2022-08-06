@@ -23215,10 +23215,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"make-plural@npm:7.0.0":
-  version: 7.0.0
-  resolution: "make-plural@npm:7.0.0"
-  checksum: 6dc2069675c61ed960eeffd81bf22363bcaf2775ae2f5cb3f25f4be58e98208da8534354dec605787928a2dfbd61492dafd7310e2c5c03c0952e797b8ac86549
+"make-plural@npm:7.1.0":
+  version: 7.1.0
+  resolution: "make-plural@npm:7.1.0"
+  checksum: d0ef253e508c8cdbddcc37288d25e0944eb2bf800008bf178a1c37b101c3202d89609ddb577a10515bd2499c7665159594704682cc9c159cc20491da6b7ac09e
   languageName: node
   linkType: hard
 
@@ -32537,7 +32537,7 @@ resolve@^2.0.0-next.3:
     jest: 27.5.1
     jest-date-mock: 1.0.8
     jest-fetch-mock: 3.0.3
-    make-plural: 7.0.0
+    make-plural: 7.1.0
     mux-embed: 4.1.1
     nanoid: 3.1.31
     npm-run-all: 4.1.5
