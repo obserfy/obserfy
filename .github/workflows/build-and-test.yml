@@ -170,7 +170,7 @@ jobs:
       - build-gaia
       - build-vor-frontend
     runs-on: ubuntu-latest
-
+    container: cypress/browsers:node12.13.0-chrome78-ff70
     env:
       COMPOSE_DOCKER_CLI_BUILD: 1
       DOCKER_BUILDKIT: 1
@@ -196,13 +196,14 @@ jobs:
           node-version: 18
           cache: 'yarn'
       - name: Install Dependencies
-        run: yarn install
+        run: yarn workspaces focus
       - run: yarn build
       - run: touch .env.local # stop docker-compose from complaining about missing file.
       - run: docker-compose up -d &
       - name: Cypress parallel run
         uses: cypress-io/github-action@v2
         with:
+          browser: chrome
           command: yarn workspace vor run cy:run --record --parallel --config baseUrl=https://localhost:8000
           record: true
           parallel: true
