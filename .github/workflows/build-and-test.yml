@@ -194,19 +194,19 @@ jobs:
           node-version: 18
           cache: 'yarn'
       - name: Install Dependencies
-        run: yarn workspaces focus vor
+        run: yarn workspaces focus e2e
       - run: yarn build
       - run: touch .env.local # stop docker-compose from complaining about missing file.
       - run: docker-compose up -d minio db vor_app nginx &
       - name: Cypress parallel run
         uses: cypress-io/github-action@v4
         with:
-          command: yarn workspace vor run cy:run --record --parallel --config baseUrl=https://localhost:8000
+          command: yarn workspace e2e run cy:run --record --parallel --config baseUrl=https://localhost:8000
           group: 'E2E'
           wait-on: 'https://localhost:8000/login'
           wait-on-timeout: 240
           install: false
-          working-directory: ./apps/vor/frontend
+          working-directory: ./apps/e2e
         env:
           NODE_TLS_REJECT_UNAUTHORIZED: 0
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}

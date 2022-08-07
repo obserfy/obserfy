@@ -13786,7 +13786,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:10.4.0":
+"cypress@npm:10.4.0, cypress@npm:^10.4.0":
   version: 10.4.0
   resolution: "cypress@npm:10.4.0"
   dependencies:
@@ -14730,6 +14730,14 @@ __metadata:
   checksum: 3c2ed2223d956a5da713dae12ba8295acb61d9acd966ccbba938090d04f4574ca4dca75cca089b5077c2d7e66101f32e6ea9b36a78ca213eff574e7a8b8accf2
   languageName: node
   linkType: hard
+
+"e2e-5aa19a@workspace:apps/e2e":
+  version: 0.0.0-use.local
+  resolution: "e2e-5aa19a@workspace:apps/e2e"
+  dependencies:
+    cypress: ^10.4.0
+  languageName: unknown
+  linkType: soft
 
 "ecc-jsbn@npm:~0.1.1":
   version: 0.1.2
