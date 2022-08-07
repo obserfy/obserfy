@@ -1,4 +1,4 @@
-import * as faker from "faker"
+import { faker } from "@faker-js/faker"
 import { uploadFile } from "../../utils"
 
 describe("test student features", function () {
@@ -31,7 +31,7 @@ describe("test student features", function () {
     // ===== add second student
     cy.createClass()
     const student2 = {
-      id: faker.random.uuid(),
+      id: faker.datatype.uuid(),
       name: faker.name.firstName(),
       notes: faker.lorem.lines(1),
       guardianName: faker.name.firstName(),
