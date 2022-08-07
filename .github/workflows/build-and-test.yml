@@ -50,6 +50,10 @@ jobs:
         run: yarn workspaces focus --production vor
       - name: Gatsby build
         run: yarn build --filter=vor
+      - uses: actions/upload-artifact@v2
+        with:
+          name: vor
+          path: apps/vor/frontend/public
 
   build-gaia:
     runs-on: ubuntu-latest
@@ -71,6 +75,10 @@ jobs:
           SENTRY_ORG: obserfy
           SENTRY_PROJECT: gaia
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: gaia
+          path: apps/gaia/.next
 
   test-vor-backend:
     runs-on: ubuntu-latest
@@ -188,6 +196,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: vor
+          path: apps/vor/frontend/public
+      - uses: actions/download-artifact@v2
+        with:
+          name: gaia
+          path: apps/gaia/.next
+      - run: touch .env.local # stop docker-compose from complaining about missing file.
+      - run: docker-compose up -d minio db vor_app nginx &
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
@@ -195,9 +213,6 @@ jobs:
           cache: 'yarn'
       - name: Install Dependencies
         run: yarn workspaces focus e2e
-      - run: yarn build
-      - run: touch .env.local # stop docker-compose from complaining about missing file.
-      - run: docker-compose up -d minio db vor_app nginx &
       - name: Cypress parallel run
         uses: cypress-io/github-action@v4
         with:
@@ -236,6 +251,16 @@ jobs:
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: vor
+          path: apps/vor/frontend/public
+      - uses: actions/download-artifact@v2
+        with:
+          name: gaia
+          path: apps/gaia/.next
+      - run: touch .env.local # stop docker-compose from complaining about missing file.
+      - run: docker-compose up -d minio db vor_app nginx &
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
@@ -243,11 +268,8 @@ jobs:
           cache: 'yarn'
       - name: Install Dependencies
         run: yarn workspaces focus e2e
-      - run: yarn build
-      - run: touch .env.local # stop docker-compose from complaining about missing file.
-      - run: docker-compose up -d minio db vor_app nginx &
       - name: Cypress sequential run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           command: yarn workspace e2e run cy:run --config baseUrl=https://localhost:8000
           group: 'E2E'
