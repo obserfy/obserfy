@@ -11,7 +11,7 @@ require (
 	github.com/go-playground/validator/v10 v10.11.0
 	github.com/gocarina/gocsv v0.0.0-20220729221910-a7386ae0b221
 	github.com/google/uuid v1.3.0
-	github.com/joho/godotenv v1.3.0
+	github.com/joho/godotenv v1.4.0
 	github.com/mailgun/mailgun-go/v4 v4.5.3
 	github.com/minio/minio-go/v6 v6.0.57
 	github.com/muxinc/mux-go v0.15.1
