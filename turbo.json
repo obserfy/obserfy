@@ -10,7 +10,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "public/**", ".cache/**"]
+      "outputs": [".next/**", "public/**", ".cache/**", "i18n/**"]
     }
   }
 }

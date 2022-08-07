@@ -31,6 +31,7 @@ jobs:
           cache: 'yarn'
       - name: Install Dependencies
         run: yarn
+      - run: yarn workspace gaia prisma generate
       - run: yarn typecheck
 
   eslint:
