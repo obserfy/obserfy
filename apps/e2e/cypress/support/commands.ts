@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 import dayjs from "dayjs"
-import faker from "faker"
+import { faker } from "@faker-js/faker"
 
 const vorApi = (path: string) => `/api/v1${path}`
 

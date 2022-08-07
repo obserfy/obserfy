@@ -3710,6 +3710,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@faker-js/faker@npm:^7.3.0":
+  version: 7.3.0
+  resolution: "@faker-js/faker@npm:7.3.0"
+  checksum: ef5b64af30ce0ec76cb22798fbbe50184946fac389b4d81235f9d8d9eaaa77d67a80f46954fa993996b7c774bae23314529a95a42a6b68794f0795976c9be82b
+  languageName: node
+  linkType: hard
+
 "@fontsource/lora@npm:4.5.10":
   version: 4.5.10
   resolution: "@fontsource/lora@npm:4.5.10"
@@ -8560,15 +8567,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/faker@npm:^6":
-  version: 6.6.8
-  resolution: "@types/faker@npm:6.6.8"
-  dependencies:
-    faker: "*"
-  checksum: 21267dcb169acc9e424018d692c8eb60ff97c5d81d2c02de8f68f3a1f0397d7b7e28117c8b089760cb278ccb313c0d6c28b5a5673bcd56dc81a92e864f31f19d
-  languageName: node
-  linkType: hard
-
 "@types/formidable@npm:1.2.3":
   version: 1.2.3
   resolution: "@types/formidable@npm:1.2.3"
@@ -8953,6 +8951,13 @@ __metadata:
     "@types/pino-std-serializers": "*"
     sonic-boom: ^2.1.0
   checksum: 801735146669312d02459781e5180220630eaef643da36dc5a9a97520e7ecc3da7270f31a86fcdcb1dc835073c9143fc628024ba5e3a0ea7cbb86aada4897709
+  languageName: node
+  linkType: hard
+
+"@types/prettier@npm:^2":
+  version: 2.7.0
+  resolution: "@types/prettier@npm:2.7.0"
+  checksum: bf5d0c7c1270909b39399539ac106d20ddaa85fe92eb1d59922dc99159604b4f8d5e41b0045fb29c8011585cf5bca2350b7441ef3d9816c08bd0e10ebd4b31d4
   languageName: node
   linkType: hard
 
@@ -13795,7 +13800,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:10.4.0, cypress@npm:^10.4.0":
+"cypress@npm:^10.4.0":
   version: 10.4.0
   resolution: "cypress@npm:10.4.0"
   dependencies:
@@ -14744,9 +14749,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "e2e@workspace:apps/e2e"
   dependencies:
-    "@types/faker": ^6
+    "@faker-js/faker": ^7.3.0
+    "@types/prettier": ^2
     cypress: ^10.4.0
-    faker: ^6.6.6
+    prettier: ^2.7.1
     typescript: ^4.7.4
   languageName: unknown
   linkType: soft
@@ -16284,20 +16290,6 @@ __metadata:
   dependencies:
     realistic-structured-clone: ^2.0.1
   checksum: cea9905f5e134952a6471e73c3a69dc79935dc221741a518df7010114a482c900b872c855215e1163e063ce9aab3e8f01a660684cd5c0e8ff11e30bf47892de9
-  languageName: node
-  linkType: hard
-
-"faker@npm:*, faker@npm:^6.6.6":
-  version: 6.6.6
-  resolution: "faker@npm:6.6.6"
-  checksum: bfb0d581ab4d76095f2c6bff213fe1735ce077f0f8df849c144ad26035e105bce1b7a704cc030366338c52e25b636ac097a712426a78c9b8804af78f6f2bffe7
-  languageName: node
-  linkType: hard
-
-"faker@npm:5.5.3":
-  version: 5.5.3
-  resolution: "faker@npm:5.5.3"
-  checksum: 684fd64c8d3897e54248f95b4f6319f75d97691b8500cd13adf4af2c28f9204f766c1d1aaa6b41338f0beaaa87256c3132f8708a1a8f189d122b92f6b98081c3
   languageName: node
   linkType: hard
 
@@ -26049,7 +26041,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.7.1":
+"prettier@npm:2.7.1, prettier@npm:^2.7.1":
   version: 2.7.1
   resolution: "prettier@npm:2.7.1"
   bin:
@@ -31571,7 +31563,6 @@ resolve@^2.0.0-next.3:
     body-scroll-lock: 3.1.5
     browser-lang: 0.1.0
     cross-env: 7.0.3
-    cypress: 10.4.0
     dayjs: 1.11.4
     dompurify: 2.3.10
     dotenv: 10.0.0
@@ -31582,7 +31573,6 @@ resolve@^2.0.0-next.3:
     eslint-plugin-prettier: 4.2.1
     eslint-plugin-tailwindcss: ^3.6.0
     fake-indexeddb: 3.1.8
-    faker: 5.5.3
     gatsby: 4.20.0
     gatsby-plugin-image: 2.20.0
     gatsby-plugin-layout: 3.20.0
