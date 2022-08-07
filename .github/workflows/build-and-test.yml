@@ -212,6 +212,7 @@ jobs:
           config-file: cypress.config.ts
           install-command: yarn install --immutable
           command-prefix: yarn dlx
+          config: baseUrl=http://localhost:8000
         env:
           NODE_TLS_REJECT_UNAUTHORIZED: 0
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
