@@ -32716,7 +32716,7 @@ resolve@^2.0.0-next.3:
     url-loader: 4.1.1
     use-immer: 0.7.0
     wait-on: 6.0.1
-    zustand: 3.5.10
+    zustand: 3.7.2
   languageName: unknown
   linkType: soft
 
@@ -34086,15 +34086,15 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"zustand@npm:3.5.10":
-  version: 3.5.10
-  resolution: "zustand@npm:3.5.10"
+"zustand@npm:3.7.2":
+  version: 3.7.2
+  resolution: "zustand@npm:3.7.2"
   peerDependencies:
     react: ">=16.8"
   peerDependenciesMeta:
     react:
       optional: true
-  checksum: a9bb68c137bda6facd9e01cf9f027c80a394b1ca788dab4271942e23deaeacda7909a22039621d3157d3c13e8c497413a2a518619ec452e2a7d16efa7cc96130
+  checksum: 18f025b1b666a311121d3855303ff58e6a21fd107920ca474307e86984c13338d6c4cfa5cdf13382a9e0f76821f2554a12d4d200a98a66b58637e729f149797b
   languageName: node
   linkType: hard
 
