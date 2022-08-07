@@ -146,7 +146,7 @@
     "i18n:build": "yarn i18n:extract && yarn i18n:compile",
     "gen:models": "go run ../tscriptify/main.go",
     "db:reset": "node ./scripts/resetDB.js",
-    "cy:run": "yarn dlx cypress run",
+    "cy:run": "cypress run",
     "cy:open": "cypress open",
     "tw:build": "tailwindcss -o src/tailwind.css",
     "tw:watch": "tailwindcss -o src/tailwind.css --watch"
