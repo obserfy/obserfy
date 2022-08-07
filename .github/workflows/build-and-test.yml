@@ -235,31 +235,21 @@ jobs:
       DOCKER_BUILDKIT: 1
       CYPRESS_VOR_HOST: https://localhost:8000
       CYPRESS_GAIA_HOST: http://localhost:3000
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
-        with:
-          name: vor
-          path: apps/vor/frontend/public
-      - run: touch .env.local # stop docker-compose from complaining about missing file.
-      - run: docker-compose up -d &
-      - name: Cache e2e deps
-        id: cache-deps
-        uses: pat-s/always-upload-cache@v2.1.5
-        env:
-          cache-name: cache-build-e2e
-        with:
-          path: |
-            .yarn
-            ~/.cache/Cypress
-          key: v7-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Use Node.js 15
+      - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 15
+          node-version: 18
+          cache: 'yarn'
       - name: Install Dependencies
-        run: yarn install
-      - name: Cypress parallel run
+        run: yarn workspaces focus vor
+      - run: yarn build
+      - run: touch .env.local # stop docker-compose from complaining about missing file.
+      - run: docker-compose up -d &
+      - name: Cypress sequential run
         uses: cypress-io/github-action@v2
         with:
           command: yarn workspace vor run cy:run --config baseUrl=https://localhost:8000
