@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/benbjohnson/clock v1.3.0
 	github.com/brianvoe/gofakeit/v4 v4.3.0
-	github.com/getsentry/sentry-go v0.11.0
+	github.com/getsentry/sentry-go v0.13.0
 	github.com/go-chi/chi v1.5.4
 	github.com/go-pg/pg/v10 v10.10.6
 	github.com/go-playground/validator/v10 v10.9.0
@@ -51,8 +51,8 @@ require (
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2 // indirect
-	golang.org/x/sys v0.0.0-20210923061019-b8560ed6a9b7 // indirect
-	golang.org/x/text v0.3.6 // indirect
+	golang.org/x/sys v0.0.0-20211007075335-d3039528d8ac // indirect
+	golang.org/x/text v0.3.7 // indirect
 	gopkg.in/ini.v1 v1.57.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	mellium.im/sasl v0.2.1 // indirect
