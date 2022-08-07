@@ -8,7 +8,7 @@ function getQueryAsString(query: string, key: string): string {
   const parsedQuery = queryString.parse(query)
   const value = parsedQuery[key]
   if (!value) return ""
-  if (Array.isArray(value)) return value[0]
+  if (Array.isArray(value)) return value[0] ?? ""
   return value
 }
 

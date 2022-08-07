@@ -17,77 +17,60 @@ jobs:
         with:
           access_token: ${{ github.token }}
 
-  build-vor-frontend:
+  lint-typecheck:
     runs-on: ubuntu-latest
-
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - uses: actions/checkout@v2
-      - name: Cache deps and gatsby
-        uses: actions/cache@v2
-        id: cache-deps-and-gatsby
-        env:
-          cache-name: cache-build-vor
-        with:
-          path: |
-            .yarn
-            apps/vor/frontend/public
-            apps/vor/frontend/.cache
-          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Cache translations
-        uses: actions/cache@v2
-        id: cache-translations
-        env:
-          cache-name: cache-vor-translations
-        with:
-          path: apps/vor/frontend/i18n
-          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('apps/vor/frontend/i18n/**/messages.po') }} }}
-      - name: Use Node.js 15
+      - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 15
+          node-version: 18
+          cache: 'yarn'
       - name: Install Dependencies
-        run: yarn install
-      - name: Compile translations
-        if: steps.cache-translations.outputs.cache-hit != 'true'
-        run: yarn workspace vor run i18n:compile
-      - name: Gatsby build
-        run: yarn workspace vor run build:ci
-      - uses: actions/upload-artifact@v2
+        run: yarn
+      - run: yarn workspace gaia prisma generate
+      - run: yarn lint-typecheck
+
+  build-vor-frontend:
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
         with:
-          name: vor
-          path: apps/vor/frontend/public
+          node-version: 16
+          cache: 'yarn'
+      - name: Install Dependencies
+        run: yarn workspaces focus --production vor
+      - name: Gatsby build
+        run: yarn build --filter=vor
 
   build-gaia:
     runs-on: ubuntu-latest
-
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - uses: actions/checkout@v2
-      - name: Cache nextjs and deps
-        id: cache-deps
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-build-gaia
-        with:
-          path: |
-            .yarn
-            apps/gaia/.next
-          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Use Node.js 15
+      - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 15
+          node-version: 18
+          cache: 'yarn'
       - name: Install Dependencies
-        run: yarn install
+        run: yarn workspaces focus --production gaia
       - run: yarn workspace gaia prisma generate
-      - run: yarn workspace gaia run build
+      - run: yarn build --filter=gaia
         env:
           SENTRY_ORG: obserfy
           SENTRY_PROJECT: gaia
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      - uses: actions/upload-artifact@v2
-        with:
-          name: gaia
-          path: apps/gaia/.next
 
   test-vor-backend:
     runs-on: ubuntu-latest
@@ -138,7 +121,7 @@ jobs:
             apps/vor/vendor
           key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/go.mod') }}
       - name: Use Go 15
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
           go-version: 1.15.3
       - run: cd apps/vor/ && go get gotest.tools/gotestsum
@@ -150,49 +133,49 @@ jobs:
           PACKAGE_NAMES=$(go list ./...)
           gotestsum --junitfile test_result/go/gotestsum-report.xml -- $PACKAGE_NAMES -v -coverprofile=coverage.txt -covermode=atomic -coverpkg $(go list ./... | grep -v "test" | paste -s -d",")
 
-# TODO: Gatsby v4 killed our snapshot test. debug later.
-#  vor-snapshot-test:
-#    runs-on: ubuntu-latest
-#
-#    needs:
-#      - build-vor-frontend
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Cache deps
-#        id: cache-deps
-#        uses: actions/cache@v2
-#        env:
-#          cache-name: cache-vor-snapshot-test
-#        with:
-#          path: |
-#            .yarn
-#          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-#      - name: Use Node.js 15
-#        uses: actions/setup-node@v2
-#        with:
-#          node-version: 15
-#      - name: Install Dependencies
-#        run: yarn install
-#      - uses: actions/download-artifact@v2
-#        with:
-#          name: vor
-#          path: apps/vor/frontend/public
-#      - run: yarn workspace vor run test
+  # TODO: Gatsby v4 killed our snapshot test. debug later.
+  #  vor-snapshot-test:
+  #    runs-on: ubuntu-latest
+  #
+  #    needs:
+  #      - build-vor-frontend
+  #
+  #    steps:
+  #      - uses: actions/checkout@v2
+  #      - name: Cache deps
+  #        id: cache-deps
+  #        uses: actions/cache@v2
+  #        env:
+  #          cache-name: cache-vor-snapshot-test
+  #        with:
+  #          path: |
+  #            .yarn
+  #          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+  #      - name: Use Node.js 15
+  #        uses: actions/setup-node@v2
+  #        with:
+  #          node-version: 15
+  #      - name: Install Dependencies
+  #        run: yarn install
+  #      - uses: actions/download-artifact@v2
+  #        with:
+  #          name: vor
+  #          path: apps/vor/frontend/public
+  #      - run: yarn workspace vor run test
 
   e2e-parallel:
     if: ${{ !contains(github.ref, 'renovate') &&  github.ref != 'refs/heads/develop' &&  github.ref != 'refs/heads/feat/i10n' }}
     needs:
-      - test-vor-backend
       - build-gaia
       - build-vor-frontend
     runs-on: ubuntu-latest
-
     env:
       COMPOSE_DOCKER_CLI_BUILD: 1
       DOCKER_BUILDKIT: 1
       CYPRESS_VOR_HOST: https://localhost:8000
       CYPRESS_GAIA_HOST: http://localhost:3000
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     strategy:
       # when one test fails, DO NOT cancel the other
       # containers, because this will kill Cypress processes
@@ -205,34 +188,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
-        with:
-          name: vor
-          path: apps/vor/frontend/public
-      - run: touch .env.local # stop docker-compose from complaining about missing file.
-      - run: docker-compose up -d &
-      - name: Cache e2e deps
-        id: cache-deps
-        uses: pat-s/always-upload-cache@v2.1.5
-        env:
-          cache-name: cache-build-e2e
-        with:
-          path: |
-            .yarn
-            ~/.cache/Cypress
-          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Use Node.js 15
+      - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 15
+          node-version: 18
+          cache: 'yarn'
       - name: Install Dependencies
-        run: yarn install
+        run: yarn workspaces focus vor
+      - run: yarn build
+      - run: touch .env.local # stop docker-compose from complaining about missing file.
+      - run: docker-compose up -d minio db vor_app nginx &
       - name: Cypress parallel run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           command: yarn workspace vor run cy:run --record --parallel --config baseUrl=https://localhost:8000
-          record: true
-          parallel: true
           group: 'E2E'
           wait-on: 'https://localhost:8000/login'
           wait-on-timeout: 240
@@ -240,10 +209,7 @@ jobs:
           working-directory: ./apps/vor/frontend
         env:
           NODE_TLS_REJECT_UNAUTHORIZED: 0
-          # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # secret envs
       #          CYPRESS_AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
@@ -253,22 +219,11 @@ jobs:
       #          CYPRESS_GAIA_PASSWORD: ${{ secrets.CYPRESS_GAIA_PASSWORD }}
       #          CYPRESS_VOR_HOST: 'https://localhost:8000'
       #          CYPRESS_GAIA_HOST: 'http://localhost:3000'
-      - uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: e2e-videos
-          path: apps/vor/frontend/cypress/videos
-      - uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: e2e-screenshots
-          path: apps/vor/frontend/cypress/screenshots
 
   # runs on renovate build to conserve cypress quota.
   e2e-sequential:
     if: ${{ contains(github.ref, 'renovate') || github.ref == 'refs/heads/develop'  || github.ref == 'refs/heads/feat/i10n'}}
     needs:
-      - test-vor-backend
       - build-gaia
       - build-vor-frontend
     runs-on: ubuntu-latest
@@ -277,36 +232,24 @@ jobs:
       DOCKER_BUILDKIT: 1
       CYPRESS_VOR_HOST: https://localhost:8000
       CYPRESS_GAIA_HOST: http://localhost:3000
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
-        with:
-          name: vor
-          path: apps/vor/frontend/public
-      - run: touch .env.local # stop docker-compose from complaining about missing file.
-      - run: docker-compose up -d &
-      - name: Cache e2e deps
-        id: cache-deps
-        uses: pat-s/always-upload-cache@v2.1.5
-        env:
-          cache-name: cache-build-e2e
-        with:
-          path: |
-            .yarn
-            ~/.cache/Cypress
-          key: v7-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Use Node.js 15
+      - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 15
+          node-version: 18
+          cache: 'yarn'
       - name: Install Dependencies
-        run: yarn install
-      - name: Cypress parallel run
+        run: yarn workspaces focus vor
+      - run: yarn build
+      - run: touch .env.local # stop docker-compose from complaining about missing file.
+      - run: docker-compose up -d minio db vor_app nginx &
+      - name: Cypress sequential run
         uses: cypress-io/github-action@v2
         with:
           command: yarn workspace vor run cy:run --config baseUrl=https://localhost:8000
-          record: true
-          parallel: true
           group: 'E2E'
           wait-on: 'https://localhost:8000/login'
           wait-on-timeout: 240

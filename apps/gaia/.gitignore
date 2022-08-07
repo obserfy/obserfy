@@ -37,3 +37,6 @@ public/workbox-*
 
 # Sentry
 .sentryclirc
+
+tsconfig.tsbuildinfo
+.turbo

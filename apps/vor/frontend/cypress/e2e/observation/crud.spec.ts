@@ -68,7 +68,7 @@ describe("observation crud", function () {
     })
     cy.get("[data-cy=image]").should("have.lengthOf", 3)
     cy.get("[data-cy=image]").first().click()
-    cy.get("[data-cy=delete-image]").click()
+    cy.get("[data-cy=delete-image]").click({ force: true })
     cy.get("[data-cy=image]").should("have.lengthOf", 2)
 
     // =========================== Delete Observation ==========================
