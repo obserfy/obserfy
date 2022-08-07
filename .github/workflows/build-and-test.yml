@@ -252,7 +252,7 @@ jobs:
       - name: Cypress sequential run
         uses: cypress-io/github-action@v2
         with:
-          command: yarn workspace vor run cy:run --config baseUrl=https://localhost:8000
+          command: npx cypress run --config baseUrl=https://localhost:8000
           record: true
           parallel: true
           group: 'E2E'
