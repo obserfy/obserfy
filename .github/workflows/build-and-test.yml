@@ -166,9 +166,33 @@ jobs:
   e2e-parallel:
     if: ${{ !contains(github.ref, 'renovate') &&  github.ref != 'refs/heads/develop' &&  github.ref != 'refs/heads/feat/i10n' }}
     needs:
-      - build-gaia
+#      - build-gaia
       - build-vor-frontend
     runs-on: ubuntu-latest
+
+    services:
+      minio:
+        image: chrsep/minio:latest
+        env:
+          MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLE
+          MINIO_SECRET_KEY: wJalrXUtnFEMIK7MDENGbPxRfiCYEXAMPLEKEY
+          MINIO_HTTP_TRACE: "/dev/stdout"
+        ports:
+          - 9000:9000
+      postgres:
+        image: obserfy/postgres-dev:latest
+        env:
+          POSTGRES_MULTIPLE_DATABASES: defaultdb,defaultdb_test
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     env:
       COMPOSE_DOCKER_CLI_BUILD: 1
       DOCKER_BUILDKIT: 1
@@ -197,7 +221,7 @@ jobs:
         run: yarn workspaces focus vor
       - run: yarn build
       - run: touch .env.local # stop docker-compose from complaining about missing file.
-      - run: docker-compose up -d &
+      - run: docker-compose up -d vor_app nginx &
       - name: Cypress parallel run
         uses: cypress-io/github-action@v4
         with:
@@ -227,7 +251,7 @@ jobs:
   e2e-sequential:
     if: ${{ contains(github.ref, 'renovate') || github.ref == 'refs/heads/develop'  || github.ref == 'refs/heads/feat/i10n'}}
     needs:
-      - build-gaia
+#      - build-gaia
       - build-vor-frontend
     runs-on: ubuntu-latest
     env:
