@@ -202,7 +202,6 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           browser: chrome
-          command: yarn dlx cypress --record --parallel --config baseUrl=https://localhost:8000 --config-file cypress.config.ts
           record: true
           parallel: true
           group: 'E2E'
@@ -210,6 +209,9 @@ jobs:
           wait-on-timeout: 240
           install: false
           working-directory: ./apps/vor/frontend
+          config-file: cypress.config.ts
+          install-command: yarn install --immutable
+          command-prefix: yarn dlx
         env:
           NODE_TLS_REJECT_UNAUTHORIZED: 0
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
