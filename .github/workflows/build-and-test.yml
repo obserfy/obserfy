@@ -186,7 +186,7 @@ jobs:
         # run 3 copies of the current job in parallel
         containers: [ 1, 2, 3, 4 ]
 
-    container: cypress/browsers:node16.14.2-slim-chrome103-ff102
+    container: node16.14.2-slim-chrome103-ff102
     steps:
       - uses: actions/checkout@v2
         #      - name: Use Node.js
