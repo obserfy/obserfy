@@ -251,6 +251,16 @@ jobs:
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: vor
+          path: apps/vor/frontend/public
+      - uses: actions/download-artifact@v2
+        with:
+          name: gaia
+          path: apps/gaia/.next
+      - run: touch .env.local # stop docker-compose from complaining about missing file.
+      - run: docker-compose up -d minio db vor_app nginx &
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
@@ -258,11 +268,8 @@ jobs:
           cache: 'yarn'
       - name: Install Dependencies
         run: yarn workspaces focus e2e
-      - run: yarn build
-      - run: touch .env.local # stop docker-compose from complaining about missing file.
-      - run: docker-compose up -d minio db vor_app nginx &
       - name: Cypress sequential run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           command: yarn workspace e2e run cy:run --config baseUrl=https://localhost:8000
           group: 'E2E'
