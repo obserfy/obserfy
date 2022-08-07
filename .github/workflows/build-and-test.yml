@@ -50,10 +50,6 @@ jobs:
         run: yarn workspaces focus --production vor
       - name: Gatsby build
         run: yarn build --filter=vor
-      - uses: actions/upload-artifact@v2
-        with:
-          name: vor
-          path: apps/vor/frontend/public
 
   build-gaia:
     runs-on: ubuntu-latest
@@ -75,10 +71,6 @@ jobs:
           SENTRY_ORG: obserfy
           SENTRY_PROJECT: gaia
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      - uses: actions/upload-artifact@v2
-        with:
-          name: gaia
-          path: apps/gaia/.next
 
   test-vor-backend:
     runs-on: ubuntu-latest
@@ -196,28 +188,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
-        with:
-          name: vor
-          path: apps/vor/frontend/public
-      - run: touch .env.local # stop docker-compose from complaining about missing file.
-      - run: docker-compose up -d &
-      - name: Cache e2e deps
-        id: cache-deps
-        uses: pat-s/always-upload-cache@v2.1.5
-        env:
-          cache-name: cache-build-e2e
-        with:
-          path: |
-            .yarn
-            ~/.cache/Cypress
-          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
         uses: actions/setup-node@v2
         with:
-          node-version: 15
+          node-version: 18
+          cache: 'yarn'
       - name: Install Dependencies
-        run: yarn install
+      - run: yarn install
+      - run: yarn build
+      - run: touch .env.local # stop docker-compose from complaining about missing file.
+      - run: docker-compose up -d &
       - name: Cypress parallel run
         uses: cypress-io/github-action@v2
         with:

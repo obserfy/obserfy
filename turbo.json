@@ -3,10 +3,12 @@
   "baseBranch": "origin/main",
   "pipeline": {
     "lint": {
-      "outputs": []
+      "outputs": [],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts"]
     },
     "typecheck": {
-      "outputs": []
+      "outputs": [],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts"]
     },
     "build": {
       "dependsOn": ["^build"],
