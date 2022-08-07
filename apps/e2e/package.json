@@ -1,4 +1,5 @@
 {
+  "name": "e2e",
   "devDependencies": {
     "cypress": "^10.4.0"
   },
