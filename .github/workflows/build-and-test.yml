@@ -166,7 +166,6 @@ jobs:
   e2e-parallel:
     if: ${{ !contains(github.ref, 'renovate') &&  github.ref != 'refs/heads/develop' &&  github.ref != 'refs/heads/feat/i10n' }}
     needs:
-      - test-vor-backend
       - build-gaia
       - build-vor-frontend
     runs-on: ubuntu-latest
@@ -228,7 +227,6 @@ jobs:
   e2e-sequential:
     if: ${{ contains(github.ref, 'renovate') || github.ref == 'refs/heads/develop'  || github.ref == 'refs/heads/feat/i10n'}}
     needs:
-      - test-vor-backend
       - build-gaia
       - build-vor-frontend
     runs-on: ubuntu-latest
