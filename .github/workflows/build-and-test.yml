@@ -176,6 +176,8 @@ jobs:
       DOCKER_BUILDKIT: 1
       CYPRESS_VOR_HOST: https://localhost:8000
       CYPRESS_GAIA_HOST: http://localhost:3000
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     strategy:
       # when one test fails, DO NOT cancel the other
       # containers, because this will kill Cypress processes
@@ -194,7 +196,7 @@ jobs:
           node-version: 18
           cache: 'yarn'
       - name: Install Dependencies
-      - run: yarn install
+        run: yarn install
       - run: yarn build
       - run: touch .env.local # stop docker-compose from complaining about missing file.
       - run: docker-compose up -d &
