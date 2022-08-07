@@ -1,4 +1,4 @@
-import faker from "faker"
+import { faker } from "@faker-js/faker"
 
 describe("test vor authentication", function () {
   it("should be redirected to login", function () {

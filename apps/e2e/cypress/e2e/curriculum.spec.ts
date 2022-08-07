@@ -1,4 +1,4 @@
-import faker from "faker"
+import { faker } from "@faker-js/faker"
 
 describe("test curriculum features", function () {
   beforeEach(function () {
