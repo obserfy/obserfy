@@ -197,7 +197,7 @@ jobs:
         run: yarn workspaces focus vor
       - run: yarn build
       - run: touch .env.local # stop docker-compose from complaining about missing file.
-      - run: docker-compose up -d &
+      - run: docker-compose up -d --profile ci &
       - name: Cypress parallel run
         uses: cypress-io/github-action@v4
         with:

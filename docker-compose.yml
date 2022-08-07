@@ -2,6 +2,7 @@
 version: "3"
 services:
   vor_app:
+    profiles: ["ci"]
     image: chrsep/go-devtools:1.15.0
     container_name: vor_app
     working_dir: /src/vor
@@ -24,6 +25,7 @@ services:
       - .env.local
 
   nginx:
+    profiles: ["ci"]
     build:
       context: .
       dockerfile: docker/nginx/dev.dockerfile
@@ -35,6 +37,7 @@ services:
       - ./docker/nginx/ssl:/ssl
 
   minio:
+    profiles: ["ci"]
     image: minio/minio:latest
     container_name: vor-minio
     entrypoint: sh
@@ -78,6 +81,7 @@ services:
       - 10001:80
 
   db:
+    profiles: ["ci"]
     image: obserfy/postgres-dev:latest
     container_name: vor-postgres
     environment:
