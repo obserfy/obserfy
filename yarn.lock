@@ -9022,7 +9022,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pino@npm:*, @types/pino@npm:6.3.11":
+"@types/pino@npm:*":
   version: 6.3.11
   resolution: "@types/pino@npm:6.3.11"
   dependencies:
@@ -9031,6 +9031,18 @@ __metadata:
     "@types/pino-std-serializers": "*"
     sonic-boom: ^2.1.0
   checksum: 170d4a3ae1cffb7361d5a18934c271a1ebc58832d2bf479c8eeeec34954efd16da96b76e68c8d438df227fc6adb3cbc7bbd5c5318f291cb31ae9e9daa3f6873b
+  languageName: node
+  linkType: hard
+
+"@types/pino@npm:6.3.12":
+  version: 6.3.12
+  resolution: "@types/pino@npm:6.3.12"
+  dependencies:
+    "@types/node": "*"
+    "@types/pino-pretty": "*"
+    "@types/pino-std-serializers": "*"
+    sonic-boom: ^2.1.0
+  checksum: 801735146669312d02459781e5180220630eaef643da36dc5a9a97520e7ecc3da7270f31a86fcdcb1dc835073c9143fc628024ba5e3a0ea7cbb86aada4897709
   languageName: node
   linkType: hard
 
@@ -16887,13 +16899,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify-warning@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "fastify-warning@npm:0.2.0"
-  checksum: c19ebccf54a3122877d2248400772ca98bacbabdf97826211ede29246c640d47431a2eebed1f52f9421139ed5e52e42d3bd4aefc46e27b6f34add3507529fd97
-  languageName: node
-  linkType: hard
-
 "fastq@npm:^1.13.0, fastq@npm:^1.6.0":
   version: 1.13.0
   resolution: "fastq@npm:1.13.0"
@@ -17692,7 +17697,7 @@ __metadata:
     "@types/nanoid": 3.0.0
     "@types/node": 14.18.23
     "@types/pg": 8.6.5
-    "@types/pino": 6.3.11
+    "@types/pino": 6.3.12
     "@types/react": 17.0.48
     "@types/react-query": 1.2.9
     "@types/uuid": 8.3.4
@@ -17715,18 +17720,18 @@ __metadata:
     jest: 27.5.1
     minio: 7.0.29
     monocle-ts: 2.3.13
-    mux-embed: 4.1.1
-    nanoid: 3.1.31
+    mux-embed: 4.12.0
+    nanoid: 3.3.4
     newtype-ts: 0.3.5
     next: 12.2.3
     next-compose-plugins: ^2.2.1
     next-pwa: 5.5.5
     node-mocks-http: 1.11.0
     pg: 8.7.3
-    pino: 6.13.2
+    pino: 6.14.0
     pino-pretty: 6.0.0
-    postcss: 8.3.6
-    prettier: 2.5.1
+    postcss: 8.4.14
+    prettier: 2.7.1
     prisma: 3.15.2
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -24127,10 +24132,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mux-embed@npm:4.1.1":
-  version: 4.1.1
-  resolution: "mux-embed@npm:4.1.1"
-  checksum: 60c12fb94fdeb6c679b6dfa69daacfbb279e3e81d77f358ce69faca13ea83a4afbf6d5849964538075eb4cbe92cf54f44da051095d53a64a4c499bed5cae8d4d
+"mux-embed@npm:4.12.0":
+  version: 4.12.0
+  resolution: "mux-embed@npm:4.12.0"
+  checksum: 2ef397d48c3c4ea07f172a6368edce6d3b9b5becbaaca13a0107da17dfb134a76ffb41ccd10d1e3279b57af3b54670fc02f1ecc26aa2c9a973631ed8069a1c24
   languageName: node
   linkType: hard
 
@@ -24166,7 +24171,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:*, nanoid@npm:^3.1.23, nanoid@npm:^3.1.25":
+"nanoid@npm:*, nanoid@npm:^3.1.25":
   version: 3.1.25
   resolution: "nanoid@npm:3.1.25"
   bin:
@@ -24175,12 +24180,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:3.1.31":
-  version: 3.1.31
-  resolution: "nanoid@npm:3.1.31"
+"nanoid@npm:3.3.4, nanoid@npm:^3.3.4":
+  version: 3.3.4
+  resolution: "nanoid@npm:3.3.4"
   bin:
     nanoid: bin/nanoid.cjs
-  checksum: 3e9fddc1619cc8f787f37fa3d26c072049b7105af4d5365dae32adce13250e29dfab2d2b061f3798b2dd3cc0dee663917a63032979df56ef64c15c287748ab99
+  checksum: 2fddd6dee994b7676f008d3ffa4ab16035a754f4bb586c61df5a22cf8c8c94017aadd360368f47d653829e0569a92b129979152ff97af23a558331e47e37cd9c
   languageName: node
   linkType: hard
 
@@ -24190,15 +24195,6 @@ __metadata:
   bin:
     nanoid: bin/nanoid.cjs
   checksum: 4ef0969e1bbe866fc223eb32276cbccb0961900bfe79104fa5abe34361979dead8d0e061410a5c03bc3d47455685adf32c09d6f27790f4a6898fb51f7df7ec86
-  languageName: node
-  linkType: hard
-
-"nanoid@npm:^3.3.4":
-  version: 3.3.4
-  resolution: "nanoid@npm:3.3.4"
-  bin:
-    nanoid: bin/nanoid.cjs
-  checksum: 2fddd6dee994b7676f008d3ffa4ab16035a754f4bb586c61df5a22cf8c8c94017aadd360368f47d653829e0569a92b129979152ff97af23a558331e47e37cd9c
   languageName: node
   linkType: hard
 
@@ -26058,20 +26054,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino@npm:6.13.2":
-  version: 6.13.2
-  resolution: "pino@npm:6.13.2"
+"pino@npm:6.14.0":
+  version: 6.14.0
+  resolution: "pino@npm:6.14.0"
   dependencies:
     fast-redact: ^3.0.0
     fast-safe-stringify: ^2.0.8
-    fastify-warning: ^0.2.0
     flatstr: ^1.0.12
     pino-std-serializers: ^3.1.0
+    process-warning: ^1.0.0
     quick-format-unescaped: ^4.0.3
     sonic-boom: ^1.0.2
   bin:
     pino: bin.js
-  checksum: daed08099630e8fd8970ed95e9145f8cc40e36671b3acd1324a459c1758b93e3dbe8eea7573ccff00e48ebf1afc1dcc612732e92a5e40e47ab8f91ac0a81ad4b
+  checksum: eb13e12e3a3d682abe4a4da426455a9f4e041e55e4fa57d72d9677ee8d188a9c952f69347e728a3761c8262cdce76ef24bee29e1a53ab15aa9c5e851099163d0
   languageName: node
   linkType: hard
 
@@ -26769,17 +26765,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.3.6":
-  version: 8.3.6
-  resolution: "postcss@npm:8.3.6"
-  dependencies:
-    colorette: ^1.2.2
-    nanoid: ^3.1.23
-    source-map-js: ^0.6.2
-  checksum: ff55b91bea21f42c2a94d77fd05c3f66dd15889c68506cf1dbb9cdee8c3b9e9d0e219bcbc6e61a107bd63e3cac0670176486e2a5794c106a4e1b9babceb79317
-  languageName: node
-  linkType: hard
-
 "postcss@npm:8.4.14, postcss@npm:^8.3.11, postcss@npm:^8.4.14, postcss@npm:^8.4.4":
   version: 8.4.14
   resolution: "postcss@npm:8.4.14"
@@ -26923,12 +26908,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.5.1":
-  version: 2.5.1
-  resolution: "prettier@npm:2.5.1"
+"prettier@npm:2.7.1":
+  version: 2.7.1
+  resolution: "prettier@npm:2.7.1"
   bin:
     prettier: bin-prettier.js
-  checksum: 21b9408476ea1c544b0e45d51ceb94a84789ff92095abb710942d780c862d0daebdb29972d47f6b4d0f7ebbfb0ffbf56cc2cfa3e3e9d1cca54864af185b15b66
+  checksum: 55a4409182260866ab31284d929b3cb961e5fdb91fe0d2e099dac92eaecec890f36e524b4c19e6ceae839c99c6d7195817579cdffc8e2c80da0cb794463a748b
   languageName: node
   linkType: hard
 
@@ -27058,6 +27043,13 @@ __metadata:
   version: 2.0.1
   resolution: "process-nextick-args@npm:2.0.1"
   checksum: 1d38588e520dab7cea67cbbe2efdd86a10cc7a074c09657635e34f035277b59fbb57d09d8638346bf7090f8e8ebc070c96fa5fd183b777fff4f5edff5e9466cf
+  languageName: node
+  linkType: hard
+
+"process-warning@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "process-warning@npm:1.0.0"
+  checksum: c708a03241deec3cabaeee39c4f9ee8c4d71f1c5ef9b746c8252cdb952a6059068cfcdaf348399775244cbc441b6ae5e26a9c87ed371f88335d84f26d19180f9
   languageName: node
   linkType: hard
 
@@ -27381,7 +27373,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"query-string@npm:*, query-string@npm:7.0.1":
+"query-string@npm:*":
   version: 7.0.1
   resolution: "query-string@npm:7.0.1"
   dependencies:
@@ -27390,6 +27382,18 @@ __metadata:
     split-on-first: ^1.0.0
     strict-uri-encode: ^2.0.0
   checksum: 2eb990c0eaa80998d074aac2ad5bcc7f21fa2e53a7d129d19883abe724a2eedb987ca81b731755307431914b0f958767bfe7c5f7433d0974a1650b5d313e5618
+  languageName: node
+  linkType: hard
+
+"query-string@npm:7.1.1":
+  version: 7.1.1
+  resolution: "query-string@npm:7.1.1"
+  dependencies:
+    decode-uri-component: ^0.2.0
+    filter-obj: ^1.1.0
+    split-on-first: ^1.0.0
+    strict-uri-encode: ^2.0.0
+  checksum: b227d1f588ae93f9f0ad078c6b811295fa151dc5a160a03bb2bac5fa0e6919cb1daa570aad1d288e77c8e89fde5362ba505b1014e6e793da9b1e885b59a690a6
   languageName: node
   linkType: hard
 
@@ -27854,21 +27858,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-query@npm:3.21.1":
-  version: 3.21.1
-  resolution: "react-query@npm:3.21.1"
+"react-query@npm:3.39.2":
+  version: 3.39.2
+  resolution: "react-query@npm:3.39.2"
   dependencies:
     "@babel/runtime": ^7.5.5
     broadcast-channel: ^3.4.1
     match-sorter: ^6.0.2
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
     react-dom:
       optional: true
     react-native:
       optional: true
-  checksum: ea8a42d645e48671d102e74001b25ded9f10499f3e8bcaf62ecc071a5a39ca0bd8b37480ddd7bb7dc731d2165b99e5f789bb480040ef179f8d258f71055a4844
+  checksum: 83b199e66af28ab67ec4d22e51da42f02447186623db926b75d27a1c09a3383da6ddc9e5b83d82578fac7abdba7e6f265aecbffdb91db61981950d3d59409346
   languageName: node
   linkType: hard
 
@@ -28830,7 +28834,7 @@ resolve@^2.0.0-next.3:
     eslint: 8.21.0
     husky: 7.0.4
     lint-staged: 11.2.6
-    prettier: 2.5.1
+    prettier: 2.7.1
     turbo: ^1.4.2
   languageName: unknown
   linkType: soft
@@ -32298,13 +32302,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"use-immer@npm:0.6.0":
-  version: 0.6.0
-  resolution: "use-immer@npm:0.6.0"
+"use-immer@npm:0.7.0":
+  version: 0.7.0
+  resolution: "use-immer@npm:0.7.0"
   peerDependencies:
     immer: ">=2.0.0"
-    react: ^16.8.0 || ^17.0.1
-  checksum: 5cb3e2f411cfaf0eeab8cce8919a83fdf82e10b3acfd2d4550d9c6a0afb105aace8c0406131126557a2eab6c4ef8aef87c24a82830b75140ec6b2cdffe818d76
+    react: ^16.8.0 || ^17.0.1 || ^18.0.0
+  checksum: 4711403fa2c3648c06b8e6795433eb43adb2c6e9bd00f45971ce6948ba8fc1c3e3cf73820a8d597b22979caa6445d0b791508e147975c3cc435a1ec1e5ce47db
   languageName: node
   linkType: hard
 
@@ -32690,18 +32694,18 @@ resolve@^2.0.0-next.3:
     jest-date-mock: 1.0.8
     jest-fetch-mock: 3.0.3
     make-plural: 7.1.0
-    mux-embed: 4.1.1
-    nanoid: 3.1.31
+    mux-embed: 4.12.0
+    nanoid: 3.3.4
     npm-run-all: 4.1.5
     preact: 10.10.0
     preact-render-to-string: 5.2.1
-    prettier: 2.5.1
-    query-string: 7.0.1
+    prettier: 2.7.1
+    query-string: 7.1.1
     react: ^18.2.0
     react-adaptive-hooks: 0.0.8
     react-dom: ^18.2.0
     react-helmet: 6.1.0
-    react-query: 3.21.1
+    react-query: 3.39.2
     react-refresh: 0.14.0
     react-test-renderer: 17.0.2
     regenerator-runtime: 0.13.9
@@ -32710,7 +32714,7 @@ resolve@^2.0.0-next.3:
     theme-ui: 0.10.0
     typescript: 4.7.4
     url-loader: 4.1.1
-    use-immer: 0.6.0
+    use-immer: 0.7.0
     wait-on: 6.0.1
     zustand: 3.5.10
   languageName: unknown
