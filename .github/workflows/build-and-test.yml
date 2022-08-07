@@ -194,17 +194,14 @@ jobs:
           node-version: 18
           cache: 'yarn'
       - name: Install Dependencies
-        run: yarn workspaces focus
+        run: yarn workspaces focus vor
       - run: yarn build
       - run: touch .env.local # stop docker-compose from complaining about missing file.
       - run: docker-compose up -d minio db vor_app nginx &
       - name: Cypress parallel run
         uses: cypress-io/github-action@v4
         with:
-          browser: chrome
-          command: npx cypress run --record --parallel --config baseUrl=https://localhost:8000
-          record: true
-          parallel: true
+          command: yarn workspace vor run cy:run --record --parallel --config baseUrl=https://localhost:8000
           group: 'E2E'
           wait-on: 'https://localhost:8000/login'
           wait-on-timeout: 240
@@ -248,13 +245,11 @@ jobs:
         run: yarn workspaces focus vor
       - run: yarn build
       - run: touch .env.local # stop docker-compose from complaining about missing file.
-      - run: docker-compose up -d &
+      - run: docker-compose up -d minio db vor_app nginx &
       - name: Cypress sequential run
         uses: cypress-io/github-action@v2
         with:
           command: yarn workspace vor run cy:run --config baseUrl=https://localhost:8000
-          record: true
-          parallel: true
           group: 'E2E'
           wait-on: 'https://localhost:8000/login'
           wait-on-timeout: 240
