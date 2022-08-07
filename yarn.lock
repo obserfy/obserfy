@@ -8560,6 +8560,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/faker@npm:^6":
+  version: 6.6.8
+  resolution: "@types/faker@npm:6.6.8"
+  dependencies:
+    faker: "*"
+  checksum: 21267dcb169acc9e424018d692c8eb60ff97c5d81d2c02de8f68f3a1f0397d7b7e28117c8b089760cb278ccb313c0d6c28b5a5673bcd56dc81a92e864f31f19d
+  languageName: node
+  linkType: hard
+
 "@types/formidable@npm:1.2.3":
   version: 1.2.3
   resolution: "@types/formidable@npm:1.2.3"
@@ -14735,7 +14744,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "e2e@workspace:apps/e2e"
   dependencies:
+    "@types/faker": ^6
     cypress: ^10.4.0
+    faker: ^6.6.6
     typescript: ^4.7.4
   languageName: unknown
   linkType: soft
@@ -16273,6 +16284,13 @@ __metadata:
   dependencies:
     realistic-structured-clone: ^2.0.1
   checksum: cea9905f5e134952a6471e73c3a69dc79935dc221741a518df7010114a482c900b872c855215e1163e063ce9aab3e8f01a660684cd5c0e8ff11e30bf47892de9
+  languageName: node
+  linkType: hard
+
+"faker@npm:*, faker@npm:^6.6.6":
+  version: 6.6.6
+  resolution: "faker@npm:6.6.6"
+  checksum: bfb0d581ab4d76095f2c6bff213fe1735ce077f0f8df849c144ad26035e105bce1b7a704cc030366338c52e25b636ac097a712426a78c9b8804af78f6f2bffe7
   languageName: node
   linkType: hard
 
