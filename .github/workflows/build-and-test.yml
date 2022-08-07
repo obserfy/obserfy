@@ -17,6 +17,23 @@ jobs:
         with:
           access_token: ${{ github.token }}
 
+  lint-typecheck:
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+          cache: 'yarn'
+      - name: Install Dependencies
+        run: yarn
+      - run: yarn workspace gaia prisma generate
+      - run: yarn lint-typecheck
+
   build-vor-frontend:
     runs-on: ubuntu-latest
     env:

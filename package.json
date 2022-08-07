@@ -22,7 +22,8 @@
     "postinstall": "husky install",
     "build": "yarn dlx turbo run build",
     "lint": "yarn dlx turbo run lint",
-    "typecheck": "yarn dlx turbo run typecheck"
+    "typecheck": "yarn dlx turbo run typecheck",
+    "lint-typecheck": "yarn dlx turbo run lint typecheck"
   },
   "dependencies": {
     "prettier": "2.5.1"
