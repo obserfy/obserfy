@@ -186,13 +186,14 @@ jobs:
         # run 3 copies of the current job in parallel
         containers: [ 1, 2, 3, 4 ]
 
+    container: cypress/browsers:node16.14.2-slim-chrome103-ff102
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 18
-          cache: 'yarn'
+        #      - name: Use Node.js
+        #        uses: actions/setup-node@v2
+        #        with:
+        #          node-version: 18
+        #          cache: 'yarn'
       - name: Install Dependencies
         run: yarn workspaces focus
       - run: yarn build
