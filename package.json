@@ -11,14 +11,18 @@
     "@types/react-dom": "^18",
     "eslint": "8.21.0",
     "husky": "7.0.4",
-    "lint-staged": "11.2.6"
+    "lint-staged": "11.2.6",
+    "turbo": "^1.4.2"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "prettier --write",
     "*.go": "gofmt -w -s"
   },
   "scripts": {
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck"
   },
   "dependencies": {
     "prettier": "2.5.1"

@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --ext .tsx,.ts ./",
+    "lint": "eslint --ext .tsx,.ts ./src",
     "typecheck": "tsc --noemit",
     "test": "jest",
     "build:analyze": "ANALYZE=true yarn build"

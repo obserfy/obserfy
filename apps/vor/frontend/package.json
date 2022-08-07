@@ -125,7 +125,7 @@
   },
   "license": "GNU GPL v3",
   "scripts": {
-    "lint": "yarn i18n:compile && eslint --ext .tsx,.ts src/",
+    "lint": "yarn i18n:compile && eslint --cache --ext .tsx,.ts src/",
     "typecheck": "yarn i18n:compile && tsc --noemit",
     "build": "yarn i18n:build && gatsby build",
     "build:ci": "gatsby build",
