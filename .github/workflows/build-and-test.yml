@@ -242,14 +242,14 @@ jobs:
           node-version: 18
           cache: 'yarn'
       - name: Install Dependencies
-        run: yarn workspaces focus vor
+        run: yarn workspaces focus e2e
       - run: yarn build
       - run: touch .env.local # stop docker-compose from complaining about missing file.
       - run: docker-compose up -d minio db vor_app nginx &
       - name: Cypress sequential run
         uses: cypress-io/github-action@v2
         with:
-          command: yarn workspace vor run cy:run --config baseUrl=https://localhost:8000
+          command: yarn workspace e2e run cy:run --config baseUrl=https://localhost:8000
           group: 'E2E'
           wait-on: 'https://localhost:8000/login'
           wait-on-timeout: 240
