@@ -20,9 +20,9 @@
   },
   "scripts": {
     "postinstall": "husky install",
-    "build": "turbo run build",
-    "lint": "turbo run lint",
-    "typecheck": "turbo run typecheck"
+    "build": "yarn dlx turbo run build",
+    "lint": "yarn dlx turbo run lint",
+    "typecheck": "yarn dlx turbo run typecheck"
   },
   "dependencies": {
     "prettier": "2.5.1"
