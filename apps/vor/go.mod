@@ -14,7 +14,7 @@ require (
 	github.com/joho/godotenv v1.4.0
 	github.com/mailgun/mailgun-go/v4 v4.8.1
 	github.com/minio/minio-go/v6 v6.0.57
-	github.com/muxinc/mux-go v0.15.1
+	github.com/muxinc/mux-go v1.1.1
 	github.com/pkg/errors v0.9.1
 	github.com/signintech/gopdf v0.14.0
 	github.com/stretchr/testify v1.8.0
