@@ -196,11 +196,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: vor
           path: apps/vor/frontend/public
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: gaia
           path: apps/gaia/.next
@@ -251,11 +251,11 @@ jobs:
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: vor
           path: apps/vor/frontend/public
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: gaia
           path: apps/gaia/.next
