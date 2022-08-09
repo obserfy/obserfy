@@ -3582,17 +3582,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/lora@npm:4.5.10":
-  version: 4.5.10
-  resolution: "@fontsource/lora@npm:4.5.10"
-  checksum: e3fb23a033ab958858d8d7f4ccfd9d6d23dcc30bdc84e2e2281b289ea7fe6068818144554138afddc4b41490e54cd61f0f543f62db19cc05ef4691142f8e5bde
+"@fontsource/lora@npm:4.5.11":
+  version: 4.5.11
+  resolution: "@fontsource/lora@npm:4.5.11"
+  checksum: 01ee0f06e51fae8445d296ed1444d816e1f98804abdb1d8aaba7f6ad2db8a3eedb66cce462f166a9971e0f979a50fb5223f49684410b6eaea4e09cb425ea333a
   languageName: node
   linkType: hard
 
-"@fontsource/source-sans-pro@npm:^4.5.10":
-  version: 4.5.10
-  resolution: "@fontsource/source-sans-pro@npm:4.5.10"
-  checksum: d0b786cdff56e2b9f0dbb557473342ac95bc2021eea57097a29244936554a1f452b1ba5b053f11f2f3bcf58ba77823ac1e2a3ff8aba8c4618026a131a025a86d
+"@fontsource/source-sans-pro@npm:4.5.11":
+  version: 4.5.11
+  resolution: "@fontsource/source-sans-pro@npm:4.5.11"
+  checksum: 550d5bdc43d3656cb215da841212a4126365f068fd6a242a2a61639e6e7bcd18878f91784ec51cba0ce406d0bda5ac5569ad458a383ce056fbdcb92be4370e74
   languageName: node
   linkType: hard
 
@@ -16990,7 +16990,7 @@ __metadata:
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
     "@auth0/nextjs-auth0": 1.9.1
-    "@fontsource/source-sans-pro": ^4.5.10
+    "@fontsource/source-sans-pro": 4.5.11
     "@headlessui/react": ^1.6.6
     "@next/bundle-analyzer": 12.2.4
     "@prisma/client": 4.1.1
@@ -31314,7 +31314,7 @@ resolve@^2.0.0-next.3:
     "@babel/runtime": 7.18.9
     "@emotion/jest": 11.10.0
     "@emotion/react": 11.10.0
-    "@fontsource/lora": 4.5.10
+    "@fontsource/lora": 4.5.11
     "@istanbuljs/nyc-config-typescript": 1.0.2
     "@lingui/cli": 3.14.0
     "@lingui/core": 3.14.0
