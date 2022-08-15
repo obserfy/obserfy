@@ -50,7 +50,7 @@ jobs:
         run: yarn workspaces focus --production vor
       - name: Gatsby build
         run: yarn build --filter=vor
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: vor
           path: apps/vor/frontend/public
@@ -75,7 +75,7 @@ jobs:
           SENTRY_ORG: obserfy
           SENTRY_PROJECT: gaia
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: gaia
           path: apps/gaia/.next
@@ -292,12 +292,12 @@ jobs:
       #          CYPRESS_GAIA_PASSWORD: ${{ secrets.CYPRESS_GAIA_PASSWORD }}
       #          CYPRESS_VOR_HOST: 'https://localhost:8000'
       #          CYPRESS_GAIA_HOST: 'http://localhost:3000'
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: e2e-videos
           path: apps/vor/frontend/cypress/videos
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: e2e-screenshots
