@@ -25,7 +25,7 @@
     "@types/body-scroll-lock": "3.1.0",
     "@types/formidable": "1.2.3",
     "@types/hls.js": "1.0.0",
-    "@types/jest": "28.1.6",
+    "@types/jest": "28.1.7",
     "@types/minio": "7.0.13",
     "@types/mixpanel-browser": "2.38.0",
     "@types/nanoid": "3.0.0",
