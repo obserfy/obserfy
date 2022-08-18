@@ -25809,14 +25809,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact-render-to-string@npm:5.2.1":
-  version: 5.2.1
-  resolution: "preact-render-to-string@npm:5.2.1"
+"preact-render-to-string@npm:5.2.2":
+  version: 5.2.2
+  resolution: "preact-render-to-string@npm:5.2.2"
   dependencies:
     pretty-format: ^3.8.0
   peerDependencies:
     preact: ">=10"
-  checksum: 5702638656a5a471a3698e8535e08ff0fca98317a578b2527158026fda28a681c008cebcabdbacd76209dabd2728a90da9793bef778549d28f5d060854cc7f7a
+  checksum: 2068b8ce4836ca1f01e086e34872dbf1642fd8569e5df655bb7270327d58867ef1a97b7c17dee9ec19fe4a8e73ff6d9ab0fee3be6fa3cffcba028aa265f97bf4
   languageName: node
   linkType: hard
 
@@ -31514,7 +31514,7 @@ resolve@^2.0.0-next.3:
     nanoid: 3.3.4
     npm-run-all: 4.1.5
     preact: 10.10.2
-    preact-render-to-string: 5.2.1
+    preact-render-to-string: 5.2.2
     prettier: 2.7.1
     query-string: 7.1.1
     react: 18.2.0
