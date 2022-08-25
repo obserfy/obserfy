@@ -8752,10 +8752,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.18.24":
-  version: 14.18.24
-  resolution: "@types/node@npm:14.18.24"
-  checksum: 631b86787a2110048bcd45d2555e6b9265594a6c65bcdc9947004cbdf1b4b9c8f84b7f0c4f03e4b0b1d24fd821c8d39b931073e21832c8c29dc74de060efd11d
+"@types/node@npm:14.18.26":
+  version: 14.18.26
+  resolution: "@types/node@npm:14.18.26"
+  checksum: c6ac3f9d4f6f77c0fa5ac17757779ad4d9835abfe3af5708b7552597cb5c7c1103e83499ccaf767a1cfa70040990bcf3f58761c547051dc8d5077f3c419091b1
   languageName: node
   linkType: hard
 
@@ -17068,7 +17068,7 @@ __metadata:
     "@types/minio": 7.0.13
     "@types/mixpanel-browser": 2.38.0
     "@types/nanoid": 3.0.0
-    "@types/node": 14.18.24
+    "@types/node": 14.18.26
     "@types/pg": 8.6.5
     "@types/pino": 6.3.12
     "@types/react": 17.0.48
