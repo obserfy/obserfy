@@ -8426,21 +8426,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/dompurify@npm:2.3.4":
+"@types/dompurify@npm:2.3.4, @types/dompurify@npm:^2.3.4":
   version: 2.3.4
   resolution: "@types/dompurify@npm:2.3.4"
   dependencies:
     "@types/trusted-types": "*"
   checksum: ea55678bc9fd32fcdae904ca191f2b8cc5b475277937e5e4c024690b0c3b9c73accfb7391f56d26d0f53fcff496a013773293e189a07a79afdd2b2ed4efacd5f
-  languageName: node
-  linkType: hard
-
-"@types/dompurify@npm:^2.3.3":
-  version: 2.3.3
-  resolution: "@types/dompurify@npm:2.3.3"
-  dependencies:
-    "@types/trusted-types": "*"
-  checksum: 427e2dc60d94d13d7860a293b926b376727cb2f545a3334a3f2e7de695a2bb23058dd15108e49e0651378229b443ee8ae0028034b6f2df9a9008c04fb7ad6f8f
   languageName: node
   linkType: hard
 
@@ -14420,17 +14411,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:2.4.0":
+"dompurify@npm:2.4.0, dompurify@npm:^2.4.0":
   version: 2.4.0
   resolution: "dompurify@npm:2.4.0"
   checksum: c93ea73cf8e3ba044588450198563e56ce6902e36d0e16e3699df2fa59e82c4fdd11d4ad04ef5024569ce96a35b46f29d0bbea522516add33cd39a7f56a8a675
-  languageName: node
-  linkType: hard
-
-"dompurify@npm:^2.3.8":
-  version: 2.3.10
-  resolution: "dompurify@npm:2.3.10"
-  checksum: ee343876b4c065e82d194818c66af76a6d2290264c7db583ad71761c11781fd626f0245f9f4670175d5707c4b8fcfb89adae80bed0418a9426a47ee7f36b0ffc
   languageName: node
   linkType: hard
 
@@ -17105,7 +17089,7 @@ __metadata:
     hls.js: 1.2.1
     io-ts: 2.2.17
     io-ts-types: 0.5.16
-    isomorphic-dompurify: 0.20.0
+    isomorphic-dompurify: 0.22.0
     jest: 28.1.3
     minio: 7.0.30
     monocle-ts: 2.3.13
@@ -20427,14 +20411,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isomorphic-dompurify@npm:0.20.0":
-  version: 0.20.0
-  resolution: "isomorphic-dompurify@npm:0.20.0"
+"isomorphic-dompurify@npm:0.22.0":
+  version: 0.22.0
+  resolution: "isomorphic-dompurify@npm:0.22.0"
   dependencies:
-    "@types/dompurify": ^2.3.3
-    dompurify: ^2.3.8
+    "@types/dompurify": ^2.3.4
+    dompurify: ^2.4.0
     jsdom: ^20.0.0
-  checksum: 90a2e76fed821b9f03d5072a9b477adc757abe71661e8f7d0678a99644be434d32e88b020f11eba7a3c00568814acd1ed5d67a0fc913cb6b6ea009bf26e4c939
+  checksum: 6ac7b24f62af71c20c4dc59a1ef2c9397db358290d6eab15a7607309c4f81894948f83e6a85b3ed56e94448f065a23e32038a23c56296c0fa701f631260e9e9f
   languageName: node
   linkType: hard
 
