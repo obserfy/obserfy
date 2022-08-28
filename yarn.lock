@@ -17114,7 +17114,7 @@ __metadata:
     newtype-ts: 0.3.5
     next: 12.2.5
     next-compose-plugins: 2.2.1
-    next-pwa: 5.5.5
+    next-pwa: 5.6.0
     node-mocks-http: 1.11.0
     pg: 8.7.3
     pino: 8.4.2
@@ -23355,9 +23355,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-pwa@npm:5.5.5":
-  version: 5.5.5
-  resolution: "next-pwa@npm:5.5.5"
+"next-pwa@npm:5.6.0":
+  version: 5.6.0
+  resolution: "next-pwa@npm:5.6.0"
   dependencies:
     babel-loader: ^8.2.5
     clean-webpack-plugin: ^4.0.0
@@ -23367,7 +23367,7 @@ __metadata:
     workbox-window: ^6.5.4
   peerDependencies:
     next: ">=9.0.0"
-  checksum: 2179769cf5225d9859c284ae12b173324a9b86b7d071539e7d9454d85ca42b2dae4e5c101da65f2ad77a6433f83801527d19795cb10f48dfd2e160a336db6a80
+  checksum: 47f249a819ed4ec98d2c68f47f7789a0e83b82e7c5ef9a3be330162b609ce82c2467de4a75cafac6a0720c4527dea5f251428fda799d64cd11cdba319012cc9b
   languageName: node
   linkType: hard
 
