@@ -13102,7 +13102,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^2.4.0, core-js@npm:^2.5.3":
+"core-js@npm:^2.4.0":
   version: 2.6.12
   resolution: "core-js@npm:2.6.12"
   checksum: 44fa9934a85f8c78d61e0c8b7b22436330471ffe59ec5076fe7f324d6e8cf7f824b14b1c81ca73608b13bdb0fef035bd820989bf059767ad6fa13123bb8bd016
@@ -16141,12 +16141,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fake-indexeddb@npm:3.1.8":
-  version: 3.1.8
-  resolution: "fake-indexeddb@npm:3.1.8"
+"fake-indexeddb@npm:4.0.0":
+  version: 4.0.0
+  resolution: "fake-indexeddb@npm:4.0.0"
   dependencies:
-    realistic-structured-clone: ^2.0.1
-  checksum: cea9905f5e134952a6471e73c3a69dc79935dc221741a518df7010114a482c900b872c855215e1163e063ce9aab3e8f01a660684cd5c0e8ff11e30bf47892de9
+    realistic-structured-clone: ^3.0.0
+  checksum: 6f61d5ed77915cbb4b5c22f030f7017318edc84dbde0b24bd4e82fb4c311f30d02f890cb144aee6e7f296a917f3393ae3d989a28af6a304a3c2b2471ca7de151
   languageName: node
   linkType: hard
 
@@ -27026,15 +27026,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"realistic-structured-clone@npm:^2.0.1":
-  version: 2.0.3
-  resolution: "realistic-structured-clone@npm:2.0.3"
+"realistic-structured-clone@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "realistic-structured-clone@npm:3.0.0"
   dependencies:
-    core-js: ^2.5.3
     domexception: ^1.0.1
     typeson: ^6.1.0
     typeson-registry: ^1.0.0-alpha.20
-  checksum: aca8c7c2712519a8c05278456972dd4dd93f73da57be000f4693669d02479eebe995bc277019dc64adf508696b5dca3cbd425a06c0372557a0d3178da0adab06
+  checksum: b4521b299c8dc320a5e3ef44678f80a92b0f1837901a5fbd1c7be06808110fb0b591b417114306ec55b44ef47fd17968aacca079afc9665afbe1c528026295ec
   languageName: node
   linkType: hard
 
@@ -31459,7 +31458,7 @@ resolve@^2.0.0-next.3:
     eslint-plugin-jest: 26.7.0
     eslint-plugin-prettier: 4.2.1
     eslint-plugin-tailwindcss: ^3.6.0
-    fake-indexeddb: 3.1.8
+    fake-indexeddb: 4.0.0
     gatsby: 4.21.1
     gatsby-plugin-image: 2.21.0
     gatsby-plugin-layout: 3.21.0
