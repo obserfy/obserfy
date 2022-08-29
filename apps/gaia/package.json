@@ -46,7 +46,7 @@
     "io-ts": "2.2.17",
     "io-ts-types": "0.5.16",
     "isomorphic-dompurify": "0.22.0",
-    "minio": "7.0.30",
+    "minio": "7.0.32",
     "monocle-ts": "2.3.13",
     "mux-embed": "4.13.1",
     "nanoid": "3.3.4",
