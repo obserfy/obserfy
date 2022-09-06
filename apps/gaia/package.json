@@ -41,7 +41,7 @@
     "dayjs": "1.11.5",
     "dotenv": "16.0.2",
     "formidable-serverless": "1.1.1",
-    "fp-ts": "2.12.2",
+    "fp-ts": "2.12.3",
     "hls.js": "1.2.1",
     "io-ts": "2.2.18",
     "io-ts-types": "0.5.16",
