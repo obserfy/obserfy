@@ -19155,9 +19155,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hygen@npm:6.2.8":
-  version: 6.2.8
-  resolution: "hygen@npm:6.2.8"
+"hygen@npm:6.2.11":
+  version: 6.2.11
+  resolution: "hygen@npm:6.2.11"
   dependencies:
     "@types/node": ^17.0.19
     chalk: ^4.1.2
@@ -19175,7 +19175,7 @@ __metadata:
     yargs-parser: ^21.0.0
   bin:
     hygen: dist/bin.js
-  checksum: 3b2c26e52f8db57b7c3edb9dfa6b10b9fe5840cbf012c38c26d8c470a9f951fc51e675361bf98b108ad87688d27c2457111a0f62939a61e46d29c79af3161537
+  checksum: 2ea44b41c3ccf2b85e2935f43adb620c465173628e410ccaa30a29503cafb57eccb3537ab1e6839dea6bc5a8454ad34a2a69aa7ec0cfc8531e30142a81ad04e6
   languageName: node
   linkType: hard
 
@@ -31490,7 +31490,7 @@ resolve@^2.0.0-next.3:
     gatsby-transformer-sharp: 4.21.0
     hls.js: 1.2.1
     http-proxy-middleware: 2.0.6
-    hygen: 6.2.8
+    hygen: 6.2.11
     idb-keyval: 5.1.5
     immer: 9.0.15
     jest: 28.1.3
