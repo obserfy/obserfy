@@ -20,7 +20,7 @@ require (
 	github.com/stretchr/testify v1.8.0
 	github.com/tkrajina/typescriptify-golang-structs v0.1.7
 	go.uber.org/zap v1.21.0
-	golang.org/x/crypto v0.0.0-20220829220503-c86fa9a7ed90
+	golang.org/x/crypto v0.0.0-20220919173607-35f4265a4bc0
 )
 
 require (
