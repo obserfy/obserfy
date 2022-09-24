@@ -10663,12 +10663,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:10.4.11":
-  version: 10.4.11
-  resolution: "autoprefixer@npm:10.4.11"
+"autoprefixer@npm:10.4.12":
+  version: 10.4.12
+  resolution: "autoprefixer@npm:10.4.12"
   dependencies:
-    browserslist: ^4.21.3
-    caniuse-lite: ^1.0.30001399
+    browserslist: ^4.21.4
+    caniuse-lite: ^1.0.30001407
     fraction.js: ^4.2.0
     normalize-range: ^0.1.2
     picocolors: ^1.0.0
@@ -10677,7 +10677,7 @@ __metadata:
     postcss: ^8.1.0
   bin:
     autoprefixer: bin/autoprefixer
-  checksum: fb8b2abbb0ce5e3c6bc957ffb714b84aa2e6a9f24cf9c139bcfec33ba5e3334f61a132c606a621e04097d026c1f653fe1bda2d1c3dc47b87c9f6b00d90732daa
+  checksum: 6ae79cbacd31fb3d464ec64eb6ad2600f4f689c3080bbe62c5536d539b41b472083a2e941ef99d14aa11142370d6c16e8b05a62f077374933ed991aceb5943d2
   languageName: node
   linkType: hard
 
@@ -11757,6 +11757,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"browserslist@npm:^4.21.4":
+  version: 4.21.4
+  resolution: "browserslist@npm:4.21.4"
+  dependencies:
+    caniuse-lite: ^1.0.30001400
+    electron-to-chromium: ^1.4.251
+    node-releases: ^2.0.6
+    update-browserslist-db: ^1.0.9
+  bin:
+    browserslist: cli.js
+  checksum: 4af3793704dbb4615bcd29059ab472344dc7961c8680aa6c4bb84f05340e14038d06a5aead58724eae69455b8fade8b8c69f1638016e87e5578969d74c078b79
+  languageName: node
+  linkType: hard
+
 "bser@npm:2.1.1":
   version: 2.1.1
   resolution: "bser@npm:2.1.1"
@@ -12107,10 +12121,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001399":
-  version: 1.0.30001402
-  resolution: "caniuse-lite@npm:1.0.30001402"
-  checksum: 6068ccccd64b357f75388cb2303cf351b686b20800571d0a845bff5c0e0d24f83df0133afbbdd8177a33eb087c93d39ecf359035a52b2feac5f182c946f706ee
+"caniuse-lite@npm:^1.0.30001400, caniuse-lite@npm:^1.0.30001407":
+  version: 1.0.30001411
+  resolution: "caniuse-lite@npm:1.0.30001411"
+  checksum: 7bec883e51b4c2297bfca4368227d8150fb7fb54e3e00dae1ab6f43197724168fe083ad268170f6857d8dbc58a9c1d8d09bae7871f1085a6cd7d702623792191
   languageName: node
   linkType: hard
 
@@ -14699,6 +14713,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"electron-to-chromium@npm:^1.4.251":
+  version: 1.4.261
+  resolution: "electron-to-chromium@npm:1.4.261"
+  checksum: 5a51462743037d0afccc10efafbe83c9bd1409e6266a3857c6a7d24b68fcb06d2cd283467bca7bf8f876d14cd13a2adca69ce179ddd3b3d8cd0d3804cf0762f1
+  languageName: node
+  linkType: hard
+
 "electron-to-chromium@npm:^1.4.84":
   version: 1.4.86
   resolution: "electron-to-chromium@npm:1.4.86"
@@ -17118,7 +17139,7 @@ __metadata:
     "@types/react": 17.0.50
     "@types/react-query": 1.2.9
     "@types/uuid": 8.3.4
-    autoprefixer: 10.4.11
+    autoprefixer: 10.4.12
     body-scroll-lock: 3.1.5
     clsx: 1.2.1
     dayjs: 1.11.5
@@ -31030,6 +31051,20 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"update-browserslist-db@npm:^1.0.9":
+  version: 1.0.9
+  resolution: "update-browserslist-db@npm:1.0.9"
+  dependencies:
+    escalade: ^3.1.1
+    picocolors: ^1.0.0
+  peerDependencies:
+    browserslist: ">= 4.21.0"
+  bin:
+    browserslist-lint: cli.js
+  checksum: f625899b236f6a4d7f62b56be1b8da230c5563d1fef84d3ef148f2e1a3f11a5a4b3be4fd7e3703e51274c116194017775b10afb4de09eb2c0d09d36b90f1f578
+  languageName: node
+  linkType: hard
+
 "update-notifier@npm:^5.1.0":
   version: 5.1.0
   resolution: "update-notifier@npm:5.1.0"
@@ -31491,7 +31526,7 @@ resolve@^2.0.0-next.3:
     "@types/react-adaptive-hooks": 0.0.1
     "@types/react-dom": 18.0.6
     "@types/react-helmet": 6.1.2
-    autoprefixer: 10.4.11
+    autoprefixer: 10.4.12
     babel-jest: 28.1.3
     babel-loader: 8.2.5
     babel-plugin-istanbul: 6.1.1
