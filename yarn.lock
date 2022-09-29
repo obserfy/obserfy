@@ -17173,7 +17173,7 @@ __metadata:
     prisma: 4.2.1
     react: 18.2.0
     react-dom: 18.2.0
-    sharp: 0.30.7
+    sharp: 0.31.1
     snarkdown: 2.0.0
     tailwindcss: 3.1.8
     ts-is-present: 1.2.1
@@ -28227,7 +28227,24 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"sharp@npm:0.30.7, sharp@npm:^0.30.7":
+"sharp@npm:0.31.1":
+  version: 0.31.1
+  resolution: "sharp@npm:0.31.1"
+  dependencies:
+    color: ^4.2.3
+    detect-libc: ^2.0.1
+    node-addon-api: ^5.0.0
+    node-gyp: latest
+    prebuild-install: ^7.1.1
+    semver: ^7.3.7
+    simple-get: ^4.0.1
+    tar-fs: ^2.1.1
+    tunnel-agent: ^0.6.0
+  checksum: 42d00c9c6c61e5cf752c29583253782b3d821ee15fc2648c1f59892b94e9bc170a47ee9d138aa0a61c1c2ee9b7573ee54444c857fff887908701c4208710480d
+  languageName: node
+  linkType: hard
+
+"sharp@npm:^0.30.7":
   version: 0.30.7
   resolution: "sharp@npm:0.30.7"
   dependencies:
