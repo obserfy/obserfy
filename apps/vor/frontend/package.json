@@ -28,7 +28,7 @@
     "dayjs": "1.11.5",
     "dompurify": "2.4.0",
     "dotenv": "16.0.3",
-    "gatsby": "4.24.1",
+    "gatsby": "4.24.4",
     "gatsby-plugin-image": "2.24.0",
     "gatsby-plugin-layout": "3.24.0",
     "gatsby-plugin-manifest": "4.24.0",
