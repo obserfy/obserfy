@@ -2928,7 +2928,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:7.19.4":
+"@babel/runtime@npm:7.19.4, @babel/runtime@npm:^7.19.4":
   version: 7.19.4
   resolution: "@babel/runtime@npm:7.19.4"
   dependencies:
@@ -13148,6 +13148,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dayjs@npm:1.11.6":
+  version: 1.11.6
+  resolution: "dayjs@npm:1.11.6"
+  checksum: 18bdfd927009b68eab08dca578e421d4a581cefcbe9337f54c5d9e0d941ffb6b221c4b2c1cab15cdd9d419940e768ac4c984531461a90bbe1c158b75fe160580
+  languageName: node
+  linkType: hard
+
 "dayjs@npm:^1.10.4":
   version: 1.10.7
   resolution: "dayjs@npm:1.10.7"
@@ -16374,7 +16381,7 @@ __metadata:
     autoprefixer: 10.4.12
     body-scroll-lock: 3.1.5
     clsx: 1.2.1
-    dayjs: 1.11.5
+    dayjs: 1.11.6
     dotenv: 16.0.3
     eslint: 8.21.0
     eslint-config-next: 12.2.4
@@ -16804,15 +16811,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.27":
-  version: 1.1.27
-  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.27"
+"gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.30":
+  version: 1.1.30
+  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.30"
   dependencies:
-    "@babel/runtime": ^7.17.8
-    webpack-bundle-analyzer: ^4.5.0
+    "@babel/runtime": ^7.19.4
+    webpack-bundle-analyzer: ^4.6.1
   peerDependencies:
     gatsby: ^2.0.0 || ^3.0.0 || ^4.0.0
-  checksum: 99bb315b9a64bddec0af64a7a040ab32391873a9636a209d18f3e923cd1434ea1250f8bc37bdfd156f69414227e2496cc44eeccb392f0da8e3bcc5089b527aee
+  checksum: 0a7d6eba493ea9613fd45daf8859e204a54646bb823fe5f908d5753939fe1ad93844cc97026a53c35cc73773292f2df9b0b879f4707b26c56e0ee54e50625b3c
   languageName: node
   linkType: hard
 
@@ -30424,7 +30431,7 @@ resolve@^2.0.0-next.3:
     gatsby-plugin-sharp: 4.24.0
     gatsby-plugin-svgr: v3.0.0-beta.0
     gatsby-plugin-theme-ui: 0.14.7
-    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.27
+    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.30
     gatsby-source-filesystem: 4.24.0
     gatsby-theme-i18n: 3.0.0
     gatsby-theme-i18n-lingui: 3.0.0
@@ -30641,9 +30648,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"webpack-bundle-analyzer@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "webpack-bundle-analyzer@npm:4.5.0"
+"webpack-bundle-analyzer@npm:^4.6.1":
+  version: 4.7.0
+  resolution: "webpack-bundle-analyzer@npm:4.7.0"
   dependencies:
     acorn: ^8.0.4
     acorn-walk: ^8.0.0
@@ -30656,7 +30663,7 @@ resolve@^2.0.0-next.3:
     ws: ^7.3.1
   bin:
     webpack-bundle-analyzer: lib/bin/analyzer.js
-  checksum: 158e96810ec213d5665ca1c0b257097db44e1f11c4befefab8352b9e5b10890fcb3e3fc1f7bb400dd58762a8edce5621c92afeca86eb4687d2eb64e93186bfcb
+  checksum: 4ce3b379c61ce16b2219756843407cc99f2b82cd191f653043f1b705a3e32b3af03834af0dfded98ab852313a892a148bed1a8effaacd6440f028c19f41581f3
   languageName: node
   linkType: hard
 
