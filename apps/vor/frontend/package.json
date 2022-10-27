@@ -48,7 +48,7 @@
     "gatsby-transformer-sharp": "4.24.0",
     "hls.js": "1.2.4",
     "idb-keyval": "5.1.5",
-    "immer": "9.0.15",
+    "immer": "9.0.16",
     "make-plural": "7.1.0",
     "mux-embed": "4.13.4",
     "nanoid": "3.3.4",
