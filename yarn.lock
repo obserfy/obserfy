@@ -17237,7 +17237,7 @@ __metadata:
     formidable-serverless: 1.1.1
     fp-ts: 2.12.2
     hls.js: 1.2.0
-    io-ts: 2.2.17
+    io-ts: 2.2.19
     io-ts-types: 0.5.16
     isomorphic-dompurify: ^0.20.0
     jest: 27.5.1
@@ -19659,12 +19659,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"io-ts@npm:2.2.17":
-  version: 2.2.17
-  resolution: "io-ts@npm:2.2.17"
+"io-ts@npm:2.2.19":
+  version: 2.2.19
+  resolution: "io-ts@npm:2.2.19"
   peerDependencies:
     fp-ts: ^2.5.0
-  checksum: 51e8f2f3487a41e5f327be1529e63e6da042317a9153a7bfa4f799dc6a7332938b656ea9ca02ccdda391dc4e43571d44f9899dba0ef32e2c19bc6a6153dc5cac
+  checksum: fe6a0203e43a518529ed8ab562db382c25a91b64cb8ba87a3798a6a9f15c834eff69ca85eeb5f2d3196cf92af61fd368239e8c5da5dccd57bf3beed712e91075
   languageName: node
   linkType: hard
 
