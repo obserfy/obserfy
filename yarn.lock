@@ -9097,7 +9097,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:17.0.48, @types/react@npm:^17":
+"@types/react@npm:17.0.52":
+  version: 17.0.52
+  resolution: "@types/react@npm:17.0.52"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: a51b98dd87838d161278fdf9dd78e6a4ff8c018f406d6647f77963e144fb52a8beee40c89fd0e7e840eaeaa8bd9fe2f34519410540b1a52d43a6f8b4d2fbce33
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^17":
   version: 17.0.48
   resolution: "@types/react@npm:17.0.48"
   dependencies:
@@ -17150,7 +17161,7 @@ __metadata:
     "@types/node": 14.18.23
     "@types/pg": 8.6.5
     "@types/pino": 6.3.12
-    "@types/react": 17.0.48
+    "@types/react": 17.0.52
     "@types/react-query": 1.2.9
     "@types/uuid": 8.3.4
     autoprefixer: 10.4.8
@@ -31525,7 +31536,7 @@ resolve@^2.0.0-next.3:
     "@types/node": 15.0.2
     "@types/query-string": 6.3.0
     "@types/reach__router": ^1
-    "@types/react": 17.0.48
+    "@types/react": 17.0.52
     "@types/react-adaptive-hooks": 0.0.1
     "@types/react-dom": 17.0.17
     "@types/react-helmet": 6.1.2
