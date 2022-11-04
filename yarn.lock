@@ -9023,12 +9023,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:17.0.17":
-  version: 17.0.17
-  resolution: "@types/react-dom@npm:17.0.17"
+"@types/react-dom@npm:17.0.18":
+  version: 17.0.18
+  resolution: "@types/react-dom@npm:17.0.18"
   dependencies:
     "@types/react": ^17
-  checksum: 23caf98aa03e968811560f92a2c8f451694253ebe16b670929b24eaf0e7fa62ba549abe9db0ac028a9d8a9086acd6ab9c6c773f163fa21224845edbc00ba6232
+  checksum: b74525b1a13a0e27fe20859ff7a7e8f7e4581fb9d45ed1b6447ad1534d86f813818353c39d0df2e28f9d2b9be2e3af1908c244b2214a979393d19f217665e614
   languageName: node
   linkType: hard
 
@@ -31538,7 +31538,7 @@ resolve@^2.0.0-next.3:
     "@types/reach__router": ^1
     "@types/react": 17.0.52
     "@types/react-adaptive-hooks": 0.0.1
-    "@types/react-dom": 17.0.17
+    "@types/react-dom": 17.0.18
     "@types/react-helmet": 6.1.2
     autoprefixer: 10.4.8
     babel-jest: 27.5.1
