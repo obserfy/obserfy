@@ -104,7 +104,7 @@
     "eslint-plugin-tailwindcss": "^3.6.0",
     "fake-indexeddb": "3.1.8",
     "http-proxy-middleware": "2.0.6",
-    "hygen": "6.2.8",
+    "hygen": "6.2.11",
     "jest": "27.5.1",
     "jest-date-mock": "1.0.8",
     "jest-fetch-mock": "3.0.3",
