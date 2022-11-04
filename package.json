@@ -8,11 +8,11 @@
     ]
   },
   "devDependencies": {
-    "@types/react-dom": "^18",
+    "@types/react-dom": "18.0.6",
     "eslint": "8.21.0",
-    "husky": "7.0.4",
+    "husky": "8.0.1",
     "lint-staged": "11.2.6",
-    "turbo": "^1.4.2"
+    "turbo": "1.5.6"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "prettier --write",
@@ -28,5 +28,5 @@
   "dependencies": {
     "prettier": "2.7.1"
   },
-  "packageManager": "yarn@3.2.2"
+  "packageManager": "yarn@3.2.4"
 }

@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
+        uses: styfle/cancel-workflow-action@0.10.1
         with:
           access_token: ${{ github.token }}
 
@@ -23,9 +23,9 @@ jobs:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: 'yarn'
@@ -40,9 +40,9 @@ jobs:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: 'yarn'
@@ -50,7 +50,7 @@ jobs:
         run: yarn workspaces focus --production vor
       - name: Gatsby build
         run: yarn build --filter=vor
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: vor
           path: apps/vor/frontend/public
@@ -61,9 +61,9 @@ jobs:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: 'yarn'
@@ -75,7 +75,7 @@ jobs:
           SENTRY_ORG: obserfy
           SENTRY_PROJECT: gaia
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: gaia
           path: apps/gaia/.next
@@ -118,10 +118,10 @@ jobs:
       DB_PORT: 5432
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Cache deps
         id: cache-deps
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         env:
           cache-name: cache-vor-backend-deps
         with:
@@ -195,19 +195,19 @@ jobs:
         containers: [ 1, 2, 3, 4 ]
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
         with:
           name: vor
           path: apps/vor/frontend/public
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: gaia
           path: apps/gaia/.next
       - run: touch .env.local # stop docker-compose from complaining about missing file.
       - run: docker-compose up -d minio db vor_app nginx &
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: 'yarn'
@@ -250,19 +250,19 @@ jobs:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
         with:
           name: vor
           path: apps/vor/frontend/public
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: gaia
           path: apps/gaia/.next
       - run: touch .env.local # stop docker-compose from complaining about missing file.
       - run: docker-compose up -d minio db vor_app nginx &
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: 'yarn'
@@ -292,12 +292,12 @@ jobs:
       #          CYPRESS_GAIA_PASSWORD: ${{ secrets.CYPRESS_GAIA_PASSWORD }}
       #          CYPRESS_VOR_HOST: 'https://localhost:8000'
       #          CYPRESS_GAIA_HOST: 'http://localhost:3000'
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: e2e-videos
           path: apps/vor/frontend/cypress/videos
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: e2e-screenshots

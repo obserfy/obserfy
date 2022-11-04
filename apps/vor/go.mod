@@ -8,19 +8,19 @@ require (
 	github.com/getsentry/sentry-go v0.13.0
 	github.com/go-chi/chi v1.5.4
 	github.com/go-pg/pg/v10 v10.10.6
-	github.com/go-playground/validator/v10 v10.11.0
-	github.com/gocarina/gocsv v0.0.0-20220729221910-a7386ae0b221
+	github.com/go-playground/validator/v10 v10.11.1
+	github.com/gocarina/gocsv v0.0.0-20220927221512-ad3251f9fa25
 	github.com/google/uuid v1.3.0
 	github.com/joho/godotenv v1.4.0
 	github.com/mailgun/mailgun-go/v4 v4.8.1
 	github.com/minio/minio-go/v6 v6.0.57
-	github.com/muxinc/mux-go v0.15.1
+	github.com/muxinc/mux-go v1.1.1
 	github.com/pkg/errors v0.9.1
-	github.com/signintech/gopdf v0.14.0
+	github.com/signintech/gopdf v0.14.3
 	github.com/stretchr/testify v1.8.0
 	github.com/tkrajina/typescriptify-golang-structs v0.1.7
 	go.uber.org/zap v1.21.0
-	golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa
+	golang.org/x/crypto v0.0.0-20221012134737-56aed061732a
 )
 
 require (
