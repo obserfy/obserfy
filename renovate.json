@@ -1,9 +1,10 @@
 {
   "extends": ["config:base"],
-  "automerge": true,
   "dependencyDashboard": true,
   "stabilityDays": 3,
-  "automergeType": "branch",
+  "automerge": true,
+  "automergeType": "pr",
+  "platformAutomerge": true,
   "packageRules": [
     {
       "packagePatterns": ["eslint"],
