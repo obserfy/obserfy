@@ -8,7 +8,7 @@ require (
 	github.com/getsentry/sentry-go v0.13.0
 	github.com/go-chi/chi v1.5.4
 	github.com/go-pg/pg/v10 v10.10.7
-	github.com/go-playground/validator/v10 v10.11.0
+	github.com/go-playground/validator/v10 v10.11.1
 	github.com/gocarina/gocsv v0.0.0-20220729221910-a7386ae0b221
 	github.com/google/uuid v1.3.0
 	github.com/joho/godotenv v1.4.0
