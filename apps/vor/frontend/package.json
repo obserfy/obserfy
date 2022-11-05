@@ -6,8 +6,8 @@
   "author": "Chrisando Eka Pramudhita <chrsep@protonmail.com>",
   "dependencies": {
     "@babel/runtime": "7.18.9",
-    "@emotion/jest": "11.10.0",
-    "@emotion/react": "11.10.0",
+    "@emotion/jest": "11.10.5",
+    "@emotion/react": "11.10.5",
     "@fontsource/lora": "4.5.10",
     "@lingui/cli": "3.14.0",
     "@lingui/core": "3.14.0",
