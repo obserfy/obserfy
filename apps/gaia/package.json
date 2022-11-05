@@ -45,7 +45,7 @@
     "hls.js": "1.2.4",
     "io-ts": "2.2.19",
     "io-ts-types": "0.5.19",
-    "isomorphic-dompurify": "^0.20.0",
+    "isomorphic-dompurify": "^0.23.0",
     "minio": "7.0.32",
     "monocle-ts": "2.3.13",
     "mux-embed": "4.14.0",
