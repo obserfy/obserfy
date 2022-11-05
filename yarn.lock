@@ -11720,10 +11720,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browser-lang@npm:0.1.0":
-  version: 0.1.0
-  resolution: "browser-lang@npm:0.1.0"
-  checksum: 1ca88c0ed8cf05363bad213c886bcea77c2ff7a1585ca5994fcb570ad49aacea1669553af8fb31e524bdd75e3d9a9208cf96b46b27cdfa88139f03c44ab56dfb
+"browser-lang@npm:0.2.1":
+  version: 0.2.1
+  resolution: "browser-lang@npm:0.2.1"
+  checksum: 0eeaeb31587f0f6787640b664b35c8079bc804f8d3f522d30de6ed9b668c6aba34814e378462ff53a2b7445841e83a0e5558fa5ec9267f5e596e2557c3389b6a
   languageName: node
   linkType: hard
 
@@ -31660,7 +31660,7 @@ resolve@^2.0.0-next.3:
     babel-plugin-transform-default-import: 1.0.0
     babel-preset-gatsby: ^2.20.0
     body-scroll-lock: 3.1.5
-    browser-lang: 0.1.0
+    browser-lang: 0.2.1
     cross-env: 7.0.3
     dayjs: 1.11.4
     dompurify: 2.3.10
