@@ -26085,10 +26085,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:10.10.0":
-  version: 10.10.0
-  resolution: "preact@npm:10.10.0"
-  checksum: ec34f0e7a8677080debb5e7035a749d30a23694a68389e6f577e051e91a1e1014913c56845a615d1f9a4f2cd0321c46faaded4d4a0457c755d637a3a811fd69e
+"preact@npm:10.11.2":
+  version: 10.11.2
+  resolution: "preact@npm:10.11.2"
+  checksum: 92b4087a4048595e43fc5c005e9a1f3c890ec83657689de9b40b1894e26f8c2b6b071c63e08941a44044d1612532f8313483b62e3d6e1aa3c39bde27614ed790
   languageName: node
   linkType: hard
 
@@ -31795,7 +31795,7 @@ resolve@^2.0.0-next.3:
     mux-embed: 4.14.0
     nanoid: 3.3.4
     npm-run-all: 4.1.5
-    preact: 10.10.0
+    preact: 10.11.2
     preact-render-to-string: 5.2.6
     prettier: 2.7.1
     query-string: 7.1.1
