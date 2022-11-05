@@ -62,6 +62,8 @@ github.com/go-errors/errors v1.4.0/go.mod h1:sIVyrIiJhuEF+Pj9Ebtd6P/rEYROXFi3Bop
 github.com/go-martini/martini v0.0.0-20170121215854-22fa46961aab/go.mod h1:/P9AEU963A2AYjv4d1V5eVL1CQbEJq6aCNHDDjibzu8=
 github.com/go-pg/pg/v10 v10.10.6 h1:1vNtPZ4Z9dWUw/TjJwOfFUbF5nEq1IkR6yG8Mq/Iwso=
 github.com/go-pg/pg/v10 v10.10.6/go.mod h1:GLmFXufrElQHf5uzM3BQlcfwV3nsgnHue5uzjQ6Nqxg=
+github.com/go-pg/pg/v10 v10.10.7 h1:Q7Bs45kP9MIg03v/ejwdqsPd1T0cecgeDoTJVg/UJuQ=
+github.com/go-pg/pg/v10 v10.10.7/go.mod h1:GLmFXufrElQHf5uzM3BQlcfwV3nsgnHue5uzjQ6Nqxg=
 github.com/go-pg/zerochecker v0.2.0 h1:pp7f72c3DobMWOb2ErtZsnrPaSvHd2W4o9//8HtF4mU=
 github.com/go-pg/zerochecker v0.2.0/go.mod h1:NJZ4wKL0NmTtz0GKCoJ8kym6Xn/EQzXRl2OnAe7MmDo=
 github.com/go-playground/assert/v2 v2.0.1 h1:MsBgLAaY856+nPRTKrp3/OZK38U/wa0CcBYNjji3q3A=
