@@ -8526,7 +8526,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/dompurify@npm:2.3.3, @types/dompurify@npm:^2.3.3":
+"@types/dompurify@npm:2.3.4":
+  version: 2.3.4
+  resolution: "@types/dompurify@npm:2.3.4"
+  dependencies:
+    "@types/trusted-types": "*"
+  checksum: ea55678bc9fd32fcdae904ca191f2b8cc5b475277937e5e4c024690b0c3b9c73accfb7391f56d26d0f53fcff496a013773293e189a07a79afdd2b2ed4efacd5f
+  languageName: node
+  linkType: hard
+
+"@types/dompurify@npm:^2.3.3":
   version: 2.3.3
   resolution: "@types/dompurify@npm:2.3.3"
   dependencies:
@@ -14608,7 +14617,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:2.3.10, dompurify@npm:^2.3.8":
+"dompurify@npm:2.4.0":
+  version: 2.4.0
+  resolution: "dompurify@npm:2.4.0"
+  checksum: c93ea73cf8e3ba044588450198563e56ce6902e36d0e16e3699df2fa59e82c4fdd11d4ad04ef5024569ce96a35b46f29d0bbea522516add33cd39a7f56a8a675
+  languageName: node
+  linkType: hard
+
+"dompurify@npm:^2.3.8":
   version: 2.3.10
   resolution: "dompurify@npm:2.3.10"
   checksum: ee343876b4c065e82d194818c66af76a6d2290264c7db583ad71761c11781fd626f0245f9f4670175d5707c4b8fcfb89adae80bed0418a9426a47ee7f36b0ffc
@@ -31641,7 +31657,7 @@ resolve@^2.0.0-next.3:
     "@theme-ui/match-media": 0.10.1
     "@types/body-scroll-lock": 3.1.0
     "@types/date-fns": 2.6.0
-    "@types/dompurify": 2.3.3
+    "@types/dompurify": 2.3.4
     "@types/faker": 5.5.8
     "@types/jest": 27.5.2
     "@types/node": 15.0.2
@@ -31663,7 +31679,7 @@ resolve@^2.0.0-next.3:
     browser-lang: 0.2.1
     cross-env: 7.0.3
     dayjs: 1.11.4
-    dompurify: 2.3.10
+    dompurify: 2.4.0
     dotenv: 10.0.0
     eslint: 8.21.0
     eslint-config-prettier: 8.5.0
