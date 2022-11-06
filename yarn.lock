@@ -8596,10 +8596,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/faker@npm:5.5.8":
-  version: 5.5.8
-  resolution: "@types/faker@npm:5.5.8"
-  checksum: eb642cac279cbaca46001d301284d51f4b9ca90f48b4b8edb9bbf4335edf70e0216ad921690edb2feec6502eb1bc9ed1fe3e3a27efc49f168ece88acfe2e68ac
+"@types/faker@npm:6.6.8":
+  version: 6.6.8
+  resolution: "@types/faker@npm:6.6.8"
+  dependencies:
+    faker: "*"
+  checksum: 21267dcb169acc9e424018d692c8eb60ff97c5d81d2c02de8f68f3a1f0397d7b7e28117c8b089760cb278ccb313c0d6c28b5a5673bcd56dc81a92e864f31f19d
   languageName: node
   linkType: hard
 
@@ -16442,6 +16444,13 @@ __metadata:
   dependencies:
     realistic-structured-clone: ^2.0.1
   checksum: cea9905f5e134952a6471e73c3a69dc79935dc221741a518df7010114a482c900b872c855215e1163e063ce9aab3e8f01a660684cd5c0e8ff11e30bf47892de9
+  languageName: node
+  linkType: hard
+
+"faker@npm:*":
+  version: 6.6.6
+  resolution: "faker@npm:6.6.6"
+  checksum: bfb0d581ab4d76095f2c6bff213fe1735ce077f0f8df849c144ad26035e105bce1b7a704cc030366338c52e25b636ac097a712426a78c9b8804af78f6f2bffe7
   languageName: node
   linkType: hard
 
@@ -31905,7 +31914,7 @@ resolve@^2.0.0-next.3:
     "@types/body-scroll-lock": 3.1.0
     "@types/date-fns": 2.6.0
     "@types/dompurify": 2.3.4
-    "@types/faker": 5.5.8
+    "@types/faker": 6.6.8
     "@types/jest": 27.5.2
     "@types/node": 15.0.2
     "@types/query-string": 6.3.0
