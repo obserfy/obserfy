@@ -65,7 +65,7 @@
     "tailwindcss": "3.2.1",
     "theme-ui": "0.10.0",
     "use-immer": "0.7.0",
-    "zustand": "4.0.0"
+    "zustand": "4.1.4"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.18.6",
