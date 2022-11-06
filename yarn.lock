@@ -31837,7 +31837,7 @@ resolve@^2.0.0-next.3:
     url-loader: 4.1.1
     use-immer: 0.7.0
     wait-on: 6.0.1
-    zustand: 4.0.0
+    zustand: 4.1.4
   languageName: unknown
   linkType: soft
 
@@ -33170,9 +33170,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"zustand@npm:4.0.0":
-  version: 4.0.0
-  resolution: "zustand@npm:4.0.0"
+"zustand@npm:4.1.4":
+  version: 4.1.4
+  resolution: "zustand@npm:4.1.4"
   dependencies:
     use-sync-external-store: 1.2.0
   peerDependencies:
@@ -33183,7 +33183,7 @@ resolve@^2.0.0-next.3:
       optional: true
     react:
       optional: true
-  checksum: b8ae5971dff79a1007d46f9a6bfa39ed5cc5b101a877eeec069ebdb6c8285ec8e3463e40cfa7c0f1507a41f43fe26ffb44b556063cb70ac03bccf1ea6e0f69d6
+  checksum: a9ceb7849ebf407d31a6121be09acfb041324f6f45ca9a3f62ab85e2d840d0f48f157abd99ed7b9e08b96ebb4e15480b4a196ed8b1df8a5a9a2ba9afd7c639a7
   languageName: node
   linkType: hard
 
