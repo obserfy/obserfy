@@ -104,6 +104,7 @@ const ObservationList: FC<{
                     height={60}
                     width={60}
                     className="rounded border object-cover"
+                    alt=""
                   />
                 </button>
               </div>
