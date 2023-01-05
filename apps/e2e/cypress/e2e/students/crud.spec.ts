@@ -4,7 +4,6 @@ import { uploadFile } from "../../utils"
 describe("test student features", function () {
   beforeEach(function () {
     // cy.clearSW()
-    cy.fixedClearCookies()
     cy.registerVor()
   })
 

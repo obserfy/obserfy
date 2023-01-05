@@ -3,6 +3,9 @@ import { GetServerSideProps } from "next"
 import { findStudentAndGuardianById } from "$lib/db"
 
 export const withAuthorization = <P>(
+  // @ts-ignore P conflicts with new GetServerSideProps<P>, but if we fixed it by extending P, we lose the type
+  //  inference.
+  //  Ignoring this error now doesn't break inference or anything else.
   getServerSideProps: GetServerSideProps<P>,
   opts?: { returnTo?: string }
 ) => {

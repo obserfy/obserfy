@@ -1,12 +1,13 @@
+import Icon from "$components/Icon/Icon"
+import dayjs from "$lib/dayjs"
 import Link from "next/link"
 import { FC, useState } from "react"
-import Icon from "$components/Icon/Icon"
 import useGetAllLessonPlans from "../../hooks/api/useGetAllLessonPlans"
 import { useQueryString } from "../../hooks/useQueryString"
 import { GetChildPlansResponse } from "../../pages/api/children/[childId]/plans/all"
 import { isEmpty } from "../../utils/array"
-import dayjs from "$lib/dayjs"
 
+/** @deprecated unused page from old design */
 const AllLessonPlans: FC = () => {
   const [search, setSearch] = useState("")
   const studentId = useQueryString("studentId")
@@ -43,21 +44,22 @@ const Plan: FC<{
   plan: GetChildPlansResponse
   studentId: string
 }> = ({ plan, studentId }) => (
-  <Link href={`/${studentId}/lesson-plan/details?planId=${plan.id}`}>
-    <div className="border-t p-3 hover:bg-gray-100">
-      <div className="flex-1 font-bold text-gray-700">{plan.title}</div>
-      <div className="flex pt-2 text-xs">
-        <div className="text-green-700">{plan.area?.name}</div>
-        <div className="ml-auto opacity-70">
-          {dayjs(plan.startDate).format("D MMM YYYY")}
-        </div>
-        {plan.repetitionType !== "0" && (
-          <div className="ml-1 opacity-70">
-            {" - "}
-            {dayjs(plan.endDate).format("D MMM YYYY")}
-          </div>
-        )}
+  <Link
+    href={`/${studentId}/lesson-plan/details?planId=${plan.id}`}
+    className="border-t p-3 hover:bg-gray-100"
+  >
+    <div className="flex-1 font-bold text-gray-700">{plan.title}</div>
+    <div className="flex pt-2 text-xs">
+      <div className="text-green-700">{plan.area?.name}</div>
+      <div className="ml-auto opacity-70">
+        {dayjs(plan.startDate).format("D MMM YYYY")}
       </div>
+      {plan.repetitionType !== "0" && (
+        <div className="ml-1 opacity-70">
+          {" - "}
+          {dayjs(plan.endDate).format("D MMM YYYY")}
+        </div>
+      )}
     </div>
   </Link>
 )

@@ -1,18 +1,18 @@
+import { Trans } from "@lingui/macro"
 import { ChangeEventHandler, FC, PropsWithoutRef } from "react"
 import {
   Box,
   Label,
   Select as BaseSelect,
   SelectProps as BaseSelectProps,
-  SxProp,
 } from "theme-ui"
-import { Trans } from "@lingui/macro"
 
-export interface SelectProps extends PropsWithoutRef<BaseSelectProps>, SxProp {
+export interface SelectProps extends PropsWithoutRef<BaseSelectProps> {
   label?: string
   hideLabel?: boolean
   onChange?: ChangeEventHandler<HTMLSelectElement>
 }
+
 export const Select: FC<SelectProps> = ({
   children,
   hideLabel,

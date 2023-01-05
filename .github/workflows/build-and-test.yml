@@ -128,11 +128,11 @@ jobs:
           path: |
             apps/vor/vendor
           key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/go.mod') }}
-      - name: Use Go 15
+      - name: Use Go 19
         uses: actions/setup-go@v3
         with:
-          go-version: 1.15.3
-      - run: cd apps/vor/ && go get gotest.tools/gotestsum
+          go-version: 1.19.0
+      - run: cd apps/vor/ && go install gotest.tools/gotestsum@latest
       - run: cd apps/vor/ && go mod vendor
       - run: |
           cd apps/vor/

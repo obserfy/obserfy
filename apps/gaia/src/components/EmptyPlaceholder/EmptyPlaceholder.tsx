@@ -9,6 +9,7 @@ interface Props {
   text: string
   imageSize?: number
 }
+
 const EmptyPlaceholder: FC<Props> = ({
   imageSrc,
   loading,
@@ -26,6 +27,11 @@ const EmptyPlaceholder: FC<Props> = ({
       className="mb-3 w-64 md:w-1/2"
       width={imageSize}
       height={imageSize}
+      alt={""}
+      style={{
+        maxWidth: "100%",
+        height: "auto",
+      }}
     />
     <h5
       className={`

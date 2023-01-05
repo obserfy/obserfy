@@ -23,7 +23,16 @@ const NoData = () => {
     <>
       <div className="mx-auto max-w-3xl">
         <div className="prose h-full max-w-lg p-3 pt-8">
-          <Image src="/undraw_void_3ggu.svg" width={180} height={180} />
+          <Image
+            src="/undraw_void_3ggu.svg"
+            width={180}
+            height={180}
+            alt={"Not found"}
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+            }}
+          />
           <h1>We can&apos;t seem to find your data yet</h1>
           <p>
             Make sure that you are logging in with the email that you gave to

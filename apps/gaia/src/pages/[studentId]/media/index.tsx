@@ -9,12 +9,11 @@ import { findStudentByStudentId } from "$lib/db"
 import { findStudentImagesGroupedByMonths } from "$lib/images"
 import { getStudentId, SSR } from "$lib/next"
 import clsx from "clsx"
-import { nanoid } from "nanoid"
-import Image, { ImageLoader } from "next/future/image"
+import getConfig from "next/config"
+import Image, { ImageLoader } from "next/image"
 import Link from "next/link"
 import { ChangeEventHandler, FC } from "react"
 import { v4 as uuidv4 } from "uuid"
-import getConfig from "next/config"
 
 const ImagesPage: SSR<typeof getServerSideProps> = ({
   imagesByMonth,
@@ -87,18 +86,19 @@ const ImageMonthlySection: FC<{
       <ul className="mt-2 grid grid-cols-2 gap-4 px-4 md:grid-cols-3 lg:gap-8">
         {images.map(({ id, src }) => (
           <li key={id}>
-            <Link href={`/${studentId}/media/images/${id}`}>
-              <a className="aspect-w-4 aspect-h-3 flex rounded-xl shadow">
-                <Image
-                  src={src}
-                  width={400}
-                  height={300}
-                  className="rounded-xl bg-gray-100 object-cover "
-                  alt=""
-                  sizes={"33vw"}
-                  loader={imgproxyLoader}
-                />
-              </a>
+            <Link
+              href={`/${studentId}/media/images/${id}`}
+              className="aspect-w-4 aspect-h-3 flex rounded-xl shadow"
+            >
+              <Image
+                src={src}
+                width={400}
+                height={300}
+                className="rounded-xl bg-gray-100 object-cover "
+                alt=""
+                sizes={"33vw"}
+                loader={imgproxyLoader}
+              />
             </Link>
           </li>
         ))}
