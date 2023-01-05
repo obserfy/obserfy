@@ -90,7 +90,7 @@
     "@types/react": "17.0.52",
     "@types/react-adaptive-hooks": "0.0.1",
     "@types/react-dom": "17.0.18",
-    "@types/react-helmet": "6.1.2",
+    "@types/react-helmet": "6.1.6",
     "babel-jest": "27.5.1",
     "babel-loader": "9.1.0",
     "babel-plugin-istanbul": "6.1.1",

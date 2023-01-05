@@ -9116,12 +9116,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-helmet@npm:6.1.2":
-  version: 6.1.2
-  resolution: "@types/react-helmet@npm:6.1.2"
+"@types/react-helmet@npm:6.1.6":
+  version: 6.1.6
+  resolution: "@types/react-helmet@npm:6.1.6"
   dependencies:
     "@types/react": "*"
-  checksum: ee66a7b950ba9f1013fd25de32ba6322bf5206fe5de56b9556a5151c76522b892b0cc5566cc8dfd0b54cb76fedb17ed21b6b2e6577849b791c168eaed5aad5f3
+  checksum: 81560c56bfe854b6a43aee31360862588ac875d1177b975da5ce049ac9aa2f7c98dcde65d4397bfaa04e468f40cf3ab2975a2ef966a69d64a60493422898698d
   languageName: node
   linkType: hard
 
@@ -32366,7 +32366,7 @@ resolve@^2.0.0-next.3:
     "@types/react": 17.0.52
     "@types/react-adaptive-hooks": 0.0.1
     "@types/react-dom": 17.0.18
-    "@types/react-helmet": 6.1.2
+    "@types/react-helmet": 6.1.6
     autoprefixer: 10.4.13
     babel-jest: 27.5.1
     babel-loader: 9.1.0
