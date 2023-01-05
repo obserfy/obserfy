@@ -137,10 +137,13 @@ const Header = () => (
     <div className="absolute inset-0">
       <Image
         src={RecordsHeroImage}
-        objectFit="cover"
         className="h-full w-full"
-        layout="fill"
         alt=""
+        fill
+        sizes="100vw"
+        style={{
+          objectFit: "cover",
+        }}
       />
     </div>
 

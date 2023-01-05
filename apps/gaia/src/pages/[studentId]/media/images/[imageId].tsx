@@ -28,9 +28,12 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
           <Image
             key={image.id}
             src={image.src}
-            layout="fill"
-            objectFit="scale-down"
             alt=""
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "scale-down",
+            }}
           />
         </div>
       </div>
@@ -101,9 +104,13 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
                       src={src}
                       width={400}
                       height={300}
-                      objectFit="cover"
                       className="rounded-xl"
                       alt=""
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto",
+                        objectFit: "cover",
+                      }}
                     />
                   </Link>
                 </li>

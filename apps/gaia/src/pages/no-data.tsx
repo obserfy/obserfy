@@ -28,6 +28,10 @@ const NoData = () => {
             width={180}
             height={180}
             alt={"Not found"}
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+            }}
           />
           <h1>We can&apos;t seem to find your data yet</h1>
           <p>

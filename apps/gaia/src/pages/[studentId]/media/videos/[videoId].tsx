@@ -33,9 +33,12 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
             <>
               <Image
                 src={video.thumbnail_url}
-                layout="fill"
-                objectFit="contain"
                 alt=""
+                fill
+                sizes="100vw"
+                style={{
+                  objectFit: "contain",
+                }}
               />
               <button onClick={player.toggle}>
                 <div className="absolute inset-0 z-10 flex items-center justify-center bg-black bg-opacity-30">
@@ -119,9 +122,13 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
                         src={thumbnail_url}
                         width={400}
                         height={300}
-                        objectFit="cover"
                         className="rounded-xl"
                         alt=""
+                        style={{
+                          maxWidth: "100%",
+                          height: "auto",
+                          objectFit: "cover",
+                        }}
                       />
                     )}
                   </Link>

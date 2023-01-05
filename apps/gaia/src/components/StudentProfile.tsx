@@ -16,8 +16,12 @@ const StudentProfile: FC<{
           className={className}
           width={width}
           height={height}
-          objectFit="cover"
           alt=""
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+            objectFit: "cover",
+          }}
         />
       </div>
     )
@@ -27,12 +31,16 @@ const StudentProfile: FC<{
     <div className="flex shrink-0">
       <Image
         src={Placeholder}
-        objectFit="cover"
         placeholder={width > 40 ? "blur" : "empty"}
         className={className}
         width={width}
         height={height}
         alt=""
+        style={{
+          maxWidth: "100%",
+          height: "auto",
+          objectFit: "cover",
+        }}
       />
     </div>
   )

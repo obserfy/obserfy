@@ -37,10 +37,13 @@ const MediaLayout: FC<{
         <div className="absolute inset-0">
           <Image
             src={MediaHeroImage}
-            objectFit="cover"
             className="h-full w-full"
-            layout="fill"
             alt=""
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "cover",
+            }}
           />
         </div>
 

@@ -105,6 +105,10 @@ const ObservationList: FC<{
                     width={60}
                     className="rounded border object-cover"
                     alt=""
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto",
+                    }}
                   />
                 </button>
               </div>

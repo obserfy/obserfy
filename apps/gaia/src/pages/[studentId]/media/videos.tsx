@@ -28,9 +28,13 @@ const VideosPage: SSR<typeof getServerSideProps> = ({ videosByMonth }) => {
                     src={src}
                     width={400}
                     height={300}
-                    objectFit="cover"
                     className="rounded-xl"
                     alt=""
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto",
+                      objectFit: "cover",
+                    }}
                   />
                 </Link>
               </li>
