@@ -4,20 +4,6 @@ import { faker } from "@faker-js/faker"
 
 const vorApi = (path: string) => `/api/v1${path}`
 
-// Test helper commands ===============================================================
-// @ts-ignore
-const fixedClearCookies = () => cy.clearCookies({ domain: null })
-
-const clearSW = () => {
-  if (typeof window !== "undefined" && window.navigator.serviceWorker) {
-    window.navigator.serviceWorker.getRegistrations().then((registrations) => {
-      registrations.forEach((registration) => {
-        registration.unregister()
-      })
-    })
-  }
-}
-
 // Auth related commands ===============================================================
 // Vor *************************
 const registerVor = () => {
@@ -126,8 +112,6 @@ const createLessonPlan = (studentId: string) => {
   )
 }
 
-Cypress.Commands.add("clearSW", clearSW)
-Cypress.Commands.add("fixedClearCookies", fixedClearCookies)
 Cypress.Commands.add("registerVor", registerVor)
 Cypress.Commands.add("createClass", createClass)
 Cypress.Commands.add("createSchool", createSchool)
