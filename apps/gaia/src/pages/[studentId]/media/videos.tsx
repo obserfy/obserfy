@@ -1,6 +1,3 @@
-import { videos as Videos } from "@prisma/client"
-import Image from "next/image"
-import Link from "next/link"
 import ImageListHeader from "$components/ImageListHeader"
 import { useQueryString } from "$hooks/useQueryString"
 import MediaLayout from "$layouts/MediaLayout"
@@ -8,6 +5,8 @@ import { withAuthorization } from "$lib/auth"
 import { monthNames } from "$lib/dayjs"
 import { findVideosByStudentId } from "$lib/db"
 import { getStudentId, SSR } from "$lib/next"
+import Image from "next/image"
+import Link from "next/link"
 
 const VideosPage: SSR<typeof getServerSideProps> = ({ videosByMonth }) => {
   const studentId = useQueryString("studentId")
@@ -21,16 +20,18 @@ const VideosPage: SSR<typeof getServerSideProps> = ({ videosByMonth }) => {
           <ul className="mt-2 grid grid-cols-2 gap-4 px-4 md:grid-cols-3 lg:gap-8">
             {videosByMonth[month].map(({ id, src }) => (
               <li key={id}>
-                <Link href={`/${studentId}/media/videos/${id}`}>
-                  <a className="flex rounded-xl shadow">
-                    <Image
-                      src={src}
-                      width={400}
-                      height={300}
-                      objectFit="cover"
-                      className="rounded-xl"
-                    />
-                  </a>
+                <Link
+                  href={`/${studentId}/media/videos/${id}`}
+                  className="flex rounded-xl shadow"
+                >
+                  <Image
+                    src={src}
+                    width={400}
+                    height={300}
+                    objectFit="cover"
+                    className="rounded-xl"
+                    alt=""
+                  />
                 </Link>
               </li>
             ))}

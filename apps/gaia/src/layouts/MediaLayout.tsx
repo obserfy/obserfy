@@ -40,6 +40,7 @@ const MediaLayout: FC<{
             objectFit="cover"
             className="h-full w-full"
             layout="fill"
+            alt=""
           />
         </div>
 
@@ -50,19 +51,19 @@ const MediaLayout: FC<{
 
           <nav className="flex justify-center space-x-2" aria-label="Tabs">
             {tabs.map((tab) => (
-              <Link key={tab.name} href={tab.href}>
-                <a
-                  className={clsx(
-                    tab.name === currentPage
-                      ? "bg-white bg-opacity-20 text-white"
-                      : "bg-white bg-opacity-0 text-white opacity-90 transition hover:bg-opacity-10",
-                    "flex items-center rounded-lg border border-white border-opacity-20 py-2 px-3 text-sm font-medium backdrop-blur-sm"
-                  )}
-                  aria-current={tab.name === currentPage ? "page" : undefined}
-                >
-                  <Icon src={tab.iconSrc} color="bg-white" className="mr-2" />
-                  {tab.name}
-                </a>
+              <Link
+                key={tab.name}
+                href={tab.href}
+                className={clsx(
+                  tab.name === currentPage
+                    ? "bg-white bg-opacity-20 text-white"
+                    : "bg-white bg-opacity-0 text-white opacity-90 transition hover:bg-opacity-10",
+                  "flex items-center rounded-lg border border-white border-opacity-20 py-2 px-3 text-sm font-medium backdrop-blur-sm"
+                )}
+                aria-current={tab.name === currentPage ? "page" : undefined}
+              >
+                <Icon src={tab.iconSrc} color="bg-white" className="mr-2" />
+                {tab.name}
               </Link>
             ))}
           </nav>

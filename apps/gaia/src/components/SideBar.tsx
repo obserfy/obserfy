@@ -38,29 +38,25 @@ const Item: FC<{
         isActive && "border-r-2 border-primary-500"
       )}
     >
-      <Link href={href}>
-        <a
-          className={clsx(
-            "flex items-center rounded-lg px-3",
-            isActive
-              ? "font-semibold text-primary-600"
-              : "text-gray-800 hover:text-green-800"
-          )}
+      <Link
+        href={href}
+        className={clsx(
+          "flex items-center rounded-lg px-3",
+          isActive
+            ? "font-semibold text-primary-600"
+            : "text-gray-800 hover:text-green-800"
+        )}
+      >
+        <div
+          className={clsx("mr-3 rounded-lg p-1", isActive && "bg-primary-200")}
         >
-          <div
-            className={clsx(
-              "mr-3 rounded-lg p-1",
-              isActive && "bg-primary-200"
-            )}
-          >
-            <Icon
-              src={iconSrc}
-              className="!h-5 !w-5"
-              color={isActive ? "bg-black opacity-80" : "bg-gray-800"}
-            />
-          </div>
-          {text}
-        </a>
+          <Icon
+            src={iconSrc}
+            className="!h-5 !w-5"
+            color={isActive ? "bg-black opacity-80" : "bg-gray-800"}
+          />
+        </div>
+        {text}
       </Link>
     </li>
   )

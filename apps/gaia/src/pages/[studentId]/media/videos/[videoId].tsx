@@ -35,6 +35,7 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
                 src={video.thumbnail_url}
                 layout="fill"
                 objectFit="contain"
+                alt=""
               />
               <button onClick={player.toggle}>
                 <div className="absolute inset-0 z-10 flex items-center justify-center bg-black bg-opacity-30">
@@ -109,18 +110,20 @@ const ImageDetails: SSR<typeof getServerSideProps> = ({
             <ul className="mt-4 grid grid-cols-2 gap-4 px-4 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8 xl:pr-4">
               {relatedVideos.map(({ id, thumbnail_url }) => (
                 <li key={id}>
-                  <Link href={`/${studentId}/media/videos/${id}`}>
-                    <a className="flex rounded-xl shadow">
-                      {thumbnail_url && (
-                        <Image
-                          src={thumbnail_url}
-                          width={400}
-                          height={300}
-                          objectFit="cover"
-                          className="rounded-xl"
-                        />
-                      )}
-                    </a>
+                  <Link
+                    href={`/${studentId}/media/videos/${id}`}
+                    className="flex rounded-xl shadow"
+                  >
+                    {thumbnail_url && (
+                      <Image
+                        src={thumbnail_url}
+                        width={400}
+                        height={300}
+                        objectFit="cover"
+                        className="rounded-xl"
+                        alt=""
+                      />
+                    )}
                   </Link>
                 </li>
               ))}
@@ -144,16 +147,17 @@ const Breadcrumb = () => {
       <ol className="flex w-full items-center justify-center space-x-4 rounded-xl border bg-gray-100 p-3">
         <li>
           <div>
-            <Link href={`/${studentId}/media`}>
-              <a className="text-gray-400 hover:text-gray-500">
-                <Icon
-                  src="/icons/video.svg"
-                  className="!h-6 !w-6 shrink-0"
-                  color="bg-gray-500"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">Medias</span>
-              </a>
+            <Link
+              href={`/${studentId}/media`}
+              className="text-gray-400 hover:text-gray-500"
+            >
+              <Icon
+                src="/icons/video.svg"
+                className="!h-6 !w-6 shrink-0"
+                color="bg-gray-500"
+                aria-hidden="true"
+              />
+              <span className="sr-only">Medias</span>
             </Link>
           </div>
         </li>
@@ -170,13 +174,12 @@ const Breadcrumb = () => {
               <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
             </svg>
 
-            <Link href={page.href}>
-              <a
-                className="ml-4 font-medium text-gray-500 hover:text-gray-700"
-                aria-current={page.current ? "page" : undefined}
-              >
-                {page.name}
-              </a>
+            <Link
+              href={page.href}
+              className="ml-4 font-medium text-gray-500 hover:text-gray-700"
+              aria-current={page.current ? "page" : undefined}
+            >
+              {page.name}
             </Link>
           </li>
         ))}
