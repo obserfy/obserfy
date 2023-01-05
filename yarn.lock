@@ -65,24 +65,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auth0/nextjs-auth0@npm:1.9.2":
-  version: 1.9.2
-  resolution: "@auth0/nextjs-auth0@npm:1.9.2"
+"@auth0/nextjs-auth0@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@auth0/nextjs-auth0@npm:2.0.1"
   dependencies:
-    base64url: ^3.0.1
+    "@panva/hkdf": ^1.0.2
     cookie: ^0.5.0
     debug: ^4.3.4
-    futoin-hkdf: ^1.5.0
     http-errors: ^1.8.1
     joi: ^17.6.0
-    jose: ^2.0.5
-    on-headers: ^1.0.2
-    openid-client: ^4.9.1
+    jose: ^4.9.2
+    openid-client: ^5.2.1
     tslib: ^2.4.0
     url-join: ^4.0.1
   peerDependencies:
     next: ">=10"
-  checksum: f79a29a5a62d370da4dd6b0b6c9c53426a8393f952d2f11f30f946ecb6da41d9cbed12a0d01e2078291636d1edf8865443c8ece675e77658ee3ccadf7da2cba1
+  checksum: 8f859f092fca7edc9b11581052b73bfa9e5f2a3018de6ceda775bb23d253e6fa94df0c8f168089d08b3c7847d37bd45a4eff3552d37e84677b86c8ab8b9d3875
   languageName: node
   linkType: hard
 
@@ -5540,10 +5538,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@panva/asn1.js@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@panva/asn1.js@npm:1.0.0"
-  checksum: cb6bcc1918a7f08e81e7d7f5bde83c20a66b30248ddc3ef10b1612e0e0b9f722c2b07ca6b586a089a49c1b6cfb29d63fdd23d4bc00c8cc40538b5595bec66d7d
+"@panva/hkdf@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@panva/hkdf@npm:1.0.2"
+  checksum: 75183b4d5ea816ef516dcea70985c610683579a9e2ac540c2d59b9a3ed27eedaff830a43a1c43c1683556a457c92ac66e09109ee995ab173090e4042c4c4bb03
   languageName: node
   linkType: hard
 
@@ -10221,7 +10219,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aggregate-error@npm:^3.0.0, aggregate-error@npm:^3.1.0":
+"aggregate-error@npm:^3.0.0":
   version: 3.1.0
   resolution: "aggregate-error@npm:3.1.0"
   dependencies:
@@ -11626,13 +11624,6 @@ __metadata:
   version: 2.0.0
   resolution: "base64id@npm:2.0.0"
   checksum: 581b1d37e6cf3738b7ccdd4d14fe2bfc5c238e696e2720ee6c44c183b838655842e22034e53ffd783f872a539915c51b0d4728a49c7cc678ac5a758e00d62168
-  languageName: node
-  linkType: hard
-
-"base64url@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "base64url@npm:3.0.1"
-  checksum: a77b2a3a526b3343e25be424de3ae0aa937d78f6af7c813ef9020ef98001c0f4e2323afcd7d8b2d2978996bf8c42445c3e9f60c218c622593e5fdfd54a3d6e18
   languageName: node
   linkType: hard
 
@@ -17557,13 +17548,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"futoin-hkdf@npm:^1.5.0":
-  version: 1.5.1
-  resolution: "futoin-hkdf@npm:1.5.1"
-  checksum: 1912bbf6013e56ff2866590242c9493ab1fe83dc132a175378890b75008ca844524a61dbc20b3fe2c7276ea214589f92f3f0cd48e26d5f5d00c404a6201c5e23
-  languageName: node
-  linkType: hard
-
 "fuzzaldrin@npm:^2.1.0":
   version: 2.1.0
   resolution: "fuzzaldrin@npm:2.1.0"
@@ -17575,7 +17559,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
-    "@auth0/nextjs-auth0": 1.9.2
+    "@auth0/nextjs-auth0": 2.0.1
     "@fontsource/source-sans-pro": ^4.5.10
     "@headlessui/react": ^1.7.7
     "@next/bundle-analyzer": 13.1.1
@@ -17622,7 +17606,6 @@ __metadata:
     nanoid: 3.3.4
     newtype-ts: 0.3.5
     next: 13.1.1
-    next-compose-plugins: ^2.2.1
     next-pwa: 5.6.0
     node-mocks-http: 1.11.0
     pg: 8.8.0
@@ -18893,7 +18876,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"got@npm:^11.8.0, got@npm:^11.8.2":
+"got@npm:^11.8.2":
   version: 11.8.2
   resolution: "got@npm:11.8.2"
   dependencies:
@@ -21904,12 +21887,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^2.0.5":
-  version: 2.0.5
-  resolution: "jose@npm:2.0.5"
-  dependencies:
-    "@panva/asn1.js": ^1.0.0
-  checksum: 80a3447b51f794f8f2c7e21395dd880b55d374a055564595c69ff17722fb07aeb2dff722b5da9030651f67fafc7494e9ec5f5b56f5e1836d1ac94e604e6096ea
+"jose@npm:^4.10.0, jose@npm:^4.9.2":
+  version: 4.11.2
+  resolution: "jose@npm:4.11.2"
+  checksum: bc9b2271c31683603857b2fd2903afa29f826fffd4bcefc0845355ed86995def87eaadf502033207996109d76698c912e5a986e279326d9629321a50504fe466
   languageName: node
   linkType: hard
 
@@ -23052,7 +23033,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"make-error@npm:^1, make-error@npm:^1.1.1, make-error@npm:^1.3.6":
+"make-error@npm:^1, make-error@npm:^1.1.1":
   version: 1.3.6
   resolution: "make-error@npm:1.3.6"
   checksum: b86e5e0e25f7f777b77fabd8e2cbf15737972869d852a22b7e73c17623928fccb826d8e46b9951501d3f20e51ad74ba8c59ed584f610526a48f8ccf88aaec402
@@ -24092,13 +24073,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-compose-plugins@npm:^2.2.1":
-  version: 2.2.1
-  resolution: "next-compose-plugins@npm:2.2.1"
-  checksum: 771762fda2b12b81daf10431cbb494816cff96be02b44009692c6c0eefbacd62cbf51ddb93af8d3380ec00254c6a95d64d10f744d4b9ddadefc21efee7dc69fc
-  languageName: node
-  linkType: hard
-
 "next-pwa@npm:5.6.0":
   version: 5.6.0
   resolution: "next-pwa@npm:5.6.0"
@@ -24922,7 +24896,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"on-headers@npm:^1.0.2, on-headers@npm:~1.0.2":
+"on-headers@npm:~1.0.2":
   version: 1.0.2
   resolution: "on-headers@npm:1.0.2"
   checksum: 2bf13467215d1e540a62a75021e8b318a6cfc5d4fc53af8e8f84ad98dbcea02d506c6d24180cd62e1d769c44721ba542f3154effc1f7579a8288c9f7873ed8e5
@@ -24977,18 +24951,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openid-client@npm:^4.9.1":
-  version: 4.9.1
-  resolution: "openid-client@npm:4.9.1"
+"openid-client@npm:^5.2.1":
+  version: 5.3.1
+  resolution: "openid-client@npm:5.3.1"
   dependencies:
-    aggregate-error: ^3.1.0
-    got: ^11.8.0
-    jose: ^2.0.5
+    jose: ^4.10.0
     lru-cache: ^6.0.0
-    make-error: ^1.3.6
     object-hash: ^2.0.1
     oidc-token-hash: ^5.0.1
-  checksum: f40f1b4f2c4618cc823c77b7c6fed2a8240550d2c2f73710c823c127233a80af5e8c30acc248115bd17e2766d5d5bc1032989a515aa135259ffd5ebcdf90226c
+  checksum: e8993cfe6ac55942fb7a5fc4db8ab88ab36bbcf2a6519993a9a2e288bfc248fcfb07804b6785eb7852a9eea0eec27f80ae57a29193c0b835f31f611b11b9bda1
   languageName: node
   linkType: hard
 

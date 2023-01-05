@@ -417,6 +417,7 @@ const Observation: FC<{
                 height={100}
                 objectFit="cover"
                 className="block rounded-lg"
+                alt=""
               />
             </div>
           )

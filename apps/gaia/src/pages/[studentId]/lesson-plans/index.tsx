@@ -140,6 +140,7 @@ const Header = () => (
         objectFit="cover"
         className="h-full w-full"
         layout="fill"
+        alt=""
       />
     </div>
 

@@ -1,5 +1,4 @@
 const { withSentryConfig } = require("@sentry/nextjs")
-const withPlugins = require("next-compose-plugins")
 const withPWA = require("./withPWA")
 const version = require("./version")
 
@@ -14,13 +13,8 @@ if (process.env.ANALYZE === "true") {
 }
 
 /** @type {import("next").NextConfig}*/
-const config = {
+const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    images: {
-      allowFutureImage: true,
-    },
-  },
   env: {
     NEXT_PUBLIC_RELEASE: version,
   },
@@ -40,4 +34,16 @@ const config = {
   },
 }
 
-module.exports = withPlugins(plugins, config)
+module.exports = (phase, defaultConfig) => {
+  const config = plugins.reduce(
+    (acc, plugin) => {
+      const update = plugin(acc)
+      return typeof update === "function"
+        ? update(phase, defaultConfig)
+        : update
+    },
+    { ...nextConfig }
+  )
+
+  return config
+}

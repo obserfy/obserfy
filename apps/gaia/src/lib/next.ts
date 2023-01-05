@@ -4,7 +4,9 @@ import {
   NextPage,
 } from "next"
 
-export type SSR<P> = NextPage<InferGetServerSidePropsType<P>>
+export type SSR<P extends (args: any) => any> = NextPage<
+  InferGetServerSidePropsType<P>
+>
 
 export const getStudentId = (ctx: GetServerSidePropsContext) => {
   const { studentId } = ctx.query

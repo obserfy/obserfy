@@ -26,6 +26,7 @@ const EmptyPlaceholder: FC<Props> = ({
       className="mb-3 w-64 md:w-1/2"
       width={imageSize}
       height={imageSize}
+      alt={""}
     />
     <h5
       className={`

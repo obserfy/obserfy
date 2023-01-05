@@ -32,6 +32,7 @@ const StudentProfile: FC<{
         className={className}
         width={width}
         height={height}
+        alt=""
       />
     </div>
   )
