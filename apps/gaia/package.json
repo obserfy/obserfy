@@ -38,7 +38,7 @@
     "autoprefixer": "10.4.13",
     "body-scroll-lock": "3.1.5",
     "clsx": "1.2.1",
-    "dayjs": "1.11.4",
+    "dayjs": "1.11.7",
     "dotenv": "10.0.0",
     "formidable-serverless": "1.1.1",
     "fp-ts": "2.13.1",
