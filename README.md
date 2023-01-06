@@ -20,9 +20,14 @@
   </a>
 </p>
 
-This is the monorepo of [Obserfy](https://obserfy.com). This repo contains every code that you need to run Obserfy on
-your own. Obserfy is currently still on its early days. If you were to give it a try, we would love to hear any of your
-feedback through GitHub issue, email at [support@obserfy.com](mailto:support@obserfy.com), or [canny](https://feedback.obserfy.com). 
+This is the monorepo of [Obserfy](https://obserfy.com). Obserfy is currently still on its early days, so things might
+break and change a lot between versions and require some manual migrations. We currently don't have the
+bandwidth to support independent installation, so for now, we would recommend using our hosted version
+on [obserfy.com](https://obserfy.com) instead of running obserfy on your own.
+
+If you were to give it a try, we would love to hear any of your
+feedback through GitHub issue, email at [support@obserfy.com](mailto:support@obserfy.com),
+or [canny](https://feedback.obserfy.com).
 
 ## Codebase
 
@@ -32,7 +37,6 @@ feedback through GitHub issue, email at [support@obserfy.com](mailto:support@obs
 packages/*        # Contains various patched or custom libraries that we use
 docker/*          # Contains dockerfile  for every projects. 
 apps/
-|--freyr          # Our landing page powered by gatsby
 |--gaia           # Contains all api and frontend for our parent's dashboard, powered by nextjs
 |--vor            # Contains all code for teacher's dashboard, powered by gatsby and go
 ```
