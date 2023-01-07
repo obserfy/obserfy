@@ -5607,18 +5607,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:7.17.4":
-  version: 7.17.4
-  resolution: "@sentry/browser@npm:7.17.4"
-  dependencies:
-    "@sentry/core": 7.17.4
-    "@sentry/types": 7.17.4
-    "@sentry/utils": 7.17.4
-    tslib: ^1.9.3
-  checksum: 9bdac67401edc2ba4abd7fa7928d192c001555efd029d0a6fac4664b75877a4f9d7177a3ef99033de69ca6888dde509bc06fc1879eaab9abf6a676ae532b2408
-  languageName: node
-  linkType: hard
-
 "@sentry/browser@npm:7.29.0":
   version: 7.29.0
   resolution: "@sentry/browser@npm:7.29.0"
@@ -5666,17 +5654,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/core@npm:7.17.4":
-  version: 7.17.4
-  resolution: "@sentry/core@npm:7.17.4"
-  dependencies:
-    "@sentry/types": 7.17.4
-    "@sentry/utils": 7.17.4
-    tslib: ^1.9.3
-  checksum: 674921d165fa25837fc090c416db56210d1d3e2f530a474f29b76f6fcb8bb878d53fca5c47c2cc7e3d029c396111b7282c55f81fdef2e0a74a84258c206eb74c
-  languageName: node
-  linkType: hard
-
 "@sentry/core@npm:7.29.0":
   version: 7.29.0
   resolution: "@sentry/core@npm:7.29.0"
@@ -5688,19 +5665,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/gatsby@npm:7.17.4":
-  version: 7.17.4
-  resolution: "@sentry/gatsby@npm:7.17.4"
+"@sentry/gatsby@npm:7.29.0":
+  version: 7.29.0
+  resolution: "@sentry/gatsby@npm:7.29.0"
   dependencies:
-    "@sentry/react": 7.17.4
-    "@sentry/tracing": 7.17.4
-    "@sentry/types": 7.17.4
-    "@sentry/utils": 7.17.4
+    "@sentry/react": 7.29.0
+    "@sentry/tracing": 7.29.0
+    "@sentry/types": 7.29.0
+    "@sentry/utils": 7.29.0
     "@sentry/webpack-plugin": 1.19.0
   peerDependencies:
     gatsby: ^2.0.0 || ^3.0.0 || ^4.0.0
     react: 15.x || 16.x || 17.x || 18.x
-  checksum: 981c23ce9a233a31639c701d914654b40ede3202f3d2f08ac92e65933fa37e87e479ae18c52b17119b32257cf1f005e2ff0e67719703ebdae3b916998c7b4266
+  checksum: bdc623d84498b6360777a5df4e3c17157195d793a0e5c98f6dfea79ba3406da6acddb47e5bf64179f2f6248decd88664940dad43157802fc84d7374c7585e6d1
   languageName: node
   linkType: hard
 
@@ -5759,21 +5736,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/react@npm:7.17.4":
-  version: 7.17.4
-  resolution: "@sentry/react@npm:7.17.4"
-  dependencies:
-    "@sentry/browser": 7.17.4
-    "@sentry/types": 7.17.4
-    "@sentry/utils": 7.17.4
-    hoist-non-react-statics: ^3.3.2
-    tslib: ^1.9.3
-  peerDependencies:
-    react: 15.x || 16.x || 17.x || 18.x
-  checksum: f1ee0ab9a50244021cc3c80ccd414b5e218f220ae6df4b4332094789283977a21bee99accc4349fa62fac8a93ced02b5c77b5d7b284643cc655531523c363a89
-  languageName: node
-  linkType: hard
-
 "@sentry/react@npm:7.29.0":
   version: 7.29.0
   resolution: "@sentry/react@npm:7.29.0"
@@ -5802,18 +5764,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/tracing@npm:7.17.4":
-  version: 7.17.4
-  resolution: "@sentry/tracing@npm:7.17.4"
-  dependencies:
-    "@sentry/core": 7.17.4
-    "@sentry/types": 7.17.4
-    "@sentry/utils": 7.17.4
-    tslib: ^1.9.3
-  checksum: 30e70c557449657487ca704e8c9980124b8cedfe6665f8239843731c6ffe4eff4a6148f81d314bd383078845991663d0f158d3a932edd09e4569fa097aa5e99c
-  languageName: node
-  linkType: hard
-
 "@sentry/tracing@npm:7.29.0":
   version: 7.29.0
   resolution: "@sentry/tracing@npm:7.29.0"
@@ -5826,27 +5776,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/types@npm:7.17.4":
-  version: 7.17.4
-  resolution: "@sentry/types@npm:7.17.4"
-  checksum: b0d42c00e470aac7e058fe66171da36083dd9b901deca89400e04806a591a696bcb5012901ae48fd486584a3ad1515d985ce784b99e961fbd01b17a6c38c91be
-  languageName: node
-  linkType: hard
-
 "@sentry/types@npm:7.29.0":
   version: 7.29.0
   resolution: "@sentry/types@npm:7.29.0"
   checksum: 53815b66662a193cfd7024b9fb2477afb8178a771aa59f3bef10578cc940a9d7207722f9f04e2ca65a8e118cef012ac42f4936aa921aacdfc00a914bec88b009
-  languageName: node
-  linkType: hard
-
-"@sentry/utils@npm:7.17.4":
-  version: 7.17.4
-  resolution: "@sentry/utils@npm:7.17.4"
-  dependencies:
-    "@sentry/types": 7.17.4
-    tslib: ^1.9.3
-  checksum: dee909f9c3102700bee730b492f1ad0680eb52ebee1a48f242fa830bdd7b3d7344ad90ab0f7e3909d4d86a3493d98d06da1b314c74fb5d311b5acda2f0264c07
   languageName: node
   linkType: hard
 
@@ -31263,7 +31196,7 @@ resolve@^2.0.0-next.3:
     "@mdx-js/react": ^2.2.1
     "@mux/upchunk": 2.4.0
     "@reach/router": ^1.3.4
-    "@sentry/gatsby": 7.17.4
+    "@sentry/gatsby": 7.29.0
     "@sentry/tracing": 7.29.0
     "@storybook/addon-actions": 6.3.7
     "@storybook/addon-essentials": 6.3.7
