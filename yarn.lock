@@ -3249,6 +3249,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@cspotcode/source-map-support@npm:^0.8.0":
+  version: 0.8.1
+  resolution: "@cspotcode/source-map-support@npm:0.8.1"
+  dependencies:
+    "@jridgewell/trace-mapping": 0.3.9
+  checksum: 5718f267085ed8edb3e7ef210137241775e607ee18b77d95aa5bd7514f47f5019aa2d82d96b3bf342ef7aa890a346fa1044532ff7cc3009e7d24fce3ce6200fa
+  languageName: node
+  linkType: hard
+
 "@cypress/request@npm:^2.88.10":
   version: 2.88.10
   resolution: "@cypress/request@npm:2.88.10"
@@ -3581,20 +3590,6 @@ __metadata:
   version: 0.3.0
   resolution: "@emotion/weak-memoize@npm:0.3.0"
   checksum: f43ef4c8b7de70d9fa5eb3105921724651e4188e895beb71f0c5919dc899a7b8743e1fdd99d38b9092dd5722c7be2312ebb47fbdad0c4e38bea58f6df5885cc0
-  languageName: node
-  linkType: hard
-
-"@endemolshinegroup/cosmiconfig-typescript-loader@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "@endemolshinegroup/cosmiconfig-typescript-loader@npm:3.0.2"
-  dependencies:
-    lodash.get: ^4
-    make-error: ^1
-    ts-node: ^9
-    tslib: ^2
-  peerDependencies:
-    cosmiconfig: ">=6"
-  checksum: 7fe0198622b1063c40572034df7e8ba867865a1b4815afe230795929abcf785758b34d7806a8e2100ba8ab4e92c5a1c3e11a980c466c4406df6e7ec6e50df8b6
   languageName: node
   linkType: hard
 
@@ -4398,6 +4393,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jridgewell/trace-mapping@npm:0.3.9":
+  version: 0.3.9
+  resolution: "@jridgewell/trace-mapping@npm:0.3.9"
+  dependencies:
+    "@jridgewell/resolve-uri": ^3.0.3
+    "@jridgewell/sourcemap-codec": ^1.4.10
+  checksum: d89597752fd88d3f3480845691a05a44bd21faac18e2185b6f436c3b0fd0c5a859fbbd9aaa92050c4052caf325ad3e10e2e1d1b64327517471b7d51babc0ddef
+  languageName: node
+  linkType: hard
+
 "@jridgewell/trace-mapping@npm:^0.3.0":
   version: 0.3.4
   resolution: "@jridgewell/trace-mapping@npm:0.3.4"
@@ -4444,29 +4449,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/babel-plugin-extract-messages@npm:^3.14.0":
-  version: 3.14.0
-  resolution: "@lingui/babel-plugin-extract-messages@npm:3.14.0"
+"@lingui/babel-plugin-extract-messages@npm:^3.15.0":
+  version: 3.15.0
+  resolution: "@lingui/babel-plugin-extract-messages@npm:3.15.0"
   dependencies:
     "@babel/generator": ^7.11.6
     "@babel/runtime": ^7.11.2
-    "@lingui/conf": ^3.14.0
+    "@lingui/conf": ^3.15.0
     mkdirp: ^1.0.4
-  checksum: 8cccd03e011017070adf5f6ece61ecb44a306a40c3835ba0e5884055a9f1917e2fb751444b2c0e1b5f0b8f21a9515b24596a658cf9ff0b46950b76dad9ca1d41
+  checksum: ef17ca2a07ecb8b2f6534d8543aaf8a82437a5d2d9b5dde9baebb14667ad9a28c1fc0d667ccb6ecf93bdd6ad9e2d9e09afc2b492b8045b1e63f21231e0f81434
   languageName: node
   linkType: hard
 
-"@lingui/cli@npm:3.14.0":
-  version: 3.14.0
-  resolution: "@lingui/cli@npm:3.14.0"
+"@lingui/cli@npm:3.15.0":
+  version: 3.15.0
+  resolution: "@lingui/cli@npm:3.15.0"
   dependencies:
     "@babel/generator": ^7.11.6
     "@babel/parser": ^7.11.5
     "@babel/plugin-syntax-jsx": ^7.10.4
     "@babel/runtime": ^7.11.2
     "@babel/types": ^7.11.5
-    "@lingui/babel-plugin-extract-messages": ^3.14.0
-    "@lingui/conf": ^3.14.0
+    "@lingui/babel-plugin-extract-messages": ^3.15.0
+    "@lingui/conf": ^3.15.0
     babel-plugin-macros: ^3.0.1
     bcp-47: ^1.0.7
     chalk: ^4.1.0
@@ -4493,63 +4498,63 @@ __metadata:
     ramda: ^0.27.1
   peerDependencies:
     "@babel/core": ^7.0.0
-    babel-plugin-macros: 2 || 3
+    babel-plugin-macros: 2 || 3
     typescript: 2 || 3 || 4
   bin:
     lingui: lingui.js
-  checksum: 8798a546fbd254237a13c22a3733b304e56c50585b2002d936b67309995b127d3f6b5b9b2c7c9717b92f70b6979e354712777bd28ee30d752f6754e790f03cca
+  checksum: f2f72cd10b7d8d37fbfdac566778641ce7829579a3d0ce38fec44aed91fa64e72c8894a26b973202bafaa9e7f6f4784ca30f67adb3fb615752b96e5a619606b1
   languageName: node
   linkType: hard
 
-"@lingui/conf@npm:^3.14.0":
-  version: 3.14.0
-  resolution: "@lingui/conf@npm:3.14.0"
+"@lingui/conf@npm:^3.15.0":
+  version: 3.15.0
+  resolution: "@lingui/conf@npm:3.15.0"
   dependencies:
     "@babel/runtime": ^7.11.2
-    "@endemolshinegroup/cosmiconfig-typescript-loader": ^3.0.2
     chalk: ^4.1.0
     cosmiconfig: ^7.0.0
+    cosmiconfig-typescript-loader: ^2.0.1
     jest-validate: ^26.5.2
     lodash.get: ^4.4.2
-  checksum: 30f94b64d12f2728fb058cce71ed8b1ff2e1cc18e3750483482b3fc60a403d85ddac8568786c20766eccfb8808590010616c37fe3a7e513a2be8802c4d5bc49a
+  checksum: d059454aa0ab51d2aa96099456e4c09ec211b815e03a9ea76cc333e939449fdb8434434897e7976af22cb4db9bcf8ad58236e979ee7a8d67664912cd107afd51
   languageName: node
   linkType: hard
 
-"@lingui/core@npm:3.14.0, @lingui/core@npm:^3.14.0":
-  version: 3.14.0
-  resolution: "@lingui/core@npm:3.14.0"
+"@lingui/core@npm:3.15.0, @lingui/core@npm:^3.15.0":
+  version: 3.15.0
+  resolution: "@lingui/core@npm:3.15.0"
   dependencies:
     "@babel/runtime": ^7.11.2
     make-plural: ^6.2.2
     messageformat-parser: ^4.1.3
-  checksum: eeb020eed94dde45466a28d63c34815e4e7b986069abcb9d94bb1c59f24e5ce9b887b89842aa47d87a237b140260d207db34e8713ed6f7dfe3b6c45f56c2f5f3
+  checksum: 2136db648edeecf17cd90a90f5ec2e6b22b23341409261de663e90dd392f457e2689395c45ddeec25739645fc0b380fe4317f2bc5d0d53abe22ebea6ba7ef993
   languageName: node
   linkType: hard
 
-"@lingui/macro@npm:3.14.0":
-  version: 3.14.0
-  resolution: "@lingui/macro@npm:3.14.0"
+"@lingui/macro@npm:3.15.0":
+  version: 3.15.0
+  resolution: "@lingui/macro@npm:3.15.0"
   dependencies:
     "@babel/runtime": ^7.11.2
-    "@lingui/conf": ^3.14.0
+    "@lingui/conf": ^3.15.0
     ramda: ^0.27.1
   peerDependencies:
     "@lingui/core": ^3.13.0
     "@lingui/react": ^3.13.0
     babel-plugin-macros: 2 || 3
-  checksum: 246f56a5458f2c730f05551ca47f14f45dc3fea01988f93eafafd5e2d19661f7b6894afad72df22f332e1d560efd4b492248d37c99f67f845d276aa0504f541e
+  checksum: 2db278f5a2449ea4040dfdd70ba3b771e5dcad319750cfe2f9ce0375b0e7ef8924ae6123ac6ef422d724551b48515f372450bd8f0fafbc8cf90c68b7ff8b35fb
   languageName: node
   linkType: hard
 
-"@lingui/react@npm:3.14.0":
-  version: 3.14.0
-  resolution: "@lingui/react@npm:3.14.0"
+"@lingui/react@npm:3.15.0":
+  version: 3.15.0
+  resolution: "@lingui/react@npm:3.15.0"
   dependencies:
     "@babel/runtime": ^7.11.2
-    "@lingui/core": ^3.14.0
+    "@lingui/core": ^3.15.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: e384c851e50e86329566c9350badfb64187ce6315b1a7a3c5649cd142a660f80135a52df8eb2f0f3b3f3d96732af452d1894155a2d2bebf2cfecf7119e617e95
+  checksum: 2990ec67f6820a3fd30f6b4275bcbab33c1929269b9ef3357ff88389883f458805968e1152ed6c266509fcb3c89e53b86124f102d2cabefec339f406dcdbc41b
   languageName: node
   linkType: hard
 
@@ -7713,6 +7718,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tsconfig/node10@npm:^1.0.7":
+  version: 1.0.9
+  resolution: "@tsconfig/node10@npm:1.0.9"
+  checksum: a33ae4dc2a621c0678ac8ac4bceb8e512ae75dac65417a2ad9b022d9b5411e863c4c198b6ba9ef659e14b9fb609bbec680841a2e84c1172df7a5ffcf076539df
+  languageName: node
+  linkType: hard
+
+"@tsconfig/node12@npm:^1.0.7":
+  version: 1.0.11
+  resolution: "@tsconfig/node12@npm:1.0.11"
+  checksum: 5ce29a41b13e7897a58b8e2df11269c5395999e588b9a467386f99d1d26f6c77d1af2719e407621412520ea30517d718d5192a32403b8dfcc163bf33e40a338a
+  languageName: node
+  linkType: hard
+
+"@tsconfig/node14@npm:^1.0.0":
+  version: 1.0.3
+  resolution: "@tsconfig/node14@npm:1.0.3"
+  checksum: 19275fe80c4c8d0ad0abed6a96dbf00642e88b220b090418609c4376e1cef81bf16237bf170ad1b341452feddb8115d8dd2e5acdfdea1b27422071163dc9ba9d
+  languageName: node
+  linkType: hard
+
+"@tsconfig/node16@npm:^1.0.2":
+  version: 1.0.3
+  resolution: "@tsconfig/node16@npm:1.0.3"
+  checksum: 3a8b657dd047495b7ad23437d6afd20297ce90380ff0bdee93fc7d39a900dbd8d9e26e53ff6b465e7967ce2adf0b218782590ce9013285121e6a5928fbd6819f
+  languageName: node
+  linkType: hard
+
 "@turist/fetch@npm:^7.2.0":
   version: 7.2.0
   resolution: "@turist/fetch@npm:7.2.0"
@@ -9486,7 +9519,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn-walk@npm:^8.0.0, acorn-walk@npm:^8.0.2, acorn-walk@npm:^8.2.0":
+"acorn-walk@npm:^8.0.0, acorn-walk@npm:^8.0.2, acorn-walk@npm:^8.1.1, acorn-walk@npm:^8.2.0":
   version: 8.2.0
   resolution: "acorn-walk@npm:8.2.0"
   checksum: 1715e76c01dd7b2d4ca472f9c58968516a4899378a63ad5b6c2d668bba8da21a71976c14ec5f5b75f887b6317c4ae0b897ab141c831d741dc76024d8745f1ad1
@@ -9520,7 +9553,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn@npm:^8.1.0":
+"acorn@npm:^8.1.0, acorn@npm:^8.4.1":
   version: 8.8.1
   resolution: "acorn@npm:8.8.1"
   bin:
@@ -12880,6 +12913,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cosmiconfig-typescript-loader@npm:^2.0.1":
+  version: 2.0.2
+  resolution: "cosmiconfig-typescript-loader@npm:2.0.2"
+  dependencies:
+    cosmiconfig: ^7
+    ts-node: ^10.8.1
+  peerDependencies:
+    "@types/node": "*"
+    cosmiconfig: ">=7"
+    typescript: ">=3"
+  checksum: 0c9a777e2e3ff7594d753e5781e8c3817ce5ba493a4e69cfde698a8e231b438695248dcc62a16c661f93ada7f762ac6e24457889439c94f58c094a24aecbd982
+  languageName: node
+  linkType: hard
+
 "cosmiconfig@npm:^6.0.0":
   version: 6.0.0
   resolution: "cosmiconfig@npm:6.0.0"
@@ -12890,6 +12937,19 @@ __metadata:
     path-type: ^4.0.0
     yaml: ^1.7.2
   checksum: 8eed7c854b91643ecb820767d0deb038b50780ecc3d53b0b19e03ed8aabed4ae77271198d1ae3d49c3b110867edf679f5faad924820a8d1774144a87cb6f98fc
+  languageName: node
+  linkType: hard
+
+"cosmiconfig@npm:^7":
+  version: 7.1.0
+  resolution: "cosmiconfig@npm:7.1.0"
+  dependencies:
+    "@types/parse-json": ^4.0.0
+    import-fresh: ^3.2.1
+    parse-json: ^5.0.0
+    path-type: ^4.0.0
+    yaml: ^1.10.0
+  checksum: c53bf7befc1591b2651a22414a5e786cd5f2eeaa87f3678a3d49d6069835a9d8d1aef223728e98aa8fec9a95bf831120d245096db12abe019fecb51f5696c96f
   languageName: node
   linkType: hard
 
@@ -21859,7 +21919,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.get@npm:^4, lodash.get@npm:^4.4.2":
+"lodash.get@npm:^4.4.2":
   version: 4.4.2
   resolution: "lodash.get@npm:4.4.2"
   checksum: e403047ddb03181c9d0e92df9556570e2b67e0f0a930fcbbbd779370972368f5568e914f913e93f3b08f6d492abc71e14d4e9b7a18916c31fa04bd2306efe545
@@ -22137,7 +22197,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"make-error@npm:^1, make-error@npm:^1.1.1":
+"make-error@npm:^1.1.1":
   version: 1.3.6
   resolution: "make-error@npm:1.3.6"
   checksum: b86e5e0e25f7f777b77fabd8e2cbf15737972869d852a22b7e73c17623928fccb826d8e46b9951501d3f20e51ad74ba8c59ed584f610526a48f8ccf88aaec402
@@ -28447,7 +28507,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"source-map-support@npm:^0.5.16, source-map-support@npm:^0.5.17, source-map-support@npm:~0.5.12, source-map-support@npm:~0.5.20":
+"source-map-support@npm:^0.5.16, source-map-support@npm:~0.5.12, source-map-support@npm:~0.5.20":
   version: 0.5.20
   resolution: "source-map-support@npm:0.5.20"
   dependencies:
@@ -30124,24 +30184,41 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^9":
-  version: 9.1.1
-  resolution: "ts-node@npm:9.1.1"
+"ts-node@npm:^10.8.1":
+  version: 10.9.1
+  resolution: "ts-node@npm:10.9.1"
   dependencies:
+    "@cspotcode/source-map-support": ^0.8.0
+    "@tsconfig/node10": ^1.0.7
+    "@tsconfig/node12": ^1.0.7
+    "@tsconfig/node14": ^1.0.0
+    "@tsconfig/node16": ^1.0.2
+    acorn: ^8.4.1
+    acorn-walk: ^8.1.1
     arg: ^4.1.0
     create-require: ^1.1.0
     diff: ^4.0.1
     make-error: ^1.1.1
-    source-map-support: ^0.5.17
+    v8-compile-cache-lib: ^3.0.1
     yn: 3.1.1
   peerDependencies:
+    "@swc/core": ">=1.2.50"
+    "@swc/wasm": ">=1.2.50"
+    "@types/node": "*"
     typescript: ">=2.7"
+  peerDependenciesMeta:
+    "@swc/core":
+      optional: true
+    "@swc/wasm":
+      optional: true
   bin:
     ts-node: dist/bin.js
+    ts-node-cwd: dist/bin-cwd.js
+    ts-node-esm: dist/bin-esm.js
     ts-node-script: dist/bin-script.js
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
-  checksum: 356e2647b8b1e6ab00380c0537fa569b63bd9b6f006cc40fd650f81fae1817bd8fecc075300036950d8f45c1d85b95be33cd1e48a1a424a7d86c3dbb42bf60e5
+  checksum: 090adff1302ab20bd3486e6b4799e90f97726ed39e02b39e566f8ab674fd5bd5f727f43615debbfc580d33c6d9d1c6b1b3ce7d8e3cca3e20530a145ffa232c35
   languageName: node
   linkType: hard
 
@@ -30174,7 +30251,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2, tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0":
+"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0":
   version: 2.3.1
   resolution: "tslib@npm:2.3.1"
   checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9
@@ -31072,6 +31149,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"v8-compile-cache-lib@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "v8-compile-cache-lib@npm:3.0.1"
+  checksum: 78089ad549e21bcdbfca10c08850022b22024cdcc2da9b168bcf5a73a6ed7bf01a9cebb9eac28e03cd23a684d81e0502797e88f3ccd27a32aeab1cfc44c39da0
+  languageName: node
+  linkType: hard
+
 "v8-compile-cache@npm:^2.0.3":
   version: 2.3.0
   resolution: "v8-compile-cache@npm:2.3.0"
@@ -31196,10 +31280,10 @@ resolve@^2.0.0-next.3:
     "@emotion/react": 11.10.5
     "@fontsource/lora": 4.5.10
     "@istanbuljs/nyc-config-typescript": 1.0.2
-    "@lingui/cli": 3.14.0
-    "@lingui/core": 3.14.0
-    "@lingui/macro": 3.14.0
-    "@lingui/react": 3.14.0
+    "@lingui/cli": 3.15.0
+    "@lingui/core": 3.15.0
+    "@lingui/macro": 3.15.0
+    "@lingui/react": 3.15.0
     "@mdx-js/react": ^2.2.1
     "@mux/upchunk": 2.4.0
     "@reach/router": ^1.3.4
