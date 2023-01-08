@@ -17480,9 +17480,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby@npm:4.25.1":
-  version: 4.25.1
-  resolution: "gatsby@npm:4.25.1"
+"gatsby@npm:4.25.2":
+  version: 4.25.2
+  resolution: "gatsby@npm:4.25.2"
   dependencies:
     "@babel/code-frame": ^7.14.0
     "@babel/core": ^7.15.5
@@ -17649,7 +17649,7 @@ __metadata:
     webpack-stats-plugin: ^1.0.3
     webpack-virtual-modules: ^0.3.2
     xstate: 4.32.1
-    yaml-loader: ^0.6.0
+    yaml-loader: ^0.8.0
   peerDependencies:
     react: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
     react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^0.0.0
@@ -17658,7 +17658,7 @@ __metadata:
       optional: true
   bin:
     gatsby: ./cli.js
-  checksum: 4813ca179550c5ab35f102eeca8a59e2e8f808081bca9a259dc430e0ae9bfaa868e5deb063cfd4de364476f25280e75ee77cb38bb36081d44a7387e0c79017d5
+  checksum: ff17fb9f486792a0139da4c00cb53221ca425983cd065f21fed484ed71e20774a132c9afb35329c42c2bd612a950d50a05f8af51354e6d3e4457b117dc3609af
   languageName: node
   linkType: hard
 
@@ -20443,6 +20443,13 @@ __metadata:
   bin:
     jake: ./bin/cli.js
   checksum: b604c51863260e374ccd62cd0cfe0b659f72cb71beb7d5fb5137dd65b04cf9d5603abd01f9f6eaaac8f4182f396d6cfae01e0b0844c2215c9c1e200572307cf9
+  languageName: node
+  linkType: hard
+
+"javascript-stringify@npm:^2.0.1":
+  version: 2.1.0
+  resolution: "javascript-stringify@npm:2.1.0"
+  checksum: 009981ec84299da88795fc764221ed213e3d52251cc93a396430a7a02ae09f1163a9be36a36808689681a8e6113cf00fe97ec2eea2552df48111f79be59e9358
   languageName: node
   linkType: hard
 
@@ -31243,7 +31250,7 @@ resolve@^2.0.0-next.3:
     eslint-plugin-prettier: 4.2.1
     eslint-plugin-tailwindcss: ^3.8.0
     fake-indexeddb: 4.0.1
-    gatsby: 4.25.1
+    gatsby: 4.25.2
     gatsby-plugin-image: 2.25.0
     gatsby-plugin-layout: 3.25.0
     gatsby-plugin-manifest: 4.25.0
@@ -32470,20 +32477,28 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"yaml-loader@npm:^0.6.0":
-  version: 0.6.0
-  resolution: "yaml-loader@npm:0.6.0"
+"yaml-loader@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "yaml-loader@npm:0.8.0"
   dependencies:
-    loader-utils: ^1.4.0
-    yaml: ^1.8.3
-  checksum: de6f070aafaf10ee65aac721fbbacadfec0468801e07457ed81bb725e6336e2bd6c1402fa233a16d6ad72e4373680147b3e37d569d9a1e98d3fcd3a2cd64de8e
+    javascript-stringify: ^2.0.1
+    loader-utils: ^2.0.0
+    yaml: ^2.0.0
+  checksum: d12dd264666b80baec23cea9f81cb677a9102d6f34ab45d8b6c085ace4d05b7285db9ce317db57264c3317af01128ce6e5b754e6866d15ccd75e8141902fb529
   languageName: node
   linkType: hard
 
-"yaml@npm:^1.10.0, yaml@npm:^1.10.2, yaml@npm:^1.7.2, yaml@npm:^1.8.3":
+"yaml@npm:^1.10.0, yaml@npm:^1.10.2, yaml@npm:^1.7.2":
   version: 1.10.2
   resolution: "yaml@npm:1.10.2"
   checksum: ce4ada136e8a78a0b08dc10b4b900936912d15de59905b2bf415b4d33c63df1d555d23acb2a41b23cf9fb5da41c256441afca3d6509de7247daa062fd2c5ea5f
+  languageName: node
+  linkType: hard
+
+"yaml@npm:^2.0.0":
+  version: 2.2.1
+  resolution: "yaml@npm:2.2.1"
+  checksum: 84f68cbe462d5da4e7ded4a8bded949ffa912bc264472e5a684c3d45b22d8f73a3019963a32164023bdf3d83cfb6f5b58ff7b2b10ef5b717c630f40bd6369a23
   languageName: node
   linkType: hard
 
