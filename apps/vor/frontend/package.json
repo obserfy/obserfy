@@ -51,7 +51,7 @@
     "hls.js": "1.2.9",
     "idb-keyval": "5.1.5",
     "immer": "9.0.17",
-    "make-plural": "7.1.0",
+    "make-plural": "7.2.0",
     "mux-embed": "4.14.0",
     "nanoid": "3.3.4",
     "preact": "10.11.3",
