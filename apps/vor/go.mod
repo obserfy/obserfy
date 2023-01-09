@@ -19,7 +19,7 @@ require (
 	github.com/signintech/gopdf v0.15.0
 	github.com/stretchr/testify v1.8.1
 	github.com/tkrajina/typescriptify-golang-structs v0.1.10
-	go.uber.org/zap v1.21.0
+	go.uber.org/zap v1.24.0
 	golang.org/x/crypto v0.1.0
 )
 
