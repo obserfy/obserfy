@@ -56,7 +56,7 @@
     "pg": "8.8.0",
     "pino": "6.14.0",
     "pino-pretty": "8.1.0",
-    "postcss": "8.4.20",
+    "postcss": "8.4.21",
     "prisma": "4.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
