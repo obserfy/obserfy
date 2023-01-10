@@ -17303,7 +17303,7 @@ __metadata:
     pino: 6.14.0
     pino-pretty: 8.1.0
     postcss: 8.4.21
-    prettier: 2.8.1
+    prettier: 2.8.2
     prisma: 4.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -26139,7 +26139,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.8.1, prettier@npm:^2.8.1":
+"prettier@npm:2.8.2":
+  version: 2.8.2
+  resolution: "prettier@npm:2.8.2"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 740c56c2128d587d656ea1dde9bc9c3503dfc94db4f3ac387259215eeb2e216680bdad9d18a0c9feecc6b42cfa188d6fa777df4c36c1d00cedd4199074fbfbd2
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^2.8.1":
   version: 2.8.1
   resolution: "prettier@npm:2.8.1"
   bin:
@@ -28044,7 +28053,7 @@ resolve@^2.0.0-next.3:
     eslint: 8.31.0
     husky: 8.0.3
     lint-staged: 13.1.0
-    prettier: 2.8.1
+    prettier: 2.8.2
     turbo: ^1.6.3
   languageName: unknown
   linkType: soft
@@ -31812,7 +31821,7 @@ resolve@^2.0.0-next.3:
     npm-run-all: 4.1.5
     preact: 10.11.3
     preact-render-to-string: 5.2.6
-    prettier: 2.8.1
+    prettier: 2.8.2
     query-string: 7.1.3
     react: ^18.2.0
     react-adaptive-hooks: 0.0.8
