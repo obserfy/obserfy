@@ -7,7 +7,7 @@ require (
 	github.com/brianvoe/gofakeit/v4 v4.3.0
 	github.com/getsentry/sentry-go v0.16.0
 	github.com/go-chi/chi v1.5.4
-	github.com/go-pg/pg/v10 v10.10.7
+	github.com/go-pg/pg/v10 v10.11.0
 	github.com/go-playground/validator/v10 v10.11.1
 	github.com/gocarina/gocsv v0.0.0-20221216233619-1fea7ae8d380
 	github.com/google/uuid v1.3.0
@@ -55,5 +55,5 @@ require (
 	golang.org/x/text v0.6.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	mellium.im/sasl v0.2.1 // indirect
+	mellium.im/sasl v0.3.1 // indirect
 )
