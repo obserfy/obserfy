@@ -17295,7 +17295,7 @@ __metadata:
     minio: 7.0.32
     monocle-ts: 2.3.13
     mux-embed: 4.18.0
-    nanoid: 3.3.4
+    nanoid: 4.0.0
     newtype-ts: 0.3.5
     next: 13.1.1
     next-pwa: 5.6.0
@@ -23507,7 +23507,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:3.3.4, nanoid@npm:^3.3.4":
+"nanoid@npm:4.0.0":
+  version: 4.0.0
+  resolution: "nanoid@npm:4.0.0"
+  bin:
+    nanoid: bin/nanoid.js
+  checksum: 7d5946df5c6d383694195b781ae7b5067c149d164ec71e910d6b06676309c3459b68af570b944fb5ecd5065d19df464f05700d141d70bb712ff8ca06642fd8df
+  languageName: node
+  linkType: hard
+
+"nanoid@npm:^3.3.4":
   version: 3.3.4
   resolution: "nanoid@npm:3.3.4"
   bin:
@@ -31829,7 +31838,7 @@ resolve@^2.0.0-next.3:
     jest-fetch-mock: 3.0.3
     make-plural: 7.2.0
     mux-embed: 4.18.0
-    nanoid: 3.3.4
+    nanoid: 4.0.0
     npm-run-all: 4.1.5
     preact: 10.11.3
     preact-render-to-string: 5.2.6
