@@ -7836,7 +7836,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/typography@npm:0.5.8, @tailwindcss/typography@npm:^0.5.8":
+"@tailwindcss/typography@npm:0.5.9":
+  version: 0.5.9
+  resolution: "@tailwindcss/typography@npm:0.5.9"
+  dependencies:
+    lodash.castarray: ^4.4.0
+    lodash.isplainobject: ^4.0.6
+    lodash.merge: ^4.6.2
+    postcss-selector-parser: 6.0.10
+  peerDependencies:
+    tailwindcss: "*"
+  checksum: b98e21bdd1798d7e4683499893c5c20ad43fcc8955d5d6eefbe1d30e98e9b6c28949ae8f276d39be9a66fafe843597717196bc5a0a2ac0f87ef86aa051ab9611
+  languageName: node
+  linkType: hard
+
+"@tailwindcss/typography@npm:^0.5.8":
   version: 0.5.8
   resolution: "@tailwindcss/typography@npm:0.5.8"
   dependencies:
@@ -31781,7 +31795,7 @@ resolve@^2.0.0-next.3:
     "@storybook/manager-webpack5": 6.3.7
     "@storybook/react": 6.3.7
     "@svgr/webpack": 6.5.1
-    "@tailwindcss/typography": 0.5.8
+    "@tailwindcss/typography": 0.5.9
     "@testing-library/react": 13.4.0
     "@testing-library/react-hooks": 8.0.1
     "@theme-ui/match-media": 0.15.4
