@@ -19,7 +19,7 @@
     "@sentry/gatsby": "7.29.0",
     "@sentry/tracing": "7.29.0",
     "@svgr/webpack": "6.5.1",
-    "@tailwindcss/typography": "0.5.8",
+    "@tailwindcss/typography": "0.5.9",
     "@theme-ui/match-media": "0.15.4",
     "@theme-ui/mdx": "^0.15.4",
     "@types/dompurify": "2.4.0",
