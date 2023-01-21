@@ -3941,10 +3941,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/lora@npm:4.5.10":
-  version: 4.5.10
-  resolution: "@fontsource/lora@npm:4.5.10"
-  checksum: e3fb23a033ab958858d8d7f4ccfd9d6d23dcc30bdc84e2e2281b289ea7fe6068818144554138afddc4b41490e54cd61f0f543f62db19cc05ef4691142f8e5bde
+"@fontsource/lora@npm:4.5.13":
+  version: 4.5.13
+  resolution: "@fontsource/lora@npm:4.5.13"
+  checksum: ec822b845168c1d005a1403e4651dbded658d2cb7ce011ebe75493e07df1138796a36f29de96a6d7f2f932d8c626b1a7f49d754f614d633489e3af020b99113f
   languageName: node
   linkType: hard
 
@@ -31739,7 +31739,7 @@ resolve@^2.0.0-next.3:
     "@babel/runtime": 7.20.7
     "@emotion/jest": 11.10.5
     "@emotion/react": 11.10.5
-    "@fontsource/lora": 4.5.10
+    "@fontsource/lora": 4.5.13
     "@istanbuljs/nyc-config-typescript": 1.0.2
     "@lingui/cli": 3.15.0
     "@lingui/core": 3.15.0
