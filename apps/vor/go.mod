@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/benbjohnson/clock v1.3.0
 	github.com/brianvoe/gofakeit/v4 v4.3.0
-	github.com/getsentry/sentry-go v0.16.0
+	github.com/getsentry/sentry-go v0.17.0
 	github.com/go-chi/chi v1.5.4
 	github.com/go-pg/pg/v10 v10.11.0
 	github.com/go-playground/validator/v10 v10.11.1
