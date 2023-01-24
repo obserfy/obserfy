@@ -9,7 +9,7 @@ require (
 	github.com/go-chi/chi v1.5.4
 	github.com/go-pg/pg/v10 v10.11.0
 	github.com/go-playground/validator/v10 v10.11.1
-	github.com/gocarina/gocsv v0.0.0-20221216233619-1fea7ae8d380
+	github.com/gocarina/gocsv v0.0.0-20230123225133-763e25b40669
 	github.com/google/uuid v1.3.0
 	github.com/joho/godotenv v1.4.0
 	github.com/mailgun/mailgun-go/v4 v4.8.1
