@@ -5119,13 +5119,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mux/upchunk@npm:3.0.1":
-  version: 3.0.1
-  resolution: "@mux/upchunk@npm:3.0.1"
+"@mux/upchunk@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@mux/upchunk@npm:3.0.2"
   dependencies:
     event-target-shim: ^6.0.2
     xhr: ^2.6.0
-  checksum: 922ff7f7c892402178de7e487300d151481e9a29b44e4d2d5ca6c7f6bdf8686f991ae744e3fb849d320329493edd75472437440387fbc394f8afa81f330828fe
+  checksum: 90d8b606c8cf0fddfc78bb0edeadf102e9c76b9d41842b326fd64bcf95032fcaec125e1d4f02fc287de490475fc53df46793f4ba56922d9254acf96420b41497
   languageName: node
   linkType: hard
 
@@ -31860,7 +31860,7 @@ resolve@^2.0.0-next.3:
     "@lingui/macro": 3.16.1
     "@lingui/react": 3.16.1
     "@mdx-js/react": ^2.2.1
-    "@mux/upchunk": 3.0.1
+    "@mux/upchunk": 3.0.2
     "@reach/router": ^1.3.4
     "@sentry/gatsby": 7.33.0
     "@sentry/tracing": 7.33.0
