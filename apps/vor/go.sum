@@ -257,6 +257,8 @@ github.com/signintech/gopdf v0.15.1 h1:8lFdW+UX0oUkrADJv5HmhyhRP9YzMvJzkw7iSNX/3
 github.com/signintech/gopdf v0.15.1/go.mod h1:a+E8HlIuBwghPyoo7UaoB5UaL7zklDzmYVIAHoW/Rlw=
 github.com/signintech/gopdf v0.15.2 h1:S+PVAUX6ZfQkEwCyHpP19VLz/QWNVI+lTBusFLwOWc0=
 github.com/signintech/gopdf v0.15.2/go.mod h1:a+E8HlIuBwghPyoo7UaoB5UaL7zklDzmYVIAHoW/Rlw=
+github.com/signintech/gopdf v0.16.0 h1:Xva0aO255D3HCbppbDPjTHUQyPM8OwkUCghlygHWUew=
+github.com/signintech/gopdf v0.16.0/go.mod h1:a+E8HlIuBwghPyoo7UaoB5UaL7zklDzmYVIAHoW/Rlw=
 github.com/sirupsen/logrus v1.5.0/go.mod h1:+F7Ogzej0PZc/94MaYx/nvG9jOFMD2osvC3s+Squfpo=
 github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d h1:zE9ykElWQ6/NYmHa3jpm/yHnI4xSofP+UP6SpjHcSeM=
 github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d/go.mod h1:OnSkiWE9lh6wB0YB77sQom3nweQdgAjqCqsofrRNTgc=
