@@ -17351,7 +17351,7 @@ __metadata:
     eslint-plugin-tailwindcss: 3.8.0
     formidable-serverless: 1.1.1
     fp-ts: 2.13.1
-    hls.js: 1.3.1
+    hls.js: 1.3.2
     io-ts: 2.2.20
     io-ts-types: 0.5.19
     isomorphic-dompurify: ^0.26.0
@@ -19089,10 +19089,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hls.js@npm:1.3.1":
-  version: 1.3.1
-  resolution: "hls.js@npm:1.3.1"
-  checksum: 10f40e8d7acf762b715575d6a34b0dfea3404f2e8b45c56eb2822791128b1ecb6978c0643a7dc027a9e434682e79686a860649a01ff1c9eed1957024ff037ee6
+"hls.js@npm:1.3.2":
+  version: 1.3.2
+  resolution: "hls.js@npm:1.3.2"
+  checksum: ed2bcfc214535c4bef7199ad8a1bff11d4fd61e9bcad397c5dc11e1d33de338f5994db747bed877af5b39eee9f65a88cdfddc9368fc5c7134349933f43996ddd
   languageName: node
   linkType: hard
 
@@ -31937,7 +31937,7 @@ resolve@^2.0.0-next.3:
     gatsby-theme-i18n: 3.0.0
     gatsby-theme-i18n-lingui: 3.0.0
     gatsby-transformer-sharp: 4.25.0
-    hls.js: 1.3.1
+    hls.js: 1.3.2
     http-proxy-middleware: 2.0.6
     hygen: 6.2.11
     idb-keyval: 5.1.5
