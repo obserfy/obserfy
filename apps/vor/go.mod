@@ -16,7 +16,7 @@ require (
 	github.com/minio/minio-go/v6 v6.0.57
 	github.com/muxinc/mux-go v1.1.1
 	github.com/pkg/errors v0.9.1
-	github.com/signintech/gopdf v0.16.0
+	github.com/signintech/gopdf v0.16.1
 	github.com/stretchr/testify v1.8.1
 	github.com/tkrajina/typescriptify-golang-structs v0.1.10
 	go.uber.org/zap v1.24.0
@@ -39,7 +39,7 @@ require (
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
-	github.com/phpdave11/gofpdi v1.0.11 // indirect
+	github.com/phpdave11/gofpdi v1.0.14-0.20211212211723-1f10f9844311 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.5.0 // indirect
 	github.com/tkrajina/go-reflector v0.5.5 // indirect
