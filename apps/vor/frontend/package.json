@@ -52,7 +52,7 @@
     "idb-keyval": "5.1.5",
     "immer": "9.0.19",
     "make-plural": "7.2.0",
-    "mux-embed": "4.18.0",
+    "mux-embed": "4.19.0",
     "nanoid": "4.0.1",
     "preact": "10.11.3",
     "preact-render-to-string": "5.2.6",
