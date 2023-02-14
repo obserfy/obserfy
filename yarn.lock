@@ -8007,33 +8007,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@theme-ui/color-modes@npm:^0.15.4":
-  version: 0.15.4
-  resolution: "@theme-ui/color-modes@npm:0.15.4"
+"@theme-ui/color-modes@npm:^0.15.5":
+  version: 0.15.5
+  resolution: "@theme-ui/color-modes@npm:0.15.5"
   dependencies:
-    "@theme-ui/core": ^0.15.4
-    "@theme-ui/css": ^0.15.4
+    "@theme-ui/core": ^0.15.5
+    "@theme-ui/css": ^0.15.5
     deepmerge: ^4.2.2
   peerDependencies:
     "@emotion/react": ^11
     react: ">=18"
-  checksum: 8df6c8a32ffd880c74c5fbba4c75515a90e55a489397218677446a27d987f34bcf1c7d5c3872789193b6416f3755a10bdbcb8c3e7f6589070cf9e6da2101c0a3
+  checksum: ab19d398408025e66167a7c47ed2d4dec3493f3b53e7566c88dc78e30cf1f1e89feeeae1023dc6618a067a7680b80f8b4beff4adb5571d9bd6524e88c76f5756
   languageName: node
   linkType: hard
 
-"@theme-ui/components@npm:^0.15.4":
-  version: 0.15.4
-  resolution: "@theme-ui/components@npm:0.15.4"
+"@theme-ui/components@npm:^0.15.5":
+  version: 0.15.5
+  resolution: "@theme-ui/components@npm:0.15.5"
   dependencies:
     "@styled-system/color": ^5.1.2
     "@styled-system/should-forward-prop": ^5.1.2
     "@styled-system/space": ^5.1.2
-    "@theme-ui/css": ^0.15.4
+    "@theme-ui/css": ^0.15.5
     "@types/styled-system": ^5.1.13
   peerDependencies:
     "@emotion/react": ^11
     react: ">=18"
-  checksum: e156b1293c0e1cfc7d7817034a5bbfda1b6be64660a7dde760d7df5a8368ca9a1d51e88cea14dc49c52051a6c018e6ff5b6e3a9dfe8cc61a78e7b9a2b3903011
+  checksum: e2dd61238df1b9637ae8cbe9ad4c67900d232746bba6eee0aa9bb3c1ea64640d3471675dd2280a017c3be1683ef179283dae10257a3e2f48e61c9777ec1f2411
   languageName: node
   linkType: hard
 
@@ -8050,6 +8050,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@theme-ui/core@npm:^0.15.5":
+  version: 0.15.5
+  resolution: "@theme-ui/core@npm:0.15.5"
+  dependencies:
+    "@theme-ui/css": ^0.15.5
+    deepmerge: ^4.2.2
+  peerDependencies:
+    "@emotion/react": ^11
+    react: ">=18"
+  checksum: 1ee36a1a7bb791119f299353d04ef86918387a3bb37aa8c08a9bb93c999dad3a78a511fc538ac43b2a38e798e69e4736546754ff084976f8a15a844ed038efb3
+  languageName: node
+  linkType: hard
+
 "@theme-ui/css@npm:^0.15.4":
   version: 0.15.4
   resolution: "@theme-ui/css@npm:0.15.4"
@@ -8061,14 +8074,38 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@theme-ui/match-media@npm:0.15.4":
-  version: 0.15.4
-  resolution: "@theme-ui/match-media@npm:0.15.4"
+"@theme-ui/css@npm:^0.15.5":
+  version: 0.15.5
+  resolution: "@theme-ui/css@npm:0.15.5"
+  dependencies:
+    csstype: ^3.0.10
   peerDependencies:
-    "@theme-ui/core": ^0.15.4
-    "@theme-ui/css": ^0.15.4
+    "@emotion/react": ^11
+  checksum: b2a65c0880ed0aec20b72aea17dd788497862dad8e910be84ac7b43f487aad79b0dbc99cfad01b049b796eaf6b279e421ea950a952867ed2d0f1c6c561f5630a
+  languageName: node
+  linkType: hard
+
+"@theme-ui/global@npm:^0.15.5":
+  version: 0.15.5
+  resolution: "@theme-ui/global@npm:0.15.5"
+  dependencies:
+    "@theme-ui/core": ^0.15.5
+    "@theme-ui/css": ^0.15.5
+  peerDependencies:
+    "@emotion/react": ^11
     react: ">=18"
-  checksum: 4cbc988d3977207c1d32cc2c724c2c932d2a6f4fbd36bdd753a88c4bb6c4edb6d8a839a33a1ab2ff7797ca461af9954778fc170ead8c3a13c11cadebf0d707fa
+  checksum: e2d3086555e9ae4f8b624706b6cb6ff92faaed7a55a0672ee947f946a0cf599e959879de3e80354a6c2568dc207bfe72d516d133113786fafdc5ea2c2482163d
+  languageName: node
+  linkType: hard
+
+"@theme-ui/match-media@npm:0.15.5":
+  version: 0.15.5
+  resolution: "@theme-ui/match-media@npm:0.15.5"
+  peerDependencies:
+    "@theme-ui/core": ^0.15.5
+    "@theme-ui/css": ^0.15.5
+    react: ">=18"
+  checksum: 1f161d2583802a152679fc6dc961c264e7157214d1960ea8e7c21be851114c9d03b27b72791d3ac87ef507e612d4899ef021bc3f6c0806e4c7b13d6f0ba012d1
   languageName: node
   linkType: hard
 
@@ -8086,17 +8123,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@theme-ui/theme-provider@npm:^0.15.4":
-  version: 0.15.4
-  resolution: "@theme-ui/theme-provider@npm:0.15.4"
+"@theme-ui/theme-provider@npm:^0.15.5":
+  version: 0.15.5
+  resolution: "@theme-ui/theme-provider@npm:0.15.5"
   dependencies:
-    "@theme-ui/color-modes": ^0.15.4
-    "@theme-ui/core": ^0.15.4
-    "@theme-ui/css": ^0.15.4
+    "@theme-ui/color-modes": ^0.15.5
+    "@theme-ui/core": ^0.15.5
+    "@theme-ui/css": ^0.15.5
   peerDependencies:
     "@emotion/react": ^11
     react: ">=18"
-  checksum: f9d6d33889d690fab514139c8db576a58b3dab6e274cf0ab4cc9bae354398345abe3959f1f142cce1f57b30334aa4b50a21f78f01e2cdc4011b441612b7f5b44
+  checksum: 068ad794dcdeed57cdc793cb60acca3b1ed2991e7643c076996fee26b2431c02db6c6b763cfddcd14596d97ceb411b5af79da2e82d8272259227bb8fdc990bb0
   languageName: node
   linkType: hard
 
@@ -17727,18 +17764,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-theme-ui@npm:0.15.4":
-  version: 0.15.4
-  resolution: "gatsby-plugin-theme-ui@npm:0.15.4"
+"gatsby-plugin-theme-ui@npm:0.15.5":
+  version: 0.15.5
+  resolution: "gatsby-plugin-theme-ui@npm:0.15.5"
   peerDependencies:
     "@emotion/react": ^11
     "@mdx-js/react": ^1 || ^2
-    "@theme-ui/css": ^0.15.4
-    "@theme-ui/mdx": ^0.15.4
+    "@theme-ui/css": ^0.15.5
+    "@theme-ui/mdx": ^0.15.5
     gatsby: ^4 || ^5
     react: ">=18"
-    theme-ui: ^0.15.4
-  checksum: b2c56bccf9aad5ae81e1b772d606959dc15a43d706e9f5f3ef44c630c4ee84912fc546a776455215fbf2fe0d52ae9d47bf15162f4b0ab98f14beb0d2e72de343
+    theme-ui: ^0.15.5
+  checksum: b4c46ad099abd14c5f500794d8855194ea7083f2fa7627bf553147b7f3082c57da33eca27d07df55948be72630e1a7c16519b7ed36b34849d8f4b2956112a55f
   languageName: node
   linkType: hard
 
@@ -30421,18 +30458,19 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"theme-ui@npm:0.15.4":
-  version: 0.15.4
-  resolution: "theme-ui@npm:0.15.4"
+"theme-ui@npm:0.15.5":
+  version: 0.15.5
+  resolution: "theme-ui@npm:0.15.5"
   dependencies:
-    "@theme-ui/color-modes": ^0.15.4
-    "@theme-ui/components": ^0.15.4
-    "@theme-ui/core": ^0.15.4
-    "@theme-ui/css": ^0.15.4
-    "@theme-ui/theme-provider": ^0.15.4
+    "@theme-ui/color-modes": ^0.15.5
+    "@theme-ui/components": ^0.15.5
+    "@theme-ui/core": ^0.15.5
+    "@theme-ui/css": ^0.15.5
+    "@theme-ui/global": ^0.15.5
+    "@theme-ui/theme-provider": ^0.15.5
   peerDependencies:
     react: ">=18"
-  checksum: bbe72dd8bf38d7555a63eb6149c15c6d9fdaa257b40d56f22f39414047f0c160eec60eeeae793b98fcf1c4b9ee1434bb90a2599d8d1f22ab092012df73c366d9
+  checksum: 81d05060d845e0a3f7886d7cc4e6a59580077c3536ec5536c1d867b08a9da7ad290a0d03be13753ce910da38c607a9ef8b8c4f02f6f815938ab4ac41c0d384db
   languageName: node
   linkType: hard
 
@@ -31864,7 +31902,7 @@ resolve@^2.0.0-next.3:
     "@tailwindcss/typography": 0.5.9
     "@testing-library/react": 13.4.0
     "@testing-library/react-hooks": 8.0.1
-    "@theme-ui/match-media": 0.15.4
+    "@theme-ui/match-media": 0.15.5
     "@theme-ui/mdx": ^0.15.4
     "@types/body-scroll-lock": 3.1.0
     "@types/date-fns": 2.6.0
@@ -31911,7 +31949,7 @@ resolve@^2.0.0-next.3:
     gatsby-plugin-remove-serviceworker: 1.0.0
     gatsby-plugin-sharp: 4.25.0
     gatsby-plugin-svgr: v3.0.0-beta.0
-    gatsby-plugin-theme-ui: 0.15.4
+    gatsby-plugin-theme-ui: 0.15.5
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.27
     gatsby-source-filesystem: 4.25.0
     gatsby-theme-i18n: 3.0.0
@@ -31941,7 +31979,7 @@ resolve@^2.0.0-next.3:
     regenerator-runtime: 0.13.11
     snarkdown: 2.0.0
     tailwindcss: 3.2.6
-    theme-ui: 0.15.4
+    theme-ui: 0.15.5
     typescript: 4.9.5
     url-loader: 4.1.1
     use-immer: 0.8.1
