@@ -54,6 +54,4 @@ const NoData = () => {
   )
 }
 
-export const getServerSideProps = withPageAuthRequired()
-
 export default NoData
