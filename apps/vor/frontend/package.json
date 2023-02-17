@@ -28,7 +28,7 @@
     "body-scroll-lock": "3.1.5",
     "browser-lang": "0.2.1",
     "dayjs": "1.11.7",
-    "dompurify": "2.4.3",
+    "dompurify": "2.4.4",
     "dotenv": "16.0.3",
     "gatsby": "4.25.4",
     "gatsby-plugin-image": "2.25.0",
