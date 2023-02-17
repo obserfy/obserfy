@@ -14589,14 +14589,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:2.4.3":
-  version: 2.4.3
-  resolution: "dompurify@npm:2.4.3"
-  checksum: b440981f2a38cada2085759cc3d1e2f94571afc34343d011a8a6aa1ad91ae6abf651adbfa4994b0e2283f0ce81f7891cdb04b67d0b234c8d190cb70e9691f026
-  languageName: node
-  linkType: hard
-
-"dompurify@npm:^2.4.3":
+"dompurify@npm:2.4.4, dompurify@npm:^2.4.3":
   version: 2.4.4
   resolution: "dompurify@npm:2.4.4"
   checksum: 6a29c2a1b76c0723564d009a26b9123e23ea61ac5d6f30cdcdd01f4d48b257a99adb5952c7a08390a7323353dbb333ad7d650c7cf3f5b6b5bb81eab5826a7f7c
@@ -31926,7 +31919,7 @@ resolve@^2.0.0-next.3:
     browser-lang: 0.2.1
     cross-env: 7.0.3
     dayjs: 1.11.7
-    dompurify: 2.4.3
+    dompurify: 2.4.4
     dotenv: 16.0.3
     eslint: 8.31.0
     eslint-config-prettier: 8.6.0
