@@ -10,14 +10,22 @@ interface Student {
   id: string
   name: string | null
   profilePic?: string | null
-  schoolName?: string
+  schoolName?: string | null
 }
 
 const StudentSelector: FC<{
-  students: Array<Student>
-  selectedStudent?: Student
+  students: Array<{
+    id: string
+    name: string | null
+    profilePic: string | null
+  }>
+  selectedStudent?: {
+    id: string
+    name: string | null
+    schoolName?: string | null
+  }
 }> = ({ students, selectedStudent }) => (
-  <Listbox value={selectedStudent}>
+  <Listbox value={selectedStudent?.id}>
     <Listbox.Label className="sr-only">Select Student</Listbox.Label>
     <div className="relative">
       <SelectedStudent student={selectedStudent} />
@@ -69,7 +77,7 @@ const Option: FC<Student> = (student) => (
         "relative cursor-pointer select-none py-2 pr-9 pl-3"
       )
     }
-    value={student}
+    value={student.id}
   >
     {({ selected, active }) => (
       <Link href={`/${student.id}`}>
