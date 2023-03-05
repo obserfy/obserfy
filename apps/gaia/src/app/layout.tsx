@@ -8,8 +8,8 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
 )
 
 export const metadata = {
-  title: "Obserfy for Parents",
-  description: "Obserfy for Parents",
+  title: "Parents Dashboard - Obserfy",
+  description: "Obserfy Parents Dashboard",
   themeColor: "#ffffff",
   manifest: "/manifest.webmanifest",
 }
