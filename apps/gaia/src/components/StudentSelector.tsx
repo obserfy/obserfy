@@ -1,22 +1,23 @@
+"use client"
 import { Listbox, Transition } from "@headlessui/react"
 import clsx from "clsx"
+import Link from "next/link"
 import { FC, Fragment } from "react"
 import StudentProfile from "$components/StudentProfile"
 import Icon from "$components/Icon/Icon"
 
 interface Student {
   id: string
-  name: string
-  profilePic: string
+  name: string | null
+  profilePic?: string | null
   schoolName?: string
 }
 
 const StudentSelector: FC<{
   students: Array<Student>
   selectedStudent?: Student
-  setSelectedStudent: (student: Student) => void
-}> = ({ students, selectedStudent, setSelectedStudent }) => (
-  <Listbox value={selectedStudent} onChange={setSelectedStudent}>
+}> = ({ students, selectedStudent }) => (
+  <Listbox value={selectedStudent}>
     <Listbox.Label className="sr-only">Select Student</Listbox.Label>
     <div className="relative">
       <SelectedStudent student={selectedStudent} />
@@ -27,7 +28,7 @@ const StudentSelector: FC<{
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+        <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1/5 ring-black focus:outline-none sm:text-sm">
           {students.map((student) => (
             <Option key={student.id} {...student} />
           ))}
@@ -71,7 +72,7 @@ const Option: FC<Student> = (student) => (
     value={student}
   >
     {({ selected, active }) => (
-      <>
+      <Link href={`/${student.id}`}>
         <div className="flex items-center">
           <StudentProfile
             src={student.profilePic}
@@ -99,7 +100,7 @@ const Option: FC<Student> = (student) => (
             <Icon src="/icons/check.svg" aria-hidden="true" />
           </span>
         ) : null}
-      </>
+      </Link>
     )}
   </Listbox.Option>
 )
