@@ -20,9 +20,7 @@ const childrenHandler = protectedApiRoute(async (req, res) => {
     students.map((student) => ({
       id: student.id,
       name: student.name,
-      profilePic: student.images?.object_key
-        ? generateOriginalUrl(student.images.object_key)
-        : null,
+      profilePic: student.profilePic,
     }))
   )
 })

@@ -1,4 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
+"use client"
 import { Dialog, Transition } from "@headlessui/react"
 import clsx from "clsx"
 import { FC, Fragment, ReactNode, useRef } from "react"

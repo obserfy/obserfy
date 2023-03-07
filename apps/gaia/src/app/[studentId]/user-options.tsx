@@ -1,38 +1,11 @@
+"use client"
 import AlertDialog from "$components/AlertDialog"
 import Button from "$components/Button/Button"
 import Icon from "$components/Icon/Icon"
-import StudentSelector from "$components/StudentSelector"
-import useGetChild from "$hooks/api/useGetChild"
-import useGetChildren from "$hooks/api/useGetChildren"
-import useGetUser from "$hooks/api/useGetUser"
-import { useQueryString } from "$hooks/useQueryString"
 import useToggle from "$hooks/useToggle"
 import { Menu, Transition } from "@headlessui/react"
 import clsx from "clsx"
 import { FC, Fragment } from "react"
-
-const TopBar = () => {
-  const studentId = useQueryString("studentId")
-  const { data: student } = useGetChild(studentId)
-  const { data: user } = useGetUser()
-  const { data: students } = useGetChildren()
-
-  return (
-    <div className="relative z-20 h-16 bg-surface bg-opacity-90 backdrop-blur-lg sm:sticky sm:top-0 sm:border-b">
-      <div className="flex h-16 items-center px-4 sm:pl-0">
-        <div className="mr-4 hidden w-sidebar shrink-0 border-r px-4 font-bold text-gray-600 sm:block">
-          {student?.schoolName}
-        </div>
-
-        {students && student && (
-          <StudentSelector students={students} selectedStudent={student} />
-        )}
-
-        <UserOptions name={user?.name} picture={user?.picture} />
-      </div>
-    </div>
-  )
-}
 
 const UserOptions: FC<{
   name: string | undefined
@@ -126,4 +99,4 @@ const LogoutAlertDialog: FC<{
   />
 )
 
-export default TopBar
+export default UserOptions

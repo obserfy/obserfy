@@ -1,5 +1,6 @@
 import prisma from "$lib/prisma"
 import { Dayjs } from "$lib/dayjs"
+import { generateOriginalUrl } from "../utils/imgproxy"
 
 export const findStudentProgressReports = async (student_id: string) => {
   return prisma.student_progress_reports.findMany({
@@ -10,7 +11,7 @@ export const findStudentProgressReports = async (student_id: string) => {
 }
 
 export const findRelatedStudents = async (userEmail: string) => {
-  return prisma.students.findMany({
+  const students = await prisma.students.findMany({
     include: {
       images: { select: { object_key: true } },
     },
@@ -24,6 +25,13 @@ export const findRelatedStudents = async (userEmail: string) => {
       },
     },
   })
+
+  return students?.map((student) => ({
+    ...student,
+    profilePic: student.images?.object_key
+      ? generateOriginalUrl(student.images.object_key)
+      : null,
+  }))
 }
 
 export const findOneOfRelatedStudent = async (userEmail: string) => {
@@ -330,6 +338,9 @@ export const findVideoByStudentIdAndImageId = (
 
 export const findStudentByStudentId = (studentId: string) => {
   return prisma.students.findUnique({
+    include: {
+      schools: true,
+    },
     where: { id: studentId },
   })
 }

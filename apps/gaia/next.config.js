@@ -32,6 +32,9 @@ const nextConfig = {
   publicRuntimeConfig: {
     imgproxyUrl: process.env.IMGPROXY_URL,
   },
+  experimental: {
+    appDir: true,
+  },
 }
 
 module.exports = (phase, defaultConfig) => {
