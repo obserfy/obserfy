@@ -1,6 +1,6 @@
 import StudentSelector from "$components/StudentSelector"
 import { getUser } from "$lib/auth-ssr"
-import { findRelatedStudents, findStudentByStudentId } from "$lib/db"
+import { getGuardianStudents, getStudentsById } from "$lib/student"
 import UserOptions from "./user-options"
 
 interface Props {
@@ -9,8 +9,8 @@ interface Props {
 
 export default async function TopBar({ studentId }: Props) {
   const user = await getUser()
-  const students = await findRelatedStudents(user?.email)
-  const student = await findStudentByStudentId(studentId)
+  const students = await getGuardianStudents(user?.email)
+  const student = await getStudentsById(studentId)
 
   return (
     <div className="relative z-20 h-16 bg-surface/90  backdrop-blur-lg sm:sticky sm:top-0 sm:border-b">
