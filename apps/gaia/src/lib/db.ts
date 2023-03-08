@@ -11,7 +11,7 @@ export const findStudentProgressReports = async (student_id: string) => {
 }
 
 export const findRelatedStudents = async (userEmail: string) => {
-  const students = await prisma.students.findMany({
+  return prisma.students.findMany({
     include: {
       images: { select: { object_key: true } },
     },
@@ -25,13 +25,6 @@ export const findRelatedStudents = async (userEmail: string) => {
       },
     },
   })
-
-  return students?.map((student) => ({
-    ...student,
-    profilePic: student.images?.object_key
-      ? generateOriginalUrl(student.images.object_key)
-      : null,
-  }))
 }
 
 export const findOneOfRelatedStudent = async (userEmail: string) => {
