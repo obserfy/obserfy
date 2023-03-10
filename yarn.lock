@@ -14575,10 +14575,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:2.4.4, dompurify@npm:^2.4.3":
+"dompurify@npm:2.4.4":
   version: 2.4.4
   resolution: "dompurify@npm:2.4.4"
   checksum: 6a29c2a1b76c0723564d009a26b9123e23ea61ac5d6f30cdcdd01f4d48b257a99adb5952c7a08390a7323353dbb333ad7d650c7cf3f5b6b5bb81eab5826a7f7c
+  languageName: node
+  linkType: hard
+
+"dompurify@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "dompurify@npm:3.0.1"
+  checksum: 19447e6d96415a8ad3a67bc9c76ffe671eb31cf7c1e0a538cbe5037c8b8b03afe144d64cf96c6e0f7fe63b83721a33b5b913394d20a85e96550e42e31f7c086b
   languageName: node
   linkType: hard
 
@@ -17348,7 +17355,7 @@ __metadata:
     hls.js: 1.3.3
     io-ts: 2.2.20
     io-ts-types: 0.5.19
-    isomorphic-dompurify: ^0.27.0
+    isomorphic-dompurify: ^1.0.0
     jest: 29.5.0
     minio: 7.0.32
     monocle-ts: 2.3.13
@@ -20795,14 +20802,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isomorphic-dompurify@npm:^0.27.0":
-  version: 0.27.0
-  resolution: "isomorphic-dompurify@npm:0.27.0"
+"isomorphic-dompurify@npm:^1.0.0":
+  version: 1.1.0
+  resolution: "isomorphic-dompurify@npm:1.1.0"
   dependencies:
     "@types/dompurify": ^2.4.0
-    dompurify: ^2.4.3
+    dompurify: ^3.0.1
     jsdom: ^21.1.0
-  checksum: 77f0f42455820a6f7098a61f7e9c93baed98cda274ba1ae9adadf372be01bb3b50d99c182fc22e2fe04057933c49c607ab912196a68097108db8828881d6c134
+  checksum: f427481e8b2d9573662778290d42bfb921fb0fb55b4639c6126b601e30d6d4748bea6069126361c82525e938f8cafadf9d987eeea38ea9e13613e638f52893e9
   languageName: node
   linkType: hard
 
