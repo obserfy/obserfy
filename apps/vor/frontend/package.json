@@ -7,7 +7,7 @@
   "dependencies": {
     "@babel/runtime": "7.20.13",
     "@emotion/jest": "11.10.5",
-    "@emotion/react": "11.10.5",
+    "@emotion/react": "11.10.6",
     "@fontsource/lora": "4.5.13",
     "@lingui/cli": "3.17.1",
     "@lingui/core": "3.17.1",
