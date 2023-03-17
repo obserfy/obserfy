@@ -8017,19 +8017,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@theme-ui/core@npm:^0.15.4":
-  version: 0.15.4
-  resolution: "@theme-ui/core@npm:0.15.4"
-  dependencies:
-    "@theme-ui/css": ^0.15.4
-    deepmerge: ^4.2.2
-  peerDependencies:
-    "@emotion/react": ^11
-    react: ">=18"
-  checksum: e8f5e3da2e11aa425bfc1519e5528f13ba3c7e917b207d66367c11b0fe6bd2a04a9fa757d0e6980febf70f8de5b2406bf04461f6797f175ce4cb7484431e0132
-  languageName: node
-  linkType: hard
-
 "@theme-ui/core@npm:^0.15.5":
   version: 0.15.5
   resolution: "@theme-ui/core@npm:0.15.5"
@@ -8040,17 +8027,6 @@ __metadata:
     "@emotion/react": ^11
     react: ">=18"
   checksum: 1ee36a1a7bb791119f299353d04ef86918387a3bb37aa8c08a9bb93c999dad3a78a511fc538ac43b2a38e798e69e4736546754ff084976f8a15a844ed038efb3
-  languageName: node
-  linkType: hard
-
-"@theme-ui/css@npm:^0.15.4":
-  version: 0.15.4
-  resolution: "@theme-ui/css@npm:0.15.4"
-  dependencies:
-    csstype: ^3.0.10
-  peerDependencies:
-    "@emotion/react": ^11
-  checksum: 6e789967fdc7559b7eabf74f99a33d75ac282cabbd206d757f3e4d6e214a6229f4af0d30a791a7e1a7235fb0d002988f9b4c11c49698b257f84d04ff70ff54e6
   languageName: node
   linkType: hard
 
@@ -8090,16 +8066,16 @@ __metadata:
   linkType: hard
 
 "@theme-ui/mdx@npm:^0.15.4":
-  version: 0.15.4
-  resolution: "@theme-ui/mdx@npm:0.15.4"
+  version: 0.15.5
+  resolution: "@theme-ui/mdx@npm:0.15.5"
   dependencies:
-    "@theme-ui/core": ^0.15.4
-    "@theme-ui/css": ^0.15.4
+    "@theme-ui/core": ^0.15.5
+    "@theme-ui/css": ^0.15.5
   peerDependencies:
     "@emotion/react": ^11
     "@types/mdx": ^2.0.2
     react: ">=18"
-  checksum: d6ae030cb132a28a8bb0e2ae0a0c6ff128fae6042f7757e8e6da57615099eb62fc5aa47b4ed402c2b4bfebd0d2a0580231cbfad5988a895c98934b3ad66dd2d5
+  checksum: 974576b5d1cd5892e4133090fa8f82cec0992f77ecaece6880942ef145d5842f18c82d434e38a453d9e1852c26030e9294781edf74c6f3126a33b0fd84529301
   languageName: node
   linkType: hard
 
