@@ -6,7 +6,7 @@ require (
 	github.com/benbjohnson/clock v1.3.0
 	github.com/brianvoe/gofakeit/v4 v4.3.0
 	github.com/getsentry/sentry-go v0.18.0
-	github.com/go-chi/chi v1.5.4
+	github.com/go-chi/chi v4.1.2+incompatible
 	github.com/go-pg/pg/v10 v10.11.0
 	github.com/go-playground/validator/v10 v10.11.2
 	github.com/gocarina/gocsv v0.0.0-20230226133904-70c27cb2918a
