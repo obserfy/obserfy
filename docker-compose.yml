@@ -50,7 +50,7 @@ services:
       - .env.local
 
   imgproxy:
-    image: darthsim/imgproxy:v3.13
+    image: darthsim/imgproxy:v3.14
     depends_on:
       - minio
     environment:
