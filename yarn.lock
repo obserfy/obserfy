@@ -8942,21 +8942,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18":
-  version: 18.0.6
-  resolution: "@types/react-dom@npm:18.0.6"
+"@types/react-dom@npm:^18, @types/react-dom@npm:^18.0.0":
+  version: 18.0.11
+  resolution: "@types/react-dom@npm:18.0.11"
   dependencies:
     "@types/react": "*"
-  checksum: db571047af1a567631758700b9f7d143e566df939cfe5fbf7535347cc0c726a1cdbb5e3f8566d076e54cf708b6c1166689de194a9ba09ee35efc9e1d45911685
-  languageName: node
-  linkType: hard
-
-"@types/react-dom@npm:^18.0.0":
-  version: 18.0.8
-  resolution: "@types/react-dom@npm:18.0.8"
-  dependencies:
-    "@types/react": "*"
-  checksum: 522e5e949d05f35c6037a2290838c9c7ff92a9d06f7d96b993c7c3f5a86d8f3a6337e059c94e6fb0920227f445e5d1ce10fbfe3d9bbd95fb82a5539249d90646
+  checksum: 579691e4d5ec09688087568037c35edf8cfb1ab3e07f6c60029280733ee7b5c06d66df6fcc90786702c93ac8cb13bc7ff16c79ddfc75d082938fbaa36e1cdbf4
   languageName: node
   linkType: hard
 
@@ -8998,14 +8989,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:17.0.53":
-  version: 17.0.53
-  resolution: "@types/react@npm:17.0.53"
+"@types/react@npm:17.0.58":
+  version: 17.0.58
+  resolution: "@types/react@npm:17.0.58"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: dacfde02c260fd98bed2eb775ed0c7ce1397be4c0844f907a50763b081a4008f81f57071889a16eb1350ddcf0927f3cf1a6541702c8ad03de3c70383ef931e3f
+  checksum: 4eaf32b86c43f388c681e34a00921c508dd88a1d1022aebfadc5fe802b7c5bed863de1a17eed31e43ca2d65222952dfe79a022055a0e6e4e1ad89fc5a42ec05e
   languageName: node
   linkType: hard
 
@@ -17414,7 +17405,7 @@ __metadata:
     "@types/node": 14.18.38
     "@types/pg": 8.6.6
     "@types/pino": 6.3.12
-    "@types/react": 17.0.53
+    "@types/react": 17.0.58
     "@types/react-query": 1.2.9
     "@types/uuid": 9.0.1
     autoprefixer: 10.4.14
@@ -31889,7 +31880,7 @@ resolve@^2.0.0-next.3:
     "@types/node": 15.0.2
     "@types/query-string": 6.3.0
     "@types/reach__router": ^1
-    "@types/react": 17.0.53
+    "@types/react": 17.0.58
     "@types/react-adaptive-hooks": 0.0.1
     "@types/react-dom": 17.0.19
     "@types/react-helmet": 6.1.6
