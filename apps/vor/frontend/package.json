@@ -70,7 +70,7 @@
     "zustand": "4.3.6"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "7.21.0",
+    "@babel/preset-typescript": "7.21.4",
     "@istanbuljs/nyc-config-typescript": "1.0.2",
     "@storybook/addon-actions": "6.3.7",
     "@storybook/addon-essentials": "6.3.7",
