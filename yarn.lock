@@ -8797,12 +8797,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/minio@npm:7.0.17":
-  version: 7.0.17
-  resolution: "@types/minio@npm:7.0.17"
+"@types/minio@npm:7.0.18":
+  version: 7.0.18
+  resolution: "@types/minio@npm:7.0.18"
   dependencies:
     "@types/node": "*"
-  checksum: 8f7a7db89522d191b6282b33b15f70c1c0b4b27efbbaf77beaef25500f436abddf412a0778d9f2fc91c2a9ccb3af19212b46900814bb9ff6a5e513af4bfec4e3
+  checksum: f3efb3457252e2969a76ca66a294ebadd6a999019baa43ba0b12e2ddc78518b0269af0fd38acb241a57c7b908402756dea042bdb59a980833a711cf24d096bf3
   languageName: node
   linkType: hard
 
@@ -16731,14 +16731,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-parser@npm:^3.17.5":
-  version: 3.20.3
-  resolution: "fast-xml-parser@npm:3.20.3"
+"fast-xml-parser@npm:^4.1.3":
+  version: 4.2.0
+  resolution: "fast-xml-parser@npm:4.2.0"
   dependencies:
-    strnum: ^1.0.4
+    strnum: ^1.0.5
   bin:
-    xml2js: cli.js
-  checksum: ef9a5ebb4ae363c2a7f721eb219d22a30ed824d6c143f6d165397221dcdd82bde0d776e4ddd602232b3e2f5384e2b30e62f9c109e3218e6a9b240a40756cd5fe
+    fxparser: src/cli/cli.js
+  checksum: 2e634740367781c365bd3d41608c1b39eceb8fc8a551228da09887220135cbaf16527c0d919c3334bea6ed416dc0171a6a8546a2beb3a4096f7cc32bbbc04091
   languageName: node
   linkType: hard
 
@@ -17536,7 +17536,7 @@ __metadata:
     "@types/formidable": 1.2.3
     "@types/hls.js": 1.0.0
     "@types/jest": 29.4.2
-    "@types/minio": 7.0.17
+    "@types/minio": 7.0.18
     "@types/mixpanel-browser": 2.38.1
     "@types/nanoid": 3.0.0
     "@types/node": 14.18.42
@@ -17562,7 +17562,7 @@ __metadata:
     io-ts-types: 0.5.19
     isomorphic-dompurify: ^1.0.0
     jest: 29.5.0
-    minio: 7.0.32
+    minio: 7.0.33
     monocle-ts: 2.3.13
     mux-embed: 4.20.0
     nanoid: 4.0.2
@@ -23460,9 +23460,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minio@npm:7.0.32":
-  version: 7.0.32
-  resolution: "minio@npm:7.0.32"
+"minio@npm:7.0.33":
+  version: 7.0.33
+  resolution: "minio@npm:7.0.33"
   dependencies:
     async: ^3.1.0
     block-stream2: ^2.0.0
@@ -23470,7 +23470,7 @@ __metadata:
     buffer-crc32: ^0.2.13
     crypto-browserify: ^3.12.0
     es6-error: ^4.1.1
-    fast-xml-parser: ^3.17.5
+    fast-xml-parser: ^4.1.3
     ipaddr.js: ^2.0.1
     json-stream: ^1.0.0
     lodash: ^4.17.21
@@ -23481,7 +23481,7 @@ __metadata:
     web-encoding: ^1.1.5
     xml: ^1.0.0
     xml2js: ^0.4.15
-  checksum: 8efd7d8e4aedd2d8fc4599ab9127bc31f37cf77fddf9c9a0204e7e52472ca7521ee336f6ab00727c9223991843f1401917f03edb9eb2bddd9464191c16e388e7
+  checksum: 2fb1c511a10bacac0382699ca63d0db9a88547c5e9694e2aa77540fd44648bf5df6fa236a0eb3d54f0b4c9a922dfdc05663c520b5067b23a91d12ffe7d116b03
   languageName: node
   linkType: hard
 
@@ -30071,10 +30071,10 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"strnum@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "strnum@npm:1.0.4"
-  checksum: 91432c37fef1c4df4eb32e5ff9ae7962a4627f81001fee3f86c3f279226a54157b2a14d074d85265c6c36e5e93bdb45f4339e46bdba0f1325c5c27fae78007b1
+"strnum@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "strnum@npm:1.0.5"
+  checksum: 651b2031db5da1bf4a77fdd2f116a8ac8055157c5420f5569f64879133825915ad461513e7202a16d7fec63c54fd822410d0962f8ca12385c4334891b9ae6dd2
   languageName: node
   linkType: hard
 
