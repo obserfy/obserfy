@@ -17890,9 +17890,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-sharp@npm:4.25.0":
-  version: 4.25.0
-  resolution: "gatsby-plugin-sharp@npm:4.25.0"
+"gatsby-plugin-sharp@npm:4.25.1":
+  version: 4.25.1
+  resolution: "gatsby-plugin-sharp@npm:4.25.1"
   dependencies:
     "@babel/runtime": ^7.15.4
     async: ^3.2.4
@@ -17908,7 +17908,7 @@ __metadata:
     sharp: ^0.30.7
   peerDependencies:
     gatsby: ^4.0.0-next
-  checksum: 8b7c4fd5ae79852926710f0f663b3be36c5b2f5ef7403ac1546af547d970383a28c6f6c1d5aba9459b7c59637652c5f314a606f6cb80e9bdd47e6660363026a4
+  checksum: 09956cfeb1e2a714539a949a0e77cf7a756572fcaf3d2ee80979a2221d34f0e6d36282ca9f6fa3f191a2dabbd92b8eb4e617601e7e7843f8a3297993a472ad43
   languageName: node
   linkType: hard
 
@@ -32066,7 +32066,7 @@ resolve@^2.0.0-next.3:
     gatsby-plugin-preact: 6.25.0
     gatsby-plugin-react-helmet: 5.25.0
     gatsby-plugin-remove-serviceworker: 1.0.0
-    gatsby-plugin-sharp: 4.25.0
+    gatsby-plugin-sharp: 4.25.1
     gatsby-plugin-svgr: v3.0.0-beta.0
     gatsby-plugin-theme-ui: 0.15.5
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.27
