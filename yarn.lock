@@ -17261,10 +17261,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fp-ts@npm:2.13.1":
-  version: 2.13.1
-  resolution: "fp-ts@npm:2.13.1"
-  checksum: 618e0028aca9ff1d52b86f438499ccab149825bdab14c678d22c3e2ccbf9d36fd1f26d463bf0ae1e63f5cd79dd54c8218af2cca0daeea68b039307b751ae9563
+"fp-ts@npm:2.13.2":
+  version: 2.13.2
+  resolution: "fp-ts@npm:2.13.2"
+  checksum: 3f60aa968b5ebbcd1c944f0ee68cd21ad9dcdcafcd02a6235e54a7345bbef3aeda6839a1ad3f188546a255be69d6dc1f230d9ee8dbf280320dc35d57f4a7f2a6
   languageName: node
   linkType: hard
 
@@ -17544,7 +17544,7 @@ __metadata:
     eslint-plugin-prettier: 4.2.1
     eslint-plugin-tailwindcss: 3.9.0
     formidable-serverless: 1.1.1
-    fp-ts: 2.13.1
+    fp-ts: 2.13.2
     hls.js: 1.3.4
     io-ts: 2.2.20
     io-ts-types: 0.5.19
