@@ -1,10 +1,10 @@
 const { withSentryConfig } = require("@sentry/nextjs")
-const withPWA = require("./withPWA")
+// const withPWA = require("./withPWA")
 const version = require("./version")
 
 const plugins = []
 if (process.env.NODE_ENV === "production") {
-  plugins.push(withPWA)
+  // plugins.push(withPWA)
   plugins.push(withSentryConfig)
 }
 
@@ -25,6 +25,10 @@ const nextConfig = {
       "image.mux.com",
       "roci",
     ],
+    // global custom loader currently does not work because it breaks
+    // local assets such as hero images.
+    // loader: "custom",
+    // loaderFile: "./imgproxy-loader.js"
   },
   eslint: {
     ignoreDuringBuilds: true,

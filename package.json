@@ -9,10 +9,10 @@
   },
   "devDependencies": {
     "@types/react-dom": "^18",
-    "eslint": "8.34.0",
+    "eslint": "8.38.0",
     "husky": "8.0.3",
     "lint-staged": "13.1.2",
-    "turbo": "^1.8.2"
+    "turbo": "^1.8.8"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "prettier --write",
@@ -26,7 +26,7 @@
     "lint-typecheck": "yarn dlx turbo run lint typecheck"
   },
   "dependencies": {
-    "prettier": "2.8.4"
+    "prettier": "2.8.7"
   },
-  "packageManager": "yarn@3.4.1"
+  "packageManager": "yarn@3.5.0"
 }

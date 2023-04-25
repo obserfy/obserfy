@@ -6,7 +6,6 @@
       <script value="dev" />
     </scripts>
     <node-interpreter value="project" />
-    <package-manager value="$PROJECT_DIR$/.yarn/releases/yarn-3.4.1.cjs" />
     <envs>
       <env name="NEXT_OPTIMIZED_IMG_DOMAIN" value="athena" />
       <env name="NODE_OPTIONS" value="--no-warnings" />
