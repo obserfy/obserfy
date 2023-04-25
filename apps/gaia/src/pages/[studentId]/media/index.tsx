@@ -1,5 +1,6 @@
 import Icon from "$components/Icon/Icon"
 import ImageListHeader from "$components/ImageListHeader"
+import ImgproxyImage from "$components/ImgproxyImage"
 import useGetChildImages from "$hooks/api/useGetChildImages"
 import usePostImage from "$hooks/api/usePostImage"
 import { useQueryString } from "$hooks/useQueryString"
@@ -54,25 +55,6 @@ const ImagesPage: SSR<typeof getServerSideProps> = ({
   )
 }
 
-const normalizeSrc = (src: string) => {
-  return src.startsWith("/") ? src.slice(1) : src
-}
-
-const imgproxyLoader: ImageLoader = ({ src, width, quality }) => {
-  const { publicRuntimeConfig } = getConfig()
-  const imgproxyUrl = publicRuntimeConfig.imgproxyUrl
-
-  const params = [`w:${width}`]
-  if (quality) {
-    params.push(`q:${quality}`)
-  }
-
-  const paramsString = params.join("/")
-  return `${imgproxyUrl}/02jnc498jjkfn984jk83rnc20njfh38932/${paramsString}/${normalizeSrc(
-    src
-  )}`
-}
-
 const ImageMonthlySection: FC<{
   month: string
   images: { id: string; src: string }[]
@@ -90,14 +72,13 @@ const ImageMonthlySection: FC<{
               href={`/${studentId}/media/images/${id}`}
               className="aspect-w-4 aspect-h-3 flex rounded-xl shadow"
             >
-              <Image
+              <ImgproxyImage
                 src={src}
                 width={400}
                 height={300}
                 className="rounded-xl bg-gray-100 object-cover "
                 alt=""
                 sizes={"33vw"}
-                loader={imgproxyLoader}
               />
             </Link>
           </li>
