@@ -1,6 +1,6 @@
 import clsx from "clsx"
 import Link from "next/link"
-import { FC } from "react"
+import { FC, ReactNode } from "react"
 import Image from "next/image"
 import Icon from "$components/Icon/Icon"
 import RecordsHeroImage from "$public/hero/records-hero.svg"
@@ -23,6 +23,7 @@ const getTabs = (studentId: string) => [
 const RecordsLayout: FC<{
   title: string
   currentPage: "Assessments" | "Observations"
+  children: ReactNode
 }> = ({ title, children, currentPage }) => {
   const studentId = useQueryString("studentId")
   const tabs = getTabs(studentId)
@@ -52,7 +53,7 @@ const RecordsLayout: FC<{
             {tabs.map((tab) => (
               <Link
                 key={tab.name}
-                href={tab.href}
+                href={tab.href as any}
                 className={clsx(
                   tab.name === currentPage
                     ? "bg-white bg-opacity-20 text-white"

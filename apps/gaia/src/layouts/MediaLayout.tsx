@@ -1,7 +1,7 @@
 import clsx from "clsx"
 import Image from "next/image"
 import Link from "next/link"
-import { FC } from "react"
+import { FC, ReactNode } from "react"
 import { useQueryString } from "$hooks/useQueryString"
 import Icon from "$components/Icon/Icon"
 import BaseLayout from "$layouts/BaseLayout"
@@ -24,6 +24,7 @@ const MediaLayout: FC<{
   title: string
   currentPage: "Images" | "Videos"
   className?: string
+  children: ReactNode
 }> = ({ title, children, currentPage, className }) => {
   const studentId = useQueryString("studentId")
   const tabs = getTabs(studentId)
@@ -56,7 +57,7 @@ const MediaLayout: FC<{
             {tabs.map((tab) => (
               <Link
                 key={tab.name}
-                href={tab.href}
+                href={tab.href as any}
                 className={clsx(
                   tab.name === currentPage
                     ? "bg-white bg-opacity-20 text-white"

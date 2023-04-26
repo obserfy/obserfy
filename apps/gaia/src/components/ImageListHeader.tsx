@@ -1,8 +1,9 @@
 import clsx from "clsx"
-import { FC } from "react"
+import { FC, ReactNode } from "react"
 
 const ImageListHeader: FC<{
   className?: string
+  children: ReactNode
 }> = ({ className, children }) => (
   <p
     className={clsx(
