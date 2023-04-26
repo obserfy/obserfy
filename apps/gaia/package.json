@@ -48,7 +48,7 @@
     "isomorphic-dompurify": "^1.0.0",
     "minio": "7.0.33",
     "monocle-ts": "2.3.13",
-    "mux-embed": "4.20.0",
+    "mux-embed": "4.24.0",
     "nanoid": "4.0.2",
     "newtype-ts": "0.3.5",
     "next": "13.2.4",
