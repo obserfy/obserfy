@@ -27,3 +27,16 @@ export const getQueryString = (ctx: GetServerSidePropsContext, key: string) => {
 
   return undefined
 }
+
+type SearchParam<Q extends string> = Q extends ""
+  ? {}
+  : { searchParams: Record<Q, string> }
+
+type Params<P extends string> = P extends ""
+  ? {}
+  : { params: Record<P, string> }
+
+export type PageProps<
+  P extends string = "",
+  Q extends string = ""
+> = Params<P> & SearchParam<Q>

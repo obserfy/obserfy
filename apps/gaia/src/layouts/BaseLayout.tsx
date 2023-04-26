@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import { FC } from "react"
+import { FC, ReactNode } from "react"
 import BottomNavigationBar from "$components/BottomNavigationBar"
 import SEO from "$components/Seo"
 import SideBar from "$components/SideBar"
@@ -8,6 +8,7 @@ import TopBar from "$components/TopBar"
 const BaseLayout: FC<{
   title: string
   className?: string
+  children: ReactNode
 }> = ({ title, children, className }) => (
   <>
     <SEO title={title} />

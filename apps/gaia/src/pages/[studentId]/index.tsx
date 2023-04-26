@@ -2,10 +2,7 @@ import { convertMarkdownToHTML, SanitizedHTML } from "$lib/markdown"
 import Image from "next/image"
 import { FC, useState } from "react"
 import { isFilled } from "ts-is-present"
-import {
-  GetChildTimelineResponse,
-  Timeline,
-} from "$api/children/[childId]/timeline"
+import { Timeline } from "$api/children/[childId]/timeline"
 import Icon from "$components/Icon/Icon"
 import ImagePreview from "$components/ImagePreview/ImagePreview"
 import Markdown from "$components/Markdown/Markdown"

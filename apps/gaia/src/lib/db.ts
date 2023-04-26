@@ -436,3 +436,15 @@ export const findOldestLessonPlanDateByStudentId = (studentId: string) => {
     },
   })
 }
+
+export const findReportsByStudentId = (studentId: string) => {
+  return prisma.progress_reports.findMany({
+    where: {
+      student_progress_reports: {
+        some: {
+          student_id: studentId,
+        },
+      },
+    },
+  })
+}
