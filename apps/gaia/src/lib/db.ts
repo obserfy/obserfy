@@ -448,3 +448,18 @@ export const findReportsByStudentId = (studentId: string) => {
     },
   })
 }
+
+export const findReportById = (reportId: string) => {
+  return prisma.progress_reports.findUnique({
+    where: {
+      id: reportId,
+    },
+    include: {
+      student_progress_reports: {
+        include: {
+          students: true,
+        },
+      },
+    },
+  })
+}
