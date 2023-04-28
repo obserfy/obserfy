@@ -10,7 +10,7 @@ export default async function Reports(props: PageProps<"reportsId">) {
   if (!report) return "Report not found"
 
   return (
-    <div>
+    <div className={"mx-auto max-w-7xl"}>
       <h1>{report.title}</h1>
     </div>
   )
