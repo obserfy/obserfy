@@ -32,7 +32,7 @@
     "@types/node": "14.18.42",
     "@types/pg": "8.6.6",
     "@types/pino": "6.3.12",
-    "@types/react": "17.0.58",
+    "@types/react": "17.0.60",
     "@types/react-query": "1.2.9",
     "@types/uuid": "9.0.1",
     "autoprefixer": "10.4.14",
