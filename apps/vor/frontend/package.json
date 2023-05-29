@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Chrisando Eka Pramudhita <chrsep@protonmail.com>",
   "dependencies": {
-    "@babel/runtime": "7.21.0",
+    "@babel/runtime": "7.22.0",
     "@emotion/jest": "11.10.5",
     "@emotion/react": "11.10.6",
     "@fontsource/lora": "4.5.13",
@@ -70,7 +70,7 @@
     "zustand": "4.3.7"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "7.21.4",
+    "@babel/preset-typescript": "7.21.5",
     "@istanbuljs/nyc-config-typescript": "1.0.2",
     "@storybook/addon-actions": "6.3.7",
     "@storybook/addon-essentials": "6.3.7",
