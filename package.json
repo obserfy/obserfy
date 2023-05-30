@@ -28,5 +28,5 @@
   "dependencies": {
     "prettier": "2.8.8"
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@3.5.1"
 }
