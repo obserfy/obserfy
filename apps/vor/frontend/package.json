@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Chrisando Eka Pramudhita <chrsep@protonmail.com>",
   "dependencies": {
-    "@babel/runtime": "7.22.0",
+    "@babel/runtime": "7.22.3",
     "@emotion/jest": "11.10.5",
     "@emotion/react": "11.10.6",
     "@fontsource/lora": "4.5.13",
