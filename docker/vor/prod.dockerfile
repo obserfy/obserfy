@@ -19,7 +19,7 @@ RUN cp -r ./apps/vor/frontend/public /frontend/public
 ####################################
 # Build the API server
 ####################################
-FROM golang:1.19 AS api-builder
+FROM golang:1.20 AS api-builder
 WORKDIR /usr/src/apps/vor
 COPY . /usr/src
 # Build the project
