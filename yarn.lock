@@ -8371,12 +8371,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/formidable@npm:1.2.3":
-  version: 1.2.3
-  resolution: "@types/formidable@npm:1.2.3"
+"@types/formidable@npm:2.0.6":
+  version: 2.0.6
+  resolution: "@types/formidable@npm:2.0.6"
   dependencies:
     "@types/node": "*"
-  checksum: 926f01c1e6a6f4db46e20bb3f42a1199201137a388d0d5e6aceb0647eb8f6be2ae99c5f4dfff6fc97b117fe42895ff9f16a15ac16594e0550646e156fdaf35de
+  checksum: d6be0ac12bf8dd2e4f8a022271ee6e501c7f6d7dd58d71c68497ca7da84bee1538d1a2a64a90b56dad557ddb291d48c5731206269e9ab53ed91264e68a4d1476
   languageName: node
   linkType: hard
 
@@ -17325,7 +17325,7 @@ __metadata:
     "@tailwindcss/typography": ^0.5.9
     "@tanstack/react-query": ^4.0.10
     "@types/body-scroll-lock": 3.1.0
-    "@types/formidable": 1.2.3
+    "@types/formidable": 2.0.6
     "@types/hls.js": 1.0.0
     "@types/jest": 29.5.1
     "@types/minio": 7.1.0
