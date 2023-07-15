@@ -63,9 +63,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auth0/nextjs-auth0@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@auth0/nextjs-auth0@npm:2.6.0"
+"@auth0/nextjs-auth0@npm:2.6.3":
+  version: 2.6.3
+  resolution: "@auth0/nextjs-auth0@npm:2.6.3"
   dependencies:
     "@panva/hkdf": ^1.0.2
     cookie: ^0.5.0
@@ -78,7 +78,7 @@ __metadata:
     url-join: ^4.0.1
   peerDependencies:
     next: ">=10"
-  checksum: cc157d352b6ed13eb5e38e2e0011287c9be6ae0d9b55fd43b4e6b7bc81896ae85e2ae9a680ab16bbc1e0af9ee19885e0ce7846319047d089617170245247bf3b
+  checksum: 5da6b41f9aaee1c3b111a7b5cb71bfdc5aa061d3ed4e8bd42c1bc342afab9039219b8544b9bb9006010780d93b929e0e94c1d5a4ebbde10a385404c279c6a4c1
   languageName: node
   linkType: hard
 
@@ -17324,7 +17324,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
-    "@auth0/nextjs-auth0": 2.6.0
+    "@auth0/nextjs-auth0": 2.6.3
     "@fontsource/source-sans-pro": ^4.5.11
     "@headlessui/react": ^1.7.12
     "@next/bundle-analyzer": 13.2.4
