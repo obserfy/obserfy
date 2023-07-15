@@ -8826,11 +8826,11 @@ __metadata:
   linkType: hard
 
 "@types/react-dom@npm:^18, @types/react-dom@npm:^18.0.0":
-  version: 18.2.4
-  resolution: "@types/react-dom@npm:18.2.4"
+  version: 18.2.7
+  resolution: "@types/react-dom@npm:18.2.7"
   dependencies:
     "@types/react": "*"
-  checksum: 8301f35cf1cbfec8c723e9477aecf87774e3c168bd457d353b23c45064737213d3e8008b067c6767b7b08e4f2b3823ee239242a6c225fc91e7f8725ef8734124
+  checksum: e02ea908289a7ad26053308248d2b87f6aeafd73d0e2de2a3d435947bcea0422599016ffd1c3e38ff36c42f5e1c87c7417f05b0a157e48649e4a02f21727d54f
   languageName: node
   linkType: hard
 
@@ -8863,14 +8863,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:17.0.60":
-  version: 17.0.60
-  resolution: "@types/react@npm:17.0.60"
+"@types/react@npm:17.0.62":
+  version: 17.0.62
+  resolution: "@types/react@npm:17.0.62"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 8565e53d6ad83cd5f606fa66f5f9d8d0e5323a0103114a0292ae8f97c17ce4a7dfa15b847c54eb0a2c41c03df7fd64ba1d5bcef91ee0c177e55315e52e334463
+  checksum: 428a5aff44824ef504e9a9259b5894fe44a5db1c344b536990f07e132900ff5b34cbef0be77a84f30f37be1f88fc8b56dce328f568de8d65de3bfe414c05b2e1
   languageName: node
   linkType: hard
 
@@ -17345,7 +17345,7 @@ __metadata:
     "@types/node": 14.18.48
     "@types/pg": 8.10.1
     "@types/pino": 6.3.12
-    "@types/react": 17.0.60
+    "@types/react": 17.0.62
     "@types/react-query": 1.2.9
     "@types/uuid": 9.0.1
     autoprefixer: 10.4.14
@@ -32117,7 +32117,7 @@ resolve@^2.0.0-next.3:
     "@types/node": 15.0.2
     "@types/query-string": 6.3.0
     "@types/reach__router": ^1
-    "@types/react": 17.0.60
+    "@types/react": 17.0.62
     "@types/react-adaptive-hooks": 0.0.1
     "@types/react-dom": 17.0.20
     "@types/react-helmet": 6.1.6
