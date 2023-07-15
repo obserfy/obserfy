@@ -87,7 +87,7 @@
     "@types/node": "15.0.2",
     "@types/query-string": "6.3.0",
     "@types/reach__router": "^1",
-    "@types/react": "17.0.60",
+    "@types/react": "17.0.62",
     "@types/react-adaptive-hooks": "0.0.1",
     "@types/react-dom": "17.0.20",
     "@types/react-helmet": "6.1.6",
