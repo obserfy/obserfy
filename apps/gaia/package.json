@@ -34,7 +34,7 @@
     "@types/pino": "6.3.12",
     "@types/react": "17.0.62",
     "@types/react-query": "1.2.9",
-    "@types/uuid": "9.0.1",
+    "@types/uuid": "9.0.2",
     "autoprefixer": "10.4.14",
     "body-scroll-lock": "3.1.5",
     "clsx": "1.2.1",
