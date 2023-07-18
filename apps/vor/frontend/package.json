@@ -54,7 +54,7 @@
     "make-plural": "7.3.0",
     "mux-embed": "4.25.1",
     "nanoid": "4.0.2",
-    "preact": "10.13.2",
+    "preact": "10.16.0",
     "preact-render-to-string": "5.2.6",
     "query-string": "8.1.0",
     "react": "^18.2.0",
