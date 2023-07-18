@@ -48,7 +48,7 @@
     "gatsby-theme-i18n": "3.0.0",
     "gatsby-theme-i18n-lingui": "3.0.0",
     "gatsby-transformer-sharp": "4.25.0",
-    "hls.js": "1.4.4",
+    "hls.js": "1.4.9",
     "idb-keyval": "5.1.5",
     "immer": "9.0.21",
     "make-plural": "7.3.0",
