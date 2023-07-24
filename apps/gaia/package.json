@@ -42,7 +42,7 @@
     "dotenv": "16.0.3",
     "formidable-serverless": "1.1.1",
     "fp-ts": "2.16.0",
-    "hls.js": "1.4.9",
+    "hls.js": "1.4.10",
     "io-ts": "2.2.20",
     "io-ts-types": "0.5.19",
     "isomorphic-dompurify": "^1.0.0",
