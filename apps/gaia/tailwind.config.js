@@ -111,8 +111,8 @@ module.exports = {
       // },
     },
     fontFamily: {
-      heading: ["Source Sans Pro"],
-      body: ["Source Sans Pro"],
+      heading: ["Source Sans 3"],
+      body: ["Source Sans 3"],
     },
   },
   plugins: [
