@@ -1,9 +1,8 @@
 module.exports = {
-  extends: [
-    "next/core-web-vitals",
-    "plugin:prettier/recommended",
-    "plugin:tailwindcss/recommended",
-  ],
+  parserOptions: {
+    project: "./tsconfig.eslint.json",
+  },
+  extends: ["next", "prettier"],
   rules: {
     "no-restricted-imports": [
       "error",
