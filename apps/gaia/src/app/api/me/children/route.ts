@@ -1,7 +1,7 @@
-import { getSession } from "@auth0/nextjs-auth0"
 import { findRelatedStudents } from "$lib/db"
-import { generateOriginalUrl } from "../../../utils/imgproxy"
-import { protectedApiRoute } from "../../../utils/rest"
+import { getSession, withApiAuthRequired } from "@auth0/nextjs-auth0"
+import { NextResponse } from "next/server"
+import { generateOriginalUrl } from "../../../../utils/imgproxy"
 
 export interface GetChildrenResponse {
   id: string
@@ -9,15 +9,14 @@ export interface GetChildrenResponse {
   profilePic: string
 }
 
-const childrenHandler = protectedApiRoute(async (req, res) => {
-  const session = await getSession(req, res)
+export const GET = withApiAuthRequired(async (req: Request) => {
+  const session = await getSession()
   if (!session) {
-    res.status(401).end("unauthorized")
-    return
+    return new NextResponse("unauthorized", { status: 401 })
   }
 
   const students = await findRelatedStudents(session.user.email)
-  res.status(200).json(
+  return NextResponse.json(
     students.map((student) => ({
       id: student.id,
       name: student.name,
@@ -27,5 +26,3 @@ const childrenHandler = protectedApiRoute(async (req, res) => {
     }))
   )
 })
-
-export default childrenHandler

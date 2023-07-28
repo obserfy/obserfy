@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { GetChildrenResponse } from "$api/me/children"
+import { GetChildrenResponse } from "../../app/api/me/children/route"
 import { getApi } from "./apiHelpers"
 
 const useGetChildren = () => {

@@ -1,6 +1,6 @@
-import { getSession } from "@auth0/nextjs-auth0"
+import { getSession, withApiAuthRequired } from "@auth0/nextjs-auth0"
+import { NextResponse } from "next/server"
 import { findChildrenByGuardianEmail } from "../../../db/queries"
-import { protectedApiRoute } from "../../../utils/rest"
 
 export interface UserData {
   family_name: string
@@ -20,12 +20,12 @@ export interface UserData {
   }>
 }
 
-const me = protectedApiRoute(async (req, res) => {
-  const session = await getSession(req, res)
+export const GET = withApiAuthRequired(async (req: Request) => {
+  const session = await getSession()
   if (!session) {
-    res.status(401).end("unauthorized")
-    return
+    return new NextResponse("unauthorized", { status: 401 })
   }
+
   const result = await findChildrenByGuardianEmail(session.user.email)
 
   const response = {
@@ -36,7 +36,6 @@ const me = protectedApiRoute(async (req, res) => {
       schoolName: school_name,
     })),
   } as UserData
-  res.json(response)
-})
 
-export default me
+  return NextResponse.json(response)
+})
