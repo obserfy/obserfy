@@ -33,12 +33,8 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  publicRuntimeConfig: {
-    imgproxyUrl: process.env.IMGPROXY_URL,
-  },
   experimental: {
     appDir: true,
-    typedRoutes: true,
   },
 }
 
