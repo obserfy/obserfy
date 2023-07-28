@@ -39,7 +39,7 @@
     "body-scroll-lock": "3.1.5",
     "clsx": "1.2.1",
     "dayjs": "1.11.9",
-    "dotenv": "16.0.3",
+    "dotenv": "16.3.1",
     "formidable-serverless": "1.1.1",
     "fp-ts": "2.16.0",
     "hls.js": "1.4.10",
