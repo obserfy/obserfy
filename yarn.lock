@@ -17513,7 +17513,7 @@ __metadata:
     jest: 29.6.1
     minio: 7.1.1
     monocle-ts: 2.3.13
-    mux-embed: 4.25.1
+    mux-embed: 4.26.0
     nanoid: 4.0.2
     newtype-ts: 0.3.5
     next: 13.2.4
@@ -23791,10 +23791,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mux-embed@npm:4.25.1":
-  version: 4.25.1
-  resolution: "mux-embed@npm:4.25.1"
-  checksum: fcec7fbc8915a5f1405fbdecf989d41c23fe717ea4a6ce419f1ba669253a4d3f4f81c2f37298f53e5a89336f3d25297b7e2ebbed03bb81427e9877e1ce191e25
+"mux-embed@npm:4.26.0":
+  version: 4.26.0
+  resolution: "mux-embed@npm:4.26.0"
+  checksum: ac00017f2652e7b7a0071d633614c5fdebb3d602af7058315ae155d1f9d60eeefa532b7abdaee8ef575926e5323f4e60fe159ac2246f718a1f62dcc378f26fa3
   languageName: node
   linkType: hard
 
@@ -32332,7 +32332,7 @@ resolve@^2.0.0-next.3:
     jest-date-mock: 1.0.8
     jest-fetch-mock: 3.0.3
     make-plural: 7.3.0
-    mux-embed: 4.25.1
+    mux-embed: 4.26.0
     nanoid: 4.0.2
     npm-run-all: 4.1.5
     preact: 10.16.0
