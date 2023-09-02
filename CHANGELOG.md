@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.17.4](https://github.com/obserfy/obserfy/compare/v1.17.3...v1.17.4) (2023-09-02)
+
 ### [1.17.3](https://github.com/obserfy/obserfy/compare/v1.17.2...v1.17.3) (2022-08-06)
 
 ### [1.17.2](https://github.com/obserfy/obserfy/compare/v1.17.1...v1.17.2) (2022-08-06)
