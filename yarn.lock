@@ -8917,10 +8917,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-adaptive-hooks@npm:0.0.1":
-  version: 0.0.1
-  resolution: "@types/react-adaptive-hooks@npm:0.0.1"
-  checksum: a21b5b7db7cac9b2388ab74a26e1cbe5f6340dcc91270d67a5ce26e0e2f667a56a471e0c63523550f88901785b661591cfd8999c737f345bf81e603d87391040
+"@types/react-adaptive-hooks@npm:0.0.2":
+  version: 0.0.2
+  resolution: "@types/react-adaptive-hooks@npm:0.0.2"
+  checksum: 89eb13281c5c3e6bc1743a1f7058352da7e23beb2b37cf71f5b9dbe8dd3026b7fd3d896de3623d0c24c3c34594d339aba36bd914d4f7ffcb79915ea77f84f088
   languageName: node
   linkType: hard
 
@@ -32309,7 +32309,7 @@ resolve@^2.0.0-next.3:
     "@types/query-string": 6.3.0
     "@types/reach__router": ^1
     "@types/react": 17.0.62
-    "@types/react-adaptive-hooks": 0.0.1
+    "@types/react-adaptive-hooks": 0.0.2
     "@types/react-dom": 17.0.20
     "@types/react-helmet": 6.1.6
     autoprefixer: 10.4.14
