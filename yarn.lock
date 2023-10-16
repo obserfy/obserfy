@@ -8908,21 +8908,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/reach__router@npm:^1":
-  version: 1.3.11
-  resolution: "@types/reach__router@npm:1.3.11"
+"@types/reach__router@npm:^1, @types/reach__router@npm:^1.3.10":
+  version: 1.3.12
+  resolution: "@types/reach__router@npm:1.3.12"
   dependencies:
     "@types/react": "*"
-  checksum: 6bcf40714e0dafff66cbf10a534320eae35dae8344f616d2ddf077937287a0df188dfbfb32fb8045cbc641139d1ab69ee5bb258a51642823cadefbcda020a044
-  languageName: node
-  linkType: hard
-
-"@types/reach__router@npm:^1.3.10":
-  version: 1.3.10
-  resolution: "@types/reach__router@npm:1.3.10"
-  dependencies:
-    "@types/react": "*"
-  checksum: fdcb761d3b8cd74530c00490a7b5b1868e82b742e05b03d8fc09d88cc135ec6377556bcc8b345bf0f3aa8c99259e6cecbccf912ef8c9da12611c274a5ffb3fa9
+  checksum: df838ba6bc3463c50ae35e704e11a9073bb0617c04676887a9ad87177b078d6593aa3cd8b63de07e791ac8b86183dbb0f20072c22dd40754487a47f0064c3fb7
   languageName: node
   linkType: hard
 
