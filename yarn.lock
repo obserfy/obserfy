@@ -6209,6 +6209,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry-internal/tracing@npm:7.77.0":
+  version: 7.77.0
+  resolution: "@sentry-internal/tracing@npm:7.77.0"
+  dependencies:
+    "@sentry/core": 7.77.0
+    "@sentry/types": 7.77.0
+    "@sentry/utils": 7.77.0
+  checksum: dc6162db6d426212440abd66f9e37a4ce1849a79dd067158091702b273f3312ea131984c7aad58708745340b2a0ddb652b898c27dbf409d8691dbd4ee8a9ebde
+  languageName: node
+  linkType: hard
+
 "@sentry/browser@npm:7.60.1":
   version: 7.60.1
   resolution: "@sentry/browser@npm:7.60.1"
@@ -6220,6 +6231,19 @@ __metadata:
     "@sentry/utils": 7.60.1
     tslib: ^2.4.1 || ^1.9.3
   checksum: bb3610d86f61da4be15b722b8bf78c0d83ca77ef10f06b573c28c70820cc146dee99f84ec6477a2054cf2a3e24495304b8ccc485696953ea44ce538001b8ce23
+  languageName: node
+  linkType: hard
+
+"@sentry/browser@npm:7.77.0":
+  version: 7.77.0
+  resolution: "@sentry/browser@npm:7.77.0"
+  dependencies:
+    "@sentry-internal/tracing": 7.77.0
+    "@sentry/core": 7.77.0
+    "@sentry/replay": 7.77.0
+    "@sentry/types": 7.77.0
+    "@sentry/utils": 7.77.0
+  checksum: b3c4ecbf27e8d940c42bc151fc39e9e3659889c0091e69a39f3b8f0e316caa9cdd17aa2c00b151ff9976eff459f023e69cb51f8efa96a840191afd4091cc7573
   languageName: node
   linkType: hard
 
@@ -6268,6 +6292,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/core@npm:7.77.0":
+  version: 7.77.0
+  resolution: "@sentry/core@npm:7.77.0"
+  dependencies:
+    "@sentry/types": 7.77.0
+    "@sentry/utils": 7.77.0
+  checksum: f76e83ba5da4710b87b5e03f747ac5b5f93c93814447d29e1863b6bd3734d87f3a8fb197060a9a8370430d1d47b5c8c33dc86acc7f7b212322630e280435c6d8
+  languageName: node
+  linkType: hard
+
 "@sentry/gatsby@npm:7.60.1":
   version: 7.60.1
   resolution: "@sentry/gatsby@npm:7.60.1"
@@ -6284,58 +6318,56 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/integrations@npm:7.60.1":
-  version: 7.60.1
-  resolution: "@sentry/integrations@npm:7.60.1"
+"@sentry/integrations@npm:7.77.0":
+  version: 7.77.0
+  resolution: "@sentry/integrations@npm:7.77.0"
   dependencies:
-    "@sentry/types": 7.60.1
-    "@sentry/utils": 7.60.1
+    "@sentry/core": 7.77.0
+    "@sentry/types": 7.77.0
+    "@sentry/utils": 7.77.0
     localforage: ^1.8.1
-    tslib: ^2.4.1 || ^1.9.3
-  checksum: 6b91ec427d3c75e643ccd7b6e9114fd85ce9aa6c5290b87c202c85d50db9cee9f633935e6e05275042652955f8af7949f642467417b85a698c6dc50ebdef26a7
+  checksum: b34f1e0a5a28154698b0eb42c9a3c968c35cbe1ba0411df7b4b83008a58cb3db2a2c07eee5e7a6e55f8b6aae9c74c8433d0e97a3e6289c979b361c09ced4475a
   languageName: node
   linkType: hard
 
-"@sentry/nextjs@npm:7.60.1":
-  version: 7.60.1
-  resolution: "@sentry/nextjs@npm:7.60.1"
+"@sentry/nextjs@npm:7.77.0":
+  version: 7.77.0
+  resolution: "@sentry/nextjs@npm:7.77.0"
   dependencies:
     "@rollup/plugin-commonjs": 24.0.0
-    "@sentry/core": 7.60.1
-    "@sentry/integrations": 7.60.1
-    "@sentry/node": 7.60.1
-    "@sentry/react": 7.60.1
-    "@sentry/types": 7.60.1
-    "@sentry/utils": 7.60.1
+    "@sentry/core": 7.77.0
+    "@sentry/integrations": 7.77.0
+    "@sentry/node": 7.77.0
+    "@sentry/react": 7.77.0
+    "@sentry/types": 7.77.0
+    "@sentry/utils": 7.77.0
+    "@sentry/vercel-edge": 7.77.0
     "@sentry/webpack-plugin": 1.20.0
     chalk: 3.0.0
+    resolve: 1.22.8
     rollup: 2.78.0
     stacktrace-parser: ^0.1.10
-    tslib: ^2.4.1 || ^1.9.3
   peerDependencies:
-    next: ^10.0.8 || ^11.0 || ^12.0 || ^13.0
+    next: ^10.0.8 || ^11.0 || ^12.0 || ^13.0 || ^14.0
     react: 16.x || 17.x || 18.x
     webpack: ">= 4.0.0"
   peerDependenciesMeta:
     webpack:
       optional: true
-  checksum: 63e478d634f7f7ff6b104e29cab0744b876903fc81abd95df2d9bd0c7eb6bdfe46d053d7d6cd6510c458546b9ca025a8e691d4ec139e3038fb8fdc983e2a9b90
+  checksum: 293019ff3bc85f1f041f15f1836cb98587cbecf780c26d7758a470d382042c9aa9522408853afbe16a73945f0e4edb6d5b3d704e8b8501b9d90304a6a9492afe
   languageName: node
   linkType: hard
 
-"@sentry/node@npm:7.60.1":
-  version: 7.60.1
-  resolution: "@sentry/node@npm:7.60.1"
+"@sentry/node@npm:7.77.0":
+  version: 7.77.0
+  resolution: "@sentry/node@npm:7.77.0"
   dependencies:
-    "@sentry-internal/tracing": 7.60.1
-    "@sentry/core": 7.60.1
-    "@sentry/types": 7.60.1
-    "@sentry/utils": 7.60.1
-    cookie: ^0.4.1
+    "@sentry-internal/tracing": 7.77.0
+    "@sentry/core": 7.77.0
+    "@sentry/types": 7.77.0
+    "@sentry/utils": 7.77.0
     https-proxy-agent: ^5.0.0
-    lru_map: ^0.3.3
-    tslib: ^2.4.1 || ^1.9.3
-  checksum: 5f2e70e0bb84611bf1db0590340355ab054181526afa5e0a50686e5188fbd3a0de5dc96ad78889501972b1e4a72387bc5757040da38f062ff2e9135fdba5daa8
+  checksum: 11034db59a547f3b35208f601fa4704dc7ef6e1f9730136562c1764de8f7b286b355b701711febb44b972ed7009b3467c21ffda15f07024f7dee36979ca9e1c1
   languageName: node
   linkType: hard
 
@@ -6354,6 +6386,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/react@npm:7.77.0":
+  version: 7.77.0
+  resolution: "@sentry/react@npm:7.77.0"
+  dependencies:
+    "@sentry/browser": 7.77.0
+    "@sentry/types": 7.77.0
+    "@sentry/utils": 7.77.0
+    hoist-non-react-statics: ^3.3.2
+  peerDependencies:
+    react: 15.x || 16.x || 17.x || 18.x
+  checksum: 18af780c76b6b0c52ea476963b8ef0b7a346796c5d0e04dd7c4cb73eb3e52b2fd00b8c1cd5529c29983398a57e325d0d45a689bc8b9822d7c9b10339870869f9
+  languageName: node
+  linkType: hard
+
 "@sentry/replay@npm:7.60.1":
   version: 7.60.1
   resolution: "@sentry/replay@npm:7.60.1"
@@ -6362,6 +6408,18 @@ __metadata:
     "@sentry/types": 7.60.1
     "@sentry/utils": 7.60.1
   checksum: e3107451a7b07bab82d8adff0a8f4bcfcd41da73b33618d0d20804e0b6d0d6d2ec98190373382c22d667a830eec433e71816946ef27d424ef57cff647a470370
+  languageName: node
+  linkType: hard
+
+"@sentry/replay@npm:7.77.0":
+  version: 7.77.0
+  resolution: "@sentry/replay@npm:7.77.0"
+  dependencies:
+    "@sentry-internal/tracing": 7.77.0
+    "@sentry/core": 7.77.0
+    "@sentry/types": 7.77.0
+    "@sentry/utils": 7.77.0
+  checksum: 95bbd554a33a17273501fffadd7a51050787ef5a0ec26de5cccba35f6bfd5d88b2c13f735beaf74274cdb5f77d3a310fa2699d9629220de4b79e4d4c27a14e20
   languageName: node
   linkType: hard
 
@@ -6381,6 +6439,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/types@npm:7.77.0":
+  version: 7.77.0
+  resolution: "@sentry/types@npm:7.77.0"
+  checksum: ff8047425d4b0caae9221a9fa52fa0122ddf23b51152b7d71914f6465cf72dc3fdf00b7db16e3e95b4a1d2d429824d91ed586b1abac6d5286bd7800504e30824
+  languageName: node
+  linkType: hard
+
 "@sentry/utils@npm:7.60.1":
   version: 7.60.1
   resolution: "@sentry/utils@npm:7.60.1"
@@ -6388,6 +6453,26 @@ __metadata:
     "@sentry/types": 7.60.1
     tslib: ^2.4.1 || ^1.9.3
   checksum: a3bab34c7e023c33c07fb3db5f357325beebf5cf559b1713a725e38927e73298f22e67bac3e5ea9e1c4e5af6a2a6351e5ded214631f6d979297b58462044e8b7
+  languageName: node
+  linkType: hard
+
+"@sentry/utils@npm:7.77.0":
+  version: 7.77.0
+  resolution: "@sentry/utils@npm:7.77.0"
+  dependencies:
+    "@sentry/types": 7.77.0
+  checksum: 000bb1caec44812dc39a8026ecba78c14a8332f15cb78d2935c91a7ba8d61eab9553a791a4af528a113ca90b83db6e81791e3562b2559b76596accc69e4d57ad
+  languageName: node
+  linkType: hard
+
+"@sentry/vercel-edge@npm:7.77.0":
+  version: 7.77.0
+  resolution: "@sentry/vercel-edge@npm:7.77.0"
+  dependencies:
+    "@sentry/core": 7.77.0
+    "@sentry/types": 7.77.0
+    "@sentry/utils": 7.77.0
+  checksum: 3c23c46af233fe3d50f48509fd8e89c24be54d79419e0368bbcc574b6f1d886ff182300e507bbe5fb587c1219ee9663eaa1591783ca0a7bbebdd85b8b35a07ad
   languageName: node
   linkType: hard
 
@@ -17425,6 +17510,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"function-bind@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "function-bind@npm:1.1.2"
+  checksum: 2b0ff4ce708d99715ad14a6d1f894e2a83242e4a52ccfcefaee5e40050562e5f6dafc1adbb4ce2d4ab47279a45dc736ab91ea5042d843c3c092820dfe032efb1
+  languageName: node
+  linkType: hard
+
 "function.prototype.name@npm:^1.1.0":
   version: 1.1.4
   resolution: "function.prototype.name@npm:1.1.4"
@@ -17479,7 +17571,7 @@ __metadata:
     "@headlessui/react": ^1.7.12
     "@next/bundle-analyzer": 13.2.4
     "@prisma/client": 4.16.2
-    "@sentry/nextjs": 7.60.1
+    "@sentry/nextjs": 7.77.0
     "@tailwindcss/aspect-ratio": ^0.4.2
     "@tailwindcss/forms": ^0.5.3
     "@tailwindcss/line-clamp": ^0.4.2
@@ -19096,6 +19188,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hasown@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "hasown@npm:2.0.0"
+  dependencies:
+    function-bind: ^1.1.2
+  checksum: 6151c75ca12554565098641c98a40f4cc86b85b0fd5b6fe92360967e4605a4f9610f7757260b4e8098dd1c2ce7f4b095f2006fe72a570e3b6d2d28de0298c176
+  languageName: node
+  linkType: hard
+
 "hast-to-hyperscript@npm:^9.0.0":
   version: 9.0.1
   resolution: "hast-to-hyperscript@npm:9.0.1"
@@ -20170,6 +20271,15 @@ __metadata:
   dependencies:
     has: ^1.0.3
   checksum: f04ea30533b5e62764e7b2e049d3157dc0abd95ef44275b32489ea2081176ac9746ffb1cdb107445cf1ff0e0dfcad522726ca27c27ece64dadf3795428b8e468
+  languageName: node
+  linkType: hard
+
+"is-core-module@npm:^2.13.0":
+  version: 2.13.1
+  resolution: "is-core-module@npm:2.13.1"
+  dependencies:
+    hasown: ^2.0.0
+  checksum: 256559ee8a9488af90e4bad16f5583c6d59e92f0742e9e8bb4331e758521ee86b810b93bae44f390766ffbc518a0488b18d9dab7da9a5ff997d499efc9403f7c
   languageName: node
   linkType: hard
 
@@ -22842,13 +22952,6 @@ __metadata:
   dependencies:
     es5-ext: ~0.10.2
   checksum: 7f2c53c5e7f2de20efb6ebb3086b7aea88d6cf9ae91ac5618ece974122960c4e8ed04988e81d92c3e63d60b12c556b14d56ef7a9c5a4627b23859b813e39b1a2
-  languageName: node
-  linkType: hard
-
-"lru_map@npm:^0.3.3":
-  version: 0.3.3
-  resolution: "lru_map@npm:0.3.3"
-  checksum: ca9dd43c65ed7a4f117c548028101c5b6855e10923ea9d1f635af53ad20c5868ff428c364d454a7b57fe391b89c704982275410c3c5099cca5aeee00d76e169a
   languageName: node
   linkType: hard
 
@@ -28325,6 +28428,19 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"resolve@npm:1.22.8":
+  version: 1.22.8
+  resolution: "resolve@npm:1.22.8"
+  dependencies:
+    is-core-module: ^2.13.0
+    path-parse: ^1.0.7
+    supports-preserve-symlinks-flag: ^1.0.0
+  bin:
+    resolve: bin/resolve
+  checksum: f8a26958aa572c9b064562750b52131a37c29d072478ea32e129063e2da7f83e31f7f11e7087a18225a8561cfe8d2f0df9dbea7c9d331a897571c0a2527dbb4c
+  languageName: node
+  linkType: hard
+
 "resolve@npm:^1.1.7":
   version: 1.22.1
   resolution: "resolve@npm:1.22.1"
@@ -28361,6 +28477,19 @@ resolve@^2.0.0-next.3:
   bin:
     resolve: bin/resolve
   checksum: fb834b81348428cb545ff1b828a72ea28feb5a97c026a1cf40aa1008352c72811ff4d4e71f2035273dc536dcfcae20c13604ba6283c612d70fa0b6e44519c374
+  languageName: node
+  linkType: hard
+
+"resolve@patch:resolve@1.22.8#~builtin<compat/resolve>":
+  version: 1.22.8
+  resolution: "resolve@patch:resolve@npm%3A1.22.8#~builtin<compat/resolve>::version=1.22.8&hash=c3c19d"
+  dependencies:
+    is-core-module: ^2.13.0
+    path-parse: ^1.0.7
+    supports-preserve-symlinks-flag: ^1.0.0
+  bin:
+    resolve: bin/resolve
+  checksum: 5479b7d431cacd5185f8db64bfcb7286ae5e31eb299f4c4f404ad8aa6098b77599563ac4257cb2c37a42f59dfc06a1bec2bcf283bb448f319e37f0feb9a09847
   languageName: node
   linkType: hard
 

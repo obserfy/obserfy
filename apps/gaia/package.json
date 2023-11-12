@@ -16,7 +16,7 @@
     "@fontsource/source-sans-pro": "^4.5.11",
     "@headlessui/react": "^1.7.12",
     "@prisma/client": "4.16.2",
-    "@sentry/nextjs": "7.60.1",
+    "@sentry/nextjs": "7.77.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
