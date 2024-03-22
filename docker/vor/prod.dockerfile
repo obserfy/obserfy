@@ -3,7 +3,7 @@
 ####################################
 # Build the gatsby powered frontend
 ####################################
-FROM node:16 AS frontend-builder
+FROM node:20 AS frontend-builder
 WORKDIR /usr/src
 COPY . /usr/src
 
