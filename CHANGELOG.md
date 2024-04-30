@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.17.6](https://github.com/obserfy/obserfy/compare/v1.17.5...v1.17.6) (2024-04-30)
+
+
+### Bug Fixes
+
+* **gaia:** build issue due to sharp. ([d81953d](https://github.com/obserfy/obserfy/commit/d81953d234ca2b6880686a2d4824062985e8138c))
+
 ### [1.17.5](https://github.com/obserfy/obserfy/compare/v1.17.4...v1.17.5) (2024-04-30)
 
 ### [1.17.4](https://github.com/obserfy/obserfy/compare/v1.17.3...v1.17.4) (2023-09-02)
