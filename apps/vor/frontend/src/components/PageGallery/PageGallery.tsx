@@ -73,10 +73,14 @@ const ImagesView: FC<{ studentId: string }> = ({ studentId }) => {
   const images = useGetStudentImages(studentId)
 
   const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
-    const selectedImage = event.target.files?.[0]
-    if (selectedImage) {
+    const selectedImages = event.target.files
+    if (selectedImages?.length) {
       try {
-        await postNewStudentImage.mutateAsync(selectedImage)
+        await Promise.all(
+          Array.from(selectedImages).map((image) =>
+            postNewStudentImage.mutateAsync(image)
+          )
+        )
       } catch (e) {
         Sentry.captureException(e)
       }
@@ -100,6 +104,7 @@ const ImagesView: FC<{ studentId: string }> = ({ studentId }) => {
             style={{ display: "none" }}
             disabled={postNewStudentImage.isLoading}
             onChange={handleImageUpload}
+            multiple
           />
           <Button
             as="div"
@@ -123,15 +128,15 @@ const ImagesView: FC<{ studentId: string }> = ({ studentId }) => {
 }
 
 const fading = keyframes`
-  0% {
-    background-color: rgba(165, 165, 165, 0.05);
-  }
-  50% {
-    background-color: rgba(165, 165, 165, 0.2);
-  }
-  100% {
-    background-color: rgba(165, 165, 165, 0.05);
-  }
+    0% {
+        background-color: rgba(165, 165, 165, 0.05);
+    }
+    50% {
+        background-color: rgba(165, 165, 165, 0.2);
+    }
+    100% {
+        background-color: rgba(165, 165, 165, 0.05);
+    }
 `
 // TODO: These are some ugly css, might be inconsistent on some devices
 //  due to the calc and decimal points, revisit later.

@@ -99,6 +99,7 @@ const ImagePreviewOverlay: FC<ImagePreviewOverlayProps> = ({
               width: "100%",
               overflowY: "auto",
               position: "relative",
+              backgroundColor: "white",
             }}
           >
             <Image

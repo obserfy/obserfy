@@ -32,6 +32,7 @@ import Typography from "../Typography/Typography"
 interface Props {
   studentId: string
 }
+
 export const PageNewObservation: FC<Props> = ({ studentId }) => {
   const postNewObservation = usePostNewObservation(studentId)
   const { data: student } = useGetStudent(studentId)
@@ -160,7 +161,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
             studentId={studentId}
             onUploaded={(image) =>
               setImages((draft) => {
-                draft.push(image)
+                image.forEach((i) => draft.push(i))
               })
             }
           />
@@ -202,6 +203,7 @@ const ImagePreview: FC<{
           width: 40,
           objectFit: "cover",
           borderRadius: "default",
+          background: "white",
         }}
       />
       {dialog.visible && (
@@ -219,7 +221,7 @@ const ImagePreview: FC<{
 
 const UploadImageButton: FC<{
   studentId: string
-  onUploaded: (image: { id: string; file: File }) => void
+  onUploaded: (image: Array<{ id: string; file: File }>) => void
 }> = ({ onUploaded, studentId }) => {
   const postNewStudentImage = usePostNewStudentImage(studentId)
 
@@ -253,18 +255,29 @@ const UploadImageButton: FC<{
         sx={{ display: "none" }}
         accept="image/*"
         onChange={async (event) => {
-          const selectedImage = event.target.files?.[0]
-          if (!selectedImage) return
+          const selectedImages = event.target.files
+          if (!selectedImages?.length) return
 
           try {
-            const response = await postNewStudentImage.mutateAsync(
-              selectedImage
+            const responses = await Promise.all(
+              Array.from(selectedImages).map(async (selectedImage) => {
+                const response = await postNewStudentImage.mutateAsync(
+                  selectedImage
+                )
+                return {
+                  id: response.id,
+                  file: selectedImage,
+                }
+              })
             )
-            onUploaded({ id: response.id, file: selectedImage })
+
+            // onUploaded({ id: response.id, file: selectedImage })
+            onUploaded(responses)
           } catch (e) {
             Sentry.captureException(e)
           }
         }}
+        multiple
       />
     </Card>
   )
