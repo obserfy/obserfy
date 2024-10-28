@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:1.0-experimental
-FROM node:18-alpine
+FROM node:20-alpine
 RUN apk add --no-cache libc6-compat
 
 # Setup environment

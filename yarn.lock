@@ -8852,17 +8852,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.18.54":
-  version: 14.18.54
-  resolution: "@types/node@npm:14.18.54"
-  checksum: 9fd66f91fcd8e9b25067f784a9c60bd710ef86a89c838c131ab2b1921398adc53b1c70d741bceed48bb2403b75c434b1bbbb255240773819cde36295c4b6abf1
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:15.14.9":
-  version: 15.14.9
-  resolution: "@types/node@npm:15.14.9"
-  checksum: 49f7f0522a3af4b8389aee660e88426490cd54b86356672a1fedb49919a8797c00d090ec2dcc4a5df34edc2099d57fc2203d796c4e7fbd382f2022ccd789eee7
+"@types/node@npm:20.17.1":
+  version: 20.17.1
+  resolution: "@types/node@npm:20.17.1"
+  dependencies:
+    undici-types: ~6.19.2
+  checksum: 22bc7f32533985c2f33aa4642776c1096a3ca43133ff5783f0b3fe049dc968def7871da8f5d27634d4651ce6bcf4abe31c9d38c4a9a5d0b78118edc8d47c30ce
   languageName: node
   linkType: hard
 
@@ -17610,7 +17605,7 @@ __metadata:
     "@types/minio": 7.1.0
     "@types/mixpanel-browser": 2.47.1
     "@types/nanoid": 3.0.0
-    "@types/node": 14.18.54
+    "@types/node": 20.17.1
     "@types/pg": 8.10.2
     "@types/pino": 6.3.12
     "@types/react": 17.0.62
@@ -31763,6 +31758,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"undici-types@npm:~6.19.2":
+  version: 6.19.8
+  resolution: "undici-types@npm:6.19.8"
+  checksum: de51f1b447d22571cf155dfe14ff6d12c5bdaec237c765085b439c38ca8518fc360e88c70f99469162bf2e14188a7b0bcb06e1ed2dc031042b984b0bb9544017
+  languageName: node
+  linkType: hard
+
 "unfetch@npm:^4.2.0":
   version: 4.2.0
   resolution: "unfetch@npm:4.2.0"
@@ -32467,7 +32469,7 @@ resolve@^2.0.0-next.3:
     "@types/dompurify": 3.0.2
     "@types/faker": 6.6.8
     "@types/jest": 29.5.3
-    "@types/node": 15.14.9
+    "@types/node": 20.17.1
     "@types/query-string": 6.3.0
     "@types/reach__router": ^1
     "@types/react": 17.0.62
