@@ -8465,10 +8465,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/body-scroll-lock@npm:3.1.0":
-  version: 3.1.0
-  resolution: "@types/body-scroll-lock@npm:3.1.0"
-  checksum: 9b0d88053cd65abfc7b0f4946da844f4c822f58d47413457e03220a62bc3de897f7682339e6a04eba07658020910bbfc5dcd0a12ef8f0282780d1ce6e4d71570
+"@types/body-scroll-lock@npm:3.1.2":
+  version: 3.1.2
+  resolution: "@types/body-scroll-lock@npm:3.1.2"
+  checksum: b114b5bd2152ac4414b3e881ed372d53de36342eb8b5365e3b607e6c1d40fb0b554628bd05d9d840d18550541e4b9f6128c86099b4a8f511d48a31a5d7c34f47
   languageName: node
   linkType: hard
 
@@ -17603,7 +17603,7 @@ __metadata:
     "@tailwindcss/line-clamp": ^0.4.2
     "@tailwindcss/typography": ^0.5.9
     "@tanstack/react-query": ^4.0.10
-    "@types/body-scroll-lock": 3.1.0
+    "@types/body-scroll-lock": 3.1.2
     "@types/formidable": 1.2.6
     "@types/hls.js": 1.0.0
     "@types/jest": 29.5.3
@@ -32462,7 +32462,7 @@ resolve@^2.0.0-next.3:
     "@testing-library/react-hooks": 8.0.1
     "@theme-ui/match-media": 0.16.0
     "@theme-ui/mdx": ^0.16.0
-    "@types/body-scroll-lock": 3.1.0
+    "@types/body-scroll-lock": 3.1.2
     "@types/date-fns": 2.6.0
     "@types/dompurify": 3.0.2
     "@types/faker": 6.6.8
