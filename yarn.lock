@@ -14997,7 +14997,7 @@ __metadata:
     "@types/prettier": ^2
     cypress: ^12.7.0
     prettier: ^2.8.4
-    typescript: ^4.9.5
+    typescript: ^5.0.0
   languageName: unknown
   linkType: soft
 
@@ -17654,7 +17654,7 @@ __metadata:
     snarkdown: 2.0.0
     tailwindcss: 3.3.3
     ts-is-present: 1.2.2
-    typescript: 4.9.5
+    typescript: 5.9.3
     uuid: 9.0.0
     xss: 1.0.14
   languageName: unknown
@@ -31678,23 +31678,23 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"typescript@npm:4.9.5, typescript@npm:^4.9.5":
-  version: 4.9.5
-  resolution: "typescript@npm:4.9.5"
+"typescript@npm:5.9.3, typescript@npm:^5.0.0":
+  version: 5.9.3
+  resolution: "typescript@npm:5.9.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: ee000bc26848147ad423b581bd250075662a354d84f0e06eb76d3b892328d8d4440b7487b5a83e851b12b255f55d71835b008a66cbf8f255a11e4400159237db
+  checksum: 0d0ffb84f2cd072c3e164c79a2e5a1a1f4f168e84cb2882ff8967b92afe1def6c2a91f6838fb58b168428f9458c57a2ba06a6737711fdd87a256bbe83e9a217f
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.9.5#~builtin<compat/typescript>, typescript@patch:typescript@^4.9.5#~builtin<compat/typescript>":
-  version: 4.9.5
-  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"
+"typescript@patch:typescript@5.9.3#~builtin<compat/typescript>, typescript@patch:typescript@^5.0.0#~builtin<compat/typescript>":
+  version: 5.9.3
+  resolution: "typescript@patch:typescript@npm%3A5.9.3#~builtin<compat/typescript>::version=5.9.3&hash=14eedb"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 1f8f3b6aaea19f0f67cba79057674ba580438a7db55057eb89cc06950483c5d632115c14077f6663ea76fd09fce3c190e6414bb98582ec80aa5a4eaf345d5b68
+  checksum: 8bb8d86819ac86a498eada254cad7fb69c5f74778506c700c2a712daeaff21d3a6f51fd0d534fe16903cb010d1b74f89437a3d02d4d0ff5ca2ba9a4660de8497
   languageName: node
   linkType: hard
 
@@ -32538,7 +32538,7 @@ resolve@^2.0.0-next.3:
     snarkdown: 2.0.0
     tailwindcss: 3.3.3
     theme-ui: 0.16.0
-    typescript: 4.9.5
+    typescript: 5.9.3
     url-loader: 4.1.1
     use-immer: 0.9.0
     wait-on: 7.0.1
