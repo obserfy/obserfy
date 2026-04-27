@@ -5434,12 +5434,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/bundle-analyzer@npm:13.2.4":
-  version: 13.2.4
-  resolution: "@next/bundle-analyzer@npm:13.2.4"
+"@next/bundle-analyzer@npm:13.5.11":
+  version: 13.5.11
+  resolution: "@next/bundle-analyzer@npm:13.5.11"
   dependencies:
     webpack-bundle-analyzer: 4.7.0
-  checksum: 4c9512384d898d0f3bd628efac385bfc314337c5b40f0f63c00ff00f58dd9fd3c0e2643863022a0c4b1e04cec1f12635235623a0f2f92ca684f77e41c1c4ec11
+  checksum: 6804565f109ba13b007d25c5b2708f81844c42f8f37919bc3b9c53cad8dfef175252f6379e32c04fbdee0001629b171ac0e2111fba55c8d35c4b4c0d1fa93c84
   languageName: node
   linkType: hard
 
@@ -17595,7 +17595,7 @@ __metadata:
     "@auth0/nextjs-auth0": 2.7.0
     "@fontsource/source-sans-pro": ^4.5.11
     "@headlessui/react": ^1.7.12
-    "@next/bundle-analyzer": 13.2.4
+    "@next/bundle-analyzer": 13.5.11
     "@prisma/client": 4.16.2
     "@sentry/nextjs": 7.77.0
     "@tailwindcss/aspect-ratio": ^0.4.2
