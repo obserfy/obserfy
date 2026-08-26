@@ -12,7 +12,7 @@
     "eslint": "8.44.0",
     "husky": "8.0.3",
     "lint-staged": "13.2.3",
-    "turbo": "^1.8.2"
+    "turbo": "^2.0.0"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "prettier --write",
