@@ -4576,14 +4576,15 @@ __metadata:
   linkType: hard
 
 "@headlessui/react@npm:^1.7.12":
-  version: 1.7.15
-  resolution: "@headlessui/react@npm:1.7.15"
+  version: 1.7.19
+  resolution: "@headlessui/react@npm:1.7.19"
   dependencies:
+    "@tanstack/react-virtual": ^3.0.0-beta.60
     client-only: ^0.0.1
   peerDependencies:
     react: ^16 || ^17 || ^18
     react-dom: ^16 || ^17 || ^18
-  checksum: f2d11d58499ddf1362a40d84d92b7db932adaccc3596f44f1eead642258280f124497f2b329cee6e04801818bb2e66c42d752ee05f40f8b5239c2f692128e568
+  checksum: 2a343a5fcf1f45e870cc94613231b89a8da78114001ffafa4751a0eceae7569ff9237aff1f2aedfa6f6e53ee3bb9ba5e5d19ebf1878fee3ff4f3c733fddc1087
   languageName: node
   linkType: hard
 
@@ -8208,6 +8209,25 @@ __metadata:
     react-native:
       optional: true
   checksum: fe9c9573a6132961d0437ca3b8d9e379553e0ddd1e884d75dd34c98d5e64e4305e45119d95aec4a7d56aae7bf09cb2792fd9e75da731f5c14db5e43b36732d48
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-virtual@npm:^3.0.0-beta.60":
+  version: 3.14.10
+  resolution: "@tanstack/react-virtual@npm:3.14.10"
+  dependencies:
+    "@tanstack/virtual-core": 3.17.8
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: f8262351227c6c82da574b363d409367d6bc915d43bb38b67b2f57ebee06548161ce58f4c3a44bc8bc757dc389d4ef303b74c2269b56fe0e52486ad047c2dc13
+  languageName: node
+  linkType: hard
+
+"@tanstack/virtual-core@npm:3.17.8":
+  version: 3.17.8
+  resolution: "@tanstack/virtual-core@npm:3.17.8"
+  checksum: 767a340ada3da5d702e40f69defcb4fb8804bf2add224e0aea4285442955ec7802c7472274b994e0e6be5b6980d981abee3ce63456e70976974cbc931f293aa2
   languageName: node
   linkType: hard
 
