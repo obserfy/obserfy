@@ -4230,10 +4230,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@faker-js/faker@npm:^7.3.0":
-  version: 7.6.0
-  resolution: "@faker-js/faker@npm:7.6.0"
-  checksum: 942af6221774e8c98a0eb6bc75265e05fb81a941170377666c3439aab9495dd321d6beedc5406f07e6ad44262b3e43c20961f666d116ad150b78e7437dd1bb2b
+"@faker-js/faker@npm:^10.0.0":
+  version: 10.6.0
+  resolution: "@faker-js/faker@npm:10.6.0"
+  checksum: 36ddfdbb34dbd262c7aeb3cb918b8ed3456b0d7a9dc4b0a61050bf731c37f17a236b316d40af29cc281019cd1870004008609ecb8161c4346f5d61836ed7c07b
   languageName: node
   linkType: hard
 
@@ -14993,7 +14993,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "e2e@workspace:apps/e2e"
   dependencies:
-    "@faker-js/faker": ^7.3.0
+    "@faker-js/faker": ^10.0.0
     "@types/prettier": ^2
     cypress: ^12.7.0
     prettier: ^2.8.4
