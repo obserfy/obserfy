@@ -1,0 +1,19 @@
+docker-compose.yml
+  s_496aa64d3af7c8::t_0ec0f86184de0c 38-39,41,46-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1fe8304fd797b6879a0740a5c12d3c8e2c2f46de",
+  "prompts": {},
+  "sessions": {
+    "s_496aa64d3af7c8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "46ff353d-528e-4881-b74f-2a17ae7ddbe0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Chrisando E. Pramudhita <chrsep@protonmail.com>"
+    }
+  }
+}
