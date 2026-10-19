@@ -44,7 +44,7 @@ jobs:
       - name: Use Node.js 15
         uses: actions/setup-node@v4
         with:
-          node-version: 15
+          node-version: 16
       - name: Install Dependencies
         run: yarn install
       - name: Compile translations
@@ -75,7 +75,7 @@ jobs:
       - name: Use Node.js 15
         uses: actions/setup-node@v4
         with:
-          node-version: 15
+          node-version: 18
       - name: Install Dependencies
         run: yarn install
       - run: yarn workspace gaia prisma generate
@@ -141,8 +141,8 @@ jobs:
       - name: Use Go 15
         uses: actions/setup-go@v5
         with:
-          go-version: 1.15.3
-      - run: cd apps/vor/ && go get gotest.tools/gotestsum
+          go-version: 1.19
+      - run: cd apps/vor/ && go install gotest.tools/gotestsum@v1.10.0
       - run: cd apps/vor/ && go mod vendor
       - run: |
           cd apps/vor/
@@ -172,7 +172,7 @@ jobs:
 #      - name: Use Node.js 15
 #        uses: actions/setup-node@v4
 #        with:
-#          node-version: 15
+#          node-version: 16
 #      - name: Install Dependencies
 #        run: yarn install
 #      - uses: actions/download-artifact@v4
@@ -225,7 +225,7 @@ jobs:
       - name: Use Node.js 15
         uses: actions/setup-node@v4
         with:
-          node-version: 15
+          node-version: 16
       - name: Install Dependencies
         run: yarn install
       - name: Cypress parallel run
@@ -299,7 +299,7 @@ jobs:
       - name: Use Node.js 15
         uses: actions/setup-node@v4
         with:
-          node-version: 15
+          node-version: 16
       - name: Install Dependencies
         run: yarn install
       - name: Cypress parallel run
