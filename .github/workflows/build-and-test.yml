@@ -211,7 +211,7 @@ jobs:
           name: vor
           path: apps/vor/frontend/public
       - run: touch .env.local # stop docker-compose from complaining about missing file.
-      - run: docker-compose up -d &
+      - run: docker compose up -d &
       - name: Cache e2e deps
         id: cache-deps
         uses: actions/cache@v4
@@ -285,7 +285,7 @@ jobs:
           name: vor
           path: apps/vor/frontend/public
       - run: touch .env.local # stop docker-compose from complaining about missing file.
-      - run: docker-compose up -d &
+      - run: docker compose up -d &
       - name: Cache e2e deps
         id: cache-deps
         uses: actions/cache@v4
