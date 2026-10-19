@@ -1,0 +1,25 @@
+.github/workflows/release.yml
+  s_496aa64d3af7c8::t_23586673000d6e 17,22
+.github/workflows/build-and-test.yml
+  s_496aa64d3af7c8::t_23586673000d6e 24,26,37,45,55,64,67,76,87,91,131,134,142,162,165,173,178,208-209,217,226,257,260,262,265,282-283,291,300,331,336
+.github/workflows/deploy.yml
+  s_496aa64d3af7c8::t_23586673000d6e 17,62
+.github/workflows/static-analysis.yml
+  s_496aa64d3af7c8::t_23586673000d6e 24,26,35,47,49,58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "67add41ffc9e35638cbe714bad95aa37eccff7d6",
+  "prompts": {},
+  "sessions": {
+    "s_496aa64d3af7c8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "46ff353d-528e-4881-b74f-2a17ae7ddbe0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Chrisando E. Pramudhita <chrsep@protonmail.com>"
+    }
+  }
+}
