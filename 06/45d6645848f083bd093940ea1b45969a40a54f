@@ -1,0 +1,21 @@
+apps/gaia/src/lib/video.ts
+  s_496aa64d3af7c8::t_d4193a4961bae5 22-24,28-30
+apps/vor/frontend/src/components/VideoPlayer/VideoPlayer.tsx
+  s_496aa64d3af7c8::t_0fab44de401297 29-31,37-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0645d6645848f083bd093940ea1b45969a40a54f",
+  "prompts": {},
+  "sessions": {
+    "s_496aa64d3af7c8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "46ff353d-528e-4881-b74f-2a17ae7ddbe0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Chrisando E. Pramudhita <chrsep@protonmail.com>"
+    }
+  }
+}
