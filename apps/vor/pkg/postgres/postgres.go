@@ -34,12 +34,9 @@ func Connect(user string, password string, addr string, tlsConfig *tls.Config, d
 	return db
 }
 
-func InitTables(db *pg.Tx) error {
-	_, err := db.Exec("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"")
-	if err != nil {
-		return richErrors.Wrap(err, "failed to create extension")
-	}
-	// Register many2many tables
+// Register many2many tables at package init so registration never depends on
+// InitTables succeeding (e.g. when parallel test processes race on CREATE EXTENSION).
+func init() {
 	for _, model := range []interface{}{
 		(*ImageToStudents)(nil),
 		(*StudentToClass)(nil),
@@ -51,6 +48,13 @@ func InitTables(db *pg.Tx) error {
 		(*VideoToStudents)(nil),
 	} {
 		orm.RegisterTable(model)
+	}
+}
+
+func InitTables(db *pg.Tx) error {
+	_, err := db.Exec("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"")
+	if err != nil {
+		return richErrors.Wrap(err, "failed to create extension")
 	}
 
 	// CreateAll tables
