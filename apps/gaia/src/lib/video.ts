@@ -19,13 +19,15 @@ export const monitor = (id: string, hls: Hls | undefined) => {
 
 export const attachSource = (player: HTMLVideoElement, src: string) => {
   let hls: Hls | undefined
-  if (player.canPlayType("application/vnd.apple.mpegurl")) {
-    // eslint-disable-next-line no-param-reassign
-    player.src = src
-  } else if (Hls.isSupported()) {
+  // Prefer hls.js wherever MSE is available. Chrome now reports native HLS
+  // support, but its native player fails to play our Mux streams.
+  if (Hls.isSupported()) {
     hls = new Hls()
     hls.loadSource(src)
     hls.attachMedia(player)
+  } else if (player.canPlayType("application/vnd.apple.mpegurl")) {
+    // eslint-disable-next-line no-param-reassign
+    player.src = src
   }
 
   monitor(`#${player.id}`, hls)

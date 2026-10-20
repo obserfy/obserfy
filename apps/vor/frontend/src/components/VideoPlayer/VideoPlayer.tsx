@@ -26,14 +26,16 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster, sx }) => {
     })
 
     let hls: Hls
-    if (video.current?.canPlayType("application/vnd.apple.mpegurl")) {
-      video.current.src = src
-    } else if (Hls.isSupported() && video.current) {
+    // Prefer hls.js wherever MSE is available. Chrome now reports native HLS
+    // support, but its native player fails to play our Mux streams.
+    if (Hls.isSupported() && video.current) {
       hls = new Hls()
       hls.loadSource(src)
       hls.attachMedia(video.current)
 
       mux.addHLSJS("#VideoPlayer", { hlsjs: hls, Hls })
+    } else if (video.current?.canPlayType("application/vnd.apple.mpegurl")) {
+      video.current.src = src
     }
 
     if (video.current && video.current.paused) {

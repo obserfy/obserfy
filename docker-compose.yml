@@ -35,12 +35,16 @@ services:
       - ./docker/nginx/ssl:/ssl
 
   minio:
-    image: minio/minio:latest
+    # minio/minio is no longer pullable from Docker Hub; use Bitnami's archived image.
+    image: bitnamilegacy/minio:2025.5.24
     container_name: vor-minio
+    user: root
     entrypoint: sh
     command: -c 'mkdir -p /data/media && minio server /data'
     environment:
       MINIO_HTTP_TRACE: "/dev/stdout"
+      MINIO_ROOT_USER: ${MINIO_ACCESS_KEY}
+      MINIO_ROOT_PASSWORD: ${MINIO_SECRET_KEY}
     ports:
       - 9000:9000
     volumes:
