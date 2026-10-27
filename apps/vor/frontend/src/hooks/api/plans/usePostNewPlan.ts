@@ -26,7 +26,7 @@ export interface PostNewLessonPlanBody {
 }
 const usePostNewPlan = () => {
   const queryCache = useQueryClient()
-  let date: string
+  let date: string | undefined
   const postPlan = async (newPlan: PostNewLessonPlanBody) => {
     const schoolId = getSchoolId()
     const result = await fetch(`${BASE_URL}/schools/${schoolId}/plans`, {

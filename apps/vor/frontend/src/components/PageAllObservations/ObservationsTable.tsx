@@ -44,7 +44,7 @@ export const ObservationsTable: FC<{
   const areaFilterId =
     areaFilter > 0 ? areas.data?.[areaFilter - 1].id ?? "" : ""
 
-  const observationsByArea = {}
+  const observationsByArea: { [areaId: string]: Observation[] } = {}
   observations.data?.forEach((observation) => {
     const areaId = observation.area?.id ?? "Other"
     observationsByArea[areaId] ??= []

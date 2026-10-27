@@ -7,12 +7,13 @@ declare module "formidable-serverless" {
   export default formidable
 }
 
-declare module NodeJS {
-  interface Global {
-    prisma: any
-  }
-}
+// Dev-only PrismaClient cache, see src/lib/prisma.ts. @types/node 16+ types
+// `global` as `typeof globalThis`, so it is declared as a global var.
+declare var prisma: any
 
 declare module "mux-embed" {
   const monitor: any
 }
+
+// Global stylesheets are imported for their side effects only.
+declare module "*.css" {}

@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es5", "dom"],
+    "target": "es2017",
+    "lib": ["es2017", "dom"],
     "types": ["cypress"],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    // Cypress 10's spec preprocessor (ts-loader with our TypeScript 6 API)
+    // forces `downlevelIteration`, which TypeScript 6 reports as deprecated.
+    "ignoreDeprecations": "6.0"
   },
   "include": ["**/*.ts"]
 }
