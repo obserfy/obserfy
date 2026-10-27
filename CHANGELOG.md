@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.17.7](https://github.com/obserfy/obserfy/compare/v1.17.6...v1.17.7) (2026-10-27)
+
+
+### Bug Fixes
+
+* **gaia:** make the production image build again ([7bd6640](https://github.com/obserfy/obserfy/commit/7bd66405529ff292f27c74ffb12902c9f7ba1b2b))
+* **video:** prefer hls.js over native HLS playback ([0645d66](https://github.com/obserfy/obserfy/commit/0645d6645848f083bd093940ea1b45969a40a54f))
+* **vor:** register many2many tables at package init ([abd6255](https://github.com/obserfy/obserfy/commit/abd62554e70d3ada3b941de2034224911adffc0a))
+
 ### [1.17.6](https://github.com/obserfy/obserfy/compare/v1.17.5...v1.17.6) (2024-04-30)
 
 
