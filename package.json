@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@types/react-dom": "^18",
-    "eslint": "8.21.0",
+    "eslint": "8.57.1",
     "husky": "7.0.4",
     "lint-staged": "11.2.6"
   },
@@ -19,6 +19,12 @@
   },
   "scripts": {
     "postinstall": "husky install"
+  },
+  "resolutions": {
+    "eslint-config-next/@typescript-eslint/parser": "8.72.1",
+    "eslint-config-react-app/@typescript-eslint/eslint-plugin": "8.72.1",
+    "eslint-config-react-app/@typescript-eslint/parser": "8.72.1",
+    "next@12.2.3": "patch:next@npm:12.2.3#.yarn/patches/next-npm-12.2.3-07d597c2b7.patch"
   },
   "dependencies": {
     "prettier": "2.5.1"

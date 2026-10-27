@@ -39,8 +39,9 @@ const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
   // get all dates sorted in descending order
   const dates = Object.keys(observationsByDate).sort().reverse()
 
-  const selectedDate = dayjs.unix(parseInt(dates[selectionIdx], 10))
-  const observations: Observation[] = observationsByDate[dates[selectionIdx]]
+  const selectedUnixDate = parseInt(dates[selectionIdx], 10)
+  const selectedDate = dayjs.unix(selectedUnixDate)
+  const observations: Observation[] = observationsByDate[selectedUnixDate]
   const dataLength = data?.length ?? 0
 
   return (

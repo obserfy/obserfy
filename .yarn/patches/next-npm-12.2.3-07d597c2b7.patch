@@ -1,0 +1,41 @@
+diff --git a/dist/build/load-jsconfig.js b/dist/build/load-jsconfig.js
+index 96ce49ac1d55d3de26de173a09b24e95bca1fa41..877be4ff0e3d7e6e25c67d0202aeb7af5401f8f5 100644
+--- a/dist/build/load-jsconfig.js
++++ b/dist/build/load-jsconfig.js
+@@ -41,6 +41,10 @@ async function loadJsConfig(dir, config) {
+     let resolvedBaseUrl;
+     if (jsConfig == null ? void 0 : (ref = jsConfig.compilerOptions) == null ? void 0 : ref.baseUrl) {
+         resolvedBaseUrl = _path.default.resolve(dir, jsConfig.compilerOptions.baseUrl);
++    } else if (jsConfig == null ? void 0 : (ref = jsConfig.compilerOptions) == null ? void 0 : ref.paths) {
++        // obserfy patch: TypeScript 6+ deprecates and TypeScript 7 removes
++        // "baseUrl"; "paths" then resolve relative to the tsconfig file.
++        resolvedBaseUrl = jsConfig.compilerOptions.pathsBasePath || dir;
+     }
+     return {
+         useTypeScript,
+diff --git a/dist/lib/typescript/writeConfigurationDefaults.js b/dist/lib/typescript/writeConfigurationDefaults.js
+index ad270b045739998cedf60f460bc5223af74d6dba..3eaf45ad43564b963739aef518b27beea2f3afe5 100644
+--- a/dist/lib/typescript/writeConfigurationDefaults.js
++++ b/dist/lib/typescript/writeConfigurationDefaults.js
+@@ -108,14 +108,17 @@ function getDesiredCompilerOptions(ts) {
+             reason: "for dynamic import() support"
+         },
+         moduleResolution: {
+-            parsedValue: ts.ModuleResolutionKind.NodeJs,
++            // obserfy patch: accept (and default to) "bundler", since
++            // TypeScript 6+ deprecates and TypeScript 7 removes "node".
++            parsedValue: ts.ModuleResolutionKind.Bundler !== undefined ? ts.ModuleResolutionKind.Bundler : ts.ModuleResolutionKind.NodeJs,
+             // All of these values work:
+             parsedValues: [
+                 ts.ModuleResolutionKind.NodeJs,
+                 ts.ModuleResolutionKind.Node12,
+-                ts.ModuleResolutionKind.NodeNext, 
+-            ],
+-            value: "node",
++                ts.ModuleResolutionKind.NodeNext,
++                ts.ModuleResolutionKind.Bundler, 
++            ].filter((value)=>value !== undefined),
++            value: ts.ModuleResolutionKind.Bundler !== undefined ? "bundler" : "node",
+             reason: "to match webpack resolution"
+         },
+         resolveJsonModule: {

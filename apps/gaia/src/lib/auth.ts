@@ -1,9 +1,14 @@
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0"
-import { GetServerSideProps } from "next"
+import { GetServerSidePropsContext, GetServerSidePropsResult } from "next"
 import { findStudentAndGuardianById } from "$lib/db"
 
+// Same shape as Next's GetServerSideProps<P>, minus its
+// `P extends { [key: string]: any }` constraint: TypeScript 4.8+ rejects our
+// unconstrained P there, and constraining P instead stops props inference.
 export const withAuthorization = <P>(
-  getServerSideProps: GetServerSideProps<P>,
+  getServerSideProps: (
+    ctx: GetServerSidePropsContext
+  ) => Promise<GetServerSidePropsResult<P>>,
   opts?: { returnTo?: string }
 ) => {
   return withPageAuthRequired<P>({
