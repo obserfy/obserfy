@@ -1,4 +1,6 @@
-FROM nginx:stable-alpine
+# docker-compose overrides BASE_REGISTRY with a Docker Hub mirror for local dev.
+ARG BASE_REGISTRY=docker.io/library
+FROM ${BASE_REGISTRY}/nginx:stable-alpine
 
 ENV TARGET_HOST imgproxy
 ENV TARGET_PORT 8080

@@ -43,13 +43,10 @@ They need, on localhost:
   Tables are created on first run.
 - S3/MinIO on `:9000` with the keys from the root `.env`. `school` and `student` tests read
   objects back, so they need a real MinIO; the other packages only need a bucket check to pass.
-- Env: `testutils` loads `.env.test`, `.env.local`, `.env` from the repo root and stops at the
-  first missing file. **Create an empty `.env.local` at the repo root** or `MINIO_*` is never set
-  and tests hang retrying the S3 connection.
+- Env: `testutils` loads `.env.test`, `.env.local` (optional) and `.env` from the repo root.
 
 ```sh
 docker compose up -d db minio     # or native postgres/minio, see below
-touch ../../.env.local
 go test ./...                     # from apps/vor; CI uses gotestsum, same packages
 go test ./pkg/class/...           # single package
 ```
@@ -60,8 +57,10 @@ reachable. Run with a timeout.
 
 ### Running the API locally
 
-`docker compose up -d` starts the full stack (API with live reload and delve on :40000, nginx
-https on :8000, postgres, minio, imgproxy). If Docker Hub pulls are rate-limited, run natively:
+`./scripts/bootstrap.sh` (repo root) installs deps and runs `docker compose up -d --build`, which starts
+the full stack (API with live reload via air and delve on :40000, nginx https on :8000, postgres,
+minio, imgproxy). Images are pinned and pulled through `mirror.gcr.io` to avoid Docker Hub rate
+limits (`DOCKER_REGISTRY_MIRROR=docker.io` switches back). If Docker isn't available, run natively:
 start Postgres (SSL on, `defaultdb` created), something S3-compatible on :9000, then from
 `apps/vor` run `go build -o app ./pkg && ./app` with the root `.env` loaded and
 `DB_HOST=localhost MINIO_ENDPOINT=localhost:9000`. The API listens on :8080.
@@ -94,7 +93,7 @@ Commands (from the repo root):
 yarn workspace vor run i18n:compile   # once, before typecheck/lint/build
 yarn workspace vor typecheck
 yarn workspace vor lint
-yarn workspace vor run develop        # dev server on :8001, proxies /api,/auth to https://localhost:8000
+yarn workspace vor run develop        # compiles translations, then dev server on :8001 (Node 16+), proxies /api,/auth to https://localhost:8000
 yarn workspace vor run build:ci       # production build (Node 16)
 ```
 

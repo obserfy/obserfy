@@ -1,17 +1,25 @@
-## Docker Compose for development
-version: "3"
+## Docker Compose for development. Start everything with `./scripts/bootstrap.sh` (or `docker compose up -d --build`).
+##
+## Images are pinned and pulled from mirror.gcr.io, Google's pull-through cache of Docker Hub, because anonymous
+## Docker Hub pulls get rate limited (429 Too Many Requests). To pull from somewhere else, e.g. Docker Hub when
+## you're logged in, set DOCKER_REGISTRY_MIRROR=docker.io before running compose.
+x-mirror-build-args: &mirror-build-args
+  BASE_REGISTRY: ${DOCKER_REGISTRY_MIRROR:-mirror.gcr.io}/library
+
 services:
   vor_app:
-    image: chrsep/go-devtools:1.15.0
+    build:
+      context: ./docker/vor
+      dockerfile: dev.dockerfile
+      args: *mirror-build-args
     container_name: vor_app
     working_dir: /src/vor
     environment:
-      # go-devtools docker specific env
-      SRC_ENTRYPOINT: /src/vor/pkg/*.go
       SENTRY_DSN: "https://75f41fa2e343439f8e31f145311b4db3@o330610.ingest.sentry.io/1850836"
       SENTRY_ENV: "development"
     volumes:
       - ./apps/vor:/src/vor
+      - vor-go-mod:/go/pkg/mod
     ports:
       - "40000:40000"
       - "8080:8080"
@@ -19,14 +27,21 @@ services:
       - "apparmor=unconfined"
     cap_add:
       - "SYS_PTRACE"
+    depends_on:
+      db:
+        condition: service_healthy
+      minio:
+        condition: service_started
     env_file:
       - .env
-      - .env.local
+      - path: .env.local
+        required: false
 
   nginx:
     build:
       context: .
       dockerfile: docker/nginx/dev.dockerfile
+      args: *mirror-build-args
     depends_on:
       - vor_app
     ports:
@@ -35,8 +50,8 @@ services:
       - ./docker/nginx/ssl:/ssl
 
   minio:
-    # minio/minio is no longer pullable from Docker Hub; use Bitnami's archived image.
-    image: bitnamilegacy/minio:2025.5.24
+    # minio/minio is no longer published; use Bitnami's archived image.
+    image: ${DOCKER_REGISTRY_MIRROR:-mirror.gcr.io}/bitnamilegacy/minio:2025.5.24
     container_name: vor-minio
     user: root
     entrypoint: sh
@@ -51,10 +66,12 @@ services:
       - vor-minio:/data
     env_file:
       - .env
-      - .env.local
+      - path: .env.local
+        required: false
 
   imgproxy:
-    image: darthsim/imgproxy:v2.17
+    # Same version as production (chrsep/vor-infra imgproxy-config.yml).
+    image: ${DOCKER_REGISTRY_MIRROR:-mirror.gcr.io}/darthsim/imgproxy:v3.7
     depends_on:
       - minio
     environment:
@@ -69,12 +86,14 @@ services:
       # IMGPROXY_LOG_FORMAT: "structured" use for logging in prod
     env_file:
       - .env
-      - .env.local
+      - path: .env.local
+        required: false
 
   imgproxy-nginx:
     build:
       context: .
       dockerfile: docker/imgproxy-nginx/prod.dockerfile
+      args: *mirror-build-args
     depends_on:
       - imgproxy
     ports:
@@ -82,12 +101,20 @@ services:
       - 10001:80
 
   db:
-    image: obserfy/postgres-dev:latest
+    build:
+      context: ./docker/postgres
+      dockerfile: dev.dockerfile
+      args: *mirror-build-args
     container_name: vor-postgres
     environment:
       POSTGRES_MULTIPLE_DATABASES: defaultdb,defaultdb_test
       POSTGRES_PASSWORD: postgres
     command: [ "postgres", "-c", "log_statement=all" ]
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-h", "127.0.0.1", "-U", "postgres" ]
+      interval: 2s
+      timeout: 5s
+      retries: 30
     ports:
       - "5432:5432"
     volumes:
@@ -96,3 +123,4 @@ services:
 volumes:
   vor:
   vor-minio:
+  vor-go-mod:

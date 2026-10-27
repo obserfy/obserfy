@@ -1,0 +1,20 @@
+# Config for air (https://github.com/cosmtrek/air), used by docker/vor/dev.dockerfile.
+# Runs from /src/vor (apps/vor mounted into the container).
+root = "."
+tmp_dir = "tmp"
+
+[build]
+cmd = "go build -o ./tmp/app ./pkg"
+bin = "./tmp/app"
+# Run under delve so an IDE can attach on :40000.
+full_bin = "dlv exec --listen=0.0.0.0:40000 --headless --continue --log --accept-multiclient --api-version=2 ./tmp/app"
+log = "air_errors.log"
+include_ext = ["go"]
+exclude_dir = ["frontend", "tmp", "vendor", "node_modules", "migrations"]
+delay = 500
+
+[log]
+time = false
+
+[misc]
+clean_on_exit = true

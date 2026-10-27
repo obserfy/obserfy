@@ -15,8 +15,9 @@ deploys alive. Prefer small, surgical changes over refactors or framework upgrad
 | `apps/vor/pkg` | Teacher app backend (REST API, also serves the built frontend) | Go 1.19 module `github.com/chrsep/vor`, chi, go-pg, zap |
 | `apps/vor/frontend` | Teacher app SPA (workspace name `vor`) | Gatsby 4, React, TypeScript, theme-ui + Tailwind, react-query, Lingui |
 | `apps/gaia` | Parent portal (workspace name `gaia`) | Next.js 12, Prisma 5, Auth0, Tailwind |
-| `docker/` | Dockerfiles: `vor/prod.dockerfile`, `gaia/prod.dockerfile`, dev nginx/postgres | |
+| `docker/` | Dockerfiles: `vor/prod.dockerfile`, `gaia/prod.dockerfile`, dev vor/nginx/postgres | |
 | `docker-compose.yml` | Dev stack: vor app (live reload), nginx (https :8000), postgres, minio, imgproxy | |
+| `scripts/bootstrap.sh` | One-shot local setup: deps, generated files, `docker compose up` | |
 | `.github/workflows/` | CI (`build-and-test`, `static-analysis`), `release`, `deploy` | |
 
 See `apps/vor/AGENTS.md` and `apps/gaia/AGENTS.md` for app-specific rules.
@@ -40,6 +41,7 @@ Related repos (not in this checkout): `obserfy/freyr` (marketing site) and `chrs
 Run from the repo root unless noted.
 
 ```sh
+./scripts/bootstrap.sh                  # first-time setup + start the dev stack (safe to re-run)
 yarn install                            # all JS deps (~3 min cold); husky post-checkout also runs it
 
 # Static checks, same as .github/workflows/static-analysis.yml

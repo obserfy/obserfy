@@ -1,4 +1,6 @@
-FROM nginx:stable-alpine
+# Base image comes from mirror.gcr.io (Docker Hub cache) to avoid Docker Hub rate limits.
+ARG BASE_REGISTRY=mirror.gcr.io/library
+FROM ${BASE_REGISTRY}/nginx:1.30-alpine
 
 ENV TARGET_HOST vor_app
 ENV TARGET_PORT 8080

@@ -129,7 +129,7 @@
     "typecheck": "yarn i18n:compile && tsc --noemit",
     "build": "yarn i18n:build && gatsby build",
     "build:ci": "gatsby build",
-    "develop": "gatsby develop -H 0.0.0.0 -p 8001",
+    "develop": "yarn i18n:compile && node scripts/develop.js -H 0.0.0.0 -p 8001",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "start:prod": "NODE_ENV=production npm run develop",
