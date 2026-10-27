@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Get the version
         id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
       - name: Setup secrets
         run: |
           touch sentrysecret
@@ -62,7 +62,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Get the version
         id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
       - name: Setup secrets
         run: |
           touch sentrysecret
