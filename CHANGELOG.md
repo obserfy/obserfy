@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.17.10](https://github.com/obserfy/obserfy/compare/v1.17.9...v1.17.10) (2026-10-28)
+
+
+### Bug Fixes
+
+* **docker:** add a shell to the vor image and slim down gaia ([0446941](https://github.com/obserfy/obserfy/commit/044694195d71b802ac97ec9deccc51537563ab7e))
+
 ### [1.17.9](https://github.com/obserfy/obserfy/compare/v1.17.8...v1.17.9) (2026-10-28)
 
 ### [1.17.8](https://github.com/obserfy/obserfy/compare/v1.17.7...v1.17.8) (2026-10-27)
