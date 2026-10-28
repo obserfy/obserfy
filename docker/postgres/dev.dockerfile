@@ -1,4 +1,6 @@
-FROM postgres:12-alpine
+# Base image comes from mirror.gcr.io (Docker Hub cache) to avoid Docker Hub rate limits.
+ARG BASE_REGISTRY=mirror.gcr.io/library
+FROM ${BASE_REGISTRY}/postgres:12-alpine
 
 ADD pg_hba.conf /pg_hba.conf
 ADD postgresql.conf /postgresql.conf

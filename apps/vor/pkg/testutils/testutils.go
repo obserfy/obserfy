@@ -38,11 +38,15 @@ func (s *BaseTestSuite) TearDownSuite() {
 }
 
 func (s *BaseTestSuite) SetupSuite() {
-	_ = godotenv.Load(
+	// Load each file on its own: godotenv.Load stops at the first missing file, and
+	// .env.local is optional. Earlier files win since Load never overrides a set var.
+	for _, envFile := range []string{
 		"../../../../../.env.test",
 		"../../../../../.env.local",
 		"../../../../../.env",
-	)
+	} {
+		_ = godotenv.Load(envFile)
+	}
 
 	var err error
 	s.DB, err = connectTestDB()
