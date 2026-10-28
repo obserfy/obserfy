@@ -228,6 +228,10 @@ jobs:
           node-version: 16
       - name: Install Dependencies
         run: yarn install
+      # cypress-io/github-action@v2's own wait-on gives up on the first refused
+      # connection when GitHub runs it on Node 24, so wait for the stack here.
+      - name: Wait for the dev stack
+        run: timeout 300 bash -c 'until curl -skf -o /dev/null https://localhost:8000/login; do sleep 2; done'
       - name: Cypress parallel run
         uses: cypress-io/github-action@v2
         with:
@@ -302,6 +306,10 @@ jobs:
           node-version: 16
       - name: Install Dependencies
         run: yarn install
+      # cypress-io/github-action@v2's own wait-on gives up on the first refused
+      # connection when GitHub runs it on Node 24, so wait for the stack here.
+      - name: Wait for the dev stack
+        run: timeout 300 bash -c 'until curl -skf -o /dev/null https://localhost:8000/login; do sleep 2; done'
       - name: Cypress parallel run
         uses: cypress-io/github-action@v2
         with:

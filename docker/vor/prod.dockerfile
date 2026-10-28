@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.0-experimental
+# syntax=docker/dockerfile:1
 # Commands are relative to the monorepo root
 ####################################
 # Build the gatsby powered frontend
@@ -28,7 +28,10 @@ RUN go build -o ./app ./pkg/*.go
 ####################################
 # Build the final image
 ####################################
-FROM gcr.io/distroless/base
+# The :debug variant adds a busybox shell (`docker exec -it vor_app sh`).
+# debian12 matches the golang:1.19 builder, so the binary links against the
+# same glibc it was built with.
+FROM gcr.io/distroless/base-debian12:debug
 WORKDIR /usr/src/apps/vor
 COPY --from=frontend-builder /frontend ./frontend
 COPY --from=api-builder /usr/src/apps/vor/app ./app
@@ -37,4 +40,7 @@ COPY --from=api-builder /usr/src/apps/vor/mailTemplates ./mailTemplates
 ENV ENV=production
 
 EXPOSE 8080
-ENTRYPOINT ["./app"]
+# The debug base sets ENTRYPOINT to /busybox/sh; clear it so CMD runs the app
+# and `docker run -it obserfy/vor:<tag> sh` also works.
+ENTRYPOINT []
+CMD ["./app"]
